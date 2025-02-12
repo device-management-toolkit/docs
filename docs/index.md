@@ -1,8 +1,12 @@
 --8<-- "References/abbreviations.md"
 
-# Open AMT Cloud Toolkit
+# Device Management Toolkit (formerly known as Open AMT Cloud Toolkit)
 
-**Open Active Management Technology Cloud Toolkit** offers open-source microservices and libraries to streamline Intel AMT integration, simplifying out-of-band management solutions for Intel vPro Platforms.
+!!! warning
+    Our GitHub organization has been renamed from open-amt-cloud-toolkit to device-management-toolkit to better reflect its broader scope beyond Intel AMT in the future. This change aligns with our goal of supporting a wider range of device management capabilities while maintaining the same core functionality and open-source commitment. Please bear with us as we take the time to update the name throughout our project. 
+
+
+**Device Management Toolkit** offers open-source microservices and libraries to streamline Intel AMT integration, simplifying out-of-band management solutions for Intel vPro Platforms.
 
 ??? note "Long-Term Support (LTS) Version"
     Not looking for the current rapid release with the latest features? [See the documentation for our Long-Term Support release.](https://open-amt-cloud-toolkit.github.io/docs/{{ docsSite.ltsVersion }})
@@ -13,7 +17,7 @@
 
     ---
 
-    Jump into Open AMT Cloud Toolkit and it's offerings.
+    Jump into Device Management Toolkit and it's offerings.
 
     [:octicons-arrow-right-24: Get Started Now](./GetStarted/overview.md)
 
@@ -62,8 +66,8 @@ The Intel vPro® Platform, featuring Intel® AMT, enables Out-of-Band (OOB) Mana
 Reduce the need for costly on-site IT, minimize the downtime of key, business-critical devices, and more. [Read more about the Intel vPro® Platform](https://www.intel.com/content/www/us/en/developer/topic-technology/edge-5g/hardware/vpro-platform-retail.html).
 
 <figure class="figure-image">
-  <img src="assets\images\OOBManagement.png" alt="Figure 1: Open AMT Cloud Toolkit features OOB Management">
-  <figcaption>Figure 1: Open AMT Cloud Toolkit features OOB Management</figcaption>
+  <img src="assets\images\OOBManagement.png" alt="Figure 1: Device Management Toolkit features OOB Management">
+  <figcaption>Figure 1: Device Management Toolkit features OOB Management</figcaption>
 </figure>
  
 -------
