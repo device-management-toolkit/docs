@@ -166,6 +166,7 @@ nav:
     - Certificates:
       - Custom Provisioning Certificate: Reference/Certificates/generateProvisioningCert.md
       - Provisioning Certificate: Reference/Certificates/remoteProvisioning.md
+      - Enroll Custom Provisioning Certificate using USBFile: Reference/Certificates/enrollCustomCertAMT.md
       - TLS Certificate: Reference/Certificates/tls.md
     - Get Help:
       - FAQ: Reference/faq.md
