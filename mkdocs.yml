@@ -1,8 +1,8 @@
 # Project information
-site_name: "Open Active Management Technology Cloud Toolkit"
-site_url: "https://open-amt-cloud-toolkit.github.io/docs/"
-repo_url: "https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit"
-repo_name: "open-amt-cloud-toolkit/open-amt-cloud-toolkit"
+site_name: "Device Management Cloud Toolkit"
+site_url: "https://device-management-toolkit.github.io/docs/"
+repo_url: "https://github.com/device-management-toolkit/open-amt-cloud-toolkit"
+repo_name: "device-management-toolkit/open-amt-cloud-toolkit"
 copyright: "Copyright &copy; 2021 Intel Corporation"
 site_dir: site/2.26
 # Configuration
@@ -31,7 +31,7 @@ theme:
       toggle:
         icon: material/brightness-auto
         name: Switch to light mode
-    
+
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       primary: custom
@@ -48,73 +48,73 @@ theme:
 # Page tree
 nav:
   - Home:
-    - Overview: index.md
-    - Announcements: announcements.md
-    - Release Notes: release-notes.md
-    - Video Walkthroughs: videos.md
-    - License: license.md
-    - Get Help:
-      - FAQ: Reference/faq.md
-      - Glossary: Glossary.md      
-      - Troubleshooting: Reference/troubleshooting.md
+      - Overview: index.md
+      - Announcements: announcements.md
+      - Release Notes: release-notes.md
+      - Video Walkthroughs: videos.md
+      - License: license.md
+      - Get Help:
+          - FAQ: Reference/faq.md
+          - Glossary: Glossary.md      
+          - Troubleshooting: Reference/troubleshooting.md
   - Get Started:
-    - Overview: GetStarted/overview.md
-    - Cloud:
-      - Prerequisites: GetStarted/Cloud/prerequisites.md
-      - Set Up: GetStarted/Cloud/setup.md
-      - Configure:
-        - Login to Sample Web UI: GetStarted/Cloud/loginToUI.md
-        - Create a CIRA Config: GetStarted/Cloud/createCIRAConfig.md
-        - Create an AMT Profile:
-          - Create a Profile with CCM: GetStarted/Cloud/createProfileCCM.md
-          - Create a Profile with ACM: GetStarted/Cloud/createProfileACM.md
-      - Connect:
-        - Build & Run RPC: GetStarted/Cloud/buildRPC.md
-        - Manage AMT Device: GetStarted/Cloud/manageDevice.md
-    - Enterprise (Beta):
-      - Download and Run: GetStarted/Enterprise/setup.md
-      - Create Profiles:
-        - CCM Activation: GetStarted/Enterprise/createProfileCCM.md
-        - ACM Activation: GetStarted/Enterprise/createProfileACM.md
-      - Activate a Device: GetStarted/Enterprise/activateDevice.md
-      - Add a Device: GetStarted/Enterprise/addDevice.md
-      - Manage a Device: GetStarted/Enterprise/manageDevice.md
-    - Get Help:
-      - FAQ: Reference/faq.md
-      - Glossary: Glossary.md
-      - Troubleshooting: Reference/troubleshooting.md
+      - Overview: GetStarted/overview.md
+      - Cloud:
+          - Prerequisites: GetStarted/Cloud/prerequisites.md
+          - Set Up: GetStarted/Cloud/setup.md
+          - Configure:
+              - Login to Sample Web UI: GetStarted/Cloud/loginToUI.md
+              - Create a CIRA Config: GetStarted/Cloud/createCIRAConfig.md
+              - Create an AMT Profile:
+                  - Create a Profile with CCM: GetStarted/Cloud/createProfileCCM.md
+                  - Create a Profile with ACM: GetStarted/Cloud/createProfileACM.md
+          - Connect:
+              - Build & Run RPC: GetStarted/Cloud/buildRPC.md
+              - Manage AMT Device: GetStarted/Cloud/manageDevice.md
+      - Enterprise (Beta):
+          - Download and Run: GetStarted/Enterprise/setup.md
+          - Create Profiles:
+              - CCM Activation: GetStarted/Enterprise/createProfileCCM.md
+              - ACM Activation: GetStarted/Enterprise/createProfileACM.md
+          - Activate a Device: GetStarted/Enterprise/activateDevice.md
+          - Add a Device: GetStarted/Enterprise/addDevice.md
+          - Manage a Device: GetStarted/Enterprise/manageDevice.md
+      - Get Help:
+          - FAQ: Reference/faq.md
+          - Glossary: Glossary.md      
+          - Troubleshooting: Reference/troubleshooting.md
   - Deployment:
-    - Overview: Deployment/overview.md
-    - Upgrade Toolkit Version: Deployment/upgradeVersion.md
-    - Centralized Configuration:
-      - Enable Consul: Deployment/centralizedConfiguration.md
-    - Database:
-      - Schema Overview: Deployment/Database/schema.md
-      - SQL Database Replacement: Deployment/Database/database.md
-      - NoSQL Databases: Deployment/Database/nosql.md
-    - Secrets Management:
-      - Secrets Store Replacement: Deployment/secrets.md
+      - Overview: Deployment/overview.md
+      - Upgrade Toolkit Version: Deployment/upgradeVersion.md
+      - Centralized Configuration:
+          - Enable Consul: Deployment/centralizedConfiguration.md
+      - Database:
+          - Schema Overview: Deployment/Database/schema.md
+          - SQL Database Replacement: Deployment/Database/database.md
+          - NoSQL Databases: Deployment/Database/nosql.md
+      - Secrets Management:
+          - Secrets Store Replacement: Deployment/secrets.md
   - Tutorials:
-    - UI Toolkit Redirection Modules: Tutorials/uitoolkitReact.md
-    - REST API Call: Tutorials/apiTutorial.md
-    - IDE-Redirection (IDER): Tutorials/ideRedirection.md
-    - Wireless Activation: Tutorials/createWiFiConfig.md
-    - Modify User Authentication: Tutorials/modifyUserAuth.md
-    - Localization:
-        - Console: Tutorials/Localization/consoleLocalization.md
-        - Sample Web UI: Tutorials/Localization/webuiLocalization.md
-    - Scaling Tutorials:
-      - Overview: Tutorials/Scaling/overview.md
-      - Docker Swarm*: Tutorials/Scaling/docker-swarm.md
-      - Kubernetes Deployments:
-        - Kubernetes (K8S): Tutorials/Scaling/Kubernetes/deployingk8s.md
-        - AKS: Tutorials/Scaling/Kubernetes/deployingk8s-aks.md
-        - EKS: Tutorials/Scaling/Kubernetes/deployingk8s-eks.md
-        - KUMA Service Mesh: Tutorials/Scaling/Kubernetes/service-mesh.md
-    - Get Help:
-        - FAQ: Reference/faq.md
-        - Glossary: Glossary.md
-        - Troubleshooting: Reference/troubleshooting.md
+      - UI Toolkit Redirection Modules: Tutorials/uitoolkitReact.md
+      - REST API Call: Tutorials/apiTutorial.md
+      - IDE-Redirection (IDER): Tutorials/ideRedirection.md
+      - Wireless Activation: Tutorials/createWiFiConfig.md
+      - Modify User Authentication: Tutorials/modifyUserAuth.md
+      - Localization:
+          - Console: Tutorials/Localization/consoleLocalization.md
+          - Sample Web UI: Tutorials/Localization/webuiLocalization.md
+      - Scaling Tutorials:
+          - Overview: Tutorials/Scaling/overview.md
+          - Docker Swarm*: Tutorials/Scaling/docker-swarm.md
+          - Kubernetes Deployments:
+              - Kubernetes (K8S): Tutorials/Scaling/Kubernetes/deployingk8s.md
+              - AKS: Tutorials/Scaling/Kubernetes/deployingk8s-aks.md
+              - EKS: Tutorials/Scaling/Kubernetes/deployingk8s-eks.md
+              - KUMA Service Mesh: Tutorials/Scaling/Kubernetes/service-mesh.md
+      - Get Help:
+          - FAQ: Reference/faq.md
+          - Glossary: Glossary.md                
+          - Troubleshooting: Reference/troubleshooting.md
   - Reference:
     - Architecture Overview: Reference/architectureOverview.md
     - AMT Power States: Reference/powerstates.md
@@ -176,8 +176,8 @@ nav:
       - Glossary: Glossary.md
       - Troubleshooting: Reference/troubleshooting.md
   - APIs:
-    - Management Presence Server: APIs/indexMPS.md
-    - Remote Provisioning Server: APIs/indexRPS.md
+      - Management Presence Server: APIs/indexMPS.md
+      - Remote Provisioning Server: APIs/indexRPS.md
 # Extensions
 markdown_extensions:
   - admonition
@@ -215,13 +215,13 @@ plugins:
   - img2fig
 extra:
   social:
-    - icon: fontawesome/brands/discord 
+    - icon: fontawesome/brands/discord
       link: https://discord.gg/yrcMp2kDWh
       name: Join Us on Discord
     - icon: fontawesome/brands/docker
       link: https://hub.docker.com/search?q=intel%2Foact
       name: Find our Dockerhub Images
-    - icon: fontawesome/brands/github 
+    - icon: fontawesome/brands/github
       link: https://github.com/open-amt-cloud-toolkit
       name: Open AMT Github Repository
   version:
@@ -247,7 +247,7 @@ extra:
     property: "G-00QEDJW2TS"
   consent:
     title: Cookie consent
-    description: >- 
+    description: >-
       We use cookies to recognize your repeated visits and preferences, as well
       as to measure the effectiveness of our documentation and whether users
       find what they're searching for. With your consent, you're helping us to
