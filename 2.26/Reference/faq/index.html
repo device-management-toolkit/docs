@@ -656,18 +656,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#how-do-releases-work-with-open-amt" class="md-nav__link">
+  <a href="#how-do-releases-work-with-device-management-toolkit" class="md-nav__link">
     <span class="md-ellipsis">
-      How do releases work with Open AMT?
+      How do releases work with Device Management Toolkit?
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#how-does-versioning-work-with-open-amt" class="md-nav__link">
+  <a href="#how-does-versioning-work-with-device-management-toolkit" class="md-nav__link">
     <span class="md-ellipsis">
-      How does versioning work with Open AMT?
+      How does versioning work with Device Management Toolkit?
     </span>
   </a>
   
@@ -1543,18 +1543,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#how-do-releases-work-with-open-amt" class="md-nav__link">
+  <a href="#how-do-releases-work-with-device-management-toolkit" class="md-nav__link">
     <span class="md-ellipsis">
-      How do releases work with Open AMT?
+      How do releases work with Device Management Toolkit?
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#how-does-versioning-work-with-open-amt" class="md-nav__link">
+  <a href="#how-does-versioning-work-with-device-management-toolkit" class="md-nav__link">
     <span class="md-ellipsis">
-      How does versioning work with Open AMT?
+      How does versioning work with Device Management Toolkit?
     </span>
   </a>
   
@@ -2590,18 +2590,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#how-do-releases-work-with-open-amt" class="md-nav__link">
+  <a href="#how-do-releases-work-with-device-management-toolkit" class="md-nav__link">
     <span class="md-ellipsis">
-      How do releases work with Open AMT?
+      How do releases work with Device Management Toolkit?
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#how-does-versioning-work-with-open-amt" class="md-nav__link">
+  <a href="#how-does-versioning-work-with-device-management-toolkit" class="md-nav__link">
     <span class="md-ellipsis">
-      How does versioning work with Open AMT?
+      How does versioning work with Device Management Toolkit?
     </span>
   </a>
   
@@ -4461,18 +4461,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#how-do-releases-work-with-open-amt" class="md-nav__link">
+  <a href="#how-do-releases-work-with-device-management-toolkit" class="md-nav__link">
     <span class="md-ellipsis">
-      How do releases work with Open AMT?
+      How do releases work with Device Management Toolkit?
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#how-does-versioning-work-with-open-amt" class="md-nav__link">
+  <a href="#how-does-versioning-work-with-device-management-toolkit" class="md-nav__link">
     <span class="md-ellipsis">
-      How does versioning work with Open AMT?
+      How does versioning work with Device Management Toolkit?
     </span>
   </a>
   
@@ -4681,23 +4681,22 @@
   <h1>FAQ</h1>
 
 <h2 id="frequently-asked-questions">Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permanent link">&para;</a></h2>
-<h3 id="how-do-releases-work-with-open-amt">How do releases work with Open AMT?<a class="headerlink" href="#how-do-releases-work-with-open-amt" title="Permanent link">&para;</a></h3>
-<p>Open AMT carries two releases, the Rapid ("Monthly") Release and the Long-Term Support (LTS) Release. </p>
-<p>Rapid Releases occur every 4-6 weeks. Support for security and bug fixes is only for the duration of that rapid release. Customers will be encouraged to move to a latest rapid release for the most up to date security and bug fixes.</p>
-<p>LTS Releases occur roughly every 1 to 1.5 years. Support for security and bug fixes exist until the next LTS version is available. At that point, we will provide migration documentation and support to help customers move over to the new LTS release.</p>
+<h3 id="how-do-releases-work-with-device-management-toolkit">How do releases work with Device Management Toolkit?<a class="headerlink" href="#how-do-releases-work-with-device-management-toolkit" title="Permanent link">&para;</a></h3>
+<p>Device Management Toolkit follows a Rolling Release model with the 2.x series, which also serves as our Long-Term Support (LTS) version. Each tagged release is kept up-to-date with the latest features, security fixes, and improvements. Customers benefit from continuous updates and support, ensuring a secure and feature-rich experience without the need to wait for separate release cycles. Currently, that is version 2.x.</p>
+<p>We may decide to break off a 3.0 version at which point we will communicate support for 2.x at that time. </p>
 <p><br></p>
-<h3 id="how-does-versioning-work-with-open-amt">How does versioning work with Open AMT?<a class="headerlink" href="#how-does-versioning-work-with-open-amt" title="Permanent link">&para;</a></h3>
-<p>Open AMT follows <a href="https://semver.org/">SemVer</a> practices for versioning. This means:</p>
+<h3 id="how-does-versioning-work-with-device-management-toolkit">How does versioning work with Device Management Toolkit?<a class="headerlink" href="#how-does-versioning-work-with-device-management-toolkit" title="Permanent link">&para;</a></h3>
+<p>Device Management Toolkit follows <a href="https://semver.org/">SemVer</a> practices for versioning. This means:</p>
 <ul>
 <li>Major Version Increment - Breaking Changes (ex: 2.0.0 -&gt; 3.0.0)</li>
 <li>Minor Version Increment - New Features (ex: 2.0.0 -&gt; 2.1.0)</li>
 <li>Patch Version Increment - Security and Bug Fixes (ex: 2.0.0 -&gt; 2.0.1)</li>
 </ul>
 <p>All microservices with the same minor version should be compatible.</p>
-<p>The separate repos for microservices and libraries are versioned individually. These versions are separate from the <code>open-amt-cloud-toolkit</code> repo version.  The <code>open-amt-cloud-toolkit</code> repo is where we have the monthly release. This repo might carry a higher version than some of the individual repos but is tagged as <code>{Month} {Year}</code>. All sub-repos referenced within <code>open-amt-cloud-toolkit</code> for a specific release are guaranteed to be compatible.</p>
+<p>The separate repos for microservices and libraries are versioned individually. These versions are separate from the <code>device-management-toolkit</code> repo version.  The <code>device-management-toolkit</code> repo is where we have the monthly release. This repo might carry a higher version than some of the individual repos but is tagged as <code>{Month} {Year}</code>. All sub-repos referenced within <code>device-management-toolkit</code> for a specific release are guaranteed to be compatible.</p>
 <p><br></p>
 <h3 id="what-versions-of-intel-amt-are-supported">What versions of Intel&reg; AMT are supported?<a class="headerlink" href="#what-versions-of-intel-amt-are-supported" title="Permanent link">&para;</a></h3>
-<p>Open AMT aligns to the Intel Network and Edge (NEX) Group support roadmap for Intel vPro&reg; Platform and Intel&reg; AMT devices. This is currently calculated as <code>Latest AMT Version - 7</code>.</p>
+<p>Device Management Toolkit aligns to the Intel Network and Edge (NEX) Group support roadmap for Intel vPro&reg; Platform and Intel&reg; AMT devices. This is currently calculated as <code>Latest AMT Version - 7</code>.</p>
 <p><br></p>
 <h3 id="how-do-i-migrate-versions-to-a-new-release">How do I migrate versions to a new release?<a class="headerlink" href="#how-do-i-migrate-versions-to-a-new-release" title="Permanent link">&para;</a></h3>
 <p>Resources and information for migrating releases for either a Kubernetes deployment or local Docker deployment can be found in the <a href="../../Deployment/upgradeVersion/">Upgrade Toolkit Version documentation</a>.</p>
@@ -4869,7 +4868,7 @@
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.instant", "search.suggest", "search.highlight", "navigation.top", "toc.integrate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": ["rapid", "lts", "dev"], "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.instant", "search.suggest", "search.highlight", "navigation.top", "toc.integrate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": ["rapid", "dev"], "provider": "mike"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
