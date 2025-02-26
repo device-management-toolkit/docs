@@ -224,7 +224,6 @@ extra:
     provider: mike
     default:
       - rapid
-      - lts
       - dev
   repoVersion:
     mpsAPI: 2.13.0
@@ -236,8 +235,6 @@ extra:
     ui_toolkit: 3.2.9
     ui_toolkit_react: 3.2.9
     ui_toolkit_angular: 8.0.5
-  docsSite:
-    ltsVersion: 2.0
   analytics:
     provider: google
     property: "G-00QEDJW2TS"
