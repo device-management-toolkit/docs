@@ -4,7 +4,7 @@
     This feature is currently only supported for systems on Windows 10 or newer (including Windows 11) operating systems. **Wireless on Linux is not currently supported by Intel AMT.**
 
 !!! warning "Warning - Support for Cellular"
-    While Open AMT Cloud Toolkit supports wireless and wired profiles, it does not currently offer support for managing devices through cellular connections. Products like [Cradlepoint*](https://cradlepoint.com/) offer a workaround for cellular connections.
+    While Device Management Toolkit supports wireless and wired profiles, it does not currently offer support for managing devices through cellular connections. Products like [Cradlepoint*](https://cradlepoint.com/) offer a workaround for cellular connections.
 
 After activation and configuration of an AMT device with a wireless profile, remote devices can be managed wirelessly.
 
