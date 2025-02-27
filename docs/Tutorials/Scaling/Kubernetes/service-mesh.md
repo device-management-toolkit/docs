@@ -66,4 +66,4 @@ spec:
         kuma.io/service: '*'" | kubectl apply -f -
 ```
 
-After applying traffic permissions, you should now be able to use the Open AMT Cloud Toolkit and continue logging into the web portal following the setup instructions in the [Getting Started section](../../../GetStarted/Cloud/loginToUI.md).
+After applying traffic permissions, you should now be able to use the Device Management Toolkit and continue logging into the web portal following the setup instructions in the [Getting Started section](../../../GetStarted/Cloud/loginToUI.md).

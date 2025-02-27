@@ -2,7 +2,7 @@
 
 # Amazon Elastic Kubernetes Service (EKS)
 
-This tutorial demonstrates how to deploy the Open AMT Cloud Toolkit on a Kubernetes cluster using EKS. To perform a simpler test deployment, use a single-mode cluster locally. See [Kubernetes (K8S)](./deployingk8s.md).
+This tutorial demonstrates how to deploy the Device Management Toolkit on a Kubernetes cluster using EKS. To perform a simpler test deployment, use a single-mode cluster locally. See [Kubernetes (K8S)](./deployingk8s.md).
 
 Amazon EKS offers serverless Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance. Learn more about EKS [here](https://aws.amazon.com/eks).
 
@@ -17,10 +17,10 @@ Amazon EKS offers serverless Kubernetes, an integrated continuous integration an
 
 ## Get the Toolkit
 
-1. Clone the Open AMT Cloud Toolkit.
+1. Clone the cloud-deployment repository.
 
     ```
-    git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
+    git clone https://github.com/device-management-toolkit/cloud-deployment.git --branch v{{ repoVersion.oamtct }}
     ```
 
 ## Create a New EKS Cluster
@@ -195,7 +195,7 @@ The Amazon EBS CSI plugin requires IAM permissions to make calls to Amazon APIs 
 3. Save the file.
 
 
-## Deploy Open AMT Cloud Toolkit using Helm
+## Deploy Device Management Toolkit using Helm
 
 1. Deploy using Helm.
 

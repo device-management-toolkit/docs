@@ -9,12 +9,12 @@ This setup runs the MPS and RPS microservices as Docker* containers, standardize
 1. Open a Terminal or Command Prompt and navigate to a directory of your choice for development:
 
     ``` bash
-    git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }} --recursive
+    git clone https://github.com/device-management-toolkit/cloud-deployment --branch v{{ repoVersion.oamtct }} --recursive
     ```
   
-2. Change to the cloned `open-amt-cloud-toolkit` directory.
+2. Change to the cloned `device-management-toolkit` directory.
     ``` bash
-    cd open-amt-cloud-toolkit
+    cd device-management-toolkit
     ```
 
 ## Set Environment Variables  

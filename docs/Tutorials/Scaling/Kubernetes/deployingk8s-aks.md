@@ -2,7 +2,7 @@
 
 # Azure Kubernetes Service (AKS)
 
-This tutorial demonstrates how to deploy the Open AMT Cloud Toolkit on a Kubernetes cluster using AKS. Alternatively, you can also perform a simpler, test deployment using a single-node cluster locally. See [Kubernetes (K8s)](./deployingk8s.md).
+This tutorial demonstrates how to deploy the Device Management Toolkit on a Kubernetes cluster using AKS. Alternatively, you can also perform a simpler, test deployment using a single-node cluster locally. See [Kubernetes (K8s)](./deployingk8s.md).
 
 Azure Kubernetes Service (AKS) offers serverless Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance. Learn more about AKS [here](https://docs.microsoft.com/en-us/azure/aks/).
 
@@ -15,10 +15,10 @@ Azure Kubernetes Service (AKS) offers serverless Kubernetes, an integrated conti
 
 ## Get the Toolkit
 
-1. Clone the Open AMT Cloud Toolkit.
+1. Clone the cloud-deployment repository.
 
     ```
-    git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
+    git clone https://github.com/device-management-toolkit/cloud-deployment.git --branch v{{ repoVersion.oamtct }}
     ```
 
 ## Create SSH Key
@@ -186,7 +186,7 @@ Ensure your `kubectl` is connected to the Kubernetes cluster you wish to deploy/
     psql -h <SERVERURL> -p 5432 -d postgres -U <USERNAME> -W -f ./data/init.sql -f ./data/initMPS.sql
     ```
 
-## Deploy Open AMT Cloud Toolkit using Helm
+## Deploy Device Management Toolkit using Helm
 
 1. Deploy using Helm.
     ```
