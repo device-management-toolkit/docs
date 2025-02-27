@@ -4,7 +4,7 @@ site_url: "https://device-management-toolkit.github.io/docs/"
 repo_url: "https://github.com/device-management-toolkit/open-amt-cloud-toolkit"
 repo_name: "device-management-toolkit/open-amt-cloud-toolkit"
 copyright: "Copyright &copy; 2021 Intel Corporation"
-site_dir: site/2.26
+site_dir: site/2.27
 # Configuration
 theme:
   name: "material"
