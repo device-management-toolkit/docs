@@ -8,9 +8,6 @@
 
 **Device Management Toolkit** offers open-source microservices and libraries to streamline Intel AMT integration, simplifying out-of-band management solutions for Intel vPro Platforms.
 
-??? note "Long-Term Support (LTS) Version"
-    Not looking for the current rapid release with the latest features? [See the documentation for our Long-Term Support release.](https://open-amt-cloud-toolkit.github.io/docs/{{ docsSite.ltsVersion }})
-
 <div class="grid cards" markdown>
 
 -   :material-clock-fast:{ .lg .middle } __Set up in 30 minutes__

@@ -1,18 +1,16 @@
 ## Frequently Asked Questions
 
-### How do releases work with Open AMT?
+### How do releases work with Device Management Toolkit?
 
-Open AMT carries two releases, the Rapid ("Monthly") Release and the Long-Term Support (LTS) Release. 
+Device Management Toolkit follows a Rolling Release model with the 2.x series, which also serves as our Long-Term Support (LTS) version. Each tagged release is kept up-to-date with the latest features, security fixes, and improvements. Customers benefit from continuous updates and support, ensuring a secure and feature-rich experience without the need to wait for separate release cycles. Currently, that is version 2.x.
 
-Rapid Releases occur every 4-6 weeks. Support for security and bug fixes is only for the duration of that rapid release. Customers will be encouraged to move to a latest rapid release for the most up to date security and bug fixes.
-
-LTS Releases occur roughly every 1 to 1.5 years. Support for security and bug fixes exist until the next LTS version is available. At that point, we will provide migration documentation and support to help customers move over to the new LTS release.
+We may decide to break off a 3.0 version at which point we will communicate support for 2.x at that time. 
 
 <br>
 
-### How does versioning work with Open AMT?
+### How does versioning work with Device Management Toolkit?
 
-Open AMT follows [SemVer](https://semver.org/) practices for versioning. This means:
+Device Management Toolkit follows [SemVer](https://semver.org/) practices for versioning. This means:
 
 - Major Version Increment - Breaking Changes (ex: 2.0.0 -> 3.0.0)
 - Minor Version Increment - New Features (ex: 2.0.0 -> 2.1.0)
@@ -20,13 +18,13 @@ Open AMT follows [SemVer](https://semver.org/) practices for versioning. This me
 
 All microservices with the same minor version should be compatible.
 
-The separate repos for microservices and libraries are versioned individually. These versions are separate from the `open-amt-cloud-toolkit` repo version.  The `open-amt-cloud-toolkit` repo is where we have the monthly release. This repo might carry a higher version than some of the individual repos but is tagged as `{Month} {Year}`. All sub-repos referenced within `open-amt-cloud-toolkit` for a specific release are guaranteed to be compatible.
+The separate repos for microservices and libraries are versioned individually. These versions are separate from the `device-management-toolkit` repo version.  The `device-management-toolkit` repo is where we have the monthly release. This repo might carry a higher version than some of the individual repos but is tagged as `{Month} {Year}`. All sub-repos referenced within `device-management-toolkit` for a specific release are guaranteed to be compatible.
 
 <br>
 
 ### What versions of Intel&reg; AMT are supported?
 
-Open AMT aligns to the Intel Network and Edge (NEX) Group support roadmap for Intel vPro&reg; Platform and Intel&reg; AMT devices. This is currently calculated as `Latest AMT Version - 7`.
+Device Management Toolkit aligns to the Intel Network and Edge (NEX) Group support roadmap for Intel vPro&reg; Platform and Intel&reg; AMT devices. This is currently calculated as `Latest AMT Version - 7`.
 
 <br>
 

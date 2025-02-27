@@ -4,7 +4,7 @@ site_url: "https://device-management-toolkit.github.io/docs/"
 repo_url: "https://github.com/device-management-toolkit/open-amt-cloud-toolkit"
 repo_name: "device-management-toolkit/open-amt-cloud-toolkit"
 copyright: "Copyright &copy; 2021 Intel Corporation"
-site_dir: site/2.26
+site_dir: site/2.27
 # Configuration
 theme:
   name: "material"
@@ -224,7 +224,6 @@ extra:
     provider: mike
     default:
       - rapid
-      - lts
       - dev
   repoVersion:
     mpsAPI: 2.13.0
@@ -236,8 +235,6 @@ extra:
     ui_toolkit: 3.2.9
     ui_toolkit_react: 3.2.9
     ui_toolkit_angular: 8.0.5
-  docsSite:
-    ltsVersion: 2.0
   analytics:
     provider: google
     property: "G-00QEDJW2TS"
