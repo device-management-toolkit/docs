@@ -22,7 +22,7 @@ For more details on configuring, securing, or upgrading Console, refer to the fo
 
 - **[Console Configuration](./configuration.md)** – Learn how to configure Console using `config.yml` or environment variables.
 - **[Console Security Considerations](./securityConsole.md)** – Understand key security aspects and best practices to protect critical assets.
-- **[Upgrading Console](./upgrade.md)** – Follow upgrade instructions from Beta to v1.x and future versions.
-- **[WSMAN Explorer](./wsmanExplorer.md)** – View WSMAN input sent to AMT and its response.
+- **[Upgrading from Beta to v1.0](./upgrade.md)** – Follow upgrade instructions from Beta to v1.x and future versions.
+- **[WSMAN Explorer Feature](./wsmanExplorer.md)** – View WSMAN input sent to AMT and its response.
 
 <br>

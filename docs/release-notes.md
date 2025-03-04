@@ -10,8 +10,8 @@ Download the latest v1.x release:  [Console Releases](https://github.com/device-
 
 ## Getting Started with Console  
 
-🔹 **New to Console?** Start with our [overview guide](./Reference/Console/overview.md) for key concepts and basic usage.  
-🔹 **Beta users?** Check out our [updated documentation](./GetStarted/Enterprise/setup.md#get-console) for details on new features and improvements.  
+🔹 **First time using Console?** Get started with our [overview guide](./Reference/Console/overview.md) to learn key concepts and basic usage.  
+🔹 **Upgrading from Beta?** Follow our [upgrade guide](./Reference/Console/upgrade.md#steps-to-upgrade-from-beta-to-v1x) to setup the latest version.  
 
 ## What's new in MVP?
 

@@ -10,27 +10,27 @@ When upgrading from Beta to v1.x, the `config.yml` file has undergone changes. Y
 #### Steps to upgrade from Beta to v1.x
 
 1. Stop the Beta Console: <br>
-    Close the terminal that is running `console.exe`. Simply closing the browser window will not stop the Console.
+    Close the terminal running the Console executable. Simply closing the browser window will not stop the Console.
 
 2. Locate the Existing `config.yml` File: <br>
     The `config.yml` file is typically located at `~/config/config.yml`, relative to the path where `console.exe` is located.
 
 3. Rename or Delete the Existing `config.yml`:
     - If you don't need the old configuration, delete the `config.yml` file.
-    - If you want to keep your old configuration, rename `config.yml` to `config_old.yml`.
+    - If you want to keep your old configuration, rename config.yml to something like `config_old.yml` as an example.
 
 4. Download and Run the New v1.x Console: <br>
     1. Download the latest `v1.x` executable.
     2. Copy the downloaded executable to the same directory where the Beta executable is located.
-    3. Run the new `v1.x` Console.
+    3. Run the new `v1.x` Console executable.
 
 5. Confirm the New `config.yml` Is Generated: <br>
     A fresh `config.yml` will automatically be generated in the same directory.
 
 6. Make Changes to `config.yml` (Optional): <br>
     1. Stop the Console.
-    2. Edit the `config.yml` file to update fields such as the username, password, or any other necessary settings.
-    3. After making changes, start the Console for the changes to take effect.
+    2. Edit the `config.yml` file to update fields like the username, password, or any other necessary settings based on the values from your old configuration file (e.g., `config_old.yml`).
+    3. After making the changes, run the new Console executable for them to take effect.
 <br>
 
 ### Upgrading from Alpha to Beta
