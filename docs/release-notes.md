@@ -64,6 +64,10 @@ We've fixed issues in RPS (CIRA connections), MPS (KVM detection), Sample-Web-UI
 
 #### Console
 
+v1.1.0
+
+* update API to enable/disable OCR status ([#514](https://github.com/device-management-toolkit/console/issues/514)) ([eac32d2](https://github.com/device-management-toolkit/console/commit/eac32d2716ecb4c2bbd28f97608f822dce24ec05))
+
 v1.0.3
 
 * add NGX_MONACO_EDITOR_CONFIG provider to ExplorerComponent ([#505](https://github.com/device-management-toolkit/console/issues/505)) ([c36de28](https://github.com/device-management-toolkit/console/commit/c36de28bc4c59a18accfed7083545afc6acf286b))
@@ -127,6 +131,14 @@ v2.13.22
 
 #### Sample Web UI
 
+v3.32.1
+
+* profile error messages truncated ([e8c3c25](https://github.com/device-management-toolkit/sample-web-ui/commit/e8c3c25da4759c93a58a0985842c3964da220a5e)), closes [#2486](https://github.com/device-management-toolkit/sample-web-ui/issues/2486)
+
+v3.32.0
+
+* **docker:** enable multiarch build ([4c10c0b](https://github.com/device-management-toolkit/sample-web-ui/commit/4c10c0bf45e8b4c64497e8e0d911d2e91a65e6f1))
+
 v3.31.3
 
 * dependency updates
@@ -169,6 +181,14 @@ v3.27.5
 
 #### Go WSMAN Messages
 
+v2.20.0
+
+* **ips:** add RequestOSPowerSavingStateChange, Get, Pull, & Enumerate ([#491](https://github.com/device-management-toolkit/go-wsman-messages/issues/491)) ([ca76aad](https://github.com/device-management-toolkit/go-wsman-messages/commit/ca76aad6613a01f6244915f6b2db996dd1c8313c))
+
+v2.19.0
+
+* **cim:** add RequestStateChange in BootService ([#486](https://github.com/device-management-toolkit/go-wsman-messages/issues/486)) ([2d76f2d](https://github.com/device-management-toolkit/go-wsman-messages/commit/2d76f2d16cdb56560ecd875f27834abcfa929d71))
+
 v2.18.0
 
 * add TLS config support for newer platforms ([#481](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/481)) ([b7cafca](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/b7cafca78ecc3813a3a6d0e4470098dd6fc8c081))
@@ -194,6 +214,10 @@ v9.0.0
 * move to angular 19 - build(deps): bump angular 18 to 19
 
 #### WSMAN Messages
+
+v5.8.0
+
+* **ips:** add RequestOSPowerSavingStateChange in PowerManagementService ([#967](https://github.com/device-management-toolkit/wsman-messages/issues/967)) ([82ea2ec](https://github.com/device-management-toolkit/wsman-messages/commit/82ea2ec1810cec22dcabaeac9ce0a696a94d65fa))
 
 v5.7.0
 
