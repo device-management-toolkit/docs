@@ -13,7 +13,7 @@
     Find out [what's new](#whats-new) and delve into the [details](#get-the-details) below-- and enjoy our new release of the toolkit.
 
     *Best wishes,*  
-    *Team Member | Team Member's Title | The Open AMT Cloud Toolkit Team*
+    *Team Member | Team Member's Title | The Device Management Toolkit Team*
 
 
 ## What's New?
@@ -79,7 +79,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 - SelectorSet values no longer includes @name and Value properties
 
 - While these technically constitute a breaking change, ultimately we decided to NOT rev the major version of the toolkit as we felt these changes have minimal impact. We will be revamping the /AMT routes in a future version and will rev to 3.x at that time
-#### Open AMT Cloud Toolkit
+#### Device Management Toolkit
 
 #### MPS
 
@@ -92,7 +92,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 #### UI Toolkit
 
 ### Resolved Issues
-#### Open AMT Cloud Toolkit
+#### Device Management Toolkit
 
 #### MPS
 
@@ -105,7 +105,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 #### UI Toolkit
 
 ### Open Issues and Requests
-#### Open AMT Cloud Toolkit
+#### Device Management Toolkit
 
 #### RPS
 

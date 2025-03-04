@@ -1,5 +1,5 @@
 # Glossary
-Open Active Management Technology (Open AMT) Cloud Toolkit, also referred to as (OAMTCT)
+Device Management Toolkit, also referred to as (DMT)
 *Related Terminology, Technologies, and Acronyms*
 
 [A](#a) | [B](#b) | [C](#c) | [D](#d) | [E](#e) | F | [G](#g) | H | [I](#i) | J | [K](#k) | L | [M](#m) | [N](#n) |[O](#n) | [P](#p) | Q | [R](#r) | S | T | [U](#u) |[V](#v) | [W](#w) | X | Y | Z
@@ -79,7 +79,7 @@ Open Active Management Technology (Open AMT) Cloud Toolkit, also referred to as 
 
 ## O
 
-**Open Active Management Technology (Open AMT) Cloud Toolkit:** An open source software architecture consisting of modular microservices and libraries for integration of out-of-band manageability into existing network infrastructures. The software enables network administrators and independent software vendors (ISVs) to explore key Intel® AMT features. [See more about Open AMT Cloud Toolkit features.](https://software.intel.com/content/www/us/en/develop/topics/iot/hardware/vpro-platform-retail.html)
+**Device Management Toolkit (DMT):** An open source software architecture consisting of modular microservices, applications and libraries for integration of out-of-band manageability into existing network infrastructures. The software enables network administrators and independent software vendors (ISVs) to explore key Intel® AMT features. [See more about Device Management Toolkit features.](https://software.intel.com/content/www/us/en/develop/topics/iot/hardware/vpro-platform-retail.html)
 
 **out-of-band (OOB) manageability:** A remote management technology that allows administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols. Actions include reboot, power up, power down, system updates, and more. As long as the network device or asset is connected to power, OAMTCT software can perform remote management, including powering up a system that is currently powered down. 
 
@@ -97,7 +97,7 @@ Open Active Management Technology (Open AMT) Cloud Toolkit, also referred to as 
 
 **Remote Provision Server (RPS):** A node.js-based microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using a pre-defined profile.
 
-**REpresentational State Transfer (REST) API**: An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, administrators can construct REST API calls and run them with node, use provided REST code snippets to expand the reference implementation console, and use provided REST code snippets as a springboard for developing and expanding custom consoles.
+**Representational State Transfer (REST) API**: An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of DMT, administrators can construct REST API calls and run them with node, use provided REST code snippets to expand the reference implementation console, and use provided REST code snippets as a springboard for developing and expanding custom consoles.
 
 
 
