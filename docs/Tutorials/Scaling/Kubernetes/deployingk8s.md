@@ -1,6 +1,6 @@
 --8<-- "References/abbreviations.md"
 
-This tutorial demonstrates how to deploy the Open AMT Cloud Toolkit on a local Kubernetes single-node cluster. Alternatively, you can also deploy using a managed service through a Cloud Service Provider such as Azure Kubernetes Service (AKS). See [AKS](./deployingk8s-aks.md).
+This tutorial demonstrates how to deploy the Device Management Toolkit on a local Kubernetes single-node cluster. Alternatively, you can also deploy using a managed service through a Cloud Service Provider such as Azure Kubernetes Service (AKS). See [AKS](./deployingk8s-aks.md).
 
 Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications.  Learn more about Kubernetes [here](https://kubernetes.io/docs/home/).
 
@@ -24,10 +24,10 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
     
             ### Build and Start
     
-            1. Clone the Open AMT Cloud Toolkit.
+            1. Clone the cloud-deployment repository.
 
                 ```
-                git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
+                git clone https://github.com/device-management-toolkit/cloud-deployment --branch v{{ repoVersion.oamtct }}
                 ```
     
             2. Copy the `.env.template` file to `.env`.
@@ -86,10 +86,10 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
 
 ## Get the Toolkit
 
-1. Clone the Open AMT Cloud Toolkit.
+1. Clone the cloud-deployment repository.
 
     ```
-    git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
+    git clone https://github.com/device-management-toolkit/cloud-deployment.git --branch v{{ repoVersion.oamtct }}
     ```
 
 
@@ -172,7 +172,7 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
     psql -h <SERVERURL> -p 5432 -d postgres -U <USERNAME> -W -f ./data/init.sql -f ./data/initMPS.sql
     ```
 
-## Deploy Open AMT Cloud Toolkit Using Helm
+## Deploy Device Management Toolkit Using Helm
 
 1. Deploy using Helm.
     ```

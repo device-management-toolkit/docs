@@ -1,7 +1,7 @@
 --8<-- "References/abbreviations.md"
 # Prerequisites
 
-This section contains prerequisites for deploying Open AMT Cloud Toolkit's MPS and RPS microservices on a local development system as Docker* containers. 
+This section contains prerequisites for deploying Device Management Toolkit's MPS and RPS microservices on a local development system as Docker* containers. 
 
 <div style="text-align:center;">
   <iframe width="600" height="337" src="https://www.youtube.com/embed/Nuwm4SxbvjA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

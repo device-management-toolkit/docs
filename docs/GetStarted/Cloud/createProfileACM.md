@@ -62,7 +62,7 @@ A Profile provides configuration information to the AMT Firmware during the acti
     In a production environment, devices are typically activated in ACM mode. ACM mode enables KVM access to devices without user consent. In most IoT use cases, edge devices such as digital signage or kiosks may not have immediate access to it or employees nearby. ACM mode proves immensely helpful in these scenarios.
 
 ??? note "Note - More Information about Passwords"
-    Open AMT Cloud Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../../Reference/architectureOverview.md#passwords).
+    Device Management Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../../Reference/architectureOverview.md#passwords).
 
 **To create an ACM profile:**
 

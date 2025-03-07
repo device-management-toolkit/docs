@@ -1,8 +1,5 @@
 --8<-- "References/abbreviations.md"
 
-!!! warning "Warning - Console in Beta Development"
-    Console is currently under development. The current available tags for download are Beta version code. This could mean that certain features may not function yet, visual look and feel may change, or bugs/errors may occur. It is not recommended for use in Production deployments. Follow along our [Feature Backlog for future releases and feature updates](https://github.com/orgs/open-amt-cloud-toolkit/projects/10)
-
 1. In the Console UI, navigate to the **Devices** page in the left-hand menu sidebar.
 
 2. In the upper-right, select **Add a Device**.

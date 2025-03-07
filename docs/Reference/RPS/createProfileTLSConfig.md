@@ -2,7 +2,7 @@
 
 During the activation process with the Remote Provisioning Client (RPC), profiles provide configuration information to the firmware on platforms featuring Intel® AMT.
 
-In **Profiles**, the Open AMT Cloud Toolkit supports Client Initiated Remote Access (CIRA) connections, which use Transport Layer Security (TLS). The toolkit also supports TLS without CIRA. TLS connections encrypt Intel® AMT network traffic, increasing data security and privacy.
+In **Profiles**, the Device Management Toolkit supports Client Initiated Remote Access (CIRA) connections, which use Transport Layer Security (TLS). The toolkit also supports TLS without CIRA. TLS connections encrypt Intel® AMT network traffic, increasing data security and privacy.
 
 !!! Important
     * TLS works with both ACM And CCM.
