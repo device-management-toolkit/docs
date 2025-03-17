@@ -49,7 +49,7 @@
 
 ## Next steps
 
-After successfully deploying the Open AMT Cloud Toolkit microservices and client, explore other tools and topics in the Open AMT Cloud Toolkit architecture:
+After successfully deploying the Device Management Toolkit microservices and client, explore other tools and topics in the Device Management Toolkit architecture:
 
 ### REST API Calls
 Learn how to send commands to AMT devices with the curl-based REST API tutorial. Generate a JWT token for Authorization and construct an API call to get a list of devices. 
@@ -62,7 +62,7 @@ Explore how to add redirection features, such as Keyboard, Video, and Mouse (KVM
 [Get Started with the UI Toolkit](../../Tutorials/uitoolkitReact.md){: .md-button .md-button--primary }
 
 ### Security
-Learn how to use the Open AMT Cloud Toolkit architecture to secure ..\assets. Topics include credentials, allowlisting, best known security methods, and more.
+Learn how to use the Device Management Toolkit architecture to secure ..\assets. Topics include credentials, allowlisting, best known security methods, and more.
 
 [Learn More about Security and Hardening](../../Reference/MPS/securityMPS.md){: .md-button .md-button--primary }
 

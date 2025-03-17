@@ -137,6 +137,6 @@ For [**RPS Methods**](./../APIs/indexRPS.md){target=_blank} for server configura
 [RPS API Docs](./../APIs/indexRPS.md){: .md-button .md-button--primary target=_blank }
 
 ## Explore the UI Toolkit
-In addition to REST API calls, the Open AMT Cloud Toolkit provides a reference implementation console. Add manageability features to the console with prebuilt React components, such as Keyboard, Video, and Mouse (KVM).
+In addition to REST API calls, the Device Management Toolkit provides a reference implementation console. Add manageability features to the console with prebuilt React components, such as Keyboard, Video, and Mouse (KVM).
 
 [Get Started with the UI Toolkit](../Tutorials/uitoolkitReact.md){: .md-button .md-button--primary }

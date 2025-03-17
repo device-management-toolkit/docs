@@ -1,7 +1,7 @@
 --8<-- "References/abbreviations.md"
 
 # Scaling Overview
-Scaling functionality in MPS enables Open AMT Cloud Toolkit to support a greater number of managed devices. The toolkit offers various methods for deploying scaling, including Local Kubernetes, Azure Kubernetes Service* (AKS), Amazon Elasic Kubernetes Service* (EKS), and Docker Swarm*. In addition, administrators can use kubectl to manage the AKS. 
+Scaling functionality in MPS enables Device Management Toolkit to support a greater number of managed devices. The toolkit offers various methods for deploying scaling, including Local Kubernetes, Azure Kubernetes Service* (AKS), Amazon Elasic Kubernetes Service* (EKS), and Docker Swarm*. In addition, administrators can use kubectl to manage the AKS. 
 
 <figure class="figure-image">
 <img src="..\..\..\assets\images\HighLevelArchitectureScaling.png" alt="Figure 1: High-level Architecture of Scaling Implementation">
@@ -12,7 +12,7 @@ Figure 1 illustrates the basic high-level software flow:
 
 * Managed devices use CIRA to connect and call home to instances of the MPS in the cloud. 
 * RPCs connect to an available instance of the MPS Server with WSS calls. These calls are funneled through Kong* API Gateway, which supports a variety of APIs. Kong manages load balancing, logging, authentication and more. 
-* The Kong* API Gateway handles requests from client apps, such as the Sample Web UI included in Open AMT Cloud Toolkit, sending them along to an available RPS.
+* The Kong* API Gateway handles requests from client apps, such as the Sample Web UI included in Device Management Toolkit, sending them along to an available RPS.
 * The MPS Router chooses an available instance of the MPS.
 * The RPS microservices communicate with MPS microservices through the REST API. 
 * Vault is a tool used to secure, store, and tightly control access to secrets. Storing passwords used by MPS in Vault will increase the security of these assets.

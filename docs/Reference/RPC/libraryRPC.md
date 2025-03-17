@@ -87,7 +87,7 @@ This sample provides an example of calling the `rpcExec` function to activate a 
 
 ###  General Errors
 
-#### (1-19) Basic Errors Outside of Open AMT Cloud Toolkit
+#### (1-19) Basic Errors Outside of Device Management Toolkit
 
 |Error Code| Message                                 |
 | -------- | --------------------------------------- |
