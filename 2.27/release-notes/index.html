@@ -650,9 +650,27 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#ui-toolkit-react" class="md-nav__link">
+    <span class="md-ellipsis">
+      UI Toolkit React
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ui-toolkit-angular" class="md-nav__link">
     <span class="md-ellipsis">
       UI Toolkit Angular
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui-toolkit" class="md-nav__link">
+    <span class="md-ellipsis">
+      UI Toolkit
     </span>
   </a>
   
@@ -4469,6 +4487,14 @@
 <h2 id="get-the-details">Get the Details<a class="headerlink" href="#get-the-details" title="Permanent link">&para;</a></h2>
 <h3 id="additions-modifications-and-removals">Additions, Modifications, and Removals<a class="headerlink" href="#additions-modifications-and-removals" title="Permanent link">&para;</a></h3>
 <h4 id="console">Console<a class="headerlink" href="#console" title="Permanent link">&para;</a></h4>
+<p>v1.2.1</p>
+<ul>
+<li>allows pulling language file (<a href="https://github.com/device-management-toolkit/console/commit/f954c09f584d69ac059fcd08990be89faf39eea5">f954c09</a>)</li>
+</ul>
+<p>v1.2.0</p>
+<ul>
+<li>allow insecure ciphers to be used (<a href="https://github.com/device-management-toolkit/console/commit/c85dca10dbc2d6ed3fdd39ad3978cae7a9b40e0e">c85dca1</a>), closes <a href="https://github.com/device-management-toolkit/go-wsman-messages/issues/492">device-management-toolkit/go-wsman-messages#492</a> <a href="https://github.com/device-management-toolkit/console/issues/445">#445</a></li>
+</ul>
 <p>v1.1.0</p>
 <ul>
 <li>update API to enable/disable OCR status (<a href="https://github.com/device-management-toolkit/console/issues/514">#514</a>) (<a href="https://github.com/device-management-toolkit/console/commit/eac32d2716ecb4c2bbd28f97608f822dce24ec05">eac32d2</a>)</li>
@@ -4504,6 +4530,12 @@
 <li>attempts to fix cicd CGO requirement (<a href="https://github.com/open-amt-cloud-toolkit/console/commit/2ad99e9de474276b745e5d480b807503e394bdab">2ad99e9</a>)</li>
 </ul>
 <h4 id="rpc-go"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go<a class="headerlink" href="#rpc-go" title="Permanent link">&para;</a></h4>
+<p>v2.43.1</p>
+<ul>
+<li>license generation (<a href="https://github.com/device-management-toolkit/rpc-go/issues/777">#777</a>) (<a href="https://github.com/device-management-toolkit/rpc-go/commit/5b914faf758be6d20e5bd65e55511b95b6c08caf">5b914fa</a>)</li>
+<li>license generation (<a href="https://github.com/device-management-toolkit/rpc-go/issues/778">#778</a>) (<a href="https://github.com/device-management-toolkit/rpc-go/commit/8ba6993074b9629b55c845f6cd05204a9e078ce9">8ba6993</a>)</li>
+<li>update go mod (<a href="https://github.com/device-management-toolkit/rpc-go/commit/8a1e7419f905abb6520a1898a2a6e5abbb8aab8a">8a1e741</a>)</li>
+</ul>
 <p>v2.43.0</p>
 <ul>
 <li>ccm on tls only platforms (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/issues/745">#745</a>) (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/80853ee033e4370590e929ba2b6bd80cf092c6f0">80853ee</a>)</li>
@@ -4522,16 +4554,45 @@
 <li>opstate on amt 11 and below (<a href="https://github.com/open-amt-cloud-toolkit/rpc-go/commit/954f3d36bdd2fa076293536758772c492034aeba">954f3d3</a>)</li>
 </ul>
 <h4 id="rps"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps" title="Permanent link">&para;</a></h4>
+<p>v2.23.0</p>
+<ul>
+<li><strong>docker:</strong> add support for devcontainer (<a href="https://github.com/device-management-toolkit/rps/issues/2025">#2025</a>) (<a href="https://github.com/device-management-toolkit/rps/commit/9cb724929b782657627625cca5f0ab976f2cac35">9cb7249</a>)</li>
+</ul>
 <p>v2.22.15</p>
 <ul>
 <li>cira disconnect (<a href="https://github.com/open-amt-cloud-toolkit/rps/issues/1910">#1910</a>) (<a href="https://github.com/open-amt-cloud-toolkit/rps/commit/fe86a7a58720e3453939919a19556fa552e1b9d6">fe86a7a</a>)</li>
 </ul>
 <h4 id="mps"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps" title="Permanent link">&para;</a></h4>
+<p>v2.14.1</p>
+<ul>
+<li>dependency updates</li>
+</ul>
+<p>v2.14.0</p>
+<ul>
+<li><strong>docker:</strong> update devcontainer.json format with prettier (<a href="https://github.com/device-management-toolkit/mps/commit/eb30af898faec07369f5f1302bc16999aba2ca25">eb30af8</a>)</li>
+<li><strong>docker:</strong> add support for devcontainer (device-management-toolkit/cloud-deployment<a href="https://github.com/device-management-toolkit/mps/issues/383">#383</a>) (<a href="https://github.com/device-management-toolkit/mps/commit/c91726c428a0d58a7be300c12b615b6aed0e3b75">c91726c</a>)</li>
+</ul>
 <p>v2.13.22</p>
 <ul>
 <li><strong>api:</strong> add kvmAvailable to get AMT features (<a href="https://github.com/open-amt-cloud-toolkit/mps/issues/1803">#1803</a>) (<a href="https://github.com/open-amt-cloud-toolkit/mps/commit/c6596ccfbdc213ad6467e1ae41063f418a6bd0ac">c6596cc</a>)</li>
 </ul>
 <h4 id="sample-web-ui"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr><a class="headerlink" href="#sample-web-ui" title="Permanent link">&para;</a></h4>
+<p>v3.34.2</p>
+<ul>
+<li>address an issue where login token might not exist (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/95d60b3509c756b27693a84bf844244d49b91599">95d60b3</a>)</li>
+</ul>
+<p>v3.34.0</p>
+<ul>
+<li><strong>docker:</strong> add support for devcontainer (<a href="https://github.com/device-management-toolkit/sample-web-ui/issues/2534">#2534</a>) (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/bb597f4343b47d33d2659390390c6612e0f714e9">bb597f4</a>)</li>
+</ul>
+<p>v3.33.0</p>
+<ul>
+<li>replace momentjs with date fns (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/2074d0e7d18dbf689f18788057acc234b790f2ed">2074d0e</a>), closes <a href="https://github.com/device-management-toolkit/issues/2519">device-management-toolkit#2519</a></li>
+</ul>
+<p>v3.32.2</p>
+<ul>
+<li>Error messages truncated (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/9b309ef67fb1b288d07cf53b17ed5acf100cd8f2">9b309ef</a>), closes <a href="https://github.com/device-management-toolkit/sample-web-ui/issues/2527">#2527</a></li>
+</ul>
 <p>v3.32.1</p>
 <ul>
 <li>profile error messages truncated (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/e8c3c25da4759c93a58a0985842c3964da220a5e">e8c3c25</a>), closes <a href="https://github.com/device-management-toolkit/sample-web-ui/issues/2486">#2486</a></li>
@@ -4581,6 +4642,18 @@
 <li>update power button for hard reset (<a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/commit/93899a3b21f11345d50c0fed522fe1f1e728940d">93899a3</a>)</li>
 </ul>
 <h4 id="go-wsman-messages">Go WSMAN Messages<a class="headerlink" href="#go-wsman-messages" title="Permanent link">&para;</a></h4>
+<p>v2.21.0</p>
+<ul>
+<li>allow the use of insecure cipher suits (<a href="https://github.com/device-management-toolkit/go-wsman-messages/issues/492">#492</a>) (<a href="https://github.com/device-management-toolkit/go-wsman-messages/commit/871493cd355557be2b291a60b678ca6dcc06c3d1">871493c</a>), closes <a href="https://github.com/device-management-toolkit/console/issues/445">device-management-toolkit/console#445</a></li>
+</ul>
+<p>v2.20.2</p>
+<ul>
+<li>adds missing selectors to policy applies to mps (<a href="https://github.com/device-management-toolkit/go-wsman-messages/issues/497">#497</a>) (<a href="https://github.com/device-management-toolkit/go-wsman-messages/commit/f7fe59eae3ef2708b42ac1182508e976e0a48e0a">f7fe59e</a>)</li>
+</ul>
+<p>v2.20.1</p>
+<ul>
+<li>support multiple selectors in header (<a href="https://github.com/device-management-toolkit/go-wsman-messages/issues/495">#495</a>) (<a href="https://github.com/device-management-toolkit/go-wsman-messages/commit/b660ba583ea090112ad03b9f26369da4c1c1e022">b660ba5</a>)</li>
+</ul>
 <p>v2.20.0</p>
 <ul>
 <li><strong>ips:</strong> add RequestOSPowerSavingStateChange, Get, Pull, &amp; Enumerate (<a href="https://github.com/device-management-toolkit/go-wsman-messages/issues/491">#491</a>) (<a href="https://github.com/device-management-toolkit/go-wsman-messages/commit/ca76aad6613a01f6244915f6b2db996dd1c8313c">ca76aad</a>)</li>
@@ -4597,8 +4670,13 @@
 <ul>
 <li>identifier and maxReadRecords are configurable for event logs (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/478">#478</a>) (<a href="https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/5529d2947d5679fbfbf309720230018d7750f2b4">5529d29</a>)</li>
 </ul>
+<h4 id="ui-toolkit-react"><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> React<a class="headerlink" href="#ui-toolkit-react" title="Permanent link">&para;</a></h4>
+<p>v4.0.0</p>
+<ul>
+<li>build(deps)!: upgrade to react 19 (#1608) (<a href="https://github.com/device-management-toolkit/ui-toolkit-react/commit/cd061f3e0cdcfbfcb4eaefa4420c8deeaac564cf">cd061f3</a>), closes <a href="https://github.com/device-management-toolkit/ui-toolkit-react/issues/1608">#1608</a></li>
+</ul>
 <h4 id="ui-toolkit-angular"><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> Angular<a class="headerlink" href="#ui-toolkit-angular" title="Permanent link">&para;</a></h4>
-<p>v9.1.1</p>
+<p>v9.1.2 and v9.1.1</p>
 <ul>
 <li>dependency updates</li>
 </ul>
@@ -4612,7 +4690,20 @@
 <li>chore!: address incorrectly released breaking change (<a href="https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/commit/b3a541477b4c71795ff0754f501df3f59b61a4a1">b3a5414</a>)</li>
 <li>move to angular 19 - build(deps): bump angular 18 to 19</li>
 </ul>
+<h4 id="ui-toolkit"><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr><a class="headerlink" href="#ui-toolkit" title="Permanent link">&para;</a></h4>
+<p>v3.3.1</p>
+<ul>
+<li>dependency updates</li>
+</ul>
+<p>v3.3.0</p>
+<ul>
+<li>allow resetting mouse offset (<a href="https://github.com/open-amt-cloud-toolkit/ui-toolkit/commit/17703e46eec76d05cbe44b325480071b5b2c85fb">17703e4</a>)</li>
+</ul>
 <h4 id="wsman-messages">WSMAN Messages<a class="headerlink" href="#wsman-messages" title="Permanent link">&para;</a></h4>
+<p>v5.9.0</p>
+<ul>
+<li><strong>ips:</strong> add PowerManagementService interface in models (<a href="https://github.com/device-management-toolkit/wsman-messages/issues/972">#972</a>) (<a href="https://github.com/device-management-toolkit/wsman-messages/commit/cd30da3648a534b77f3d9625814d724edfd019d2">cd30da3</a>)</li>
+</ul>
 <p>v5.8.0</p>
 <ul>
 <li><strong>ips:</strong> add RequestOSPowerSavingStateChange in PowerManagementService (<a href="https://github.com/device-management-toolkit/wsman-messages/issues/967">#967</a>) (<a href="https://github.com/device-management-toolkit/wsman-messages/commit/82ea2ec1810cec22dcabaeac9ce0a696a94d65fa">82ea2ec</a>)</li>
