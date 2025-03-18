@@ -6,11 +6,6 @@ Admin Control Mode (ACM) provides full access to Intel® Active Management Techn
 - **Serial-over-LAN (SOL):** Manage devices with a command line interface (CLI) through SOL.
 - **IDE Redirection:** Share and mount images remotely with a specified storage media (e.g., USB flash drive). 
 
-<figure class="figure-image">
-<img src="..\..\..\assets\images\ConsoleProfiles.png" alt="Figure 1: Set up configuration and profiles for N number of clients">
-<figcaption>Figure 1: Set up configuration and profiles for n number of clients</figcaption>
-</figure>
-
 ### What You'll Need
 
 #### Provisioning Certificate
@@ -22,7 +17,7 @@ By purchasing a certificate, you'll be able to remotely activate an Intel® AMT 
 - [GoDaddy](https://www.intel.com/content/www/us/en/support/articles/000020785/software.html)
 
 !!! Important "Important - Intel AMT and using CAs"
-    For ACM in Open Active Management Technology (Open AMT) Cloud Toolkit, **use only** certificate vendors that support Intel® AMT.
+    For ACM in Device Management Toolkit, **use only** certificate vendors that support Intel® AMT.
 
 Alternatively, for development, custom provisioning certificates can be generated. See [Custom Provisioning Certificate](../../Reference/Certificates/generateProvisioningCert.md) for additional details.
 
@@ -115,9 +110,6 @@ A Profile provides configuration information to the AMT Firmware during the acti
 
 7. Provide or generate a strong **AMT Password**. AMT will verify this password when receiving a command from Console. This password is also required for device deactivation.
    
-    ??? warning "Warning - Viewing and Losing Random Passwords"
-        The two buttons next to the password input are for toggling visibility and/or generating a new random password. Please note that **if the database is lost or corrupted, all credentials that aren't also stored somewhere else will be lost.** There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!
-   
 8. Provide or generate a strong **MEBX Password**. This password can be used to access Intel® Manageability Engine BIOS Extensions (Intel® MEBX) on the AMT device.
 
 9. Choose DHCP or Static based on environment for the **Network Configuration**.
@@ -139,4 +131,4 @@ A Profile provides configuration information to the AMT Firmware during the acti
 
 ## Next Up
 
-**[Activate a Device](activateDevice.md)**
+**[Export Profile](exportProfile.md)**
