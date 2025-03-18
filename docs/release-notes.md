@@ -59,6 +59,14 @@ We've fixed issues in RPS (CIRA connections), MPS (KVM detection), Sample-Web-UI
 
 #### Console
 
+v1.2.1
+
+* allows pulling language file ([f954c09](https://github.com/device-management-toolkit/console/commit/f954c09f584d69ac059fcd08990be89faf39eea5))
+
+v1.2.0
+
+* allow insecure ciphers to be used ([c85dca1](https://github.com/device-management-toolkit/console/commit/c85dca10dbc2d6ed3fdd39ad3978cae7a9b40e0e)), closes [device-management-toolkit/go-wsman-messages#492](https://github.com/device-management-toolkit/go-wsman-messages/issues/492) [#445](https://github.com/device-management-toolkit/console/issues/445)
+
 v1.1.0
 
 * update API to enable/disable OCR status ([#514](https://github.com/device-management-toolkit/console/issues/514)) ([eac32d2](https://github.com/device-management-toolkit/console/commit/eac32d2716ecb4c2bbd28f97608f822dce24ec05))
@@ -95,6 +103,13 @@ v1.0.0-beta.3
 
 #### RPC-Go
 
+v2.43.1
+
+* license generation ([#777](https://github.com/device-management-toolkit/rpc-go/issues/777)) ([5b914fa](https://github.com/device-management-toolkit/rpc-go/commit/5b914faf758be6d20e5bd65e55511b95b6c08caf))
+* license generation ([#778](https://github.com/device-management-toolkit/rpc-go/issues/778)) ([8ba6993](https://github.com/device-management-toolkit/rpc-go/commit/8ba6993074b9629b55c845f6cd05204a9e078ce9))
+* update go mod ([8a1e741](https://github.com/device-management-toolkit/rpc-go/commit/8a1e7419f905abb6520a1898a2a6e5abbb8aab8a))
+
+
 v2.43.0
 
 * ccm on tls only platforms ([#745](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/745)) ([80853ee](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/80853ee033e4370590e929ba2b6bd80cf092c6f0))
@@ -114,17 +129,48 @@ v2.42.6
 
 #### RPS
 
+v2.23.0
+
+* **docker:** add support for devcontainer ([#2025](https://github.com/device-management-toolkit/rps/issues/2025)) ([9cb7249](https://github.com/device-management-toolkit/rps/commit/9cb724929b782657627625cca5f0ab976f2cac35))
+
+
 v2.22.15
 
 * cira disconnect ([#1910](https://github.com/open-amt-cloud-toolkit/rps/issues/1910)) ([fe86a7a](https://github.com/open-amt-cloud-toolkit/rps/commit/fe86a7a58720e3453939919a19556fa552e1b9d6))
 
 #### MPS
 
+v2.14.1
+
+* dependency updates
+
+v2.14.0
+
+* **docker:** update devcontainer.json format with prettier ([eb30af8](https://github.com/device-management-toolkit/mps/commit/eb30af898faec07369f5f1302bc16999aba2ca25))
+* **docker:** add support for devcontainer (device-management-toolkit/cloud-deployment[#383](https://github.com/device-management-toolkit/mps/issues/383)) ([c91726c](https://github.com/device-management-toolkit/mps/commit/c91726c428a0d58a7be300c12b615b6aed0e3b75))
+
 v2.13.22
 
 * **api:** add kvmAvailable to get AMT features ([#1803](https://github.com/open-amt-cloud-toolkit/mps/issues/1803)) ([c6596cc](https://github.com/open-amt-cloud-toolkit/mps/commit/c6596ccfbdc213ad6467e1ae41063f418a6bd0ac))
 
 #### Sample Web UI
+
+v3.34.2
+
+* address an issue where login token might not exist ([95d60b3](https://github.com/device-management-toolkit/sample-web-ui/commit/95d60b3509c756b27693a84bf844244d49b91599))
+
+v3.34.0
+
+* **docker:** add support for devcontainer ([#2534](https://github.com/device-management-toolkit/sample-web-ui/issues/2534)) ([bb597f4](https://github.com/device-management-toolkit/sample-web-ui/commit/bb597f4343b47d33d2659390390c6612e0f714e9))
+
+
+v3.33.0
+
+* replace momentjs with date fns ([2074d0e](https://github.com/device-management-toolkit/sample-web-ui/commit/2074d0e7d18dbf689f18788057acc234b790f2ed)), closes [device-management-toolkit#2519](https://github.com/device-management-toolkit/issues/2519)
+
+v3.32.2
+
+* Error messages truncated ([9b309ef](https://github.com/device-management-toolkit/sample-web-ui/commit/9b309ef67fb1b288d07cf53b17ed5acf100cd8f2)), closes [#2527](https://github.com/device-management-toolkit/sample-web-ui/issues/2527)
 
 v3.32.1
 
@@ -176,6 +222,18 @@ v3.27.5
 
 #### Go WSMAN Messages
 
+v2.21.0
+
+* allow the use of insecure cipher suits ([#492](https://github.com/device-management-toolkit/go-wsman-messages/issues/492)) ([871493c](https://github.com/device-management-toolkit/go-wsman-messages/commit/871493cd355557be2b291a60b678ca6dcc06c3d1)), closes [device-management-toolkit/console#445](https://github.com/device-management-toolkit/console/issues/445)
+
+v2.20.2
+
+* adds missing selectors to policy applies to mps ([#497](https://github.com/device-management-toolkit/go-wsman-messages/issues/497)) ([f7fe59e](https://github.com/device-management-toolkit/go-wsman-messages/commit/f7fe59eae3ef2708b42ac1182508e976e0a48e0a))
+
+v2.20.1
+
+* support multiple selectors in header ([#495](https://github.com/device-management-toolkit/go-wsman-messages/issues/495)) ([b660ba5](https://github.com/device-management-toolkit/go-wsman-messages/commit/b660ba583ea090112ad03b9f26369da4c1c1e022))
+
 v2.20.0
 
 * **ips:** add RequestOSPowerSavingStateChange, Get, Pull, & Enumerate ([#491](https://github.com/device-management-toolkit/go-wsman-messages/issues/491)) ([ca76aad](https://github.com/device-management-toolkit/go-wsman-messages/commit/ca76aad6613a01f6244915f6b2db996dd1c8313c))
@@ -192,9 +250,15 @@ v2.17.1
 
 * identifier and maxReadRecords are configurable for event logs ([#478](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/issues/478)) ([5529d29](https://github.com/open-amt-cloud-toolkit/go-wsman-messages/commit/5529d2947d5679fbfbf309720230018d7750f2b4))
 
+#### UI Toolkit React
+
+v4.0.0
+
+* build(deps)!: upgrade to react 19 (#1608) ([cd061f3](https://github.com/device-management-toolkit/ui-toolkit-react/commit/cd061f3e0cdcfbfcb4eaefa4420c8deeaac564cf)), closes [#1608](https://github.com/device-management-toolkit/ui-toolkit-react/issues/1608)
+
 #### UI Toolkit Angular
 
-v9.1.1
+v9.1.2 and v9.1.1
 
 * dependency updates
 
@@ -208,7 +272,21 @@ v9.0.0
 * chore!: address incorrectly released breaking change ([b3a5414](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/commit/b3a541477b4c71795ff0754f501df3f59b61a4a1))
 * move to angular 19 - build(deps): bump angular 18 to 19
 
+#### UI Toolkit
+
+v3.3.1
+
+* dependency updates
+
+v3.3.0
+
+* allow resetting mouse offset ([17703e4](https://github.com/open-amt-cloud-toolkit/ui-toolkit/commit/17703e46eec76d05cbe44b325480071b5b2c85fb))
+
 #### WSMAN Messages
+
+v5.9.0
+
+* **ips:** add PowerManagementService interface in models ([#972](https://github.com/device-management-toolkit/wsman-messages/issues/972)) ([cd30da3](https://github.com/device-management-toolkit/wsman-messages/commit/cd30da3648a534b77f3d9625814d724edfd019d2))
 
 v5.8.0
 
