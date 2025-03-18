@@ -1,5 +1,5 @@
 --8<-- "References/abbreviations.md"
-To deploy the Open AMT Cloud Toolkit to a production environment, replace default reference implementation components with more robust or full-featured components. Each section below lists the default reference implementation component included with toolkit along with suggestions for replacement. 
+To deploy the Device Management Toolkit to a production environment, replace default reference implementation components with more robust or full-featured components. Each section below lists the default reference implementation component included with toolkit along with suggestions for replacement. 
 
 ## Database Selection
 The Docker-based PostgreSQL* image used in `docker-compose.yml` provides enough functionality for proof-of-concept creation and development. However, to enable the toolkit for production, leverage a managed database instance offered by a public cloud provider or a database hosted by your internal IT. 

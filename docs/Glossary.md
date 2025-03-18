@@ -1,6 +1,5 @@
 # Glossary
-Open Active Management Technology (Open AMT) Cloud Toolkit, also referred to as (OAMTCT)
-*Related Terminology, Technologies, and Acronyms*
+Device Management Toolkit related *Terminology, Technologies, and Acronyms*
 
 [A](#a) | [B](#b) | [C](#c) | [D](#d) | [E](#e) | F | [G](#g) | H | [I](#i) | J | [K](#k) | L | [M](#m) | [N](#n) |[O](#n) | [P](#p) | Q | [R](#r) | S | T | [U](#u) |[V](#v) | [W](#w) | X | Y | Z
 
@@ -8,7 +7,7 @@ Open Active Management Technology (Open AMT) Cloud Toolkit, also referred to as 
 
 **admin control mode (ACM):** A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS) application. ACM achieves a higher level of trust than client control mode (CCM). This is the required mode for Keyboard, Video, Mouse (KVM) or Redirection without user consent. See also [CCM](#c) and [provisioning](#p).
 
-**ACM Activation:** The act of loading a purchased certificate and associating it with an OAMTCT profile.
+**ACM Activation:** The act of loading a purchased certificate and associating it with an Device Management Toolkit profile.
 
 **allowlist:** A list permitting access to a privilege, service, network, etc.
 
@@ -21,11 +20,13 @@ Open Active Management Technology (Open AMT) Cloud Toolkit, also referred to as 
 
 **Client Initiated Remote Access (CIRA):** An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server. 
 
-**Client Control Mode (CCM):** An alternative to ACM provisioning mode that does not require a purchased certificate. Use this mode to set up OAMTCT software features quickly.
+**Client Control Mode (CCM):** An alternative to ACM provisioning mode that does not require a purchased certificate. Use this mode to set up Device Management Toolkit software features quickly.
 
 **Container (Docker*):** The instantiation, or running instance, of a Docker image.
 
 ## D
+
+**Device Management Toolkit:** An open source software architecture consisting of modular microservices, applications and libraries for integration of out-of-band manageability into existing network infrastructures. The software enables network administrators and independent software vendors (ISVs) to explore key Intel® AMT features.
 
 **development system:** The system on which Management Presence Server (MPS) and Remote Provision Server (RPS) are installed.
 
@@ -79,8 +80,6 @@ Open Active Management Technology (Open AMT) Cloud Toolkit, also referred to as 
 
 ## O
 
-**Open Active Management Technology (Open AMT) Cloud Toolkit:** An open source software architecture consisting of modular microservices and libraries for integration of out-of-band manageability into existing network infrastructures. The software enables network administrators and independent software vendors (ISVs) to explore key Intel® AMT features. [See more about Open AMT Cloud Toolkit features.](https://software.intel.com/content/www/us/en/develop/topics/iot/hardware/vpro-platform-retail.html)
-
 **out-of-band (OOB) manageability:** A remote management technology that allows administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols. Actions include reboot, power up, power down, system updates, and more. As long as the network device or asset is connected to power, OAMTCT software can perform remote management, including powering up a system that is currently powered down. 
 
 ## P
@@ -97,7 +96,7 @@ Open Active Management Technology (Open AMT) Cloud Toolkit, also referred to as 
 
 **Remote Provision Server (RPS):** A node.js-based microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using a pre-defined profile.
 
-**REpresentational State Transfer (REST) API**: An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, administrators can construct REST API calls and run them with node, use provided REST code snippets to expand the reference implementation console, and use provided REST code snippets as a springboard for developing and expanding custom consoles.
+**REpresentational State Transfer (REST) API**: An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of Device Management Toolkit, administrators can construct REST API calls and run them with node, use provided REST code snippets to expand the reference implementation console, and use provided REST code snippets as a springboard for developing and expanding custom consoles.
 
 
 

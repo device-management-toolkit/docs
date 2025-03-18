@@ -1,8 +1,8 @@
 # Project information
-site_name: "Device Management Cloud Toolkit"
+site_name: "Device Management Toolkit"
 site_url: "https://device-management-toolkit.github.io/docs/"
-repo_url: "https://github.com/device-management-toolkit/open-amt-cloud-toolkit"
-repo_name: "device-management-toolkit/open-amt-cloud-toolkit"
+repo_url: "https://github.com/device-management-toolkit/cloud-deployment"
+repo_name: "device-management-toolkit/cloud-deployment"
 copyright: "Copyright &copy; 2021 Intel Corporation"
 site_dir: site/2.27
 # Configuration
@@ -70,11 +70,12 @@ nav:
           - Connect:
               - Build & Run RPC: GetStarted/Cloud/buildRPC.md
               - Manage AMT Device: GetStarted/Cloud/manageDevice.md
-      - Enterprise (Beta):
+      - Enterprise:
           - Download and Run: GetStarted/Enterprise/setup.md
           - Create Profiles:
               - CCM Activation: GetStarted/Enterprise/createProfileCCM.md
               - ACM Activation: GetStarted/Enterprise/createProfileACM.md
+          - Export Profile: GetStarted/Enterprise/exportProfile.md
           - Activate a Device: GetStarted/Enterprise/activateDevice.md
           - Add a Device: GetStarted/Enterprise/addDevice.md
           - Manage a Device: GetStarted/Enterprise/manageDevice.md
@@ -120,7 +121,7 @@ nav:
     - Middleware Extensibility: Reference/middlewareExtensibility.md
     - Production Mode Vault: Reference/productionVault.md
     - SSL with Local Postgres: Reference/sslpostgresLocal.md
-    - Console (Beta):
+    - Console:
       - Overview: Reference/Console/overview.md
       - Configuration: Reference/Console/configuration.md
       - Upgrade: Reference/Console/upgrade.md
@@ -218,8 +219,8 @@ extra:
       link: https://hub.docker.com/search?q=intel%2Foact
       name: Find our Dockerhub Images
     - icon: fontawesome/brands/github
-      link: https://github.com/open-amt-cloud-toolkit
-      name: Open AMT Github Repository
+      link: https://github.com/device-management-toolkit
+      name: Device Management Toolkit Github Repository
   version:
     provider: mike
     default:
@@ -228,13 +229,13 @@ extra:
   repoVersion:
     mpsAPI: 2.13.0
     rpsAPI: 2.22.0
-    oamtct: 2.26.0
-    rpc_go: 2.42.5
-    webui: 3.27.4
+    oamtct: 2.27.0
+    rpc_go: 2.43.1
+    webui: 3.34.2
     rpc_c: 2.0.0
-    ui_toolkit: 3.2.9
-    ui_toolkit_react: 3.2.9
-    ui_toolkit_angular: 8.0.5
+    ui_toolkit: 3.3.1
+    ui_toolkit_react: 4.0.0
+    ui_toolkit_angular: 9.1.2
   analytics:
     provider: google
     property: "G-00QEDJW2TS"
