@@ -45,7 +45,7 @@
       <figcaption>Figure 2: Console Start</figcaption>
     </figure>
 
-2. Type **Y** in the terminal and and press **Enter** to store the Database Key in the Operating Systems Credentials Manager.
+2. Type **Y** in the terminal and press **Enter** to store the Database Key in the Operating Systems Credentials Manager.
 
     !!! note "Note - Encryption Key Information"
         Console automatically stores this 32-character key in Operating System's credential manager, such as Windows Credential Manager, under the name *device-management-toolkit*. This key is used to encrypt sensitive data before it is stored in the database.
@@ -58,6 +58,7 @@
       repo: open-amt-cloud-toolkit/console
       version: DEVELOPMENT
       encryption_key: ""
+      allow_insecure_ciphers: false
     http:
       host: localhost
       port: "8181"
