@@ -33,10 +33,7 @@ Profiles provide configuration information to the firmware on platforms featurin
 5. Enable desired redirection features for the profile under **AMT Features - Enable/Disable features**.
 
 6. Provide or generate a strong **AMT Password**. AMT will verify this password when receiving a command from Console. This password is also required for device deactivation.
-   
-    ??? warning "Warning - Viewing and Losing Random Passwords"
-        The two buttons next to the password input are for toggling visibility and/or generating a new random password. Please note that **if the database is lost or corrupted, all credentials that aren't also stored somewhere else will be lost.** There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!
-   
+     
 7. The **MEBX Password** field is disabled. The password for Intel® Manageability Engine BIOS Extensions (Intel® MEBX) cannot be set when activating in CCM due to the lower level of trust when compared to ACM.
 
 8. Choose DHCP or Static based on environment for the **Network Configuration**.
@@ -57,5 +54,5 @@ Profiles provide configuration information to the firmware on platforms featurin
 
 
 ## Next up
-**[Activate a Device](activateDevice.md)**
+**[Export Profile](exportProfile.md)**
 
