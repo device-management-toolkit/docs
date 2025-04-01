@@ -1,4 +1,4 @@
-FROM squidfunk/mkdocs-material@sha256:f226a2d2d5983643cab401491fc40e8a5711a50e90c21433f80e91c014cff1f5
+FROM squidfunk/mkdocs-material@sha256:23b69789b1dd836c53ea25b32f62ef8e1a23366037acd07c90959a219fd1f285
 
 COPY ./requirements.txt ./
 
