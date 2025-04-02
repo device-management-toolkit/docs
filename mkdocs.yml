@@ -126,7 +126,9 @@ nav:
       - Configuration: Reference/Console/configuration.md
       - Upgrade: Reference/Console/upgrade.md
       - Security Information: Reference/Console/securityConsole.md
-      - WSMAN Explorer: Reference/Console/wsmanExplorer.md
+      - Features:
+        - One Click Recovery: Reference/Console/Features/ocr.md
+        - WSMAN Explorer: Reference/Console/Features/wsmanExplorer.md
     - Enterprise Assistant:
       - Overview: Reference/EA/overview.md
       - TLS Certificate Template: Reference/EA/tlsCertTemplate.md
