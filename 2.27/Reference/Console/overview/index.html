@@ -2704,6 +2704,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#additional-resources" class="md-nav__link">
     <span class="md-ellipsis">
       Additional Resources
@@ -2793,8 +2802,73 @@
   
   
   
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_8_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8_5" id="__nav_5_8_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Features
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_8_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            Features
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../wsmanExplorer/" class="md-nav__link">
+      <a href="../Features/ocr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    One Click Recovery
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Features/wsmanExplorer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2804,6 +2878,14 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -4344,16 +4426,26 @@
 <p>Set up Console quickly and get a device connected.</p>
 <p><a class="md-button md-button--primary" href="../../../GetStarted/Enterprise/setup/">Get Started Now</a>
 <br></p>
+<h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
+<p>Console supports a wide range of features to simplify device management, including, but not limited to:</p>
+<ul>
+<li><em>Power Actions</em> – Remotely power on, off, or reset and more.</li>
+<li><em>Hardware Inventory </em>– Query Intel AMT for detailed hardware information like BIOS features, CPUs, memory, add-in cards, media, and more.</li>
+<li><em><abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> (Keyboard, Video, Mouse)</em> – <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> allows remote control of a platform using a remote keyboard and mouse, while also viewing the managed platform’s screen output on a remote monitor. This feature enables full control over the device, even if the operating system is not running.</li>
+<li><em>Event and Audit Logs</em> – Manage internal alerts from both the host platform and Intel AMT device, regardless of their power state. Review logs to detect break-in attempts, damaging commands, and trace events for root cause analysis.</li>
+<li><em><abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr> (Serial Over LAN)</em> – Intel AMT enables the redirection of serial and data storage communications from a managed client to a management console. Console handles this functionality for remote management.</li>
+<li><em><a href="../Features/ocr/">One Click Recovery</a></em> – Perform secure recovery from failures using One Click Recovery feature.</li>
+<li><em><a href="../Features/wsmanExplorer/">WSMAN Explorer Feature</a></em> – View WSMAN input sent to AMT and its response.</li>
+</ul>
 <h2 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
 <p>For more details on configuring, securing, or upgrading Console, refer to the following sections:</p>
 <ul>
-<li><strong><a href="../configuration/">Configuration options</a></strong> – Learn how to configure Console using <code>config.yml</code> or environment variables. </li>
-<li><strong><a href="../securityConsole/">Security Considerations</a></strong> – Understand key security aspects and best practices to protect critical assets.</li>
-<li><strong><a href="../upgrade/">Upgrading from Beta to v1.x</a></strong> – Follow upgrade instructions from Beta to v1.x and future versions.</li>
-<li><strong><a href="../wsmanExplorer/">WSMAN Explorer Feature</a></strong> – View WSMAN input sent to AMT and its response.</li>
-<li><strong><a href="../../EA/overview/">802.1x Configuration using Enterprise Assistant</a></strong> – Learn how to setup and use Enterprise Assistant to help with configuring devices for 802.1x and <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> environments using existing Microsoft services such as Microsoft Certificate Authority and Microsoft Active Directory.</li>
-<li><strong><a href="https://github.com/device-management-toolkit/console/issues">Known issues &amp; Issue Reporting</a></strong> – View known issues or report new ones to help us improve Console. <strong>We welcome contributions for faster resolution!</strong></li>
-<li><strong><a href="https://github.com/orgs/device-management-toolkit/projects/10/views/2">What’s Coming Next?</a></strong> – Follow our backlog to see what the team is working on and upcoming features.
+<li><em><a href="../configuration/">Configuration options</a></em> – Learn how to configure Console using <code>config.yml</code> or environment variables. </li>
+<li><em><a href="../securityConsole/">Security Considerations</a></em> – Understand key security aspects and best practices to protect critical assets.</li>
+<li><em><a href="../upgrade/">Upgrading from Beta to v1.x</a></em> – Follow upgrade instructions from Beta to v1.x and future versions.</li>
+<li><em><a href="../../EA/overview/">802.1x Configuration using Enterprise Assistant</a></em> – Learn how to setup and use Enterprise Assistant to help with configuring devices for 802.1x and <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> environments using existing Microsoft services such as Microsoft Certificate Authority and Microsoft Active Directory.</li>
+<li><em><a href="https://github.com/device-management-toolkit/console/issues">Known issues &amp; Issue Reporting</a></em> – View known issues or report new ones to help us improve Console. <strong>We welcome contributions for faster resolution!</strong></li>
+<li><em><a href="https://github.com/orgs/device-management-toolkit/projects/10/views/2">What’s Coming Next?</a></em> – Follow our backlog to see what the team is working on and upcoming features.
 <br></li>
 </ul>
 
