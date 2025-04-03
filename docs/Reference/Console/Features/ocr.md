@@ -33,7 +33,7 @@ Before using HTTPS Network Boot, ensure the following prerequisites are met:
       <img src="..\..\..\..\assets\images\OCR_HTTPSBOOT_BIOS.png" alt="Figure 1: Enable HTTP(S) Boot in BIOS">
     </figure>
 
-2. Set up an HTTPS server to host the ISO. For faster booting, run it on the same network as the device.
+2. Set up an HTTPS server to host the ISO.
 
     !!! info "HTTPS Server" 
         - In this guide, the HTTPS server is running on the same machine as the Console, serving a full Ubuntu LTS image at https://192.168.88.250:5443/ubuntu.iso.
@@ -97,6 +97,10 @@ Before using HTTPS Network Boot, ensure the following prerequisites are met:
       <img src="..\..\..\..\assets\images\OCR_HTTPSBoot_Recovery_Start.png" alt="Figure 7: View KVM screen while the ISO boots">
     </figure>
 
+    <figure class="figure-image">
+      <img src="..\..\..\..\assets\images\OCR_HTTPS_BOOT_UbuntuOS.png" alt="Figure 8: Full Ubuntu LTS Boot">
+    </figure>
+    
     !!! bug "KVM Keyboard Issue"
 
         If KVM is connected before initiating OCR via HTTPS Boot, the keyboard may not work when entering the URL.
