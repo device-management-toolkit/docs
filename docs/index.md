@@ -6,7 +6,7 @@
     Our GitHub organization has been renamed from open-amt-cloud-toolkit to device-management-toolkit to better reflect its broader scope beyond Intel AMT in the future. This change aligns with our goal of supporting a wider range of device management capabilities while maintaining the same core functionality and open-source commitment. Please bear with us as we take the time to update the name throughout our project. 
 
 
-**Device Management Toolkit** offers open-source microservices and libraries to streamline Intel AMT integration, simplifying out-of-band management solutions for Intel vPro Platforms.
+**Device Management Toolkit** offers open-source microservices, applications and libraries designed to simplify and accelerate the integration of Intel’s out-of-band management technology (vPro® AMT) into software solutions.
 
 <div class="grid cards" markdown>
 
@@ -46,9 +46,9 @@
 
 ## Overview
 
-Open AMT was built with flexibility in mind. Developers can integrate APIs to enable key Intel AMT remote management features, like power control and remote Keyboard, Video, Mouse (KVM) control, into their existing management console solution. Alternatively, users can adopt Console, an application offering 1:1 direct connection of AMT devices on local networks.
+Device Management Toolkit was built with flexibility in mind. Developers can integrate APIs to enable key Intel AMT remote management features, like power control and remote Keyboard, Video, Mouse (KVM) control, into their existing management console solution. Alternatively, users can adopt Console, an application offering 1:1 direct connection of AMT devices on on-premises/private networks.
 
-Our open-source services and toolkits can be adopted, customized, and used to fit your specific use cases, requirements, and network needs.
+Our open-source services and applications can be adopted, customized, and used to fit your specific use cases, requirements, and network needs.
 
 <div style="text-align:center;">
   <iframe width="800" height="450" src="https://www.youtube.com/embed/ovpvPQi7UGo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -71,7 +71,7 @@ Reduce the need for costly on-site IT, minimize the downtime of key, business-cr
 
 ## Get Started
 
-Jump in and see what Open AMT can offer for both cloud and enterprise style networks and deployments.
+Jump in and see what Device Management Toolkit can offer for both cloud and enterprise style networks and deployments.
 
 [Get Started Now](GetStarted/overview.md){: .md-button .md-button--primary }
 
