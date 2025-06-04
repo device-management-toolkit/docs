@@ -18,7 +18,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 This guide details how to manually build the RPC-Go binary for development or testing purposes.
 
 !!! tip "Important - RPC-Go Prebuilt Binaries"
-    Just need the binary and don't want to build it manually? Download the latest RPC-Go binary version from the [RPC-Go GitHub Repo Releases Page](https://github.com/open-amt-cloud-toolkit/rpc-go/releases) for the Operating System of the AMT device (Windows or Linux).
+    Just need the binary and don't want to build it manually? Download the latest RPC-Go binary version from the [RPC-Go GitHub Repo Releases Page](https://github.com/device-management-toolkit/rpc-go/releases) for the Operating System of the AMT device (Windows or Linux).
 
 ## Prerequisites
 
@@ -29,7 +29,7 @@ This guide details how to manually build the RPC-Go binary for development or te
 
 1. Open a Terminal or Command Prompt and navigate to a directory of your choice for development:
    ``` bash
-   git clone https://github.com/open-amt-cloud-toolkit/rpc-go --branch v{{ repoVersion.rpc_go }}
+   git clone https://github.com/device-management-toolkit/rpc-go --branch v{{ repoVersion.rpc_go }}
    ```
   
 2. Change to the cloned `rpc-go` directory:

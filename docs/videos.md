@@ -1,12 +1,12 @@
 
-## What is Open AMT
+## What is Device Management Toolkit
 
 Learn the high-level basics and get familiar with the toolkit. Learn about the different microservices and their roles then get up to speed with the latest features, changes, and fixes.
 
 <div class="videoContainer">
 	<!-- <h3>What's New: May 2024 Release (v{{ repoVersion.oamtct }})</h3> -->
 	<!-- <h3></h3> -->
-	<h3>Overview of Device Management Toolkit (formerly known as Open AMT Cloud Toolkit)</h3><h3></h3><h3></h3>
+	<h3>Overview of Device Management Toolkit (formerly known as Device Management Toolkit)</h3><h3></h3><h3></h3>
 	<!-- <div class="video-wrapper">
     	<iframe width="1280" height="720" src="https://www.youtube.com/embed/5Zz5RbKHaA4?si=f495o_uJj8tu-j0G" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	</div>
@@ -59,7 +59,7 @@ Watch how to go from cloning the toolkit to managing a device out-of-band remote
 
 ## Tutorials
 
-Learn more about the features of Open AMT through guided tutorials.
+Learn more about the features of Device Management Toolkit through guided tutorials.
 
 <div class="videoContainer">
 	<h3>IDE-Redirection Tutorial</h3>

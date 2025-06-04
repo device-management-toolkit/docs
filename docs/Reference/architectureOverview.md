@@ -3,7 +3,7 @@
 Figure 1 illustrates the high-level architecture of Device Management Toolkit microservice architecture.
 
 <figure class="figure-image">
-  <img src="..\..\assets\images\Device_Management_Toolkit_flow.png" alt="Figure 1: Deploy Open AMT Cloud Toolkit">
+  <img src="..\..\assets\images\Device_Management_Toolkit_flow.png" alt="Figure 1: Deploy Device Management Toolkit">
   <figcaption>Figure 1: Deploy Device Management Toolkit</figcaption>
 </figure>
 
@@ -112,7 +112,7 @@ Multiple passwords enhance the security of Device Management Toolkit.
 |**4. Provisioning Certificate Password** | Signed Certificate Usage | Not applicable.| 1.Re-export certificate with another password. 2. Create a new profile. 3. Make an API call to update. 4. Update Vault. |
 |**5. MPS CIRA Credential** | MPS credential used by AMT | Not applicable. | 1. Create a new profile. 2. Make an API call to update. 3. Update Vault. |
 
-**Table 1: Summary of Open AMT Passwords**
+**Table 1: Summary of Device Management Toolkit Passwords**
 
 ## Log Files
 Each microservice has an associated log file which can contain helpful debug information. Use `docker logs` to print log information to the terminal.

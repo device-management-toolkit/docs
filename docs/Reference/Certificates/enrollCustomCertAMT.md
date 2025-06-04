@@ -18,7 +18,7 @@ However, some developers opt to use a custom provisioning certificate for testin
 You will need to:
 
 - Download the latest [Intel AMT SDK](https://www.intel.com/content/www/us/en/download/704388/intel-active-management-technology-intel-amt-software-development-kit-sdk.html).
-- The rpc-go utility [Available Releases](https://github.com/open-amt-cloud-toolkit/rpc-go/releases).
+- The rpc-go utility [Available Releases](https://github.com/device-management-toolkit/rpc-go/releases).
 - Have the custom certificate ([Tutorial](./generateProvisioningCert.md#generate-custom-provisioning-certificate))
 - The libcrypto.dll file (You can find it from an OpenSSL installation).
 
@@ -46,7 +46,7 @@ You will walk-through the following steps:
 
 The rpc-go utility allow you verify the installed certificates in the AMT device.
 
-1. Please ensure you installed the [rpc-go utility](https://github.com/open-amt-cloud-toolkit/rpc-go/releases) in the AMT target device
+1. Please ensure you installed the [rpc-go utility](https://github.com/device-management-toolkit/rpc-go/releases) in the AMT target device
 2. Open a console with administrative permissions and run the following command:
 
     ```bash

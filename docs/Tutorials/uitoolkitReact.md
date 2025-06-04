@@ -8,7 +8,7 @@ The tutorial outlines how to add various controls to the sample React web applic
 ??? note "Note - Other Framework Technologies"
     This guide shows a basic example implementation using React. Other frameworks can be used using the UI-Toolkit like Angular and Vue.js.
 
-    For an example implementation of Angular, see our [Sample Web UI codebase](https://github.com/open-amt-cloud-toolkit/sample-web-ui/).
+    For an example implementation of Angular, see our [Sample Web UI codebase](https://github.com/device-management-toolkit/sample-web-ui/).
 
 ## What You'll Need
 
@@ -21,8 +21,8 @@ The tutorial outlines how to add various controls to the sample React web applic
 
 ### Software
 
-- [MPS](https://github.com/open-amt-cloud-toolkit/MPS), the Management Presence Server
-- [RPS](https://github.com/open-amt-cloud-toolkit/RCS), the Remote Provisioning Server
+- [MPS](https://github.com/device-management-toolkit/MPS), the Management Presence Server
+- [RPS](https://github.com/device-management-toolkit/RCS), the Remote Provisioning Server
 - Intel&reg; vPro device, configured and connected to MPS
 
     !!! Note
@@ -68,7 +68,7 @@ The React app can be created in any preferred development directory.
 1. Install the UI Toolkit and required dependencies.
 
     ``` bash
-    npm install @open-amt-cloud-toolkit/ui-toolkit-react@{{ repoVersion.ui_toolkit_react }}
+    npm install @device-management-toolkit/ui-toolkit-react@{{ repoVersion.ui_toolkit_react }}
     ```
 
 2. Start the React web UI locally.
@@ -114,8 +114,8 @@ The code snippet below adds both the KVM and IDER controls to the React applicat
     ``` javascript hl_lines="7 8 9"
     import React from "react"
     import "./App.css"
-    import { KVM } from "@open-amt-cloud-toolkit/ui-toolkit-react/reactjs/src/kvm.bundle";
-    import { AttachDiskImage } from "@open-amt-cloud-toolkit/ui-toolkit-react/reactjs/src/ider.bundle";
+    import { KVM } from "@device-management-toolkit/ui-toolkit-react/reactjs/src/kvm.bundle";
+    import { AttachDiskImage } from "@device-management-toolkit/ui-toolkit-react/reactjs/src/ider.bundle";
 
     function App() {
       const deviceGUID = '4c4c4544-005a-3510-8047-b4c04f564433' //Replace with AMT Device GUID

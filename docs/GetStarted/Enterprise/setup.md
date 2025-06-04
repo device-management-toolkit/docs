@@ -29,7 +29,7 @@
 
 ## Download
 
-1. Find the latest release of Console under [Github Releases](https://github.com/open-amt-cloud-toolkit/console/releases/latest).
+1. Find the latest release of Console under [Github Releases](https://github.com/device-management-toolkit/console/releases/latest).
 
 
 2. Download the appropriate binary assets for your OS and Architecture under the *Assets* dropdown section.
@@ -55,7 +55,7 @@
     ```yml hl_lines="6 8 9"
     app:
       name: console
-      repo: open-amt-cloud-toolkit/console
+      repo: device-management-toolkit/console
       version: DEVELOPMENT
       encryption_key: ""
       allow_insecure_ciphers: false

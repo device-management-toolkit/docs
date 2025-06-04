@@ -61,7 +61,7 @@ To use a provisioning certificate in the toolkit, purchase the certificate from 
 - [GoDaddy](https://www.intel.com/content/www/us/en/support/articles/000020785/software.html)
 
 !!! Important "Important - Intel AMT and using CAs"
-    For ACM in Open Active Management Technology (Open AMT) Cloud Toolkit, **use only** certificate vendors that support Intel® AMT.
+    For ACM in Device Management Toolkit Toolkit, **use only** certificate vendors that support Intel® AMT.
 
 #### Generate
 
