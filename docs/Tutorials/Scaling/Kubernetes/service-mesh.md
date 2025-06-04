@@ -15,19 +15,19 @@ After KUMA is installed, next create a service mesh with mTLS enabled:
 echo "apiVersion: kuma.io/v1alpha1
 kind: Mesh
 metadata: 
-  name: open-amt-cloud-toolkit-mesh
+  name: device-management-toolkit-mesh
 spec: 
   mtls: 
-    enabledBackend: open-amt-cloud-toolkit-cert
+    enabledBackend: device-management-toolkit-cert
     backends: 
-      - name: open-amt-cloud-toolkit-cert
+      - name: device-management-toolkit-cert
         type: builtin
     enabled: true" | kubectl apply -f -
 ```
 
 ## Turn On Sidecar Injection
 
-After the mesh is created, turn on sidecar-injection for the open-amt-cloud-toolkit services with: 
+After the mesh is created, turn on sidecar-injection for the device-management-toolkit services with: 
 
 ``` bash
 echo "apiVersion: v1
@@ -37,7 +37,7 @@ metadata:
   namespace: default
   annotations: 
     kuma.io/sidecar-injection: enabled
-    kuma.io/mesh: open-amt-cloud-toolkit-mesh" | kubectl apply -f -
+    kuma.io/mesh: device-management-toolkit-mesh" | kubectl apply -f -
 ```
 
 Delete all pods to ensure updated annotations from previous command take effect:
@@ -53,10 +53,10 @@ Finally, we need to allow traffic between services:
 ``` bash
 echo "apiVersion: kuma.io/v1alpha1
 kind: TrafficPermission
-mesh: open-amt-cloud-toolkit-mesh
+mesh: device-management-toolkit-mesh
 metadata:
   namespace: default
-  name: allow-all-open-amt-cloud-toolkit-mesh
+  name: allow-all-device-management-toolkit-mesh
 spec:
   sources:
     - match:

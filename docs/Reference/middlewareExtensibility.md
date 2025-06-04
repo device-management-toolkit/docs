@@ -23,7 +23,7 @@ The file **must have two key parts** in order to successfully load:
 
 ### Multitenancy Code Example
 
-Implementation might vary depending on cloud provider or other 3rd party solutions. This specific example implements against Microsoft Azure and the default Open AMT components. 
+Implementation might vary depending on cloud provider or other 3rd party solutions. This specific example implements against Microsoft Azure and the default Device Management Toolkit components. 
 
 The following code might not be a final solution, but provides a starting point and template example.
 

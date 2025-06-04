@@ -9,7 +9,7 @@ RPS will handle communication with Enterprise Assistant (EA). Desired configurat
 ### Software
 
 - [Enterprise Assistant](../overview.md)
-- Open AMT Local or Cloud Deployment running. [See Get Started for a basic deployment option.](../../../GetStarted/Cloud/prerequisites.md)
+- Device Management Toolkit Local or Cloud Deployment running. [See Get Started for a basic deployment option.](../../../GetStarted/Cloud/prerequisites.md)
 
 ### Services
 
@@ -23,7 +23,7 @@ The following services are assumed to be configured and running in your enterpri
 
 To use Enterprise Assistant with Kong API Gateway, we need to configure a new route.
 
-2. Open the `kong.yaml` file in the `./open-amt-cloud-toolkit/` directory.
+2. Open the `kong.yaml` file in the `./cloud-deployment/` directory.
 
 3. Uncomment the `rps-ea` block to enable the `/ea` route.
 

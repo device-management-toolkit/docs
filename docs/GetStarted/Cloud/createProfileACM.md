@@ -22,7 +22,7 @@ By purchasing a certificate, you'll be able to remotely activate an Intel® AMT 
 - [GoDaddy](https://www.intel.com/content/www/us/en/support/articles/000020785/software.html)
 
 !!! Important "Important - Intel AMT and using CAs"
-    For ACM in Open Active Management Technology (Open AMT) Cloud Toolkit, **use only** certificate vendors that support Intel® AMT.
+    For ACM in Device Management Toolkit Toolkit, **use only** certificate vendors that support Intel® AMT.
 
 Alternatively, for development, custom provisioning certificates can be generated. See [Custom Provisioning Certificate](../../Reference/Certificates/generateProvisioningCert.md) for additional details.
 

@@ -41,7 +41,7 @@ The following diagrams help illustrate the typical user authentication flow. Lea
 
     When using a 3rd party auth service (e.g. Cognito, LDAP, etc), the token issued by the auth service is used to make calls to the MPS. For non-HTTP calls like redirection, a call must be made to the `/api/v1/authorize/redirection/{guid}` API to get a separate MPS-specific token required to be passed into the KVM/SOL UI-Toolkit module.
 
-    API Gateways are only able to verify tokens on HTTP requests.  Open AMT's redirection implementation uses WebSockets for KVM and SOL. Therefore, the API Gateway cannot verify tokens passed in over the WebSocket connections. Because of this, MPS must perform the verification of the token and it can only do that with tokens that it issues.
+    API Gateways are only able to verify tokens on HTTP requests.  Device Management Toolkit's redirection implementation uses WebSockets for KVM and SOL. Therefore, the API Gateway cannot verify tokens passed in over the WebSocket connections. Because of this, MPS must perform the verification of the token and it can only do that with tokens that it issues.
 
 <br>
 

@@ -4,7 +4,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 
 ## Download RPC
 
-On the AMT device, download the latest RPC-Go version from the [RPC-Go GitHub Repo Releases Page](https://github.com/open-amt-cloud-toolkit/rpc-go/releases) for the Operating System of the AMT device (Windows or Linux).
+On the AMT device, download the latest RPC-Go version from the [RPC-Go GitHub Repo Releases Page](https://github.com/device-management-toolkit/rpc-go/releases) for the Operating System of the AMT device (Windows or Linux).
 
 ## Activate Device
 

@@ -25,7 +25,7 @@ These steps highlight how to serve the Sample Web UI in both English and a newly
 1. If you do not have the repository, clone the latest Sample Web UI.
 
     ```
-    git clone https://github.com/open-amt-cloud-toolkit/sample-web-ui.git --branch v{{ repoVersion.webui }}
+    git clone https://github.com/device-management-toolkit/sample-web-ui.git --branch v{{ repoVersion.webui }}
     ```
 
 ## Translate Strings

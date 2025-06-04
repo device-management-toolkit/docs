@@ -12,7 +12,7 @@ Open `src/App.js` and add the code shown below:
 ``` javascript hl_lines="8 9 11"
     import React from "react";
     import "./App.css";
-    import { KVM } from "@open-amt-cloud-toolkit/ui-toolkit-react/reactjs/src/kvm.bundle";
+    import { KVM } from "@device-management-toolkit/ui-toolkit-react/reactjs/src/kvm.bundle";
 
     function App() {
         return (

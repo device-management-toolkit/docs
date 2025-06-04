@@ -87,7 +87,7 @@ Intel® AMT checks the network DNS suffix against the provisioning certificate a
 A Profile provides configuration information to the AMT Firmware during the activation process with the Remote Provisioning Client (RPC).
 
 ??? note "Note - More Information about Passwords"
-    Open AMT Cloud Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../../Reference/architectureOverview.md#passwords).
+    Device Management Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../../Reference/architectureOverview.md#passwords).
 
 **To create an ACM profile:**
 

@@ -12,7 +12,7 @@ Open `src/App.js` and add the code shown below:
 
 ``` javascript hl_lines="7 8 9"
 import React from "react";
-import { Sol } from "@open-amt-cloud-toolkit/ui-toolkit-react/reactjs/src/sol.bundle";
+import { Sol } from "@device-management-toolkit/ui-toolkit-react/reactjs/src/sol.bundle";
 
 function App() {
   return (

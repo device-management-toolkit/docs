@@ -12,7 +12,7 @@ NoSQL support is integrated using the MongoDB API. This does not just limit inte
 
 ## MongoDB Docker Deployment
 
-The below steps will show how to modify the basic [Open AMT Getting Started Docker deployment](../../GetStarted/Cloud/setup.md) to integrate MongoDB for MPS to store and reference device data.
+The below steps will show how to modify the basic [Device Management Toolkit Getting Started Docker deployment](../../GetStarted/Cloud/setup.md) to integrate MongoDB for MPS to store and reference device data.
 
 1. Stop any running containers. This will wipe all data and devices will have to be reprovisioned against the new RPS/MPS servers.
 
@@ -102,14 +102,14 @@ The below steps will show how to modify the basic [Open AMT Getting Started Dock
     !!! success
         ``` bash hl_lines="9"
         IMAGE                               STATUS                        NAMES
-        intel/oact-rps:latest               Up 19 seconds (healthy)        open-amt-cloud-toolkit-rps-1      
-        hashicorp/vault                     Up 19 seconds                  open-amt-cloud-toolkit-vault-1    
-        intel/oact-mpsrouter:latest         Up 19 seconds (healthy)        open-amt-cloud-toolkit-mpsrouter-1
-        postgres:15                         Up 19 seconds (healthy)        open-amt-cloud-toolkit-db-1       
-        intel/oact-webui:latest             Up 19 seconds                  open-amt-cloud-toolkit-webui-1    
-        kong:3.1                            Up 19 seconds (healthy)        open-amt-cloud-toolkit-kong-1     
-        intel/oact-mps:latest               Up 19 seconds (healthy)        open-amt-cloud-toolkit-mps-1
-        mongo                               Up 19 seconds                  open-amt-cloud-toolkit-mongo-1
+        intel/oact-rps:latest               Up 19 seconds (healthy)        device-management-toolkit-rps-1      
+        hashicorp/vault                     Up 19 seconds                  device-management-toolkit-vault-1    
+        intel/oact-mpsrouter:latest         Up 19 seconds (healthy)        device-management-toolkit-mpsrouter-1
+        postgres:15                         Up 19 seconds (healthy)        device-management-toolkit-db-1       
+        intel/oact-webui:latest             Up 19 seconds                  device-management-toolkit-webui-1    
+        kong:3.1                            Up 19 seconds (healthy)        device-management-toolkit-kong-1     
+        intel/oact-mps:latest               Up 19 seconds (healthy)        device-management-toolkit-mps-1
+        mongo                               Up 19 seconds                  device-management-toolkit-mongo-1
         ```
 
 3. Now, updates will be made to the `devices` collection when actions affecting an AMT device occur (e.g. Device Provisioning/Unprovisioning).

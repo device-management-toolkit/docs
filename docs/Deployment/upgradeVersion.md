@@ -85,7 +85,7 @@ The 2.17 release of Open AMT requires an upgrade to the `mpsdb` database.
 
 ### Upgrade to 2.16 (Oct 23) from 2.15 (Sep 23)
 
-The 2.16 release of Open AMT requires an upgrade to both the `mpsdb` and `rpsdb` databases. More information about why we've made this change can be found in the [October 2023 Release Notes](https://open-amt-cloud-toolkit.github.io/docs/2.16/release-notes/#whats-new).
+The 2.16 release of Open AMT requires an upgrade to both the `mpsdb` and `rpsdb` databases. More information about why we've made this change can be found in the [October 2023 Release Notes](https://device-managment-toolkit.github.io/docs/2.16/release-notes/#whats-new).
 
 1. Run the following SQL script to alter constraints before upgrading the services.
 
@@ -131,7 +131,7 @@ The 2.16 release of Open AMT requires an upgrade to both the `mpsdb` and `rpsdb`
 
 ### Upgrade to 2.15 (Sep 23) from 2.14 (Aug 23)
 
-The 2.15 release of Open AMT requires an upgrade to the `rpsdb` database. More information about why we've made this change can be found in the [September 2023 Release Notes](https://open-amt-cloud-toolkit.github.io/docs/2.15/release-notes/#whats-new).
+The 2.15 release of Open AMT requires an upgrade to the `rpsdb` database. More information about why we've made this change can be found in the [September 2023 Release Notes](https://device-managment-toolkit.github.io/docs/2.15/release-notes/#whats-new).
 
 1. Run the following SQL script to alter constraints before upgrading the services.
 
@@ -414,7 +414,7 @@ Upgrading from a previous minor version to a new minor version release is simple
 ??? note "Note - Using Private Images"
     The steps are the same if using your own images built and stored on a platform like Azure Container Registry (ACR) or Elastic Container Registry (ECR). Simply point to the new private images rather than the public Intel Dockerhub.
 
-1. Pull the latest release within `.\open-amt-cloud-toolkit` directory.
+1. Pull the latest release within `.\cloud-deployment` directory.
 
     ```
     git pull
@@ -439,22 +439,22 @@ Upgrading from a previous minor version to a new minor version release is simple
           ...
         ```
 
-4. In Terminal or Command Prompt, go to the deployed open-amt-cloud-toolkit repository directory.
+4. In Terminal or Command Prompt, go to the deployed cloud-deployment repository directory.
 
     ```
-    cd ./YOUR-DIRECTORY-PATH/open-amt-cloud-toolkit
+    cd ./YOUR-DIRECTORY-PATH/cloud-deployment
     ```
 
 5. Use Helm to upgrade and deploy the new images.
 
     ```
-    helm upgrade openamtstack ./kubernetes/charts
+    helm upgrade devicemgmtstack ./kubernetes/charts
     ```
 
     !!! success "Successful Helm Upgrade"
         ```
-        Release "openamtstack" has been upgraded. Happy Helming!
-        NAME: openamtstack
+        Release "devicemgmtstack" has been upgraded. Happy Helming!
+        NAME: devicemgmtstack
         LAST DEPLOYED: Wed Mar 23 09:36:10 2022
         NAMESPACE: default
         STATUS: deployed
@@ -472,9 +472,9 @@ Upgrading from a previous minor version to a new minor version release is simple
         NAME                                                 READY   STATUS    RESTARTS   AGE
         mps-55f558666b-5m9bq                                 1/1     Running   0          2m47s
         mpsrouter-6975577696-wn8wm                           1/1     Running   0          27d
-        openamtstack-kong-5999cc6b97-wbmdw                   2/2     Running   0          27d
-        openamtstack-vault-0                                 1/1     Running   0          27d
-        openamtstack-vault-agent-injector-6d6c75f7d5-sh5nm   1/1     Running   0          27d
+        devicemgmtstack-kong-5999cc6b97-wbmdw                   2/2     Running   0          27d
+        devicemgmtstack-vault-0                                 1/1     Running   0          27d
+        devicemgmtstack-vault-agent-injector-6d6c75f7d5-sh5nm   1/1     Running   0          27d
         rps-597d7894b5-mbdz5                                 1/1     Running   0          2m47s
         webui-6d9b96c989-29r9z                               1/1     Running   0          2m47s
         ```
@@ -486,7 +486,7 @@ Is the functionality not working as expected? Rollback to the previous deploymen
 1. Use the Helm rollback command with the Revision you want to rollback to. In this example deployment, we would rollback to the original deployment revision which would be 1.
 
     ```
-    helm rollback openamtstack [Revision-Number]
+    helm rollback devicemgmtstack [Revision-Number]
     ```
     
     !!! success - "Successful Rollback" 
@@ -498,7 +498,7 @@ Is the functionality not working as expected? Rollback to the previous deploymen
 
 The following steps outline how to upgrade using the public Docker Hub images. Data will not be lost unless Postgres or Vault need to be upgraded and restarted.
 
-1. From the `.\open-amt-cloud-toolkit\` directory, pull the latest branches.
+1. From the `.\cloud-deployment\` directory, pull the latest branches.
     ```
     git pull
     ```
@@ -509,7 +509,7 @@ The following steps outline how to upgrade using the public Docker Hub images. D
     ```
 
     ??? note "Note - Rebuilding New Images Locally"
-        If building your own images, you will also have to checkout the newer release from each repo within `.\open-amt-cloud-toolkit\`.
+        If building your own images, you will also have to checkout the newer release from each repo within `.\cloud-deployment\`.
 
         1. Pull the new releases of the submodules.
             ```
@@ -539,7 +539,7 @@ The following steps outline how to upgrade using the public Docker Hub images. D
     docker compose up -d --remove-orphans
     ```
 
-5. OPTIONAL. If using versioned tags rather than `latest`, you can delete older tagged images using the following. **This will delete all unused images**. If you have other non Open AMT images you wish to keep, **do NOT** run this command.
+5. OPTIONAL. If using versioned tags rather than `latest`, you can delete older tagged images using the following. **This will delete all unused images**. If you have other non Device Management Toolkit images you wish to keep, **do NOT** run this command.
     ```
     docker image prune -a
     ```
