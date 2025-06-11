@@ -5,7 +5,7 @@
 !!! warning "Local TLS Configuration using RPC-Go is a Preview Feature"
     Local TLS Configuration using RPC-Go is a Preview Feature and is subject to change. This means it has not been fully validated and cannot be guaranteed to work. There are still potential bugs and tweaks needed for a production-level feature standard. Interested in this feature and helping us test it? Reach out via GitHub.
 
-In Open AMT, the TLS protocol supports the following types of authentication today:
+In Device Management Toolkit, the TLS protocol supports the following types of authentication today:
 
 - Server Authentication – Only the server is authenticated (i.e., its identity is ensured) while the client remains unauthenticated. This means that the end user (whether an individual or an application, such as a Web browser) can be sure with whom they are communicating.
 

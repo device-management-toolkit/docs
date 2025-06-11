@@ -19,7 +19,7 @@ MPS and RPS send JSON events to a Mosquitto* broker deployed as a Docker contain
 
 **To enable support:**
 
-1. This guide assumes you have completed the [Getting Started Guide](../../GetStarted/Cloud/setup.md) and have Open AMT currently running in Docker containers.  If not, follow the [Get Started Guide Setup page](../../GetStarted/Cloud/setup.md). Stop and return here after the your services are running.
+1. This guide assumes you have completed the [Getting Started Guide](../../GetStarted/Cloud/setup.md) and have Device Management Toolkit currently running in Docker containers.  If not, follow the [Get Started Guide Setup page](../../GetStarted/Cloud/setup.md). Stop and return here after the your services are running.
 
 2. In a text editor or IDE of choice, open the `.env` file to edit.
 

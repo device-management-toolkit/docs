@@ -39,7 +39,7 @@ The library contains two functions:
 
 ## Sample Client in `C#`
 
-Find a simple sample client in the RPC-go's [dotnet folder](https://github.com/open-amt-cloud-toolkit/rpc-go/tree/main/samples/dotnet). 
+Find a simple sample client in the RPC-go's [dotnet folder](https://github.com/device-management-toolkit/rpc-go/tree/main/samples/dotnet). 
 
 ### Include in `C#`
 

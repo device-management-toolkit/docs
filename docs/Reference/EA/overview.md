@@ -21,7 +21,7 @@ The Enterprise Assistant source code must be compiled into a Windows executable 
 
 1. Clone the Enterprise Assistant Repository.
     ```
-    git clone https://github.com/open-amt-cloud-toolkit/enterprise-assistant.git
+    git clone https://github.com/device-management-toolkit/enterprise-assistant.git
     ```
 
 2. Open the project file `OpenAMTEnterpriseAssistant.csproj` in Visual Studio.

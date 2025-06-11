@@ -31,7 +31,7 @@ See steps below for both options.
 
 ### Download RPC
 
-Download the latest RPC-Go version from the [RPC-Go GitHub Repo Releases Page](https://github.com/open-amt-cloud-toolkit/rpc-go/releases) for the Operating System of the AMT device (Windows or Linux).
+Download the latest RPC-Go version from the [RPC-Go GitHub Repo Releases Page](https://github.com/device-management-toolkit/rpc-go/releases) for the Operating System of the AMT device (Windows or Linux).
 
 After downloading, continue on to [Run RPC to Activate, Configure, and Connect the AMT Device](#run-rpc-to-activate-configure-and-connect-the-amt-device).
 
@@ -46,21 +46,21 @@ Alternatively, the RPC-Go binaries can be manually built using Go for developmen
 
 If you are building an executable on a development system, you will copy the executable to the AMT device afterwards. 
 
-1. Change to the `rpc-go` directory of the cloned `open-amt-cloud-toolkit` repository.
+1. Change to the `rpc-go` directory of the cloned `cloud-deployment` repository.
    
     ``` bash
     cd rpc-go
     ```
-    ??? note "Haven't Cloned the `open-amt-cloud-toolkit` Repository?"
+    ??? note "Haven't Cloned the `cloud-deployment` Repository?"
 
         * Only clone the `rpc-go` repository:
             ``` bash
-            git clone https://github.com/open-amt-cloud-toolkit/rpc-go --branch v{{ repoVersion.rpc_go }}
+            git clone https://github.com/device-management-toolkit/rpc-go --branch v{{ repoVersion.rpc_go }}
             ```
 
         * Alternatively, clone the whole toolkit repository:
             ``` bash
-            git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }} --recursive
+            git clone https://github.com/device-management-toolkit/cloud-deployment --branch v{{ repoVersion.oamtct }} --recursive
             ```
 
 2. Open a Terminal (Linux) or Powershell/Command Prompt **as Administrator** (Windows):
