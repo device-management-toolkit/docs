@@ -4628,7 +4628,7 @@
 <p>See steps below for both options.</p>
 <p><br></p>
 <h3 id="download-rpc">Download <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#download-rpc" title="Permanent link">&para;</a></h3>
-<p>Download the latest <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go version from the <a href="https://github.com/open-amt-cloud-toolkit/rpc-go/releases"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go GitHub Repo Releases Page</a> for the Operating System of the AMT device (Windows or Linux).</p>
+<p>Download the latest <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go version from the <a href="https://github.com/device-management-toolkit/rpc-go/releases"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go GitHub Repo Releases Page</a> for the Operating System of the AMT device (Windows or Linux).</p>
 <p>After downloading, continue on to <a href="#run-rpc-to-activate-configure-and-connect-the-amt-device">Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> to Activate, Configure, and Connect the AMT Device</a>.</p>
 <p><br></p>
 <h3 id="build-rpc">Build <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr><a class="headerlink" href="#build-rpc" title="Permanent link">&para;</a></h3>
@@ -4640,20 +4640,20 @@
 <p>If you are building an executable on a development system, you will copy the executable to the AMT device afterwards. </p>
 <ol>
 <li>
-<p>Change to the <code>rpc-go</code> directory of the cloned <code>open-amt-cloud-toolkit</code> repository.</p>
+<p>Change to the <code>rpc-go</code> directory of the cloned <code>cloud-deployment</code> repository.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>rpc-go
 </code></pre></div>
 <details class="note">
-<summary>Haven't Cloned the <code>open-amt-cloud-toolkit</code> Repository?</summary>
+<summary>Haven't Cloned the <code>cloud-deployment</code> Repository?</summary>
 <ul>
 <li>
 <p>Only clone the <code>rpc-go</code> repository:
-    <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/open-amt-cloud-toolkit/rpc-go<span class="w"> </span>--branch<span class="w"> </span>v2.43.1
+    <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/device-management-toolkit/rpc-go<span class="w"> </span>--branch<span class="w"> </span>v2.43.1
 </code></pre></div></p>
 </li>
 <li>
 <p>Alternatively, clone the whole toolkit repository:
-    <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit<span class="w"> </span>--branch<span class="w"> </span>v2.27.0<span class="w"> </span>--recursive
+    <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/device-management-toolkit/cloud-deployment<span class="w"> </span>--branch<span class="w"> </span>v2.27.0<span class="w"> </span>--recursive
 </code></pre></div></p>
 </li>
 </ul>

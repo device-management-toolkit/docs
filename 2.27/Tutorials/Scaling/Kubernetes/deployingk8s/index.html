@@ -4777,7 +4777,7 @@ host    replication     all             ::1/128                         scram-sh
 <h2 id="create-kubernetes-secrets">Create Kubernetes Secrets<a class="headerlink" href="#create-kubernetes-secrets" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Open the <code>secrets.yaml</code> file in the <code>open-amt-cloud-toolkit/kubernetes/charts/</code> directory.</p>
+<p>Open the <code>secrets.yaml</code> file in the <code>cloud-deployment/kubernetes/charts/</code> directory.</p>
 <details class="note">
 <summary>Note - Additional Information about Secrets Created</summary>
 <table>
@@ -4906,7 +4906,7 @@ host    replication     all             ::1/128                         scram-sh
 <h3 id="edit-valuesyaml">Edit values.yaml<a class="headerlink" href="#edit-valuesyaml" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p>Open the <code>values.yaml</code> file in <code>./open-amt-cloud-toolkit/kubernetes/charts/</code>.</p>
+<p>Open the <code>values.yaml</code> file in <code>./cloud-deployment/kubernetes/charts/</code>.</p>
 </li>
 <li>
 <p>Update the <code>commonName</code> key in the <strong>mps</strong> section with the IP Address of your development device.</p>
@@ -4941,11 +4941,11 @@ host    replication     all             ::1/128                         scram-sh
 <ol>
 <li>
 <p>Deploy using Helm.
-    <div class="highlight"><pre><span></span><code>helm install openamtstack ./kubernetes/charts
+    <div class="highlight"><pre><span></span><code>helm install devicemgmtstack ./kubernetes/charts
 </code></pre></div></p>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>NAME: openamtstack
+<div class="highlight"><pre><span></span><code>NAME: devicemgmtstack
 LAST DEPLOYED: Wed Jul 14 12:59:29 2021
 NAMESPACE: default
 STATUS: deployed
@@ -4955,7 +4955,7 @@ TEST SUITE: None
 </div>
 </li>
 <li>
-<p>View the pods. You might notice <code>mps</code>, <code>rps</code>, and <code>openamtstack-vault-0</code> are not ready. This will change after we initialize and unseal Vault. All others should be Ready and Running.</p>
+<p>View the pods. You might notice <code>mps</code>, <code>rps</code>, and <code>devicemgmtstack-vault-0</code> are not ready. This will change after we initialize and unseal Vault. All others should be Ready and Running.</p>
 <div class="highlight"><pre><span></span><code>kubectl get pods
 </code></pre></div>
 <div class="admonition success">
@@ -4963,9 +4963,9 @@ TEST SUITE: None
 <div class="highlight"><pre><span></span><code>NAME                                                 READY   STATUS                       RESTARTS   AGE
 <span class="hll">mps-6984b7c69d-8d5gf                                 0/1     CreateContainerConfigError   0          5m
 </span>mpsrouter-9b9bc499b-pwn9j                            1/1     Running                      0          5m
-openamtstack-kong-55b65d558c-gzv4d                   2/2     Running                      0          5m
-<span class="hll">openamtstack-vault-0                                 0/1     Running                      0          5m
-</span>openamtstack-vault-agent-injector-7fb7dcfcbd-dlqqg   1/1     Running                      0          5m
+devicemgmtstack-kong-55b65d558c-gzv4d                   2/2     Running                      0          5m
+<span class="hll">devicemgmtstack-vault-0                                 0/1     Running                      0          5m
+</span>devicemgmtstack-vault-agent-injector-7fb7dcfcbd-dlqqg   1/1     Running                      0          5m
 <span class="hll">rps-79877bf5c5-hnv8t                                 0/1     CreateContainerConfigError   0          5m
 </span>webui-784cd49976-bj7z5                               1/1     Running                      0          5m
 </code></pre></div>
@@ -4985,7 +4985,7 @@ openamtstack-kong-55b65d558c-gzv4d                   2/2     Running            
 <div class="admonition note">
 <p class="admonition-title">Troubleshoot - Vault UI External IP</p>
 <p>If you cannot connect, verify the External IP Address by running:
-<div class="highlight"><pre><span></span><code>kubectl get services openamtstack-vault-ui
+<div class="highlight"><pre><span></span><code>kubectl get services devicemgmtstack-vault-ui
 </code></pre></div></p>
 </div>
 </li>
@@ -5012,7 +5012,7 @@ openamtstack-kong-55b65d558c-gzv4d                   2/2     Running            
 <p>Add the root token as a secret to the cluster so that the services can access Vault.</p>
 <ol>
 <li>
-<p>Open the <code>secrets.yaml</code> file again in the <code>open-amt-cloud-toolkit/kubernetes/charts/</code> directory.</p>
+<p>Open the <code>secrets.yaml</code> file again in the <code>cloud-deployment/kubernetes/charts/</code> directory.</p>
 </li>
 <li>
 <p>Replace <code>&lt;VAULT-ROOT-TOKEN&gt;</code> in the <code>vaultKey:</code> field (line 66) with the actual Vault root token.</p>
@@ -5034,9 +5034,9 @@ openamtstack-kong-55b65d558c-gzv4d                   2/2     Running            
 <div class="highlight"><pre><span></span><code>NAME                                                 READY   STATUS    RESTARTS   AGE
 mps-6984b7c69d-8d5gf                                 1/1     Running   0          7m
 mpsrouter-9b9bc499b-pwn9j                            1/1     Running   0          7m
-openamtstack-kong-55b65d558c-gzv4d                   2/2     Running   0          7m
-openamtstack-vault-0                                 1/1     Running   0          7m
-openamtstack-vault-agent-injector-7fb7dcfcbd-dlqqg   1/1     Running   0          7m
+devicemgmtstack-kong-55b65d558c-gzv4d                   2/2     Running   0          7m
+devicemgmtstack-vault-0                                 1/1     Running   0          7m
+devicemgmtstack-vault-agent-injector-7fb7dcfcbd-dlqqg   1/1     Running   0          7m
 rps-79877bf5c5-hnv8t                                 1/1     Running   0          7m
 webui-784cd49976-bj7z5                               1/1     Running   0          7m
 </code></pre></div>

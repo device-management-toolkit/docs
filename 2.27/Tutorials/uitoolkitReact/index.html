@@ -4716,7 +4716,7 @@
 <details class="note">
 <summary>Note - Other Framework Technologies</summary>
 <p>This guide shows a basic example implementation using React. Other frameworks can be used using the UI-Toolkit like Angular and Vue.js.</p>
-<p>For an example implementation of Angular, see our <a href="https://github.com/open-amt-cloud-toolkit/sample-web-ui/"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> codebase</a>.</p>
+<p>For an example implementation of Angular, see our <a href="https://github.com/device-management-toolkit/sample-web-ui/"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> codebase</a>.</p>
 </details>
 <h2 id="what-youll-need">What You'll Need<a class="headerlink" href="#what-youll-need" title="Permanent link">&para;</a></h2>
 <h3 id="hardware">Hardware<a class="headerlink" href="#hardware" title="Permanent link">&para;</a></h3>
@@ -4727,8 +4727,8 @@
 </ul>
 <h3 id="software">Software<a class="headerlink" href="#software" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="https://github.com/open-amt-cloud-toolkit/MPS"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></a>, the Management Presence Server</li>
-<li><a href="https://github.com/open-amt-cloud-toolkit/RCS"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr></a>, the Remote Provisioning Server</li>
+<li><a href="https://github.com/device-management-toolkit/MPS"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></a>, the Management Presence Server</li>
+<li><a href="https://github.com/device-management-toolkit/RCS"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr></a>, the Remote Provisioning Server</li>
 <li>
 <p>Intel&reg; vPro device, configured and connected to <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></p>
 <div class="admonition note">
@@ -4777,7 +4777,7 @@
 <ol>
 <li>
 <p>Install the <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> and required dependencies.</p>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@open-amt-cloud-toolkit/ui-toolkit-react@4.0.0
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@device-management-toolkit/ui-toolkit-react@4.0.0
 </code></pre></div>
 </li>
 <li>
@@ -4836,8 +4836,8 @@
 </table>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span>
 <span class="k">import</span><span class="w"> </span><span class="s2">&quot;./App.css&quot;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">KVM</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@open-amt-cloud-toolkit/ui-toolkit-react/reactjs/src/kvm.bundle&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">AttachDiskImage</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@open-amt-cloud-toolkit/ui-toolkit-react/reactjs/src/ider.bundle&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">KVM</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@device-management-toolkit/ui-toolkit-react/reactjs/src/kvm.bundle&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">AttachDiskImage</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@device-management-toolkit/ui-toolkit-react/reactjs/src/ider.bundle&quot;</span><span class="p">;</span>
 
 <span class="kd">function</span><span class="w"> </span><span class="nx">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="hll"><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">deviceGUID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;4c4c4544-005a-3510-8047-b4c04f564433&#39;</span><span class="w"> </span><span class="c1">//Replace with AMT Device GUID</span>

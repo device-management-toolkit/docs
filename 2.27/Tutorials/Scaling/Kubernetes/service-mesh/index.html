@@ -4596,17 +4596,17 @@
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;apiVersion: kuma.io/v1alpha1</span>
 <span class="s2">kind: Mesh</span>
 <span class="s2">metadata: </span>
-<span class="s2">  name: open-amt-cloud-toolkit-mesh</span>
+<span class="s2">  name: device-management-toolkit-mesh</span>
 <span class="s2">spec: </span>
 <span class="s2">  mtls: </span>
-<span class="s2">    enabledBackend: open-amt-cloud-toolkit-cert</span>
+<span class="s2">    enabledBackend: device-management-toolkit-cert</span>
 <span class="s2">    backends: </span>
-<span class="s2">      - name: open-amt-cloud-toolkit-cert</span>
+<span class="s2">      - name: device-management-toolkit-cert</span>
 <span class="s2">        type: builtin</span>
 <span class="s2">    enabled: true&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>-
 </code></pre></div>
 <h2 id="turn-on-sidecar-injection">Turn On Sidecar Injection<a class="headerlink" href="#turn-on-sidecar-injection" title="Permanent link">&para;</a></h2>
-<p>After the mesh is created, turn on sidecar-injection for the open-amt-cloud-toolkit services with: </p>
+<p>After the mesh is created, turn on sidecar-injection for the device-management-toolkit services with: </p>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;apiVersion: v1</span>
 <span class="s2">kind: Namespace</span>
 <span class="s2">metadata: </span>
@@ -4614,7 +4614,7 @@
 <span class="s2">  namespace: default</span>
 <span class="s2">  annotations: </span>
 <span class="s2">    kuma.io/sidecar-injection: enabled</span>
-<span class="s2">    kuma.io/mesh: open-amt-cloud-toolkit-mesh&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>-
+<span class="s2">    kuma.io/mesh: device-management-toolkit-mesh&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>-
 </code></pre></div>
 <p>Delete all pods to ensure updated annotations from previous command take effect:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>--all<span class="w"> </span>-n<span class="w"> </span>default
@@ -4623,10 +4623,10 @@
 <p>Finally, we need to allow traffic between services:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;apiVersion: kuma.io/v1alpha1</span>
 <span class="s2">kind: TrafficPermission</span>
-<span class="s2">mesh: open-amt-cloud-toolkit-mesh</span>
+<span class="s2">mesh: device-management-toolkit-mesh</span>
 <span class="s2">metadata:</span>
 <span class="s2">  namespace: default</span>
-<span class="s2">  name: allow-all-open-amt-cloud-toolkit-mesh</span>
+<span class="s2">  name: allow-all-device-management-toolkit-mesh</span>
 <span class="s2">spec:</span>
 <span class="s2">  sources:</span>
 <span class="s2">    - match:</span>

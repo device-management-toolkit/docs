@@ -4797,7 +4797,7 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U p
 </li>
 </ol>
 <h3 id="upgrade-to-216-oct-23-from-215-sep-23">Upgrade to 2.16 (Oct 23) from 2.15 (Sep 23)<a class="headerlink" href="#upgrade-to-216-oct-23-from-215-sep-23" title="Permanent link">&para;</a></h3>
-<p>The 2.16 release of Open AMT requires an upgrade to both the <code>mpsdb</code> and <code>rpsdb</code> databases. More information about why we've made this change can be found in the <a href="https://open-amt-cloud-toolkit.github.io/docs/2.16/release-notes/#whats-new">October 2023 Release Notes</a>.</p>
+<p>The 2.16 release of Open AMT requires an upgrade to both the <code>mpsdb</code> and <code>rpsdb</code> databases. More information about why we've made this change can be found in the <a href="https://device-managment-toolkit.github.io/docs/2.16/release-notes/#whats-new">October 2023 Release Notes</a>.</p>
 <ol>
 <li>
 <p>Run the following SQL script to alter constraints before upgrading the services.</p>
@@ -4847,7 +4847,7 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U p
 </li>
 </ol>
 <h3 id="upgrade-to-215-sep-23-from-214-aug-23">Upgrade to 2.15 (Sep 23) from 2.14 (Aug 23)<a class="headerlink" href="#upgrade-to-215-sep-23-from-214-aug-23" title="Permanent link">&para;</a></h3>
-<p>The 2.15 release of Open AMT requires an upgrade to the <code>rpsdb</code> database. More information about why we've made this change can be found in the <a href="https://open-amt-cloud-toolkit.github.io/docs/2.15/release-notes/#whats-new">September 2023 Release Notes</a>.</p>
+<p>The 2.15 release of Open AMT requires an upgrade to the <code>rpsdb</code> database. More information about why we've made this change can be found in the <a href="https://device-managment-toolkit.github.io/docs/2.15/release-notes/#whats-new">September 2023 Release Notes</a>.</p>
 <ol>
 <li>
 <p>Run the following SQL script to alter constraints before upgrading the services.</p>
@@ -5164,7 +5164,7 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U p
 </details>
 <ol>
 <li>
-<p>Pull the latest release within <code>.\open-amt-cloud-toolkit</code> directory.</p>
+<p>Pull the latest release within <code>.\cloud-deployment</code> directory.</p>
 <div class="highlight"><pre><span></span><code>git pull
 </code></pre></div>
 </li>
@@ -5188,18 +5188,18 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U p
 </div>
 </li>
 <li>
-<p>In Terminal or Command Prompt, go to the deployed open-amt-cloud-toolkit repository directory.</p>
-<div class="highlight"><pre><span></span><code>cd ./YOUR-DIRECTORY-PATH/open-amt-cloud-toolkit
+<p>In Terminal or Command Prompt, go to the deployed cloud-deployment repository directory.</p>
+<div class="highlight"><pre><span></span><code>cd ./YOUR-DIRECTORY-PATH/cloud-deployment
 </code></pre></div>
 </li>
 <li>
 <p>Use Helm to upgrade and deploy the new images.</p>
-<div class="highlight"><pre><span></span><code>helm upgrade openamtstack ./kubernetes/charts
+<div class="highlight"><pre><span></span><code>helm upgrade devicemgmtstack ./kubernetes/charts
 </code></pre></div>
 <div class="admonition success">
 <p class="admonition-title">Successful Helm Upgrade</p>
-<div class="highlight"><pre><span></span><code>Release &quot;openamtstack&quot; has been upgraded. Happy Helming!
-NAME: openamtstack
+<div class="highlight"><pre><span></span><code>Release &quot;devicemgmtstack&quot; has been upgraded. Happy Helming!
+NAME: devicemgmtstack
 LAST DEPLOYED: Wed Mar 23 09:36:10 2022
 NAMESPACE: default
 STATUS: deployed
@@ -5216,9 +5216,9 @@ REVISION: 2
 <div class="highlight"><pre><span></span><code>NAME                                                 READY   STATUS    RESTARTS   AGE
 mps-55f558666b-5m9bq                                 1/1     Running   0          2m47s
 mpsrouter-6975577696-wn8wm                           1/1     Running   0          27d
-openamtstack-kong-5999cc6b97-wbmdw                   2/2     Running   0          27d
-openamtstack-vault-0                                 1/1     Running   0          27d
-openamtstack-vault-agent-injector-6d6c75f7d5-sh5nm   1/1     Running   0          27d
+devicemgmtstack-kong-5999cc6b97-wbmdw                   2/2     Running   0          27d
+devicemgmtstack-vault-0                                 1/1     Running   0          27d
+devicemgmtstack-vault-agent-injector-6d6c75f7d5-sh5nm   1/1     Running   0          27d
 rps-597d7894b5-mbdz5                                 1/1     Running   0          2m47s
 webui-6d9b96c989-29r9z                               1/1     Running   0          2m47s
 </code></pre></div>
@@ -5230,7 +5230,7 @@ webui-6d9b96c989-29r9z                               1/1     Running   0        
 <ol>
 <li>
 <p>Use the Helm rollback command with the Revision you want to rollback to. In this example deployment, we would rollback to the original deployment revision which would be 1.</p>
-<div class="highlight"><pre><span></span><code>helm rollback openamtstack [Revision-Number]
+<div class="highlight"><pre><span></span><code>helm rollback devicemgmtstack [Revision-Number]
 </code></pre></div>
 <div class="admonition success -">
 <p class="admonition-title">Successful Rollback</p>
@@ -5243,7 +5243,7 @@ webui-6d9b96c989-29r9z                               1/1     Running   0        
 <p>The following steps outline how to upgrade using the public Docker Hub images. Data will not be lost unless Postgres or Vault need to be upgraded and restarted.</p>
 <ol>
 <li>
-<p>From the <code>.\open-amt-cloud-toolkit\</code> directory, pull the latest branches.
+<p>From the <code>.\cloud-deployment\</code> directory, pull the latest branches.
     <div class="highlight"><pre><span></span><code>git pull
 </code></pre></div></p>
 </li>
@@ -5253,7 +5253,7 @@ webui-6d9b96c989-29r9z                               1/1     Running   0        
 </code></pre></div></p>
 <details class="note">
 <summary>Note - Rebuilding New Images Locally</summary>
-<p>If building your own images, you will also have to checkout the newer release from each repo within <code>.\open-amt-cloud-toolkit\</code>.</p>
+<p>If building your own images, you will also have to checkout the newer release from each repo within <code>.\cloud-deployment\</code>.</p>
 <ol>
 <li>
 <p>Pull the new releases of the submodules.
@@ -5288,7 +5288,7 @@ git checkout v2.13.0
 </code></pre></div></p>
 </li>
 <li>
-<p>OPTIONAL. If using versioned tags rather than <code>latest</code>, you can delete older tagged images using the following. <strong>This will delete all unused images</strong>. If you have other non Open AMT images you wish to keep, <strong>do NOT</strong> run this command.
+<p>OPTIONAL. If using versioned tags rather than <code>latest</code>, you can delete older tagged images using the following. <strong>This will delete all unused images</strong>. If you have other non Device Management Toolkit images you wish to keep, <strong>do NOT</strong> run this command.
     <div class="highlight"><pre><span></span><code>docker image prune -a
 </code></pre></div></p>
 </li>

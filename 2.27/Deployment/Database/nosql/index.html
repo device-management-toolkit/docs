@@ -4600,7 +4600,7 @@
 <li><a href="https://www.oracle.com/autonomous-database/autonomous-json-database/">Oracle Autonomous JSON Database</a></li>
 </ul>
 <h2 id="mongodb-docker-deployment">MongoDB Docker Deployment<a class="headerlink" href="#mongodb-docker-deployment" title="Permanent link">&para;</a></h2>
-<p>The below steps will show how to modify the basic <a href="../../../GetStarted/Cloud/setup/">Open AMT Getting Started Docker deployment</a> to integrate MongoDB for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> to store and reference device data.</p>
+<p>The below steps will show how to modify the basic <a href="../../../GetStarted/Cloud/setup/">Device Management Toolkit Getting Started Docker deployment</a> to integrate MongoDB for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> to store and reference device data.</p>
 <ol>
 <li>
 <p>Stop any running containers. This will wipe all data and devices will have to be reprovisioned against the new <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>/<abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> servers.</p>
@@ -4686,14 +4686,14 @@ PORT=8003
 <div class="admonition success">
 <p class="admonition-title">Success</p>
 <div class="highlight"><pre><span></span><code>IMAGE<span class="w">                               </span>STATUS<span class="w">                        </span>NAMES
-intel/oact-rps:latest<span class="w">               </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>open-amt-cloud-toolkit-rps-1<span class="w">      </span>
-hashicorp/vault<span class="w">                     </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w">                  </span>open-amt-cloud-toolkit-vault-1<span class="w">    </span>
-intel/oact-mpsrouter:latest<span class="w">         </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>open-amt-cloud-toolkit-mpsrouter-1
-postgres:15<span class="w">                         </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>open-amt-cloud-toolkit-db-1<span class="w">       </span>
-intel/oact-webui:latest<span class="w">             </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w">                  </span>open-amt-cloud-toolkit-webui-1<span class="w">    </span>
-kong:3.1<span class="w">                            </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>open-amt-cloud-toolkit-kong-1<span class="w">     </span>
-intel/oact-mps:latest<span class="w">               </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>open-amt-cloud-toolkit-mps-1
-<span class="hll">mongo<span class="w">                               </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w">                  </span>open-amt-cloud-toolkit-mongo-1
+intel/oact-rps:latest<span class="w">               </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-rps-1<span class="w">      </span>
+hashicorp/vault<span class="w">                     </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w">                  </span>device-management-toolkit-vault-1<span class="w">    </span>
+intel/oact-mpsrouter:latest<span class="w">         </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-mpsrouter-1
+postgres:15<span class="w">                         </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-db-1<span class="w">       </span>
+intel/oact-webui:latest<span class="w">             </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w">                  </span>device-management-toolkit-webui-1<span class="w">    </span>
+kong:3.1<span class="w">                            </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-kong-1<span class="w">     </span>
+intel/oact-mps:latest<span class="w">               </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-mps-1
+<span class="hll">mongo<span class="w">                               </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w">                  </span>device-management-toolkit-mongo-1
 </span></code></pre></div>
 </div>
 </li>

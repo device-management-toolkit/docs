@@ -4571,7 +4571,7 @@
 <ul>
 <li>All images are built and tested with <code>docker compose</code>. To learn more about building the images with <code>docker compose</code>, refer to <a href="../../../GetStarted/Cloud/setup/"><strong>Express Setup</strong></a>. </li>
 <li>Push images to the registry to make them available for deployment on other systems.  </li>
-<li>Run the commands below from the <code>open-amt-cloud-toolkit</code> install directory. </li>
+<li>Run the commands below from the <code>cloud-deployment</code> install directory. </li>
 </ul>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -4581,12 +4581,12 @@
 <ol>
 <li>
 <p>Open a Terminal or Command Prompt and navigate to a directory of your choice for development:</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit<span class="w"> </span>--branch<span class="w"> </span>v2.27.0
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/device-management-toolkit/cloud-deployment<span class="w"> </span>--branch<span class="w"> </span>v2.27.0
 </code></pre></div>
 </li>
 <li>
-<p>Change to the cloned <code>open-amt-cloud-toolkit</code> directory.
-    <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>open-amt-cloud-toolkit
+<p>Change to the cloned <code>cloud-deployment</code> directory.
+    <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>cloud-deployment
 </code></pre></div></p>
 </li>
 </ol>
@@ -4626,7 +4626,7 @@
 </div>
 </li>
 <li>
-<p>If you've run <code>docker compose</code> previously, as in the instructions in <a href="../../../GetStarted/Cloud/setup/"><strong>Express Setup</strong></a>, run <code>docker compose down</code> to stop the open-amt-cloud-toolkit services:
+<p>If you've run <code>docker compose</code> previously, as in the instructions in <a href="../../../GetStarted/Cloud/setup/"><strong>Express Setup</strong></a>, run <code>docker compose down</code> to stop the device-management-toolkit services:
    <div class="highlight"><pre><span></span><code>docker compose down -v
 </code></pre></div></p>
 </li>
