@@ -3,7 +3,7 @@
 This tutorial demonstrates how to generate a JSON Web Token (JWT) for Authorization and construct an API call for [Getting Devices](https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/{{ repoVersion.mpsAPI }}#/Devices/get_api_v1_devices) using [curl](https://curl.se/). This method will retrieve information about all devices, including device GUIDs.
 
 <figure class="figure-image">
-<img src="..\..\assets\images\CURLTutorial.png" alt="Figure 1: Tutorial Flow Using curl">
+<img src="..\..\assets\images\diagrams\CURLTutorial.png" alt="Figure 1: Tutorial Flow Using curl">
 <figcaption>Figure 1: Tutorial flow using curl</figcaption>
 </figure>
 

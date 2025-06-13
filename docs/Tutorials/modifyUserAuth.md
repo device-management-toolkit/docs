@@ -12,7 +12,7 @@ The following diagrams help illustrate the typical user authentication flow. Lea
 ### REST API User Authentication Flow
 
 <figure class="figure-image">
-<img src="..\..\assets\images\UserAuth_API_Diagram.png" alt="Figure 1: User Authentication Flow for REST APIs">
+<img src="..\..\assets\images\diagrams\UserAuth_API_Diagram.png" alt="Figure 1: User Authentication Flow for REST APIs">
 </figure>
 
 #### To authenticate for REST APIs:
@@ -26,7 +26,7 @@ The following diagrams help illustrate the typical user authentication flow. Lea
 ### Redirection (KVM/SOL) User Authentication Flow
 
 <figure class="figure-image">
-<img src="..\..\assets\images\UserAuth_Redir_Diagram.png" alt="Figure 1: User Authentication Flow for Redirection">
+<img src="..\..\assets\images\diagrams\UserAuth_Redir_Diagram.png" alt="Figure 1: User Authentication Flow for Redirection">
 </figure>
 
 #### To authenticate for Websocket connections:

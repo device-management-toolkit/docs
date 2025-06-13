@@ -13,7 +13,7 @@ For the cloud, AMT devices use a feature called CIRA, or **C**lient **I**nitiate
 [Get Started Now](./Cloud/prerequisites.md){: .md-button .md-button--primary }
 
 <figure class="figure-image">
-  <img src="..\..\assets\images\Device_Management_Toolkit_flow.png" alt="Figure 1: Cloud Architecture Overview">
+  <img src="..\..\assets\images\diagrams\CloudArchitecturalFlow.svg" style="width:100%;height:1000px;" alt="Figure 1: Cloud Architecture Overview">
   <figcaption>Figure 1: Cloud Architecture Overview</figcaption>
 </figure>
 
@@ -30,7 +30,7 @@ An edge application, RPC-Go, can perform activation and configuration of Intel A
 [Get Started Now](./Enterprise/setup.md){: .md-button .md-button--primary }
 
 <figure class="figure-image">
-  <img src="..\..\assets\images\Device_Management_Toolkit_Console.png" alt="Figure 2: Enterprise Architecture Overview">
+  <img src="..\..\assets\images\diagrams\Console.svg" style="height:800px;" alt="Figure 2: Enterprise Architecture Overview">
   <figcaption>Figure 2: Enterprise Architecture Overview</figcaption>
 </figure>
 

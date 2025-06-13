@@ -41,7 +41,7 @@ Follow the steps in these sections sequentially:
 - Add UI controls to the React app
 
 <figure class="figure-image">
-<img src="..\..\assets\images\HelloWorld.png" alt="Figure 1: UI Toolkit">
+<img src="..\..\assets\images\diagrams\UIToolkit.svg" style="height:800px" alt="Figure 1: UI Toolkit">
 <figcaption>Figure 1: UI toolkit</figcaption>
 </figure>
 
@@ -81,7 +81,7 @@ The React app can be created in any preferred development directory.
 
     !!! success
         <figure class="figure-image">
-        <img src="..\..\assets\images\UIToolkit_npmstart.png" alt="Figure 2: React reports successful deployment">
+        <img src="..\..\assets\images\screenshots\UIToolkit_npmstart.png" alt="Figure 2: React reports successful deployment">
         <figcaption>Figure 2: React reports successful deployment</figcaption>
         </figure>
 
@@ -108,7 +108,7 @@ The code snippet below adds both the KVM and IDER controls to the React applicat
     | :----------- | :-------------- |
     | `deviceId` | **Replace the example deviceId** value with the GUID of the Intel® AMT device.  See [How to Find GUIDs in Intel® AMT](../Reference/guids.md). |
     | `mpsServer` | **Replace the localhost** with the IP Address or FQDN of your MPS Server. <br><br> **When using Kong**, `/mps/ws/relay` must be appended to the IP or FQDN. |
-    | `authToken` | **Provide a redirection-specific JWT authentication token. This is different from the `/authorize` login token.** [See the `/authorize/redirection/{guid}` GET API in the Auth section.](../APIs/indexMPS.md){target=_blank} <br><br> For a general example on how to make an API call and how to get an auth token from `/authorize` to pass to `/authorize/redirection/{guid}`, see [Generating a JWT by using an Authorize API call](./apiTutorial.md#generate-a-jwt){target=_blank}. |
+    | `authToken` | **Provide a redirection-specific JWT authentication token. This is different from the `/authorize` login token.** [See the `/authorize/redirection/{guid}` GET API in the Auth section.](../APIs/indexMPS.md){target=_blank} <br><br> For a general example on how to make an API call and how to get an auth token from `/authorize` to pass to `/authorize/redirection/{guid}`, see [Generating a JWT by using an Authorize API call](./apiTutorial.md#generate-a-token-for-authorization){target=_blank}. |
 
 
     ``` javascript hl_lines="7 8 9"
@@ -151,7 +151,7 @@ The code snippet below adds both the KVM and IDER controls to the React applicat
 
     !!! success
         <figure class="figure-image">
-        <img src="..\..\assets\images\UIToolkit_react_success.png" alt="Figure 2: React reports successful deployment">
+        <img src="..\..\assets\images\screenshots\UIToolkit_react_success.png" alt="Figure 2: React reports successful deployment">
         <figcaption>Figure 3: Successful KVM Connection</figcaption>
         </figure>
 

@@ -11,7 +11,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 
 
 <figure class="figure-image">
-<img width="800" height="450" src="..\..\..\assets\images\RPC_Overview.png" alt="Figure 1: RPC Configuration">
+<img width="800" height="450" src="..\..\..\assets\images\diagrams\RPC_Overview.svg" style="height:800px;"alt="Figure 1: RPC Configuration">
 <figcaption>Figure 1: RPC configuration</figcaption>
 </figure>
 
@@ -132,7 +132,7 @@ If you are building an executable on a development system, you will copy the exe
 
     !!! success
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\RPC_Success.png" alt="Figure 2: Example output after configuration">
+        <img src="..\..\..\assets\images\screenshots\RPC_Success.png" alt="Figure 2: Example output after configuration">
         <figcaption>Figure 2: Example output after configuration</figcaption>
         </figure>
 

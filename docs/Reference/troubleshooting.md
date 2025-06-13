@@ -149,7 +149,7 @@ If a configuration becomes unworkable, it may be necessary to clean up the envir
 
 Do all the above if it becomes necessary to reset your environment completely. See instructions below.
 
-1. **Unprovision the Managed Device:** Use rpc.exe to dectivate the managed device as described in [RPC Activate/Deactivate Examples](./RPC/commandsRPC.md#RPCexamples). The `deactivate` parameter executes a full unprovision of the managed device. It is also possible to implement a full unprovision via MEBX. See [Unprovisioning](../Reference/MEBX/unprovision.md).
+1. **Unprovision the Managed Device:** Use rpc.exe to deactivate the managed device as described in [RPC Activate/Deactivate Examples](./RPC/commandsRPC.md#deactivate). The `deactivate` parameter executes a full unprovision of the managed device. It is also possible to implement a full unprovision via MEBX. See [Unprovisioning](../Reference/MEBX/unprovision.md).
 2. **Shut down Docker Services:** Use `docker image prune` and `docker image rm` to stop or remove all images, containers, and volumes, as described in [Build and Run Docker Images](../GetStarted/Cloud/setup.md#Builddockerimages).
 
 The best practice example below stops Docker and then prunes all volumes. 

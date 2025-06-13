@@ -22,7 +22,7 @@ Profiles provide configuration information to the firmware on platforms featurin
 
 2. Under the **Profiles** tab, click **New** in the top-right corner to create a profile.
    <figure class="figure-image">
-   <img src="..\..\..\assets\images\Console_NewProfile.png" alt="Figure 2: Create a new profile">
+   <img src="..\..\..\assets\images\screenshots\Console_NewProfile.png" alt="Figure 2: Create a new profile">
    <figcaption>Figure 2: Create a new profile</figcaption>
    </figure>
 
@@ -48,7 +48,7 @@ Profiles provide configuration information to the firmware on platforms featurin
 
     !!! example "Example CCM Profile"
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\Console_NewCCMProfile.png" alt="Figure 3: Example CCM profile">
+        <img src="..\..\..\assets\images\screenshots\Console_NewCCMProfile.png" alt="Figure 3: Example CCM profile">
         <figcaption>Figure 3: Example CCM profile</figcaption>
         </figure>
 

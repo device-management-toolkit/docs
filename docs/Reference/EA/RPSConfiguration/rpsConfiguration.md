@@ -48,7 +48,7 @@ To use Enterprise Assistant with Kong API Gateway, we need to configure a new ro
 1. Open the Enterprise Assistant `File > Settings` menu to configure the RPS connection.
 
     <figure class="figure-image">
-        <img src="..\..\..\..\assets\images\EA_SettingsEmpty.png" alt="Figure 1: Enterprise Assistant Settings Menu">
+        <img src="..\..\..\..\assets\images\screenshots\EA_SettingsEmpty.png" alt="Figure 1: Enterprise Assistant Settings Menu">
         <figcaption>Figure 1: Enterprise Assistant Settings Menu</figcaption>
     </figure>
 
@@ -68,7 +68,7 @@ To use Enterprise Assistant with Kong API Gateway, we need to configure a new ro
 
     !!! example "Example - Configured Settings"
         <figure class="figure-image">
-            <img src="..\..\..\..\assets\images\EA_SettingsFull.png" alt="Figure 2: Enterprise Assistant Settings Example">
+            <img src="..\..\..\..\assets\images\screenshots\EA_SettingsFull.png" alt="Figure 2: Enterprise Assistant Settings Example">
             <figcaption>Figure 2: Enterprise Assistant Settings Example</figcaption>
         </figure>
 
@@ -77,7 +77,7 @@ To use Enterprise Assistant with Kong API Gateway, we need to configure a new ro
 9. Start the connection by going to `File > Local Connect`.
 
     <figure class="figure-image">
-        <img src="..\..\..\..\assets\images\EA_Connected.png" alt="Figure 3: Enterprise Assistant Connecting to RPS">
+        <img src="..\..\..\..\assets\images\screenshots\EA_Connected.png" alt="Figure 3: Enterprise Assistant Connecting to RPS">
         <figcaption>Figure 3: Enterprise Assistant Connecting to RPS</figcaption>
     </figure>
 

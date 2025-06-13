@@ -25,7 +25,7 @@ The authentication process involves:
 After a device is provisioned, the administrator can use the management console to perform different control activities, such as [power actions (e.g., Reset)](../powerstates.md) without an onsite visit.
 
 <figure class="figure-image">
-<img src="..\..\..\assets\images\RemoteProvCert.png" alt="Figure 1: Certificates in the Toolkit: Provisioning and CIRA">
+<img src="..\..\..\assets\images\diagrams\RemoteProvCert.svg" style="height:800px;" alt="Figure 1: Certificates in the Toolkit: Provisioning and CIRA">
 <figcaption>Figure 1: Provisioning and CIRA</figcaption>
 </figure>
 

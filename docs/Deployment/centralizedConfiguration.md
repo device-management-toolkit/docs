@@ -82,14 +82,14 @@ The Consul configurations are stored in a local volume. When cleaning up contain
 6. Click **Key/Value** from the left-hand menu.
 
     <figure class="figure-image">
-    <img src="..\..\assets\images\Consul_KV_Overview.png" alt="Figure 1: Consul K/V Overview Page">
+    <img src="..\..\assets\images\screenshots\Consul_KV_Overview.png" alt="Figure 1: Consul K/V Overview Page">
     <figcaption>Figure 1: Consul K/V Overview Page</figcaption>
     </figure>
 
 7. Choose either the `/MPS` or `/RPS` directory, then `/config`.
 
     <figure class="figure-image">
-    <img src="..\..\assets\images\Consul_KV_MPS.png" alt="Figure 2: Consul K/V MPS Configuration">
+    <img src="..\..\assets\images\screenshots\Consul_KV_MPS.png" alt="Figure 2: Consul K/V MPS Configuration">
     <figcaption>Figure 2: Consul K/V MPS Configuration</figcaption>
     </figure>
 

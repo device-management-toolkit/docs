@@ -5,7 +5,7 @@ Console is an open-source management application that enables IT administrators 
 With Console, IT administrators can access detailed system information and perform essential management tasks, including power control, hardware inventory, and KVM-based remote access.
 
 <figure class="figure-image">
-  <img src="..\..\..\assets\images\Device_Management_Toolkit_Console.png" alt="Figure 1: Console Overview">
+  <img src="..\..\..\assets\images\diagrams\Console.svg" style="height:800px" alt="Figure 1: Console Overview">
   <figcaption>Figure 1: Console Overview</figcaption>
 </figure>
 

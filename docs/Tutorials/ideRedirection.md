@@ -55,7 +55,7 @@ The following sections describe how to:
 4. Click **Attach Disk Image (.iso)** button in the upper-right corner.
 
     <figure class="figure-image">
-    <img src="..\..\assets\images\SampleUI_StartIDER.png" alt="Figure 1: Start IDER Session">
+    <img src="..\..\assets\images\screenshots\SampleUI_StartIDER.png" alt="Figure 1: Start IDER Session">
     <figcaption>Figure 1: Start IDER Session</figcaption>
     </figure>
 
@@ -64,7 +64,7 @@ The following sections describe how to:
 1. Select the `.iso` file to mount to the AMT device.
 
     <figure class="figure-image">
-    <img src="..\..\assets\images\SampleUI_IDER_ChooseFile.png" alt="Figure 2: Choose .iso File">
+    <img src="..\..\assets\images\screenshots\SampleUI_IDER_ChooseFile.png" alt="Figure 2: Choose .iso File">
     <figcaption>Figure 2: Choose .iso File</figcaption>
     </figure>
 
@@ -73,7 +73,7 @@ The following sections describe how to:
 3. To verify the image was successfully mounted, view the available mounted drives on the AMT device. When the mount is listed, it is ready.
 
     <figure class="figure-image">
-    <img src="..\..\assets\images\SampleUI_IDER_Drives.png" alt="Figure 3: View Mounted Drives">
+    <img src="..\..\assets\images\screenshots\SampleUI_IDER_Drives.png" alt="Figure 3: View Mounted Drives">
     <figcaption>Figure 3: View Mounted Drives</figcaption>
     </figure>
 
@@ -82,7 +82,7 @@ The following sections describe how to:
 1. Reset the device to IDE-R (CD-ROM).
 
     <figure class="figure-image">
-    <img src="..\..\assets\images\SampleUI_IDER_Reset.png" alt="Figure 4: Reset to IDE-R">
+    <img src="..\..\assets\images\screenshots\SampleUI_IDER_Reset.png" alt="Figure 4: Reset to IDE-R">
     <figcaption>Figure 4: Reset to IDE-R</figcaption>
     </figure>
 
@@ -90,7 +90,7 @@ The following sections describe how to:
 
     !!! success
         <figure class="figure-image">
-        <img src="..\..\assets\images\SampleUI_IDER_netboot.png" alt="Figure 5: IDER Session">
+        <img src="..\..\assets\images\screenshots\SampleUI_IDER_netboot.png" alt="Figure 5: IDER Session">
         <figcaption>Figure 5: IDER Session</figcaption>
         </figure>
 

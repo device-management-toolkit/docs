@@ -6,7 +6,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
     In a production environment, RPC can be deployed with an in-band manageability agent to distribute it to the fleet of AMT devices. The in-band manageability agent can invoke RPC to run and activate the AMT devices.
 
 <figure class="figure-image">
-<img src="..\..\..\assets\images\RPC_Overview.png" alt="Figure 1: RPC Configuration">
+<img src="..\..\..\assets\images\diagrams\RPC_Overview.svg" style="height:800px" alt="Figure 1: RPC Configuration">
 <figcaption>Figure 1: RPC Configuration</figcaption>
 </figure>
 
