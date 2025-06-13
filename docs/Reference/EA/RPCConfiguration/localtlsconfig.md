@@ -80,7 +80,7 @@ See [EA Configuration for RPC-Go](rpcgoConfiguration.md) for steps on how to set
 
     !!! success "Success - TLS Configured"
         <figure class="figure-image">
-            <img src="..\..\..\..\assets\images\RPC_EALocalTLSSuccess.png" alt="Figure 1: TLS Configured Example">
+            <img src="..\..\..\..\assets\images\screenshots\RPC_EALocalTLSSuccess.png" alt="Figure 1: TLS Configured Example">
             <figcaption>Figure 1: TLS Configured Example</figcaption>
         </figure>
 

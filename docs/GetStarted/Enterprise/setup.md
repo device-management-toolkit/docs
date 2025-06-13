@@ -11,13 +11,13 @@
 ## What You'll Do
 
 <figure class="figure-image">
-  <img src="..\..\..\assets\images\Device_Management_Toolkit_Console_Deployment.png" alt="Figure 1: Get Started with Console">
+  <img src="..\..\..\assets\images\diagrams\Console_Deployment.svg" style="height:800px" alt="Figure 1: Get Started with Console">
   <figcaption>Figure 1: Get Started with Console</figcaption>
 </figure>
 
 **To complete a deployment:**
 
-1. [Download and run Console](#get-console)
+1. [Download and run Console](#download)
 2. Create a [CCM Profile](createProfileCCM.md) or [ACM Profile](createProfileACM.md)
 3. [Export Profile](exportProfile.md)
 4. [Activate and configure an Intel® AMT device](activateDevice.md)
@@ -41,7 +41,7 @@
 
 1. Run the executable, and a terminal will open containing the Console process.
     <figure class="figure-image">
-      <img src="..\..\..\assets\images\Console_Configuration_FirstTime.png" alt="Figure 2: Console Start">
+      <img src="..\..\..\assets\images\screenshots\Console_Configuration_FirstTime.png" alt="Figure 2: Console Start">
       <figcaption>Figure 2: Console Start</figcaption>
     </figure>
 
@@ -94,7 +94,7 @@
 
     !!! success
         <figure class="figure-image">
-          <img src="..\..\..\assets\images\Console_Start.png" alt="Figure 3: Console Process Startup">
+          <img src="..\..\..\assets\images\screenshots\Console_Start.png" alt="Figure 3: Console Process Startup">
           <figcaption>Figure 3: Console Process Startup</figcaption>
         </figure>
 
@@ -104,7 +104,7 @@
 
     !!! example
         <figure class="figure-image">
-          <img src="..\..\..\assets\images\DMT_Console_Login.png" alt="Figure 4: Console UI Startup">
+          <img src="..\..\..\assets\images\screenshots\DMT_Console_Login.png" alt="Figure 4: Console UI Startup">
           <figcaption>Figure 4: Console UI Startup</figcaption>
         </figure>
 

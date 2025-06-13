@@ -15,7 +15,7 @@ In **Profiles**, the Device Management Toolkit supports Client Initiated Remote 
 
 2. Under the **Profiles** tab, click **+ Add New** in the top-right corner to create a profile.
     <figure class="figure-image">
-    <img src="..\..\..\assets\images\RPS_NewProfile.png" alt="Figure 1: Create a new profile">
+    <img src="..\..\..\assets\images\screenshots\RPS_NewProfile.png" alt="Figure 1: Create a new profile">
     <figcaption>Figure 1: Create a new profile</figcaption>
     </figure>
 
@@ -56,7 +56,7 @@ In **Profiles**, the Device Management Toolkit supports Client Initiated Remote 
 
     !!! example "Example profile with TLS Config"
          <figure class="figure-image">
-         <img src="..\..\..\assets\images\RPS_CreateProfileTLSConfig.png" alt="Figure 2: Example profile with TLS Config">
+         <img src="..\..\..\assets\images\screenshots\RPS_CreateProfileTLSConfig.png" alt="Figure 2: Example profile with TLS Config">
          <figcaption>Figure 2: Example profile with TLS Config</figcaption>
          </figure>
 
@@ -68,7 +68,7 @@ In **Profiles**, the Device Management Toolkit supports Client Initiated Remote 
 15. Sign in to Vault with the `VAULT_TOKEN` stored in the .env file or Root Token (Ex: hvs.QnhrbjXyH08UD7y6PHBDmjq9) generated when unsealing and initializing Vault in your cloud deployment.
 
     <figure class="figure-image">
-         <img src="..\..\..\assets\images\VaultLogin.png" alt="Figure 3: Login with the token">
+         <img src="..\..\..\assets\images\screenshots\VaultLogin.png" alt="Figure 3: Login with the token">
          <figcaption>Figure 3: Login with the token</figcaption>
     </figure>
 
@@ -76,7 +76,7 @@ In **Profiles**, the Device Management Toolkit supports Client Initiated Remote 
 
     !!! example "Example of Certificate Storage"
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\CertExample.png" alt="Figure 4: Digital Certificate">
+        <img src="..\..\..\assets\images\screenshots\CertExample.png" alt="Figure 4: Digital Certificate">
         <figcaption>Figure 4: Digital Certificate</figcaption>
         </figure>
 
