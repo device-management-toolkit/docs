@@ -25,7 +25,7 @@ The following services are assumed to be configured and running in your enterpri
 2. Open the Enterprise Assistant `File > Settings` menu to configure the RPC-Go connection.
 
     <figure class="figure-image">
-        <img src="..\..\..\..\assets\images\EA_SettingsEmpty.png" alt="Figure 1: Enterprise Assistant Settings Menu">
+        <img src="..\..\..\..\assets\images\screenshots\EA_SettingsEmpty.png" alt="Figure 1: Enterprise Assistant Settings Menu">
         <figcaption>Figure 1: Enterprise Assistant Settings Menu</figcaption>
     </figure>
 
@@ -47,7 +47,7 @@ The following services are assumed to be configured and running in your enterpri
 
     !!! example "Example - Configured Settings"
         <figure class="figure-image">
-            <img src="..\..\..\..\assets\images\EA_RPCSettingsFull.png" alt="Figure 2: Enterprise Assistant Settings Example">
+            <img src="..\..\..\..\assets\images\screenshots\EA_RPCSettingsFull.png" alt="Figure 2: Enterprise Assistant Settings Example">
             <figcaption>Figure 2: Enterprise Assistant Settings Example</figcaption>
         </figure>
 
@@ -58,7 +58,7 @@ The following services are assumed to be configured and running in your enterpri
 13. The HTTP server should show as started now in the Console output.
 
     <figure class="figure-image">
-        <img width=400px src="..\..\..\..\assets\images\EA_RPCHTTPStart.png" alt="Figure 3: Enterprise Assistant Connecting to RPS">
+        <img width=400px src="..\..\..\..\assets\images\screenshots\EA_RPCHTTPStart.png" alt="Figure 3: Enterprise Assistant Connecting to RPS">
         <figcaption>Figure 3: Enterprise Assistant HTTP Server Started</figcaption>
     </figure>
 

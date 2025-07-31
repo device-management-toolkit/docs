@@ -202,7 +202,7 @@ Now that the strings are translated and the deployment configurations are update
 
     !!! example "Example - Sample Web UI Home Page"
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\SampleUI_EnglishTranslation.png" alt="Figure 1: Sample Web UI English Login Page">
+        <img src="..\..\..\assets\images\screenshots\SampleUI_EnglishTranslation.png" alt="Figure 1: Sample Web UI English Login Page">
         <figcaption>Figure 1: Sample Web UI English Login page</figcaption>
         </figure>
 
@@ -219,7 +219,7 @@ Now that the strings are translated and the deployment configurations are update
 
     !!! example "Example - Sample Web UI Home Page"
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\SampleUI_FrenchTranslation.png" alt="Figure 2: Sample Web UI French Login Page">
+        <img src="..\..\..\assets\images\screenshots\SampleUI_FrenchTranslation.png" alt="Figure 2: Sample Web UI French Login Page">
         <figcaption>Figure 2: Sample Web UI French Login page</figcaption>
         </figure>
 

@@ -31,7 +31,7 @@ The following are requirements to configure and connect an AMT device within an 
 
 2. In the top-right corner, click **Add New.**
      <figure class="figure-image">
-     <img src="..\..\..\..\assets\images\RPS_New8021xConfig.png" alt="Figure 1: Create a new IEEE802.1x Config">
+     <img src="..\..\..\..\assets\images\screenshots\RPS_New8021xConfig.png" alt="Figure 1: Create a new IEEE802.1x Config">
      <figcaption>Figure 1: Create a new IEEE802.1x Config</figcaption>
      </figure>
 
@@ -56,7 +56,7 @@ The following are requirements to configure and connect an AMT device within an 
     
     !!! example "Example Wired IEEE802.1x Config"
         <figure class="figure-image">
-        <img src="..\..\..\..\assets\images\RPS_Create8021xConfig.png" alt="Figure 2: Example Wired IEEE802.1x Config">
+        <img src="..\..\..\..\assets\images\screenshots\RPS_Create8021xConfig.png" alt="Figure 2: Example Wired IEEE802.1x Config">
         <figcaption>Figure 2: Example Wired IEEE802.1x Config</figcaption>
         </figure>
 
@@ -74,7 +74,7 @@ The following are requirements to configure and connect an AMT device within an 
 
     !!! example "Example ACM Profile with IEEE802.1x"
         <figure class="figure-image">
-        <img src="..\..\..\..\assets\images\RPS_CreateProfile_8021x.png" alt="Figure 3: Example ACM profile with IEEE802.1x">
+        <img src="..\..\..\..\assets\images\screenshots\RPS_CreateProfile_8021x.png" alt="Figure 3: Example ACM profile with IEEE802.1x">
         <figcaption>Figure 3: Example ACM profile with IEEE802.1x</figcaption>
         </figure>
 
@@ -90,7 +90,7 @@ There can be a **maximum of 8** wireless IEEE8021x Config created (per tenant). 
 
 2. In the top-right corner, click **Add New.**
      <figure class="figure-image">
-     <img src="..\..\..\..\assets\images\RPS_New8021xConfig.png" alt="Figure 1: Create a new IEEE802.1x Config">
+     <img src="..\..\..\..\assets\images\screenshots\RPS_New8021xConfig.png" alt="Figure 1: Create a new IEEE802.1x Config">
      <figcaption>Figure 4: Create a new IEEE802.1x Config</figcaption>
      </figure>
 
@@ -111,7 +111,7 @@ There can be a **maximum of 8** wireless IEEE8021x Config created (per tenant). 
     
     !!! example "Example Wireless IEEE802.1x Config"
         <figure class="figure-image">
-        <img src="..\..\..\..\assets\images\RPS_Create8021xWireless.png" alt="Figure 2: Example Wireless IEEE802.1x Config">
+        <img src="..\..\..\..\assets\images\screenshots\RPS_Create8021xWireless.png" alt="Figure 2: Example Wireless IEEE802.1x Config">
         <figcaption>Figure 5: Example Wireless IEEE802.1x Config</figcaption>
         </figure>
 
@@ -129,6 +129,6 @@ There can be a **maximum of 8** wireless IEEE8021x Config created (per tenant). 
 
     !!! example "Example Wireless Config with IEEE802.1x"
         <figure class="figure-image">
-        <img src="..\..\..\..\assets\images\RPS_CreateWireless_8021xconfig.png" alt="Figure 3: Example Wireless Config with IEEE802.1x">
+        <img src="..\..\..\..\assets\images\screenshots\RPS_CreateWireless_8021xconfig.png" alt="Figure 3: Example Wireless Config with IEEE802.1x">
         <figcaption>Figure 6: Example Wireless Config with IEEE802.1x</figcaption>
         </figure>

@@ -32,7 +32,7 @@
 
 *[MPS]: Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices. 
 
-*[MQTT]: Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.
+*[MQTT]: Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transferring messages between devices.
 
 *[OOB Management]: Out-of-band Management - A remote, hardware-based management technology that allows administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols regardless of OS state.
 

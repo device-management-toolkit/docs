@@ -333,7 +333,7 @@ Add the root token as a secret to the AKS cluster so that the services can acces
 
         !!! example "Example - Incorrect MPS Certificate"
             <figure class="figure-image">
-                <img src="..\..\..\..\assets\images\MPS_Certificate.png" alt="Figure 1: Incorrect Certificate">
+                <img src="..\..\..\..\assets\images\screenshots\MPS_Certificate.png" alt="Figure 1: Incorrect Certificate">
                 <figcaption>Figure 1: Incorrect Certificate</figcaption>
             </figure>
             

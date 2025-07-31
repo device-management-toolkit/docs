@@ -16,13 +16,13 @@ Console has the ability to view both the correctly formatted WSMAN input sent to
 4. Select the **Explorer** tab in the right-hand side menu.
 
     <figure class="figure-image">
-    <img src="..\..\..\..\assets\images\Console_StartWSMAN.png" alt="Figure 1: Start WSMAN Explorer">
+    <img src="..\..\..\..\assets\images\screenshots\Console_StartWSMAN.png" alt="Figure 1: Start WSMAN Explorer">
     <figcaption>Figure 1: Start WSMAN Explorer</figcaption>
     </figure>
 
 5. Select a call from the dropdown menu in the upper-right to view.
 
     <figure class="figure-image">
-    <img src="..\..\..\..\assets\images\Console_WSMANMenu.png" alt="Figure 2: View a WSMAN Call">
+    <img src="..\..\..\..\assets\images\screenshots\Console_WSMANMenu.png" alt="Figure 2: View a WSMAN Call">
     <figcaption>Figure 2: View a WSMAN Call</figcaption>
     </figure>

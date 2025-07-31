@@ -5,7 +5,7 @@
 2. In the upper-right, select **Add a Device**.
 
     <figure class="figure-image">
-        <img src="..\..\..\assets\images\Console_AddDevices.png" alt="Figure 1: Add a New Device">
+        <img src="..\..\..\assets\images\screenshots\Console_AddDevices.png" alt="Figure 1: Add a New Device">
         <figcaption>Figure 1: Add a New Device</figcaption>
     </figure>
 
@@ -35,7 +35,7 @@
 
     !!! example "Example - Add a New Device"
         <figure class="figure-image">
-            <img width=600 src="..\..\..\assets\images\Console_AddDevice_Full.png" alt="Figure 2: Add a New Device Example">
+            <img width=600 src="..\..\..\assets\images\screenshots\Console_AddDevice_Full.png" alt="Figure 2: Add a New Device Example">
             <figcaption>Figure 2: Add a New Device Example</figcaption>
         </figure>
 

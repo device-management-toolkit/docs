@@ -52,7 +52,7 @@ Update the connection string and a folder name for your db either in your ENV or
 1. Create a new folder in `./src/data`. The name of the new folder should be the name you supplied for the `db_provider` property, which is `mssql` in the example above.
 
      <figure class="figure-image">
-     <img src="..\..\..\assets\images\DbFolder.png" alt="Figure 2: New folder mssql" style="width:224px">
+     <img src="..\..\..\assets\images\screenshots\DbFolder.png" alt="Figure 2: New folder mssql" style="width:224px">
      <figcaption>Figure 2: New folder mssql</figcaption>
      </figure>
 
