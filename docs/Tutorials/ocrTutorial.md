@@ -1,23 +1,21 @@
 
 
-Intel® One-Click Recovery (OCR) allows IT administrators to remotely trigger a secure and reliable boot to a recovery application, ensuring recovery from system failures, bare-metal scenarios, or connectivity issues using Intel AMT's out-of-band (OOB) connection.
+Intel® One-Click Recovery (OCR) enables IT administrators to remotely and securely boot a device into a recovery environment using Intel AMT's out-of-band (OOB) connection. This ensures reliable recovery from system failures, bare-metal states, or connectivity issues.
 
-The Management Presence Server (MPS) in Cloud deployment now supports issuing a reset to HTTPS Boot power action, allowing IT administrators to initiate recovery via secure network boot from a specified URL.
+In cloud deployments, the Management Presence Server (MPS) now supports a secure power action to initiate HTTPS Boot, allowing recovery from a specified network URL.
 
-## Supported Recovery Options
+## Supported Recovery Options in OCR
 
-OCR supports three recovery modes:
+- **UEFI HTTPS Network Boot**: Securely boot a recovery image over HTTPS.
 
-- **UEFI HTTPS Network Boot**: Perform a network-based recovery using encrypted HTTPS.
-
-- **Microsoft Windows Recovery Environment (WinRE)**: Boot into Windows Recovery for troubleshooting and repair.
+- **Windows Recovery Environment (WinRE)**: Access Windows tools for repair and troubleshooting.
 
 - **Local Pre-Boot Application (PBA)**: Launch a locally installed recovery or diagnostic tool.
 
 !!! info "Future Enhancements"
 
-    - MPS currently only supports HTTPS Network Boot feature.
-    - HTTPS Boot feature only works when the device is connected via a wired network.
+    - Currently, MPS supports only the HTTPS Network Boot feature.
+    - The HTTPS Boot feature works only when the device is connected via a wired network.
 
     We plan to include **Wireless support** and add additional **One Click Recovery features** in future updates.  
 
@@ -31,13 +29,18 @@ Before using HTTPS Network Boot, ensure the following prerequisites are met:
       <img src="..\..\assets\images\OCR_HTTPSBOOT_BIOS.png" alt="Figure 1: Enable HTTP(S) Boot in BIOS">
     </figure>
 
-2. Set up an HTTPS server to host the ISO.
+2. When recovering a device using an ISO that isn’t signed by a trusted certificate authority, you’ll need to disable Secure Boot in the BIOS settings.
+    <figure class="figure-image">
+      <img src="..\..\assets\images\OCR_MPS_Disable_Secure_Boot.jpg" alt="Figure 2: Disable Secure Boot in BIOS">
+    </figure>
 
-    !!! info "HTTPS Server" 
-        - In this guide, the HTTPS server is running on the same machine as the containers, serving a full Ubuntu LTS image at https://192.168.88.250:8500/ubuntu.iso.
-        - Instructions for setting up an HTTPS server are not included here, so please ensure you have one ready. If you haven’t set it up yet, there are many helpful resources available online to guide you.
+3. Set up an HTTPS server to host the ISO.
 
-3. Make sure that the device shows as connected in the Sample UI or through get device MPS API 
+    !!! info "HTTPS Server"      
+        - For this guide, the HTTPS server is assumed to be running on the same host as the containers and is serving a full Ubuntu LTS image from: `https://192.168.88.250:8500/ubuntu.iso`.
+        - Setup instructions for the HTTPS server are not included here. Please ensure you have a functional HTTPS server configured beforehand. If needed, numerous online resources are available to help you get started.
+
+4. Make sure that the device shows as connected in the Sample UI or via the Get Device MPS API 
 
 
 ## HTTPS Boot using Cloud Deployment
@@ -48,7 +51,7 @@ You can use our [MPS APIs](#triggering-https-boot-via-mps-apis) to perform recov
 1. Make sure that the target device shows as connected
     
     <figure class="figure-image">
-      <img src="..\..\assets\images\OCR_MPS_Device_Connected.png" alt="Figure 2: Device connected to MPS">
+      <img src="..\..\assets\images\OCR_MPS_Device_Connected.png" alt="Figure 3: Device connected to MPS">
     </figure>
 
 2. Enable `OCR` feature in `General AMT Info` Section.
@@ -58,19 +61,19 @@ You can use our [MPS APIs](#triggering-https-boot-via-mps-apis) to perform recov
         If the **OCR** checkbox is greyed out, this feature is not supported on your device. 
     
     <figure class="figure-image">
-      <img src="..\..\assets\images\OCR_MPS_Enable_HTTPS_BOOT.png" alt="Figure 3: Enable HTTPS Network Boot">
+      <img src="..\..\assets\images\OCR_MPS_Enable_HTTPS_BOOT.png" alt="Figure 4: Enable HTTPS Network Boot">
     </figure>
 
 3. Upload the Root Certificate of the HTTPS server hosting the ISO via the `Add New` certificates option.
     
     <figure class="figure-image">
-      <img src="..\..\assets\images\OCR_MPS_ADD_TRUSTEDROOTCERT.png" alt="Figure 4: Add Root Certificate of HTTPS Server">
+      <img src="..\..\assets\images\OCR_MPS_ADD_TRUSTEDROOTCERT.png" alt="Figure 5: Add Root Certificate of HTTPS Server">
     </figure>
 
 4. Click on the three-dot menu and select **Reset to HTTPS Boot (OCR)**.
     
     <figure class="figure-image">
-      <img src="..\..\assets\images\OCR_MPS_Reset_to_HTTPS_Boot.png" alt="Figure 5: Reset to HTTPS Boot (OCR)">
+      <img src="..\..\assets\images\OCR_MPS_Reset_to_HTTPS_Boot.png" alt="Figure 6: Reset to HTTPS Boot (OCR)">
     </figure>
 
 5. Enter the ISO URL (e.g., https://192.168.88.250:8500/ubuntu.iso).
@@ -80,7 +83,7 @@ You can use our [MPS APIs](#triggering-https-boot-via-mps-apis) to perform recov
         Ensure the HTTPS Server ISO URL is accessible to the device.
     
     <figure class="figure-image">
-      <img src="..\..\assets\images\OCR_MPS_HTTPSBOOT_URL.png" alt="Figure 6: URL to the .iso hosted on HTTPS Server">
+      <img src="..\..\assets\images\OCR_MPS_HTTPSBOOT_URL.png" alt="Figure 7: URL to the .iso hosted on HTTPS Server">
     </figure>
 
 6. Optionally, enable `Enforce Secure Boot` to boot only a secure `.iso` file.
@@ -94,11 +97,11 @@ You can use our [MPS APIs](#triggering-https-boot-via-mps-apis) to perform recov
 8. Optionally, Connect to KVM and verify that the device loads the ISO.
     
     <figure class="figure-image">
-      <img src="..\..\assets\images\OCR_MPS_HTTPSBoot_Recovery_Start.png" alt="Figure 7: View KVM screen while the ISO boots">
+      <img src="..\..\assets\images\OCR_MPS_HTTPSBoot_Recovery_Start.png" alt="Figure 8: View KVM screen while the ISO boots">
     </figure>
 
     <figure class="figure-image">
-      <img src="..\..\assets\images\OCR_MPS_HTTPS_BOOT_UbuntuOS.png" alt="Figure 8: Full Ubuntu LTS Boot">
+      <img src="..\..\assets\images\OCR_MPS_HTTPS_BOOT_UbuntuOS.png" alt="Figure 9: Full Ubuntu LTS Boot">
     </figure>
     
     !!! bug "KVM Keyboard Issue"
@@ -225,7 +228,7 @@ You can use our [MPS APIs](#triggering-https-boot-via-mps-apis) to perform recov
 7. Optionally, Connect to KVM and verify that the device loads the ISO.
     
     <figure class="figure-image">
-      <img src="..\..\assets\images\OCR_HTTPSBoot_Recovery_Start_MPS.png" alt="Figure 7: View KVM screen while the ISO boots">
+      <img src="..\..\assets\images\OCR_HTTPSBoot_Recovery_Start_MPS.png" alt="Figure 10: View KVM screen while the ISO boots">
     </figure>
 
 #### API Reference
