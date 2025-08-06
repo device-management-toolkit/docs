@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#supported-recovery-options" class="md-skip">
+        <a href="#supported-recovery-options-in-ocr" class="md-skip">
           Skip to content
         </a>
       
@@ -2105,9 +2105,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#supported-recovery-options" class="md-nav__link">
+  <a href="#supported-recovery-options-in-ocr" class="md-nav__link">
     <span class="md-ellipsis">
-      Supported Recovery Options
+      Supported Recovery Options in OCR
     </span>
   </a>
   
@@ -4638,16 +4638,15 @@
 
   <h1>One Click Recovery (OCR)</h1>
 
-<p>Intel® One-Click Recovery (OCR) allows IT administrators to remotely trigger a secure and reliable boot to a recovery application, ensuring recovery from system failures, bare-metal scenarios, or connectivity issues using Intel AMT's out-of-band (OOB) connection.</p>
-<p>The Management Presence Server (MPS) in Cloud deployment now supports issuing a reset to HTTPS Boot power action, allowing IT administrators to initiate recovery via secure network boot from a specified URL.</p>
-<h2 id="supported-recovery-options">Supported Recovery Options<a class="headerlink" href="#supported-recovery-options" title="Permanent link">&para;</a></h2>
-<p>OCR supports three recovery modes:</p>
+<p>Intel® One-Click Recovery (OCR) enables IT administrators to remotely and securely boot a device into a recovery environment using Intel AMT's out-of-band (OOB) connection. This ensures reliable recovery from system failures, bare-metal states, or connectivity issues.</p>
+<p>In cloud deployments, the Management Presence Server (MPS) now supports a secure power action to initiate HTTPS Boot, allowing recovery from a specified network URL.</p>
+<h2 id="supported-recovery-options-in-ocr">Supported Recovery Options in OCR<a class="headerlink" href="#supported-recovery-options-in-ocr" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
-<p><strong>UEFI HTTPS Network Boot</strong>: Perform a network-based recovery using encrypted HTTPS.</p>
+<p><strong>UEFI HTTPS Network Boot</strong>: Securely boot a recovery image over HTTPS.</p>
 </li>
 <li>
-<p><strong>Microsoft Windows Recovery Environment (WinRE)</strong>: Boot into Windows Recovery for troubleshooting and repair.</p>
+<p><strong>Windows Recovery Environment (WinRE)</strong>: Access Windows tools for repair and troubleshooting.</p>
 </li>
 <li>
 <p><strong>Local Pre-Boot Application (PBA)</strong>: Launch a locally installed recovery or diagnostic tool.</p>
@@ -4656,8 +4655,8 @@
 <div class="admonition info">
 <p class="admonition-title">Future Enhancements</p>
 <ul>
-<li>MPS currently only supports HTTPS Network Boot feature.</li>
-<li>HTTPS Boot feature only works when the device is connected via a wired network.</li>
+<li>Currently, MPS supports only the HTTPS Network Boot feature.</li>
+<li>The HTTPS Boot feature works only when the device is connected via a wired network.</li>
 </ul>
 <p>We plan to include <strong>Wireless support</strong> and add additional <strong>One Click Recovery features</strong> in future updates.  </p>
 </div>
@@ -4671,17 +4670,23 @@
 </figure></p>
 </li>
 <li>
+<p>When recovering a device using an ISO that isn’t signed by a trusted certificate authority, you’ll need to disable Secure Boot in the BIOS settings.
+    <figure class="figure-image">
+      <img src="..\..\assets\images\OCR_MPS_Disable_Secure_Boot.jpg" alt="Figure 2: Disable Secure Boot in BIOS">
+    </figure></p>
+</li>
+<li>
 <p>Set up an HTTPS server to host the ISO.</p>
 <div class="admonition info">
 <p class="admonition-title">HTTPS Server</p>
 <ul>
-<li>In this guide, the HTTPS server is running on the same machine as the containers, serving a full Ubuntu LTS image at https://192.168.88.250:8500/ubuntu.iso.</li>
-<li>Instructions for setting up an HTTPS server are not included here, so please ensure you have one ready. If you haven’t set it up yet, there are many helpful resources available online to guide you.</li>
+<li>For this guide, the HTTPS server is assumed to be running on the same host as the containers and is serving a full Ubuntu LTS image from: <code>https://192.168.88.250:8500/ubuntu.iso</code>.</li>
+<li>Setup instructions for the HTTPS server are not included here. Please ensure you have a functional HTTPS server configured beforehand. If needed, numerous online resources are available to help you get started.</li>
 </ul>
 </div>
 </li>
 <li>
-<p>Make sure that the device shows as connected in the Sample UI or through get device MPS API </p>
+<p>Make sure that the device shows as connected in the Sample UI or via the Get Device MPS API </p>
 </li>
 </ol>
 <h2 id="https-boot-using-cloud-deployment">HTTPS Boot using Cloud Deployment<a class="headerlink" href="#https-boot-using-cloud-deployment" title="Permanent link">&para;</a></h2>
@@ -4691,7 +4696,7 @@
 <li>
 <p>Make sure that the target device shows as connected</p>
 <p><figure class="figure-image">
-  <img src="..\..\assets\images\OCR_MPS_Device_Connected.png" alt="Figure 2: Device connected to MPS">
+  <img src="..\..\assets\images\OCR_MPS_Device_Connected.png" alt="Figure 3: Device connected to MPS">
 </figure></p>
 </li>
 <li>
@@ -4701,19 +4706,19 @@
 <p>If the <strong>OCR</strong> checkbox is greyed out, this feature is not supported on your device. </p>
 </div>
 <p><figure class="figure-image">
-  <img src="..\..\assets\images\OCR_MPS_Enable_HTTPS_BOOT.png" alt="Figure 3: Enable HTTPS Network Boot">
+  <img src="..\..\assets\images\OCR_MPS_Enable_HTTPS_BOOT.png" alt="Figure 4: Enable HTTPS Network Boot">
 </figure></p>
 </li>
 <li>
 <p>Upload the Root Certificate of the HTTPS server hosting the ISO via the <code>Add New</code> certificates option.</p>
 <p><figure class="figure-image">
-  <img src="..\..\assets\images\OCR_MPS_ADD_TRUSTEDROOTCERT.png" alt="Figure 4: Add Root Certificate of HTTPS Server">
+  <img src="..\..\assets\images\OCR_MPS_ADD_TRUSTEDROOTCERT.png" alt="Figure 5: Add Root Certificate of HTTPS Server">
 </figure></p>
 </li>
 <li>
 <p>Click on the three-dot menu and select <strong>Reset to HTTPS Boot (OCR)</strong>.</p>
 <p><figure class="figure-image">
-  <img src="..\..\assets\images\OCR_MPS_Reset_to_HTTPS_Boot.png" alt="Figure 5: Reset to HTTPS Boot (OCR)">
+  <img src="..\..\assets\images\OCR_MPS_Reset_to_HTTPS_Boot.png" alt="Figure 6: Reset to HTTPS Boot (OCR)">
 </figure></p>
 </li>
 <li>
@@ -4723,7 +4728,7 @@
 <p>Ensure the HTTPS Server ISO URL is accessible to the device.</p>
 </div>
 <p><figure class="figure-image">
-  <img src="..\..\assets\images\OCR_MPS_HTTPSBOOT_URL.png" alt="Figure 6: URL to the .iso hosted on HTTPS Server">
+  <img src="..\..\assets\images\OCR_MPS_HTTPSBOOT_URL.png" alt="Figure 7: URL to the .iso hosted on HTTPS Server">
 </figure></p>
 </li>
 <li>
@@ -4739,10 +4744,10 @@
 <li>
 <p>Optionally, Connect to KVM and verify that the device loads the ISO.</p>
 <p><figure class="figure-image">
-  <img src="..\..\assets\images\OCR_MPS_HTTPSBoot_Recovery_Start.png" alt="Figure 7: View KVM screen while the ISO boots">
+  <img src="..\..\assets\images\OCR_MPS_HTTPSBoot_Recovery_Start.png" alt="Figure 8: View KVM screen while the ISO boots">
 </figure></p>
 <p><figure class="figure-image">
-  <img src="..\..\assets\images\OCR_MPS_HTTPS_BOOT_UbuntuOS.png" alt="Figure 8: Full Ubuntu LTS Boot">
+  <img src="..\..\assets\images\OCR_MPS_HTTPS_BOOT_UbuntuOS.png" alt="Figure 9: Full Ubuntu LTS Boot">
 </figure></p>
 <div class="admonition bug">
 <p class="admonition-title">KVM Keyboard Issue</p>
@@ -4834,7 +4839,7 @@
 <li>
 <p>Optionally, Connect to KVM and verify that the device loads the ISO.</p>
 <p><figure class="figure-image">
-  <img src="..\..\assets\images\OCR_HTTPSBoot_Recovery_Start_MPS.png" alt="Figure 7: View KVM screen while the ISO boots">
+  <img src="..\..\assets\images\OCR_HTTPSBoot_Recovery_Start_MPS.png" alt="Figure 10: View KVM screen while the ISO boots">
 </figure></p>
 </li>
 </ol>
