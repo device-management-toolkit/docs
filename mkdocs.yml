@@ -99,7 +99,8 @@ nav:
       - IDE-Redirection (IDER): Tutorials/ideRedirection.md
       - Wireless Activation: Tutorials/createWiFiConfig.md
       - Modify User Authentication: Tutorials/modifyUserAuth.md
-      - Localization:
+      - One Click Recovery (OCR): Tutorials/ocrTutorial.md
+      - Localization:   
           - Console: Tutorials/Localization/consoleLocalization.md
           - Sample Web UI: Tutorials/Localization/webuiLocalization.md
       - Scaling Tutorials:
