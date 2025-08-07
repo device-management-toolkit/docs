@@ -4703,7 +4703,7 @@
 <p>Enable <code>OCR</code> feature in <code>General AMT Info</code> Section.</p>
 <div class="admonition question">
 <p class="admonition-title">Is HTTPS Network Boot supported?</p>
-<p>If the <strong>OCR</strong> checkbox is greyed out, this feature is not supported on your device. </p>
+<p>If the <strong>HTTPS Network Boot</strong> checkbox is unchecked, the device does not support this feature.</p>
 </div>
 <p><figure class="figure-image">
   <img src="..\..\assets\images\OCR_MPS_Enable_HTTPS_BOOT.png" alt="Figure 4: Enable HTTPS Network Boot">
@@ -4794,6 +4794,10 @@
 <div class="highlight"><pre><span></span><code><span class="nt">&quot;ocr&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="nt">&quot;httpsBootSupported&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 </code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Is HTTPS Network Boot supported?</p>
+<p>If the <code>httpsBootSupported</code> property is <code>false</code>, the device does not support HTTPS Boot using Intel AMT. This is a read-only value reported by Intel AMT and cannot be modified.</p>
+</div>
 </li>
 <li>
 <p><strong>Enable OCR (if not already enabled):</strong></p>
