@@ -58,7 +58,7 @@ You can use our [MPS APIs](#triggering-https-boot-via-mps-apis) to perform recov
    
     !!! question "Is HTTPS Network Boot supported?"
 
-        If the **OCR** checkbox is greyed out, this feature is not supported on your device. 
+        If the **HTTPS Network Boot** checkbox is unchecked, the device does not support this feature.
     
     <figure class="figure-image">
       <img src="..\..\assets\images\OCR_MPS_Enable_HTTPS_BOOT.png" alt="Figure 4: Enable HTTPS Network Boot">
@@ -164,6 +164,10 @@ You can use our [MPS APIs](#triggering-https-boot-via-mps-apis) to perform recov
     "ocr": true,
     "httpsBootSupported": true
     ```
+
+    !!! question "Is HTTPS Network Boot supported?"
+
+        If the `httpsBootSupported` property is `false`, the device does not support HTTPS Boot using Intel AMT. This is a read-only value reported by Intel AMT and cannot be modified.
 
 
 4. **Enable OCR (if not already enabled):**
