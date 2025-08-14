@@ -2,362 +2,362 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://device-management-toolkit.github.io/docs/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Glossary/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/announcements/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/license/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/release-notes/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/videos/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/APIs/indexMPS/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/APIs/indexRPS/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Deployment/centralizedConfiguration/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Deployment/overview/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Deployment/secrets/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Deployment/upgradeVersion/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Deployment/Database/database/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Deployment/Database/nosql/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Deployment/Database/schema/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/GetStarted/overview/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/buildRPC/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/createCIRAConfig/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/createProfileACM/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/createProfileCCM/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/loginToUI/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/manageDevice/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/prerequisites/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/setup/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/GetStarted/Enterprise/activateDevice/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/GetStarted/Enterprise/addDevice/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/GetStarted/Enterprise/createProfileACM/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/GetStarted/Enterprise/createProfileCCM/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/GetStarted/Enterprise/exportProfile/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/GetStarted/Enterprise/manageDevice/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/GetStarted/Enterprise/setup/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/architectureOverview/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/faq/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/guids/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/logging/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/middlewareExtensibility/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/powerstates/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/productionVault/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/sslpostgresLocal/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/troubleshooting/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/Certificates/enrollCustomCertAMT/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/Certificates/generateProvisioningCert/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/Certificates/remoteProvisioning/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/Certificates/tls/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/Console/configuration/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/Console/overview/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/Console/securityConsole/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/Console/upgrade/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/Console/Features/ocr/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/Console/Features/wsmanExplorer/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/EA/overview/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/EA/tlsCertTemplate/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/EA/RPCConfiguration/localIEEE8021xConfig/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/EA/RPCConfiguration/localtlsconfig/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/EA/RPCConfiguration/rpcgoConfiguration/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/EA/RPSConfiguration/remoteIEEE8021xConfig/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/EA/RPSConfiguration/rpsConfiguration/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/MEBX/dnsSuffix/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/MEBX/unprovision/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/MPS/configuration/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/MPS/securityMPS/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/MQTT/customMqttEvents/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/MQTT/viewMqttEvents/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/RPC/buildRPC_Manual/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/RPC/commandsRPC/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/RPC/libraryRPC/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/RPC/transitionDeviceRPC/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/RPS/configuration/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/RPS/createProfileTLSConfig/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/RPS/securityRPS/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/UIToolkit/reactLocalization/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/UIToolkit/webpackConfig/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/UIToolkit/Bundles/kvmReact/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/UIToolkit/Bundles/serialOverLANReact/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/UIToolkit/Controls/kvmControl/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/UIToolkit/Controls/serialOverLANControl/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Tutorials/apiTutorial/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Tutorials/createWiFiConfig/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Tutorials/ideRedirection/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Tutorials/modifyUserAuth/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Tutorials/ocrTutorial/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Tutorials/uitoolkitReact/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Tutorials/Localization/consoleLocalization/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Tutorials/Localization/webuiLocalization/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Tutorials/Scaling/docker-swarm/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Tutorials/Scaling/overview/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Tutorials/Scaling/Kubernetes/deployingk8s-aks/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Tutorials/Scaling/Kubernetes/deployingk8s-eks/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Tutorials/Scaling/Kubernetes/deployingk8s/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Tutorials/Scaling/Kubernetes/service-mesh/</loc>
-         <lastmod>2025-08-07</lastmod>
+         <lastmod>2025-08-14</lastmod>
     </url>
 </urlset>

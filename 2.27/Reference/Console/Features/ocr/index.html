@@ -4629,7 +4629,7 @@
 <p><strong>UEFI HTTPS Network Boot</strong>: Perform a network-based recovery using encrypted HTTPS.</p>
 </li>
 <li>
-<p><strong>Microsoft Windows Recovery Environment (WinRE)</strong>: Boot into Windows Recovery for troubleshooting and repair.</p>
+<p><strong>Windows Recovery Environment (WinRE)</strong>: Boot into Windows Recovery for troubleshooting and repair.</p>
 </li>
 <li>
 <p><strong>Local Pre-Boot Application (PBA)</strong>: Launch a locally installed recovery or diagnostic tool.</p>
@@ -4653,11 +4653,17 @@
 </figure></p>
 </li>
 <li>
+<p>When recovering a device using an ISO that isn’t signed by a trusted certificate authority, you’ll need to disable Secure Boot in the BIOS settings.
+    <figure class="figure-image">
+      <img src="..\..\..\..\assets\images\OCR_Disable_Secure_Boot.jpg" alt="Figure 2: Disable Secure Boot in BIOS">
+    </figure></p>
+</li>
+<li>
 <p>Set up an HTTPS server to host the ISO.</p>
 <div class="admonition info">
 <p class="admonition-title">HTTPS Server</p>
 <ul>
-<li>In this guide, the HTTPS server is running on the same machine as the Console, serving a full Ubuntu LTS image at https://192.168.88.250:5443/ubuntu.iso.</li>
+<li>For this guide, the HTTPS server is assumed to be running on the same host as the Console and is serving a full Ubuntu LTS image from: <code>https://192.168.88.250:5443/ubuntu.iso</code>.</li>
 <li>Instructions for setting up an HTTPS server are not included here, so please ensure you have one ready. If you haven’t set it up yet, there are many helpful resources available online to guide you.</li>
 </ul>
 </div>
@@ -4676,10 +4682,10 @@
 </figure></p>
 </li>
 <li>
-<p>Enable <code>HTTPS Network boot</code> feature in <code>General AMT Info</code> Section.</p>
+<p>Enable <code>OCR</code> feature in <code>General AMT Info</code> Section.</p>
 <div class="admonition question">
 <p class="admonition-title">Is HTTPS Network Boot supported?</p>
-<p>If the <strong>HTTPS Network boot</strong> checkbox is greyed out, this feature is not supported on your device. </p>
+<p>If the <strong>HTTPS Network Boot</strong> checkbox is unchecked, the device does not support this feature.</p>
 </div>
 <p><figure class="figure-image">
   <img src="..\..\..\..\assets\images\OCR_Enable_HTTPS_BOOT.png" alt="Figure 3: Enable HTTPS Network Boot">
