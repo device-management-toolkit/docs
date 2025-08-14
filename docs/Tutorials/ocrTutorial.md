@@ -31,7 +31,7 @@ Before using HTTPS Network Boot, ensure the following prerequisites are met:
 
 2. When recovering a device using an ISO that isn’t signed by a trusted certificate authority, you’ll need to disable Secure Boot in the BIOS settings.
     <figure class="figure-image">
-      <img src="..\..\assets\images\OCR_MPS_Disable_Secure_Boot.jpg" alt="Figure 2: Disable Secure Boot in BIOS">
+      <img src="..\..\assets\images\OCR_Disable_Secure_Boot.jpg" alt="Figure 2: Disable Secure Boot in BIOS">
     </figure>
 
 3. Set up an HTTPS server to host the ISO.
