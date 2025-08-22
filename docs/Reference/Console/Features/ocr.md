@@ -10,7 +10,7 @@ OCR supports three recovery modes:
 
 - **UEFI HTTPS Network Boot**: Perform a network-based recovery using encrypted HTTPS.
 
-- **Microsoft Windows Recovery Environment (WinRE)**: Boot into Windows Recovery for troubleshooting and repair.
+- **Windows Recovery Environment (WinRE)**: Boot into Windows Recovery for troubleshooting and repair.
 
 - **Local Pre-Boot Application (PBA)**: Launch a locally installed recovery or diagnostic tool.
 
@@ -33,10 +33,15 @@ Before using HTTPS Network Boot, ensure the following prerequisites are met:
       <img src="..\..\..\..\assets\images\OCR_HTTPSBOOT_BIOS.png" alt="Figure 1: Enable HTTP(S) Boot in BIOS">
     </figure>
 
-2. Set up an HTTPS server to host the ISO.
+2. When recovering a device using an ISO that isn’t signed by a trusted certificate authority, you’ll need to disable Secure Boot in the BIOS settings.
+    <figure class="figure-image">
+      <img src="..\..\..\..\assets\images\OCR_Disable_Secure_Boot.jpg" alt="Figure 2: Disable Secure Boot in BIOS">
+    </figure>
+
+3. Set up an HTTPS server to host the ISO.
 
     !!! info "HTTPS Server" 
-        - In this guide, the HTTPS server is running on the same machine as the Console, serving a full Ubuntu LTS image at https://192.168.88.250:5443/ubuntu.iso.
+        - For this guide, the HTTPS server is assumed to be running on the same host as the Console and is serving a full Ubuntu LTS image from: `https://192.168.88.250:5443/ubuntu.iso`.
         - Instructions for setting up an HTTPS server are not included here, so please ensure you have one ready. If you haven’t set it up yet, there are many helpful resources available online to guide you.
 
 ### Triggering HTTPS Boot via Console
@@ -51,11 +56,11 @@ Before using HTTPS Network Boot, ensure the following prerequisites are met:
       <img src="..\..\..\..\assets\images\OCR_Connect_With_TLS.png" alt="Figure 2: Connect to a Device using TLS">
     </figure>
 
-2. Enable `HTTPS Network boot` feature in `General AMT Info` Section.
+2. Enable `OCR` feature in `General AMT Info` Section.
    
     !!! question "Is HTTPS Network Boot supported?"
 
-        If the **HTTPS Network boot** checkbox is greyed out, this feature is not supported on your device. 
+        If the **HTTPS Network Boot** checkbox is unchecked, the device does not support this feature.
     
     <figure class="figure-image">
       <img src="..\..\..\..\assets\images\OCR_Enable_HTTPS_BOOT.png" alt="Figure 3: Enable HTTPS Network Boot">
