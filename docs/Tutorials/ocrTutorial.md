@@ -12,14 +12,19 @@ In cloud deployments, the Management Presence Server (MPS) now supports a secure
 
 - **Local Pre-Boot Application (PBA)**: Launch a locally installed recovery or diagnostic tool.
 
-!!! info "Future Enhancements"
+## Where to Start
 
-    - Currently, MPS supports only the HTTPS Network Boot feature.
-    - The HTTPS Boot feature works only when the device is connected via a wired network.
+Depending on your recovery scenario, follow the appropriate section below:
 
-    We plan to include **Wireless support** and add additional **One Click Recovery features** in future updates.  
+- To recover using a **network-hosted ISO**, start with [HTTPS Boot](#https-boot).  
+- To boot into **Windows Recovery Environment**, go to [Boot to Windows Recovery Environment](#boot-to-windows-recovery-environment).  
+- To launch a **locally installed Pre-Boot Application**, continue with [Boot to Local PBA](#boot-to-local-pba).
 
-## Prerequisites for HTTPS Boot
+---
+
+## HTTPS Boot
+
+### Prerequisites for HTTPS Boot
 
 Before using HTTPS Network Boot, ensure the following prerequisites are met:
 
@@ -37,13 +42,13 @@ Before using HTTPS Network Boot, ensure the following prerequisites are met:
 3. Set up an HTTPS server to host the ISO.
 
     !!! info "HTTPS Server"      
-        - For this guide, the HTTPS server is assumed to be running on the same host as the containers and is serving a full Ubuntu LTS image from: `https://192.168.88.250:8500/ubuntu.iso`.
+        - For this guide, the HTTPS server is assumed to be running on the same host as the containers and is serving a full Ubuntu LTS image from: `https://192.168.88.216:5443/ubuntu.iso`.
         - Setup instructions for the HTTPS server are not included here. Please ensure you have a functional HTTPS server configured beforehand. If needed, numerous online resources are available to help you get started.
 
 4. Make sure that the device shows as connected in the Sample UI or via the Get Device MPS API 
 
+### HTTPS Boot using Cloud Deployment
 
-## HTTPS Boot using Cloud Deployment
 You can use our [MPS APIs](#triggering-https-boot-via-mps-apis) to perform recovery using HTTPS boot, but for quick demos and to understand how you can first test it, we've also implemented it in the [Sample UI](#triggering-https-boot-using-sample-ui).
 
 ### Triggering HTTPS Boot using Sample UI
@@ -54,14 +59,14 @@ You can use our [MPS APIs](#triggering-https-boot-via-mps-apis) to perform recov
       <img src="..\..\assets\images\OCR_MPS_Device_Connected.png" alt="Figure 3: Device connected to MPS">
     </figure>
 
-2. Enable `OCR` feature in `General AMT Info` Section.
+2. Enable `One Click Recovery (OCR)` feature in `General AMT Info` Section.
    
     !!! question "Is HTTPS Network Boot supported?"
 
-        If the **HTTPS Network Boot** checkbox is unchecked, the device does not support this feature.
+        See the snapshot below — if the **HTTPS Network Boot** field shows **Supported**, the feature is available on the device.
     
     <figure class="figure-image">
-      <img src="..\..\assets\images\OCR_MPS_Enable_HTTPS_BOOT.png" alt="Figure 4: Enable HTTPS Network Boot">
+      <img src="..\..\assets\images\OCR_MPS_HTTPS_Boot_Supported.png" alt="Figure 4: Enable HTTPS Network Boot">
     </figure>
 
 3. Upload the Root Certificate of the HTTPS server hosting the ISO via the `Add New` certificates option.
@@ -76,7 +81,7 @@ You can use our [MPS APIs](#triggering-https-boot-via-mps-apis) to perform recov
       <img src="..\..\assets\images\OCR_MPS_Reset_to_HTTPS_Boot.png" alt="Figure 6: Reset to HTTPS Boot (OCR)">
     </figure>
 
-5. Enter the ISO URL (e.g., https://192.168.88.250:8500/ubuntu.iso).
+5. Enter the ISO URL (e.g., https://192.168.88.216:5443/ubuntu.iso).
     
     !!! Tip "Check ISO URL"
 
@@ -87,6 +92,12 @@ You can use our [MPS APIs](#triggering-https-boot-via-mps-apis) to perform recov
     </figure>
 
 6. Optionally, enable `Enforce Secure Boot` to boot only a secure `.iso` file.
+   
+    !!! important "ACM vs CCM behavior"
+        
+        - For UEFI HTTPS Boot, AMT allows the Console to control the **Enforce Secure Boot** setting only when the device is provisioned in **Admin Control Mode (ACM)**.  
+      
+        - When operating in **Client Control Mode (CCM)**, **Secure Boot is always enforced** by AMT.
    
     !!! warning "Secure Boot"
 
@@ -228,7 +239,6 @@ You can use our [MPS APIs](#triggering-https-boot-via-mps-apis) to perform recov
     {"Body":{"ReturnValue":0,"ReturnValueStr":"SUCCESS"}}
     ```
 
-
 7. Optionally, Connect to KVM and verify that the device loads the ISO.
     
     <figure class="figure-image">
@@ -237,11 +247,174 @@ You can use our [MPS APIs](#triggering-https-boot-via-mps-apis) to perform recov
 
 #### API Reference
 
+| Action Code | Description |
+|--------------|--------------|
+| **105** | Reset to HTTPS Boot |
+| **106** | Power on to HTTPS Boot |
+
 | Endpoint | Method | Purpose | JSON Structure |
-|----------|---------|---------|----------------|
+|----------|---------|----------|----------------|
 | `/mps/login/api/v1/authorize` | POST | Authenticate and get JWT token | `{"username":"<MPS_WEB_ADMIN_USER>", "password":"<MPS_WEB_ADMIN_PASSWORD>"}` |
 | `/mps/api/v1/devices` | GET | List connected devices | N/A |
 | `/mps/api/v1/amt/features/<GUID>` | GET | Check device AMT features | N/A |
 | `/mps/api/v1/amt/features/<GUID>` | POST | Enable/disable AMT features | `{"enableIDER":true,"enableKVM":true,"enableSOL":true,"userConsent":"none","redirection":true,"ocr":true}` |
 | `/mps/api/v1/amt/certificates/<GUID>` | POST | Upload trusted certificates | `{"cert":"<BASE64_ENCODED_CERT>","isTrusted":true}` |
-| `/mps/api/v1/amt/power/bootoptions/<GUID>` | POST | Trigger OCR boot options | `{"action":105,"useSOL":false,"bootDetails":{"url":"<ISO_URL>","username":"","password":"","enforceSecureBoot":true}}` |
+| `/mps/api/v1/amt/power/bootOptions/<GUID>` | POST | Trigger OCR HTTPS Boot | `{"action":105,"useSOL":false,"bootDetails":{"url":"<ISO_URL>","username":"","password":"","enforceSecureBoot":true}}` |
+
+---
+
+## Boot to Windows Recovery Environment
+
+### Prerequisites for Boot to WinRE
+
+Before triggering a Boot to Windows Recovery Environment (WinRE), ensure that the AMT device meets the following prerequisites:
+
+1. The device must have a **Windows operating system** installed with **Windows Recovery Environment (WinRE)** available and properly configured.
+
+2. WinRE is typically included by default in most modern Windows installations (Windows 11, and Windows Server 2016 or later).
+
+    !!! info "WinRE Configuration and Support"
+
+        Please refer to the official Windows documentation to confirm which operating systems include WinRE support and for additional details on configuring or enabling WinRE.
+
+### Triggering Boot to WinRE
+
+1. Make sure that the target device shows as connected
+    
+    <figure class="figure-image">
+      <img src="..\..\assets\images\OCR_MPS_Device_Connected.png" alt="Figure 11: Device connected to MPS">
+    </figure>
+
+2. Enable `One Click Recovery (OCR)` feature in `General AMT Info` Section.
+   
+    !!! question "Is Boot to Windows Recovery Environment supported?"
+
+        See the snapshot below — if the **Windows Recovery Boot** field shows **Supported**, the feature is available on this device.
+    
+    <figure class="figure-image">
+      <img src="..\..\assets\images\OCR_MPS_Boot_To_WinRE_Supported.png" alt="Figure 12: Enable OCR feature">
+    </figure>
+
+3. Optionally, start a **KVM session** if you want to observe the full recovery process.  
+
+4. Click the **⋯ (three-dot)** menu and select **Reset to WinRE (OCR)**.
+
+    <figure class="figure-image">
+      <img src="..\..\assets\images\OCR_MPS_Reset_to_WinRE.png" alt="Figure 13: Select Reset to WinRE (OCR)">
+    </figure>
+
+5. The device will immediately restart and boot into Windows Recovery Environment.
+
+    <figure class="figure-image">
+      <img src="..\..\assets\images\OCR_MPS_Win_Recovery_Screen.png" alt="Figure 14: Windows Recovery Screen">
+    </figure>
+
+#### API Reference
+
+| Action Code | Description |
+|--------------|--------------|
+| **109** | Reset to WinRE Boot |
+| **110** | Power on to WinRE Boot |
+
+| Endpoint | Method | Purpose | JSON Structure |
+|----------|---------|----------|----------------|
+| `/mps/login/api/v1/authorize` | POST | Authenticate and get JWT token | `{"username":"<MPS_WEB_ADMIN_USER>", "password":"<MPS_WEB_ADMIN_PASSWORD>"}` |
+| `/mps/api/v1/devices` | GET | List connected devices | N/A |
+| `/mps/api/v1/amt/features/<GUID>` | GET | Check device AMT features | N/A |
+| `/mps/api/v1/amt/features/<GUID>` | POST | Enable/disable AMT features | `{"enableIDER":true,"enableKVM":true,"enableSOL":true,"userConsent":"none","redirection":true,"ocr":true}` |
+| `/mps/api/v1/amt/power/bootOptions/<GUID>` | POST | Trigger OCR WinRE Boot | `{"method":"PowerAction","action":109,"useSOL":false,"bootDetails":{"enforceSecureBoot":true}}` |
+
+--- 
+
+## Boot to Local PBA
+
+### Prerequisites for Local PBA Boot
+
+Before triggering a Local PBA boot, ensure that the EFI environment is properly prepared.
+
+1. A signed `.efi` binary (for example, `OemPba.efi`) must be present on the EFI System Partition (ESP) of the AMT device.  
+
+2. The EFI file path and name must **exactly match** the entry registered in BIOS so that it appears in the OCR dropdown list.  
+   
+    Connect to the device over **TLS** using Console, select **Reset to OCR**, and view the available PBA options to confirm the exact EFI path registered with AMT.
+
+      <figure class="figure-image">
+       <img src="..\..\assets\images\OCR_MPS_Reset_to_PBA_EFIPATH.png" alt="Figure 15: PBA Path registered with AMT">
+      </figure>
+
+3. The signing certificate of the PBA must be enrolled in the BIOS **Authorized Signatures (db)**.  
+
+!!! info "Need help setting up the EFI?"
+
+    This is just a reference example — there are multiple ways to achieve the same result.
+    
+    Follow the detailed [OCR PBA EFI Setup and Signing Guide](https://github.com/device-management-toolkit/console/wiki/OCR-PBA-EFI-Setup-and-Signing-Guide) for one example of how to sign the EFI, enroll its certificate, and place it on the EFI System Partition (ESP).
+      
+
+### Triggering Local PBA Boot
+
+1. Make sure that the target device shows as connected
+    
+    <figure class="figure-image">
+      <img src="..\..\assets\images\OCR_MPS_Device_Connected.png" alt="Figure 16: Device connected to MPS">
+    </figure>
+
+2. Enable `One Click Recovery (OCR)` feature in `General AMT Info` Section.
+   
+    !!! question "Is Boot to PBA supported?"
+
+        See the snapshot below — if the **PBA Boot** field shows **Supported**, the feature is available on this device.
+    
+    <figure class="figure-image">
+      <img src="..\..\assets\images\OCR_Boot_To_PBA_Supported.png" alt="Figure 17: Enable OCR">
+    </figure>
+
+3. Optionally, start a **KVM session** if you want to observe the full recovery process.
+
+4. Click the **⋯ (three-dot)** menu and select **Reset to PBA (OCR)**.
+
+    <figure class="figure-image">
+      <img src="..\..\assets\images\OCR_MPS_Reset_to_PBA.png" alt="Figure 18: Reset to PBA (OCR)">
+    </figure>
+
+5. From the dropdown, select the local recovery option corresponding to your EFI entry (for example, `\OemPba.efi`).
+
+    !!! danger "Secure Boot Mandatory"
+
+        Ensure the **Enforce Secure Boot** checkbox is enabled before initiating the PBA boot.
+
+        For Boot to Local PBA, Secure Boot is always enforced by Intel® AMT, as AMT does not control the origin or integrity of locally installed PBAs.
+
+   
+    <figure class="figure-image">
+      <img src="..\..\assets\images\OCR_MPS_Reset_to_PBA_SelectPBA_Dropdown.png" alt="Figure 19: Select PBA">
+    </figure>
+
+6. Click **OK** to confirm.
+
+7. The device will immediately restart and boot into the selected PBA EFI application.
+
+    <figure class="figure-image">
+      <img src="..\..\assets\images\OCR_MPS_PBA_Boot_Netboot_EFI.png" alt="Figure 20: Booting into Local PBA (.efi)">
+    </figure>
+
+
+#### API Reference
+
+| Action Code | Description |
+|--------------|--------------|
+| **107** | Reset to Local PBA Boot |
+| **108** | Power on to Local PBA Boot |
+
+| Endpoint | Method | Purpose | JSON Structure |
+|----------|---------|----------|----------------|
+| `/mps/login/api/v1/authorize` | POST | Authenticate and get JWT token | `{"username":"<MPS_WEB_ADMIN_USER>", "password":"<MPS_WEB_ADMIN_PASSWORD>"}` |
+| `/mps/api/v1/devices` | GET | List connected devices | N/A |
+| `/mps/api/v1/amt/features/<GUID>` | GET | Check device AMT features | N/A |
+| `/mps/api/v1/amt/features/<GUID>` | POST | Enable/disable AMT features | `{"enableIDER":true,"enableKVM":true,"enableSOL":true,"userConsent":"none","redirection":true,"ocr":true}` |
+| `/mps/api/v1/amt/power/bootSources/<GUID>` | GET | Retrieve available AMT boot sources and extract `bootString` of available PBAs| N/A |
+| `/mps/api/v1/amt/power/bootOptions/<GUID>` | POST | Trigger Local PBA Boot | `{"method":"PowerAction","action":108,"useSOL":false,"bootDetails":{"bootPath":"\OemPba.efi","enforceSecureBoot":true}}` |
+
+---
+
+If you see any issues, please log them on our [GitHub Issues page](https://github.com/device-management-toolkit/mps/issues) or reach out to us on our **Discord channel**.
