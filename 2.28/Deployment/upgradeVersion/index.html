@@ -1651,6 +1651,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#upgrade-to-228-sep-25-from-227-dec-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upgrade to 2.28 (Sep 25) from 2.27 (Dec 23)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#upgrade-to-218-dec-23-from-217-nov-23" class="md-nav__link">
     <span class="md-ellipsis">
       Upgrade to 2.18 (Dec 23) from 2.17 (Nov 23)
@@ -4726,6 +4735,82 @@
   <h1>Upgrade Toolkit Version</h1>
 
 <h2 id="specific-changes-required-for-version-upgrades">Specific Changes Required for Version Upgrades<a class="headerlink" href="#specific-changes-required-for-version-upgrades" title="Permanent link">&para;</a></h2>
+<h3 id="upgrade-to-228-sep-25-from-227-dec-23">Upgrade to 2.28 (Sep 25) from 2.27 (Dec 23)<a class="headerlink" href="#upgrade-to-228-sep-25-from-227-dec-23" title="Permanent link">&para;</a></h3>
+<p>The 2.28 release of DMT Cloud Deployment requires an upgrade to the <code>rpsdb</code> database.</p>
+<ol>
+<li>
+<p>Run the following SQL scripts to alter constraints and add new tables before upgrading the services.</p>
+<pre><code>```sql title="rpsdb"
+-- Add new column to Profiles table
+ALTER TABLE IF EXISTS profiles
+ADD COLUMN IF NOT EXISTS uefi_wifi_sync_enabled BOOLEAN NULL;
+```
+
+```sql title="rpsdb"
+-- Create proxyconfigs table
+CREATE TABLE IF NOT EXISTS proxyconfigs(
+    proxy_config_name citext,
+    address citext NOT NULL,
+    info_format integer NOT NULL,
+    port integer NOT NULL,
+    network_dns_suffix varchar(192),
+    creation_date timestamp,
+    tenant_id varchar(36),
+    CONSTRAINT address_port_tenant_id UNIQUE (address, port, tenant_id),
+    PRIMARY KEY (proxy_config_name, tenant_id)
+);
+```
+
+```sql title="rpsdb"
+-- Create profiles_proxyconfigs table
+CREATE TABLE IF NOT EXISTS profiles_proxyconfigs(
+    proxy_config_name citext,
+    profile_name citext,
+    FOREIGN KEY (proxy_config_name,tenant_id)  REFERENCES proxyconfigs(proxy_config_name,tenant_id),
+    FOREIGN KEY (profile_name,tenant_id)  REFERENCES profiles(profile_name,tenant_id),
+    priority integer,
+    creation_date timestamp,
+    created_by varchar(40),
+    tenant_id varchar(36),
+    PRIMARY KEY (proxy_config_name, profile_name, priority, tenant_id)
+);
+```
+
+???+ example "Example - Adding Columns and Tables to PostgresDB using psql"
+        This example walks through one potential option to update a Postgres Database using psql.
+
+        1. Open a Command Prompt or Terminal.
+
+        2. Connect to your Postgres instance and `rpsdb` database. Provide the hostname of the database, the port (Postgres default is 5432), the database `rpsdb`, and your database user.
+                ```
+                psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
+                ```
+
+                ??? example "Example Commands"
+                        ```
+                        Azure:
+                        psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql
+
+                        AWS:
+                        psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U postgresadmin
+                        ```
+
+        3. Provide your Postgres user password.
+
+        4. Run the SQL Statements.
+
+        5. Verify the changes were applied correctly.
+                ```sql
+                \d profiles
+                \d proxyconfigs
+                \d profiles_proxyconfigs
+                ```
+</code></pre>
+</li>
+<li>
+<p>Continue with <a href="#upgrade-a-minor-version-ie-2x-to-2y">Upgrade a Minor Version</a> steps below.</p>
+</li>
+</ol>
 <h3 id="upgrade-to-218-dec-23-from-217-nov-23">Upgrade to 2.18 (Dec 23) from 2.17 (Nov 23)<a class="headerlink" href="#upgrade-to-218-dec-23-from-217-nov-23" title="Permanent link">&para;</a></h3>
 <p>The 2.17 release of Open AMT requires an upgrade to the <code>rpsdb</code> database.</p>
 <ol>
