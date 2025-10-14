@@ -2977,6 +2977,25 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#where-to-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Where to Start
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#https-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTPS Boot
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTPS Boot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#prerequisites-for-https-boot" class="md-nav__link">
     <span class="md-ellipsis">
       Prerequisites for HTTPS Boot
@@ -2984,13 +3003,84 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#triggering-https-boot-via-console" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#triggering-https-boot" class="md-nav__link">
     <span class="md-ellipsis">
-      Triggering HTTPS Boot via Console
+      Triggering HTTPS Boot
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boot-to-windows-recovery-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Boot to Windows Recovery Environment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Boot to Windows Recovery Environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites-for-boot-to-winre" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites for Boot to WinRE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triggering-boot-to-winre" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triggering Boot to WinRE
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boot-to-local-pba" class="md-nav__link">
+    <span class="md-ellipsis">
+      Boot to Local PBA
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Boot to Local PBA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites-for-local-pba-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites for Local PBA Boot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triggering-local-pba-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triggering Local PBA Boot
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4621,8 +4711,7 @@
   <h1>One Click Recovery</h1>
 
 <p>Intel® One-Click Recovery (OCR) allows IT administrators to remotely trigger a secure and reliable boot to a recovery application, ensuring recovery from system failures, bare-metal scenarios, or connectivity issues using Intel AMT's out-of-band (OOB) connection.</p>
-<p>Console now supports triggering HTTPS Boot, allowing IT administrators to initiate recovery via a secure network boot from a specified URL.</p>
-<h3 id="supported-recovery-options">Supported Recovery Options<a class="headerlink" href="#supported-recovery-options" title="Permanent link">&para;</a></h3>
+<h2 id="supported-recovery-options">Supported Recovery Options<a class="headerlink" href="#supported-recovery-options" title="Permanent link">&para;</a></h2>
 <p>OCR supports three recovery modes:</p>
 <ul>
 <li>
@@ -4635,22 +4724,23 @@
 <p><strong>Local Pre-Boot Application (PBA)</strong>: Launch a locally installed recovery or diagnostic tool.</p>
 </li>
 </ul>
-<div class="admonition info">
-<p class="admonition-title">Future Enhancements</p>
+<h2 id="where-to-start">Where to Start<a class="headerlink" href="#where-to-start" title="Permanent link">&para;</a></h2>
+<p>Depending on your recovery scenario, follow the appropriate section below:</p>
 <ul>
-<li>Console currently only supports HTTPS Network Boot feature.</li>
-<li>HTTPS Boot feature only works when the device is connected via a wired network.</li>
+<li>To recover using a <strong>network-hosted ISO</strong>, start with <a href="#https-boot">HTTPS Boot</a>.  </li>
+<li>To boot into <strong>Windows Recovery Environment</strong>, go to <a href="#boot-to-windows-recovery-environment">Boot to Windows Recovery Environment</a>.  </li>
+<li>To launch a <strong>locally installed Pre-Boot Application</strong>, continue with <a href="#boot-to-local-pba">Boot to Local PBA</a>.</li>
 </ul>
-<p>We plan to include <strong>Wireless support</strong> and add additional <strong>One Click Recovery features</strong> in future updates.  </p>
-</div>
+<hr />
+<h2 id="https-boot">HTTPS Boot<a class="headerlink" href="#https-boot" title="Permanent link">&para;</a></h2>
 <h3 id="prerequisites-for-https-boot">Prerequisites for HTTPS Boot<a class="headerlink" href="#prerequisites-for-https-boot" title="Permanent link">&para;</a></h3>
 <p>Before using HTTPS Network Boot, ensure the following prerequisites are met:</p>
 <ol>
 <li>
-<p>Enable HTTP(S) Boot in BIOS settings. This may be disabled by default on some devices.</p>
-<p><figure class="figure-image">
-  <img src="..\..\..\..\assets\images\OCR_HTTPSBOOT_BIOS.png" alt="Figure 1: Enable HTTP(S) Boot in BIOS">
-</figure></p>
+<p>Enable HTTP(S) Boot in BIOS settings. This may be disabled by default on some devices.
+    <figure class="figure-image">
+      <img src="..\..\..\..\assets\images\OCR_HTTPSBOOT_BIOS.png" alt="Figure 1: Enable HTTP(S) Boot in BIOS">
+    </figure></p>
 </li>
 <li>
 <p>When recovering a device using an ISO that isn’t signed by a trusted certificate authority, you’ll need to disable Secure Boot in the BIOS settings.
@@ -4669,7 +4759,7 @@
 </div>
 </li>
 </ol>
-<h3 id="triggering-https-boot-via-console">Triggering HTTPS Boot via Console<a class="headerlink" href="#triggering-https-boot-via-console" title="Permanent link">&para;</a></h3>
+<h3 id="triggering-https-boot">Triggering HTTPS Boot<a class="headerlink" href="#triggering-https-boot" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Connect to the Intel AMT device using Console over <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>.</p>
@@ -4678,29 +4768,29 @@
 <p>Console must be connected to the AMT device over <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> for this feature to work.</p>
 </div>
 <p><figure class="figure-image">
-  <img src="..\..\..\..\assets\images\OCR_Connect_With_TLS.png" alt="Figure 2: Connect to a Device using TLS">
+  <img src="..\..\..\..\assets\images\OCR_Connect_With_TLS.png" alt="Figure 3: Connect to a Device using TLS">
 </figure></p>
 </li>
 <li>
-<p>Enable <code>OCR</code> feature in <code>General AMT Info</code> Section.</p>
+<p>Enable <code>One Click Recovery (OCR)</code> feature in <code>General AMT Info</code> Section.</p>
 <div class="admonition question">
 <p class="admonition-title">Is HTTPS Network Boot supported?</p>
-<p>If the <strong>HTTPS Network Boot</strong> checkbox is unchecked, the device does not support this feature.</p>
+<p>See the snapshot below — if the <strong>HTTPS Network Boot</strong> field shows <strong>Supported</strong>, the feature is available on the device.</p>
 </div>
 <p><figure class="figure-image">
-  <img src="..\..\..\..\assets\images\OCR_Enable_HTTPS_BOOT.png" alt="Figure 3: Enable HTTPS Network Boot">
+  <img src="..\..\..\..\assets\images\OCR_HTTPS_Boot_Supported.png" alt="Figure 4: Enable HTTPS Network Boot">
 </figure></p>
 </li>
 <li>
 <p>Upload the Root Certificate of the HTTPS server hosting the ISO via the <code>Add New</code> certificates option.</p>
 <p><figure class="figure-image">
-  <img src="..\..\..\..\assets\images\OCR_ADD_TRUSTEDROOTCERT.png" alt="Figure 4: Add Root Certificate of HTTPS Server">
+  <img src="..\..\..\..\assets\images\OCR_ADD_TRUSTEDROOTCERT.png" alt="Figure 5: Add Root Certificate of HTTPS Server">
 </figure></p>
 </li>
 <li>
 <p>Click on the three-dot menu and select <strong>Reset to HTTPS Boot (OCR)</strong>.</p>
 <p><figure class="figure-image">
-  <img src="..\..\..\..\assets\images\OCR_Reset_to_HTTPS_Boot.png" alt="Figure 5: Reset to HTTPS Boot (OCR)">
+  <img src="..\..\..\..\assets\images\OCR_Reset_to_HTTPS_Boot.png" alt="Figure 6: Reset to HTTPS Boot (OCR)">
 </figure></p>
 </li>
 <li>
@@ -4710,11 +4800,22 @@
 <p>Ensure the HTTPS Server ISO URL is accessible to the device.</p>
 </div>
 <p><figure class="figure-image">
-  <img src="..\..\..\..\assets\images\OCR_HTTPSBOOT_URL.png" alt="Figure 6: URL to the .iso hosted on HTTPS Server">
+  <img src="..\..\..\..\assets\images\OCR_HTTPSBOOT_URL.png" alt="Figure 7: URL to the .iso hosted on HTTPS Server">
 </figure></p>
 </li>
 <li>
 <p>Optionally, enable <code>Enforce Secure Boot</code> to boot only a secure <code>.iso</code> file.</p>
+<div class="admonition important">
+<p class="admonition-title"><abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> vs <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> behavior</p>
+<ul>
+<li>
+<p>For UEFI HTTPS Boot, AMT allows the Console to control the <strong>Enforce Secure Boot</strong> setting only when the device is provisioned in <strong>Admin Control Mode (<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>)</strong>.  </p>
+</li>
+<li>
+<p>When operating in <strong>Client Control Mode (<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>)</strong>, <strong>Secure Boot is always enforced</strong> by AMT.</p>
+</li>
+</ul>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Secure Boot</p>
 <p>If Secure Boot is enabled, the UEFI BIOS must have the Root Certificate used to sign the ISO's bootloader in its trusted database (DB) to allow execution.</p>
@@ -4726,10 +4827,10 @@
 <li>
 <p>Optionally, Connect to <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> and verify that the device loads the ISO.</p>
 <p><figure class="figure-image">
-  <img src="..\..\..\..\assets\images\OCR_HTTPSBoot_Recovery_Start.png" alt="Figure 7: View KVM screen while the ISO boots">
+  <img src="..\..\..\..\assets\images\OCR_HTTPSBoot_Recovery_Start.png" alt="Figure 8: View KVM screen while the ISO boots">
 </figure></p>
 <p><figure class="figure-image">
-  <img src="..\..\..\..\assets\images\OCR_HTTPS_BOOT_UbuntuOS.png" alt="Figure 8: Full Ubuntu LTS Boot">
+  <img src="..\..\..\..\assets\images\OCR_HTTPS_BOOT_UbuntuOS.png" alt="Figure 9: Full Ubuntu LTS Boot">
 </figure></p>
 <div class="admonition bug">
 <p class="admonition-title"><abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> Keyboard Issue</p>
@@ -4737,6 +4838,138 @@
 </div>
 </li>
 </ol>
+<hr />
+<h2 id="boot-to-windows-recovery-environment">Boot to Windows Recovery Environment<a class="headerlink" href="#boot-to-windows-recovery-environment" title="Permanent link">&para;</a></h2>
+<h3 id="prerequisites-for-boot-to-winre">Prerequisites for Boot to WinRE<a class="headerlink" href="#prerequisites-for-boot-to-winre" title="Permanent link">&para;</a></h3>
+<p>Before triggering a Boot to Windows Recovery Environment (WinRE), ensure that the AMT device meets the following prerequisites:</p>
+<ol>
+<li>
+<p>The device must have a <strong>Windows operating system</strong> installed with <strong>Windows Recovery Environment (WinRE)</strong> available and properly configured.</p>
+</li>
+<li>
+<p>WinRE is typically included by default in most modern Windows installations (Windows 11, and Windows Server 2016 or later).</p>
+<div class="admonition info">
+<p class="admonition-title">WinRE Configuration and Support</p>
+<p>Please refer to the official Windows documentation to confirm which operating systems include WinRE support and for additional details on configuring or enabling WinRE.</p>
+</div>
+</li>
+</ol>
+<h3 id="triggering-boot-to-winre">Triggering Boot to WinRE<a class="headerlink" href="#triggering-boot-to-winre" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Connect to the Intel AMT device using <strong>Console</strong> over <strong><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr></strong>.</p>
+<div class="admonition danger">
+<p class="admonition-title"><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Connection Required</p>
+<p>Console must be connected to the AMT device over <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> for this feature to work.</p>
+</div>
+<p><figure class="figure-image">
+  <img src="..\..\..\..\assets\images\OCR_Connect_With_TLS.png" alt="Figure 2: Connect to a Device using TLS">
+</figure></p>
+</li>
+<li>
+<p>Enable <code>One Click Recovery (OCR)</code> feature in <code>General AMT Info</code> Section.</p>
+<div class="admonition question">
+<p class="admonition-title">Is Boot to Windows Recovery Environment supported?</p>
+<p>See the snapshot below — if the <strong>Windows Recovery Boot</strong> field shows <strong>Supported</strong>, the feature is available on this device.</p>
+</div>
+<p><figure class="figure-image">
+  <img src="..\..\..\..\assets\images\OCR_Boot_To_WinRE_Supported.png" alt="Figure 3: Enable OCR">
+</figure></p>
+</li>
+<li>
+<p>Optionally, start a <strong><abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> session</strong> if you want to observe the full recovery process.  </p>
+</li>
+<li>
+<p>Click the <strong>⋯ (three-dot)</strong> menu and select <strong>Reset to WinRE (OCR)</strong>.</p>
+<p><figure class="figure-image">
+  <img src="..\..\..\..\assets\images\OCR_Reset_to_WinRE.png" alt="Figure 1: Reset to WinRE (OCR)">
+</figure></p>
+</li>
+<li>
+<p>The device will immediately restart and boot into Windows Recovery Environment.</p>
+<p><figure class="figure-image">
+  <img src="..\..\..\..\assets\images\OCR_Win_Recovery_Screen.png" alt="Figure 2: Windows Recovery Screen">
+</figure></p>
+</li>
+</ol>
+<hr />
+<h2 id="boot-to-local-pba">Boot to Local PBA<a class="headerlink" href="#boot-to-local-pba" title="Permanent link">&para;</a></h2>
+<h3 id="prerequisites-for-local-pba-boot">Prerequisites for Local PBA Boot<a class="headerlink" href="#prerequisites-for-local-pba-boot" title="Permanent link">&para;</a></h3>
+<p>Before triggering a Local PBA boot, ensure that the EFI environment is properly prepared.</p>
+<ol>
+<li>
+<p>A signed <code>.efi</code> binary (for example, <code>OemPba.efi</code>) must be present on the EFI System Partition (ESP) of the AMT device.  </p>
+</li>
+<li>
+<p>The EFI file path and name must <strong>exactly match</strong> the entry registered in BIOS so that it appears in the OCR dropdown list.  </p>
+<p>Connect to the device over <strong><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr></strong> using Console, select <strong>Reset to OCR</strong>, and view the available PBA options to confirm the exact EFI path registered with AMT.</p>
+<p><figure class="figure-image">
+   <img src="..\..\..\..\assets\images\OCR_Reset_to_PBA_EFIPATH.png" alt="Figure 10: PBA Path registered with AMT">
+  </figure></p>
+</li>
+<li>
+<p>The signing certificate of the PBA must be enrolled in the BIOS <strong>Authorized Signatures (db)</strong>.  </p>
+</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Need help setting up the EFI?</p>
+<p>This is just a reference example — there are multiple ways to achieve the same result.</p>
+<p>Follow the detailed <a href="https://github.com/device-management-toolkit/console/wiki/OCR-PBA-EFI-Setup-and-Signing-Guide">OCR PBA EFI Setup and Signing Guide</a> for one example of how to sign the EFI, enroll its certificate, and place it on the EFI System Partition (ESP).</p>
+</div>
+<h3 id="triggering-local-pba-boot">Triggering Local PBA Boot<a class="headerlink" href="#triggering-local-pba-boot" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Connect to the Intel AMT device using <strong>Console</strong> over <strong><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr></strong>.</p>
+<div class="admonition danger">
+<p class="admonition-title"><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Connection Required</p>
+<p>Console must be connected to the AMT device over <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> for this feature to work.</p>
+</div>
+<p><figure class="figure-image">
+  <img src="..\..\..\..\assets\images\OCR_Connect_With_TLS.png" alt="Figure 11: Connect to a Device using TLS">
+</figure></p>
+</li>
+<li>
+<p>Enable <code>One Click Recovery (OCR)</code> feature in <code>General AMT Info</code> Section.</p>
+<div class="admonition question">
+<p class="admonition-title">Is Boot to PBA supported?</p>
+<p>See the snapshot below — if the <strong>PBA Boot</strong> field shows <strong>Supported</strong>, the feature is available on this device.</p>
+</div>
+<p><figure class="figure-image">
+  <img src="..\..\..\..\assets\images\OCR_Boot_To_PBA_Supported.png" alt="Figure 12: Enable OCR">
+</figure></p>
+</li>
+<li>
+<p>Optionally, start a <strong><abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> session</strong> if you want to observe the full recovery process.</p>
+</li>
+<li>
+<p>Click the <strong>⋯ (three-dot)</strong> menu and select <strong>Reset to PBA (OCR)</strong>.</p>
+<p><figure class="figure-image">
+  <img src="..\..\..\..\assets\images\OCR_Reset_to_PBA.png" alt="Figure 13: Reset to PBA (OCR)">
+</figure></p>
+</li>
+<li>
+<p>From the dropdown, select the local recovery option corresponding to your EFI entry (for example, <code>\OemPba.efi</code>).</p>
+<div class="admonition danger">
+<p class="admonition-title">Secure Boot Mandatory</p>
+<p>Ensure the <strong>Enforce Secure Boot</strong> checkbox is enabled before initiating the PBA boot.</p>
+<p>For Boot to Local PBA, Secure Boot is always enforced by <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>, as AMT does not control the origin or integrity of locally installed PBAs.</p>
+</div>
+<p><figure class="figure-image">
+  <img src="..\..\..\..\assets\images\OCR_Reset_to_PBA_SelectPBA_Dropdown.png" alt="Figure 14: Select PBA">
+</figure></p>
+</li>
+<li>
+<p>Click <strong>OK</strong> to confirm.</p>
+</li>
+<li>
+<p>The device will immediately restart and boot into the selected PBA EFI application.</p>
+<p><figure class="figure-image">
+  <img src="..\..\..\..\assets\images\OCR_PBA_Boot_Netboot_EFI.png" alt="Figure 15: Booting into Local PBA EFI">
+</figure></p>
+</li>
+</ol>
+<hr />
+<p>If you see any issues, please log them on our <a href="https://github.com/device-management-toolkit/console/issues">GitHub Issues page</a> or reach out to us on our <strong>Discord channel</strong>.</p>
 
 
 

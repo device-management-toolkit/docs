@@ -2114,6 +2114,25 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#where-to-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Where to Start
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#https-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTPS Boot
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTPS Boot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#prerequisites-for-https-boot" class="md-nav__link">
     <span class="md-ellipsis">
       Prerequisites for HTTPS Boot
@@ -2121,16 +2140,15 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#https-boot-using-cloud-deployment" class="md-nav__link">
     <span class="md-ellipsis">
       HTTPS Boot using Cloud Deployment
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="HTTPS Boot using Cloud Deployment">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#triggering-https-boot-using-sample-ui" class="md-nav__link">
@@ -2153,6 +2171,102 @@
         
           <li class="md-nav__item">
   <a href="#api-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Reference
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boot-to-windows-recovery-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Boot to Windows Recovery Environment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Boot to Windows Recovery Environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites-for-boot-to-winre" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites for Boot to WinRE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triggering-boot-to-winre" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triggering Boot to WinRE
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Triggering Boot to WinRE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-reference_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Reference
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boot-to-local-pba" class="md-nav__link">
+    <span class="md-ellipsis">
+      Boot to Local PBA
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Boot to Local PBA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites-for-local-pba-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites for Local PBA Boot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triggering-local-pba-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triggering Local PBA Boot
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Triggering Local PBA Boot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-reference_2" class="md-nav__link">
     <span class="md-ellipsis">
       API Reference
     </span>
@@ -4652,15 +4766,16 @@
 <p><strong>Local Pre-Boot Application (PBA)</strong>: Launch a locally installed recovery or diagnostic tool.</p>
 </li>
 </ul>
-<div class="admonition info">
-<p class="admonition-title">Future Enhancements</p>
+<h2 id="where-to-start">Where to Start<a class="headerlink" href="#where-to-start" title="Permanent link">&para;</a></h2>
+<p>Depending on your recovery scenario, follow the appropriate section below:</p>
 <ul>
-<li>Currently, MPS supports only the HTTPS Network Boot feature.</li>
-<li>The HTTPS Boot feature works only when the device is connected via a wired network.</li>
+<li>To recover using a <strong>network-hosted ISO</strong>, start with <a href="#https-boot">HTTPS Boot</a>.  </li>
+<li>To boot into <strong>Windows Recovery Environment</strong>, go to <a href="#boot-to-windows-recovery-environment">Boot to Windows Recovery Environment</a>.  </li>
+<li>To launch a <strong>locally installed Pre-Boot Application</strong>, continue with <a href="#boot-to-local-pba">Boot to Local PBA</a>.</li>
 </ul>
-<p>We plan to include <strong>Wireless support</strong> and add additional <strong>One Click Recovery features</strong> in future updates.  </p>
-</div>
-<h2 id="prerequisites-for-https-boot">Prerequisites for HTTPS Boot<a class="headerlink" href="#prerequisites-for-https-boot" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="https-boot">HTTPS Boot<a class="headerlink" href="#https-boot" title="Permanent link">&para;</a></h2>
+<h3 id="prerequisites-for-https-boot">Prerequisites for HTTPS Boot<a class="headerlink" href="#prerequisites-for-https-boot" title="Permanent link">&para;</a></h3>
 <p>Before using HTTPS Network Boot, ensure the following prerequisites are met:</p>
 <ol>
 <li>
@@ -4680,7 +4795,7 @@
 <div class="admonition info">
 <p class="admonition-title">HTTPS Server</p>
 <ul>
-<li>For this guide, the HTTPS server is assumed to be running on the same host as the containers and is serving a full Ubuntu LTS image from: <code>https://192.168.88.250:8500/ubuntu.iso</code>.</li>
+<li>For this guide, the HTTPS server is assumed to be running on the same host as the containers and is serving a full Ubuntu LTS image from: <code>https://192.168.88.216:5443/ubuntu.iso</code>.</li>
 <li>Setup instructions for the HTTPS server are not included here. Please ensure you have a functional HTTPS server configured beforehand. If needed, numerous online resources are available to help you get started.</li>
 </ul>
 </div>
@@ -4689,7 +4804,7 @@
 <p>Make sure that the device shows as connected in the Sample UI or via the Get Device MPS API </p>
 </li>
 </ol>
-<h2 id="https-boot-using-cloud-deployment">HTTPS Boot using Cloud Deployment<a class="headerlink" href="#https-boot-using-cloud-deployment" title="Permanent link">&para;</a></h2>
+<h3 id="https-boot-using-cloud-deployment">HTTPS Boot using Cloud Deployment<a class="headerlink" href="#https-boot-using-cloud-deployment" title="Permanent link">&para;</a></h3>
 <p>You can use our <a href="#triggering-https-boot-via-mps-apis">MPS APIs</a> to perform recovery using HTTPS boot, but for quick demos and to understand how you can first test it, we've also implemented it in the <a href="#triggering-https-boot-using-sample-ui">Sample UI</a>.</p>
 <h3 id="triggering-https-boot-using-sample-ui">Triggering HTTPS Boot using Sample UI<a class="headerlink" href="#triggering-https-boot-using-sample-ui" title="Permanent link">&para;</a></h3>
 <ol>
@@ -4700,13 +4815,13 @@
 </figure></p>
 </li>
 <li>
-<p>Enable <code>OCR</code> feature in <code>General AMT Info</code> Section.</p>
+<p>Enable <code>One Click Recovery (OCR)</code> feature in <code>General AMT Info</code> Section.</p>
 <div class="admonition question">
 <p class="admonition-title">Is HTTPS Network Boot supported?</p>
-<p>If the <strong>HTTPS Network Boot</strong> checkbox is unchecked, the device does not support this feature.</p>
+<p>See the snapshot below — if the <strong>HTTPS Network Boot</strong> field shows <strong>Supported</strong>, the feature is available on the device.</p>
 </div>
 <p><figure class="figure-image">
-  <img src="..\..\assets\images\OCR_MPS_Enable_HTTPS_BOOT.png" alt="Figure 4: Enable HTTPS Network Boot">
+  <img src="..\..\assets\images\OCR_MPS_HTTPS_Boot_Supported.png" alt="Figure 4: Enable HTTPS Network Boot">
 </figure></p>
 </li>
 <li>
@@ -4722,7 +4837,7 @@
 </figure></p>
 </li>
 <li>
-<p>Enter the ISO URL (e.g., https://192.168.88.250:8500/ubuntu.iso).</p>
+<p>Enter the ISO URL (e.g., https://192.168.88.216:5443/ubuntu.iso).</p>
 <div class="admonition tip">
 <p class="admonition-title">Check ISO URL</p>
 <p>Ensure the HTTPS Server ISO URL is accessible to the device.</p>
@@ -4733,6 +4848,17 @@
 </li>
 <li>
 <p>Optionally, enable <code>Enforce Secure Boot</code> to boot only a secure <code>.iso</code> file.</p>
+<div class="admonition important">
+<p class="admonition-title">ACM vs CCM behavior</p>
+<ul>
+<li>
+<p>For UEFI HTTPS Boot, AMT allows the Console to control the <strong>Enforce Secure Boot</strong> setting only when the device is provisioned in <strong>Admin Control Mode (ACM)</strong>.  </p>
+</li>
+<li>
+<p>When operating in <strong>Client Control Mode (CCM)</strong>, <strong>Secure Boot is always enforced</strong> by AMT.</p>
+</li>
+</ul>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Secure Boot</p>
 <p>If Secure Boot is enabled, the UEFI BIOS must have the Root Certificate used to sign the ISO's bootloader in its trusted database (DB) to allow execution.</p>
@@ -4851,6 +4977,24 @@
 <table>
 <thead>
 <tr>
+<th>Action Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>105</strong></td>
+<td>Reset to HTTPS Boot</td>
+</tr>
+<tr>
+<td><strong>106</strong></td>
+<td>Power on to HTTPS Boot</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
 <th>Endpoint</th>
 <th>Method</th>
 <th>Purpose</th>
@@ -4889,13 +5033,265 @@
 <td><code>{"cert":"&lt;BASE64_ENCODED_CERT&gt;","isTrusted":true}</code></td>
 </tr>
 <tr>
-<td><code>/mps/api/v1/amt/power/bootoptions/&lt;GUID&gt;</code></td>
+<td><code>/mps/api/v1/amt/power/bootOptions/&lt;GUID&gt;</code></td>
 <td>POST</td>
-<td>Trigger OCR boot options</td>
+<td>Trigger OCR HTTPS Boot</td>
 <td><code>{"action":105,"useSOL":false,"bootDetails":{"url":"&lt;ISO_URL&gt;","username":"","password":"","enforceSecureBoot":true}}</code></td>
 </tr>
 </tbody>
 </table>
+<hr />
+<h2 id="boot-to-windows-recovery-environment">Boot to Windows Recovery Environment<a class="headerlink" href="#boot-to-windows-recovery-environment" title="Permanent link">&para;</a></h2>
+<h3 id="prerequisites-for-boot-to-winre">Prerequisites for Boot to WinRE<a class="headerlink" href="#prerequisites-for-boot-to-winre" title="Permanent link">&para;</a></h3>
+<p>Before triggering a Boot to Windows Recovery Environment (WinRE), ensure that the AMT device meets the following prerequisites:</p>
+<ol>
+<li>
+<p>The device must have a <strong>Windows operating system</strong> installed with <strong>Windows Recovery Environment (WinRE)</strong> available and properly configured.</p>
+</li>
+<li>
+<p>WinRE is typically included by default in most modern Windows installations (Windows 11, and Windows Server 2016 or later).</p>
+<div class="admonition info">
+<p class="admonition-title">WinRE Configuration and Support</p>
+<p>Please refer to the official Windows documentation to confirm which operating systems include WinRE support and for additional details on configuring or enabling WinRE.</p>
+</div>
+</li>
+</ol>
+<h3 id="triggering-boot-to-winre">Triggering Boot to WinRE<a class="headerlink" href="#triggering-boot-to-winre" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Make sure that the target device shows as connected</p>
+<p><figure class="figure-image">
+  <img src="..\..\assets\images\OCR_MPS_Device_Connected.png" alt="Figure 11: Device connected to MPS">
+</figure></p>
+</li>
+<li>
+<p>Enable <code>One Click Recovery (OCR)</code> feature in <code>General AMT Info</code> Section.</p>
+<div class="admonition question">
+<p class="admonition-title">Is Boot to Windows Recovery Environment supported?</p>
+<p>See the snapshot below — if the <strong>Windows Recovery Boot</strong> field shows <strong>Supported</strong>, the feature is available on this device.</p>
+</div>
+<p><figure class="figure-image">
+  <img src="..\..\assets\images\OCR_MPS_Boot_To_WinRE_Supported.png" alt="Figure 12: Enable OCR feature">
+</figure></p>
+</li>
+<li>
+<p>Optionally, start a <strong>KVM session</strong> if you want to observe the full recovery process.  </p>
+</li>
+<li>
+<p>Click the <strong>⋯ (three-dot)</strong> menu and select <strong>Reset to WinRE (OCR)</strong>.</p>
+<p><figure class="figure-image">
+  <img src="..\..\assets\images\OCR_MPS_Reset_to_WinRE.png" alt="Figure 13: Select Reset to WinRE (OCR)">
+</figure></p>
+</li>
+<li>
+<p>The device will immediately restart and boot into Windows Recovery Environment.</p>
+<p><figure class="figure-image">
+  <img src="..\..\assets\images\OCR_MPS_Win_Recovery_Screen.png" alt="Figure 14: Windows Recovery Screen">
+</figure></p>
+</li>
+</ol>
+<h4 id="api-reference_1">API Reference<a class="headerlink" href="#api-reference_1" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Action Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>109</strong></td>
+<td>Reset to WinRE Boot</td>
+</tr>
+<tr>
+<td><strong>110</strong></td>
+<td>Power on to WinRE Boot</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Purpose</th>
+<th>JSON Structure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/mps/login/api/v1/authorize</code></td>
+<td>POST</td>
+<td>Authenticate and get JWT token</td>
+<td><code>{"username":"&lt;MPS_WEB_ADMIN_USER&gt;", "password":"&lt;MPS_WEB_ADMIN_PASSWORD&gt;"}</code></td>
+</tr>
+<tr>
+<td><code>/mps/api/v1/devices</code></td>
+<td>GET</td>
+<td>List connected devices</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>/mps/api/v1/amt/features/&lt;GUID&gt;</code></td>
+<td>GET</td>
+<td>Check device AMT features</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>/mps/api/v1/amt/features/&lt;GUID&gt;</code></td>
+<td>POST</td>
+<td>Enable/disable AMT features</td>
+<td><code>{"enableIDER":true,"enableKVM":true,"enableSOL":true,"userConsent":"none","redirection":true,"ocr":true}</code></td>
+</tr>
+<tr>
+<td><code>/mps/api/v1/amt/power/bootOptions/&lt;GUID&gt;</code></td>
+<td>POST</td>
+<td>Trigger OCR WinRE Boot</td>
+<td><code>{"method":"PowerAction","action":109,"useSOL":false,"bootDetails":{"enforceSecureBoot":true}}</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="boot-to-local-pba">Boot to Local PBA<a class="headerlink" href="#boot-to-local-pba" title="Permanent link">&para;</a></h2>
+<h3 id="prerequisites-for-local-pba-boot">Prerequisites for Local PBA Boot<a class="headerlink" href="#prerequisites-for-local-pba-boot" title="Permanent link">&para;</a></h3>
+<p>Before triggering a Local PBA boot, ensure that the EFI environment is properly prepared.</p>
+<ol>
+<li>
+<p>A signed <code>.efi</code> binary (for example, <code>OemPba.efi</code>) must be present on the EFI System Partition (ESP) of the AMT device.  </p>
+</li>
+<li>
+<p>The EFI file path and name must <strong>exactly match</strong> the entry registered in BIOS so that it appears in the OCR dropdown list.  </p>
+<p>Connect to the device over <strong>TLS</strong> using Console, select <strong>Reset to OCR</strong>, and view the available PBA options to confirm the exact EFI path registered with AMT.</p>
+<p><figure class="figure-image">
+   <img src="..\..\assets\images\OCR_MPS_Reset_to_PBA_EFIPATH.png" alt="Figure 15: PBA Path registered with AMT">
+  </figure></p>
+</li>
+<li>
+<p>The signing certificate of the PBA must be enrolled in the BIOS <strong>Authorized Signatures (db)</strong>.  </p>
+</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Need help setting up the EFI?</p>
+<p>This is just a reference example — there are multiple ways to achieve the same result.</p>
+<p>Follow the detailed <a href="https://github.com/device-management-toolkit/console/wiki/OCR-PBA-EFI-Setup-and-Signing-Guide">OCR PBA EFI Setup and Signing Guide</a> for one example of how to sign the EFI, enroll its certificate, and place it on the EFI System Partition (ESP).</p>
+</div>
+<h3 id="triggering-local-pba-boot">Triggering Local PBA Boot<a class="headerlink" href="#triggering-local-pba-boot" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Make sure that the target device shows as connected</p>
+<p><figure class="figure-image">
+  <img src="..\..\assets\images\OCR_MPS_Device_Connected.png" alt="Figure 16: Device connected to MPS">
+</figure></p>
+</li>
+<li>
+<p>Enable <code>One Click Recovery (OCR)</code> feature in <code>General AMT Info</code> Section.</p>
+<div class="admonition question">
+<p class="admonition-title">Is Boot to PBA supported?</p>
+<p>See the snapshot below — if the <strong>PBA Boot</strong> field shows <strong>Supported</strong>, the feature is available on this device.</p>
+</div>
+<p><figure class="figure-image">
+  <img src="..\..\assets\images\OCR_Boot_To_PBA_Supported.png" alt="Figure 17: Enable OCR">
+</figure></p>
+</li>
+<li>
+<p>Optionally, start a <strong>KVM session</strong> if you want to observe the full recovery process.</p>
+</li>
+<li>
+<p>Click the <strong>⋯ (three-dot)</strong> menu and select <strong>Reset to PBA (OCR)</strong>.</p>
+<p><figure class="figure-image">
+  <img src="..\..\assets\images\OCR_MPS_Reset_to_PBA.png" alt="Figure 18: Reset to PBA (OCR)">
+</figure></p>
+</li>
+<li>
+<p>From the dropdown, select the local recovery option corresponding to your EFI entry (for example, <code>\OemPba.efi</code>).</p>
+<div class="admonition danger">
+<p class="admonition-title">Secure Boot Mandatory</p>
+<p>Ensure the <strong>Enforce Secure Boot</strong> checkbox is enabled before initiating the PBA boot.</p>
+<p>For Boot to Local PBA, Secure Boot is always enforced by Intel® AMT, as AMT does not control the origin or integrity of locally installed PBAs.</p>
+</div>
+<p><figure class="figure-image">
+  <img src="..\..\assets\images\OCR_MPS_Reset_to_PBA_SelectPBA_Dropdown.png" alt="Figure 19: Select PBA">
+</figure></p>
+</li>
+<li>
+<p>Click <strong>OK</strong> to confirm.</p>
+</li>
+<li>
+<p>The device will immediately restart and boot into the selected PBA EFI application.</p>
+<p><figure class="figure-image">
+  <img src="..\..\assets\images\OCR_MPS_PBA_Boot_Netboot_EFI.png" alt="Figure 20: Booting into Local PBA (.efi)">
+</figure></p>
+</li>
+</ol>
+<h4 id="api-reference_2">API Reference<a class="headerlink" href="#api-reference_2" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Action Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>107</strong></td>
+<td>Reset to Local PBA Boot</td>
+</tr>
+<tr>
+<td><strong>108</strong></td>
+<td>Power on to Local PBA Boot</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Purpose</th>
+<th>JSON Structure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/mps/login/api/v1/authorize</code></td>
+<td>POST</td>
+<td>Authenticate and get JWT token</td>
+<td><code>{"username":"&lt;MPS_WEB_ADMIN_USER&gt;", "password":"&lt;MPS_WEB_ADMIN_PASSWORD&gt;"}</code></td>
+</tr>
+<tr>
+<td><code>/mps/api/v1/devices</code></td>
+<td>GET</td>
+<td>List connected devices</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>/mps/api/v1/amt/features/&lt;GUID&gt;</code></td>
+<td>GET</td>
+<td>Check device AMT features</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>/mps/api/v1/amt/features/&lt;GUID&gt;</code></td>
+<td>POST</td>
+<td>Enable/disable AMT features</td>
+<td><code>{"enableIDER":true,"enableKVM":true,"enableSOL":true,"userConsent":"none","redirection":true,"ocr":true}</code></td>
+</tr>
+<tr>
+<td><code>/mps/api/v1/amt/power/bootSources/&lt;GUID&gt;</code></td>
+<td>GET</td>
+<td>Retrieve available AMT boot sources and extract <code>bootString</code> of available PBAs</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>/mps/api/v1/amt/power/bootOptions/&lt;GUID&gt;</code></td>
+<td>POST</td>
+<td>Trigger Local PBA Boot</td>
+<td><code>{"method":"PowerAction","action":108,"useSOL":false,"bootDetails":{"bootPath":"\OemPba.efi","enforceSecureBoot":true}}</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>If you see any issues, please log them on our <a href="https://github.com/device-management-toolkit/mps/issues">GitHub Issues page</a> or reach out to us on our <strong>Discord channel</strong>.</p>
 
 
 
