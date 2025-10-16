@@ -1,77 +1,78 @@
 
 ## Specific Changes Required for Version Upgrades
 
-### Upgrade to 2.28 (Sep 25) from 2.27 (Dec 23)
+!!! important Upgrade Notice
+    Every deployment environment is unique. The prerequisites and setup steps provided here serve as general guidance for running the latest published images.
+    Please ensure you follow your organization’s internal deployment, security, and validation procedures when upgrading or updating your environment.
 
-The 2.28 release of DMT Cloud Deployment requires an upgrade to the `rpsdb` database.
+### Upgrade to 2.28 (Sep 25) from 2.18 (Dec 23) or later
+
+The 2.28 release of DMT Cloud Deployment requires updates to the `rpsdb` database. If upgrading from **2.18 (Dec 23)** or any later version, run the following SQL scripts to add or modify tables before continuing with the upgrade
 
 1. Run the following SQL scripts to alter constraints and add new tables before upgrading the services.
 
-        ```sql title="rpsdb"
-        -- Add new column to Profiles table
-        ALTER TABLE IF EXISTS profiles
-        ADD COLUMN IF NOT EXISTS uefi_wifi_sync_enabled BOOLEAN NULL;
-        ```
+    ```sql title="rpsdb - Add new column to Profiles table"
+    ALTER TABLE IF EXISTS profiles
+    ADD COLUMN IF NOT EXISTS uefi_wifi_sync_enabled BOOLEAN NULL;
+    ```
 
-        ```sql title="rpsdb"
-        -- Create proxyconfigs table
-        CREATE TABLE IF NOT EXISTS proxyconfigs(
-            proxy_config_name citext,
-            address citext NOT NULL,
-            info_format integer NOT NULL,
-            port integer NOT NULL,
-            network_dns_suffix varchar(192),
-            creation_date timestamp,
-            tenant_id varchar(36),
-            CONSTRAINT address_port_tenant_id UNIQUE (address, port, tenant_id),
-            PRIMARY KEY (proxy_config_name, tenant_id)
-        );
-        ```
+    ```sql title="rpsdb - Create proxyconfigs table"
+    CREATE TABLE IF NOT EXISTS proxyconfigs(
+        proxy_config_name citext,
+        address citext NOT NULL,
+        info_format integer NOT NULL,
+        port integer NOT NULL,
+        network_dns_suffix varchar(192),
+        creation_date timestamp,
+        tenant_id varchar(36),
+        CONSTRAINT address_port_tenant_id UNIQUE (address, port, tenant_id),
+        PRIMARY KEY (proxy_config_name, tenant_id)
+    );
+    ```
 
-        ```sql title="rpsdb"
-        -- Create profiles_proxyconfigs table
-        CREATE TABLE IF NOT EXISTS profiles_proxyconfigs(
-            proxy_config_name citext,
-            profile_name citext,
-            FOREIGN KEY (proxy_config_name,tenant_id)  REFERENCES proxyconfigs(proxy_config_name,tenant_id),
-            FOREIGN KEY (profile_name,tenant_id)  REFERENCES profiles(profile_name,tenant_id),
-            priority integer,
-            creation_date timestamp,
-            created_by varchar(40),
-            tenant_id varchar(36),
-            PRIMARY KEY (proxy_config_name, profile_name, priority, tenant_id)
-        );
-        ```
+    ```sql title="rpsdb - Create profiles_proxyconfigs table"
+    CREATE TABLE IF NOT EXISTS profiles_proxyconfigs(
+        proxy_config_name citext,
+        profile_name citext,
+        FOREIGN KEY (proxy_config_name,tenant_id)  REFERENCES proxyconfigs(proxy_config_name,tenant_id),
+        FOREIGN KEY (profile_name,tenant_id)  REFERENCES profiles(profile_name,tenant_id),
+        priority integer,
+        creation_date timestamp,
+        created_by varchar(40),
+        tenant_id varchar(36),
+        PRIMARY KEY (proxy_config_name, profile_name, priority, tenant_id)
+    );
+    ```
 
-        ???+ example "Example - Adding Columns and Tables to PostgresDB using psql"
-                This example walks through one potential option to update a Postgres Database using psql.
+    ???+ example "Example - Adding Columns and Tables to PostgresDB using psql"
+        This example walks through one potential option to update a Postgres Database using psql.
 
-                1. Open a Command Prompt or Terminal.
+        1. Open a Command Prompt or Terminal.
 
-                2. Connect to your Postgres instance and `rpsdb` database. Provide the hostname of the database, the port (Postgres default is 5432), the database `rpsdb`, and your database user.
+        2. Connect to your Postgres instance and `rpsdb` database. Provide the hostname of the database, the port (Postgres default is 5432), the database `rpsdb`, and your database user.
+                ```
+                psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
+                ```
+
+                ??? example "Example Commands"
                         ```
-                        psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
+                        Azure:
+                        psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql
+
+                        AWS:
+                        psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U postgresadmin
                         ```
 
-                        ??? example "Example Commands"
-                                ```
-                                Azure:
-                                psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql
+        3. Provide your Postgres user password.
 
-                                AWS:
-                                psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U postgresadmin
-                                ```
+        4. Run the SQL Statements.
 
-                3. Provide your Postgres user password.
-
-                4. Run the SQL Statements.
-
-                5. Verify the changes were applied correctly.
-                        ```sql
-                        \d profiles
-                        \d proxyconfigs
-                        \d profiles_proxyconfigs
-                        ```
+        5. Verify the changes were applied correctly.
+                ```sql
+                \d profiles
+                \d proxyconfigs
+                \d profiles_proxyconfigs
+                ```
 
 2. Continue with [Upgrade a Minor Version](#upgrade-a-minor-version-ie-2x-to-2y) steps below.
 
