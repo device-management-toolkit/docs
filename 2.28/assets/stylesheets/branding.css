@@ -31,3 +31,14 @@
     width: 2.2rem;
     height: 2.2rem;
 }
+
+/* Specific category overrides */
+.icon-new  { color: hsla(122, 39%, 49%, 1); } 
+.icon-enh  { color: hsla(45, 100%, 51%, 1); } 
+.icon-improv { color: hsla(210, 5%, 45%, 1); } 
+.icon-opens { color: hsla(10, 45%, 45%, 1); }       
+.icon-perf { color: hsla(33, 100%, 49%, 1); }
+.icon-log  { color: var(--md-primary-fg-color); }
+.icon-doc { color: hsla(210, 80%, 45%, 1); }
+.icon-upgrade { color: hsla(200, 70%, 45%, 1); }
+.icon-handshake { color: hsla(30, 40%, 65%, 1); }

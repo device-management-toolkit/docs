@@ -4635,7 +4635,7 @@
 
   <h1>REST API Call</h1>
 
-<p>This tutorial demonstrates how to generate a JSON Web Token (JWT) for Authorization and construct an API call for <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.13.0#/Devices/get_api_v1_devices">Getting Devices</a> using <a href="https://curl.se/"><abbr title="command line URL - A command line tool and library for transferring data with URLs.">curl</abbr></a>. This method will retrieve information about all devices, including device GUIDs.</p>
+<p>This tutorial demonstrates how to generate a JSON Web Token (JWT) for Authorization and construct an API call for <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.22.3#/Devices/get_api_v1_devices">Getting Devices</a> using <a href="https://curl.se/"><abbr title="command line URL - A command line tool and library for transferring data with URLs.">curl</abbr></a>. This method will retrieve information about all devices, including device GUIDs.</p>
 <figure class="figure-image">
 <img src="..\..\assets\images\CURLTutorial.png" alt="Figure 1: Tutorial Flow Using curl">
 <figcaption>Figure 1: Tutorial flow using curl</figcaption>
@@ -4669,7 +4669,7 @@
 <li>See Other Example GET/POST Commands</li>
 </ul>
 <h2 id="generate-a-token-for-authorization">Generate a Token for Authorization<a class="headerlink" href="#generate-a-token-for-authorization" title="Permanent link">&para;</a></h2>
-<p>See the <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.13.0#/Auth/post_api_v1_authorize" target="_blank">Authorize Method in the API Documentation</a> for more information.</p>
+<p>See the <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.22.3#/Auth/post_api_v1_authorize" target="_blank">Authorize Method in the API Documentation</a> for more information.</p>
 <ol>
 <li>Open a Terminal or Command Prompt.</li>
 <li>Copy and paste the example code below into a text editor.</li>
@@ -4697,7 +4697,7 @@
 </li>
 </ol>
 <h2 id="run-api-call-for-get-devices">Run API Call for Get Devices<a class="headerlink" href="#run-api-call-for-get-devices" title="Permanent link">&para;</a></h2>
-<p>See the <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.13.0#/Devices/get_api_v1_devices" target="_blank">GetDevices Method in the API Documentation</a> for more information.</p>
+<p>See the <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.22.3#/Devices/get_api_v1_devices" target="_blank">GetDevices Method in the API Documentation</a> for more information.</p>
 <ol>
 <li>Open a Terminal or Command Prompt.</li>
 <li>Copy and paste the example code below into a text editor.</li>
@@ -4741,7 +4741,7 @@ Example JSON Pretty Print:</p>
 <p><div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/mps/api/v1/amt/powercapabilities/<span class="o">[</span>AMT-Device-GUID<span class="o">]</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer [JWT-Token]&quot;</span>
 </code></pre></div>
-See <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.13.0#/AMT/get_api_v1_amt_power_capabilities__guid_">Power Capabilities API Docs</a> for more information and expected responses.</p>
+See <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.22.3#/AMT/get_api_v1_amt_power_capabilities__guid_">Power Capabilities API Docs</a> for more information and expected responses.</p>
 </div>
 <div class="tabbed-block">
 <p><div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/mps/api/v1/amt/power/action/<span class="o">[</span>AMT-Device-GUID<span class="o">]</span><span class="w"> </span><span class="se">\</span>
@@ -4749,7 +4749,7 @@ See <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.13.0#/AMT/ge
 <span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer [JWT-Token]&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-d<span class="w"> </span><span class="s2">&quot;{\&quot;action\&quot;: [Power-Action], \&quot;useSOL\&quot;: false}&quot;</span>
 </code></pre></div>
-See <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.13.0#/AMT/post_api_v1_amt_power_action__guid_">Power Action API Docs</a> for more information and expected responses.</p>
+See <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.22.3#/AMT/post_api_v1_amt_power_action__guid_">Power Action API Docs</a> for more information and expected responses.</p>
 </div>
 </div>
 </div>
