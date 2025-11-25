@@ -59,7 +59,7 @@ The example implementation has a tenantId that is passed as part of the JWT toke
 
 After implementing the multitenancy code changes and starting the services, profiles and configs can be created by providing a `tenantID` as part of the [API calls](../APIs/indexRPS.md).
 
-Then when activating and configuring the AMT device using RPC, provide the `-tenant` flag with the `tenantID` of the profile. [Find all RPC flags in the RPC CLI docs](./RPC/commandsRPC.md).  See example command below.
+Then when activating and configuring the AMT device using RPC, provide the `-tenant` flag with the `tenantID` of the profile. [Find all RPC flags in the RPC CLI docs](./RPC/v2/commandsRPC.md).  See example command below.
 
 ```
 rpc activate -u wss://server/activate -n -profile profilename -tenant profileTenantID
