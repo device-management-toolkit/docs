@@ -160,7 +160,7 @@ This capability is only supported for activating unprovisioned (e.g. pre-provisi
 | -p string          | Proxy address and port                                                                                                          |
 | -password          | Existing set AMT password                                                                                                       |
 | -profile string    | Name of the profile to use                                                                                                      |
-| -tenant string     | TenantID of profile. If not provided, then assumed empty string (i.e. [no Multitenancy enabled](../middlewareExtensibility.md)) |
+| -tenant string     | TenantID of profile. If not provided, then assumed empty string (i.e. [no Multitenancy enabled](../../middlewareExtensibility.md)) |
 | -token string      | JWT Token for Authorization                                                                                                     |
 | -u string          | WebSocket address of server to activate against                                                                                 |
 | -uuid string       | Override AMT device UUID for use with **non-CIRA** workflow and deployments. This is for specific use cases where the hardware does not have a correctly assigned or formatted UUID. This is **NOT recommended** in other situations and could potentially break features. <br><br> Input must match standard UUID alphanumeric, hyphenated format (e.g. 4c4c4544-005a-3510-8047-b4c04f564433). |
@@ -257,7 +257,7 @@ Execute a maintenance command for the managed device:
 | -p string          | Proxy address and port                                                                                                                                                                  |
 | -password string   | AMT password                                                                                                                                                                            |
 | -t duration        | Time to wait until AMT is ready (e.g. `2m` or `30s`), the default is `2m0s`                                                                                                             |
-| -tenant string     | TenantID of profile. If not provided, then assumed empty string (i.e. [no Multitenancy enabled](../middlewareExtensibility.md))                                                         |
+| -tenant string     | TenantID of profile. If not provided, then assumed empty string (i.e. [no Multitenancy enabled](../../middlewareExtensibility.md))                                                         |
 | -token string      | JWT Token for Authorization                                                                                                                                                             |
 | -u string          | WebSocket address of server to activate against                                                                                                                                         |
 | -uuid string       | Override AMT device UUID for use with **non-CIRA** workflow and deployments. This is for specific use cases where the hardware does not have a correctly assigned or formatted UUID. This is **NOT recommended** in other situations and could potentially break features. <br><br> Input must match standard UUID alphanumeric, hyphenated format (e.g. 4c4c4544-005a-3510-8047-b4c04f564433). |
@@ -450,7 +450,7 @@ Configures TLS in AMT. AMT password is required.
 
     === "Using Enterprise Assistant"
 
-        See the [TLS Configuration using Enterprise Assistant and RPC-Go](../EA/RPCConfiguration/localtlsconfig.md) documentation for more details.
+        See the [TLS Configuration using Enterprise Assistant and RPC-Go](../../EA/RPCConfiguration/localtlsconfig.md) documentation for more details.
 
         === "YAML"
         
@@ -509,7 +509,7 @@ Configures TLS in AMT. AMT password is required.
 
     === "Using Enterprise Assistant"
 
-        Provide the EA Address and configured RPC-Go Credentials. See the [TLS Configuration using Enterprise Assistant and RPC-Go](../EA/RPCConfiguration/localtlsconfig.md) documentation for more details.
+        Provide the EA Address and configured RPC-Go Credentials. See the [TLS Configuration using Enterprise Assistant and RPC-Go](../../EA/RPCConfiguration/localtlsconfig.md) documentation for more details.
 
         ```
         rpc configure tls -mode Server -password AMTPassword -eaAddress http://<YOUR-IPADDRESS-OR-FQDN>:8000 -eaUsername eaUser -eaPassword eaPass
@@ -543,7 +543,7 @@ Configures TLS in AMT. AMT password is required.
 
 Configure AMT wired settings for DHCP or Static IP locally using RPC-Go (no communication with RPS and EA). AMT password is required.
 
-Configure wired 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT or using Enterprise Assistant. More information on configuring AMT to use 802.1x can be found in [RPC-Go 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) or [RPS 802.1x Configuration](../EA/RPSConfiguration/remoteIEEE8021xConfig.md).
+Configure wired 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT or using Enterprise Assistant. More information on configuring AMT to use 802.1x can be found in [RPC-Go 802.1x Configuration](../../EA/RPCConfiguration/localIEEE8021xConfig.md) or [RPS 802.1x Configuration](../../EA/RPSConfiguration/remoteIEEE8021xConfig.md).
 
 === "Config File"
     ##### via Config file
@@ -616,7 +616,7 @@ Configure wired 802.1x settings of an existing, activated AMT device by passing 
 
     === "Using Enterprise Assistant"
 
-        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant RPC-Go 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
+        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant RPC-Go 802.1x Configuration](../../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
 
         === "YAML"
             ```yaml title="config.yaml with 802.1x"
@@ -782,7 +782,7 @@ Configure wired 802.1x settings of an existing, activated AMT device by passing 
 
     === "Using Enterprise Assistant"
 
-        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant RPC-Go 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
+        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant RPC-Go 802.1x Configuration](../../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
 
         ```
         rpc configure wired -dhcp -ipsync -password AMTPassword -ieee8021xProfileName example8021xProfile -eaAddress http://<YOUR-IPADDRESS-OR-FQDN>:8000 -eaUsername eaUser -eaPassword eaPass -authenticationProtocol 0
@@ -816,7 +816,7 @@ Configure wired 802.1x settings of an existing, activated AMT device by passing 
 
     === "Using Enterprise Assistant"
 
-        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant RPC-Go 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
+        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant RPC-Go 802.1x Configuration](../../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
 
         ```
         rpc configure wired -configJson "{ "password": "AMTPassword", "wiredConfig": { "dhcp": true, "ipsync": true, "ieee8021xProfileName": "exampleIeee8021xEAP-TLS" }, "enterpriseAssistant": { "eaAddress": "http://<YOUR-IPADDRESS-OR-FQDN>:8000", "eaUsername": "eaUser", "eaPassword": "eaPass" }, "ieee8021xConfigs": [ { "profileName": "exampleIeee8021xEAP-TLS", "authenticationProtocol": 0 } ] }"
@@ -860,7 +860,7 @@ Configure wired 802.1x settings of an existing, activated AMT device by passing 
 !!! warning "Warning - Deprecation: `addwifisettings` subcommand"
     **`rpc configure wireless` is the recommended subcommand.** The previous `rpc configure addwifisettings` subcommand is deprecated will be removed in the future. It is recommended to utilize the new, `rpc configure wireless` subcommand for new development.
 
-Configure wireless 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT or using Enterprise Assistant. More information on configuring AMT to use 802.1x can be found in [RPC-Go 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) or [RPS 802.1x Configuration](../EA/RPSConfiguration/remoteIEEE8021xConfig.md). AMT password is required.
+Configure wireless 802.1x settings of an existing, activated AMT device by passing credentials and certificates directly to AMT or using Enterprise Assistant. More information on configuring AMT to use 802.1x can be found in [RPC-Go 802.1x Configuration](../../EA/RPCConfiguration/localIEEE8021xConfig.md) or [RPS 802.1x Configuration](../../EA/RPSConfiguration/remoteIEEE8021xConfig.md). AMT password is required.
 
 On failure, the `wireless` configure command will rollback any certificates added before the error occurred.
 
@@ -917,7 +917,7 @@ On failure, the `wireless` configure command will rollback any certificates adde
 
     === "Using Enterprise Assistant"
 
-        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant RPC-Go 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
+        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant RPC-Go 802.1x Configuration](../../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
 
         === "YAML"
             ```yaml title="config.yaml with 802.1x"
@@ -1137,7 +1137,7 @@ On failure, the `wireless` configure command will rollback any certificates adde
 
     === "Using Enterprise Assistant"
 
-        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant RPC-Go 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
+        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant RPC-Go 802.1x Configuration](../../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
 
         ```
         rpc configure wireless -profileName profileName -password AMTPassword -authenticationMethod 7 -encryptionMethod 4 -ssid "networkSSID" -pskPassphrase networkPass -authenticationProtocol 0 -priority 1 -eaAddress http://<YOUR-IPADDRESS-OR-FQDN>:8000 -eaUsername eaUser -eaPassword eaPass
@@ -1165,7 +1165,7 @@ On failure, the `wireless` configure command will rollback any certificates adde
 
     === "Using Enterprise Assistant"
 
-        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant RPC-Go 802.1x Configuration](../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
+        Using Enterprise Assistant for 802.1x configuration offers the most secure path. See [Enterprise Assistant RPC-Go 802.1x Configuration](../../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
 
         ```
         rpc configure wireless -configJson "{ "password": "AMTPassword", "enterpriseAssistant": { "eaAddress": "http://<YOUR-IPADDRESS-OR-FQDN>:8000", "eaUsername": "eaUser", "eaPassword": "eaPass" }, "wifiConfigs": [ { "profileName": "exampleWifi8021x", "ssid": "ssid", "priority": 1, "authenticationMethod": 7, "encryptionMethod": 4, "ieee8021xProfileName": "exampleIeee8021xEAP-TLS" } ], "ieee8021xConfigs": [ { "profileName": "exampleIeee8021xEAP-TLS", "authenticationProtocol": 0 } ] }"
@@ -1243,7 +1243,7 @@ rpc amtinfo [OPTIONS]
 | MAC Address            | -lan   | Device's MAC Address                                                     |
 
 For more information,
-see [Wireless Activation](../../Tutorials/createWiFiConfig.md).
+see [Wireless Activation](../../../Tutorials/createWiFiConfig.md).
 
 ### version
 
