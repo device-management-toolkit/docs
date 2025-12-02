@@ -40,7 +40,7 @@ The following services are assumed to be configured and running in your enterpri
 
 ## Wired 802.1x Configuration
 
-These steps will show how to configure a device for DHCP and 802.1x (EAP-TLS). See the [RPC CLI Configure Wired Documentation](../../RPC/commandsRPC.md#wired) for all configuration options.
+These steps will show how to configure a device for DHCP and 802.1x (EAP-TLS). See the [RPC CLI Configure Wired Documentation](../../RPC/v2/commandsRPC.md#wired) for all configuration options.
 
 1. Create and open a new file named `config.yaml`.
 
@@ -84,7 +84,7 @@ These steps will show how to configure a device for DHCP and 802.1x (EAP-TLS). S
 
 ## Wireless 802.1x Configuration
 
-These steps will show how to configure a device for DHCP and 802.1x (EAP-TLS). See the [RPC CLI Configure Wireless Documentation](../../RPC/commandsRPC.md#wireless) for all configuration options.
+These steps will show how to configure a device for DHCP and 802.1x (EAP-TLS). See the [RPC CLI Configure Wireless Documentation](../../RPC/v2/commandsRPC.md#wireless) for all configuration options.
 
 1. Create and open a new file named `config.yaml`.
 
