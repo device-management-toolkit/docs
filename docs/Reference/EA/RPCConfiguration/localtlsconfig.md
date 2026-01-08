@@ -56,7 +56,7 @@ See [EA Configuration for RPC-Go](rpcgoConfiguration.md) for steps on how to set
 3. Run the `rpc configure tls` command. Replace the [bracketed] values with your own.
 
     !!! note "Alternative Option - Using a Config File"
-        Rather than passing in individual flag options, a `.yaml` or `.json` config file can be passed. See [`rpc configure tls` Command Documentation](../../RPC/commandsRPC.md#tls) for more details and examples.
+        Rather than passing in individual flag options, a `.yaml` or `.json` config file can be passed. See [`rpc configure tls` Command Documentation](../../RPC/v2/commandsRPC.md#tls) for more details and examples.
 
     ```
     rpc configure tls -mode [configurationMode] -password [AMTPassword] -eaAddress http://[IP-Address-or-FQDN]:8000 -eaUsername [myUsername] -eaPassword [myPassword]

@@ -42,7 +42,7 @@ After downloading, continue on to [Run RPC to Activate, Configure, and Connect t
 Alternatively, the RPC-Go binaries can be manually built using Go for development purposes or personal preference.
 
 ??? tip "Flexible Deployment - RPC as a Library"  
-    The RPC can be built as an executable file or as a library, which offers the flexibility of deploying in your management agent or client. [Read more about building RPC as a library here](../../Reference/RPC/libraryRPC.md).
+    The RPC can be built as an executable file or as a library, which offers the flexibility of deploying in your management agent or client. [Read more about building RPC as a library here](../../Reference/RPC/v2/libraryRPC.md).
 
 If you are building an executable on a development system, you will copy the executable to the AMT device afterwards. 
 
@@ -128,7 +128,7 @@ If you are building an executable on a development system, you will copy the exe
         ```
 
     ??? note "Note - Other RPC Flags and Commands"
-        See more about the [flags used here and the other available commands of RPC-Go](../../Reference/RPC/commandsRPC.md).
+        See more about the [flags used here and the other available commands of RPC-Go](../../Reference/RPC/v2/commandsRPC.md).
 
     !!! success
         <figure class="figure-image">

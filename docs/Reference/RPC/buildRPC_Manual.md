@@ -40,7 +40,7 @@ This guide details how to manually build the RPC-Go binary for development or te
 ## Build RPC
 
 !!! tip "Flexible Deployment - RPC as a Library"  
-    The RPC can be built as an executable file or as a library, which offers the flexibility of deploying in your management agent or client. [Read more about building RPC as a library here](./libraryRPC.md).
+    The RPC can be built as an executable file or as a library, which offers the flexibility of deploying in your management agent or client. [Read more about building RPC as a library here](./v2/libraryRPC.md).
 
 1. Open a Terminal (Linux) or Powershell/Command Prompt **as Administrator** (Windows):
 

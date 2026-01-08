@@ -86,6 +86,10 @@
       issuer: ""
     ```
 
+!!! important
+    Using the default credentials is for TESTING ONLY. Not setting these values to your own values will result in an insecure deployment. For production deployments we recommended using an OAUTH provider (Auth0, Azure Entra AD, etc..) and configuring Console to use that instead. We may remove the default values in the future. `
+
+
 ## Run
 
 1. Close the terminal if Console is already running, then rerun the executable for the configuration changes to take effect.

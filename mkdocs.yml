@@ -4,7 +4,7 @@ site_url: "https://device-management-toolkit.github.io/docs/"
 repo_url: "https://github.com/device-management-toolkit/cloud-deployment"
 repo_name: "device-management-toolkit/cloud-deployment"
 copyright: "Copyright &copy; 2021 Intel Corporation"
-site_dir: site/2.27
+site_dir: site/2.29
 # Configuration
 theme:
   name: "material"
@@ -99,7 +99,8 @@ nav:
       - IDE-Redirection (IDER): Tutorials/ideRedirection.md
       - Wireless Activation: Tutorials/createWiFiConfig.md
       - Modify User Authentication: Tutorials/modifyUserAuth.md
-      - Localization:
+      - One Click Recovery (OCR): Tutorials/ocrTutorial.md
+      - Localization:   
           - Console: Tutorials/Localization/consoleLocalization.md
           - Sample Web UI: Tutorials/Localization/webuiLocalization.md
       - Scaling Tutorials:
@@ -150,9 +151,13 @@ nav:
       - Security Information: Reference/RPS/securityRPS.md
       - Create Profile with TLS: Reference/RPS/createProfileTLSConfig.md
     - Remote Provisioning Client:
+      - Overview: Reference/RPC/overview.md
       - Build RPC-Go Manually: Reference/RPC/buildRPC_Manual.md
-      - RPC CLI: Reference/RPC/commandsRPC.md
-      - RPC Library: Reference/RPC/libraryRPC.md
+      - v2.x:
+        - RPC CLI: Reference/RPC/v2/commandsRPC.md
+        - RPC Library: Reference/RPC/v2/libraryRPC.md
+      - v3 (Beta):
+        - About v3: Reference/RPC/v3/about-v3.md
       - Transition Activated Device: Reference/RPC/transitionDeviceRPC.md
     - UI Toolkit React:
       - React Controls:
@@ -229,15 +234,15 @@ extra:
       - rapid
       - dev
   repoVersion:
-    mpsAPI: 2.13.0
-    rpsAPI: 2.22.0
-    oamtct: 2.27.0
-    rpc_go: 2.43.1
-    webui: 3.34.2
+    mpsAPI: 2.22.5
+    rpsAPI: 2.30.2
+    oamtct: 2.29.1
+    rpc_go: 2.48.7
+    webui: 3.46.1
     rpc_c: 2.0.0
-    ui_toolkit: 3.3.1
-    ui_toolkit_react: 4.0.0
-    ui_toolkit_angular: 9.1.2
+    ui_toolkit: 3.3.6
+    ui_toolkit_react: 4.0.4
+    ui_toolkit_angular: 10.1.5
   analytics:
     provider: google
     property: "G-00QEDJW2TS"
