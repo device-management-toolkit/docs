@@ -112,7 +112,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../../.." title="Device Management Toolkit" class="md-header__button md-logo" aria-label="Device Management Toolkit" data-md-component="logo">
       
-  <img src="../../../assets/images/logo-white-75px.png" alt="logo">
+  <img src="../../../assets/images/logos/logo-white-75px.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -394,7 +394,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="Device Management Toolkit" class="md-nav__button md-logo" aria-label="Device Management Toolkit" data-md-component="logo">
       
-  <img src="../../../assets/images/logo-white-75px.png" alt="logo">
+  <img src="../../../assets/images/logos/logo-white-75px.png" alt="logo">
 
     </a>
     Device Management Toolkit
@@ -4756,19 +4756,19 @@
   
 
 
-<h1 id="event-monitoring-with-mqtt-mqtt-eventing">Event Monitoring with <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> (<abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Eventing)<a class="headerlink" href="#event-monitoring-with-mqtt-mqtt-eventing" title="Permanent link">&para;</a></h1>
-<p>Device Management Toolkit supports Eventing using Message Queuing Telemetry Transport (<abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr>), an IoT publish-and-subscribe network protocol. With <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Eventing, administrators can subscribe to specific topics, categories of events, for server event monitoring. This eliminates the need to query or poll <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> to determine network events, such as a device's activation or deactivation. Administrators can subscribe to events and respond proactively. </p>
+<h1 id="event-monitoring-with-mqtt-mqtt-eventing">Event Monitoring with <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transferring messages between devices.">MQTT</abbr> (<abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transferring messages between devices.">MQTT</abbr> Eventing)<a class="headerlink" href="#event-monitoring-with-mqtt-mqtt-eventing" title="Permanent link">&para;</a></h1>
+<p>Device Management Toolkit supports Eventing using Message Queuing Telemetry Transport (<abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transferring messages between devices.">MQTT</abbr>), an IoT publish-and-subscribe network protocol. With <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transferring messages between devices.">MQTT</abbr> Eventing, administrators can subscribe to specific topics, categories of events, for server event monitoring. This eliminates the need to query or poll <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> to determine network events, such as a device's activation or deactivation. Administrators can subscribe to events and respond proactively. </p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Currently, the implementation publishes all <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API call events to the <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Broker. </p>
+<p>Currently, the implementation publishes all <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API call events to the <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transferring messages between devices.">MQTT</abbr> Broker. </p>
 </div>
 <figure class="figure-image">
-<img src="..\..\..\assets\images\MQTT.png" alt="Figure 1: MQTT Eventing Examples">
+<img src="..\..\..\assets\images\diagrams\MQTT.png" alt="Figure 1: MQTT Eventing Examples">
 <figcaption>Figure 1: MQTT Eventing Examples</figcaption>
 </figure>
 
-<p><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> send JSON events to a Mosquitto* broker deployed as a Docker container. Administrators subscribe to the broker. As shown in Figure 1, proactive notifications are published in the <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Broker container.  </p>
-<h2 id="set-up-mqtt-support">Set Up <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> Support<a class="headerlink" href="#set-up-mqtt-support" title="Permanent link">&para;</a></h2>
+<p><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> send JSON events to a Mosquitto* broker deployed as a Docker container. Administrators subscribe to the broker. As shown in Figure 1, proactive notifications are published in the <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transferring messages between devices.">MQTT</abbr> Broker container.  </p>
+<h2 id="set-up-mqtt-support">Set Up <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transferring messages between devices.">MQTT</abbr> Support<a class="headerlink" href="#set-up-mqtt-support" title="Permanent link">&para;</a></h2>
 <p><strong>To enable support:</strong></p>
 <ol>
 <li>
@@ -4778,7 +4778,7 @@
 <p>In a text editor or IDE of choice, open the <code>.env</code> file to edit.</p>
 </li>
 <li>
-<p>Update the following fields. The <code>mqtt:</code> prefix indicates an <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transfering messages between devices.">MQTT</abbr> broker is being used. Kong* will now route event messages to port 8883.</p>
+<p>Update the following fields. The <code>mqtt:</code> prefix indicates an <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transferring messages between devices.">MQTT</abbr> broker is being used. Kong* will now route event messages to port 8883.</p>
 <table>
 <thead>
 <tr>
@@ -4829,7 +4829,7 @@
 
 4. Verify the **Path** is `/mosquitto`.
     <figure class="figure-image">
-    <img src="..\..\..\assets\images\MQTTEvents_View.png" alt="Figure 2: MQTT Events Connection">
+    <img src="..\..\..\assets\images\screenshots\MQTTEvents_View.png" alt="Figure 2: MQTT Events Connection">
     <figcaption>Figure 2: MQTT Events Connection</figcaption>
     </figure>
 
@@ -4842,7 +4842,7 @@
 
     !!! example "Example MQTT Events"
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\/MQTTEvents_View_Example.png" alt="Figure 3: MQTT Events Connection">
+        <img src="..\..\..\assets\images\screenshots\/MQTTEvents_View_Example.png" alt="Figure 3: MQTT Events Connection">
         <figcaption>Figure 3: MQTT Events Connection</figcaption>
         </figure>
 

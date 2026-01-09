@@ -112,7 +112,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Device Management Toolkit" class="md-header__button md-logo" aria-label="Device Management Toolkit" data-md-component="logo">
       
-  <img src="../../assets/images/logo-white-75px.png" alt="logo">
+  <img src="../../assets/images/logos/logo-white-75px.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -394,7 +394,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Device Management Toolkit" class="md-nav__button md-logo" aria-label="Device Management Toolkit" data-md-component="logo">
       
-  <img src="../../assets/images/logo-white-75px.png" alt="logo">
+  <img src="../../assets/images/logos/logo-white-75px.png" alt="logo">
 
     </a>
     Device Management Toolkit
@@ -5717,7 +5717,7 @@
 </ul>
 <p>Do all the above if it becomes necessary to reset your environment completely. See instructions below.</p>
 <ol>
-<li><strong>Unprovision the Managed Device:</strong> Use rpc.exe to dectivate the managed device as described in <a href="../RPC/v2/commandsRPC/#RPCexamples"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Activate/Deactivate Examples</a>. The <code>deactivate</code> parameter executes a full unprovision of the managed device. It is also possible to implement a full unprovision via MEBX. See <a href="../MEBX/unprovision/">Unprovisioning</a>.</li>
+<li><strong>Unprovision the Managed Device:</strong> Use rpc.exe to deactivate the managed device as described in <a href="../RPC/v2/commandsRPC/#deactivate"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Activate/Deactivate Examples</a>. The <code>deactivate</code> parameter executes a full unprovision of the managed device. It is also possible to implement a full unprovision via MEBX. See <a href="../MEBX/unprovision/">Unprovisioning</a>.</li>
 <li><strong>Shut down Docker Services:</strong> Use <code>docker image prune</code> and <code>docker image rm</code> to stop or remove all images, containers, and volumes, as described in <a href="../../GetStarted/Cloud/setup/#Builddockerimages">Build and Run Docker Images</a>.</li>
 </ol>
 <p>The best practice example below stops Docker and then prunes all volumes. </p>

@@ -112,7 +112,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../../.." title="Device Management Toolkit" class="md-header__button md-logo" aria-label="Device Management Toolkit" data-md-component="logo">
       
-  <img src="../../../assets/images/logo-white-75px.png" alt="logo">
+  <img src="../../../assets/images/logos/logo-white-75px.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -394,7 +394,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="Device Management Toolkit" class="md-nav__button md-logo" aria-label="Device Management Toolkit" data-md-component="logo">
       
-  <img src="../../../assets/images/logo-white-75px.png" alt="logo">
+  <img src="../../../assets/images/logos/logo-white-75px.png" alt="logo">
 
     </a>
     Device Management Toolkit
@@ -4844,7 +4844,7 @@
 <p>It is suggested to run Enterprise Assistant as a normal Windows application at first to make sure everything works correctly before running it as a background Windows service. You can start by going in the "Settings" option in the menus. Settings are also saved in a local <code>.config</code> file that can be referenced when running as a background Windows service.</p>
 </div>
 <p><figure class="figure-image">
-    <img width="400" src="..\..\..\assets\images\EA_Startup.png" alt="Figure 1: Enterprise Assistant Startup">
+    <img width="400" src="..\..\..\assets\images\screenshots\EA_Startup.png" alt="Figure 1: Enterprise Assistant Startup">
     <figcaption>Figure 1: Enterprise Assistant Startup</figcaption>
 </figure></p>
 </li>
@@ -4855,7 +4855,7 @@
 <p>The <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go local configuration option does not communicate with a remote server (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>). <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go will establish a communication channel to Enterprise Assistant (EA) directly and handle the CSR process. The wanted configuration options will be passed via command line flags or a config <code>.yaml</code>/<code>.json</code> file using <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go. Configuration of AMT is handled entirely locally by <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go.</p>
 <p><a class="md-button md-button--primary" href="../RPCConfiguration/rpcgoConfiguration/">Configure EA using <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go</a></p>
 <figure class="figure-image">
-    <img src="..\..\..\assets\images\EA_RPC_Architecture.png" width=75% alt="Figure 2: Enterprise Assistant Architecture using RPC-Go">
+    <img src="..\..\..\assets\images\diagrams\EA_RPC_Architecture.png" width=75% alt="Figure 2: Enterprise Assistant Architecture using RPC-Go">
     <figcaption>Figure 2: Enterprise Assistant Architecture using RPC-Go</figcaption>
 </figure>
 
@@ -4863,7 +4863,7 @@
 <p><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> will handle communication with Enterprise Assistant (EA). Desired configuration options will be provided via the AMT profile, Wireless Config, and IEEE802.1x Config. <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> will communicate with EA at the time of provisioning to configure 802.1x and/or <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> configuration options based on the profiles.</p>
 <p><a class="md-button md-button--primary" href="../RPSConfiguration/rpsConfiguration/">Configure EA using <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr></a></p>
 <figure class="figure-image">
-    <img src="..\..\..\assets\images\EA_RPS_Architecture.png" alt="Figure 3: Enterprise Assistant Architecture using RPS">
+    <img src="..\..\..\assets\images\diagrams\EA_RPS_Architecture.png" alt="Figure 3: Enterprise Assistant Architecture using RPS">
     <figcaption>Figure 3: Enterprise Assistant Architecture using RPS</figcaption>
 </figure>
 

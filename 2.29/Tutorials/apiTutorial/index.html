@@ -112,7 +112,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Device Management Toolkit" class="md-header__button md-logo" aria-label="Device Management Toolkit" data-md-component="logo">
       
-  <img src="../../assets/images/logo-white-75px.png" alt="logo">
+  <img src="../../assets/images/logos/logo-white-75px.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -394,7 +394,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Device Management Toolkit" class="md-nav__button md-logo" aria-label="Device Management Toolkit" data-md-component="logo">
       
-  <img src="../../assets/images/logo-white-75px.png" alt="logo">
+  <img src="../../assets/images/logos/logo-white-75px.png" alt="logo">
 
     </a>
     Device Management Toolkit
@@ -4788,14 +4788,6 @@
   <h1>REST API Call</h1>
 
 <p>This tutorial demonstrates how to generate a JSON Web Token (JWT) for Authorization and construct an API call for <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.22.5#/Devices/get_api_v1_devices">Getting Devices</a> using <a href="https://curl.se/"><abbr title="command line URL - A command line tool and library for transferring data with URLs.">curl</abbr></a>. This method will retrieve information about all devices, including device GUIDs.</p>
-<figure class="figure-image">
-<img src="..\..\assets\images\CURLTutorial.png" alt="Figure 1: Tutorial Flow Using curl">
-<figcaption>Figure 1: Tutorial flow using curl</figcaption>
-</figure>
-
-<p><strong>Figure 1: API Call to Get All Devices</strong></p>
-<p>Figure 1 illustrates the flow of the tutorial below. </p>
-<p>Consult the API documentation for the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> APIs (Steps A and C). Use the generated JWT, the return value from the Authorize method in Step B, with any of the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API methods that require a BearerAuth, an HTTP security scheme that provides access to the bearer of a token. The GetDevices method accepts the JWT as an authentication and returns a list of devices and associated data.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Successfully deploy the Management Presence Server (<abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>) and Remote Provisioning Server (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) and connect an Intel® vPro device to <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> before constructing the API call. Start <a href="../../GetStarted/Cloud/prerequisites/">here</a>*<em> to install microservices locally with Docker</em>.</p>
