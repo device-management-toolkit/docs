@@ -29,9 +29,11 @@ Depending on your recovery scenario, follow the appropriate section below:
 Before using HTTPS Network Boot, ensure the following prerequisites are met:
 
 1. Enable HTTP(S) Boot in BIOS settings. This may be disabled by default on some devices.
+    
     <figure class="figure-image">
-      <img src="..\..\..\..\assets\images\OCR_HTTPSBOOT_BIOS.png" alt="Figure 1: Enable HTTP(S) Boot in BIOS">
+      <img src="..\..\..\..\assets\images\screenshots\OCR_HTTPSBOOT_BIOS.png" alt="Figure 1: Enable HTTP(S) Boot in BIOS">
     </figure>
+
 
 2. When recovering a device using an ISO that isn’t signed by a trusted certificate authority, you’ll need to disable Secure Boot in the BIOS settings.
     <figure class="figure-image">
@@ -53,7 +55,7 @@ Before using HTTPS Network Boot, ensure the following prerequisites are met:
         Console must be connected to the AMT device over TLS for this feature to work.
 
     <figure class="figure-image">
-      <img src="..\..\..\..\assets\images\OCR_Connect_With_TLS.png" alt="Figure 3: Connect to a Device using TLS">
+      <img src="..\..\..\..\assets\images\screenshots\OCR_Connect_With_TLS.png" alt="Figure 3: Connect to a Device using TLS">
     </figure>
 
 2. Enable `One Click Recovery (OCR)` feature in `General AMT Info` Section.
@@ -63,19 +65,19 @@ Before using HTTPS Network Boot, ensure the following prerequisites are met:
         See the snapshot below — if the **HTTPS Network Boot** field shows **Supported**, the feature is available on the device.
     
     <figure class="figure-image">
-      <img src="..\..\..\..\assets\images\OCR_HTTPS_Boot_Supported.png" alt="Figure 4: Enable HTTPS Network Boot">
+      <img src="..\..\..\..\assets\images\screenshots\OCR_HTTPS_Boot_Supported.png" alt="Figure 4: Enable HTTPS Network Boot">
     </figure>
 
 3. Upload the Root Certificate of the HTTPS server hosting the ISO via the `Add New` certificates option.
     
     <figure class="figure-image">
-      <img src="..\..\..\..\assets\images\OCR_ADD_TRUSTEDROOTCERT.png" alt="Figure 5: Add Root Certificate of HTTPS Server">
+      <img src="..\..\..\..\assets\images\screenshots\OCR_ADD_TRUSTEDROOTCERT.png" alt="Figure 5: Add Root Certificate of HTTPS Server">
     </figure>
 
 4. Click on the three-dot menu and select **Reset to HTTPS Boot (OCR)**.
     
     <figure class="figure-image">
-      <img src="..\..\..\..\assets\images\OCR_Reset_to_HTTPS_Boot.png" alt="Figure 6: Reset to HTTPS Boot (OCR)">
+      <img src="..\..\..\..\assets\images\screenshots\OCR_Reset_to_HTTPS_Boot.png" alt="Figure 6: Reset to HTTPS Boot (OCR)">
     </figure>
 
 5. Enter the ISO URL (e.g., https://192.168.88.250:5443/ubuntu.iso).
@@ -85,7 +87,7 @@ Before using HTTPS Network Boot, ensure the following prerequisites are met:
         Ensure the HTTPS Server ISO URL is accessible to the device.
     
     <figure class="figure-image">
-      <img src="..\..\..\..\assets\images\OCR_HTTPSBOOT_URL.png" alt="Figure 7: URL to the .iso hosted on HTTPS Server">
+      <img src="..\..\..\..\assets\images\screenshots\OCR_HTTPSBOOT_URL.png" alt="Figure 7: URL to the .iso hosted on HTTPS Server">
     </figure>
 
 6. Optionally, enable `Enforce Secure Boot` to boot only a secure `.iso` file.
@@ -105,11 +107,11 @@ Before using HTTPS Network Boot, ensure the following prerequisites are met:
 8. Optionally, Connect to KVM and verify that the device loads the ISO.
     
     <figure class="figure-image">
-      <img src="..\..\..\..\assets\images\OCR_HTTPSBoot_Recovery_Start.png" alt="Figure 8: View KVM screen while the ISO boots">
+      <img src="..\..\..\..\assets\images\screenshots\OCR_HTTPSBoot_Recovery_Start.png" alt="Figure 8: View KVM screen while the ISO boots">
     </figure>
 
     <figure class="figure-image">
-      <img src="..\..\..\..\assets\images\OCR_HTTPS_BOOT_UbuntuOS.png" alt="Figure 9: Full Ubuntu LTS Boot">
+      <img src="..\..\..\..\assets\images\screenshots\OCR_HTTPS_BOOT_UbuntuOS.png" alt="Figure 9: Full Ubuntu LTS Boot">
     </figure>
     
     !!! bug "KVM Keyboard Issue"

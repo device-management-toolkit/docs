@@ -63,7 +63,7 @@ The Intel vPro® Platform, featuring Intel® AMT, enables Out-of-Band (OOB) Mana
 Reduce the need for costly on-site IT, minimize the downtime of key, business-critical devices, and more. [Read more about the Intel vPro® Platform](https://www.intel.com/content/www/us/en/developer/topic-technology/edge-5g/hardware/vpro-platform-retail.html).
 
 <figure class="figure-image">
-  <img src="assets\images\OOBManagement.png" alt="Figure 1: Device Management Toolkit features OOB Management">
+  <img src="assets\images\diagrams\OOBManagement.svg" style="height:800px" alt="Figure 1: Device Management Toolkit features OOB Management">
   <figcaption>Figure 1: Device Management Toolkit features OOB Management</figcaption>
 </figure>
  

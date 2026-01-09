@@ -5,7 +5,7 @@
 1. Select the newly added AMT device.
 
     <figure class="figure-image">
-        <img src="..\..\..\assets\images\Console_Devices.png" alt="Figure 1: Devices Tab">
+        <img src="..\..\..\assets\images\screenshots\Console_Devices.png" alt="Figure 1: Devices Tab">
         <figcaption>Figure 1: Devices Tab</figcaption>
     </figure>
 
@@ -18,7 +18,7 @@
         
 
     <figure class="figure-image">
-        <img src="..\..\..\assets\images\Console_DeviceInfo.png" alt="Figure 2: Device Page and Options">
+        <img src="..\..\..\assets\images\screenshots\Console_DeviceInfo.png" alt="Figure 2: Device Page and Options">
         <figcaption>Figure 2: Device Page and Options</figcaption>
     </figure>
 

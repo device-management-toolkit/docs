@@ -22,7 +22,7 @@ On the AMT device, download the latest RPC-Go version from the [RPC-Go GitHub Re
 
 !!! success
     <figure class="figure-image">
-        <img src="..\..\..\assets\images\Console_DeviceActivation.png" alt="Figure 3: Example Successful Activation and Configuration">
+        <img src="..\..\..\assets\images\screenshots\Console_DeviceActivation.png" alt="Figure 3: Example Successful Activation and Configuration">
         <figcaption>Figure 3: Example Successful Activation and Configuration</figcaption>
     </figure>
 
