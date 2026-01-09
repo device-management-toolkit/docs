@@ -8,7 +8,7 @@ Device Management Toolkit supports Eventing using Message Queuing Telemetry Tran
     Currently, the implementation publishes all MPS and RPS REST API call events to the MQTT Broker. 
 
 <figure class="figure-image">
-<img src="..\..\..\assets\images\MQTT.png" alt="Figure 1: MQTT Eventing Examples">
+<img src="..\..\..\assets\images\diagrams\MQTT.png" alt="Figure 1: MQTT Eventing Examples">
 <figcaption>Figure 1: MQTT Eventing Examples</figcaption>
 </figure>
 
@@ -61,7 +61,7 @@ MPS and RPS send JSON events to a Mosquitto* broker deployed as a Docker contain
 
 4. Verify the **Path** is `/mosquitto`.
     <figure class="figure-image">
-    <img src="..\..\..\assets\images\MQTTEvents_View.png" alt="Figure 2: MQTT Events Connection">
+    <img src="..\..\..\assets\images\screenshots\MQTTEvents_View.png" alt="Figure 2: MQTT Events Connection">
     <figcaption>Figure 2: MQTT Events Connection</figcaption>
     </figure>
 
@@ -74,7 +74,7 @@ MPS and RPS send JSON events to a Mosquitto* broker deployed as a Docker contain
 
     !!! example "Example MQTT Events"
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\/MQTTEvents_View_Example.png" alt="Figure 3: MQTT Events Connection">
+        <img src="..\..\..\assets\images\screenshots\/MQTTEvents_View_Example.png" alt="Figure 3: MQTT Events Connection">
         <figcaption>Figure 3: MQTT Events Connection</figcaption>
         </figure>
 

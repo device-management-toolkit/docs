@@ -49,7 +49,7 @@ This capability is only supported for activating unprovisioned (e.g. pre-provisi
     ```
 
 === "CCM w/ Config File"
-    Options can be passed via a config file. This can also be combined into a single config file with [addwifisettings](#addwifisettings) information.
+    Options can be passed via a config file. This can also be combined into a single config file with [addwifisettings](#wireless) information.
 
     === "YAML"
         ```yaml title="config.yaml"
@@ -101,7 +101,7 @@ This capability is only supported for activating unprovisioned (e.g. pre-provisi
         ```
 
 === "ACM w/ Config File"
-    Options can be passed via a config file. This can also be combined into a single config file with [addwifisettings](#addwifisettings) information.
+    Options can be passed via a config file. This can also be combined into a single config file with [addwifisettings](#wireless) information.
 
     === "YAML"
         ```yaml title="config.yaml"

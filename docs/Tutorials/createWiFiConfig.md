@@ -60,7 +60,7 @@ rpc amtinfo
 2. In the top-right corner, click **Add New.**
 
     <figure class="figure-image">
-    <img src="..\..\assets\images\RPS_NewWireless.png" alt="Figure 1: Create a new WiFi Config">
+    <img src="..\..\assets\images\screenshots\RPS_NewWireless.png" alt="Figure 1: Create a new WiFi Config">
     <figcaption>Figure 1: Create a new WiFi Config</figcaption>
     </figure>
 
@@ -78,7 +78,7 @@ rpc amtinfo
 
     !!! example "Example Wireless Profile"
         <figure class="figure-image">
-        <img src="..\..\assets\images\RPS_WirelessCreate.png" alt="Figure 1: Example Wireless Profile">
+        <img src="..\..\assets\images\screenshots\RPS_WirelessCreate.png" alt="Figure 1: Example Wireless Profile">
         <figcaption>Figure 1: Example wireless profile</figcaption>
         </figure>
 
@@ -86,7 +86,7 @@ rpc amtinfo
 
     !!! example "Example - Select Wireless Profile"
         <figure class="figure-image">
-        <img src="..\..\assets\images\RPS_CreateProfile_withWiFi.png" alt="Figure 3: RPS Bottom of Profile">
+        <img src="..\..\assets\images\screenshots\RPS_CreateProfile_withWiFi.png" alt="Figure 3: RPS Bottom of Profile">
         <figcaption>Figure 3: RPS bottom of profile</figcaption>
         </figure>
 
