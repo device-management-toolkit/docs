@@ -135,7 +135,7 @@ Now that the strings are translated and the deployment configurations are update
 
     !!! example "Example - Console Home Page"
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\Console_FrenchTranslation.png" alt="Figure 1: Console English Login Page">
+        <img src="..\..\..\assets\images\screenshots\Console_FrenchTranslation.png" alt="Figure 1: Console English Login Page">
         <figcaption>Figure 1: Console English Login page</figcaption>
         </figure>
 

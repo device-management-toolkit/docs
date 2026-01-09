@@ -12,7 +12,7 @@ These features require user consent in CCM:
     While AMT supports this feature, the toolkit doesn't natively support it. 
 
 <figure class="figure-image">
-<img src="..\..\..\assets\images\Profiles.png" alt="Figure 1: Set up configuration and profiles for N number of clients">
+<img src="..\..\..\assets\images\diagrams\ProfileRelationshipsRPS.svg" style="height:800px;" alt="Figure 1: Set up configuration and profiles for N number of clients">
 <figcaption>Figure 1: Set up configuration and profiles for n number of clients</figcaption>
 </figure>
 
@@ -30,7 +30,7 @@ Profiles provide configuration information to the firmware on platforms featurin
 
 2. Under the **Profiles** tab, click **New** in the top-right corner to create a profile.
    <figure class="figure-image">
-   <img src="..\..\..\assets\images\RPS_NewProfile.png" alt="Figure 2: Create a new profile">
+   <img src="..\..\..\assets\images\screenshots\RPS_NewProfile.png" alt="Figure 2: Create a new profile">
    <figcaption>Figure 2: Create a new profile</figcaption>
    </figure>
 
@@ -61,7 +61,7 @@ Profiles provide configuration information to the firmware on platforms featurin
 
     !!! example "Example CCM Profile"
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\RPS_CreateProfile.png" alt="Figure 3: Example CCM profile">
+        <img src="..\..\..\assets\images\screenshots\RPS_CreateProfile.png" alt="Figure 3: Example CCM profile">
         <figcaption>Figure 3: Example CCM profile</figcaption>
         </figure>
 
