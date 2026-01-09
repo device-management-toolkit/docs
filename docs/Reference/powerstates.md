@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 Possible power actions are listed in the tables below. Power actions are specified by number. 
 

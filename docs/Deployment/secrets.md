@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 To prepare for a production environment, replace Hashicorp Vault* with a secrets management provider. 
 
 To replace secrets management, update these services:

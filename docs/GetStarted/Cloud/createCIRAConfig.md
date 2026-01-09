@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 Client Initiated Remote Access (CIRA) enables a CIRA-capable edge device to initiate and establish a persistent connection to the MPS. As long as the managed device is connected to the network and to a power source, it can maintain a persistent connection.
 

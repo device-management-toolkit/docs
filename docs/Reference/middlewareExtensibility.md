@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 Middleware extensibility allows developers to implement new middleware handlers to both MPS or RPS. By adding custom functions, MPS and RPS will process and load these during server startup. The `loadCustomMiddleware` function that executes on startup can be found in `mps/src/server/webserver.ts` or `rps/src/index.ts`.
 

@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 Developed in Go* programming language, the Remote Provisioning Client (RPC) application runs on the managed device. RPC-Go activates and configures Intel® AMT on the managed device. Once properly configured, the device can be added to Console.
 

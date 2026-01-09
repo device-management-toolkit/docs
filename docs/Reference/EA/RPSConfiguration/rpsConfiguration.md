@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 # Enterprise Assistant Configuration for RPS
 

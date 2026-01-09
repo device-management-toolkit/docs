@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 # Sample Web UI Localization
 

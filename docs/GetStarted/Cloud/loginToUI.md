@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 The web portal is available for login after the deployment of the MPS, RPS, and Sample Web UI. Make sure all microservices are successfully running before attempting to login.
 

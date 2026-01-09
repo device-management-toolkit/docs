@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 Console is an open-source management application that enables IT administrators to manage Intel® AMT devices within on-premises environments (or private networks). Once an AMT device is activated, it can be added to Console, allowing administrators to establish a secure 1:1 direct connection for performing out-of-band management operations.
 

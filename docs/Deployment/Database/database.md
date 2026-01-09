@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 To prepare for a production environment, replace the PostgreSQL* database with that of another provider. 
 
 To replace the database, update these services:

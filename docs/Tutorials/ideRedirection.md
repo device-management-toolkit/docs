@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 !!! note "Note - Support for User Consent"
     Currently, the implementation of IDER in Device Management Toolkit does not support User Consent. In order to use IDER, the device must be activated in ACM. To see when support for User Consent will be added, [follow our Github Backlog](https://github.com/orgs/device-management-toolkit/projects/10).

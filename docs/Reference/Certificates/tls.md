@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 ## What is TLS?
 Transport Layer Security (TLS) is a protocol used to establish encrypted communication sessions over an IP network between an application and server. As the most widely-used encryption protocol, it secures email, instant messaging, voice over IP (VoIP), HTTPS, and more. Encrypted TLS sessions promote data security and prevent tampering, eavesdropping, and other malicious activity.

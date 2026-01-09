@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 Not sure how to implement Keyboard, Video Mouse (KVM)? View the [UI Toolkit KVM Module Tutorial](../../../Tutorials/uitoolkitReact.md) for a step-by-step walkthrough prerequisites and instructions for implementing a React Control using the UI Toolkit.
 
 ## Add KVM Control

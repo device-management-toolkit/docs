@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 1. In the Console UI, navigate to the **Devices** page in the left-hand menu sidebar.
 

@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 Enterprise Assistant (EA) is a Windows application that can run as a normal application or as a background Windows service. Once setup to connect to RPS (hosted in either the cloud or enterprise) or RPC-Go, EA can assist with configuring 802.1x and TLS settings on AMT devices. Enterprise Assistant will handle certificate signing requests (CSRs) to Microsoft CA.
 

@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 ## GUIDs in Intel® AMT
 
 Each Intel® AMT device has a Global Unique Identifier (GUID) assigned to it by default. This GUID will be used as the reference to each device record. Typically, device GUIDs are required to perform power actions and other device-specific manageability features.

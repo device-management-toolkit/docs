@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 The Remote Provisioning Client (RPC-Go) is a Go-based application that runs directly on a managed device and activates Intel® AMT.
 

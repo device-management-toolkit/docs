@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 This sample deployment demonstrates the use of Docker* in swarm mode. The following conditions apply: 
 

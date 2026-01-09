@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 To use Webpack*, understand its Core Concepts:
 
 - **Entry:** The entry point such as `/src/index.js`, which is the default for Webpack 4 is what Webpack will use to start building out/resolving its dependencies.

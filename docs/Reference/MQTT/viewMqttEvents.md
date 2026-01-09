@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 # Event Monitoring with MQTT (MQTT Eventing) 
 

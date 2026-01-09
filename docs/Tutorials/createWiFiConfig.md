@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 !!! important "Important - Windows 10 or Newer Supported Only"
     This feature is currently only supported for systems on Windows 10 or newer (including Windows 11) operating systems. **Wireless on Linux is not currently supported by Intel AMT.**

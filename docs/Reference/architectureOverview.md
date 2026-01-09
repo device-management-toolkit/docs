@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 Figure 1 illustrates the high-level architecture of Device Management Toolkit microservice architecture.
 

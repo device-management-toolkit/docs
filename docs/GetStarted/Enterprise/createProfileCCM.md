@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 Client Control Mode (CCM) provides full access to features of Intel® Active Management Technology (Intel® AMT), but it does require user consent for all redirection features.
 

@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 # Amazon Elastic Kubernetes Service (EKS)
 

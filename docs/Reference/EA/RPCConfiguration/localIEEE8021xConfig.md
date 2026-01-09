@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 # Local IEEE 802.1x Configuration with RPC-Go
 

@@ -24,6 +24,7 @@ theme:
     - navigation.top
     - toc.integrate
     - content.code.copy
+    - content.tooltips
   custom_dir: ./docs/overrides
   palette:
     # Palette toggle for automatic mode
@@ -192,7 +193,9 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.tilde
   - abbr
-  - pymdownx.snippets
+  - pymdownx.snippets:
+      auto_append:
+        - References/abbreviations.md
   - attr_list
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
@@ -211,7 +214,8 @@ extra_css:
   - assets/stylesheets/branding.css
   - assets/stylesheets/index.css
   - assets/stylesheets/videos.css
-
+watch:
+  - References
 plugins:
   - render_swagger
   - search

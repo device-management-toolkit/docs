@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 # Quickstart  - Bundle Serial Over LAN (SOL) Control
 
 Use these instructions to:

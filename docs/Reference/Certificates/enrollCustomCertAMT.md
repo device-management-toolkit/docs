@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 # Enroll a Custom Provisioning Certificate in an AMT Device using USBFile
 

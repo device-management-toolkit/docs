@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 This tutorial demonstrates how to deploy the Device Management Toolkit on a local Kubernetes single-node cluster. Alternatively, you can also deploy using a managed service through a Cloud Service Provider such as Azure Kubernetes Service (AKS). See [AKS](./deployingk8s-aks.md).
 
