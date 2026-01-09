@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Deployment_Workflow_Docker" data-name="Deployment Workflow Docker" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 800">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        fill: #0a69b3;
+      }
+
+      .cls-1, .cls-5, .cls-6, .cls-7, .cls-8 {
+        font-weight: 700;
+      }
+
+      .cls-1, .cls-5, .cls-8 {
+        font-family: IntelClear-Bold, 'Intel Clear';
+      }
+
+      .cls-1, .cls-6, .cls-8, .cls-9 {
+        font-size: 21px;
+      }
+
+      .cls-10 {
+        letter-spacing: 0em;
+      }
+
+      .cls-3 {
+        stroke-width: 1.94px;
+      }
+
+      .cls-3, .cls-11, .cls-12, .cls-4, .cls-13 {
+        stroke: #0a69b3;
+      }
+
+      .cls-3, .cls-4, .cls-13 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-11, .cls-14, .cls-15, .cls-12, .cls-13, .cls-16 {
+        fill: none;
+      }
+
+      .cls-11, .cls-14, .cls-15, .cls-12, .cls-16 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-14 {
+        stroke: #b4f0ff;
+      }
+
+      .cls-15 {
+        stroke: #00a3f6;
+      }
+
+      .cls-5, .cls-17 {
+        font-size: 18px;
+      }
+
+      .cls-5, .cls-18 {
+        fill: #00285a;
+      }
+
+      .cls-6 {
+        font-family: IntelOneDisplay-Bold, 'IntelOne Display';
+      }
+
+      .cls-6, .cls-17, .cls-19, .cls-8 {
+        fill: #0068b5;
+      }
+
+      .cls-7 {
+        font-family: IntelClearPro-Bold, 'Intel Clear Pro';
+        font-size: 60px;
+      }
+
+      .cls-7, .cls-20 {
+        fill: #004a86;
+      }
+
+      .cls-21 {
+        letter-spacing: 0em;
+      }
+
+      .cls-12 {
+        stroke-dasharray: 2.99 7.96;
+      }
+
+      .cls-22, .cls-9, .cls-23 {
+        fill: #fff;
+      }
+
+      .cls-24 {
+        letter-spacing: 0em;
+      }
+
+      .cls-4 {
+        stroke-width: 1.39px;
+      }
+
+      .cls-25 {
+        letter-spacing: 0em;
+      }
+
+      .cls-26 {
+        letter-spacing: 0em;
+      }
+
+      .cls-27 {
+        letter-spacing: 0em;
+      }
+
+      .cls-17, .cls-9, .cls-23 {
+        font-family: IntelClear-Light, 'Intel Clear';
+        font-weight: 300;
+      }
+
+      .cls-20 {
+        font-size: 26px;
+      }
+
+      .cls-20, .cls-28 {
+        font-family: IntelClear-Regular, 'Intel Clear';
+      }
+
+      .cls-29 {
+        fill: #00a3f6;
+      }
+
+      .cls-28 {
+        fill: #939598;
+        font-size: 14px;
+      }
+
+      .cls-16 {
+        stroke: #b4f0ff;
+      }
+
+      .cls-30 {
+        letter-spacing: -.1em;
+      }
+
+      .cls-31 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-32 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-33 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-34 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-35 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-36 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-37 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-38 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-39 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-40 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-41 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-42 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-43 {
+        letter-spacing: -.04em;
+      }
+
+      .cls-44 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-45 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-46 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-47 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-48 {
+        letter-spacing: 0em;
+      }
+
+      .cls-49 {
+        letter-spacing: 0em;
+      }
+
+      .cls-50 {
+        letter-spacing: 0em;
+      }
+
+      .cls-51 {
+        letter-spacing: 0em;
+      }
+
+      .cls-52 {
+        letter-spacing: 0em;
+      }
+
+      .cls-23 {
+        font-size: 24px;
+      }
+
+      .cls-53 {
+        letter-spacing: .02em;
+      }
+
+      .cls-54 {
+        letter-spacing: .05em;
+      }
+
+      .cls-55 {
+        letter-spacing: .05em;
+      }
+
+      .cls-56 {
+        letter-spacing: 0em;
+      }
+    </style>
+    <symbol id="IntelAMT" viewBox="0 0 270.31 61">
+      <g>
+        <rect class="cls-18" width="270.31" height="61" rx="4" ry="4"/>
+        <text class="cls-23" transform="translate(74.17 37.46)"><tspan x="0" y="0">I</tspan><tspan class="cls-42" x="5.9" y="0">n</tspan><tspan x="19.44" y="0">tel® AMT</tspan></text>
+      </g>
+    </symbol>
+    <symbol id="Legend" viewBox="0 0 215.57 77.94">
+      <g>
+        <text class="cls-28" transform="translate(40.92 13.18) rotate(-.44)"><tspan x="0" y="0">Devi</tspan><tspan class="cls-47" x="27.79" y="0">c</tspan><tspan x="34.44" y="0">e Manageme</tspan><tspan class="cls-41" x="114.99" y="0">n</tspan><tspan x="123.03" y="0">t </tspan><tspan class="cls-30" x="131.33" y="0">T</tspan><tspan x="138.42" y="0">oolkit</tspan><tspan class="cls-31" x="0" y="16.8">C</tspan><tspan x="8.57" y="16.8">ompone</tspan><tspan class="cls-41" x="61.67" y="16.8">n</tspan><tspan x="69.71" y="16.8">t</tspan></text>
+        <path class="cls-2" d="M28.03,32.76l-23.82.19c-2.2.02-4.01-1.77-4.03-3.97L0,5.16C-.02,2.96,1.77,1.14,3.97,1.13l23.82-.19c2.2-.02,4.01,1.77,4.03,3.97l.18,23.81c.02,2.2-1.77,4.01-3.97,4.03Z"/>
+        <text class="cls-28" transform="translate(40.92 67.4) rotate(-.44)"><tspan x="0" y="0">I</tspan><tspan class="cls-37" x="3.78" y="0">n</tspan><tspan class="cls-24" x="11.82" y="0">tel® Ha</tspan><tspan class="cls-41" x="54.63" y="0">r</tspan><tspan x="59.62" y="0">dwa</tspan><tspan class="cls-37" x="85.71" y="0">r</tspan><tspan x="90.7" y="0">e/Fir</tspan><tspan class="cls-49" x="119.94" y="0">m</tspan><tspan class="cls-24" x="132.13" y="0">wa</tspan><tspan class="cls-41" x="149.76" y="0">r</tspan><tspan x="154.75" y="0">e</tspan></text>
+        <path class="cls-18" d="M28.03,77.76l-23.82.19c-2.2.02-4.01-1.77-4.03-3.97L0,50.16c-.02-2.2,1.77-4.01,3.97-4.03l23.82-.19c2.2-.02,4.01,1.77,4.03,3.97l.18,23.81c.02,2.2-1.77,4.01-3.97,4.03Z"/>
+      </g>
+    </symbol>
+    <symbol id="LightweightClient" viewBox="0 0 271 266">
+      <g>
+        <rect class="cls-4" x="26.5" y="79.23" width="218" height="167" rx="4" ry="4"/>
+        <rect class="cls-15" x=".5" y=".5" width="270" height="265" rx="4" ry="4"/>
+        <text class="cls-6" transform="translate(46.46 33.18)"><tspan x="0" y="0">Light</tspan><tspan class="cls-35" x="50.29" y="0">w</tspan><tspan x="67.41" y="0">eight Client</tspan></text>
+        <text class="cls-9" transform="translate(96.93 142.95)"><tspan class="cls-39" x="0" y="0">R</tspan><tspan x="12.31" y="0">emote </tspan><tspan x="-20.89" y="25.2">P</tspan><tspan class="cls-39" x="-8.21" y="25.2">r</tspan><tspan x="-.94" y="25.2">ovisioning </tspan><tspan x="-15.42" y="50.4">Clie</tspan><tspan class="cls-39" x="18.97" y="50.4">n</tspan><tspan x="30.82" y="50.4">t (RPC)</tspan></text>
+        <rect class="cls-14" x="41.5" y="93.23" width="188" height="138" rx="4" ry="4"/>
+      </g>
+    </symbol>
+    <symbol id="Microservices" viewBox="0 0 256 429">
+      <g>
+        <rect class="cls-15" x=".5" y=".5" width="255" height="428" rx="4" ry="4"/>
+        <text class="cls-6" transform="translate(58.51 33.43)"><tspan x="0" y="0">Mic</tspan><tspan class="cls-47" x="35.85" y="0">r</tspan><tspan x="43.91" y="0">oservices</tspan></text>
+        <rect class="cls-3" x="19" y="73.73" width="218" height="327" rx="4" ry="4"/>
+        <g>
+          <text class="cls-9" transform="translate(89.56 138.64)"><tspan class="cls-39" x="0" y="0">R</tspan><tspan x="12.31" y="0">emote </tspan><tspan x="-18.33" y="25.2">P</tspan><tspan class="cls-39" x="-5.65" y="25.2">r</tspan><tspan x="1.62" y="25.2">ovisioning</tspan><tspan class="cls-42" x="-18.77" y="50.4">S</tspan><tspan x="-6.82" y="50.4">e</tspan><tspan class="cls-55" x="4.26" y="50.4">r</tspan><tspan x="13" y="50.4">ver (RPS)</tspan></text>
+          <rect class="cls-16" x="34" y="89.23" width="188" height="138" rx="4" ry="4"/>
+        </g>
+        <g>
+          <text class="cls-9" transform="translate(67.46 297.03)"><tspan x="0" y="0">Manageme</tspan><tspan class="cls-42" x="102.35" y="0">n</tspan><tspan x="114.2" y="0">t</tspan><tspan x="18.33" y="25.2">P</tspan><tspan class="cls-39" x="31.02" y="25.2">r</tspan><tspan class="cls-26" x="38.28" y="25.2">esen</tspan><tspan class="cls-48" x="82.17" y="25.2">c</tspan><tspan x="91.92" y="25.2">e</tspan><tspan class="cls-42" x="1.06" y="50.4">S</tspan><tspan x="13.01" y="50.4">e</tspan><tspan class="cls-55" x="24.1" y="50.4">r</tspan><tspan x="32.83" y="50.4">ver (MPS)</tspan></text>
+          <rect class="cls-14" x="34" y="247.23" width="188" height="138" rx="4" ry="4"/>
+        </g>
+      </g>
+    </symbol>
+  </defs>
+  <text class="cls-7" transform="translate(38.72 67.53)"><tspan x="0" y="0">D</tspan><tspan class="cls-56" x="20.7" y="0">e</tspan><tspan class="cls-10" x="38.28" y="0">vice Management </tspan><tspan class="cls-52" x="322.19" y="0">T</tspan><tspan class="cls-10" x="340.01" y="0">oolkit </tspan></text>
+  <g>
+    <line class="cls-11" x1="483.5" y1="145" x2="483.5" y2="146.5"/>
+    <line class="cls-12" x1="483.5" y1="154.46" x2="483.5" y2="763.52"/>
+    <line class="cls-11" x1="483.5" y1="767.5" x2="483.5" y2="769"/>
+  </g>
+  <g>
+    <path class="cls-19" d="M277.05,182.88s3.74-4.79.88-10.14c-2.31-4.31-9.33-4.22-9.33-4.22,0,0,.68-7.54-8.19-7.54-7.24,0-7.49,6.42-7.49,6.42,0,0-5.47-2.67-9.28.49-3.25,2.7-2.15,7.01-2.15,7.01,0,0-4.86-.84-6.86,1.55-1.74,2.07-.48,6.2,1.07,6.18,12.18-.13,41.34.25,41.34.25"/>
+    <text class="cls-8" transform="translate(107.49 141.68)"><tspan x="0" y="0">Deve</tspan><tspan class="cls-48" x="49.33" y="0">l</tspan><tspan class="cls-26" x="55.75" y="0">opme</tspan><tspan class="cls-42" x="111.99" y="0">n</tspan><tspan x="124.4" y="0">t </tspan><tspan class="cls-45" x="137.19" y="0">S</tspan><tspan x="149.29" y="0">ystem or C</tspan><tspan class="cls-48" x="253.19" y="0">l</tspan><tspan x="259.62" y="0">oud</tspan></text>
+  </g>
+  <g>
+    <rect class="cls-18" x="675" y="162" width="63" height="20" rx="10" ry="10"/>
+    <circle class="cls-22" cx="727" cy="172" r="3"/>
+    <rect class="cls-22" x="682" y="170" width="11" height="4"/>
+    <rect class="cls-22" x="696" y="170" width="11" height="4"/>
+    <text class="cls-1" transform="translate(626.9 141.68)"><tspan x="0" y="0">Managed Devi</tspan><tspan class="cls-48" x="138.26" y="0">c</tspan><tspan x="148.38" y="0">e</tspan></text>
+  </g>
+  <text class="cls-20" transform="translate(598.9 56.11)"><tspan x="0" y="0">Doc</tspan><tspan class="cls-34" x="45.97" y="0">k</tspan><tspan x="59.12" y="0">er Dep</tspan><tspan class="cls-33" x="136.89" y="0">l</tspan><tspan x="143.57" y="0">oyme</tspan><tspan class="cls-38" x="209.04" y="0">n</tspan><tspan class="cls-21" x="223.96" y="0">t </tspan><tspan class="cls-43" x="239.38" y="0">W</tspan><tspan x="263.06" y="0">ork</tspan><tspan class="cls-53" x="301.75" y="0">f</tspan><tspan class="cls-33" x="310.96" y="0">l</tspan><tspan x="317.64" y="0">ow</tspan></text>
+  <rect class="cls-13" x="37" y="560.77" width="165" height="75" rx="4" ry="4"/>
+  <text class="cls-17" transform="translate(82.87 592.57) scale(.99 1)"><tspan x="0" y="0">Manage </tspan><tspan x="-8.04" y="21.6">the Devi</tspan><tspan class="cls-46" x="57.16" y="21.6">c</tspan><tspan class="cls-27" x="65.51" y="21.6">e</tspan></text>
+  <g>
+    <ellipse class="cls-29" cx="35.67" cy="561.95" rx="11.87" ry="12"/>
+    <text class="cls-5" transform="translate(30.27 566.82) scale(.99 1)"><tspan x="0" y="0">6</tspan></text>
+  </g>
+  <rect class="cls-13" x="37" y="326.03" width="165" height="75" rx="4" ry="4"/>
+  <text class="cls-17" transform="translate(81.5 357.84) scale(.99 1)"><tspan class="cls-36" x="0" y="0">C</tspan><tspan x="10.85" y="0">o</tspan><tspan class="cls-50" x="21.26" y="0">n</tspan><tspan x="31.5" y="0">figu</tspan><tspan class="cls-40" x="61.13" y="0">r</tspan><tspan x="67.35" y="0">e</tspan><tspan x="-29.29" y="21.6">and </tspan><tspan class="cls-44" x="5.37" y="21.6">L</tspan><tspan x="14.21" y="21.6">ogin to RPS</tspan></text>
+  <g>
+    <ellipse class="cls-29" cx="35.67" cy="327.1" rx="11.87" ry="12"/>
+    <text class="cls-5" transform="translate(30.27 331.97) scale(.99 1)"><tspan x="0" y="0">2</tspan></text>
+  </g>
+  <rect class="cls-13" x="37" y="443.4" width="165" height="75" rx="4" ry="4"/>
+  <text class="cls-17" transform="translate(66.14 486.01) scale(.99 1)"><tspan x="0" y="0">Bui</tspan><tspan class="cls-36" x="25.13" y="0">l</tspan><tspan x="29.52" y="0">d the RPC</tspan></text>
+  <g>
+    <ellipse class="cls-29" cx="35.67" cy="444.53" rx="11.87" ry="12"/>
+    <text class="cls-5" transform="translate(31.27 450.4) scale(.99 1)"><tspan x="0" y="0">3</tspan></text>
+  </g>
+  <rect class="cls-13" x="505.25" y="209.68" width="165" height="65" rx="4" ry="4"/>
+  <text class="cls-17" transform="translate(519.11 237.47)"><tspan class="cls-32" x="0" y="0">C</tspan><tspan class="cls-25" x="10.85" y="0">opy RPC to the</tspan><tspan x="-.34" y="21.6">Managed Devi</tspan><tspan class="cls-51" x="112.07" y="21.6">c</tspan><tspan x="120.42" y="21.6">e</tspan></text>
+  <rect class="cls-13" x="505.25" y="209.68" width="165" height="65" rx="4" ry="4"/>
+  <rect class="cls-13" x="505" y="298.36" width="165" height="65" rx="4" ry="4"/>
+  <text class="cls-17" transform="translate(538.19 335.58)"><tspan x="0" y="0">Run the RPC</tspan></text>
+  <g>
+    <circle class="cls-29" cx="505" cy="298.36" r="12"/>
+    <text id="_5" data-name="5" class="cls-5" transform="translate(499.52 303.78)"><tspan x="0" y="0">5</tspan></text>
+  </g>
+  <rect class="cls-13" x="37" y="208.67" width="165" height="75" rx="4" ry="4"/>
+  <text class="cls-17" transform="translate(48.99 229.67) scale(.99 1)"><tspan x="0" y="0">Bui</tspan><tspan class="cls-36" x="25.13" y="0">l</tspan><tspan x="29.52" y="0">d and Dep</tspan><tspan class="cls-36" x="111.74" y="0">l</tspan><tspan x="116.13" y="0">oy</tspan><tspan x="13.71" y="21.6">Mic</tspan><tspan class="cls-40" x="40.96" y="21.6">r</tspan><tspan x="47.19" y="21.6">ose</tspan><tspan class="cls-54" x="75.28" y="21.6">r</tspan><tspan x="82.77" y="21.6">vi</tspan><tspan class="cls-46" x="95.75" y="21.6">c</tspan><tspan x="104.1" y="21.6">es</tspan><tspan class="cls-44" x="40.18" y="43.2">L</tspan><tspan class="cls-27" x="49.01" y="43.2">ocal</tspan><tspan class="cls-40" x="81.88" y="43.2">l</tspan><tspan x="86.36" y="43.2">y</tspan></text>
+  <g>
+    <ellipse class="cls-29" cx="35.67" cy="209.68" rx="12.21" ry="12"/>
+    <text class="cls-5" transform="translate(29.78 214.37) scale(1.02 1)"><tspan x="0" y="0">1</tspan></text>
+  </g>
+  <g>
+    <circle class="cls-29" cx="504.75" cy="211.5" r="12"/>
+    <text class="cls-5" transform="translate(499.27 216.92)"><tspan x="0" y="0">4</tspan></text>
+  </g>
+  <use width="256" height="429" transform="translate(212.11 209.51)" xlink:href="#Microservices"/>
+  <use width="271" height="266" transform="translate(684.53 210)" xlink:href="#LightweightClient"/>
+  <use width="270.31" height="61" transform="translate(684.87 493.08)" xlink:href="#IntelAMT"/>
+  <use width="215.57" height="77.94" transform="translate(40.41 685.41)" xlink:href="#Legend"/>
+</svg>
