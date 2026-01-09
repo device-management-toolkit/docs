@@ -1,5 +1,18 @@
 --8<-- "References/abbreviations.md"
 
+Developed in Go* programming language, the Remote Provisioning Client (RPC) application runs on the managed device and communicates with the Remote Provisioning Server (RPS) microservice on the development system. The RPC and RPS configure and activate Intel® AMT on the managed device. Once properly configured, the remote managed device can call home to the Management Presence Server (MPS) by establishing a Client Initiated Remote Access (CIRA) connection with the MPS. See Figure 1.
+
+!!! tip "Production Environment"
+    In a production environment, RPC can be deployed with an in-band manageability agent to distribute it to the fleet of AMT devices. The in-band manageability agent can invoke RPC to run and activate the AMT devices.
+
+<figure class="figure-image">
+<img src="..\..\..\assets\images\diagrams\RPC_Overview.svg" style="height:800px" alt="Figure 1: RPC Configuration">
+<figcaption>Figure 1: RPC Configuration</figcaption>
+</figure>
+
+!!! note "Figure 1 Details"
+    The RPC on a managed device communicates with the Intel® Management Engine Interface (Intel® MEI, previously known as HECI) Driver and the Remote Provisioning Server (RPS) interfaces. The Driver uses the Intel® MEI to talk to Intel® AMT. The RPC activates Intel® AMT with an AMT profile, which is associated with a CIRA configuration (Step 3). The profile, which also distinguishes between Client Control Mode (CCM) or Admin Control Mode (ACM), and configuration were created in [Create a CIRA Config](../../GetStarted/Cloud/createCIRAConfig.md) or [Create an AMT Profile](../../GetStarted/Cloud/createProfileACM.md). After running RPC with a profile, Intel® AMT will establish a CIRA connection with the MPS (Step 4) allowing MPS to manage the remote device and issue AMT commands (Step 5).
+
 ## Overview
 
 This guide details how to manually build the RPC-Go binary for development or testing purposes.

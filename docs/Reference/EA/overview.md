@@ -34,7 +34,7 @@ The Enterprise Assistant source code must be compiled into a Windows executable 
         It is suggested to run Enterprise Assistant as a normal Windows application at first to make sure everything works correctly before running it as a background Windows service. You can start by going in the "Settings" option in the menus. Settings are also saved in a local `.config` file that can be referenced when running as a background Windows service.
 
     <figure class="figure-image">
-        <img width="400" src="..\..\..\assets\images\EA_Startup.png" alt="Figure 1: Enterprise Assistant Startup">
+        <img width="400" src="..\..\..\assets\images\screenshots\EA_Startup.png" alt="Figure 1: Enterprise Assistant Startup">
         <figcaption>Figure 1: Enterprise Assistant Startup</figcaption>
     </figure>
 
@@ -49,7 +49,7 @@ The RPC-Go local configuration option does not communicate with a remote server 
 [Configure EA using RPC-Go](./RPCConfiguration/rpcgoConfiguration.md){: .md-button .md-button--primary }
 
 <figure class="figure-image">
-    <img src="..\..\..\assets\images\EA_RPC_Architecture.png" width=75% alt="Figure 2: Enterprise Assistant Architecture using RPC-Go">
+    <img src="..\..\..\assets\images\diagrams\EA_RPC_Architecture.png" width=75% alt="Figure 2: Enterprise Assistant Architecture using RPC-Go">
     <figcaption>Figure 2: Enterprise Assistant Architecture using RPC-Go</figcaption>
 </figure>
 
@@ -60,7 +60,7 @@ RPS will handle communication with Enterprise Assistant (EA). Desired configurat
 [Configure EA using RPS](./RPSConfiguration/rpsConfiguration.md){: .md-button .md-button--primary }
 
 <figure class="figure-image">
-    <img src="..\..\..\assets\images\EA_RPS_Architecture.png" alt="Figure 3: Enterprise Assistant Architecture using RPS">
+    <img src="..\..\..\assets\images\diagrams\EA_RPS_Architecture.png" alt="Figure 3: Enterprise Assistant Architecture using RPS">
     <figcaption>Figure 3: Enterprise Assistant Architecture using RPS</figcaption>
 </figure>
 
