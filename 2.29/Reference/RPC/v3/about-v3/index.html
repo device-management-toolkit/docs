@@ -5702,39 +5702,39 @@
 
   <h1>About v3</h1>
 
-<p>RPC-Go v3.x introduces a faster activation workflow and a clearer configuration model.<br />
-In addition to the existing RPS-driven proxy flow, v3.x adds support for retrieving an encrypted AMT profile directly from the Console or RPS and applying it locally on the device. This significantly improves activation speed, especially in environments where RPS is not required. See the <strong>What Changed in v3.x</strong> section below for more details.</p>
+<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go v3.x introduces a faster activation workflow and a clearer configuration model.<br />
+In addition to the existing <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>-driven proxy flow, v3.x adds support for retrieving an encrypted AMT profile directly from the Console or <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and applying it locally on the device. This significantly improves activation speed, especially in environments where <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> is not required. See the <strong>What Changed in v3.x</strong> section below for more details.</p>
 <p>v3.x also addresses several long-standing inconsistencies in the configuration and CLI structure:</p>
 <ul>
 <li>The terms <code>config</code>, <code>configv2</code>, and <code>profile</code> were often confused.</li>
 <li>CLI flags were not fully consistent.</li>
 <li>Application configuration and provisioning configuration were mixed together.</li>
 </ul>
-<p>The goal of v3.x is clarity, consistency, and ease of use—improving how RPC-Go is configured and executed without changing its underlying activation and configuration capabilities.</p>
+<p>The goal of v3.x is clarity, consistency, and ease of use—improving how <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go is configured and executed without changing its underlying activation and configuration capabilities.</p>
 <div class="admonition important">
 <p class="admonition-title">v2.x is fully supported — no immediate action required</p>
-<p>RPC-Go v2.x continues to work exactly as before.<br />
-All existing activation flows, encrypted profiles, and RPS interactions remain fully supported.<br />
+<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go v2.x continues to work exactly as before.<br />
+All existing activation flows, encrypted profiles, and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> interactions remain fully supported.<br />
 You may stay on v2.x without upgrading until you are ready.</p>
 <p>This guide is only relevant if you want to understand the improvements in v3.x or plan to adopt it.</p>
 </div>
 <h2 id="what-changed-in-v3x">What Changed in v3.x<a class="headerlink" href="#what-changed-in-v3x" title="Permanent link">&para;</a></h2>
 <p>v3.x introduces a set of targeted improvements designed to simplify configuration and improve usability.</p>
 <h3 id="1-improved-activation-workflow-faster-local-activation">1. Improved Activation Workflow (Faster Local Activation)<a class="headerlink" href="#1-improved-activation-workflow-faster-local-activation" title="Permanent link">&para;</a></h3>
-<p>In earlier versions, RPC-Go (and before that, the C-based RPC) primarily acted as a proxy between the Remote Provisioning Server (RPS) and Intel® AMT. RPS determined the sequence of WSMAN messages required for activation, and RPC-Go relayed them to Intel® AMT over a secure WebSocket connection. This RPS-driven flow remains fully supported in v3.x.</p>
-<p>What v3.x adds is the ability for RPC-Go to directly call the encrypted profile export endpoint:</p>
+<p>In earlier versions, <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go (and before that, the C-based <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>) primarily acted as a proxy between the Remote Provisioning Server (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) and <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>. <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> determined the sequence of WSMAN messages required for activation, and <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go relayed them to <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> over a secure WebSocket connection. This <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>-driven flow remains fully supported in v3.x.</p>
+<p>What v3.x adds is the ability for <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go to directly call the encrypted profile export endpoint:</p>
 <div class="highlight"><pre><span></span><code>https://&lt;RPS or Console Host&gt;/api/v1/admin/profiles/export/&lt;profile-name&gt;?domainName=&lt;domain-profile-name&gt;
 </code></pre></div>
-<p>RPC-Go can authenticate using either username/password or an auth-token, retrieve the encrypted profile, and orchestrate Intel® AMT activation <strong>locally on the device</strong>.<br />
+<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go can authenticate using either username/password or an auth-token, retrieve the encrypted profile, and orchestrate <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> activation <strong>locally on the device</strong>.<br />
 This results in <strong>faster and more efficient activation</strong> compared to the legacy proxy model.</p>
 <p>This new workflow currently requires some additional configuration (endpoints, tokens, auth settings), and we plan to simplify it in future releases. This is also why v3.x remains in Beta—we want to incorporate customer feedback and ensure the workflow becomes easier as it evolves.</p>
-<p>If you prefer the traditional RPS-driven model, you can continue using it in both v2.x and v3.x.</p>
-<h3 id="2-clear-separation-of-application-config-vs-provisioning-profile">2. Clear Separation of “Application Config” vs “Provisioning Profile”<a class="headerlink" href="#2-clear-separation-of-application-config-vs-provisioning-profile" title="Permanent link">&para;</a></h3>
+<p>If you prefer the traditional <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>-driven model, you can continue using it in both v2.x and v3.x.</p>
+<h3 id="2-clear-separation-of-application-config-vs-provisioning-profile">2. Clear Separation of “Application Config” vs “Provisioning <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr>”<a class="headerlink" href="#2-clear-separation-of-application-config-vs-provisioning-profile" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>config.yaml</code> → now used <strong>only</strong> for application/runtime settings<br />
   (endpoints, authentication, logging, defaults, etc.)</li>
 <li><code>profile</code> → now the explicit name for provisioning configuration<br />
-  (AMT activation, CIRA, CCM/ACM, network settings)</li>
+  (AMT activation, <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>, <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>/<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>, network settings)</li>
 </ul>
 <h3 id="3-standardized-cli-flags">3. Standardized CLI Flags<a class="headerlink" href="#3-standardized-cli-flags" title="Permanent link">&para;</a></h3>
 <p>Long flags now use <code>--</code><br />
@@ -5745,7 +5745,7 @@ Short flags use <code>-</code></p>
 -p
 -c
 </code></pre></div>
-<p>This brings RPC-Go in line with modern CLI conventions and makes scripts cleaner.</p>
+<p>This brings <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go in line with modern CLI conventions and makes scripts cleaner.</p>
 <h3 id="4-removal-of-legacy-configv2">4. Removal of Legacy <code>configv2</code><a class="headerlink" href="#4-removal-of-legacy-configv2" title="Permanent link">&para;</a></h3>
 <p>The old provisioning flag:</p>
 <div class="highlight"><pre><span></span><code>--configv2
@@ -5768,7 +5768,7 @@ Short flags use <code>-</code></p>
 <h2 id="what-stays-the-same-in-v3x">What Stays the Same in v3.x<a class="headerlink" href="#what-stays-the-same-in-v3x" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Encrypted profiles remain supported (same format as v2.x).</li>
-<li>RPS-driven activation works the same as in v2.x.</li>
+<li><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>-driven activation works the same as in v2.x.</li>
 <li>Local profile-driven activation works the same, with clearer terminology.</li>
 </ul>
 <h2 id="support-policy">Support Policy<a class="headerlink" href="#support-policy" title="Permanent link">&para;</a></h2>
@@ -5942,7 +5942,7 @@ Short flags use <code>-</code></p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.instant", "search.suggest", "search.highlight", "navigation.top", "toc.integrate", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": ["rapid", "dev"], "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.instant", "search.suggest", "search.highlight", "navigation.top", "toc.integrate", "content.code.copy", "content.tooltips"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": ["rapid", "dev"], "provider": "mike"}}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>

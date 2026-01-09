@@ -5772,7 +5772,7 @@
   <h1>One Click Recovery (OCR)</h1>
 
 <p>Intel® One-Click Recovery (OCR) enables IT administrators to remotely and securely boot a device into a recovery environment using Intel AMT's out-of-band (OOB) connection. This ensures reliable recovery from system failures, bare-metal states, or connectivity issues.</p>
-<p>In cloud deployments, the Management Presence Server (MPS) now supports a secure power action to initiate HTTPS Boot, allowing recovery from a specified network URL.</p>
+<p>In cloud deployments, the Management Presence Server (<abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>) now supports a secure power action to initiate HTTPS Boot, allowing recovery from a specified network URL.</p>
 <h2 id="supported-recovery-options-in-ocr">Supported Recovery Options in OCR<a class="headerlink" href="#supported-recovery-options-in-ocr" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
@@ -5820,11 +5820,11 @@
 </div>
 </li>
 <li>
-<p>Make sure that the device shows as connected in the Sample UI or via the Get Device MPS API </p>
+<p>Make sure that the device shows as connected in the Sample UI or via the Get Device <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> API </p>
 </li>
 </ol>
 <h3 id="https-boot-using-cloud-deployment">HTTPS Boot using Cloud Deployment<a class="headerlink" href="#https-boot-using-cloud-deployment" title="Permanent link">&para;</a></h3>
-<p>You can use our <a href="#triggering-https-boot-via-mps-apis">MPS APIs</a> to perform recovery using HTTPS boot, but for quick demos and to understand how you can first test it, we've also implemented it in the <a href="#triggering-https-boot-using-sample-ui">Sample UI</a>.</p>
+<p>You can use our <a href="#triggering-https-boot-via-mps-apis"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> APIs</a> to perform recovery using HTTPS boot, but for quick demos and to understand how you can first test it, we've also implemented it in the <a href="#triggering-https-boot-using-sample-ui">Sample UI</a>.</p>
 <h3 id="triggering-https-boot-using-sample-ui">Triggering HTTPS Boot using Sample UI<a class="headerlink" href="#triggering-https-boot-using-sample-ui" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
@@ -5868,13 +5868,13 @@
 <li>
 <p>Optionally, enable <code>Enforce Secure Boot</code> to boot only a secure <code>.iso</code> file.</p>
 <div class="admonition important">
-<p class="admonition-title">ACM vs CCM behavior</p>
+<p class="admonition-title"><abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> vs <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> behavior</p>
 <ul>
 <li>
-<p>For UEFI HTTPS Boot, AMT allows the Console to control the <strong>Enforce Secure Boot</strong> setting only when the device is provisioned in <strong>Admin Control Mode (ACM)</strong>.  </p>
+<p>For UEFI HTTPS Boot, AMT allows the Console to control the <strong>Enforce Secure Boot</strong> setting only when the device is provisioned in <strong>Admin Control Mode (<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>)</strong>.  </p>
 </li>
 <li>
-<p>When operating in <strong>Client Control Mode (CCM)</strong>, <strong>Secure Boot is always enforced</strong> by AMT.</p>
+<p>When operating in <strong>Client Control Mode (<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>)</strong>, <strong>Secure Boot is always enforced</strong> by AMT.</p>
 </li>
 </ul>
 </div>
@@ -5887,7 +5887,7 @@
 <p>Click <code>OK</code> to start the recovery process. The device will restart and boot from the ISO.</p>
 </li>
 <li>
-<p>Optionally, Connect to KVM and verify that the device loads the ISO.</p>
+<p>Optionally, Connect to <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> and verify that the device loads the ISO.</p>
 <p><figure class="figure-image">
   <img src="..\..\assets\images\OCR_MPS_HTTPSBoot_Recovery_Start.png" alt="Figure 8: View KVM screen while the ISO boots">
 </figure></p>
@@ -5895,16 +5895,16 @@
   <img src="..\..\assets\images\OCR_MPS_HTTPS_BOOT_UbuntuOS.png" alt="Figure 9: Full Ubuntu LTS Boot">
 </figure></p>
 <div class="admonition bug">
-<p class="admonition-title">KVM Keyboard Issue</p>
-<p>If KVM is connected before initiating OCR via HTTPS Boot, the keyboard may not work when entering the URL.</p>
+<p class="admonition-title"><abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> Keyboard Issue</p>
+<p>If <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> is connected before initiating OCR via HTTPS Boot, the keyboard may not work when entering the URL.</p>
 </div>
 </li>
 </ol>
-<h3 id="triggering-https-boot-via-mps-apis">Triggering HTTPS Boot via MPS APIs<a class="headerlink" href="#triggering-https-boot-via-mps-apis" title="Permanent link">&para;</a></h3>
+<h3 id="triggering-https-boot-via-mps-apis">Triggering HTTPS Boot via <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> APIs<a class="headerlink" href="#triggering-https-boot-via-mps-apis" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p><strong>Authenticate and Get Login Token:</strong></p>
-<p>First, authenticate with MPS and retrieve a token to use for all subsequent API calls. Save this token to use in the <code>Authorization</code> header for the next steps.</p>
+<p>First, authenticate with <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and retrieve a token to use for all subsequent API calls. Save this token to use in the <code>Authorization</code> header for the next steps.</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/mps/login/api/v1/authorize<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type:application/json&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;{\&quot;username\&quot;:\&quot;&lt;MPS_WEB_ADMIN_USER&gt;\&quot;, \&quot;password\&quot;:\&quot;&lt;MPS_WEB_ADMIN_PASSWORD&gt;\&quot;}&quot;</span>
 </code></pre></div>
 <p><strong>Expected Response:</strong></p>
@@ -5969,7 +5969,7 @@
 </div>
 </div>
 </div>
-<p>Then, to upload the certificate use the curl command:</p>
+<p>Then, to upload the certificate use the <abbr title="command line URL - A command line tool and library for transferring data with URLs.">curl</abbr> command:</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/mps/api/v1/amt/certificates/&lt;DEVICE_GUID&gt;<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer &lt;YOUR_JWT_TOKEN&gt;&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;{\&quot;cert\&quot;:\&quot;&lt;BASE64_ENCODED_CERT&gt;\&quot;,\&quot;isTrusted\&quot;:true}&quot;</span>
 </code></pre></div>
 <p><strong>Expected Response:</strong></p>
@@ -5986,7 +5986,7 @@
 </code></pre></div>
 </li>
 <li>
-<p>Optionally, Connect to KVM and verify that the device loads the ISO.</p>
+<p>Optionally, Connect to <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> and verify that the device loads the ISO.</p>
 <p><figure class="figure-image">
   <img src="..\..\assets\images\OCR_HTTPSBoot_Recovery_Start_MPS.png" alt="Figure 10: View KVM screen while the ISO boots">
 </figure></p>
@@ -6094,7 +6094,7 @@
 </figure></p>
 </li>
 <li>
-<p>Optionally, start a <strong>KVM session</strong> if you want to observe the full recovery process.  </p>
+<p>Optionally, start a <strong><abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> session</strong> if you want to observe the full recovery process.  </p>
 </li>
 <li>
 <p>Click the <strong>⋯ (three-dot)</strong> menu and select <strong>Reset to WinRE (OCR)</strong>.</p>
@@ -6180,7 +6180,7 @@
 </li>
 <li>
 <p>The EFI file path and name must <strong>exactly match</strong> the entry registered in BIOS so that it appears in the OCR dropdown list.  </p>
-<p>Connect to the device over <strong>TLS</strong> using Console, select <strong>Reset to OCR</strong>, and view the available PBA options to confirm the exact EFI path registered with AMT.</p>
+<p>Connect to the device over <strong><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr></strong> using Console, select <strong>Reset to OCR</strong>, and view the available PBA options to confirm the exact EFI path registered with AMT.</p>
 <p><figure class="figure-image">
    <img src="..\..\assets\images\OCR_MPS_Reset_to_PBA_EFIPATH.png" alt="Figure 15: PBA Path registered with AMT">
   </figure></p>
@@ -6213,7 +6213,7 @@
 </figure></p>
 </li>
 <li>
-<p>Optionally, start a <strong>KVM session</strong> if you want to observe the full recovery process.</p>
+<p>Optionally, start a <strong><abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> session</strong> if you want to observe the full recovery process.</p>
 </li>
 <li>
 <p>Click the <strong>⋯ (three-dot)</strong> menu and select <strong>Reset to PBA (OCR)</strong>.</p>
@@ -6226,7 +6226,7 @@
 <div class="admonition danger">
 <p class="admonition-title">Secure Boot Mandatory</p>
 <p>Ensure the <strong>Enforce Secure Boot</strong> checkbox is enabled before initiating the PBA boot.</p>
-<p>For Boot to Local PBA, Secure Boot is always enforced by Intel® AMT, as AMT does not control the origin or integrity of locally installed PBAs.</p>
+<p>For Boot to Local PBA, Secure Boot is always enforced by <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>, as AMT does not control the origin or integrity of locally installed PBAs.</p>
 </div>
 <p><figure class="figure-image">
   <img src="..\..\assets\images\OCR_MPS_Reset_to_PBA_SelectPBA_Dropdown.png" alt="Figure 19: Select PBA">
@@ -6476,7 +6476,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.instant", "search.suggest", "search.highlight", "navigation.top", "toc.integrate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": ["rapid", "dev"], "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.instant", "search.suggest", "search.highlight", "navigation.top", "toc.integrate", "content.code.copy", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": ["rapid", "dev"], "provider": "mike"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>

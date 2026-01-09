@@ -6029,7 +6029,7 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U p
 </ol>
 <h3 id="no-extra-changes-required-between-214-aug-23-and-211-may-23">No Extra Changes Required between 2.14 (Aug 23) and 2.11 (May 23)<a class="headerlink" href="#no-extra-changes-required-between-214-aug-23-and-211-may-23" title="Permanent link">&para;</a></h3>
 <h3 id="upgrade-to-211-from-210">Upgrade to 2.11 from 2.10<a class="headerlink" href="#upgrade-to-211-from-210" title="Permanent link">&para;</a></h3>
-<p>The 2.11 release of RPS requires an upgrade to the <code>rpsdb</code> database.</p>
+<p>The 2.11 release of <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> requires an upgrade to the <code>rpsdb</code> database.</p>
 <ol>
 <li>
 <p>Run the following SQL script to add the new table before upgrading the services.</p>
@@ -6076,7 +6076,7 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U p
 </li>
 </ol>
 <h3 id="upgrade-to-210-from-29">Upgrade to 2.10 from 2.9<a class="headerlink" href="#upgrade-to-210-from-29" title="Permanent link">&para;</a></h3>
-<p>The 2.10 release of RPS requires an upgrade to the <code>rpsdb</code> database.</p>
+<p>The 2.10 release of <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> requires an upgrade to the <code>rpsdb</code> database.</p>
 <ol>
 <li>
 <p>Run the following SQL script to add the new table before upgrading the services.</p>
@@ -6124,7 +6124,7 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U p
 </li>
 </ol>
 <h3 id="upgrade-to-29-from-28">Upgrade to 2.9 from 2.8<a class="headerlink" href="#upgrade-to-29-from-28" title="Permanent link">&para;</a></h3>
-<p>The 2.9 release of RPS requires an upgrade to the <code>rpsdb</code> database.</p>
+<p>The 2.9 release of <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> requires an upgrade to the <code>rpsdb</code> database.</p>
 <ol>
 <li>
 <p>Run the following SQL script to add the new table before upgrading the services.</p>
@@ -6190,7 +6190,7 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U p
 </li>
 </ol>
 <h3 id="upgrade-to-28-from-27">Upgrade to 2.8 from 2.7<a class="headerlink" href="#upgrade-to-28-from-27" title="Permanent link">&para;</a></h3>
-<p>The 2.8 release of RPS requires an upgrade to the <code>rpsdb</code> database.</p>
+<p>The 2.8 release of <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> requires an upgrade to the <code>rpsdb</code> database.</p>
 <ol>
 <li>
 <p>Run the following SQL script to add the new column before upgrading the services.</p>
@@ -6237,7 +6237,7 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U p
 </li>
 </ol>
 <h3 id="upgrade-to-27-from-26">Upgrade to 2.7 from 2.6<a class="headerlink" href="#upgrade-to-27-from-26" title="Permanent link">&para;</a></h3>
-<p>The 2.7 release of MPS requires an upgrade to the <code>mpsdb</code> database.</p>
+<p>The 2.7 release of <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> requires an upgrade to the <code>mpsdb</code> database.</p>
 <ol>
 <li>
 <p>Run the following SQL script to add two new columns before upgrading the services.</p>
@@ -6286,7 +6286,7 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U p
 </ol>
 <h2 id="upgrade-a-minor-version-ie-2x-to-2y">Upgrade a Minor Version (i.e. 2.X to 2.Y)<a class="headerlink" href="#upgrade-a-minor-version-ie-2x-to-2y" title="Permanent link">&para;</a></h2>
 <h3 id="kubernetes-upgrade">Kubernetes Upgrade<a class="headerlink" href="#kubernetes-upgrade" title="Permanent link">&para;</a></h3>
-<p>Upgrading from a previous minor version to a new minor version release is simple using Helm. By updating your image tags and upgrading through Helm, a seamless transition can be made. Stored profiles and secrets will be unaffected and any connected devices will transition over to the new MPS pod.</p>
+<p>Upgrading from a previous minor version to a new minor version release is simple using Helm. By updating your image tags and upgrading through Helm, a seamless transition can be made. Stored profiles and secrets will be unaffected and any connected devices will transition over to the new <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> pod.</p>
 <details class="note">
 <summary>Note - Using Private Images</summary>
 <p>The steps are the same if using your own images built and stored on a platform like Azure Container Registry (ACR) or Elastic Container Registry (ECR). Simply point to the new private images rather than the public Intel Dockerhub.</p>
@@ -6337,7 +6337,7 @@ REVISION: 2
 </div>
 </li>
 <li>
-<p>Verify the new pods are running. Notice the only restarted and recreated pods are MPS, RPS, and the WebUI.</p>
+<p>Verify the new pods are running. Notice the only restarted and recreated pods are <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and the WebUI.</p>
 <div class="highlight"><pre><span></span><code>kubectl get pods
 </code></pre></div>
 <div class="admonition example">
@@ -6588,7 +6588,7 @@ git checkout v2.22.5
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.instant", "search.suggest", "search.highlight", "navigation.top", "toc.integrate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": ["rapid", "dev"], "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.instant", "search.suggest", "search.highlight", "navigation.top", "toc.integrate", "content.code.copy", "content.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": ["rapid", "dev"], "provider": "mike"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
