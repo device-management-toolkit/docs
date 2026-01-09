@@ -9,7 +9,7 @@ site_dir: site/2.29
 theme:
   name: "material"
   language: "en"
-  logo: "assets/images/logo-white-75px.png"
+  logo: "assets/images/logos/logo-white-75px.png"
   font:
     text: "Roboto"
     code: "Roboto Mono"
