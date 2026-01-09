@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 This template is used by EA to request certificates on behalf of your AMT devices. These certificates will be installed into the AMT device firmware and used for traffic authentication.
 

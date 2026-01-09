@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 ## Try out Intel® AMT Capabilities
 

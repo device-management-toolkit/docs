@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 This setup runs the MPS and RPS microservices as Docker* containers, standardized packages containing an application's source code, libraries, environment, and dependencies. 
 

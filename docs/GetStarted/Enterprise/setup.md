@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 
 ## What You'll Need

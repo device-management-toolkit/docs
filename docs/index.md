@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 # Device Management Toolkit (formerly known as Open AMT Cloud Toolkit)
 

@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 To deploy the Device Management Toolkit to a production environment, replace default reference implementation components with more robust or full-featured components. Each section below lists the default reference implementation component included with toolkit along with suggestions for replacement. 
 
 ## Database Selection

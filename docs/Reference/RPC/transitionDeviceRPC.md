@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 If an Intel vPro® Platform has been previously activated, either in the BIOS or with another management solution or tool, it can be brought under Device Management Toolkit control with the RPC-Go application. 
 

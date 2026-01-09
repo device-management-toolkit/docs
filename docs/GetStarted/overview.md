@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 There are two main ways to utilize the tools and services within Device Management Toolkit, **Cloud or Enterprise**.
 

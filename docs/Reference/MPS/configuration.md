@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 ## MPS Configuration
 
 The `.env` variables set have priority and overwrite the corresponding `.mpsrc` variables.

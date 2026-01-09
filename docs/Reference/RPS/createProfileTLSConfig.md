@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 During the activation process with the Remote Provisioning Client (RPC), profiles provide configuration information to the firmware on platforms featuring Intel® AMT.
 

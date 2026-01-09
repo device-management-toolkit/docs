@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 On the managed device, a Remote Provisioning Client (RPC) communicates with the Remote Provision Server (RPS) in the process of activating or deactivating the device. In addition to activation and deactivation, the RPC provides informational and maintenance commands. 
 

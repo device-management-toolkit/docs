@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 <style>
   .md-typeset h1,

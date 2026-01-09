@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 MPS can support NoSQL databases. This is an optional alternative to the existing SQL-based reference deployment that uses Postgres. RPS will still require a relational database such as PostgreSQL.
 

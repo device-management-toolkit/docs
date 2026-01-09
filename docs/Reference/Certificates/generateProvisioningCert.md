@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 For production deployments, we highly recommend purchasing a 3rd party provisioning certificate. [See all available vendors here.](./remoteProvisioning.md#purchase) 
 

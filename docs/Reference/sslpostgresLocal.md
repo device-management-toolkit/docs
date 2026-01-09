@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 This guide will walk through how to enable an SSL connection in the Postgres Docker container. By default in the Getting Started Guide, we disable it to ease the setup process and environment for development.
 

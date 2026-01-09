@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 The sections below detail possible errors that may occur when activating or deactivating managed devices along with some potential solutions.
 

@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 # Quickstart - Bundle Keyboard Video Mouse (KVM) Control
 
 Use these instructions to:

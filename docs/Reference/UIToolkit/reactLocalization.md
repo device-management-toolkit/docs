@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 React supports localization of applications into different languages through the use of i18n. This example below will walk through how to add support for the language, Kannada. These steps can be applied to a language that fits your desired requirements.
 

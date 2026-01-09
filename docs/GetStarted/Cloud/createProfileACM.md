@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 Admin Control Mode (ACM) provides full access to Intel® Active Management Technology (Intel® AMT) functionality. User consent is optional for supported redirection features:
 

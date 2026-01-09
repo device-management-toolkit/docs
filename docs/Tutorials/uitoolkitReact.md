@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 # Add MPS UI Toolkit Controls to a WebUI
 
 The UI Toolkit allows developers to add manageability features to a console with prebuilt React components. The code snippets simplify the task of adding complex manageability UI controls, such as Keyboard, Video, Mouse (KVM). A sample web application, based on React.js, is provided for test and development. 

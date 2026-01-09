@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 Console has the ability to view both the correctly formatted WSMAN input sent to AMT and the WSMAN output response of the supported classes. This can be used to help with development or to view additional AMT data that might not be displayed in the default UI.
 

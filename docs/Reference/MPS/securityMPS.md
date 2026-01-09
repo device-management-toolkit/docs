@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 # MPS Security Considerations
 
 The cloud agnostic microservice Management Presence Server (MPS) enables platforms featuring Intel&reg; AMT to connect over the internet securely to manageability consoles. Secrets are used to ensure the security of the MPS REST APIs. In a deployment environment, consider these security assets:

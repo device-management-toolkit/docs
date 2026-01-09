@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 Intel® One-Click Recovery (OCR) allows IT administrators to remotely trigger a secure and reliable boot to a recovery application, ensuring recovery from system failures, bare-metal scenarios, or connectivity issues using Intel AMT's out-of-band (OOB) connection.
 

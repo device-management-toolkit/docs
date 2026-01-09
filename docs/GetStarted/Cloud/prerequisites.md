@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 # Prerequisites
 
 This section contains prerequisites for deploying Device Management Toolkit's MPS and RPS microservices on a local development system as Docker* containers. 
