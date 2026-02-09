@@ -5475,6 +5475,24 @@
 </tr>
 </tbody>
 </table>
+<h2 id="setting-log-levels">Setting Log Levels<a class="headerlink" href="#setting-log-levels" title="Permanent link">&para;</a></h2>
+<p>Set the log levels in the <code>.env</code> file by altering the configuration levels, <code>MPS_LOG_LEVEL</code> and <code>RPS_LOG_LEVEL</code>. Find the log level descriptions in the tables contained in <a href="../MPS/configuration/"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Configuration</a> and <a href="../RPS/configuration/"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Configuration</a>.</p>
+<h2 id="docker-logs">Docker Logs<a class="headerlink" href="#docker-logs" title="Permanent link">&para;</a></h2>
+<p>Each microservice has an associated log file which can contain helpful debug information. Use <code>docker logs</code> to print log information to the terminal.</p>
+<p><strong>To run docker log files in a terminal window as needed:</strong></p>
+<ol>
+<li>
+<p>Open a Terminal or Powershell/Command Prompt and run the command to list the containers:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>ps
+</code></pre></div>
+</li>
+<li>
+<p>Copy the first three digits of the container ID of interest. Run the docker logs command followed by the container ID:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>logs<span class="w"> </span>&lt;container<span class="w"> </span>ID&gt;
+</code></pre></div>
+</li>
+</ol>
+<p>See more help options for the <code>docker logs</code> command in <a href="https://docs.docker.com/engine/reference/commandline/logs/">Docker Documentation</a>.</p>
 
 
 

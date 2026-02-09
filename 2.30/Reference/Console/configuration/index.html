@@ -5514,6 +5514,10 @@
 <p>Alternatively, you can also download the <code>config.yml</code> file from <a href="https://github.com/device-management-toolkit/console/blob/main/config/config.yml">GitHub</a> or create your own configuration file, edit the YAML content, and then use the <code>config</code> flag to run the Console <code>console.exe -config /path/to/config.yml</code>.</p>
 <h2 id="using-env-variables">Using .env Variables<a class="headerlink" href="#using-env-variables" title="Permanent link">&para;</a></h2>
 <p>Console can also be configured using environment variables. These <code>.env</code> variables take precedence over the corresponding settings in the <code>config.yml</code> file, effectively overwriting them.</p>
+<div class="admonition warning">
+<p class="admonition-title">Change Default Credentials for Production</p>
+<p>The default admin credentials (<code>standalone</code> / <code>G@ppm0ym</code>) are intended for development and testing only. For production deployments, change these values or configure an OAuth provider (Auth0, Azure Entra AD, etc.).</p>
+</div>
 <h2 id="configuration-variables">Configuration Variables<a class="headerlink" href="#configuration-variables" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
