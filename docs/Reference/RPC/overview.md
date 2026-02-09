@@ -22,7 +22,7 @@ In this flow:
 4. Once activated and configured, AMT establishes a CIRA tunnel to MPS.
 
 <figure class="figure-image">
-<img src="../../../assets/images/RPC_Overview.png" alt="Figure 1: RPC Configuration">
+<img src="../../../assets/images/diagrams/RPC_Overview.svg" alt="Figure 1: RPC Configuration">
 <figcaption>Figure 1: RPC Configuration</figcaption>
 </figure>
 

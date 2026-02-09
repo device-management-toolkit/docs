@@ -93,34 +93,34 @@ A Profile provides configuration information to the AMT Firmware during the acti
 
 1. Select the **Profiles** tab from the menu on the left.
 
-2. Under the **Profiles** tab, click **Add New** in the top-right corner to create a profile.
+1. Under the **Profiles** tab, click **Add New** in the top-right corner to create a profile.
 
     <figure class="figure-image">
     <img src="..\..\..\assets\images\screenshots\Console_NewProfile.png" alt="Figure 2: Create a new profile">
     <figcaption>Figure 2: Create a new profile</figcaption>
     </figure>
 
-3. Specify a **Profile Name** of your choice.
+1. Specify a **Profile Name** of your choice.
 
-4. Under **Activation**, select **Admin Control Mode** from the dropdown menu.
+1. Under **Activation**, select **Admin Control Mode** from the dropdown menu.
 
-5. Enable desired redirection features for the profile under **AMT Features - Enable/Disable features**.
+1. Enable desired redirection features for the profile under **AMT Features - Enable/Disable features**.
 
-6. Choose level of **User Consent**. By default for ACM, **None** is selected. This will disable all User Consent for ACM.
+1. Choose level of **User Consent**. By default for ACM, **None** is selected. This will disable all User Consent for ACM.
 
-7. Provide or generate a strong **AMT Password**. AMT will verify this password when receiving a command from Console. This password is also required for device deactivation.
+1. Provide or generate a strong **AMT Password**. AMT will verify this password when receiving a command from Console. This password is also required for device deactivation.
    
-8. Provide or generate a strong **MEBX Password**. This password can be used to access Intel® Manageability Engine BIOS Extensions (Intel® MEBX) on the AMT device.
+1. Provide or generate a strong **MEBX Password**. This password can be used to access Intel® Manageability Engine BIOS Extensions (Intel® MEBX) on the AMT device.
 
-9. Choose DHCP or Static based on environment for the **Network Configuration**.
+1. Choose DHCP or Static based on environment for the **Network Configuration**.
 
-10. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](../../Tutorials/createWiFiConfig.md).
+1. This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](../../Tutorials/createWiFiConfig.md).
 
-11. For quickest setup, select **Non TLS** under **Provisioned Connection Configuration**.
+1. For quickest setup, select **Non TLS** under **Provisioned Connection Configuration**.
 
-12. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
+1. Optionally, add **Tags** to help in organizing and querying devices as your list of managed devices grow.
 
-14. Click **Save.**
+1. Click **Save.**
 
     !!! example "Example ACM Profile"
         <figure class="figure-image">
