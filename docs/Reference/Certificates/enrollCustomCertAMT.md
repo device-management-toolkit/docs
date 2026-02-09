@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 # Enroll a Custom Provisioning Certificate in an AMT Device using USBFile
 
@@ -18,7 +18,7 @@ However, some developers opt to use a custom provisioning certificate for testin
 You will need to:
 
 - Download the latest [Intel AMT SDK](https://www.intel.com/content/www/us/en/download/704388/intel-active-management-technology-intel-amt-software-development-kit-sdk.html).
-- The rpc-go utility [Available Releases](https://github.com/open-amt-cloud-toolkit/rpc-go/releases).
+- The rpc-go utility [Available Releases](https://github.com/device-management-toolkit/rpc-go/releases).
 - Have the custom certificate ([Tutorial](./generateProvisioningCert.md#generate-custom-provisioning-certificate))
 - The libcrypto.dll file (You can find it from an OpenSSL installation).
 
@@ -46,7 +46,7 @@ You will walk-through the following steps:
 
 The rpc-go utility allow you verify the installed certificates in the AMT device.
 
-1. Please ensure you installed the [rpc-go utility](https://github.com/open-amt-cloud-toolkit/rpc-go/releases) in the AMT target device
+1. Please ensure you installed the [rpc-go utility](https://github.com/device-management-toolkit/rpc-go/releases) in the AMT target device
 2. Open a console with administrative permissions and run the following command:
 
     ```bash
@@ -56,7 +56,7 @@ The rpc-go utility allow you verify the installed certificates in the AMT device
     Note: The rpc-go binary could have a different name depending on the target OS. You can update the "rpc_windows_64.exe" in the command with the corresponding binary file name without concern.
 
     <figure class="figure-image">
-    <img src="..\..\..\assets\images\usbenroll_fig01_amtcertverification.png" alt="Figure 1: Available Certificates in the AMT Device">
+    <img src="..\..\..\assets\images\screenshots\usbenroll_fig01_amtcertverification.png" alt="Figure 1: Available Certificates in the AMT Device">
     <figcaption>Figure 1: Available Certificates in the AMT Device</figcaption>
     </figure>
 
@@ -91,7 +91,7 @@ The setup.bin file is created using the USBFile utility. It is provided as part 
     You should see an output similar to the following figure.
 
     <figure class="figure-image">
-    <img src="..\..\..\assets\images\usbenroll_fig02_setupbin.png" alt="Figure 2: Generation and View of the setup.bin file">
+    <img src="..\..\..\assets\images\screenshots\usbenroll_fig02_setupbin.png" alt="Figure 2: Generation and View of the setup.bin file">
     <figcaption>Figure 2: Generation and View of the setup.bin file</figcaption>
     </figure>
 
@@ -130,7 +130,7 @@ rpc_windows_x64.exe amtinfo -cert
 It provides an output similar to the following, which describes the trust CA certificates installed locally in the AMT device.
 
 <figure class="figure-image">
-<img src="..\..\..\assets\images\usbenroll_fig03_certready.png" alt="Figure 3: Checking the Custom Certificate  in the AMT Device">
+<img src="..\..\..\assets\images\screenshots\usbenroll_fig03_certready.png" alt="Figure 3: Checking the Custom Certificate  in the AMT Device">
 <figcaption>Figure 3: Checking the Custom Certificate  in the AMT Device</figcaption>
 </figure>
 

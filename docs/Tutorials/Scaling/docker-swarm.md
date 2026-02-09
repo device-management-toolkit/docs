@@ -1,10 +1,10 @@
---8<-- "References/abbreviations.md"
+
 
 This sample deployment demonstrates the use of Docker* in swarm mode. The following conditions apply: 
 
 - All images are built and tested with `docker compose`. To learn more about building the images with `docker compose`, refer to [**Express Setup**](../../GetStarted/Cloud/setup.md). 
 - Push images to the registry to make them available for deployment on other systems.  
-- Run the commands below from the `open-amt-cloud-toolkit` install directory. 
+- Run the commands below from the `cloud-deployment` install directory. 
 
 
 !!! important
@@ -15,12 +15,12 @@ This sample deployment demonstrates the use of Docker* in swarm mode. The follow
 1. Open a Terminal or Command Prompt and navigate to a directory of your choice for development:
 
     ``` bash
-    git clone --recursive https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
+    git clone --recursive https://github.com/device-management-toolkit/cloud-deployment --branch v{{ repoVersion.oamtct }}
     ```
   
-2. Change to the cloned `open-amt-cloud-toolkit` directory.
+2. Change to the cloned `cloud-deployment` directory.
     ``` bash
-    cd open-amt-cloud-toolkit
+    cd cloud-deployment
     ```
 
 ## Deploy the stack to the swarm
@@ -54,7 +54,7 @@ This sample deployment demonstrates the use of Docker* in swarm mode. The follow
         Open the swarm.yml file to check that `driver: bridge` was replaced with `driver: overlay`. If the result is incorrect or corrupted, delete the swarm.yml file, rerun Step 2, and manually replace the string.
 
 
-4. If you've run `docker compose` previously, as in the instructions in [**Express Setup**](../../GetStarted/Cloud/setup.md), run `docker compose down` to stop the open-amt-cloud-toolkit services:
+4. If you've run `docker compose` previously, as in the instructions in [**Express Setup**](../../GetStarted/Cloud/setup.md), run `docker compose down` to stop the device-management-toolkit services:
    ```
    docker compose down -v
    ```

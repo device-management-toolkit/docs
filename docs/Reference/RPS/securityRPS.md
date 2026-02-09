@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 # RPS Security Considerations
 
@@ -49,7 +49,7 @@ There are two potential places where TLS could be enable to protect the security
 Securing these communication routes will help prevent security assets being exposed through network based attacks intercepting messages between components. It is recommended that the most modern version of TLS be used when encrypting communication.
 
 ### 2 Secure and isolate execution environment
-RPS holds several of the described security assets in memory during execution.  In order to protect these assets while in the memory of RPS, it is recommended that RPS be run in a secure execution environment such as a dedicated container. Deploying into a secure container environment eases the burden of individually securing the assets while in memory or in transit between Open AMT Cloud Toolkit services.  Running MPS, RPS, API Gateway, MPS Router, Vault, and Database all within the same secure container instance will help ensure that the communication between these services remains secure.
+RPS holds several of the described security assets in memory during execution.  In order to protect these assets while in the memory of RPS, it is recommended that RPS be run in a secure execution environment such as a dedicated container. Deploying into a secure container environment eases the burden of individually securing the assets while in memory or in transit between Device Management Toolkit services.  Running MPS, RPS, API Gateway, MPS Router, Vault, and Database all within the same secure container instance will help ensure that the communication between these services remains secure.
 
 ### 3 Utilize a Hashicorp Vault implementation to store security assets
 Utilizing Hashicorp Vault to store security assets either created by or used by RPS will greatly increase the security of these assets.  Not only does Vault encrypt the data at rest, but it also manages access to the data itself.  As the Vault owner, you decide who gets access to the security assets stored there, not RPS.

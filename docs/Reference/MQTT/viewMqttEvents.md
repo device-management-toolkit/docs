@@ -1,14 +1,14 @@
---8<-- "References/abbreviations.md"
+
 
 # Event Monitoring with MQTT (MQTT Eventing) 
 
-Open AMT Cloud Toolkit supports Eventing using Message Queuing Telemetry Transport (MQTT), an IoT publish-and-subscribe network protocol. With MQTT Eventing, administrators can subscribe to specific topics, categories of events, for server event monitoring. This eliminates the need to query or poll MPS to determine network events, such as a device's activation or deactivation. Administrators can subscribe to events and respond proactively. 
+Device Management Toolkit supports Eventing using Message Queuing Telemetry Transport (MQTT), an IoT publish-and-subscribe network protocol. With MQTT Eventing, administrators can subscribe to specific topics, categories of events, for server event monitoring. This eliminates the need to query or poll MPS to determine network events, such as a device's activation or deactivation. Administrators can subscribe to events and respond proactively. 
 
 !!! important
     Currently, the implementation publishes all MPS and RPS REST API call events to the MQTT Broker. 
 
 <figure class="figure-image">
-<img src="..\..\..\assets\images\MQTT.png" alt="Figure 1: MQTT Eventing Examples">
+<img src="..\..\..\assets\images\diagrams\MQTT.png" alt="Figure 1: MQTT Eventing Examples">
 <figcaption>Figure 1: MQTT Eventing Examples</figcaption>
 </figure>
 
@@ -19,7 +19,7 @@ MPS and RPS send JSON events to a Mosquitto* broker deployed as a Docker contain
 
 **To enable support:**
 
-1. This guide assumes you have completed the [Getting Started Guide](../../GetStarted/Cloud/setup.md) and have Open AMT currently running in Docker containers.  If not, follow the [Get Started Guide Setup page](../../GetStarted/Cloud/setup.md). Stop and return here after the your services are running.
+1. This guide assumes you have completed the [Getting Started Guide](../../GetStarted/Cloud/setup.md) and have Device Management Toolkit currently running in Docker containers.  If not, follow the [Get Started Guide Setup page](../../GetStarted/Cloud/setup.md). Stop and return here after the your services are running.
 
 2. In a text editor or IDE of choice, open the `.env` file to edit.
 
@@ -61,7 +61,7 @@ MPS and RPS send JSON events to a Mosquitto* broker deployed as a Docker contain
 
 4. Verify the **Path** is `/mosquitto`.
     <figure class="figure-image">
-    <img src="..\..\..\assets\images\MQTTEvents_View.png" alt="Figure 2: MQTT Events Connection">
+    <img src="..\..\..\assets\images\screenshots\MQTTEvents_View.png" alt="Figure 2: MQTT Events Connection">
     <figcaption>Figure 2: MQTT Events Connection</figcaption>
     </figure>
 
@@ -74,7 +74,7 @@ MPS and RPS send JSON events to a Mosquitto* broker deployed as a Docker contain
 
     !!! example "Example MQTT Events"
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\/MQTTEvents_View_Example.png" alt="Figure 3: MQTT Events Connection">
+        <img src="..\..\..\assets\images\screenshots\/MQTTEvents_View_Example.png" alt="Figure 3: MQTT Events Connection">
         <figcaption>Figure 3: MQTT Events Connection</figcaption>
         </figure>
 

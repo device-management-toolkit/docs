@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 To prepare for a production environment, replace Hashicorp Vault* with a secrets management provider. 
 
 To replace secrets management, update these services:
@@ -24,7 +24,7 @@ Here are the main tasks:
 
 ## Review Vault Schema
 
-Below are the paths/keys in the vault that are used by the Open AMT Cloud Toolkit.
+Below are the paths/keys in the vault that are used by the Device Management Toolkit.
 
 ```
 # RPS

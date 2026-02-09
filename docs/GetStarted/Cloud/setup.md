@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 This setup runs the MPS and RPS microservices as Docker* containers, standardized packages containing an application's source code, libraries, environment, and dependencies. 
 
@@ -9,12 +9,12 @@ This setup runs the MPS and RPS microservices as Docker* containers, standardize
 1. Open a Terminal or Command Prompt and navigate to a directory of your choice for development:
 
     ``` bash
-    git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }} --recursive
+    git clone https://github.com/device-management-toolkit/cloud-deployment --branch v{{ repoVersion.oamtct }} --recursive
     ```
   
-2. Change to the cloned `open-amt-cloud-toolkit` directory.
+2. Change to the cloned `device-management-toolkit` directory.
     ``` bash
-    cd open-amt-cloud-toolkit
+    cd device-management-toolkit
     ```
 
 ## Set Environment Variables  
@@ -114,18 +114,18 @@ Set the shared secret used in Kong for JWT authentication.
     !!! success
         ``` bash
         IMAGE                               STATUS                        NAMES
-        intel/oact-rps:latest               Up 2 minutes (healthy)        open-amt-cloud-toolkit-rps-1      
-        hashicorp/vault                     Up 2 minutes                  open-amt-cloud-toolkit-vault-1    
-        intel/oact-mpsrouter:latest         Up 2 minutes (healthy)        open-amt-cloud-toolkit-mpsrouter-1
-        postgres:15                         Up 2 minutes (healthy)        open-amt-cloud-toolkit-db-1       
-        intel/oact-webui:latest             Up 2 minutes                  open-amt-cloud-toolkit-webui-1    
-        kong:3.1                            Up 2 minutes (healthy)        open-amt-cloud-toolkit-kong-1     
-        intel/oact-mps:latest               Up 2 minutes (healthy)        open-amt-cloud-toolkit-mps-1
+        intel/oact-rps:latest               Up 2 minutes (healthy)        device-management-toolkit-rps-1      
+        hashicorp/vault                     Up 2 minutes                  device-management-toolkit-vault-1    
+        intel/oact-mpsrouter:latest         Up 2 minutes (healthy)        device-management-toolkit-mpsrouter-1
+        postgres:15                         Up 2 minutes (healthy)        device-management-toolkit-db-1       
+        intel/oact-webui:latest             Up 2 minutes                  device-management-toolkit-webui-1    
+        kong:3.1                            Up 2 minutes (healthy)        device-management-toolkit-kong-1     
+        intel/oact-mps:latest               Up 2 minutes (healthy)        device-management-toolkit-mps-1
         ```
   
     !!! warning "Warning - Container Issues" 
 
-        If any of the above containers are not running, walk through the steps again or file a GitHub issue [here]( https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit/issues).
+        If any of the above containers are not running, walk through the steps again or file a GitHub issue [here]( https://github.com/device-management-toolkit/cloud-deployment/issues).
 
         If the Kong container reloads repeatedly, verify kong.yaml edits. Misconfiguration of this file will cause the container to reload.
     

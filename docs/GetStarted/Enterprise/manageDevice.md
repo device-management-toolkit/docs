@@ -1,14 +1,11 @@
---8<-- "References/abbreviations.md"
 
-!!! warning "Warning - Console in Beta Development"
-    Console is currently under development. The current available tags for download are Beta version code. This could mean that certain features may not function yet, visual look and feel may change, or bugs/errors may occur. It is not recommended for use in Production deployments. Follow along our [Feature Backlog for future releases and feature updates](https://github.com/orgs/open-amt-cloud-toolkit/projects/10)
 
-## Try out Intel AMT Capabilities
+## Try out Intel® AMT Capabilities
 
 1. Select the newly added AMT device.
 
     <figure class="figure-image">
-        <img src="..\..\..\assets\images\Console_Devices.png" alt="Figure 1: Devices Tab">
+        <img src="..\..\..\assets\images\screenshots\Console_Devices.png" alt="Figure 1: Devices Tab">
         <figcaption>Figure 1: Devices Tab</figcaption>
     </figure>
 
@@ -21,7 +18,7 @@
         
 
     <figure class="figure-image">
-        <img src="..\..\..\assets\images\Console_DeviceInfo.png" alt="Figure 2: Device Page and Options">
+        <img src="..\..\..\assets\images\screenshots\Console_DeviceInfo.png" alt="Figure 2: Device Page and Options">
         <figcaption>Figure 2: Device Page and Options</figcaption>
     </figure>
 
@@ -29,12 +26,4 @@
 
 After successfully adding and managing devices using Console, explore other tools and next-level topics related to Console:
 
-### 802.1x and TLS Environments using Enterprise Assistant
-Learn how to setup and use Enterprise Assistant to help with configuring devices for 802.1x and TLS environments using existing Microsoft services such as Microsoft Certificate Authority and Microsoft Active Directory. 
-
-[Get Started with Enterprise Assistant](../../Reference/EA/overview.md){: .md-button .md-button--primary }
-
-<!-- ### Security
-Learn more about measures and details to secure assets for the Console application. Topics include credentials, allowlisting, best known security methods, and more.
-
-[Learn More about Security and Hardening](../Reference/Console/securityConsole.md){: .md-button .md-button--primary } -->
+[Additional Resources](../../Reference/Console/overview.md#additional-resources){: .md-button .md-button--primary }

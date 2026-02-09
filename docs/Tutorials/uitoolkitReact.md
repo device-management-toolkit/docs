@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 # Add MPS UI Toolkit Controls to a WebUI
 
 The UI Toolkit allows developers to add manageability features to a console with prebuilt React components. The code snippets simplify the task of adding complex manageability UI controls, such as Keyboard, Video, Mouse (KVM). A sample web application, based on React.js, is provided for test and development. 
@@ -8,7 +8,7 @@ The tutorial outlines how to add various controls to the sample React web applic
 ??? note "Note - Other Framework Technologies"
     This guide shows a basic example implementation using React. Other frameworks can be used using the UI-Toolkit like Angular and Vue.js.
 
-    For an example implementation of Angular, see our [Sample Web UI codebase](https://github.com/open-amt-cloud-toolkit/sample-web-ui/).
+    For an example implementation of Angular, see our [Sample Web UI codebase](https://github.com/device-management-toolkit/sample-web-ui/).
 
 ## What You'll Need
 
@@ -21,8 +21,8 @@ The tutorial outlines how to add various controls to the sample React web applic
 
 ### Software
 
-- [MPS](https://github.com/open-amt-cloud-toolkit/MPS), the Management Presence Server
-- [RPS](https://github.com/open-amt-cloud-toolkit/RCS), the Remote Provisioning Server
+- [MPS](https://github.com/device-management-toolkit/MPS), the Management Presence Server
+- [RPS](https://github.com/device-management-toolkit/RCS), the Remote Provisioning Server
 - Intel&reg; vPro device, configured and connected to MPS
 
     !!! Note
@@ -41,7 +41,7 @@ Follow the steps in these sections sequentially:
 - Add UI controls to the React app
 
 <figure class="figure-image">
-<img src="..\..\assets\images\HelloWorld.png" alt="Figure 1: UI Toolkit">
+<img src="..\..\assets\images\diagrams\UIToolkit.svg" style="height:800px" alt="Figure 1: UI Toolkit">
 <figcaption>Figure 1: UI toolkit</figcaption>
 </figure>
 
@@ -68,7 +68,7 @@ The React app can be created in any preferred development directory.
 1. Install the UI Toolkit and required dependencies.
 
     ``` bash
-    npm install @open-amt-cloud-toolkit/ui-toolkit-react@{{ repoVersion.ui_toolkit_react }}
+    npm install @device-management-toolkit/ui-toolkit-react@{{ repoVersion.ui_toolkit_react }}
     ```
 
 2. Start the React web UI locally.
@@ -81,7 +81,7 @@ The React app can be created in any preferred development directory.
 
     !!! success
         <figure class="figure-image">
-        <img src="..\..\assets\images\UIToolkit_npmstart.png" alt="Figure 2: React reports successful deployment">
+        <img src="..\..\assets\images\screenshots\UIToolkit_npmstart.png" alt="Figure 2: React reports successful deployment">
         <figcaption>Figure 2: React reports successful deployment</figcaption>
         </figure>
 
@@ -108,14 +108,14 @@ The code snippet below adds both the KVM and IDER controls to the React applicat
     | :----------- | :-------------- |
     | `deviceId` | **Replace the example deviceId** value with the GUID of the Intel® AMT device.  See [How to Find GUIDs in Intel® AMT](../Reference/guids.md). |
     | `mpsServer` | **Replace the localhost** with the IP Address or FQDN of your MPS Server. <br><br> **When using Kong**, `/mps/ws/relay` must be appended to the IP or FQDN. |
-    | `authToken` | **Provide a redirection-specific JWT authentication token. This is different from the `/authorize` login token.** [See the `/authorize/redirection/{guid}` GET API in the Auth section.](../APIs/indexMPS.md){target=_blank} <br><br> For a general example on how to make an API call and how to get an auth token from `/authorize` to pass to `/authorize/redirection/{guid}`, see [Generating a JWT by using an Authorize API call](./apiTutorial.md#generate-a-jwt){target=_blank}. |
+    | `authToken` | **Provide a redirection-specific JWT authentication token. This is different from the `/authorize` login token.** [See the `/authorize/redirection/{guid}` GET API in the Auth section.](../APIs/indexMPS.md){target=_blank} <br><br> For a general example on how to make an API call and how to get an auth token from `/authorize` to pass to `/authorize/redirection/{guid}`, see [Generating a JWT by using an Authorize API call](./apiTutorial.md#generate-a-token-for-authorization){target=_blank}. |
 
 
     ``` javascript hl_lines="7 8 9"
     import React from "react"
     import "./App.css"
-    import { KVM } from "@open-amt-cloud-toolkit/ui-toolkit-react/reactjs/src/kvm.bundle";
-    import { AttachDiskImage } from "@open-amt-cloud-toolkit/ui-toolkit-react/reactjs/src/ider.bundle";
+    import { KVM } from "@device-management-toolkit/ui-toolkit-react/reactjs/src/kvm.bundle";
+    import { AttachDiskImage } from "@device-management-toolkit/ui-toolkit-react/reactjs/src/ider.bundle";
 
     function App() {
       const deviceGUID = '4c4c4544-005a-3510-8047-b4c04f564433' //Replace with AMT Device GUID
@@ -151,7 +151,7 @@ The code snippet below adds both the KVM and IDER controls to the React applicat
 
     !!! success
         <figure class="figure-image">
-        <img src="..\..\assets\images\UIToolkit_react_success.png" alt="Figure 2: React reports successful deployment">
+        <img src="..\..\assets\images\screenshots\UIToolkit_react_success.png" alt="Figure 2: React reports successful deployment">
         <figcaption>Figure 3: Successful KVM Connection</figcaption>
         </figure>
 

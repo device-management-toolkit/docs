@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 React supports localization of applications into different languages through the use of i18n. This example below will walk through how to add support for the language, Kannada. These steps can be applied to a language that fits your desired requirements.
 
@@ -59,6 +59,6 @@ Language can be changed in the browser under language section of the browser set
 
 ## Get Localized Strings for Web Consoles with Localization Enabled
 
-If your web console already has localization enabled, make sure to add the [translations](https://github.com/open-amt-cloud-toolkit/ui-toolkit-react/tree/main/src/public/locales) of the UI-controls into your web console's translations file.
+If your web console already has localization enabled, make sure to add the [translations](https://github.com/device-management-toolkit/ui-toolkit-react/tree/main/src/public/locales) of the UI-controls into your web console's translations file.
 
 <br><br>

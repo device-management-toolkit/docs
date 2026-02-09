@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 Client Initiated Remote Access (CIRA) enables a CIRA-capable edge device to initiate and establish a persistent connection to the MPS. As long as the managed device is connected to the network and to a power source, it can maintain a persistent connection.
 
@@ -11,7 +11,7 @@ Client Initiated Remote Access (CIRA) enables a CIRA-capable edge device to init
 
 2. In the top-right corner, click **Add New.**
      <figure class="figure-image">
-     <img src="..\..\..\assets\images\RPS_NewCIRAConfig.png" alt="Figure 1: Create a new CIRA Config">
+     <img src="..\..\..\assets\images\screenshots\RPS_NewCIRAConfig.png" alt="Figure 1: Create a new CIRA Config">
      <figcaption>Figure 1: Create a new CIRA Config</figcaption>
      </figure>
 
@@ -32,7 +32,7 @@ Client Initiated Remote Access (CIRA) enables a CIRA-capable edge device to init
     
     !!! example "Example CIRA Config"
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\RPS_CreateCIRAConfig.png" alt="Figure 2: Example CIRA Config">
+        <img src="..\..\..\assets\images\screenshots\RPS_CreateCIRAConfig.png" alt="Figure 2: Example CIRA Config">
         <figcaption>Figure 2: Example CIRA Config</figcaption>
         </figure>
             

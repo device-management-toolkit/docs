@@ -1,7 +1,7 @@
---8<-- "References/abbreviations.md"
+
 # Prerequisites
 
-This section contains prerequisites for deploying Open AMT Cloud Toolkit's MPS and RPS microservices on a local development system as Docker* containers. 
+This section contains prerequisites for deploying Device Management Toolkit's MPS and RPS microservices on a local development system as Docker* containers. 
 
 <div style="text-align:center;">
   <iframe width="600" height="337" src="https://www.youtube.com/embed/Nuwm4SxbvjA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -36,7 +36,7 @@ Both systems must use a wired (i.e., cable) connection on the same network.
 ## What You'll Do
 
 <figure class="figure-image">
-  <img width="800" height="450" src="..\..\..\assets\images\LocalDockerWorkflow.png" alt="Figure 1: Deploy microservices on a local development system as Docker containers">
+  <img width="800" height="450" src="..\..\..\assets\images\diagrams\LocalDockerWorkflow.svg" alt="Figure 1: Deploy microservices on a local development system as Docker containers">
   <figcaption>Figure 1: Deploy microservices on a local development system as Docker containers</figcaption>
 </figure>
 

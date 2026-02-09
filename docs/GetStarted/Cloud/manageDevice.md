@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 <div style="text-align:center;">
   <iframe width="600" height="337" src="https://www.youtube.com/embed/NyOO3QrD7_c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -11,7 +11,7 @@
 	
 2. Click the Devices tab from the menu on the left.
      <figure class="figure-image">
-     <img src="..\..\..\assets\images\MPS_ConnectedDevice.png" alt="Figure 1: Devices tab">
+     <img src="..\..\..\assets\images\screenshots\MPS_ConnectedDevice.png" alt="Figure 1: Devices tab">
      <figcaption>Figure 1: Devices tab</figcaption>
      </figure>
 
@@ -28,7 +28,7 @@
         Turn off active redirection sessions, such as KVM or SOL, before specific power state transitions. Power Cycle (Code 5) and Unconditional Power Down (Power Off, Code 8) will be rejected as invalid if there is an active redirection session. Reset (Code 10) **will function** in KVM along with the [other unmentioned Power Actions](../../Reference/powerstates.md#out-of-band).
 
      <figure class="figure-image">
-     <img src="..\..\..\assets\images\MPS_ManageDevice.png" alt="Figure 2: Action options">
+     <img src="..\..\..\assets\images\screenshots\MPS_ManageDevice.png" alt="Figure 2: Action options">
      <figcaption>Figure 2: Action options</figcaption>
      </figure>
 
@@ -41,7 +41,7 @@
   1. When performing a KVM action for a device activated in CCM or ACM with user consent enabled, input the user consent code displayed on the client device.
 
     <figure class="figure-image">
-    <img src="..\..\..\assets\images\MPS_UserConsent.png" alt="Figure 2: User    Consent">
+    <img src="..\..\..\assets\images\screenshots\MPS_UserConsent.png" alt="Figure 2: User    Consent">
     <figcaption>Figure 3: User Consent</figcaption>
     </figure>
 
@@ -49,7 +49,7 @@
 
 ## Next steps
 
-After successfully deploying the Open AMT Cloud Toolkit microservices and client, explore other tools and topics in the Open AMT Cloud Toolkit architecture:
+After successfully deploying the Device Management Toolkit microservices and client, explore other tools and topics in the Device Management Toolkit architecture:
 
 ### REST API Calls
 Learn how to send commands to AMT devices with the curl-based REST API tutorial. Generate a JWT token for Authorization and construct an API call to get a list of devices. 
@@ -62,7 +62,7 @@ Explore how to add redirection features, such as Keyboard, Video, and Mouse (KVM
 [Get Started with the UI Toolkit](../../Tutorials/uitoolkitReact.md){: .md-button .md-button--primary }
 
 ### Security
-Learn how to use the Open AMT Cloud Toolkit architecture to secure ..\assets. Topics include credentials, allowlisting, best known security methods, and more.
+Learn how to use the Device Management Toolkit architecture to secure ..\assets. Topics include credentials, allowlisting, best known security methods, and more.
 
 [Learn More about Security and Hardening](../../Reference/MPS/securityMPS.md){: .md-button .md-button--primary }
 

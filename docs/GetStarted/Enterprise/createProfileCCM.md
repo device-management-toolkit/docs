@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 Client Control Mode (CCM) provides full access to features of Intel® Active Management Technology (Intel® AMT), but it does require user consent for all redirection features.
 
@@ -14,7 +14,7 @@ Profiles provide configuration information to the firmware on platforms featurin
 
 ??? note "Note - More Information about Passwords"
 
-    Open AMT Cloud Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../../Reference/architectureOverview.md#passwords).
+    Device Management Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../../Reference/architectureOverview.md#passwords).
 
 **To create a CCM profile:**
 
@@ -22,7 +22,7 @@ Profiles provide configuration information to the firmware on platforms featurin
 
 2. Under the **Profiles** tab, click **New** in the top-right corner to create a profile.
    <figure class="figure-image">
-   <img src="..\..\..\assets\images\Console_NewProfile.png" alt="Figure 2: Create a new profile">
+   <img src="..\..\..\assets\images\screenshots\Console_NewProfile.png" alt="Figure 2: Create a new profile">
    <figcaption>Figure 2: Create a new profile</figcaption>
    </figure>
 
@@ -33,10 +33,7 @@ Profiles provide configuration information to the firmware on platforms featurin
 5. Enable desired redirection features for the profile under **AMT Features - Enable/Disable features**.
 
 6. Provide or generate a strong **AMT Password**. AMT will verify this password when receiving a command from Console. This password is also required for device deactivation.
-   
-    ??? warning "Warning - Viewing and Losing Random Passwords"
-        The two buttons next to the password input are for toggling visibility and/or generating a new random password. Please note that **if the database is lost or corrupted, all credentials that aren't also stored somewhere else will be lost.** There will be no way to login. The administrator will have to clear the CMOS battery on the managed devices!
-   
+     
 7. The **MEBX Password** field is disabled. The password for Intel® Manageability Engine BIOS Extensions (Intel® MEBX) cannot be set when activating in CCM due to the lower level of trust when compared to ACM.
 
 8. Choose DHCP or Static based on environment for the **Network Configuration**.
@@ -51,11 +48,11 @@ Profiles provide configuration information to the firmware on platforms featurin
 
     !!! example "Example CCM Profile"
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\Console_NewCCMProfile.png" alt="Figure 3: Example CCM profile">
+        <img src="..\..\..\assets\images\screenshots\Console_NewCCMProfile.png" alt="Figure 3: Example CCM profile">
         <figcaption>Figure 3: Example CCM profile</figcaption>
         </figure>
 
 
 ## Next up
-**[Activate a Device](activateDevice.md)**
+**[Export Profile](exportProfile.md)**
 

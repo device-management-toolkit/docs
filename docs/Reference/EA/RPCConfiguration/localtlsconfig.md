@@ -1,11 +1,11 @@
---8<-- "References/abbreviations.md"
+
 
 # Local TLS Configuration with RPC-Go
 
 !!! warning "Local TLS Configuration using RPC-Go is a Preview Feature"
     Local TLS Configuration using RPC-Go is a Preview Feature and is subject to change. This means it has not been fully validated and cannot be guaranteed to work. There are still potential bugs and tweaks needed for a production-level feature standard. Interested in this feature and helping us test it? Reach out via GitHub.
 
-In Open AMT, the TLS protocol supports the following types of authentication today:
+In Device Management Toolkit, the TLS protocol supports the following types of authentication today:
 
 - Server Authentication – Only the server is authenticated (i.e., its identity is ensured) while the client remains unauthenticated. This means that the end user (whether an individual or an application, such as a Web browser) can be sure with whom they are communicating.
 
@@ -56,7 +56,7 @@ See [EA Configuration for RPC-Go](rpcgoConfiguration.md) for steps on how to set
 3. Run the `rpc configure tls` command. Replace the [bracketed] values with your own.
 
     !!! note "Alternative Option - Using a Config File"
-        Rather than passing in individual flag options, a `.yaml` or `.json` config file can be passed. See [`rpc configure tls` Command Documentation](../../RPC/commandsRPC.md#tls) for more details and examples.
+        Rather than passing in individual flag options, a `.yaml` or `.json` config file can be passed. See [`rpc configure tls` Command Documentation](../../RPC/v2/commandsRPC.md#tls) for more details and examples.
 
     ```
     rpc configure tls -mode [configurationMode] -password [AMTPassword] -eaAddress http://[IP-Address-or-FQDN]:8000 -eaUsername [myUsername] -eaPassword [myPassword]
@@ -80,7 +80,7 @@ See [EA Configuration for RPC-Go](rpcgoConfiguration.md) for steps on how to set
 
     !!! success "Success - TLS Configured"
         <figure class="figure-image">
-            <img src="..\..\..\..\assets\images\RPC_EALocalTLSSuccess.png" alt="Figure 1: TLS Configured Example">
+            <img src="..\..\..\..\assets\images\screenshots\RPC_EALocalTLSSuccess.png" alt="Figure 1: TLS Configured Example">
             <figcaption>Figure 1: TLS Configured Example</figcaption>
         </figure>
 

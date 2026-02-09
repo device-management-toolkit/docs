@@ -1,10 +1,10 @@
---8<-- "References/abbreviations.md"
+
 
 !!! important "Important - Windows 10 or Newer Supported Only"
     This feature is currently only supported for systems on Windows 10 or newer (including Windows 11) operating systems. **Wireless on Linux is not currently supported by Intel AMT.**
 
 !!! warning "Warning - Support for Cellular"
-    While Open AMT Cloud Toolkit supports wireless and wired profiles, it does not currently offer support for managing devices through cellular connections. Products like [Cradlepoint*](https://cradlepoint.com/) offer a workaround for cellular connections.
+    While Device Management Toolkit supports wireless and wired profiles, it does not currently offer support for managing devices through cellular connections. Products like [Cradlepoint*](https://cradlepoint.com/) offer a workaround for cellular connections.
 
 After activation and configuration of an AMT device with a wireless profile, remote devices can be managed wirelessly.
 
@@ -60,7 +60,7 @@ rpc amtinfo
 2. In the top-right corner, click **Add New.**
 
     <figure class="figure-image">
-    <img src="..\..\assets\images\RPS_NewWireless.png" alt="Figure 1: Create a new WiFi Config">
+    <img src="..\..\assets\images\screenshots\RPS_NewWireless.png" alt="Figure 1: Create a new WiFi Config">
     <figcaption>Figure 1: Create a new WiFi Config</figcaption>
     </figure>
 
@@ -78,7 +78,7 @@ rpc amtinfo
 
     !!! example "Example Wireless Profile"
         <figure class="figure-image">
-        <img src="..\..\assets\images\RPS_WirelessCreate.png" alt="Figure 1: Example Wireless Profile">
+        <img src="..\..\assets\images\screenshots\RPS_WirelessCreate.png" alt="Figure 1: Example Wireless Profile">
         <figcaption>Figure 1: Example wireless profile</figcaption>
         </figure>
 
@@ -86,7 +86,7 @@ rpc amtinfo
 
     !!! example "Example - Select Wireless Profile"
         <figure class="figure-image">
-        <img src="..\..\assets\images\RPS_CreateProfile_withWiFi.png" alt="Figure 3: RPS Bottom of Profile">
+        <img src="..\..\assets\images\screenshots\RPS_CreateProfile_withWiFi.png" alt="Figure 3: RPS Bottom of Profile">
         <figcaption>Figure 3: RPS bottom of profile</figcaption>
         </figure>
 

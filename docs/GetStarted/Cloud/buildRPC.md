@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 Developed in Go* programming language, the Remote Provisioning Client (RPC) application runs on the managed device and communicates with the Remote Provisioning Server (RPS) microservice on the development system. The RPC and RPS configure and activate Intel® AMT on the managed device. Once properly configured, the remote managed device can call home to the Management Presence Server (MPS) by establishing a Client Initiated Remote Access (CIRA) connection with the MPS. See Figure 1.
 
 <div style="text-align:center;">
@@ -11,7 +11,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 
 
 <figure class="figure-image">
-<img width="800" height="450" src="..\..\..\assets\images\RPC_Overview.png" alt="Figure 1: RPC Configuration">
+<img width="800" height="450" src="..\..\..\assets\images\diagrams\RPC_Overview.svg" style="height:800px;"alt="Figure 1: RPC Configuration">
 <figcaption>Figure 1: RPC configuration</figcaption>
 </figure>
 
@@ -31,7 +31,7 @@ See steps below for both options.
 
 ### Download RPC
 
-Download the latest RPC-Go version from the [RPC-Go GitHub Repo Releases Page](https://github.com/open-amt-cloud-toolkit/rpc-go/releases) for the Operating System of the AMT device (Windows or Linux).
+Download the latest RPC-Go version from the [RPC-Go GitHub Repo Releases Page](https://github.com/device-management-toolkit/rpc-go/releases) for the Operating System of the AMT device (Windows or Linux).
 
 After downloading, continue on to [Run RPC to Activate, Configure, and Connect the AMT Device](#run-rpc-to-activate-configure-and-connect-the-amt-device).
 
@@ -42,25 +42,25 @@ After downloading, continue on to [Run RPC to Activate, Configure, and Connect t
 Alternatively, the RPC-Go binaries can be manually built using Go for development purposes or personal preference.
 
 ??? tip "Flexible Deployment - RPC as a Library"  
-    The RPC can be built as an executable file or as a library, which offers the flexibility of deploying in your management agent or client. [Read more about building RPC as a library here](../../Reference/RPC/libraryRPC.md).
+    The RPC can be built as an executable file or as a library, which offers the flexibility of deploying in your management agent or client. [Read more about building RPC as a library here](../../Reference/RPC/v2/libraryRPC.md).
 
 If you are building an executable on a development system, you will copy the executable to the AMT device afterwards. 
 
-1. Change to the `rpc-go` directory of the cloned `open-amt-cloud-toolkit` repository.
+1. Change to the `rpc-go` directory of the cloned `cloud-deployment` repository.
    
     ``` bash
     cd rpc-go
     ```
-    ??? note "Haven't Cloned the `open-amt-cloud-toolkit` Repository?"
+    ??? note "Haven't Cloned the `cloud-deployment` Repository?"
 
         * Only clone the `rpc-go` repository:
             ``` bash
-            git clone https://github.com/open-amt-cloud-toolkit/rpc-go --branch v{{ repoVersion.rpc_go }}
+            git clone https://github.com/device-management-toolkit/rpc-go --branch v{{ repoVersion.rpc_go }}
             ```
 
         * Alternatively, clone the whole toolkit repository:
             ``` bash
-            git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }} --recursive
+            git clone https://github.com/device-management-toolkit/cloud-deployment --branch v{{ repoVersion.oamtct }} --recursive
             ```
 
 2. Open a Terminal (Linux) or Powershell/Command Prompt **as Administrator** (Windows):
@@ -128,11 +128,11 @@ If you are building an executable on a development system, you will copy the exe
         ```
 
     ??? note "Note - Other RPC Flags and Commands"
-        See more about the [flags used here and the other available commands of RPC-Go](../../Reference/RPC/commandsRPC.md).
+        See more about the [flags used here and the other available commands of RPC-Go](../../Reference/RPC/v2/commandsRPC.md).
 
     !!! success
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\RPC_Success.png" alt="Figure 2: Example output after configuration">
+        <img src="..\..\..\assets\images\screenshots\RPC_Success.png" alt="Figure 2: Example output after configuration">
         <figcaption>Figure 2: Example output after configuration</figcaption>
         </figure>
 

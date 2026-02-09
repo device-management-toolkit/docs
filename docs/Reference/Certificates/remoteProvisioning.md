@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 	
 ## What is remote provisioning?
 
@@ -25,7 +25,7 @@ The authentication process involves:
 After a device is provisioned, the administrator can use the management console to perform different control activities, such as [power actions (e.g., Reset)](../powerstates.md) without an onsite visit.
 
 <figure class="figure-image">
-<img src="..\..\..\assets\images\RemoteProvCert.png" alt="Figure 1: Certificates in the Toolkit: Provisioning and CIRA">
+<img src="..\..\..\assets\images\diagrams\RemoteProvCert.svg" style="height:800px;" alt="Figure 1: Certificates in the Toolkit: Provisioning and CIRA">
 <figcaption>Figure 1: Provisioning and CIRA</figcaption>
 </figure>
 
@@ -61,7 +61,7 @@ To use a provisioning certificate in the toolkit, purchase the certificate from 
 - [GoDaddy](https://www.intel.com/content/www/us/en/support/articles/000020785/software.html)
 
 !!! Important "Important - Intel AMT and using CAs"
-    For ACM in Open Active Management Technology (Open AMT) Cloud Toolkit, **use only** certificate vendors that support Intel® AMT.
+    For ACM in Device Management Toolkit Toolkit, **use only** certificate vendors that support Intel® AMT.
 
 #### Generate
 

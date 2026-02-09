@@ -1,14 +1,11 @@
---8<-- "References/abbreviations.md"
 
-!!! warning "Warning - Console in Beta Development"
-    Console is currently under development. The current available tags for download are Beta version code. This could mean that certain features may not function yet, visual look and feel may change, or bugs/errors may occur. It is not recommended for use in Production deployments. Follow along our [Feature Backlog for future releases and feature updates](https://github.com/orgs/open-amt-cloud-toolkit/projects/10)
 
 1. In the Console UI, navigate to the **Devices** page in the left-hand menu sidebar.
 
 2. In the upper-right, select **Add a Device**.
 
     <figure class="figure-image">
-        <img src="..\..\..\assets\images\Console_AddDevices.png" alt="Figure 1: Add a New Device">
+        <img src="..\..\..\assets\images\screenshots\Console_AddDevices.png" alt="Figure 1: Add a New Device">
         <figcaption>Figure 1: Add a New Device</figcaption>
     </figure>
 
@@ -38,7 +35,7 @@
 
     !!! example "Example - Add a New Device"
         <figure class="figure-image">
-            <img width=600 src="..\..\..\assets\images\Console_AddDevice_Full.png" alt="Figure 2: Add a New Device Example">
+            <img width=600 src="..\..\..\assets\images\screenshots\Console_AddDevice_Full.png" alt="Figure 2: Add a New Device Example">
             <figcaption>Figure 2: Add a New Device Example</figcaption>
         </figure>
 

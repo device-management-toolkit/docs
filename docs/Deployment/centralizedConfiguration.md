@@ -11,9 +11,9 @@ Consul Use Cases:
 - Observability (Health and Metrics)
 - **Centralized Configuration of Services**
 
-## Consul and Open AMT
+## Consul and Device Management Toolkit
 
-As part of Open AMT, we are currently focused on the last bullet point. We've introduced Hashicorp Consul as an optional deployable service to centralize and ease configuration of the MPS and RPS services. In the future, we may expand and incorporate other capabilities offered by Consul.
+As part of Device Management Toolkit, we are currently focused on the last bullet point. We've introduced Hashicorp Consul as an optional deployable service to centralize and ease configuration of the MPS and RPS services. In the future, we may expand and incorporate other capabilities offered by Consul.
 
 MPS/RPS Startup Flows:
 
@@ -54,7 +54,7 @@ The Consul configurations are stored in a local volume. When cleaning up contain
 
 ## Enable Consul
 
-1. This guide assumes you have completed the [Getting Started Guide](../GetStarted/Cloud/setup.md) and have Open AMT currently running in Docker containers.  If not, follow the [Get Started Guide Setup page](../GetStarted/Cloud/setup.md). Stop and return here after the your services are running.
+1. This guide assumes you have completed the [Getting Started Guide](../GetStarted/Cloud/setup.md) and have Device Management Toolkit currently running in Docker containers.  If not, follow the [Get Started Guide Setup page](../GetStarted/Cloud/setup.md). Stop and return here after the your services are running.
 
 2. In the `.env`, enable Consul and Save.
 
@@ -82,14 +82,14 @@ The Consul configurations are stored in a local volume. When cleaning up contain
 6. Click **Key/Value** from the left-hand menu.
 
     <figure class="figure-image">
-    <img src="..\..\assets\images\Consul_KV_Overview.png" alt="Figure 1: Consul K/V Overview Page">
+    <img src="..\..\assets\images\screenshots\Consul_KV_Overview.png" alt="Figure 1: Consul K/V Overview Page">
     <figcaption>Figure 1: Consul K/V Overview Page</figcaption>
     </figure>
 
 7. Choose either the `/MPS` or `/RPS` directory, then `/config`.
 
     <figure class="figure-image">
-    <img src="..\..\assets\images\Consul_KV_MPS.png" alt="Figure 2: Consul K/V MPS Configuration">
+    <img src="..\..\assets\images\screenshots\Consul_KV_MPS.png" alt="Figure 2: Consul K/V MPS Configuration">
     <figcaption>Figure 2: Consul K/V MPS Configuration</figcaption>
     </figure>
 
@@ -105,6 +105,6 @@ The Consul configurations are stored in a local volume. When cleaning up contain
 
 Today, the current preview implementation does not update the MPS or RPS services realtime. They must be restarted manually to apply the new configurations.  
 
-[Follow along with any new updates and features using Consul in our Feature Backlog.](https://github.com/orgs/open-amt-cloud-toolkit/projects/10)
+[Follow along with any new updates and features using Consul in our Feature Backlog.](https://github.com/orgs/device-managment-toolkit/projects/10)
 
 <br>

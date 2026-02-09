@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 Middleware extensibility allows developers to implement new middleware handlers to both MPS or RPS. By adding custom functions, MPS and RPS will process and load these during server startup. The `loadCustomMiddleware` function that executes on startup can be found in `mps/src/server/webserver.ts` or `rps/src/index.ts`.
 
@@ -23,7 +23,7 @@ The file **must have two key parts** in order to successfully load:
 
 ### Multitenancy Code Example
 
-Implementation might vary depending on cloud provider or other 3rd party solutions. This specific example implements against Microsoft Azure and the default Open AMT components. 
+Implementation might vary depending on cloud provider or other 3rd party solutions. This specific example implements against Microsoft Azure and the default Device Management Toolkit components. 
 
 The following code might not be a final solution, but provides a starting point and template example.
 
@@ -59,7 +59,7 @@ The example implementation has a tenantId that is passed as part of the JWT toke
 
 After implementing the multitenancy code changes and starting the services, profiles and configs can be created by providing a `tenantID` as part of the [API calls](../APIs/indexRPS.md).
 
-Then when activating and configuring the AMT device using RPC, provide the `-tenant` flag with the `tenantID` of the profile. [Find all RPC flags in the RPC CLI docs](./RPC/commandsRPC.md).  See example command below.
+Then when activating and configuring the AMT device using RPC, provide the `-tenant` flag with the `tenantID` of the profile. [Find all RPC flags in the RPC CLI docs](./RPC/v2/commandsRPC.md).  See example command below.
 
 ```
 rpc activate -u wss://server/activate -n -profile profilename -tenant profileTenantID

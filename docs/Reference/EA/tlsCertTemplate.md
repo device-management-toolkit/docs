@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 This template is used by EA to request certificates on behalf of your AMT devices. These certificates will be installed into the AMT device firmware and used for traffic authentication.
 
@@ -39,6 +39,6 @@ When configuring the Settings menu of Enterprise Assistant, choose the **AMT TLS
 
 !!! example "Example - Configured TLS Template in Settings"
     <figure class="figure-image">
-        <img src="..\..\..\assets\images\EA_RPCSettings_TLSTemplate.png" alt="Figure 1: Enterprise Assistant Settings Example">
+        <img src="..\..\..\assets\images\screenshots\EA_RPCSettings_TLSTemplate.png" alt="Figure 1: Enterprise Assistant Settings Example">
         <figcaption>Figure 1: Enterprise Assistant Settings Example</figcaption>
     </figure>

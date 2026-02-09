@@ -1,10 +1,10 @@
---8<-- "References/abbreviations.md"
 
-Figure 1 illustrates the high-level architecture of Open AMT Cloud Toolkit microservice architecture.
+
+Figure 1 illustrates the high-level architecture of Device Management Toolkit microservice architecture.
 
 <figure class="figure-image">
-  <img src="..\..\assets\images\ArchitecturalFlow.png" alt="Figure 1: Deploy Open AMT Cloud Toolkit">
-  <figcaption>Figure 1: Deploy Open AMT Cloud Toolkit</figcaption>
+  <img src="..\..\assets\images\diagrams\CloudArchitecturalFlow.svg" style="height:800px" alt="Figure 1: Deploy Device Management Toolkit">
+  <figcaption>Figure 1: Deploy Device Management Toolkit</figcaption>
 </figure>
 
 ## Figure 1 Flow
@@ -14,7 +14,7 @@ Figure 1 illustrates the high-level architecture of Open AMT Cloud Toolkit micro
 3. **Configure AMT** - Through the RPS, configure AMT by creating control mode profile(s).
 4. **Connect AMT** - Use the MPS to manage connectivity, as this microservice listens for the call home messaging of managed devices.  
 5. **Issue AMT Command** - Send power commands (e.g., power off) through the MPS.
-6. **Add AMT functionality** - Explore the additional functionality provided by Open AMT Cloud Toolkit to develop your own web console or application.
+6. **Add AMT functionality** - Explore the additional functionality provided by Device Management Toolkit to develop your own web console or application.
 
 ## Figure 1 Component Summary
 
@@ -26,7 +26,7 @@ Figure 1 illustrates the high-level architecture of Open AMT Cloud Toolkit micro
 
 ## Out-of-band Management (OOB Management)
 
-Open AMT Cloud Toolkit uses remote management technology, also known as OOB Management, to allow administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols. Actions include reboot, power up, power down, system updates, and more. As long as the network device or asset is connected to power, Open AMT Cloud Toolkit software can perform remote management, including powering up as a system that is currently powered down.  
+Device Management Toolkit uses remote management technology, also known as OOB Management, to allow administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols. Actions include reboot, power up, power down, system updates, and more. As long as the network device or asset is connected to power, Device Management Toolkit software can perform remote management, including powering up as a system that is currently powered down.  
 
 Remote management can offer potential cost-savings by decreasing the need for in-person technician visits to remote IT sites and reducing downtime.
 
@@ -38,7 +38,7 @@ With out-of-band management, the administrator can connect to the device when it
 
 ### CIRA Configuration
 
-CIRA enables OOB connections between Intel® AMT platforms and administrative development systems running Open AMT on the same network. 
+CIRA enables OOB connections between Intel® AMT platforms and administrative development systems running Device Management Toolkit on the same network. 
 
 The following steps occur via a CIRA channel:
 
@@ -78,7 +78,7 @@ Intel® AMT checks the network DNS suffix against the provisioning certificate a
 
 ## Power Control 
 
-With the established CIRA channel, Open AMT Cloud Toolkit enables the administrator to manage remote devices and trigger power actions to:
+With the established CIRA channel, Device Management Toolkit enables the administrator to manage remote devices and trigger power actions to:
 
 - power up
 - power down
@@ -102,7 +102,7 @@ There are five levels of passwords:
 4. **Provisioning Certificate Password -**  The AMT Provisioning certificate is a special certificate used by Intel® AMT devices to establish trust with the configuration service when activating in Admin Control Mode. RPS requires the .pfx version of this certificate along with the password used to export the .pfx certificate to perform ACM activation. 
 5. **MPS CIRA Credential: MPS_USER and MPS_PASSWORD -** This CIRA credential is used by Intel® AMT managed devices to authenticate the MPS when establishing the CIRA connection. 
 
-Multiple passwords enhance the security of Open AMT Cloud Toolkit.
+Multiple passwords enhance the security of Device Management Toolkit.
 
 | What  | Security |  Default Values | Modify |
 | :-----------|:-------------- | :-------------- | :-------------- |
@@ -112,7 +112,7 @@ Multiple passwords enhance the security of Open AMT Cloud Toolkit.
 |**4. Provisioning Certificate Password** | Signed Certificate Usage | Not applicable.| 1.Re-export certificate with another password. 2. Create a new profile. 3. Make an API call to update. 4. Update Vault. |
 |**5. MPS CIRA Credential** | MPS credential used by AMT | Not applicable. | 1. Create a new profile. 2. Make an API call to update. 3. Update Vault. |
 
-**Table 1: Summary of Open AMT Passwords**
+**Table 1: Summary of Device Management Toolkit Passwords**
 
 ## Log Files
 Each microservice has an associated log file which can contain helpful debug information. Use `docker logs` to print log information to the terminal.

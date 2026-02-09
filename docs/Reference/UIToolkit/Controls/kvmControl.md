@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 Not sure how to implement Keyboard, Video Mouse (KVM)? View the [UI Toolkit KVM Module Tutorial](../../../Tutorials/uitoolkitReact.md) for a step-by-step walkthrough prerequisites and instructions for implementing a React Control using the UI Toolkit.
 
 ## Add KVM Control
@@ -12,7 +12,7 @@ Open `src/App.js` and add the code shown below:
 ``` javascript hl_lines="8 9 11"
     import React from "react";
     import "./App.css";
-    import { KVM } from "@open-amt-cloud-toolkit/ui-toolkit-react/reactjs/src/kvm.bundle";
+    import { KVM } from "@device-management-toolkit/ui-toolkit-react/reactjs/src/kvm.bundle";
 
     function App() {
         return (

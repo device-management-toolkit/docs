@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 For production deployments, we highly recommend purchasing a 3rd party provisioning certificate. [See all available vendors here.](./remoteProvisioning.md#purchase) 
 
@@ -204,11 +204,11 @@ First, we need to prepare two files:
 
     !!! success "Success - Hash Inserted Correctly"
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\HASH_OUTPUT.png" alt="Figure 4: Hash Output">
+        <img src="..\..\..\assets\images\screenshots\HASH_OUTPUT.png" alt="Figure 4: Hash Output">
         <figcaption>Figure 4: Hash Output</figcaption>
         </figure>
 
-3. Activate the AMT device with an ACM Profile. See [Create a Profile with ACM](../../GetStarted/Cloud/createProfileACM.md#create-a-profile) and [Build & Run RPC](../../GetStarted/Cloud/buildRPC.md#run-rpc-to-activate-and-connect-the-amt-device) for more details.
+3. Activate the AMT device with an ACM Profile. See [Create a Profile with ACM](../../GetStarted/Cloud/createProfileACM.md#create-a-profile) and [Build & Run RPC](../../GetStarted/Cloud/buildRPC.md#run-rpc-to-activate-configure-and-connect-the-amt-device) for more details.
 
     ??? warning "Troubleshoot - Error During Activation"
     

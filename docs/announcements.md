@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 # Announcements
 ### <b>Open AMT Cloud Toolkit 2.0 is here!</b>

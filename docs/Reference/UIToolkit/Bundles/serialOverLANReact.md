@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 # Quickstart  - Bundle Serial Over LAN (SOL) Control
 
 Use these instructions to:
@@ -24,7 +24,7 @@ In order to deploy and make changes, the following tools and application have to
 
 2. Clone the UI-Toolkit Repository:
 	```
-	git clone https://github.com/open-amt-cloud-toolkit/ui-toolkit --branch v{{ repoVersion.ui_toolkit_react }}
+	git clone https://github.com/device-management-toolkit/ui-toolkit --branch v{{ repoVersion.ui_toolkit_react }}
 	```
 
 3. Change to the `ui-toolkit` directory:

@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 Learn how to run MPS and RPS using Vault in production server mode. The current local `docker-compose.yml` file runs Vault in development mode which makes experimenting with the services easier since static tokens can be used for access and unsealing Vault is not required. The downside to this approach is that all Vault data is only stored in memory and is lost once the Vault container is stopped. Running Vault in production mode requires additional steps, but allows Vault data to persist on host filesystem after the container restarts.
 
@@ -26,7 +26,7 @@ Learn how to run MPS and RPS using Vault in production server mode. The current 
         entrypoint: vault server -config=/vault/config/vault.json
     ```
 
-3. Create a folder named `vault` located in `./open-amt-cloud-toolkit` directory and create a new file named `vault.json` in that folder with the contents below:
+3. Create a folder named `vault` located in `./cloud-deployment` directory and create a new file named `vault.json` in that folder with the contents below:
     ``` json
     {
         "storage":{
@@ -47,7 +47,7 @@ Learn how to run MPS and RPS using Vault in production server mode. The current 
     }
     ```
 
-4. Run `docker compose`` to start the containers from the ./open-amt-cloud-toolkit directory.
+4. Run `docker compose`` to start the containers from the ./cloud-deployment directory.
     ```
     docker compose up -d --build
     ```

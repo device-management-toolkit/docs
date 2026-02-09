@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 # Console Localization
 
@@ -29,13 +29,13 @@ These steps highlight how to build Console in a French translation.
 1. If you do not have the Sample Web UI repository, clone the latest version.
 
     ```
-    git clone https://github.com/open-amt-cloud-toolkit/sample-web-ui.git --branch v{{ repoVersion.webui }}
+    git clone https://github.com/device-management-toolkit/sample-web-ui.git --branch v{{ repoVersion.webui }}
     ```
 
 2. If you do not have the Console repository, clone the latest version.
 
     ```
-    git clone https://github.com/open-amt-cloud-toolkit/console.git
+    git clone https://github.com/device-management-toolkit/console.git
     ```
 
 ## Translate Strings
@@ -135,7 +135,7 @@ Now that the strings are translated and the deployment configurations are update
 
     !!! example "Example - Console Home Page"
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\Console_FrenchTranslation.png" alt="Figure 1: Console English Login Page">
+        <img src="..\..\..\assets\images\screenshots\Console_FrenchTranslation.png" alt="Figure 1: Console English Login Page">
         <figcaption>Figure 1: Console English Login page</figcaption>
         </figure>
 

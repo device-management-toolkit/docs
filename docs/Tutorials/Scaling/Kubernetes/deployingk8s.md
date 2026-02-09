@@ -1,6 +1,6 @@
---8<-- "References/abbreviations.md"
 
-This tutorial demonstrates how to deploy the Open AMT Cloud Toolkit on a local Kubernetes single-node cluster. Alternatively, you can also deploy using a managed service through a Cloud Service Provider such as Azure Kubernetes Service (AKS). See [AKS](./deployingk8s-aks.md).
+
+This tutorial demonstrates how to deploy the Device Management Toolkit on a local Kubernetes single-node cluster. Alternatively, you can also deploy using a managed service through a Cloud Service Provider such as Azure Kubernetes Service (AKS). See [AKS](./deployingk8s-aks.md).
 
 Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications.  Learn more about Kubernetes [here](https://kubernetes.io/docs/home/).
 
@@ -24,10 +24,10 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
     
             ### Build and Start
     
-            1. Clone the Open AMT Cloud Toolkit.
+            1. Clone the cloud-deployment repository.
 
                 ```
-                git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
+                git clone https://github.com/device-management-toolkit/cloud-deployment --branch v{{ repoVersion.oamtct }}
                 ```
     
             2. Copy the `.env.template` file to `.env`.
@@ -86,16 +86,16 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
 
 ## Get the Toolkit
 
-1. Clone the Open AMT Cloud Toolkit.
+1. Clone the cloud-deployment repository.
 
     ```
-    git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
+    git clone https://github.com/device-management-toolkit/cloud-deployment.git --branch v{{ repoVersion.oamtct }}
     ```
 
 
 ## Create Kubernetes Secrets 
 
-1. Open the `secrets.yaml` file in the `open-amt-cloud-toolkit/kubernetes/charts/` directory.
+1. Open the `secrets.yaml` file in the `cloud-deployment/kubernetes/charts/` directory.
 
     ??? note "Note - Additional Information about Secrets Created"
 
@@ -143,7 +143,7 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
 
 ### Edit values.yaml
 
-1. Open the `values.yaml` file in `./open-amt-cloud-toolkit/kubernetes/charts/`.
+1. Open the `values.yaml` file in `./cloud-deployment/kubernetes/charts/`.
 
 2. Update the `commonName` key in the **mps** section with the IP Address of your development device.
 
@@ -172,16 +172,16 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
     psql -h <SERVERURL> -p 5432 -d postgres -U <USERNAME> -W -f ./data/init.sql -f ./data/initMPS.sql
     ```
 
-## Deploy Open AMT Cloud Toolkit Using Helm
+## Deploy Device Management Toolkit Using Helm
 
 1. Deploy using Helm.
     ```
-    helm install openamtstack ./kubernetes/charts
+    helm install devicemgmtstack ./kubernetes/charts
     ```
 
     !!! success
         ```
-        NAME: openamtstack
+        NAME: devicemgmtstack
         LAST DEPLOYED: Wed Jul 14 12:59:29 2021
         NAMESPACE: default
         STATUS: deployed
@@ -189,7 +189,7 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
         TEST SUITE: None
         ```
 
-2. View the pods. You might notice `mps`, `rps`, and `openamtstack-vault-0` are not ready. This will change after we initialize and unseal Vault. All others should be Ready and Running.
+2. View the pods. You might notice `mps`, `rps`, and `devicemgmtstack-vault-0` are not ready. This will change after we initialize and unseal Vault. All others should be Ready and Running.
 
     ```
     kubectl get pods
@@ -200,9 +200,9 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
         NAME                                                 READY   STATUS                       RESTARTS   AGE
         mps-6984b7c69d-8d5gf                                 0/1     CreateContainerConfigError   0          5m
         mpsrouter-9b9bc499b-pwn9j                            1/1     Running                      0          5m
-        openamtstack-kong-55b65d558c-gzv4d                   2/2     Running                      0          5m
-        openamtstack-vault-0                                 0/1     Running                      0          5m
-        openamtstack-vault-agent-injector-7fb7dcfcbd-dlqqg   1/1     Running                      0          5m
+        devicemgmtstack-kong-55b65d558c-gzv4d                   2/2     Running                      0          5m
+        devicemgmtstack-vault-0                                 0/1     Running                      0          5m
+        devicemgmtstack-vault-agent-injector-7fb7dcfcbd-dlqqg   1/1     Running                      0          5m
         rps-79877bf5c5-hnv8t                                 0/1     CreateContainerConfigError   0          5m
         webui-784cd49976-bj7z5                               1/1     Running                      0          5m
         ```
@@ -221,7 +221,7 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
     !!!note "Troubleshoot - Vault UI External IP"
         If you cannot connect, verify the External IP Address by running:
         ```
-        kubectl get services openamtstack-vault-ui
+        kubectl get services devicemgmtstack-vault-ui
         ```
 
 2. Please refer to HashiCorp documentation on how to [Initialize and unseal Vault](https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault). **Stop and return here after signing in to Vault with the `root_token`.**
@@ -240,7 +240,7 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
 
 Add the root token as a secret to the cluster so that the services can access Vault.
 
-1. Open the `secrets.yaml` file again in the `open-amt-cloud-toolkit/kubernetes/charts/` directory.
+1. Open the `secrets.yaml` file again in the `cloud-deployment/kubernetes/charts/` directory.
 
 2. Replace `<VAULT-ROOT-TOKEN>` in the `vaultKey:` field (line 66) with the actual Vault root token.
 
@@ -262,9 +262,9 @@ Add the root token as a secret to the cluster so that the services can access Va
         NAME                                                 READY   STATUS    RESTARTS   AGE
         mps-6984b7c69d-8d5gf                                 1/1     Running   0          7m
         mpsrouter-9b9bc499b-pwn9j                            1/1     Running   0          7m
-        openamtstack-kong-55b65d558c-gzv4d                   2/2     Running   0          7m
-        openamtstack-vault-0                                 1/1     Running   0          7m
-        openamtstack-vault-agent-injector-7fb7dcfcbd-dlqqg   1/1     Running   0          7m
+        devicemgmtstack-kong-55b65d558c-gzv4d                   2/2     Running   0          7m
+        devicemgmtstack-vault-0                                 1/1     Running   0          7m
+        devicemgmtstack-vault-agent-injector-7fb7dcfcbd-dlqqg   1/1     Running   0          7m
         rps-79877bf5c5-hnv8t                                 1/1     Running   0          7m
         webui-784cd49976-bj7z5                               1/1     Running   0          7m
         ```

@@ -1,7 +1,5 @@
 # Glossary
-
-Open Active Management Technology (Open AMT) Cloud Toolkit, also referred to as (OAMTCT)
-*Related Terminology, Technologies, and Acronyms*
+Device Management Toolkit related *Terminology, Technologies, and Acronyms*
 
 [A](#a) | [B](#b) | [C](#c) | [D](#d) | [E](#e) | F | [G](#g) | H | [I](#i) | J | [K](#k) | L | [M](#m) | [N](#n) |[O](#n) | [P](#p) | Q | [R](#r) | S | T | [U](#u) |[V](#v) | [W](#w) | X | Y | Z
 
@@ -9,7 +7,7 @@ Open Active Management Technology (Open AMT) Cloud Toolkit, also referred to as 
 
 **Admin Control Mode (ACM):** A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS) application. ACM achieves a higher level of trust than client control mode (CCM). This is the required mode for Keyboard, Video, Mouse (KVM) or Redirection without user consent. See also [CCM](#c) and [provisioning](#p).
 
-**ACM Activation:** The act of loading a purchased certificate and associating it with an OAMTCT profile.
+**ACM Activation:** The act of loading a purchased certificate and associating it with an Device Management Toolkit profile.
 
 **Allowlist:** A list permitting access to a privilege, service, network, etc.
 
@@ -25,7 +23,7 @@ Open Active Management Technology (Open AMT) Cloud Toolkit, also referred to as 
 
 **Client Initiated Remote Access (CIRA):** An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.
 
-**Client Control Mode (CCM):** An alternative to ACM provisioning mode that does not require a purchased certificate. Use this mode to set up OAMTCT software features quickly.
+**Client Control Mode (CCM):** An alternative to ACM provisioning mode that does not require a purchased certificate. Use this mode to set up Device Management Toolkit software features quickly.
 
 **Console:** It is an application providing a 1:1, direct connection for Intel AMT devices for use in an enterprise environment. It supports multiple features such as power control, remote keyboard-video-mouse (KVM) control, and device monitoring. [See console project for more information.](https://github.com/device-management-toolkit/console)
 
@@ -34,6 +32,8 @@ Open Active Management Technology (Open AMT) Cloud Toolkit, also referred to as 
 **Custom Certificate (Provisioning):** It is a custom certificate created by an ad-hoc Certificate Authority (i.e., untrusted) for development purposes only. It could be used to provision an edge device featuring Intel® AMT. However, they are not pre-loaded in the Intel® AMT firmware, so the user (or developer) needs to incorporate them manually (for example, using the USBFile utility of the [Intel AMT SDK](https://www.intel.com/content/www/us/en/download/704388/intel-active-management-technology-intel-amt-software-development-kit-sdk.html)). To provision an edge device, users must purchase a certificate from an approved vendor.
 
 ## D
+
+**Device Management Toolkit:** An open source software architecture consisting of modular microservices, applications and libraries for integration of out-of-band manageability into existing network infrastructures. The software enables network administrators and independent software vendors (ISVs) to explore key Intel® AMT features.
 
 **Development System:** The system on which Management Presence Server (MPS) and Remote Provision Server (RPS) are installed.
 
@@ -103,9 +103,7 @@ Open Active Management Technology (Open AMT) Cloud Toolkit, also referred to as 
 
 ## O
 
-**Open Active Management Technology (Open AMT) Cloud Toolkit:** An open source software architecture consisting of modular microservices and libraries for integration of out-of-band manageability into existing network infrastructures. The software enables network administrators and independent software vendors (ISVs) to explore key Intel® AMT features. [See more about Open AMT Cloud Toolkit features.](https://software.intel.com/content/www/us/en/develop/topics/iot/hardware/vpro-platform-retail.html)
-
-**Out-Of-Band (OOB) Manageability:** A remote management technology that allows administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols. Actions include reboot, power up, power down, system updates, and more. As long as the network device or asset is connected to power, OAMTCT software can perform remote management, including powering up a system that is currently powered down.
+**Out-of-Band (OOB) Manageability:** A remote management technology that allows administrators to perform actions on network assets or devices using a secure alternative to LAN-based communication protocols. Actions include reboot, power up, power down, system updates, and more. As long as the network device or asset is connected to power, OAMTCT software can perform remote management, including powering up a system that is currently powered down. 
 
 ## P
 
@@ -125,7 +123,7 @@ Open Active Management Technology (Open AMT) Cloud Toolkit, also referred to as 
 
 **Remote Provision Server (RPS):** A node.js-based microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using a pre-defined profile.
 
-**REpresentational State Transfer (REST) API**: An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, administrators can construct REST API calls and run them with node, use provided REST code snippets to expand the reference implementation console, and use provided REST code snippets as a springboard for developing and expanding custom consoles.
+**REpresentational State Transfer (REST) API**: An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of Device Management Toolkit, administrators can construct REST API calls and run them with node, use provided REST code snippets to expand the reference implementation console, and use provided REST code snippets as a springboard for developing and expanding custom consoles.
 
 ## S
 

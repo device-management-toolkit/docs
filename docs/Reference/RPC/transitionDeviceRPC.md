@@ -1,13 +1,13 @@
---8<-- "References/abbreviations.md"
 
-If an Intel vPro® Platform has been previously activated, either in the BIOS or with another management solution or tool, it can be brought under Open AMT Cloud Toolkit control with the RPC-Go application. 
+
+If an Intel vPro® Platform has been previously activated, either in the BIOS or with another management solution or tool, it can be brought under Device Management Toolkit control with the RPC-Go application. 
 
 Additionally, use the following instructions to transition from a previously established toolkit stack to a fresh installation on a new development system.
 
-!!! Note "Note - Passwords used in Open AMT Cloud Toolkit"
+!!! Note "Note - Passwords used in Device Management Toolkit"
     Use the following instructions to transition devices to either ACM or CCM profiles. You will need the AMT password.
     
-    Open AMT Cloud Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../architectureOverview.md#Passwords).
+    Device Management Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../architectureOverview.md#Passwords).
 
 **To transition the activated device:**
 

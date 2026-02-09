@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 The sections below detail possible errors that may occur when activating or deactivating managed devices along with some potential solutions.
 
@@ -101,7 +101,7 @@ This can occur due to the WSMan messages being received out of order during comm
 
 ### RPC
 
-More information about specific RPC error codes can be found in the [RPC Library Documentation](./RPC/libraryRPC.md#rpc-error-code-charts).
+More information about specific RPC error codes can be found in the [RPC Library Documentation](./RPC/v2/libraryRPC.md#rpc-error-code-charts).
 
 | Error Issue or Message | Possible Solutions |
 | ------------- | ------------------ |
@@ -114,7 +114,7 @@ More information about specific RPC error codes can be found in the [RPC Library
 | Error: amt password DOES NOT match stored version for Device 6c4243ba-334d-11ea-94b5-caba2a773d00 | Ensure you have provided the `-password` flag for the `-cmd` you are trying to execute, and that it is the password you used when provisioning the device. |
 | Unable to connect to websocket server. Please check url. | After ensuring you can reach your server. Ensure that the certificate common name on the server matches the FQDN/IP of your host address. |
 | Error while activating the AMT in admin mode. | Check the logs on the RPS server. | 
-| The rpc.exe fails to connect. | If a device has already been provisioned, [unprovision](../Reference/MEBX/unprovision.md) it and then reprovision. To deactivate and reactivate devices, see the Mircoservices section for RPC, [RPC Activate/Deactivate Examples](./RPC/commandsRPC.md) | 
+| The rpc.exe fails to connect. | If a device has already been provisioned, [unprovision](../Reference/MEBX/unprovision.md) it and then reprovision. To deactivate and reactivate devices, see the Mircoservices section for RPC, [RPC Activate/Deactivate Examples](./RPC/v2/commandsRPC.md) | 
 
 ### MPS
 
@@ -149,7 +149,7 @@ If a configuration becomes unworkable, it may be necessary to clean up the envir
 
 Do all the above if it becomes necessary to reset your environment completely. See instructions below.
 
-1. **Unprovision the Managed Device:** Use rpc.exe to dectivate the managed device as described in [RPC Activate/Deactivate Examples](./RPC/commandsRPC.md#RPCexamples). The `deactivate` parameter executes a full unprovision of the managed device. It is also possible to implement a full unprovision via MEBX. See [Unprovisioning](../Reference/MEBX/unprovision.md).
+1. **Unprovision the Managed Device:** Use rpc.exe to deactivate the managed device as described in [RPC Activate/Deactivate Examples](./RPC/v2/commandsRPC.md#deactivate). The `deactivate` parameter executes a full unprovision of the managed device. It is also possible to implement a full unprovision via MEBX. See [Unprovisioning](../Reference/MEBX/unprovision.md).
 2. **Shut down Docker Services:** Use `docker image prune` and `docker image rm` to stop or remove all images, containers, and volumes, as described in [Build and Run Docker Images](../GetStarted/Cloud/setup.md#Builddockerimages).
 
 The best practice example below stops Docker and then prunes all volumes. 

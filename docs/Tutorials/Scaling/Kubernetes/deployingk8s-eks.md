@@ -1,8 +1,8 @@
---8<-- "References/abbreviations.md"
+
 
 # Amazon Elastic Kubernetes Service (EKS)
 
-This tutorial demonstrates how to deploy the Open AMT Cloud Toolkit on a Kubernetes cluster using EKS. To perform a simpler test deployment, use a single-mode cluster locally. See [Kubernetes (K8S)](./deployingk8s.md).
+This tutorial demonstrates how to deploy the Device Management Toolkit on a Kubernetes cluster using EKS. To perform a simpler test deployment, use a single-mode cluster locally. See [Kubernetes (K8S)](./deployingk8s.md).
 
 Amazon EKS offers serverless Kubernetes, an integrated continuous integration and continuous delivery (CI/CD) experience, and enterprise-grade security and governance. Learn more about EKS [here](https://aws.amazon.com/eks).
 
@@ -17,10 +17,10 @@ Amazon EKS offers serverless Kubernetes, an integrated continuous integration an
 
 ## Get the Toolkit
 
-1. Clone the Open AMT Cloud Toolkit.
+1. Clone the cloud-deployment repository.
 
     ```
-    git clone https://github.com/open-amt-cloud-toolkit/open-amt-cloud-toolkit --branch v{{ repoVersion.oamtct }}
+    git clone https://github.com/device-management-toolkit/cloud-deployment.git --branch v{{ repoVersion.oamtct }}
     ```
 
 ## Create a New EKS Cluster
@@ -128,7 +128,7 @@ The Amazon EBS CSI plugin requires IAM permissions to make calls to Amazon APIs 
     ```
 
 ## Create Kubernetes Secrets 
-1. Open the `secrets.yaml` file in the `open-amt-cloud-toolkit/kubernetes/charts/` directory.
+1. Open the `secrets.yaml` file in the `cloud-deployment/kubernetes/charts/` directory.
 
     ??? note "Note - Additional Information about Secrets Created"
 
@@ -181,7 +181,7 @@ The Amazon EBS CSI plugin requires IAM permissions to make calls to Amazon APIs 
 
 ### Edit values.yaml
 
-1. Open the `values.yaml` file in the `./open-amt-cloud-toolkit/kubernetes/charts/` directory.
+1. Open the `values.yaml` file in the `./cloud-deployment/kubernetes/charts/` directory.
 
 2. Remove the **annotations** section and `service.beta.kubernetes.io/azure-dns-label-name` key in the `kong:` section. These are Azure-specific implementations.
 
@@ -195,17 +195,17 @@ The Amazon EBS CSI plugin requires IAM permissions to make calls to Amazon APIs 
 3. Save the file.
 
 
-## Deploy Open AMT Cloud Toolkit using Helm
+## Deploy Device Management Toolkit using Helm
 
 1. Deploy using Helm.
 
     ```
-    helm install openamtstack ./kubernetes/charts
+    helm install devicemgmtstack ./kubernetes/charts
     ```
 
     !!! success
         ```
-        NAME: openamtstack
+        NAME: devicemgmtstack
         LAST DEPLOYED: Thu Jul 15 11:17:38 2021
         NAMESPACE: default
         STATUS: deployed
@@ -213,7 +213,7 @@ The Amazon EBS CSI plugin requires IAM permissions to make calls to Amazon APIs 
         TEST SUITE: None
         ```
 
-2. View the pods. You might notice `mps`, `rps`, and `openamtstack-vault-0` are not ready. This will change after we initialize and unseal Vault. All others should be Ready and Running.
+2. View the pods. You might notice `mps`, `rps`, and `devicemgmtstack-vault-0` are not ready. This will change after we initialize and unseal Vault. All others should be Ready and Running.
 
     ```
     kubectl get pods
@@ -224,9 +224,9 @@ The Amazon EBS CSI plugin requires IAM permissions to make calls to Amazon APIs 
         NAME                                                 READY   STATUS                       RESTARTS   AGE
         mps-69786bfb47-92mpc                                 0/1     CreateContainerConfigError   0          2m6s
         mpsrouter-9b9bc499b-2tkb2                            1/1     Running                      0          2m6s
-        openamtstack-kong-68d6c84bcc-fp8dl                   2/2     Running                      0          2m6s
-        openamtstack-vault-0                                 0/1     Running                      0          2m6s
-        openamtstack-vault-agent-injector-6b564845db-zss78   1/1     Running                      0          2m6s
+        devicemgmtstack-kong-68d6c84bcc-fp8dl                   2/2     Running                      0          2m6s
+        devicemgmtstack-vault-0                                 0/1     Running                      0          2m6s
+        devicemgmtstack-vault-agent-injector-6b564845db-zss78   1/1     Running                      0          2m6s
         rps-79877bf5c5-dsg5p                                 0/1     CreateContainerConfigError   0          2m6s
         webui-6cc48f4d68-6r8b5                               1/1     Running                      0          2m6s
         ```
@@ -240,7 +240,7 @@ The Amazon EBS CSI plugin requires IAM permissions to make calls to Amazon APIs 
     The external IP of your Vault UI service can be found by running:
 
     ```
-    kubectl get services openamtstack-vault-ui
+    kubectl get services devicemgmtstack-vault-ui
     ```
 
 1. Please refer to HashiCorp documentation on how to [Initialize and unseal Vault](https://learn.hashicorp.com/tutorials/vault/kubernetes-azure-aks?in=vault/kubernetes#initialize-and-unseal-vault). **Stop and return here after signing in to Vault with the `root_token`.**
@@ -259,7 +259,7 @@ The Amazon EBS CSI plugin requires IAM permissions to make calls to Amazon APIs 
 
 Add the root token as a secret to the AKS cluster so that the services can access Vault.
 
-1. Open the `secrets.yaml` file again in the `open-amt-cloud-toolkit/kubernetes/charts/` directory.
+1. Open the `secrets.yaml` file again in the `cloud-deployment/kubernetes/charts/` directory.
 
 2. Replace `<VAULT-ROOT-TOKEN>` in the `vaultKey:` field (line 66) with the actual Vault root token.
 
@@ -276,7 +276,7 @@ Add the root token as a secret to the AKS cluster so that the services can acces
 1. Get the `External-IP` for accessing the UI. Note and save the value under `EXTERNAL-IP`.
 
     ```
-    kubectl get service openamtstack-kong-proxy
+    kubectl get service devicemgmtstack-kong-proxy
     ```
 
 2. Update the value for `commonName` in the **mps** section in the `values.yml` file with the `External-IP` from above.  Recall that `values.yml` is located in `./kubernetes/charts/`.
@@ -292,7 +292,7 @@ Add the root token as a secret to the AKS cluster so that the services can acces
 3. Update the stack using helm.
 
     ```
-    helm upgrade openamtstack ./kubernetes/charts 
+    helm upgrade devicemgmtstack ./kubernetes/charts 
     ```
 
 
@@ -310,9 +310,9 @@ Add the root token as a secret to the AKS cluster so that the services can acces
         NAME                                                 READY   STATUS      RESTARTS   AGE
         mps-69786bfb47-92mpc                                 1/1     Running     0          4m5s
         mpsrouter-9b9bc499b-2tkb2                            1/1     Running     0          4m5s
-        openamtstack-kong-68d6c84bcc-fp8dl                   2/2     Running     0          4m5s
-        openamtstack-vault-0                                 1/1     Running     0          4m5s
-        openamtstack-vault-agent-injector-6b564845db-zss78   1/1     Running     0          4m5s
+        devicemgmtstack-kong-68d6c84bcc-fp8dl                   2/2     Running     0          4m5s
+        devicemgmtstack-vault-0                                 1/1     Running     0          4m5s
+        devicemgmtstack-vault-agent-injector-6b564845db-zss78   1/1     Running     0          4m5s
         rps-79877bf5c5-dsg5p                                 1/1     Running     0          4m5s
         webui-6cc48f4d68-6r8b5                               1/1     Running     0          4m5s
         ```
@@ -333,7 +333,7 @@ Add the root token as a secret to the AKS cluster so that the services can acces
 
         !!! example "Example - Incorrect MPS Certificate"
             <figure class="figure-image">
-                <img src="..\..\..\..\assets\images\MPS_Certificate.png" alt="Figure 1: Incorrect Certificate">
+                <img src="..\..\..\..\assets\images\screenshots\MPS_Certificate.png" alt="Figure 1: Incorrect Certificate">
                 <figcaption>Figure 1: Incorrect Certificate</figcaption>
             </figure>
             

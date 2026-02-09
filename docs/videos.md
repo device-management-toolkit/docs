@@ -1,12 +1,12 @@
 
-## What is Open AMT
+## What is Device Management Toolkit
 
 Learn the high-level basics and get familiar with the toolkit. Learn about the different microservices and their roles then get up to speed with the latest features, changes, and fixes.
 
 <div class="videoContainer">
 	<!-- <h3>What's New: May 2024 Release (v{{ repoVersion.oamtct }})</h3> -->
 	<!-- <h3></h3> -->
-	<h3>Overview of Open AMT Cloud Toolkit</h3><h3></h3><h3></h3>
+	<h3>Overview of Device Management Toolkit (formerly known as Device Management Toolkit)</h3><h3></h3><h3></h3>
 	<!-- <div class="video-wrapper">
     	<iframe width="1280" height="720" src="https://www.youtube.com/embed/5Zz5RbKHaA4?si=f495o_uJj8tu-j0G" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	</div>
@@ -17,7 +17,7 @@ Learn the high-level basics and get familiar with the toolkit. Learn about the d
 	<div></div><div></div>
 	<!-- <p>Discover what new features and changes are in our latest rapid release. <b><a href="../release-notes"> See full Release Notes.</a></b></p> -->
   	<!-- <p></p> -->
-	<p>See what Open AMT Cloud Toolkit is and what you can do with it. <br><br><b>Additional Resources: </b><a href="../Reference/architectureOverview">Architecture Overview</a>, <a href="../Reference/MPS/securityMPS">MPS Security Considerations</a>, and <a href="../Reference/RPS/securityRPS">RPS Security Considerations</a></p>
+	<p>See what Device Management Toolkit is and what you can do with it. <br><br><b>Additional Resources: </b><a href="../Reference/architectureOverview">Architecture Overview</a>, <a href="../Reference/MPS/securityMPS">MPS Security Considerations</a>, and <a href="../Reference/RPS/securityRPS">RPS Security Considerations</a></p>
 	<p></p><p></p>
 </div>
 
@@ -39,7 +39,7 @@ Watch how to go from cloning the toolkit to managing a device out-of-band remote
 	<div class="video-wrapper">
     	<iframe width="1280" height="720" src="https://www.youtube.com/embed/RYzrHHpMIas" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	</div>
-	<p>See how to setup Open AMT Cloud Toolkit locally using Docker. <br><br><b>Additional Resources: </b><a href="https://www.intel.com/content/www/us/en/developer/topic-technology/edge-5g/hardware/vpro-platform-retail.html">Intel vPro Platform</a></p>
+	<p>See how to setup Device Management Toolkit locally using Docker. <br><br><b>Additional Resources: </b><a href="https://www.intel.com/content/www/us/en/developer/topic-technology/edge-5g/hardware/vpro-platform-retail.html">Intel vPro Platform</a></p>
   	<p></p>
   	<p>Learn how to create custom profiles for device configuration and activation. <br><br><b>Additional Resources: </b><a href="../Reference/architectureOverview#passwords">Passwords and What They Mean</a>, <a href="../Reference/Certificates/remoteProvisioning">Provisioning Certificates</a>, and <a href="../Reference/MEBX/dnsSuffix">Setting a DNS Suffix via MEBX</a></p>
 	<h3>Provisioning a Device</h3>
@@ -59,7 +59,7 @@ Watch how to go from cloning the toolkit to managing a device out-of-band remote
 
 ## Tutorials
 
-Learn more about the features of Open AMT through guided tutorials.
+Learn more about the features of Device Management Toolkit through guided tutorials.
 
 <div class="videoContainer">
 	<h3>IDE-Redirection Tutorial</h3>

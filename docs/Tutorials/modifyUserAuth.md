@@ -1,7 +1,7 @@
---8<-- "References/abbreviations.md"
 
 
-As part of the Open AMT Cloud Toolkit reference implementation, MPS and the Kong service issue and authenticate a JSON Web Token (JWT) for user authentication. The default configuration offers authentication functionality, but it does not support many common configuration options, such as user groups. In a production environment, alternative authentication is available in 0Auth 2*, Lightweight Directory Access Protocol (LDAP), Kerberos*, and more.
+
+As part of the Device Management Toolkit reference implementation, MPS and the Kong service issue and authenticate a JSON Web Token (JWT) for user authentication. The default configuration offers authentication functionality, but it does not support many common configuration options, such as user groups. In a production environment, alternative authentication is available in 0Auth 2*, Lightweight Directory Access Protocol (LDAP), Kerberos*, and more.
 
 The instructions below explain how to add an LDAP plugin to Kong.
 
@@ -12,7 +12,7 @@ The following diagrams help illustrate the typical user authentication flow. Lea
 ### REST API User Authentication Flow
 
 <figure class="figure-image">
-<img src="..\..\assets\images\UserAuth_API_Diagram.png" alt="Figure 1: User Authentication Flow for REST APIs">
+<img src="..\..\assets\images\diagrams\UserAuth_API_Diagram.png" alt="Figure 1: User Authentication Flow for REST APIs">
 </figure>
 
 #### To authenticate for REST APIs:
@@ -26,7 +26,7 @@ The following diagrams help illustrate the typical user authentication flow. Lea
 ### Redirection (KVM/SOL) User Authentication Flow
 
 <figure class="figure-image">
-<img src="..\..\assets\images\UserAuth_Redir_Diagram.png" alt="Figure 1: User Authentication Flow for Redirection">
+<img src="..\..\assets\images\diagrams\UserAuth_Redir_Diagram.png" alt="Figure 1: User Authentication Flow for Redirection">
 </figure>
 
 #### To authenticate for Websocket connections:
@@ -41,7 +41,7 @@ The following diagrams help illustrate the typical user authentication flow. Lea
 
     When using a 3rd party auth service (e.g. Cognito, LDAP, etc), the token issued by the auth service is used to make calls to the MPS. For non-HTTP calls like redirection, a call must be made to the `/api/v1/authorize/redirection/{guid}` API to get a separate MPS-specific token required to be passed into the KVM/SOL UI-Toolkit module.
 
-    API Gateways are only able to verify tokens on HTTP requests.  Open AMT's redirection implementation uses WebSockets for KVM and SOL. Therefore, the API Gateway cannot verify tokens passed in over the WebSocket connections. Because of this, MPS must perform the verification of the token and it can only do that with tokens that it issues.
+    API Gateways are only able to verify tokens on HTTP requests.  Device Management Toolkit's redirection implementation uses WebSockets for KVM and SOL. Therefore, the API Gateway cannot verify tokens passed in over the WebSocket connections. Because of this, MPS must perform the verification of the token and it can only do that with tokens that it issues.
 
 <br>
 

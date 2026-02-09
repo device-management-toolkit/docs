@@ -1,4 +1,4 @@
---8<-- "References/abbreviations.md"
+
 
 Admin Control Mode (ACM) provides full access to Intel® Active Management Technology (Intel® AMT) functionality. User consent is optional for supported redirection features:
 
@@ -7,7 +7,7 @@ Admin Control Mode (ACM) provides full access to Intel® Active Management Techn
 - **IDE Redirection:** Share and mount images remotely with a specified storage media (e.g., USB flash drive). 
 
 <figure class="figure-image">
-<img src="..\..\..\assets\images\Profiles.png" alt="Figure 1: Set up configuration and profiles for N number of clients">
+<img src="..\..\..\assets\images\diagrams\ProfileRelationshipsRPS.svg" style="height:800px;"alt="Figure 1: Set up configuration and profiles for N number of clients">
 <figcaption>Figure 1: Set up configuration and profiles for n number of clients</figcaption>
 </figure>
 
@@ -22,7 +22,7 @@ By purchasing a certificate, you'll be able to remotely activate an Intel® AMT 
 - [GoDaddy](https://www.intel.com/content/www/us/en/support/articles/000020785/software.html)
 
 !!! Important "Important - Intel AMT and using CAs"
-    For ACM in Open Active Management Technology (Open AMT) Cloud Toolkit, **use only** certificate vendors that support Intel® AMT.
+    For ACM in Device Management Toolkit Toolkit, **use only** certificate vendors that support Intel® AMT.
 
 Alternatively, for development, custom provisioning certificates can be generated. See [Custom Provisioning Certificate](../../Reference/Certificates/generateProvisioningCert.md) for additional details.
 
@@ -62,7 +62,7 @@ A Profile provides configuration information to the AMT Firmware during the acti
     In a production environment, devices are typically activated in ACM mode. ACM mode enables KVM access to devices without user consent. In most IoT use cases, edge devices such as digital signage or kiosks may not have immediate access to it or employees nearby. ACM mode proves immensely helpful in these scenarios.
 
 ??? note "Note - More Information about Passwords"
-    Open AMT Cloud Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../../Reference/architectureOverview.md#passwords).
+    Device Management Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../../Reference/architectureOverview.md#passwords).
 
 **To create an ACM profile:**
 
@@ -71,7 +71,7 @@ A Profile provides configuration information to the AMT Firmware during the acti
 2. Under the **Profiles** tab, click **Add New** in the top-right corner to create a profile.
 
     <figure class="figure-image">
-    <img src="..\..\..\assets\images\RPS_NewProfile.png" alt="Figure 2: Create a new profile">
+    <img src="..\..\..\assets\images\screenshots\RPS_NewProfile.png" alt="Figure 2: Create a new profile">
     <figcaption>Figure 2: Create a new profile</figcaption>
     </figure>
 
@@ -104,7 +104,7 @@ A Profile provides configuration information to the AMT Firmware during the acti
 
     !!! example "Example ACM Profile"
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\RPS_CreateProfile_ACM.png" alt="Figure 3: Example ACM profile">
+        <img src="..\..\..\assets\images\screenshots\RPS_CreateProfile_ACM.png" alt="Figure 3: Example ACM profile">
         <figcaption>Figure 3: Example ACM profile</figcaption>
         </figure>
 
@@ -120,7 +120,7 @@ Intel® AMT checks the network DNS suffix against the provisioning certificate a
 
 2. In the top-right corner, click **Add New.**
     <figure class="figure-image">
-    <img src="..\..\..\assets\images\RPS_NewDomain.png" alt="Figure 4: Create a new Domain profile">
+    <img src="..\..\..\assets\images\screenshots\RPS_NewDomain.png" alt="Figure 4: Create a new Domain profile">
     <figcaption>Figure 4: Create a new Domain profile</figcaption>
     </figure>
 
@@ -136,7 +136,7 @@ Intel® AMT checks the network DNS suffix against the provisioning certificate a
 
     !!! example "Example Domain"
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\RPS_CreateDomain.png" alt="Figure 5: Example Domain profile">
+        <img src="..\..\..\assets\images\screenshots\RPS_CreateDomain.png" alt="Figure 5: Example Domain profile">
         <figcaption>Figure 5: Example Domain profile</figcaption>
         </figure>
 
