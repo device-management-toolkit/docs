@@ -22,7 +22,7 @@ The tutorial outlines how to add various controls to the sample React web applic
 ### Software
 
 - [MPS](https://github.com/device-management-toolkit/MPS), the Management Presence Server
-- [RPS](https://github.com/device-management-toolkit/RCS), the Remote Provisioning Server
+- [RPS](https://github.com/device-management-toolkit/RPS), the Remote Provisioning Server
 - Intel&reg; vPro device, configured and connected to MPS
 
     !!! Note

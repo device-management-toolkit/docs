@@ -6,7 +6,7 @@ Learn the high-level basics and get familiar with the toolkit. Learn about the d
 <div class="videoContainer">
 	<!-- <h3>What's New: May 2024 Release (v{{ repoVersion.oamtct }})</h3> -->
 	<!-- <h3></h3> -->
-	<h3>Overview of Device Management Toolkit (formerly known as Device Management Toolkit)</h3><h3></h3><h3></h3>
+	<h3>Overview of Device Management Toolkit (formerly known as Open AMT Cloud Toolkit)</h3><h3></h3><h3></h3>
 	<!-- <div class="video-wrapper">
     	<iframe width="1280" height="720" src="https://www.youtube.com/embed/5Zz5RbKHaA4?si=f495o_uJj8tu-j0G" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	</div>
