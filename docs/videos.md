@@ -41,7 +41,7 @@ Watch how to go from cloning the toolkit to managing a device out-of-band remote
 	</div>
 	<p>See how to setup Device Management Toolkit locally using Docker. <br><br><b>Additional Resources: </b><a href="https://www.intel.com/content/www/us/en/developer/topic-technology/edge-5g/hardware/vpro-platform-retail.html">Intel vPro Platform</a></p>
   	<p></p>
-  	<p>Learn how to create custom profiles for device configuration and activation. <br><br><b>Additional Resources: </b><a href="../Reference/architectureOverview#passwords">Passwords and What They Mean</a>, <a href="../Reference/Certificates/remoteProvisioning">Provisioning Certificates</a>, and <a href="../Reference/MEBX/dnsSuffix">Setting a DNS Suffix via MEBX</a></p>
+  	<p>Learn how to create custom profiles for device configuration and activation. <br><br><b>Additional Resources: </b><a href="../Reference/architectureOverview#passwords">Passwords and What They Mean</a>, <a href="../Concepts/remoteProvisioning">Provisioning Certificates</a>, and <a href="../Reference/MEBX/dnsSuffix">Setting a DNS Suffix via MEBX</a></p>
 	<h3>Provisioning a Device</h3>
   	<h3></h3>
 	<h3>Managing a Device</h3>

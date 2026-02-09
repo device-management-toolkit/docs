@@ -81,10 +81,12 @@ nav:
           - Activate a Device: GetStarted/Enterprise/activateDevice.md
           - Add a Device: GetStarted/Enterprise/addDevice.md
           - Manage a Device: GetStarted/Enterprise/manageDevice.md
-      - Get Help:
-          - FAQ: Reference/faq.md
-          - Glossary: Glossary.md      
-          - Troubleshooting: Reference/troubleshooting.md
+  - Concepts:
+      - OOB Management: Concepts/oobManagement.md
+      - Architecture & Components: Concepts/architecture.md
+      - Remote Provisioning: Concepts/remoteProvisioning.md
+      - Control Modes: Concepts/controlModes.md
+      - Security: Concepts/security.md
   - Deployment:
       - Overview: Deployment/overview.md
       - Upgrade Toolkit Version: Deployment/upgradeVersion.md
@@ -97,6 +99,7 @@ nav:
       - Secrets Management:
           - Secrets Store Replacement: Deployment/secrets.md
   - Tutorials:
+      # - Overview: Tutorials/overview.md
       - UI Toolkit Redirection Modules: Tutorials/uitoolkitReact.md
       - REST API Call: Tutorials/apiTutorial.md
       - IDE-Redirection (IDER): Tutorials/ideRedirection.md
@@ -114,10 +117,6 @@ nav:
               - AKS: Tutorials/Scaling/Kubernetes/deployingk8s-aks.md
               - EKS: Tutorials/Scaling/Kubernetes/deployingk8s-eks.md
               - KUMA Service Mesh: Tutorials/Scaling/Kubernetes/service-mesh.md
-      - Get Help:
-          - FAQ: Reference/faq.md
-          - Glossary: Glossary.md                
-          - Troubleshooting: Reference/troubleshooting.md
   - Reference:
     - Architecture Overview: Reference/architectureOverview.md
     - AMT Power States: Reference/powerstates.md
@@ -177,13 +176,8 @@ nav:
       - Unprovisioning: Reference/MEBX/unprovision.md
     - Certificates:
       - Custom Provisioning Certificate: Reference/Certificates/generateProvisioningCert.md
-      - Provisioning Certificate: Reference/Certificates/remoteProvisioning.md
       - Enroll Custom Provisioning Certificate using USBFile: Reference/Certificates/enrollCustomCertAMT.md
       - TLS Certificate: Reference/Certificates/tls.md
-    - Get Help:
-      - FAQ: Reference/faq.md
-      - Glossary: Glossary.md
-      - Troubleshooting: Reference/troubleshooting.md
   - APIs:
       - Management Presence Server: APIs/indexMPS.md
       - Remote Provisioning Server: APIs/indexRPS.md

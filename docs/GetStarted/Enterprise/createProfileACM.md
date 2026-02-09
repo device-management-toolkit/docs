@@ -10,7 +10,7 @@ Admin Control Mode (ACM) provides full access to Intel® Active Management Techn
 
 #### Provisioning Certificate
 
-By purchasing a certificate, you'll be able to remotely activate an Intel® AMT device in ACM. This feature enables you to disable User Consent. Provisioning Certificates are available from four different Certificate Authorities. [Find more information about Provisioning Certificates](../../Reference/Certificates/remoteProvisioning.md).
+By purchasing a certificate, you'll be able to remotely activate an Intel® AMT device in ACM. This feature enables you to disable User Consent. Provisioning Certificates are available from four different Certificate Authorities. [Find more information about Provisioning Certificates](../../Concepts/remoteProvisioning.md).
 
 - [DigiCert](https://www.intel.com/content/www/us/en/support/articles/000055009/technologies.html)
 - [Entrust](https://www.intel.com/content/www/us/en/support/articles/000055010/technologies/intel-active-management-technology-intel-amt.html)
@@ -87,7 +87,7 @@ Intel® AMT checks the network DNS suffix against the provisioning certificate a
 A Profile provides configuration information to the AMT Firmware during the activation process with the Remote Provisioning Client (RPC).
 
 ??? note "Note - More Information about Passwords"
-    Device Management Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../../Reference/architectureOverview.md#passwords).
+    Device Management Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Security Overview](../../Concepts/security.md).
 
 **To create an ACM profile:**
 
