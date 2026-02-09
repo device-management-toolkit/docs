@@ -22,7 +22,7 @@ By purchasing a certificate, you'll be able to remotely activate an Intel® AMT 
 - [GoDaddy](https://www.intel.com/content/www/us/en/support/articles/000020785/software.html)
 
 !!! Important "Important - Intel AMT and using CAs"
-    For ACM in Device Management Toolkit Toolkit, **use only** certificate vendors that support Intel® AMT.
+    For ACM in Device Management Toolkit, **use only** certificate vendors that support Intel® AMT.
 
 Alternatively, for development, custom provisioning certificates can be generated. See [Custom Provisioning Certificate](../../Reference/Certificates/generateProvisioningCert.md) for additional details.
 
@@ -63,7 +63,7 @@ A Profile provides configuration information to the AMT Firmware during the acti
 
 ??? note "Note - More Information about Passwords"
     Device Management Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../../Reference/architectureOverview.md#passwords).
-
+    
 **To create an ACM profile:**
 
 1. Select the **Profiles** tab from the menu on the left.
