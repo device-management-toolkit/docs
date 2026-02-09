@@ -99,7 +99,7 @@ nav:
       - Secrets Management:
           - Secrets Store Replacement: Deployment/secrets.md
   - Tutorials:
-      # - Overview: Tutorials/overview.md
+      - Overview: Tutorials/overview.md
       - UI Toolkit Redirection Modules: Tutorials/uitoolkitReact.md
       - REST API Call: Tutorials/apiTutorial.md
       - IDE-Redirection (IDER): Tutorials/ideRedirection.md
