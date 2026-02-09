@@ -1,6 +1,10 @@
 
 
 # Scaling Overview
+
+!!! note "Looking for production deployment guidance?"
+    For replacing default components (database, secrets, API gateway) for production use, see the [Deployment Overview](../../Deployment/overview.md).
+
 Scaling functionality in MPS enables Device Management Toolkit to support a greater number of managed devices. The toolkit offers various methods for deploying scaling, including Local Kubernetes, Azure Kubernetes Service* (AKS), Amazon Elastic Kubernetes Service* (EKS), and Docker Swarm*. In addition, administrators can use kubectl to manage the AKS. 
 
 <figure class="figure-image">
