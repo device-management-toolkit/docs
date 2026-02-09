@@ -50,7 +50,7 @@
     !!! note "Note - Encryption Key Information"
         Console automatically stores this 32-character key in Operating System's credential manager, such as Windows Credential Manager, under the name *device-management-toolkit*. This key is used to encrypt sensitive data before it is stored in the database.
 
-3. The executable automatically generates a `config.yml` file in the `/config` directory, relative to where the executable is run.. A default User Name and Password for the console login is stored in the `config.yml` file. To change the User Name and Password, edit the file and update `adminUsername` and `adminPassword` fields.
+3. The executable automatically generates a `config.yml` file in the `/config` directory, relative to where the executable is run. A default User Name and Password for the console login is stored in the `config.yml` file. To change the User Name and Password, edit the file and update `adminUsername` and `adminPassword` fields.
 
     ```yml hl_lines="6 8 9"
     app:
@@ -87,7 +87,7 @@
     ```
 
 !!! important
-    Using the default credentials is for TESTING ONLY. Not setting these values to your own values will result in an insecure deployment. For production deployments we recommended using an OAUTH provider (Auth0, Azure Entra AD, etc..) and configuring Console to use that instead. We may remove the default values in the future. `
+    Using the default credentials is for TESTING ONLY. Not setting these values to your own values will result in an insecure deployment. For production deployments we recommended using an OAUTH provider (Auth0, Azure Entra AD, etc..) and configuring Console to use that instead. We may remove the default values in the future.
 
 
 ## Run

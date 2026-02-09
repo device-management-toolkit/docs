@@ -112,7 +112,7 @@ If you are building an executable on a development system, you will copy the exe
     | REPLACE                 | WITH                                                                                  |
     |-------------------------|---------------------------------------------------------------------------------------|
     | Development-IP-Address  | Development system's IP address or FQDN, where the MPS and RPS servers are running.   |
-    | profileName             | THe name of the profile created using the Sample Web UI.                        |
+    | profileName             | The name of the profile created using the Sample Web UI.                        |
 
     === "Linux"
         ``` bash

@@ -1,109 +1,114 @@
 
-# Quickstart  - Bundle Serial Over LAN (SOL) Control
+# Quickstart - Serial Over LAN (SOL) Control
 
-Use these instructions to:
+## Using the SOL Control
 
-- Run the SOL control in development environment
-- Create a bundle for SOL control
-- Add bundle to a sample HTML file
+The SOL control is available as a named export from the UI Toolkit React package.
 
-## Prerequisites
-
-In order to deploy and make changes, the following tools and application have to be installed on your development system:
+### Prerequisites
 
 - [Git](https://git-scm.com/)
-- [Visual Studio Code](https://code.visualstudio.com/) or any other IDE 
+- [Visual Studio Code](https://code.visualstudio.com/) or any other IDE
 - [Node.js](https://nodejs.org/)
 - [Chrome* Browser](https://www.google.com/chrome)
 - [MPS Server with an AMT Device Connected](../../../GetStarted/Cloud/prerequisites.md)
 
+### Install
 
-## Download and Install UI Toolkit
+``` bash
+npm install @device-management-toolkit/ui-toolkit-react@{{ repoVersion.ui_toolkit_react }}
+```
 
-1. Open a Terminal (Linux) or Command Prompt (Windows) and navigate to a directory of your choice for development.
+### Usage
 
-2. Clone the UI-Toolkit Repository:
-	```
-	git clone https://github.com/device-management-toolkit/ui-toolkit --branch v{{ repoVersion.ui_toolkit_react }}
-	```
+``` typescript
+import React from 'react'
+import { Sol } from '@device-management-toolkit/ui-toolkit-react'
 
-3. Change to the `ui-toolkit` directory:
-	```
-	cd ui_toolkit
-	```
+function App() {
+  return (
+    <Sol deviceId="[AMT-Device-GUID]"
+      mpsServer="https://[MPS-Server-IP-Address]/mps/ws/relay"
+      authToken="[JWT-Token]"
+    />
+  )
+}
 
-4. Install the dependencies:
-	```
-	npm install
-	```
+export default App
+```
 
-## Run in Development Environment
+### Run in Development Environment
 
-To add and test new changes before bundling the control, use a webpack dev server.
-
-1. Start the server:
+1. Start the Vite dev server:
 	```
-	npm start
-	```
-
-2. Open a Chrome* browser and navigate to the following link to see changes:
-	```
-	http://localhost:8080/sol.htm?deviceId=[AMT-Device-GUID]&mpsServer=https://[MPS-Server-IP-Address]:3000
+	npm run dev
 	```
 
-	!!! note
-		By default, the webpack dev server runs on port 8080. If port 8080 is already in use, webpack automatically runs on the next immediate available port.
+2. Open a Chrome* browser and navigate to the local dev server URL (default: `http://localhost:5173`).
 
-## Create Bundle
+### Build for Production
 
-1. To bundle, navigate to the `ui-toolkit` directory in a Terminal (Linux) or Command Prompt (Windows).
+The package ships as ESM and CJS modules. No custom bundling configuration is needed.
 
-2. Remove or rename the existing *sol.min.js*  in the `ui-toolkit/dist/` directory before building:
+``` bash
+npm run build
+```
 
-3. Build the bundle:
-	```
-	npm run build
-	```
+Build outputs:
 
-	A new *kvm.core.min.js* will be created in the `ui-toolkit/dist/` directory.
+- **ESM**: `dist/index.esm.js`
+- **CJS**: `dist/index.cjs.js`
+- **Types**: `dist/index.d.ts`
 
-	!!! note
-		To bundle the Serial-Over-LAN control without node_modules, run the following build command instead.
-		```
-		npm run built-ext
-		```
-		The bundle generated using the build-ext command can be used in react apps as an independent control
-
-
-
-## Add to Sample HTML Page
-
-1. Add the following code snippet to *sampleSOL.htm* in the `ui-toolkit/src/sample/` directory using an editor of your choice:
-
-	```xml
-	<body>
-	  <div id="sol"></div>
-	  <script src="../../dist/sol.min.js" crossorigin></script>
-	</body>
-	```
-
-2. In a Terminal (Linux) or Command Prompt (Windows), navigate to the `ui-toolkit` directory:
-
-3. Serve the HTML page.
-	```
-	npx serve
-	```
-
-4. Open a new Chrome* browser and navigate to the following URL:
-	```
-	http://localhost:5000/src/sample/sampleSOL.htm?deviceId=[AMT-Device-GUID]&mpsServer=https://[MPS-Server-IP-Address]:3000
-	```
-
-Errors may occur in the following scenarios:  
+Errors may occur in the following scenarios:
 
 - UI-toolkit was not downloaded and installed into your react app
 - MPS Server is not running
 - MPS Server is running but the device is not connected
 
+??? note "v4 (Legacy) - Webpack Bundle Approach"
 
+    In v4, the SOL control was distributed as a separate webpack bundle.
 
+    ### Download and Install UI Toolkit (v4)
+
+    1. Clone the UI-Toolkit Repository:
+    	```
+    	git clone https://github.com/device-management-toolkit/ui-toolkit --branch v{{ repoVersion.ui_toolkit_react }}
+    	```
+
+    2. Change to the `ui-toolkit` directory and install dependencies:
+    	```
+    	cd ui_toolkit
+    	npm install
+    	```
+
+    ### Run in Development Environment (v4)
+
+    1. Start the webpack dev server:
+    	```
+    	npm start
+    	```
+
+    2. Open a Chrome* browser and navigate to:
+    	```
+    	http://localhost:8080/sol.htm?deviceId=[AMT-Device-GUID]&mpsServer=https://[MPS-Server-IP-Address]:3000
+    	```
+
+    ### Create Bundle (v4)
+
+    1. Remove or rename the existing *sol.min.js* in the `ui-toolkit/dist/` directory before building.
+
+    2. Build the bundle:
+    	```
+    	npm run build
+    	```
+
+    ### Add to Sample HTML Page (v4)
+
+    ```html
+    <body>
+      <div id="sol"></div>
+      <script src="../../dist/sol.min.js" crossorigin></script>
+    </body>
+    ```

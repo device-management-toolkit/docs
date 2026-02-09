@@ -1,107 +1,120 @@
 
-# Quickstart - Bundle Keyboard Video Mouse (KVM) Control
+# Quickstart - KVM Control
 
-Use these instructions to:
+## Using the KVM Control
 
-- Run the KVM control in development environment
-- Create a bundle for KVM control
-- Add bundle to a sample HTML file 
+The KVM control is available as a named export from the UI Toolkit React package.
 
-## Prerequisites
-
-In order to deploy and make changes, the following tools and application has to be installed on your development machine:
+### Prerequisites
 
 - [Git](https://git-scm.com/)
-- [Visual Studio Code](https://code.visualstudio.com/) or any other IDE 
+- [Visual Studio Code](https://code.visualstudio.com/) or any other IDE
 - [Node.js](https://nodejs.org/)
 - [Chrome* Browser](https://www.google.com/chrome)
 - [MPS Server with an AMT Device Connected](../../../GetStarted/Cloud/prerequisites.md)
 
+### Install
 
-## Download and Install UI Toolkit
+``` bash
+npm install @device-management-toolkit/ui-toolkit-react@{{ repoVersion.ui_toolkit_react }}
+```
 
-1. Open a Terminal (Linux) or Command Prompt (Windows) and navigate to a directory of your choice for development.
+### Usage
 
-2. Clone the UI Toolkit Repository:
+``` typescript
+import React from 'react'
+import { KVM } from '@device-management-toolkit/ui-toolkit-react'
+
+function App() {
+  return (
+    <KVM deviceId="[AMT-Device-GUID]"
+      mpsServer="https://[MPS-Server-IP-Address]/mps/ws/relay"
+      authToken="[JWT-Token]"
+      autoConnect={false}
+      mouseDebounceTime={200}
+      canvasHeight="100%"
+      canvasWidth="100%"
+    />
+  )
+}
+
+export default App
+```
+
+### Run in Development Environment
+
+1. Start the Vite dev server:
 	```
-	git clone https://github.com/device-management-toolkit/ui-toolkit --branch v{{ repoVersion.ui_toolkit_react }}
-	```
-
-3. Change to the `ui-toolkit` directory:
-	```
-	cd ui_toolkit
-	```
-
-4. Install the dependencies:
-	```
-	npm install
-	```
-
-## Run in Development Environment
-
-To add and test new changes before bundling the control, use a webpack dev server:
-
-1. Start the server:
-	```
-	npm start
-	```
-
-2. Open a Chrome* browser and navigate to the following link to see changes:
-	```
-	http://localhost:8080/kvm.htm?deviceId=[AMT-Device-GUID]&mpsServer=https://[MPS-Server-IP-Address]:3000
-	```
-
-	!!! note
-		By default, the webpack dev server runs on port 8080. If port 8080 is already in use, webpack automatically runs on the next immediate available port.
-
-
-## Create Bundle
-
-1. To bundle, navigate to the `ui-toolkit` directory in a Terminal (Linux) or Command Prompt (Windows).
-
-2. Remove or rename the existing *kvm.min.js*  in the `ui-toolkit/dist/` directory before building.
-
-3. Build the bundle:
-	```
-	npm run build
+	npm run dev
 	```
 
-	A new *kvm.min.js* will be created in the `ui-toolkit/dist/` directory.
+2. Open a Chrome* browser and navigate to the local dev server URL (default: `http://localhost:5173`).
 
-	!!! note
-		To bundle the KVM control without node_modules, run the following build command instead.
-		```
-		npm run built-ext
-		```
-		The bundle generated using the build-ext command can be used in react apps as an independent control
+### Build for Production
 
+The package ships as ESM and CJS modules. No custom bundling configuration is needed.
 
-## Add to Sample HTML Page
+``` bash
+npm run build
+```
 
-1. Add the following code snippet to *sampleKVM.htm* in the `ui-toolkit/src/reactjs/sample/` directory using an editor of your choice:
+Build outputs:
 
-	```
-	<body>
-	  <div id="kvm"></div>
-	  <script src="../../dist/kvm.min.js" crossorigin></script>
-	</body>
-	```
+- **ESM**: `dist/index.esm.js`
+- **CJS**: `dist/index.cjs.js`
+- **Types**: `dist/index.d.ts`
 
-2. In a Terminal (Linux) or Command Prompt (Windows), navigate to the `ui-toolkit` directory.
-
-3. Serve the HTML page:
-	```
-	npx serve
-	```
-
-4. Open a new Chrome* browser and navigate to the following URL:
-	```
-	http://localhost:5000/src/sample/sampleKVM.htm?deviceId=[AMT-Device-GUID]&mpsServer=https://[MPS-Server-IP-Address]:3000
-	```
-
-Errors may occur in the following scenarios: 
+Errors may occur in the following scenarios:
 
 - UI-toolkit was not downloaded and installed into your react app
 - MPS Server is not running
 - MPS Server is running but the device is not connected
 
+??? note "v4 (Legacy) - Webpack Bundle Approach"
+
+    In v4, the KVM control was distributed as a separate webpack bundle.
+
+    ### Download and Install UI Toolkit (v4)
+
+    1. Clone the UI Toolkit Repository:
+    	```
+    	git clone https://github.com/device-management-toolkit/ui-toolkit --branch v{{ repoVersion.ui_toolkit_react }}
+    	```
+
+    2. Change to the `ui-toolkit` directory and install dependencies:
+    	```
+    	cd ui_toolkit
+    	npm install
+    	```
+
+    ### Run in Development Environment (v4)
+
+    1. Start the webpack dev server:
+    	```
+    	npm start
+    	```
+
+    2. Open a Chrome* browser and navigate to:
+    	```
+    	http://localhost:8080/kvm.htm?deviceId=[AMT-Device-GUID]&mpsServer=https://[MPS-Server-IP-Address]:3000
+    	```
+
+    ### Create Bundle (v4)
+
+    1. Remove or rename the existing *kvm.min.js* in the `ui-toolkit/dist/` directory before building.
+
+    2. Build the bundle:
+    	```
+    	npm run build
+    	```
+
+    	A new *kvm.min.js* will be created in the `ui-toolkit/dist/` directory.
+
+    ### Add to Sample HTML Page (v4)
+
+    ```html
+    <body>
+      <div id="kvm"></div>
+      <script src="../../dist/kvm.min.js" crossorigin></script>
+    </body>
+    ```
