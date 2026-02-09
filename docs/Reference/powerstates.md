@@ -16,11 +16,11 @@ To obtain information about power actions, use the following methods:
 
     If the system is already powered up, choosing to **Power Up to BIOS** will not have any effect on the system. A better choice is **Reset to BIOS**.
 
-## Out-of-band
+## Remote Power Actions
 
-The power actions below can be used in-band or out-of-band. 
+The following power actions can be executed remotely without requiring Intel LMS to be installed. 
 
-Commands 100 and above use a combination of HW level power controls (i.e., 2, 5, 8, 10) and some boot option, such as **Boot to BIOS**.
+Commands 100 and above use a combination of HW level power controls (i.e., 2, 5, 8, 10) and some boot options, such as **Boot to BIOS**.
 
    | Action #       | Power Action | Start State | Transition Description | ACPI State(s) | 
    | :----------- | :------------------------ |   :------------------------ | :------------------------ | :------------------------ |
@@ -33,16 +33,16 @@ Commands 100 and above use a combination of HW level power controls (i.e., 2, 5,
    | **400** | Reset to PXE | Powered up/on | Reset to pre-boot execution environment (PXE)(i.e., a network boot | N/A | 
    | **401** | Power on to PXE | Powered down/off | Power up/on fully to pre-boot execution environment (PXE) (i.e., a network boot) | N/A | 
 
-## In-band Required
+## Local Power Actions
 
-The power actions below require an in-band agent, Local Management Service (LMS), or Intel® Integrated Management and Security Status (Intel® IMSS).
+The following power actions require Intel Local Manageability Service (LMS) to be installed and running.
 
-LMS is a service that runs locally on an Intel AMT device and enables local management applications to send requests and receive responses to and from the device. The LMS  listens for and intercepts requests directed to the Intel AMT local host and routes them to to the Management Engine via the Intel Management Engine Interface (MEI) driver.
+LMS is a service that runs locally on an Intel AMT device and enables local management applications to send requests and receive responses to and from the device. The LMS listens for and intercepts requests directed to the Intel AMT local host and routes them to the Management Engine via the Intel Management Engine Interface (MEI) driver.
 
 !!! Info "Installing LMS and Drivers"
-    The service installer is packaged with the Intel MEI drivers on the OEM websites. If Windows OS is reimaged or reinstalled, only the Intel MEI Driver is reinstalled, not LMS or IMSS.
-    
-    If the LMS is not installed, visit the OEM website and look for download packages for Intel® IMSS or the Intel CSME driver.
+    **Windows:** LMS is typically included in OEM Intel CSME driver packages available from your system manufacturer's support site. After reinstalling the OS, ensure you install the complete CSME driver package (not just the MEI driver).
+
+    **Linux:** Build LMS from source using the [Intel LMS repository](https://github.com/intel/lms). Ensure the MEI driver is installed first. See the repository's build instructions for dependencies and compilation steps.
 
    | Action #       | Power Action | Start State | Transition Description | ACPI State(s) | 
    | :----------- | :------------------------ |   :------------------------ | :------------------------ | :------------------------ | 
@@ -51,17 +51,26 @@ LMS is a service that runs locally on an Intel AMT device and enables local mana
    | **12** | Power down/off (soft) | Powered up/on | Transition to a very minimal power state | G2/S5 | 
    | **14** | Soft reset | Powered up/on | Perform a shutdown and then a hardware reset | N/A |
 
-## Alternative Boot Options
+## Alternative Power Actions
 
-Currently, the Toolkit doesn't natively support secure erase or 200-level calls.
+### Supported Alternative Power Actions
+
+The following alternative power actions are supported for IDE-R CD-ROM operations:
+
+| Action #       | Power Action | Start State | Transition Description | 
+| :----------- | :------------------------ |   :------------------------ |:------------------------ |
+| **202** | Reset to IDE-R CD-ROM | Powered up/on | Perform hardware reset on the bus to a peripheral IDE-R CD-ROM drive, usually reserved for a remote ISO boot | 
+| **203** | Power on to IDE-R CD-ROM | Powered down/off | Power up/on to the bus to a peripheral IDE-R CD-ROM drive, usually reserved for a remote ISO boot |
+
+### Unsupported Alternative Power Actions
+
+The Toolkit does not support the following alternative power actions:
 
 | Action #       | Power Action | Start State | Transition Description | 
 | :----------- | :------------------------ |   :------------------------ |:------------------------ |
 | **104** | Reset to secure erase | Powered up/on | Perform hardware reset on the bus to secure erase, a process of completely erasing a solid state drive (SSD)|
-| **200** | Reset to IDE-R floppy disc | Powered up/on | Perform hardware reset on the bus to a peripheral IDE-R drive, usually reserved for a remote ISO boot |
-| **201** | Power on to IDE-R floppy disc| Powered down/off | Power up/on fully to a peripheral IDE-R drive, usually reserved for a remote ISO boot
-| **202** | Reset to IDE-R CD-ROM | Powered up/on | Perform hardware reset on the bus to a peripheral IDE-R CD-ROM drive, usually reserved for a remote ISO boot | 
-| **203** | Power on to IDE-R CD-ROM | Powered down/off | Power up/on to the bus to a peripheral IDE-R CD-ROM drive, usually reserved for a remote ISO boot |
+| **200** | Reset to IDE-R floppy disk | Powered up/on | Perform hardware reset on the bus to a peripheral IDE-R drive, usually reserved for a remote ISO boot |
+| **201** | Power on to IDE-R floppy disk| Powered down/off | Power up/on fully to a peripheral IDE-R drive, usually reserved for a remote ISO boot |
 
 
 
