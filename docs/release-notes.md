@@ -3,190 +3,205 @@
 # Release Notes
 
 !!! note "Note From the Team"
-    We’re excited to share our October release. Work on **RPC-Go v3 Beta** is progressing well, and your feedback will help us shape the final v3 release.  
-    Our efforts to enable **Console deployment in the cloud** are also moving forward, with more updates planned for Q1.
-
-    We’re expanding the team to accelerate feature delivery starting Q1.
+    We’re excited to share our November release. This release includes improvements across MPS, RPC-Go, and supporting components, with a focus on adding the initial APF transaction, clearer KVM logs and safer certificate handling.
+    
+    In the upcoming releases, we’re continuing work on expanded certificate support (including SHA-384 and larger key sizes), along with prerequisites for making Console deployable in the cloud, such as adding CIRA capabilities in Console and integrating secret management for cloud deployments. More updates will follow as these changes roll out.
 
 ## 🚀 What's New?
 
-### :material-new-box:{ .icon-new } RPC-Go v3 Beta Release
+### :material-new-box:{ .icon-new } Initial CIRA APF Message Support (go-wsman-messages)
 
-v3 introduces a faster activation workflow, TLS-secured profile fetch, and a clearer configuration model. **v2.x remains fully supported** during Beta.
+Initial support has been added for CIRA APF (AMT Port Forwarding) messages and handlers. This lays the groundwork for supporitng CIRA functionality in future releases.
 
-**Highlights**
+### :material-new-box:{ .icon-new } KVM Session Closure Detection (MPS)
 
-- Faster **local activation workflow** using encrypted profile export  
-- **TLS required** for profile fetch from Console/RPS  
-- Clear separation of **application config** vs **provisioning profile**  
-- Standardized CLI flags; `configv2` removed in favor of `--profile`
+KVM session logging has been enhanced to provide clearer visibility into how sessions end. MPS can now identify whether a session was closed by the API client or by the AMT device, making it easier to troubleshoot unexpected disconnects.
 
-### :material-new-box:{ .icon-new } Console TLS Support
+### :material-new-box:{ .icon-new } AMT Network Link Preference API (MPS)
 
-Console now serves APIs over **HTTPS**.  
-Certificates can be configured through `config.yaml`, allowing Console to use either self-signed or user-provided certificates for secure API communication.
+A new API endpoint allows programmatic control over AMT network link preferences:
+`/api/v1/amt/network/linkPreference/{guid}`.
 
+This is primarily useful when AMT is connected over a wireless network. If users want to control how the ME accesses the network, they can leverage this API to influence Wi-Fi link selection and behavior.
 
-### :material-new-box:{ .icon-new } Wireless Reliability Improvement
+### :material-new-box:{ .icon-new } Ability to Delete Unassociated Certificates (MPS)
 
-To improve CIRA reliability over Wi-Fi, the default value:
+Users can now delete unassociated or unused certificates. The API validates against read-only certificates and certificates actively associated with TLS, wired, or wireless profiles, and returns clearer error messages when deletion is blocked.
 
-```text
-ConsoleTcpMaxRetransmissions = 7
-```
+### :material-new-box:{ .icon-new } UUID Validation During Device Activation (RPC-Go)
 
-is now applied automatically.  
-Running your Wi-Fi profile again with the latest RPS image will apply this setting.
-
-### :material-new-box:{ .icon-new } Web UI Localization
-
-Thank you to **@Robert-Preda** for contribution to Localization support & translations feature. UI translated into 11 languages (FR, DE, ES, NL, IT, JA, AR, FI, HE, RU, SV).
-
-### :material-new-box:{ .icon-new } Certificate Deletion in Console
-
-You can now delete unused or unassociated AMT certificates directly from Console.
+RPC-Go now validates device UUIDs during activation to prevent invalid or corrupted devices from entering the managed inventory. Known invalid `UUID` patterns are detected and blocked early in the activation flow.
 
 ## :material-checkbox-marked:{ .icon-new } Fixes & Improvements
 
-- UI stability fixes across Console and Sample Web UI  
-- MPS UUID validation issue resolved  
-- Wi-Fi coexistence fix
+- Local wired IEEE 802.1X provisioning fix in RPC-Go
 
-## :material-handshake:{ .icon-handshake } Community Contributions
+- Restricted AMT domain profile names in RPS to safe characters (alphanumeric, underscores, and hyphens)
 
-Thank you to all community contributors for your continued feedback, testing, and pull requests. Your support helps us prioritize and deliver features that matter most.
+- Improved error handling in WSMAN message processing when keys are missing
+
+- Fixed keyboard lock issues during active KVM sessions in the Sample Web UI
+
+- Corrected Console version display to show the running version instead of the latest release
+
+- Dependency updates, General maintenance and stability improvements across components
+
 
 ## :material-update:{ .icon-log } Changelog
   
 ### RPS
 
-#### [2.30.2](https://github.com/device-management-toolkit/rps/compare/v2.30.1...v2.30.2) (2025-11-06)
+#### [2.30.4](https://github.com/device-management-toolkit/rps/compare/v2.30.3...v2.30.4) (2025-12-16)
 
-#### [2.30.1](https://github.com/device-management-toolkit/rps/compare/v2.30.0...v2.30.1) (2025-11-05)
+#### [2.30.3](https://github.com/device-management-toolkit/rps/compare/v2.30.2...v2.30.3) (2025-11-28)
 
 Bug Fixes
 
-* add coexistence check for profile share ([#2401](https://github.com/device-management-toolkit/rps/issues/2401)) ([790ffdd](https://github.com/device-management-toolkit/rps/commit/790ffddbb899b50141ce9950a54fda91cedc89c8))
-
-#### [2.30.0](https://github.com/device-management-toolkit/rps/compare/v2.29.1...v2.30.0) (2025-11-05)
-
-Features
-
-* extend max retransmission setting for WiFi network configuration ([#2390](https://github.com/device-management-toolkit/rps/issues/2390)) ([39ee524](https://github.com/device-management-toolkit/rps/commit/39ee524cf44e7b3dc50c94010ea6981bcb7768b4))
+* Update the AMT Domain Profile Name to only support letters, numbers, underscores and hyphens ([#2425](https://github.com/device-management-toolkit/rps/issues/2425)) ([c00a8db](https://github.com/device-management-toolkit/rps/commit/c00a8dbd4081340dd0332430f828c857af463a07))
 
 ### MPS
 
-#### [2.22.5](https://github.com/device-management-toolkit/mps/compare/v2.22.4...v2.22.5) (2025-11-07)
+#### [2.25.0](https://github.com/device-management-toolkit/mps/compare/v2.24.0...v2.25.0) (2025-12-11)
 
- Bug Fixes
+Features
 
-* loosens UUID check for API ([#2194](https://github.com/device-management-toolkit/mps/issues/2194)) ([f741380](https://github.com/device-management-toolkit/mps/commit/f741380937cfc8f69a26d2ca4ef13fccbafcff2e))
+* implement certificate deletion functionality with safety guards ([#2221](https://github.com/device-management-toolkit/mps/issues/2221)) ([9ede411](https://github.com/device-management-toolkit/mps/commit/9ede411ca8439b23eaef20267621a35b3df79f34))
 
-#### [2.22.4](https://github.com/device-management-toolkit/mps/compare/v2.22.3...v2.22.4) (2025-11-06)
+#### [2.24.0](https://github.com/device-management-toolkit/mps/compare/v2.23.0...v2.24.0) (2025-12-03)
+
+Features
+
+* add setLinkPreference API for MPS ([#2212](https://github.com/device-management-toolkit/mps/issues/2212)) ([9e2a7fb](https://github.com/device-management-toolkit/mps/commit/9e2a7fb93327422f7399b4c29b65c063d0567c3d))
+
+#### [2.23.0](https://github.com/device-management-toolkit/mps/compare/v2.22.5...v2.23.0) (2025-11-20)
+
+Features
+
+* support KVM ending detection in wsRedirect ([#2201](https://github.com/device-management-toolkit/mps/issues/2201)) ([6cb9ef7](https://github.com/device-management-toolkit/mps/commit/6cb9ef757b8198e404ef6f927902bd39b2b5cb2c))
 
 ### RPC Go
 
-#### [2.48.7](https://github.com/device-management-toolkit/rpc-go/compare/v2.48.6...v2.48.7) (2025-11-06)
-
-#### [3.0.0-beta.1](https://github.com/device-management-toolkit/rpc-go/compare/v2.48.2...v3.0.0-beta.1) (2025-11-05)
-
-* feat!: begin 3.0 beta series ([a888af2](https://github.com/device-management-toolkit/rpc-go/commit/a888af26c2a1f98c8fa815172a34cb77fe472f8c))
-
-BREAKING CHANGES
-
-* see v3.0-changes.md for the command and flag syntax overhaul, profile/config realignment,
-and the new restful profile activation flow.
-
-#### [2.48.6](https://github.com/device-management-toolkit/rpc-go/compare/v2.48.5...v2.48.6) (2025-11-04)
+#### [2.48.10](https://github.com/device-management-toolkit/rpc-go/compare/v2.48.9...v2.48.10) (2025-12-10)
 
 Bug Fixes
 
-* add -n to all the configure subcommands ([c5a4232](https://github.com/device-management-toolkit/rpc-go/commit/c5a423297f89c481e9c9e16c77aea9f27611a696))
+* reject invalid UUIDs during activation ([dba3b6e](https://github.com/device-management-toolkit/rpc-go/commit/dba3b6e4afb4a9a9fe0abdf4db676cf5ca84dab4)), closes [#480](https://github.com/device-management-toolkit/rpc-go/issues/480)
 
-#### [2.48.5](https://github.com/device-management-toolkit/rpc-go/compare/v2.48.4...v2.48.5) (2025-10-23)
+#### [3.0.0-beta.3](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.2...v3.0.0-beta.3) (2025-12-02)
+
+Features
+
+* add cira to orchestrator ([b796a54](https://github.com/device-management-toolkit/rpc-go/commit/b796a54b585739407586935d5d09265d468c891a))
+
+#### [2.48.9](https://github.com/device-management-toolkit/rpc-go/compare/v2.48.8...v2.48.9) (2025-12-02)
+
+#### [2.48.8](https://github.com/device-management-toolkit/rpc-go/compare/v2.48.7...v2.48.8) (2025-11-18)
 
 Bug Fixes
 
-* cert cleanup now excludes mpsroot cert ([9e98143](https://github.com/device-management-toolkit/rpc-go/commit/9e981433d1d67397230959063639bb070ad06d27))
+* --local issue with wired 8021x configure failing ([f9c0a7a](https://github.com/device-management-toolkit/rpc-go/commit/f9c0a7a1c72e1afe24f9bf0ae609a05278967b78))
 
-#### [2.48.4](https://github.com/device-management-toolkit/rpc-go/compare/v2.48.3...v2.48.4) (2025-10-13)
-
-#### [2.48.3](https://github.com/device-management-toolkit/rpc-go/compare/v2.48.2...v2.48.3) (2025-10-13)
-
-Bug Fixes
-
-* address panic when operationalState is requested ([#985](https://github.com/device-management-toolkit/rpc-go/issues/985)) ([b16ac56](https://github.com/device-management-toolkit/rpc-go/commit/b16ac56c1ab81970df9926212caa99dd60a8e2e6)), closes [#978](https://github.com/device-management-toolkit/rpc-go/issues/978)
-* **dockerfile:** license comment now correct ([74d13b3](https://github.com/device-management-toolkit/rpc-go/commit/74d13b31d491909da14e00d281cb8d2e52d57c42))
-* ci: update release to support 2.x branch by @rsdmike in https://github.com/device-management-toolkit/rpc-go/pull/984
-* fix: address panic when operationalState is requested by @rsdmike in https://github.com/device-management-toolkit/rpc-go/pull/985
-* docs: update readme for 2.x.x. branch by @rsdmike in https://github.com/device-management-toolkit/rpc-go/pull/988
+#### [3.0.0-beta.2](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.1...v3.0.0-beta.2) (2025-11-10)
 
 ### Sample Web UI
 
-#### [3.49.2](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.49.1...v3.49.2) (2025-11-07)
+#### [3.52.1](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.52.0...v3.52.1) (2025-12-12)
 
 Bug Fixes
 
-* **domains:** adds better error handling for domain responses to surface in web ui ([#2952](https://github.com/device-management-toolkit/sample-web-ui/issues/2952)) ([1dcbe0d](https://github.com/device-management-toolkit/sample-web-ui/commit/1dcbe0daa0b1fb72941af7d1fdb69d1607ed7fa2)), closes [#2863](https://github.com/device-management-toolkit/sample-web-ui/issues/2863)
+* certificate list not refreshing after deletion ([#3037](https://github.com/device-management-toolkit/sample-web-ui/issues/3037)) ([0f69922](https://github.com/device-management-toolkit/sample-web-ui/commit/0f699228b711edfc63f5f9a857ab12334a272448))
 
-#### [3.49.1](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.49.0...v3.49.1) (2025-11-06)
-
-#### [3.49.0](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.48.0...v3.49.0) (2025-11-05)
+#### [3.52.0](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.51.2...v3.52.0) (2025-12-12)
 
 Features
 
-* allow export of profile for cloud mode ([#2960](https://github.com/device-management-toolkit/sample-web-ui/issues/2960)) ([008e60c](https://github.com/device-management-toolkit/sample-web-ui/commit/008e60cb35c32068a6e8042890ebd14f3fce1d18))
+* enable CIRA profiles and adding device manually ([#3039](https://github.com/device-management-toolkit/sample-web-ui/issues/3039)) ([a80b299](https://github.com/device-management-toolkit/sample-web-ui/commit/a80b2994f21cb08fb1b24f1f4e913d3bf722ed26))
 
-#### [3.48.0](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.47.0...v3.48.0) (2025-10-27)
+#### [3.51.2](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.51.1...v3.51.2) (2025-12-04)
 
 Bug Fixes
 
-* addresses issue with console version being empty ([#2944](https://github.com/device-management-toolkit/sample-web-ui/issues/2944)) ([d0d3a0c](https://github.com/device-management-toolkit/sample-web-ui/commit/d0d3a0cf85f4c9b7b2f21b51e49526f423b29521))
+* display actual console version instead of latest release ([#3026](https://github.com/device-management-toolkit/sample-web-ui/issues/3026)) ([09cd49f](https://github.com/device-management-toolkit/sample-web-ui/commit/09cd49f2d6f48d2d421b54d96b7fc6848bb50f60)), closes [#707](https://github.com/device-management-toolkit/sample-web-ui/issues/707)
+
+#### [3.51.1](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.51.0...v3.51.1) (2025-12-03)
+
+#### [3.51.0](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.50.2...v3.51.0) (2025-12-02)
 
 Features
 
-* **ui:** display console version in toolbar ([#2934](https://github.com/device-management-toolkit/sample-web-ui/issues/2934)) ([24956a0](https://github.com/device-management-toolkit/sample-web-ui/commit/24956a025adbaf2d33fc4ca9356d64ea7c3155af))
+* improve certificate deletion error handling ([#3007](https://github.com/device-management-toolkit/sample-web-ui/issues/3007)) ([9eef82a](https://github.com/device-management-toolkit/sample-web-ui/commit/9eef82ab7acfb5e35196be7a491e3c1699187d4f))
 
-#### [3.47.0](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.46.1...v3.47.0) (2025-10-20)
+#### [3.50.2](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.50.1...v3.50.2) (2025-11-28)
 
 Bug Fixes
 
-* hide proxy's on console ([#2941](https://github.com/device-management-toolkit/sample-web-ui/issues/2941)) ([9fb20a0](https://github.com/device-management-toolkit/sample-web-ui/commit/9fb20a06b229ae6ed73dc4301cf8fdfd90aae989))
+* prevent kb input lock in the active KVM session ([#2994](https://github.com/device-management-toolkit/sample-web-ui/issues/2994)) ([925b7b5](https://github.com/device-management-toolkit/sample-web-ui/commit/925b7b56dbb6aeb5e6c18927ffa1ac33c07d060b))
+
+#### [3.50.1](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.50.0...v3.50.1) (2025-11-20)
+
+Bug Fixes
+
+* update dependencies ([696cd47](https://github.com/device-management-toolkit/sample-web-ui/commit/696cd473dc9b7d44f76a18fc6cd62098e5f25f53))
+
+#### [3.50.0](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.49.2...v3.50.0) (2025-11-17)
 
 Features
 
-* **i18n:** add and update missing translations and localization support  ([78df33e](https://github.com/device-management-toolkit/sample-web-ui/commit/78df33e4d0a213786a0747165846535da996c29f))
+* Add certificate delete functionality to device management UI ([#2969](https://github.com/device-management-toolkit/sample-web-ui/issues/2969)) ([c560da9](https://github.com/device-management-toolkit/sample-web-ui/commit/c560da929081d58d11cccccfc0df93cfb6434ef3))
 
 ### UI Toolkit
 
-#### [3.3.6](https://github.com/device-management-toolkit/ui-toolkit/compare/v3.3.5...v3.3.6) (2025-11-06)
+#### [3.3.7](https://github.com/device-management-toolkit/ui-toolkit/compare/v3.3.6...v3.3.7) (2025-12-02)
 
 ### UI Toolkit Angular
 
-#### [10.1.5](https://github.com/device-management-toolkit/ui-toolkit-angular/compare/v10.1.4...v10.1.5) (2025-11-06)
+#### [10.1.6](https://github.com/device-management-toolkit/ui-toolkit-angular/compare/v10.1.5...v10.1.6) (2025-12-02)
+
+### UI Toolkit React
+
+#### [4.0.5](https://github.com/device-management-toolkit/ui-toolkit-react/compare/v4.0.4...v4.0.5) (2025-12-02)
 
 ### Console
 
-#### [1.13.0](https://github.com/device-management-toolkit/console/compare/v1.12.0...v1.13.0) (2025-11-03)
+#### [1.14.1](https://github.com/device-management-toolkit/console/compare/v1.14.0...v1.14.1) (2025-12-03)
 
-Features
-
-* adds tls configuration support and self-signed cert generation ([125fbe5](https://github.com/device-management-toolkit/console/commit/125fbe52026365b262f07165ec9ee04de22c9266)), closes [#663](https://github.com/device-management-toolkit/console/issues/663)
-
-#### [1.12.0](https://github.com/device-management-toolkit/console/compare/v1.11.0...v1.12.0) (2025-10-22)
+#### [1.14.0](https://github.com/device-management-toolkit/console/compare/v1.13.0...v1.14.0) (2025-11-20)
 
 Bug Fixes
 
-* **ci:** resolve go-licenses failure by upgrading to Go 1.25.x ([#683](https://github.com/device-management-toolkit/console/issues/683)) ([1cec86b](https://github.com/device-management-toolkit/console/commit/1cec86b9e4026c3d5d3a6b96a89afeb4d07fac96))
+* **domains:** allow hyphens and underscores in domain profile names ([#702](https://github.com/device-management-toolkit/console/issues/702)) ([78dd456](https://github.com/device-management-toolkit/console/commit/78dd4563dff4b0d9731b52edaf7889d354698664)), closes [#700](https://github.com/device-management-toolkit/console/issues/700)
 
 Features
 
-* include translation files as static assets ([7738966](https://github.com/device-management-toolkit/console/commit/77389665fd1efcd07683df00c98510f8ca394d8e))
+* add certificate deletion API with validation rules ([#688](https://github.com/device-management-toolkit/console/issues/688)) ([e6109dd](https://github.com/device-management-toolkit/console/commit/e6109dde5a3b65c25abdec3d727fb160cd63ac82)), closes [#567](https://github.com/device-management-toolkit/console/issues/567)
 
 ### Go WSMAN Messages
 
-#### [2.32.4](https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.32.3...v2.32.4) (2025-11-06)
+#### [2.33.0](https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.32.6...v2.33.0) (2025-12-10)
+
+Features
+
+* adds initial support for CIRA APF messages and handlers ([#423](https://github.com/device-management-toolkit/go-wsman-messages/issues/423)) ([e7b78d6](https://github.com/device-management-toolkit/go-wsman-messages/commit/e7b78d66c889f9c1d0e85aa42acc6bbd07a61552))
+
+#### [2.32.6](https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.32.5...v2.32.6) (2025-12-09)
+
+Bug Fixes
+
+* handle gracefully when key not found with typed error message ([#612](https://github.com/device-management-toolkit/go-wsman-messages/issues/612)) ([340bd0a](https://github.com/device-management-toolkit/go-wsman-messages/commit/340bd0a70343131545b0ead2696976b3c2fc101b))
+
+
+#### [2.32.5](https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.32.4...v2.32.5) (2025-12-02)
 
 ### WSMAN Messages
 
-#### [5.13.1](https://github.com/device-management-toolkit/wsman-messages/compare/v5.13.0...v5.13.1) (2025-11-06)
+#### [5.14.1](https://github.com/device-management-toolkit/wsman-messages/compare/v5.14.0...v5.14.1) (2025-12-02)
+
+#### [5.14.0](https://github.com/device-management-toolkit/wsman-messages/compare/v5.13.1...v5.14.0) (2025-11-19)
+
+Features
+
+* add SetLinkPreference API msg compose ([#1136](https://github.com/device-management-toolkit/wsman-messages/issues/1136)) ([5eb8b96](https://github.com/device-management-toolkit/wsman-messages/commit/5eb8b96302be88092478e116f2fb51166cc3b0f0))
+
+### MPS Router
+
+#### [2.5.5](https://github.com/device-management-toolkit/mps-router/compare/v2.5.4...v2.5.5) (2025-12-02)
