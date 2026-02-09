@@ -24,7 +24,7 @@
 
     Get hands-on with tutorials for topics like the UI-Toolkit, APIs, and Scaling (Docker, Kubernetes, and more).
 
-    [:octicons-arrow-right-24: Explore the Tutorials](./Tutorials/uitoolkitReact.md)
+    [:octicons-arrow-right-24: Explore the Tutorials](./Tutorials/overview.md)
 
 -   :material-cloud-cog:{ .lg .middle } __APIs__
 
