@@ -56,6 +56,7 @@ nav:
       - License: license.md
       - Get Help:
           - FAQ: Reference/faq.md
+          - Glossary: Glossary.md      
           - Troubleshooting: Reference/troubleshooting.md
   - Get Started:
       - Overview: GetStarted/overview.md
@@ -82,6 +83,7 @@ nav:
           - Manage a Device: GetStarted/Enterprise/manageDevice.md
       - Get Help:
           - FAQ: Reference/faq.md
+          - Glossary: Glossary.md      
           - Troubleshooting: Reference/troubleshooting.md
   - Deployment:
       - Overview: Deployment/overview.md
@@ -114,6 +116,7 @@ nav:
               - KUMA Service Mesh: Tutorials/Scaling/Kubernetes/service-mesh.md
       - Get Help:
           - FAQ: Reference/faq.md
+          - Glossary: Glossary.md                
           - Troubleshooting: Reference/troubleshooting.md
   - Reference:
     - Architecture Overview: Reference/architectureOverview.md
@@ -179,6 +182,7 @@ nav:
       - TLS Certificate: Reference/Certificates/tls.md
     - Get Help:
       - FAQ: Reference/faq.md
+      - Glossary: Glossary.md
       - Troubleshooting: Reference/troubleshooting.md
   - APIs:
       - Management Presence Server: APIs/indexMPS.md
