@@ -33,6 +33,26 @@
          <lastmod>2026-02-09</lastmod>
     </url>
     <url>
+         <loc>https://device-management-toolkit.github.io/docs/Concepts/architecture/</loc>
+         <lastmod>2026-02-09</lastmod>
+    </url>
+    <url>
+         <loc>https://device-management-toolkit.github.io/docs/Concepts/controlModes/</loc>
+         <lastmod>2026-02-09</lastmod>
+    </url>
+    <url>
+         <loc>https://device-management-toolkit.github.io/docs/Concepts/oobManagement/</loc>
+         <lastmod>2026-02-09</lastmod>
+    </url>
+    <url>
+         <loc>https://device-management-toolkit.github.io/docs/Concepts/remoteProvisioning/</loc>
+         <lastmod>2026-02-09</lastmod>
+    </url>
+    <url>
+         <loc>https://device-management-toolkit.github.io/docs/Concepts/security/</loc>
+         <lastmod>2026-02-09</lastmod>
+    </url>
+    <url>
          <loc>https://device-management-toolkit.github.io/docs/Deployment/centralizedConfiguration/</loc>
          <lastmod>2026-02-09</lastmod>
     </url>
@@ -166,10 +186,6 @@
     </url>
     <url>
          <loc>https://device-management-toolkit.github.io/docs/Reference/Certificates/generateProvisioningCert/</loc>
-         <lastmod>2026-02-09</lastmod>
-    </url>
-    <url>
-         <loc>https://device-management-toolkit.github.io/docs/Reference/Certificates/remoteProvisioning/</loc>
          <lastmod>2026-02-09</lastmod>
     </url>
     <url>
