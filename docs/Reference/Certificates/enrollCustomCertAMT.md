@@ -4,7 +4,7 @@
 
 This tutorial explains how to load and enable a custom certificate using USB Config based on [Intel AMT SDK](https://www.intel.com/content/www/us/en/download/704388/intel-active-management-technology-intel-amt-software-development-kit-sdk.html) in an AMT device.
 
-For production deployments, we highly recommend purchasing a 3rd party provisioning certificate. [See all available vendors here.](./remoteProvisioning.md#purchase)
+For production deployments, we highly recommend purchasing a 3rd party provisioning certificate. [See all available vendors here.](../../Concepts/remoteProvisioning.md#purchase)
 
 !!! warning "Warning - Custom Provisioning Certificates in Production Deployments"
     The hash of custom provisioning certificates requires manual adding to all devices configured into ACM. It can be done through MEBx or USB Configuration. However, adding a Hash for AMT 16 or newer may require USB Configuration because of OEM restrictions.

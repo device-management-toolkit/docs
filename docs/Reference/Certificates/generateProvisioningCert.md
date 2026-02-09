@@ -1,6 +1,6 @@
 
 
-For production deployments, we highly recommend purchasing a 3rd party provisioning certificate. [See all available vendors here.](./remoteProvisioning.md#purchase) 
+For production deployments, we highly recommend purchasing a 3rd party provisioning certificate. [See all available vendors here.](../../Concepts/remoteProvisioning.md#purchase) 
 
 !!! warning "Warning - Custom Provisioning Certificates in Production Deployments"
     The hash of custom provisioning certificates must be manually added to all devices that will be configured into ACM. This can be done through MEBx or USB Configuration. Both options require manual, hands-on configuration of each AMT device. **Adding the hash to AMT's trusted list is a mandatory requirement for the device to successfully activate.**
