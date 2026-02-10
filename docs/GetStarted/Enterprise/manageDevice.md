@@ -24,6 +24,24 @@
 
 ## Next steps
 
-After successfully adding and managing devices using Console, explore other tools and next-level topics related to Console:
+After successfully adding and managing devices using Console, explore other tools and topics:
 
-[Additional Resources](../../Reference/Console/overview.md#additional-resources){: .md-button .md-button--primary }
+### Console Reference
+Dive deeper into Console configuration, security, and features like One Click Recovery and WSMAN Explorer.
+
+[Console Reference](../../Reference/Console/overview.md){: .md-button .md-button--primary }
+
+### Enterprise Assistant
+Learn about configuring TLS certificates and 802.1x authentication for your enterprise network using Enterprise Assistant.
+
+[Enterprise Assistant Overview](../../Reference/EA/overview.md){: .md-button .md-button--primary }
+
+### Deployment
+Ready to move beyond development? Learn about replacing default components, managing secrets, and scaling infrastructure for production environments.
+
+[Go to Production Deployment](../../Deployment/overview.md){: .md-button .md-button--primary }
+
+### Security
+Learn about security information and best practices for Console deployments.
+
+[Console Security Information](../../Reference/Console/securityConsole.md){: .md-button .md-button--primary }

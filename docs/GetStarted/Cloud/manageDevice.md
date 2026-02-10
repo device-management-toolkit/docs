@@ -62,8 +62,16 @@ Explore how to add redirection features, such as Keyboard, Video, and Mouse (KVM
 [Get Started with the UI Toolkit](../../Tutorials/uitoolkitReact.md){: .md-button .md-button--primary }
 
 ### Security
-Learn how to use the Device Management Toolkit architecture to secure ..\assets. Topics include credentials, allowlisting, best known security methods, and more.
+Learn how to use the Device Management Toolkit architecture to secure assets. Topics include credentials, allowlisting, best known security methods, and more.
 
 [Learn More about Security and Hardening](../../Reference/MPS/securityMPS.md){: .md-button .md-button--primary }
 
+### Deployment
+Ready to move beyond development? Learn about replacing default components, managing secrets, and scaling infrastructure for production environments.
 
+[Go to Production Deployment](../../Deployment/overview.md){: .md-button .md-button--primary }
+
+### Event Monitoring (MQTT)
+Set up and customize MQTT events to monitor device connectivity and status changes.
+
+[Learn about MQTT Events](../../Reference/MQTT/customMqttEvents.md){: .md-button .md-button--primary }

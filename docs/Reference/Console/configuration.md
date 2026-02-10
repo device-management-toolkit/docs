@@ -12,6 +12,9 @@ Alternatively, you can also download the `config.yml` file from [GitHub](https:/
 
 Console can also be configured using environment variables. These `.env` variables take precedence over the corresponding settings in the `config.yml` file, effectively overwriting them.
 
+!!! warning "Change Default Credentials for Production"
+    The default admin credentials (`standalone` / `G@ppm0ym`) are intended for development and testing only. For production deployments, change these values or configure an OAuth provider (Auth0, Azure Entra AD, etc.).
+
 ## Configuration Variables
 
 | `.env` Variable Name | `config.yml` Variable Name       | Default | Description |

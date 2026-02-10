@@ -4,7 +4,7 @@ site_url: "https://device-management-toolkit.github.io/docs/"
 repo_url: "https://github.com/device-management-toolkit/cloud-deployment"
 repo_name: "device-management-toolkit/cloud-deployment"
 copyright: "Copyright &copy; 2021 Intel Corporation"
-site_dir: site/2.29
+site_dir: site/2.31
 # Configuration
 theme:
   name: "material"
@@ -56,6 +56,7 @@ nav:
       - License: license.md
       - Get Help:
           - FAQ: Reference/faq.md
+          - Glossary: Glossary.md      
           - Troubleshooting: Reference/troubleshooting.md
   - Get Started:
       - Overview: GetStarted/overview.md
@@ -80,9 +81,12 @@ nav:
           - Activate a Device: GetStarted/Enterprise/activateDevice.md
           - Add a Device: GetStarted/Enterprise/addDevice.md
           - Manage a Device: GetStarted/Enterprise/manageDevice.md
-      - Get Help:
-          - FAQ: Reference/faq.md
-          - Troubleshooting: Reference/troubleshooting.md
+  - Concepts:
+      - OOB Management: Concepts/oobManagement.md
+      - Architecture & Components: Concepts/architecture.md
+      - Remote Provisioning: Concepts/remoteProvisioning.md
+      - Control Modes: Concepts/controlModes.md
+      - Security: Concepts/security.md
   - Deployment:
       - Overview: Deployment/overview.md
       - Upgrade Toolkit Version: Deployment/upgradeVersion.md
@@ -95,6 +99,7 @@ nav:
       - Secrets Management:
           - Secrets Store Replacement: Deployment/secrets.md
   - Tutorials:
+      - Overview: Tutorials/overview.md
       - UI Toolkit Redirection Modules: Tutorials/uitoolkitReact.md
       - REST API Call: Tutorials/apiTutorial.md
       - IDE-Redirection (IDER): Tutorials/ideRedirection.md
@@ -112,9 +117,6 @@ nav:
               - AKS: Tutorials/Scaling/Kubernetes/deployingk8s-aks.md
               - EKS: Tutorials/Scaling/Kubernetes/deployingk8s-eks.md
               - KUMA Service Mesh: Tutorials/Scaling/Kubernetes/service-mesh.md
-      - Get Help:
-          - FAQ: Reference/faq.md
-          - Troubleshooting: Reference/troubleshooting.md
   - Reference:
     - Architecture Overview: Reference/architectureOverview.md
     - AMT Power States: Reference/powerstates.md
@@ -174,12 +176,8 @@ nav:
       - Unprovisioning: Reference/MEBX/unprovision.md
     - Certificates:
       - Custom Provisioning Certificate: Reference/Certificates/generateProvisioningCert.md
-      - Provisioning Certificate: Reference/Certificates/remoteProvisioning.md
       - Enroll Custom Provisioning Certificate using USBFile: Reference/Certificates/enrollCustomCertAMT.md
       - TLS Certificate: Reference/Certificates/tls.md
-    - Get Help:
-      - FAQ: Reference/faq.md
-      - Troubleshooting: Reference/troubleshooting.md
   - APIs:
       - Management Presence Server: APIs/indexMPS.md
       - Remote Provisioning Server: APIs/indexRPS.md
@@ -240,13 +238,13 @@ extra:
   repoVersion:
     mpsAPI: 2.22.5
     rpsAPI: 2.30.2
-    oamtct: 2.29.1
-    rpc_go: 2.48.7
-    webui: 3.46.1
+    oamtct: 2.31.0
+    rpc_go: 2.48.14
+    webui: 3.52.3
     rpc_c: 2.0.0
-    ui_toolkit: 3.3.6
-    ui_toolkit_react: 4.0.4
-    ui_toolkit_angular: 10.1.5
+    ui_toolkit: 3.3.9
+    ui_toolkit_react: 4.0.6
+    ui_toolkit_angular: 11.0.1
   analytics:
     provider: google
     property: "G-00QEDJW2TS"

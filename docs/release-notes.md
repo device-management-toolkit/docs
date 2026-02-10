@@ -3,190 +3,246 @@
 # Release Notes
 
 !!! note "Note From the Team"
-    We’re excited to share our October release. Work on **RPC-Go v3 Beta** is progressing well, and your feedback will help us shape the final v3 release.  
-    Our efforts to enable **Console deployment in the cloud** are also moving forward, with more updates planned for Q1.
+    We hope everyone had a great break and is coming back refreshed — although judging by the number of commits, not everyone managed to stay away from the keyboard 😄
 
-    We’re expanding the team to accelerate feature delivery starting Q1.
+    This December release includes updates across Console, RPS, MPS, RPC-Go, and supporting components. The focus this month was on expanding certificate support, adding initial CIRA-related capabilities in Console, and introducing key prerequisites for deploying Console in cloud environments, including secret management.
+
+    Looking ahead, we have a larger team ramping up, and you should start seeing more traction across the repositories. We’re beginning work on new diagnostics features in rpc-go, which will be part of the upcoming v3 release. Most major rpc-go features are now being developed directly for v3. We’re also tracking customer-requested improvements, such as additional hot-key options in the Console UI.
+
+    The longer-term goal remains the same: Console evolving into a unified service that can be used for both Cloud and Enterprise deployments, and you’ll continue to see us move steadily in that direction.
+
+Cheers,  
+**The Device Management Toolkit Team**
 
 ## 🚀 What's New?
 
-### :material-new-box:{ .icon-new } RPC-Go v3 Beta Release
+### Console: Optional Web UI Build (noui)
 
-v3 introduces a faster activation workflow, TLS-secured profile fetch, and a clearer configuration model. **v2.x remains fully supported** during Beta.
+This release introduces the `noui build tag, allowing you to compile a smaller Console binary without the embedded web UI. The Console UI is a static Angular application that is bundled into the executable by default for convenience and all-in-one deployments.
 
-**Highlights**
+For cloud and headless deployments, we now also publish headless Console binaries built without the embedded UI, such as **Windows x64 Console headless (No UI)**. When the UI is hosted independently, building Console with `go build -tags noui` or using the headless binaries can reduce the binary size by approximately `100 MB`.
 
-- Faster **local activation workflow** using encrypted profile export  
-- **TLS required** for profile fetch from Console/RPS  
-- Clear separation of **application config** vs **provisioning profile**  
-- Standardized CLI flags; `configv2` removed in favor of `--profile`
+### Console: Initial Support for CIRA Connections
 
-### :material-new-box:{ .icon-new } Console TLS Support
+We’ve added initial support for CIRA connections in Console, enabling CIRA-related workflows. At this stage, Console does not support automatic CIRA configuration through rpc-go. CIRA profiles can be added manually via RPC-GO, but automated configuration (similar to RPS) is planned for upcoming releases.
 
-Console now serves APIs over **HTTPS**.  
-Certificates can be configured through `config.yaml`, allowing Console to use either self-signed or user-provided certificates for secure API communication.
+### Console: Vault Secret Store Integration
 
+As part of preparing Console for cloud deployments, Console now supports integrating with HashiCorp Vault as a secret store. This allows sensitive configuration, such as credentials and secrets, to be managed securely running in cloud environments.
 
-### :material-new-box:{ .icon-new } Wireless Reliability Improvement
+### Console: Network Link Preference API 
 
-To improve CIRA reliability over Wi-Fi, the default value:
+This capability was added to MPS in a previous monthly release and is now also available in Console. The API allows control over AMT network link preferences via
+`/network/linkPreference/{guid}`.
 
-```text
-ConsoleTcpMaxRetransmissions = 7
-```
+This is primarily useful when AMT is connected over a wireless network. If users need to influence how the ME accesses the network, they can leverage this API to control Wi-Fi link selection and related behavior.
 
-is now applied automatically.  
-Running your Wi-Fi profile again with the latest RPS image will apply this setting.
+## 🧩 Enhancements & Improvements
 
-### :material-new-box:{ .icon-new } Web UI Localization
+### MPS: Support for 3K Key Size CIRA Certificates
 
-Thank you to **@Robert-Preda** for contribution to Localization support & translations feature. UI translated into 11 languages (FR, DE, ES, NL, IT, JA, AR, FI, HE, RU, SV).
+MPS now supports `3K` key size CIRA certificates, improving compatibility with environments using larger key sizes for CIRA deployments.
 
-### :material-new-box:{ .icon-new } Certificate Deletion in Console
+### RPS: SHA-384 Provisioning Certificate Support
 
-You can now delete unused or unassociated AMT certificates directly from Console.
+RPS now supports `SHA-384` provisioning certificate chain, expanding compatibility with stronger hashes.
 
-## :material-checkbox-marked:{ .icon-new } Fixes & Improvements
+## 🔧 Fixes & Maintenance
 
-- UI stability fixes across Console and Sample Web UI  
-- MPS UUID validation issue resolved  
-- Wi-Fi coexistence fix
+- RPC-Go fixes related to SkipAmtCertCheck and hostname verification behavior for AMT 19+ platforms
 
-## :material-handshake:{ .icon-handshake } Community Contributions
+- RPC-Go fix to ensure `stdout` and `stderr` are correctly captured in output variables
 
-Thank you to all community contributors for your continued feedback, testing, and pull requests. Your support helps us prioritize and deliver features that matter most.
+- MPS fix to detect Wi-Fi ethernet using InstanceID instead of PhysicalConnectionType
+
+- MPS fix to return a default value for `OSPowerSavingState` when a device is powered off
+
+- Sample Web UI fixes for blank GUID handling in enterprise mode and snackbar success styling
+
+- go-wsman-messages improvements to randomize password generation
+
+- Minor fixes and dependency updates across all toolkit components
 
 ## :material-update:{ .icon-log } Changelog
   
 ### RPS
 
-#### [2.30.2](https://github.com/device-management-toolkit/rps/compare/v2.30.1...v2.30.2) (2025-11-06)
+#### [2.31.1](https://github.com/device-management-toolkit/rps/compare/v2.31.0...v2.31.1) (2026-01-08)
 
-#### [2.30.1](https://github.com/device-management-toolkit/rps/compare/v2.30.0...v2.30.1) (2025-11-05)
-
-Bug Fixes
-
-* add coexistence check for profile share ([#2401](https://github.com/device-management-toolkit/rps/issues/2401)) ([790ffdd](https://github.com/device-management-toolkit/rps/commit/790ffddbb899b50141ce9950a54fda91cedc89c8))
-
-#### [2.30.0](https://github.com/device-management-toolkit/rps/compare/v2.29.1...v2.30.0) (2025-11-05)
+#### [2.31.0](https://github.com/device-management-toolkit/rps/compare/v2.30.4...v2.31.0) (2025-12-29)
 
 Features
 
-* extend max retransmission setting for WiFi network configuration ([#2390](https://github.com/device-management-toolkit/rps/issues/2390)) ([39ee524](https://github.com/device-management-toolkit/rps/commit/39ee524cf44e7b3dc50c94010ea6981bcb7768b4))
+* Support for SHA384 Provisioning Certificates for RPS ([#2434](https://github.com/device-management-toolkit/rps/issues/2434)) ([01650c3](https://github.com/device-management-toolkit/rps/commit/01650c34ebf2778c6e3a77bfdfb809baf73ea857))
 
 ### MPS
 
-#### [2.22.5](https://github.com/device-management-toolkit/mps/compare/v2.22.4...v2.22.5) (2025-11-07)
+#### [2.25.4](https://github.com/device-management-toolkit/mps/compare/v2.25.3...v2.25.4) (2026-01-08)
 
- Bug Fixes
+#### [2.25.3](https://github.com/device-management-toolkit/mps/compare/v2.25.2...v2.25.3) (2026-01-05)
 
-* loosens UUID check for API ([#2194](https://github.com/device-management-toolkit/mps/issues/2194)) ([f741380](https://github.com/device-management-toolkit/mps/commit/f741380937cfc8f69a26d2ca4ef13fccbafcff2e))
+Bug Fixes
 
-#### [2.22.4](https://github.com/device-management-toolkit/mps/compare/v2.22.3...v2.22.4) (2025-11-06)
+* Return default value for OSPowerSavingState when device is powered off ([#2277](https://github.com/device-management-toolkit/mps/issues/2277)) ([f7a0adf](https://github.com/device-management-toolkit/mps/commit/f7a0adf26ab90a100a4fd87732be3fd372c6bd2d))
+
+#### [2.25.2](https://github.com/device-management-toolkit/mps/compare/v2.25.1...v2.25.2) (2025-12-22)
+
+Bug Fixes
+
+* get WiFi eth by InstanceID instead of PhysicalConnectionType ([#2267](https://github.com/device-management-toolkit/mps/issues/2267)) ([0262a01](https://github.com/device-management-toolkit/mps/commit/0262a017e67832e6e79bd8d5e9d3152dd384ec21))
+
+#### [2.25.1](https://github.com/device-management-toolkit/mps/compare/v2.25.0...v2.25.1) (2025-12-17)
+
+Bug Fixes
+
+* Support for 3K Key Size for CIRA Certificates ([71b673f](https://github.com/device-management-toolkit/mps/commit/71b673f25440c61ae364cf23e5e81d9b327554ba))
+
+---
+
+#### [2.25.0](https://github.com/device-management-toolkit/mps/compare/v2.24.0...v2.25.0) (2025-12-11)
+
+Features
+
+* implement certificate deletion functionality with safety guards ([#2221](https://github.com/device-management-toolkit/mps/issues/2221)) ([9ede411](https://github.com/device-management-toolkit/mps/commit/9ede411ca8439b23eaef20267621a35b3df79f34))
+
+#### [2.24.0](https://github.com/device-management-toolkit/mps/compare/v2.23.0...v2.24.0) (2025-12-03)
+
+Features
+
+* add setLinkPreference API for MPS ([#2212](https://github.com/device-management-toolkit/mps/issues/2212)) ([9e2a7fb](https://github.com/device-management-toolkit/mps/commit/9e2a7fb93327422f7399b4c29b65c063d0567c3d))
+
+#### [2.23.0](https://github.com/device-management-toolkit/mps/compare/v2.22.5...v2.23.0) (2025-11-20)
+
+Features
+
+* support KVM ending detection in wsRedirect ([#2201](https://github.com/device-management-toolkit/mps/issues/2201)) ([6cb9ef7](https://github.com/device-management-toolkit/mps/commit/6cb9ef757b8198e404ef6f927902bd39b2b5cb2c))
 
 ### RPC Go
 
-#### [2.48.7](https://github.com/device-management-toolkit/rpc-go/compare/v2.48.6...v2.48.7) (2025-11-06)
+#### [2.48.14](https://github.com/device-management-toolkit/rpc-go/compare/v2.48.13...v2.48.14) (2026-01-12)
 
-#### [3.0.0-beta.1](https://github.com/device-management-toolkit/rpc-go/compare/v2.48.2...v3.0.0-beta.1) (2025-11-05)
-
-* feat!: begin 3.0 beta series ([a888af2](https://github.com/device-management-toolkit/rpc-go/commit/a888af26c2a1f98c8fa815172a34cb77fe472f8c))
-
-BREAKING CHANGES
-
-* see v3.0-changes.md for the command and flag syntax overhaul, profile/config realignment,
-and the new restful profile activation flow.
-
-#### [2.48.6](https://github.com/device-management-toolkit/rpc-go/compare/v2.48.5...v2.48.6) (2025-11-04)
+#### [2.48.13](https://github.com/device-management-toolkit/rpc-go/compare/v2.48.12...v2.48.13) (2026-01-06)
 
 Bug Fixes
 
-* add -n to all the configure subcommands ([c5a4232](https://github.com/device-management-toolkit/rpc-go/commit/c5a423297f89c481e9c9e16c77aea9f27611a696))
+* capturing stdout and stderr to output variable ([b6dc09e](https://github.com/device-management-toolkit/rpc-go/commit/b6dc09ebb1c6aadf8a708602d382ce9189747a11))
 
-#### [2.48.5](https://github.com/device-management-toolkit/rpc-go/compare/v2.48.4...v2.48.5) (2025-10-23)
-
-Bug Fixes
-
-* cert cleanup now excludes mpsroot cert ([9e98143](https://github.com/device-management-toolkit/rpc-go/commit/9e981433d1d67397230959063639bb070ad06d27))
-
-#### [2.48.4](https://github.com/device-management-toolkit/rpc-go/compare/v2.48.3...v2.48.4) (2025-10-13)
-
-#### [2.48.3](https://github.com/device-management-toolkit/rpc-go/compare/v2.48.2...v2.48.3) (2025-10-13)
+#### [2.48.12](https://github.com/device-management-toolkit/rpc-go/compare/v2.48.11...v2.48.12) (2026-01-06)
 
 Bug Fixes
 
-* address panic when operationalState is requested ([#985](https://github.com/device-management-toolkit/rpc-go/issues/985)) ([b16ac56](https://github.com/device-management-toolkit/rpc-go/commit/b16ac56c1ab81970df9926212caa99dd60a8e2e6)), closes [#978](https://github.com/device-management-toolkit/rpc-go/issues/978)
-* **dockerfile:** license comment now correct ([74d13b3](https://github.com/device-management-toolkit/rpc-go/commit/74d13b31d491909da14e00d281cb8d2e52d57c42))
-* ci: update release to support 2.x branch by @rsdmike in https://github.com/device-management-toolkit/rpc-go/pull/984
-* fix: address panic when operationalState is requested by @rsdmike in https://github.com/device-management-toolkit/rpc-go/pull/985
-* docs: update readme for 2.x.x. branch by @rsdmike in https://github.com/device-management-toolkit/rpc-go/pull/988
+* apply SkipAmtCertCheck flag to all TLS configurations ([#1080](https://github.com/device-management-toolkit/rpc-go/issues/1080)) ([eb056e7](https://github.com/device-management-toolkit/rpc-go/commit/eb056e7ecc46aaf67e620abfeccedebc5ee92bf7)), closes [#1068](https://github.com/device-management-toolkit/rpc-go/issues/1068)
+
+#### [2.48.11](https://github.com/device-management-toolkit/rpc-go/compare/v2.48.10...v2.48.11) (2026-01-05)
+
+Bug Fixes
+
+* bypasses hostname verification for AMT 19+ certificates with -n or -skipamtcertcheck ([#1071](https://github.com/device-management-toolkit/rpc-go/issues/1071)) ([41cc832](https://github.com/device-management-toolkit/rpc-go/commit/41cc832b9b83c52f2d30408f01f4b105824db215))
 
 ### Sample Web UI
 
-#### [3.49.2](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.49.1...v3.49.2) (2025-11-07)
+#### [3.52.3](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.52.2...v3.52.3) (2026-01-12)
 
 Bug Fixes
 
-* **domains:** adds better error handling for domain responses to surface in web ui ([#2952](https://github.com/device-management-toolkit/sample-web-ui/issues/2952)) ([1dcbe0d](https://github.com/device-management-toolkit/sample-web-ui/commit/1dcbe0daa0b1fb72941af7d1fdb69d1607ed7fa2)), closes [#2863](https://github.com/device-management-toolkit/sample-web-ui/issues/2863)
+* updates class to use success for snackbar when creating profile ([#3066](https://github.com/device-management-toolkit/sample-web-ui/issues/3066)) ([d3ec564](https://github.com/device-management-toolkit/sample-web-ui/commit/d3ec564fd62be8bed429c9483527ef4dd4b8fdd9))
 
-#### [3.49.1](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.49.0...v3.49.1) (2025-11-06)
-
-#### [3.49.0](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.48.0...v3.49.0) (2025-11-05)
-
-Features
-
-* allow export of profile for cloud mode ([#2960](https://github.com/device-management-toolkit/sample-web-ui/issues/2960)) ([008e60c](https://github.com/device-management-toolkit/sample-web-ui/commit/008e60cb35c32068a6e8042890ebd14f3fce1d18))
-
-#### [3.48.0](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.47.0...v3.48.0) (2025-10-27)
+#### [3.52.2](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.52.1...v3.52.2) (2026-01-12)
 
 Bug Fixes
 
-* addresses issue with console version being empty ([#2944](https://github.com/device-management-toolkit/sample-web-ui/issues/2944)) ([d0d3a0c](https://github.com/device-management-toolkit/sample-web-ui/commit/d0d3a0cf85f4c9b7b2f21b51e49526f423b29521))
-
-Features
-
-* **ui:** display console version in toolbar ([#2934](https://github.com/device-management-toolkit/sample-web-ui/issues/2934)) ([24956a0](https://github.com/device-management-toolkit/sample-web-ui/commit/24956a025adbaf2d33fc4ca9356d64ea7c3155af))
-
-#### [3.47.0](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.46.1...v3.47.0) (2025-10-20)
-
-Bug Fixes
-
-* hide proxy's on console ([#2941](https://github.com/device-management-toolkit/sample-web-ui/issues/2941)) ([9fb20a0](https://github.com/device-management-toolkit/sample-web-ui/commit/9fb20a06b229ae6ed73dc4301cf8fdfd90aae989))
-
-Features
-
-* **i18n:** add and update missing translations and localization support  ([78df33e](https://github.com/device-management-toolkit/sample-web-ui/commit/78df33e4d0a213786a0747165846535da996c29f))
+* addresses issue with blank guid when saving non-cira device in enterprise mode ([79c887a](https://github.com/device-management-toolkit/sample-web-ui/commit/79c887aa2fafda61f41dee7d55c251c8a476a22b))
 
 ### UI Toolkit
 
-#### [3.3.6](https://github.com/device-management-toolkit/ui-toolkit/compare/v3.3.5...v3.3.6) (2025-11-06)
+#### [3.3.9](https://github.com/device-management-toolkit/ui-toolkit/compare/v3.3.8...v3.3.9) (2026-01-08)
 
 ### UI Toolkit Angular
 
-#### [10.1.5](https://github.com/device-management-toolkit/ui-toolkit-angular/compare/v10.1.4...v10.1.5) (2025-11-06)
+#### [11.0.1](https://github.com/device-management-toolkit/ui-toolkit-angular/compare/v11.0.0...v11.0.1) (2026-01-08)
+
+#### [11.0.0](https://github.com/device-management-toolkit/ui-toolkit-angular/compare/v10.1.6...v11.0.0) (2026-01-08)
+
+* build(deps)!: upgrade angular to v21 ([#2185](https://github.com/device-management-toolkit/ui-toolkit-angular/issues/2185)) ([c2f7e51](https://github.com/device-management-toolkit/ui-toolkit-angular/commit/c2f7e518b6a6c66ee31a497cba2f4769d9c70c85))
+
+BREAKING CHANGES
+
+* Upgraded peer dependency from Angular v20 to v21.
+    Downstream applications may require code changes to support
+    Angular 21 APIs and behaviors.
+
+### UI Toolkit React
+
+#### [4.0.6](https://github.com/device-management-toolkit/ui-toolkit-react/compare/v4.0.5...v4.0.6) (2026-01-08)
 
 ### Console
 
-#### [1.13.0](https://github.com/device-management-toolkit/console/compare/v1.12.0...v1.13.0) (2025-11-03)
+#### [1.18.0](https://github.com/device-management-toolkit/console/compare/v1.17.0...v1.18.0) (2026-01-06)
+
+This release introduces the `noui` build tag, allowing you to compile a smaller binary without the embedded web UI. The Console UI is a static Angular application that we bundle into the executable for convenience, providing an all-in-one deployment experience. However, for production environments, we recommend deploying the UI separately using platforms like Azure Static Web Apps or AWS Amplify Hosting for cloud-based hosting, or traditional web servers like IIS or NGINX for on-premises deployments. By building with `go build -tags noui`, you can reduce the binary size by ~100MB when the UI is hosted independently, while still retaining the option to use the full bundled executable for simpler setups or development scenarios.
 
 Features
 
-* adds tls configuration support and self-signed cert generation ([125fbe5](https://github.com/device-management-toolkit/console/commit/125fbe52026365b262f07165ec9ee04de22c9266)), closes [#663](https://github.com/device-management-toolkit/console/issues/663)
+* add build flags for reduced binary size ([#737](https://github.com/device-management-toolkit/console/issues/737)) ([3940981](https://github.com/device-management-toolkit/console/commit/394098190d12979eba2aa058131181489cec4cae))
 
-#### [1.12.0](https://github.com/device-management-toolkit/console/compare/v1.11.0...v1.12.0) (2025-10-22)
+#### [1.17.0](https://github.com/device-management-toolkit/console/compare/v1.16.0...v1.17.0) (2025-12-23)
+
+Features
+
+* SetLinkPreference API with timeout for WiFi port ([332be3a](https://github.com/device-management-toolkit/console/commit/332be3adc440b7a30dfedc1b1de23daef0dfb0e0))
+
+#### [1.16.0](https://github.com/device-management-toolkit/console/compare/v1.15.0...v1.16.0) (2025-12-15)
+
+Features
+
+* adds support for CIRA connections in console ([6af7325](https://github.com/device-management-toolkit/console/commit/6af7325aee530b085eb0b8469f4341bd7a863eee)), closes [#684](https://github.com/device-management-toolkit/console/issues/684)
+
+#### [1.15.0](https://github.com/device-management-toolkit/console/compare/v1.14.1...v1.15.0) (2025-12-10)
 
 Bug Fixes
 
-* **ci:** resolve go-licenses failure by upgrading to Go 1.25.x ([#683](https://github.com/device-management-toolkit/console/issues/683)) ([1cec86b](https://github.com/device-management-toolkit/console/commit/1cec86b9e4026c3d5d3a6b96a89afeb4d07fac96))
+* clean up linting errors and test failures, address api tests, remove invalid default config ([bb5af18](https://github.com/device-management-toolkit/console/commit/bb5af18ce42f82bc0fd229d956222867accd0788))
 
 Features
 
-* include translation files as static assets ([7738966](https://github.com/device-management-toolkit/console/commit/77389665fd1efcd07683df00c98510f8ca394d8e))
+* enables secret store integration using vault ([6c056f0](https://github.com/device-management-toolkit/console/commit/6c056f0fe84698a6c94f77e9f6cd08186232e665))
+* **secrets:** Vault integration ([dd4aace](https://github.com/device-management-toolkit/console/commit/dd4aacef38bc681312733704813753ea367429a8))
+
 
 ### Go WSMAN Messages
 
-#### [2.32.4](https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.32.3...v2.32.4) (2025-11-06)
+#### [2.36.1](https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.36.0...v2.36.1) (2026-01-07)
+
+#### [2.36.0](https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.35.0...v2.36.0) (2025-12-19)
+
+Features
+
+* add SetLinkPreference with timeout ([#622](https://github.com/device-management-toolkit/go-wsman-messages/issues/622)) ([18fbf1d](https://github.com/device-management-toolkit/go-wsman-messages/commit/18fbf1d94e1f8c0799c71cbc31f883c7f9ef2beb))
+
+#### [2.35.0](https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.34.1...v2.35.0) (2025-12-12)
+
+Features
+
+* adds cira channel manager ([#618](https://github.com/device-management-toolkit/go-wsman-messages/issues/618)) ([4329fb2](https://github.com/device-management-toolkit/go-wsman-messages/commit/4329fb294967b2ed699cb549ef96bbea484b1fc0))
+
+#### [2.34.1](https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.34.0...v2.34.1) (2025-12-11)
+
+Bug Fixes
+
+* correct random generate password type ([#617](https://github.com/device-management-toolkit/go-wsman-messages/issues/617)) ([6ee7f62](https://github.com/device-management-toolkit/go-wsman-messages/commit/6ee7f626782ee3b2b672c922167b71fe9f18cde5))
+
+#### [2.34.0](https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.33.0...v2.34.0) (2025-12-10)
+
+Features
+
+* add random generate passwords to config ([#616](https://github.com/device-management-toolkit/go-wsman-messages/issues/616)) ([c224e58](https://github.com/device-management-toolkit/go-wsman-messages/commit/c224e58f0a2b24eae907f90fb2fbbd8be0ac3ab9))
 
 ### WSMAN Messages
 
-#### [5.13.1](https://github.com/device-management-toolkit/wsman-messages/compare/v5.13.0...v5.13.1) (2025-11-06)
+#### [5.14.3](https://github.com/device-management-toolkit/wsman-messages/compare/v5.14.2...v5.14.3) (2026-01-08)
+
+#### [5.14.2](https://github.com/device-management-toolkit/wsman-messages/compare/v5.14.1...v5.14.2) (2026-01-08)
+
+### MPS Router
+
+#### [2.5.6](https://github.com/device-management-toolkit/mps-router/compare/v2.5.5...v2.5.6) (2026-01-07)

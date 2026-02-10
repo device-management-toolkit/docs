@@ -39,7 +39,7 @@ Intel® AMT is preloaded with TLS-based certificate thumbprints, a string of hex
 
 To get a list of participating vendors, see [Intel Developer Zone](https://www.intel.com/content/www/us/en/developer/topic-technology/edge-5g/tools/open-amt-cloud-toolkit.html#linklistblade-3).
 
-MPS and RPS contain TLS-based self-signed certificates that are involved in the device activation. See [Remote Provisioning](remoteProvisioning.md).
+MPS and RPS contain TLS-based self-signed certificates that are involved in the device activation. See [Remote Provisioning](../../Concepts/remoteProvisioning.md).
 
 ## Learn More
 

@@ -6,7 +6,7 @@ Learn the high-level basics and get familiar with the toolkit. Learn about the d
 <div class="videoContainer">
 	<!-- <h3>What's New: May 2024 Release (v{{ repoVersion.oamtct }})</h3> -->
 	<!-- <h3></h3> -->
-	<h3>Overview of Device Management Toolkit (formerly known as Device Management Toolkit)</h3><h3></h3><h3></h3>
+	<h3>Overview of Device Management Toolkit (formerly known as Open AMT Cloud Toolkit)</h3><h3></h3><h3></h3>
 	<!-- <div class="video-wrapper">
     	<iframe width="1280" height="720" src="https://www.youtube.com/embed/5Zz5RbKHaA4?si=f495o_uJj8tu-j0G" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	</div>
@@ -41,7 +41,7 @@ Watch how to go from cloning the toolkit to managing a device out-of-band remote
 	</div>
 	<p>See how to setup Device Management Toolkit locally using Docker. <br><br><b>Additional Resources: </b><a href="https://www.intel.com/content/www/us/en/developer/topic-technology/edge-5g/hardware/vpro-platform-retail.html">Intel vPro Platform</a></p>
   	<p></p>
-  	<p>Learn how to create custom profiles for device configuration and activation. <br><br><b>Additional Resources: </b><a href="../Reference/architectureOverview#passwords">Passwords and What They Mean</a>, <a href="../Reference/Certificates/remoteProvisioning">Provisioning Certificates</a>, and <a href="../Reference/MEBX/dnsSuffix">Setting a DNS Suffix via MEBX</a></p>
+  	<p>Learn how to create custom profiles for device configuration and activation. <br><br><b>Additional Resources: </b><a href="../Concepts/security#authentication--credentials">Passwords and What They Mean</a>, <a href="../Concepts/remoteProvisioning">Provisioning Certificates</a>, and <a href="../Reference/MEBX/dnsSuffix">Setting a DNS Suffix via MEBX</a></p>
 	<h3>Provisioning a Device</h3>
   	<h3></h3>
 	<h3>Managing a Device</h3>

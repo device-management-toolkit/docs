@@ -22,7 +22,7 @@ In this flow:
 4. Once activated and configured, AMT establishes a CIRA tunnel to MPS.
 
 <figure class="figure-image">
-<img src="../../../assets/images/RPC_Overview.png" alt="Figure 1: RPC Configuration">
+<img src="../../../assets/images/diagrams/RPC_Overview.svg" alt="Figure 1: RPC Configuration">
 <figcaption>Figure 1: RPC Configuration</figcaption>
 </figure>
 
@@ -43,16 +43,21 @@ This model is useful for environments where profiles are pre-generated, RPS is *
 
 ---
 
-## Versioning
+## Which Version Should I Use?
 
-RPC-Go is available in two major versions:
+!!! tip "Version Guidance"
+    **Use v2.x for production.** It is the current stable release with full documentation and support.
 
-- **v2.x (current stable)**  
-- **v3.x (Beta)** — introduces a clearer configuration model and standardized CLI behavior.
+    **v3.x is in Beta** and available for early testing and feedback. It introduces a clearer configuration model, standardized CLI flags, and a faster local activation workflow. See [About v3](./v3/about-v3.md) for details.
 
-If you are using RPC-Go v2.x today, nothing changes and all workflows will continue to function as expected.
+    v2.x remains fully supported while v3.x is in Beta. All existing activation flows, encrypted profiles, and RPS interactions work in both versions.
 
-For details on the updates in v3.x, see the RPC-Go [About v3](./v3/about-v3.md) page. Additional documentation will be rolled out over the next few weeks.
+| | v2.x | v3.x (Beta) |
+|:--|:--|:--|
+| **Status** | Stable, production-ready | Beta, subject to change |
+| **CLI Flags** | `-configv2`, mixed flag styles | `--profile`, standardized `--`/`-` flags |
+| **Activation** | RPS-driven and local profile | RPS-driven, local profile, and direct profile export from Console/RPS |
+| **Documentation** | Complete | In progress |
 
 ## Related Topics
 

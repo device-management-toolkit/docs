@@ -7,7 +7,7 @@ Additionally, use the following instructions to transition from a previously est
 !!! Note "Note - Passwords used in Device Management Toolkit"
     Use the following instructions to transition devices to either ACM or CCM profiles. You will need the AMT password.
     
-    Device Management Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../architectureOverview.md#Passwords).
+    Device Management Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Security Overview](../../Concepts/security.md).
 
 **To transition the activated device:**
 

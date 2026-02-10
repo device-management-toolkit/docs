@@ -14,7 +14,7 @@ Profiles provide configuration information to the firmware on platforms featurin
 
 ??? note "Note - More Information about Passwords"
 
-    Device Management Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Reference -> Architecture Overview](../../Reference/architectureOverview.md#passwords).
+    Device Management Toolkit increases security with multiple passwords. Find an explanation of toolkit passwords in [Security Overview](../../Concepts/security.md).
 
 **To create a CCM profile:**
 
