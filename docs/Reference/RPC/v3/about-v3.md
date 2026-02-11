@@ -62,6 +62,17 @@ Examples:
 
 This brings RPC-Go in line with modern CLI conventions and makes scripts cleaner.
 
+#### Additional configure flags
+
+The `rpc-go configure` command adds two optional flags in v3.x to explicitly
+control AMT state during configuration:
+
+- `enable-operational-state`
+- `disable-operational-state`
+
+
+Use only one of these flags per invocation.
+
 ### 4. Removal of Legacy `configv2`
 
 The old provisioning flag:
