@@ -92,7 +92,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#out-of-band" class="md-skip">
+        <a href="#remote-power-actions" class="md-skip">
           Skip to content
         </a>
       
@@ -3123,10 +3123,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#out-of-band" class="md-nav__link">
+  <a href="#remote-power-actions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Out-of-band
+        Remote Power Actions
       
     </span>
   </a>
@@ -3134,10 +3134,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#in-band-required" class="md-nav__link">
+  <a href="#local-power-actions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        In-band Required
+        Local Power Actions
       
     </span>
   </a>
@@ -3145,13 +3145,41 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#alternative-boot-options" class="md-nav__link">
+  <a href="#alternative-power-actions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Alternative Boot Options
+        Alternative Power Actions
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Alternative Power Actions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-alternative-power-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Alternative Power Actions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsupported-alternative-power-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unsupported Alternative Power Actions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -5521,9 +5549,9 @@
 </ul>
 <p>If the system is already powered up, choosing to <strong>Power Up to BIOS</strong> will not have any effect on the system. A better choice is <strong>Reset to BIOS</strong>.</p>
 </div>
-<h2 id="out-of-band">Out-of-band<a class="headerlink" href="#out-of-band" title="Permanent link">&para;</a></h2>
-<p>The power actions below can be used in-band or out-of-band. </p>
-<p>Commands 100 and above use a combination of HW level power controls (i.e., 2, 5, 8, 10) and some boot option, such as <strong>Boot to BIOS</strong>.</p>
+<h2 id="remote-power-actions">Remote Power Actions<a class="headerlink" href="#remote-power-actions" title="Permanent link">&para;</a></h2>
+<p>The following power actions can be executed remotely without requiring Intel <abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> to be installed. </p>
+<p>Commands 100 and above use a combination of HW level power controls (i.e., 2, 5, 8, 10) and some boot options, such as <strong>Boot to BIOS</strong>.</p>
 <table>
 <thead>
 <tr>
@@ -5593,13 +5621,13 @@
 </tr>
 </tbody>
 </table>
-<h2 id="in-band-required">In-band Required<a class="headerlink" href="#in-band-required" title="Permanent link">&para;</a></h2>
-<p>The power actions below require an in-band agent, Local Management Service (<abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr>), or Intel® Integrated Management and Security Status (Intel® IMSS).</p>
-<p><abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> is a service that runs locally on an Intel AMT device and enables local management applications to send requests and receive responses to and from the device. The <abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr>  listens for and intercepts requests directed to the Intel AMT local host and routes them to to the Management Engine via the Intel Management Engine Interface (MEI) driver.</p>
+<h2 id="local-power-actions">Local Power Actions<a class="headerlink" href="#local-power-actions" title="Permanent link">&para;</a></h2>
+<p>The following power actions require Intel Local Manageability Service (<abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr>) to be installed and running.</p>
+<p><abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> is a service that runs locally on an Intel AMT device and enables local management applications to send requests and receive responses to and from the device. The <abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> listens for and intercepts requests directed to the Intel AMT local host and routes them to the Management Engine via the Intel Management Engine Interface (MEI) driver.</p>
 <div class="admonition info">
 <p class="admonition-title">Installing <abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> and Drivers</p>
-<p>The service installer is packaged with the Intel MEI drivers on the OEM websites. If Windows OS is reimaged or reinstalled, only the Intel MEI Driver is reinstalled, not <abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> or IMSS.</p>
-<p>If the <abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> is not installed, visit the OEM website and look for download packages for Intel® IMSS or the Intel CSME driver.</p>
+<p><strong>Windows:</strong> <abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> is typically included in OEM Intel CSME driver packages available from your system manufacturer's support site. After reinstalling the OS, ensure you install the complete CSME driver package (not just the MEI driver).</p>
+<p><strong>Linux:</strong> Build <abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> from source using the <a href="https://github.com/intel/lms">Intel <abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> repository</a>. Ensure the MEI driver is installed first. See the repository's build instructions for dependencies and compilation steps.</p>
 </div>
 <table>
 <thead>
@@ -5642,8 +5670,35 @@
 </tr>
 </tbody>
 </table>
-<h2 id="alternative-boot-options">Alternative Boot Options<a class="headerlink" href="#alternative-boot-options" title="Permanent link">&para;</a></h2>
-<p>Currently, the Toolkit doesn't natively support secure erase or 200-level calls.</p>
+<h2 id="alternative-power-actions">Alternative Power Actions<a class="headerlink" href="#alternative-power-actions" title="Permanent link">&para;</a></h2>
+<h3 id="supported-alternative-power-actions">Supported Alternative Power Actions<a class="headerlink" href="#supported-alternative-power-actions" title="Permanent link">&para;</a></h3>
+<p>The following alternative power actions are supported for IDE-R CD-ROM operations:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Action #</th>
+<th style="text-align: left;">Power Action</th>
+<th style="text-align: left;">Start State</th>
+<th style="text-align: left;">Transition Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>202</strong></td>
+<td style="text-align: left;">Reset to IDE-R CD-ROM</td>
+<td style="text-align: left;">Powered up/on</td>
+<td style="text-align: left;">Perform hardware reset on the bus to a peripheral IDE-R CD-ROM drive, usually reserved for a remote ISO boot</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>203</strong></td>
+<td style="text-align: left;">Power on to IDE-R CD-ROM</td>
+<td style="text-align: left;">Powered down/off</td>
+<td style="text-align: left;">Power up/on to the bus to a peripheral IDE-R CD-ROM drive, usually reserved for a remote ISO boot</td>
+</tr>
+</tbody>
+</table>
+<h3 id="unsupported-alternative-power-actions">Unsupported Alternative Power Actions<a class="headerlink" href="#unsupported-alternative-power-actions" title="Permanent link">&para;</a></h3>
+<p>The Toolkit does not support the following alternative power actions:</p>
 <table>
 <thead>
 <tr>
@@ -5662,27 +5717,15 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>200</strong></td>
-<td style="text-align: left;">Reset to IDE-R floppy disc</td>
+<td style="text-align: left;">Reset to IDE-R floppy disk</td>
 <td style="text-align: left;">Powered up/on</td>
 <td style="text-align: left;">Perform hardware reset on the bus to a peripheral IDE-R drive, usually reserved for a remote ISO boot</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>201</strong></td>
-<td style="text-align: left;">Power on to IDE-R floppy disc</td>
+<td style="text-align: left;">Power on to IDE-R floppy disk</td>
 <td style="text-align: left;">Powered down/off</td>
 <td style="text-align: left;">Power up/on fully to a peripheral IDE-R drive, usually reserved for a remote ISO boot</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>202</strong></td>
-<td style="text-align: left;">Reset to IDE-R CD-ROM</td>
-<td style="text-align: left;">Powered up/on</td>
-<td style="text-align: left;">Perform hardware reset on the bus to a peripheral IDE-R CD-ROM drive, usually reserved for a remote ISO boot</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>203</strong></td>
-<td style="text-align: left;">Power on to IDE-R CD-ROM</td>
-<td style="text-align: left;">Powered down/off</td>
-<td style="text-align: left;">Power up/on to the bus to a peripheral IDE-R CD-ROM drive, usually reserved for a remote ISO boot</td>
 </tr>
 </tbody>
 </table>
