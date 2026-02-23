@@ -163,14 +163,14 @@ nav:
         - About v3: Reference/RPC/v3/about-v3.md
       - Transition Activated Device: Reference/RPC/transitionDeviceRPC.md
     - UI Toolkit React:
+      - Overview: Reference/UIToolkit/overview.md
+      - Getting Started: Reference/UIToolkit/gettingStarted.md
       - React Controls:
         - Keyboard, Video, Mouse: Reference/UIToolkit/Controls/kvmControl.md
         - Serial Over LAN: Reference/UIToolkit/Controls/serialOverLANControl.md
+        - IDE Redirection: Reference/UIToolkit/Controls/ideRedirectionControl.md
       - React Localization: Reference/UIToolkit/reactLocalization.md
-      - React Bundles:
-        - Keyboard, Video, Mouse: Reference/UIToolkit/Bundles/kvmReact.md
-        - Serial Over LAN: Reference/UIToolkit/Bundles/serialOverLANReact.md
-      - Webpack Configuration: Reference/UIToolkit/webpackConfig.md
+      - Migration from v4 to v5: Reference/UIToolkit/migration.md
     - Intel&reg; MEBX:
       - DNS Suffix: Reference/MEBX/dnsSuffix.md
       - Unprovisioning: Reference/MEBX/unprovision.md

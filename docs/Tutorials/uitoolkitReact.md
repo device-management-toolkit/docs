@@ -1,9 +1,9 @@
 
 # Add MPS UI Toolkit Controls to a WebUI
 
-The UI Toolkit allows developers to add manageability features to a console with prebuilt React components. The code snippets simplify the task of adding complex manageability UI controls, such as Keyboard, Video, Mouse (KVM). A sample web application, based on React.js, is provided for test and development. 
+The UI Toolkit allows developers to add manageability features to a console with prebuilt React components. The code snippets simplify the task of adding complex manageability UI controls, such as Keyboard, Video, Mouse (KVM), Serial Over LAN (SOL), and IDE Redirection (IDER). An example web application is provided for testing.
 
-The tutorial outlines how to add various controls to the sample React web application provided. Developers can use the sample code below as a springboard for developing their own consoles.
+The tutorial outlines how to run and test the UI Toolkit controls using the included example application. 
 
 ??? note "Note - Other Framework Technologies"
     This guide shows a basic example implementation using React. Other frameworks can be used using the UI-Toolkit like Angular and Vue.js.
@@ -35,132 +35,146 @@ The tutorial outlines how to add various controls to the sample React web applic
 
 ## What You'll Do
 
-Follow the steps in these sections sequentially: 
-
-- Create a new React app
-- Add UI controls to the React app
+- Clone and run the example application
+- Authenticate with an MPS server
+- Test KVM, SOL, and IDER controls
 
 <figure class="figure-image">
 <img src="..\..\assets\images\diagrams\UIToolkit.svg" style="height:800px" alt="Figure 1: UI Toolkit">
 <figcaption>Figure 1: UI toolkit</figcaption>
 </figure>
 
-## Create a New React App
+## Test the React Library with the Example App
 
-The React app can be created in any preferred development directory.
+An example application is included within the library for quick testing and development. Use it to verify your setup and explore the available controls before integrating them into your own application.
 
-1. In a Terminal or Command Prompt, go to your preferred development directory. 
+!!! note "Note"
+    The steps below walk through setting up the example app, authenticating with MPS, and testing each control (KVM, SOL, IDER). Complete each step in order before proceeding to the next.
 
-2. Create a sample React app named `my-app`.
+### Clone and Run the Example App
 
-    ``` bash
-    npx create-react-app my-app
-    ```
-
-3. Change to the `my-app` directory:
+1. Clone the repository:
 
     ``` bash
-    cd my-app
+    git clone https://github.com/device-management-toolkit/ui-toolkit-react.git
+    cd ui-toolkit-react
     ```
 
-## Install UI Toolkit
-
-1. Install the UI Toolkit and required dependencies.
+2. Navigate to the example directory and install dependencies:
 
     ``` bash
-    npm install @device-management-toolkit/ui-toolkit-react@{{ repoVersion.ui_toolkit_react }}
+    cd example
+    npm install
     ```
 
-2. Start the React web UI locally.
+3. Start the development server:
 
     ``` bash
-    npm start
+    npm run dev
     ```
 
-    By default, React apps run on port `3000`. If port `3000` is already used by the MPS server or any other application, you'll be prompted to use another port. If this happens, enter 'Y'.
+    By default, Vite runs on port `5173`. If port `5173` is already in use, Vite will automatically use the next available port.
 
     !!! success
         <figure class="figure-image">
-        <img src="..\..\assets\images\screenshots\UIToolkit_npmstart.png" alt="Figure 2: React reports successful deployment">
-        <figcaption>Figure 2: React reports successful deployment</figcaption>
+        <img src="..\..\assets\images\screenshots\UIToolkit_vite_dev.png" alt="Figure 2: Vite dev server running successfully">
+        <figcaption>Figure 2: Vite dev server running successfully</figcaption>
         </figure>
 
-    !!! Note "Note - Using Chromium Browser and Refreshing"
-        By default, React launches in your machine's default browser. However for best experience, navigate to the page using a Chromium based web browser.
+    !!! Note "Note - Live Reloading"
+        When you make changes to the example app, you do not need to stop and restart. Vite will update and refresh automatically as you make code changes.
 
-        When you make changes, you do not need to stop the application and restart. It will update and refresh automatically as you make code changes.
+### Authenticate with MPS
 
+1. Open a Chromium-based browser and navigate to the local dev server URL (default: `http://localhost:5173`).
 
-## Add a Sample Control
-The following sections outline how to add controls.  Refresh the web browser after adding a control if it does not update automatically after a few seconds.
+2. Enter the following details in the configuration panel:
 
-### Add Keyboard, Video, Mouse (KVM) Redirection and IDE-Redirection (IDER)
+    | Field       | Value   |
+    | :---------- | :------ |
+    | MPS Server  | Your MPS server URL (e.g. `http://localhost:8181` or `https://your-server`) |
+    | Device GUID | GUID of the Intel® AMT device connected to MPS |
+    | Username    | MPS username |
+    | Password    | MPS password |
 
-The code snippet below adds both the KVM and IDER controls to the React application. 
+3. Click **Authenticate** to connect. The example app handles the authentication flow automatically — it obtains an access token from the MPS `/authorize` API and then fetches a redirection token for the device.
 
-1. Open `./my-app/src/App.js` in a text editor or IDE of choice, such as Visual Studio Code or Notepad.
+### Test the Controls
 
-2. Delete the existing code and replace it with the code snippet below.
+Once authenticated, use the tabs to test each control:
 
-3. Change the following values:
+#### KVM (Keyboard, Video, Mouse)
 
-    | Field       |  Value   |
-    | :----------- | :-------------- |
-    | `deviceId` | **Replace the example deviceId** value with the GUID of the Intel® AMT device.  See [How to Find GUIDs in Intel® AMT](../Reference/guids.md). |
-    | `mpsServer` | **Replace the localhost** with the IP Address or FQDN of your MPS Server. <br><br> **When using Kong**, `/mps/ws/relay` must be appended to the IP or FQDN. |
-    | `authToken` | **Provide a redirection-specific JWT authentication token. This is different from the `/authorize` login token.** [See the `/authorize/redirection/{guid}` GET API in the Auth section.](../APIs/indexMPS.md){target=_blank} <br><br> For a general example on how to make an API call and how to get an auth token from `/authorize` to pass to `/authorize/redirection/{guid}`, see [Generating a JWT by using an Authorize API call](./apiTutorial.md#generate-a-token-for-authorization){target=_blank}. |
+View and control the remote device's screen using keyboard and mouse.
 
+1. Select the **KVM** tab.
+2. Choose an encoding from the dropdown — **RLE8** or **RLE16**.
+3. Click **Connect**. The button changes to *Connecting...* while the WebSocket session is established.
+4. Once connected, the remote desktop appears on the canvas. Keyboard and mouse input is forwarded directly to the device.
+5. To end the session, click **Disconnect**.
 
-    ``` javascript hl_lines="7 8 9"
-    import React from "react"
-    import "./App.css"
-    import { KVM } from "@device-management-toolkit/ui-toolkit-react/reactjs/src/kvm.bundle";
-    import { AttachDiskImage } from "@device-management-toolkit/ui-toolkit-react/reactjs/src/ider.bundle";
+<figure class="figure-image">
+<img src="../../assets/images/screenshots/UI_Toolkit_React_KVM.png" alt="Figure 3: KVM Control">
+<figcaption>Figure 3: KVM Control</figcaption>
+</figure>
 
-    function App() {
-      const deviceGUID = '4c4c4544-005a-3510-8047-b4c04f564433' //Replace with AMT Device GUID
-      const mpsAddress = 'https://localhost/mps/ws/relay' //Replace 'localhost' with MPS Server IP Address or FQDN
-      const auth = '' // Replace with a valid JWT token from 'Authorize Redirection' GET API Method
-      return (
-        <div className="App">
-          <React.Fragment>
-            <AttachDiskImage deviceId={deviceGUID}
-              mpsServer={mpsAddress}
-              authToken={auth}
-            />
-            <KVM autoConnect={false}
-              deviceId={deviceGUID}
-              mpsServer={mpsAddress}
-              authToken={auth}
-              mouseDebounceTime={200}
-              canvasHeight={'100%'} canvasWidth={'100%'} />
-          </React.Fragment>
-        </div>
-      );
+#### SOL (Serial Over LAN)
+
+Interact with the device via a serial terminal.
+
+1. Select the **SOL** tab.
+2. Click **Connect**. The button changes to *Connecting...* while the WebSocket session is established.
+3. Once connected, reset the device to BIOS with SOL enabled by sending a Power Action via the MPS API:
+
+    ```
+    POST /api/v1/amt/power/bootOptions/{guid}
+    ```
+
+    ```json
+    {
+      "method": "PowerAction",
+      "action": 101,
+      "useSOL": true,
+      "bootDetails": {}
     }
-
-    export default App
     ```
 
+4. The terminal window displays the serial console output. All keyboard input is sent directly to the remote device.
+5. To end the session, click **Disconnect**.
 
-4. Save and close the file.
+<figure class="figure-image">
+<img src="../../assets/images/screenshots/UI_Toolkit_React_SOL.png" alt="Figure 4: SOL Control">
+<figcaption>Figure 4: SOL Control</figcaption>
+</figure>
 
-5. If the React app hasn't updated automatically, refresh the page.
+#### IDER (IDE Redirection)
 
-    You are now able to remotely control your Intel® AMT device using Keyboard, Video, Mouse control.
+Attach and mount a disk image (ISO/IMG) to the remote device. The selected image is streamed over the network and virtually mounted as a CD/DVD drive on the remote device.
 
-    !!! success
-        <figure class="figure-image">
-        <img src="..\..\assets\images\screenshots\UIToolkit_react_success.png" alt="Figure 2: React reports successful deployment">
-        <figcaption>Figure 3: Successful KVM Connection</figcaption>
-        </figure>
+1. Select the **IDER** tab.
+2. Click **Browse ISO/IMG** to open the file picker and select an `.iso` or `.img` disk image from your local machine.
+3. The selected file name appears next to the button and the **Start** button becomes enabled.
+4. Click **Start** to begin the redirection session. The image is streamed and mounted as a virtual CD/DVD drive on the remote device.
+5. To end the session, click **Stop**. The virtual drive is unmounted and the connection is closed.
+
+<figure class="figure-image">
+<img src="../../assets/images/screenshots/UI_Toolkit_React_IDER.png" alt="Figure 5: IDER Control">
+<figcaption>Figure 5: IDER session with netboot.xyz.iso attached</figcaption>
+</figure>
+
+Once mounted, the image appears as a drive on the remote device (e.g. `CD Drive (D:)`). The device can then boot from this image for tasks such as OS recovery or re-installation.
+
+<figure class="figure-image">
+<img src="../../assets/images/screenshots/UI_Toolkit_React_IDER_Mounted.png" alt="Figure 6: Mounted drive on remote device">
+<figcaption>Figure 6: ISO mounted as CD Drive on the remote device</figcaption>
+</figure>
 
 ## Troubleshooting
 
 ### Page will not load
 
-- Insure using a Chromium-based browser (Chrome, Microsoft Edge, Firefox) 
-- Compilation errors, verify that the ui-toolkit-react npm package was downloaded and installed to the `my-app` directory, not another directory.
+- Ensure using a Chromium-based browser (Chrome, Microsoft Edge)
+- Compilation errors: verify that dependencies were installed correctly by running `npm install` in the `example` directory.
 
 
 ### `Connect KVM` Button does not Work
@@ -168,30 +182,8 @@ The code snippet below adds both the KVM and IDER controls to the React applicat
 - Is MPS running?
 - Is the AMT device connected to MPS?
 - Was the self-signed certificate accepted? Navigate to the Sample Web UI in a new tab in the same browser and accept the self-signed certificate. Then, return to the React tab and refresh.
-- Verify the redirection JWT token is still valid and not expired. Update if needed. Default expiration time is 5 minutes.
-- Incorrect or invalid JWT for authToken, see [MPS API Documentation for `/authorize/redirection` API](../APIs/indexMPS.md){target=_blank}. **This is a different token and API call from the login token `/authorize` API.**
-    
-    !!! example "Example authToken Format from `/authorize/redirection` API Call"
-
-        ```json
-        {
-            "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5RW1SSlRiSWlJYjRiSWVTc21nY1dJanJSNkh5RVRxYyIsImV4cCI6MTYyMDE2OTg2NH0.GUib9sq0RWRLqJ7JpNNlj2AluuROLICCfdZaQzyWy90"
-        }
-        ```
-
-<br>
 
 ## Next Steps
 
-### Try Other Controls
-
-Try out other React controls such as [Serial Over LAN](../Reference/UIToolkit/Controls/serialOverLANControl.md).
-
-### Customize and Create Bundles
-
-Try out creating and customizing React bundles for things such as Serial Over LAN or KVM [here](../Reference/UIToolkit/Bundles/kvmReact.md).
-
-
-## License Note
-
-If you are distributing the FortAwesome Icons, please provide attribution to the source per the [CC-by 4.0](https://creativecommons.org/licenses/by/4.0/deed.ast) license obligations.
+- [Getting Started](../Reference/UIToolkit/gettingStarted.md) — Add UI Toolkit controls to your own React application
+- [Migration from v4 to v5](../Reference/UIToolkit/migration.md) — Breaking changes and upgrade guide
