@@ -1,64 +1,112 @@
 
 
-React supports localization of applications into different languages through the use of i18n. This example below will walk through how to add support for the language, Kannada. These steps can be applied to a language that fits your desired requirements.
+React supports localization of applications into different languages through the use of i18n.
 
-## Localize the Strings
+## Supported Languages
 
-1. Navigate to the `ui-toolkit-react/src/public/locales/` directory.
+The UI Toolkit React ships with the following languages built-in:
 
-2. Create a new `kn/` directory within the `ui-toolkit-react/src/public/locales/` directory.
+| Language | Code |
+| :------- | :--- |
+| English | `en` |
+| Spanish | `es` |
+| French | `fr` |
+| German | `de` |
+| Japanese | `ja` |
+| Chinese | `zh` |
 
-	The directory name must match one of the [codes listed](https://developers.google.com/admin-sdk/directory/v1/languages).
+## Adding a New Language
 
+This example walks through how to add support for a new language (e.g. Kannada). These steps can be applied to any language that fits your desired requirements.
 
-3. Copy the `translation.json` file in the `/locales/en/` directory to the new `/locales/kn/` language directory. 
+### Localize the Strings
 
-4. Translate the strings in the copied `translation.json` file to the new language. 
+1. Navigate to the `ui-toolkit-react/src/i18n/locales/` directory.
 
-5. Save and close the file.
+2. Copy an existing translation file (e.g. `en.json`) to a new file named with the appropriate language code (e.g. `kn.json`).
 
-## Add to Bundle
+	The file name must match one of the [codes listed](https://developers.google.com/admin-sdk/directory/v1/languages).
 
-1. Open the `i18n.ts` file in the `ui-toolkit-react/src/public/` directory.
+3. Translate the strings in the copied JSON file to the new language.
 
-2. Import the new `public/locales/kn/translation.json` file.
+4. Save and close the file.
 
-	``` ts hl_lines="6"
-	import i18n from 'i18next'
-	import LanguageDetector from 'i18next-browser-languagedetector'
+### Add to i18n Configuration
+
+1. Open the `config.ts` file in the `ui-toolkit-react/src/i18n/` directory.
+
+2. Import the new locale file.
+
+	``` ts hl_lines="7"
+	import i18next from 'i18next'
 	import { initReactI18next } from 'react-i18next'
 
-	import translationEN from './public/locales/en/translation.json'
-	import translationKN from './public/locales/kn/translation.json'
+	import en from './locales/en.json'
+	import es from './locales/es.json'
+	import fr from './locales/fr.json'
+	import kn from './locales/kn.json'
 	...
 	```
 
-3. Edit the `resources` const to include the new translation.
+3. Add the new translation to the `resources` object.
 
 	``` ts hl_lines="8-10"
 	...
-	import translationEN from './public/locales/en/translation.json'
-	import translationKN from './public/locales/kn/translation.json';
-
 	const resources = {
-	  en: {
-		translations: translationEN
-	  },
-	  kn: {
-		translations: translationKN
-	  }
-	};
+	  en: { translation: en },
+	  es: { translation: es },
+	  fr: { translation: fr },
+	  de: { translation: de },
+	  ja: { translation: ja },
+	  zh: { translation: zh },
+	  kn: { translation: kn }
+	}
 	...
 	```
 
 4. Save the file.
 
-5. Rebuild and generate a new bundle before testing the changes.
+5. Rebuild the package before testing the changes.
 
-Language can be changed in the browser under language section of the browser settings. English is the default language if no customized translation file is provided for an alternative language.
+### Translation File Structure
+
+Translation files use a flat namespace structure organized by component:
+
+``` json
+{
+  "kvm": {
+    "connect": "Connect KVM",
+    "disconnect": "Disconnect KVM",
+    "encoding": "Encoding",
+    ...
+  },
+  "sol": {
+    "connect": "Connect",
+    "disconnect": "Disconnect",
+    ...
+  },
+  "ider": {
+    "start": "Start IDER",
+    "stop": "Stop IDER",
+    "selectFile": "Choose File",
+    ...
+  }
+}
+```
+
+## Setting the Language
+
+The default language is English (`en`). To change the language programmatically:
+
+``` typescript
+import { i18n } from '@device-management-toolkit/ui-toolkit-react'
+
+i18n.changeLanguage('fr') // Switch to French
+```
+
+!!! note
+    Browser language auto-detection is no longer supported. The language must be set explicitly using `i18n.changeLanguage()`.
 
 ## Get Localized Strings for Web Consoles with Localization Enabled
 
-If your web console already has localization enabled, make sure to add the [translations](https://github.com/device-management-toolkit/ui-toolkit-react/tree/main/src/public/locales) of the UI-controls into your web console's translations file.
-
-<br><br>
+If your web console already has localization enabled, make sure to add the [translations](https://github.com/device-management-toolkit/ui-toolkit-react/tree/main/src/i18n/locales) of the UI-controls into your web console's translations file.
