@@ -11,10 +11,10 @@
         <link rel="canonical" href="https://device-management-toolkit.github.io/docs/Reference/UIToolkit/reactLocalization/">
       
       
-        <link rel="prev" href="../Controls/serialOverLANControl/">
+        <link rel="prev" href="../Controls/ideRedirectionControl/">
       
       
-        <link rel="next" href="../Bundles/kvmReact/">
+        <link rel="next" href="../migration/">
       
       
         
@@ -92,7 +92,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#localize-the-strings" class="md-skip">
+        <a href="#supported-languages" class="md-skip">
           Skip to content
         </a>
       
@@ -4719,6 +4719,62 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gettingStarted/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
     
@@ -4735,10 +4791,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_14_1" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_14_3" >
         
           
-          <label class="md-nav__link" for="__nav_6_14_1" id="__nav_6_14_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_14_3" id="__nav_6_14_3_label" tabindex="0">
             
   
   
@@ -4756,8 +4812,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_14_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_14_1">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_14_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_14_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -4810,6 +4866,34 @@
     
   
     Serial Over LAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Controls/ideRedirectionControl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IDE Redirection
   
 
     
@@ -4894,6 +4978,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#supported-languages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Languages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-a-new-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding a New Language
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding a New Language">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#localize-the-strings" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4903,12 +5010,39 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#add-to-bundle" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#add-to-i18n-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Add to Bundle
+        Add to i18n Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#translation-file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Translation File Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-the-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting the Language
       
     </span>
   </a>
@@ -4941,133 +5075,15 @@
   
   
   
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_14_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_6_14_3" id="__nav_6_14_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    React Bundles
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_14_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_14_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    React Bundles
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../Bundles/kvmReact/" class="md-nav__link">
+      <a href="../migration/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Keyboard, Video, Mouse
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Bundles/serialOverLANReact/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Serial Over LAN
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../webpackConfig/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Webpack Configuration
+    Migration from v4 to v5
   
 
     
@@ -5505,70 +5521,134 @@
 
   <h1>React Localization</h1>
 
-<p>React supports localization of applications into different languages through the use of i18n. This example below will walk through how to add support for the language, Kannada. These steps can be applied to a language that fits your desired requirements.</p>
-<h2 id="localize-the-strings">Localize the Strings<a class="headerlink" href="#localize-the-strings" title="Permanent link">&para;</a></h2>
+<p>React supports localization of applications into different languages through the use of i18n.</p>
+<h2 id="supported-languages">Supported Languages<a class="headerlink" href="#supported-languages" title="Permanent link">&para;</a></h2>
+<p>The <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> React ships with the following languages built-in:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Language</th>
+<th style="text-align: left;">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">English</td>
+<td style="text-align: left;"><code>en</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Spanish</td>
+<td style="text-align: left;"><code>es</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">French</td>
+<td style="text-align: left;"><code>fr</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">German</td>
+<td style="text-align: left;"><code>de</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Japanese</td>
+<td style="text-align: left;"><code>ja</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Chinese</td>
+<td style="text-align: left;"><code>zh</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="adding-a-new-language">Adding a New Language<a class="headerlink" href="#adding-a-new-language" title="Permanent link">&para;</a></h2>
+<p>This example walks through how to add support for a new language (e.g. Kannada). These steps can be applied to any language that fits your desired requirements.</p>
+<h3 id="localize-the-strings">Localize the Strings<a class="headerlink" href="#localize-the-strings" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p>Navigate to the <code>ui-toolkit-react/src/public/locales/</code> directory.</p>
+<p>Navigate to the <code>ui-toolkit-react/src/i18n/locales/</code> directory.</p>
 </li>
 <li>
-<p>Create a new <code>kn/</code> directory within the <code>ui-toolkit-react/src/public/locales/</code> directory.</p>
-<p>The directory name must match one of the <a href="https://developers.google.com/admin-sdk/directory/v1/languages">codes listed</a>.</p>
+<p>Copy an existing translation file (e.g. <code>en.json</code>) to a new file named with the appropriate language code (e.g. <code>kn.json</code>).</p>
+<p>The file name must match one of the <a href="https://developers.google.com/admin-sdk/directory/v1/languages">codes listed</a>.</p>
 </li>
 <li>
-<p>Copy the <code>translation.json</code> file in the <code>/locales/en/</code> directory to the new <code>/locales/kn/</code> language directory. </p>
-</li>
-<li>
-<p>Translate the strings in the copied <code>translation.json</code> file to the new language. </p>
+<p>Translate the strings in the copied JSON file to the new language.</p>
 </li>
 <li>
 <p>Save and close the file.</p>
 </li>
 </ol>
-<h2 id="add-to-bundle">Add to Bundle<a class="headerlink" href="#add-to-bundle" title="Permanent link">&para;</a></h2>
+<h3 id="add-to-i18n-configuration">Add to i18n Configuration<a class="headerlink" href="#add-to-i18n-configuration" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p>Open the <code>i18n.ts</code> file in the <code>ui-toolkit-react/src/public/</code> directory.</p>
+<p>Open the <code>config.ts</code> file in the <code>ui-toolkit-react/src/i18n/</code> directory.</p>
 </li>
 <li>
-<p>Import the new <code>public/locales/kn/translation.json</code> file.</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">i18n</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;i18next&#39;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">LanguageDetector</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;i18next-browser-languagedetector&#39;</span>
+<p>Import the new locale file.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">i18next</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;i18next&#39;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">initReactI18next</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-i18next&#39;</span>
 
-<span class="k">import</span><span class="w"> </span><span class="nx">translationEN</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./public/locales/en/translation.json&#39;</span>
-<span class="hll"><span class="k">import</span><span class="w"> </span><span class="nx">translationKN</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./public/locales/kn/translation.json&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">en</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./locales/en.json&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">es</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./locales/es.json&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">fr</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./locales/fr.json&#39;</span>
+<span class="hll"><span class="k">import</span><span class="w"> </span><span class="nx">kn</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./locales/kn.json&#39;</span>
 </span><span class="p">...</span>
 </code></pre></div>
 </li>
 <li>
-<p>Edit the <code>resources</code> const to include the new translation.</p>
+<p>Add the new translation to the <code>resources</code> object.</p>
 <div class="highlight"><pre><span></span><code><span class="p">...</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">translationEN</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./public/locales/en/translation.json&#39;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">translationKN</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./public/locales/kn/translation.json&#39;</span><span class="p">;</span>
-
 <span class="kd">const</span><span class="w"> </span><span class="nx">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">en</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">translations</span><span class="o">:</span><span class="w"> </span><span class="kt">translationEN</span>
-<span class="hll"><span class="w">  </span><span class="p">},</span>
-</span><span class="hll"><span class="w">  </span><span class="nx">kn</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-</span><span class="hll"><span class="w">    </span><span class="nx">translations</span><span class="o">:</span><span class="w"> </span><span class="kt">translationKN</span>
-</span><span class="w">  </span><span class="p">}</span>
-<span class="p">};</span>
-<span class="p">...</span>
+<span class="w">  </span><span class="nx">en</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">translation</span><span class="o">:</span><span class="w"> </span><span class="kt">en</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">es</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">translation</span><span class="o">:</span><span class="w"> </span><span class="kt">es</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">fr</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">translation</span><span class="o">:</span><span class="w"> </span><span class="kt">fr</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">de</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">translation</span><span class="o">:</span><span class="w"> </span><span class="kt">de</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">ja</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">translation</span><span class="o">:</span><span class="w"> </span><span class="kt">ja</span><span class="w"> </span><span class="p">},</span>
+<span class="hll"><span class="w">  </span><span class="nx">zh</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">translation</span><span class="o">:</span><span class="w"> </span><span class="kt">zh</span><span class="w"> </span><span class="p">},</span>
+</span><span class="hll"><span class="w">  </span><span class="nx">kn</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">translation</span><span class="o">:</span><span class="w"> </span><span class="kt">kn</span><span class="w"> </span><span class="p">}</span>
+</span><span class="hll"><span class="p">}</span>
+</span><span class="p">...</span>
 </code></pre></div>
 </li>
 <li>
 <p>Save the file.</p>
 </li>
 <li>
-<p>Rebuild and generate a new bundle before testing the changes.</p>
+<p>Rebuild the package before testing the changes.</p>
 </li>
 </ol>
-<p>Language can be changed in the browser under language section of the browser settings. English is the default language if no customized translation file is provided for an alternative language.</p>
+<h3 id="translation-file-structure">Translation File Structure<a class="headerlink" href="#translation-file-structure" title="Permanent link">&para;</a></h3>
+<p>Translation files use a flat namespace structure organized by component:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;kvm&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;connect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Connect KVM&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;disconnect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Disconnect KVM&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;encoding&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Encoding&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;sol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;connect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Connect&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;disconnect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Disconnect&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;ider&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Start IDER&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Stop IDER&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;selectFile&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Choose File&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="setting-the-language">Setting the Language<a class="headerlink" href="#setting-the-language" title="Permanent link">&para;</a></h2>
+<p>The default language is English (<code>en</code>). To change the language programmatically:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">i18n</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@device-management-toolkit/ui-toolkit-react&#39;</span>
+
+<span class="nx">i18n</span><span class="p">.</span><span class="nx">changeLanguage</span><span class="p">(</span><span class="s1">&#39;fr&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">// Switch to French</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Browser language auto-detection is no longer supported. The language must be set explicitly using <code>i18n.changeLanguage()</code>.</p>
+</div>
 <h2 id="get-localized-strings-for-web-consoles-with-localization-enabled">Get Localized Strings for Web Consoles with Localization Enabled<a class="headerlink" href="#get-localized-strings-for-web-consoles-with-localization-enabled" title="Permanent link">&para;</a></h2>
-<p>If your web console already has localization enabled, make sure to add the <a href="https://github.com/device-management-toolkit/ui-toolkit-react/tree/main/src/public/locales">translations</a> of the UI-controls into your web console's translations file.</p>
-<p><br><br></p>
+<p>If your web console already has localization enabled, make sure to add the <a href="https://github.com/device-management-toolkit/ui-toolkit-react/tree/main/src/i18n/locales">translations</a> of the UI-controls into your web console's translations file.</p>
 
 
 
