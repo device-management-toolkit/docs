@@ -236,15 +236,15 @@ extra:
       - rapid
       - dev
   repoVersion:
-    mpsAPI: 2.22.5
-    rpsAPI: 2.30.2
-    oamtct: 2.31.0
-    rpc_go: 2.48.14
-    webui: 3.52.3
+    mpsAPI: 2.26.0
+    rpsAPI: 2.31.3
+    oamtct: 2.32.0
+    rpc_go: 2.49.0
+    webui: 3.54.0
     rpc_c: 2.0.0
-    ui_toolkit: 3.3.9
-    ui_toolkit_react: 4.0.6
-    ui_toolkit_angular: 11.0.1
+    ui_toolkit: 3.3.10
+    ui_toolkit_react: 5.0.1
+    ui_toolkit_angular: 11.1.1
   analytics:
     provider: google
     property: "G-00QEDJW2TS"
