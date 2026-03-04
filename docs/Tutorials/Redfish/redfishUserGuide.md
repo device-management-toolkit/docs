@@ -432,6 +432,89 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
 redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Systems -T 30 -I <device-guid> | jq .PowerState
 ```
 
+#### Get SessionService
+
+**Description:** Retrieve SessionService metadata including session timeout configuration and supported authentication methods.
+
+**Requires Authentication:** No
+
+```bash
+redfishtool sessions info
+```
+
+**What to verify:**
+
+- ✓ Response HTTP 200 OK
+- ✓ SessionTimeout value is returned (default 24 hours)
+- ✓ ServiceEnabled is true
+- ✓ Sessions collection URI is present
+
+#### Create Session (Login)
+
+**Description:** Authenticate with the console to obtain a session token for token-based authentication.
+
+**Requires Authentication:** Basic Auth (username and password)
+
+```bash
+redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Sessions
+```
+
+**What to verify:**
+
+- ✓ Response HTTP 201 Created
+- ✓ X-Auth-Token header is present in response
+- ✓ Session ID (@odata.id) is returned
+- ✓ Session can be used for subsequent API calls
+
+#### Get Sessions
+
+**Description:** Retrieve all active sessions on the console.
+
+**Requires Authentication:** Yes
+
+```bash
+redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Sessions
+```
+
+**What to verify:**
+
+- ✓ Response contains Members array
+- ✓ Members@odata.count shows number of active sessions
+- ✓ Each session has @odata.id and UserName properties
+
+#### Get Session Details
+
+**Description:** Retrieve details of a specific session including UserName, CreatedTime, and token information.
+
+**Requires Authentication:** Yes
+
+```bash
+redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Sessions -I <session-id>
+```
+
+**What to verify:**
+
+- ✓ Response HTTP 200 OK
+- ✓ Session @odata.id matches the requested session-id
+- ✓ UserName is displayed
+- ✓ CreatedTime and other session metadata is present
+
+#### Delete Session (Logout)
+
+**Description:** End a session and invalidate the authentication token.
+
+**Requires Authentication:** Yes (session token or Basic Auth)
+
+```bash
+redfishtool -r <console_host_or_ip>:<console_port> -t <your-auth-token> -S Always Sessions -I <session-id> -m DELETE
+```
+
+**What to verify:**
+
+- ✓ HTTP 204 No Content response
+- ✓ Session no longer appears in active sessions list
+- ✓ Session token is invalidated for future requests
+
 ### Advantages Over curl
 
 The Redfish tool offers several advantages:
@@ -490,6 +573,11 @@ The following table provides curl commands for common Redfish API operations. Fo
 | **Power Cycle**<br/>Power cycle (off then on)<br/>*Requires Authentication* | `curl -sk -X POST -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{"ResetType": "PowerCycle"}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/ComputerSystem.Reset` | See [Perform Power Actions](#perform-power-actions) for details on all power operations |
 | **Reset to BIOS**<br/>Reset to BIOS<br/>*Requires Authentication* | `curl -sk -X PATCH -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{"Boot": {"BootSourceOverrideTarget": "BiosSetup", "BootSourceOverrideEnabled": "Once"}}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>` | See [Reset to BIOS](#reset-to-bios) for details |
 | **Get System Power State**<br/>Check current power state<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id> \| jq .PowerState` | See [Get System Power State](#get-system-power-state) for details |
+| **Get SessionService**<br/>Get SessionService metadata<br/>*No Authentication Required* | `curl -sk https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService \| jq` | See [Get SessionService](#get-sessionservice) for details |
+| **Get Sessions**<br/>Get all active sessions<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions \| jq` | See [Get Sessions](#get-sessions-1) for details |
+| **Create Session (Login)**<br/>Authenticate and obtain session token<br/>*No Pre-Authentication Required* | `curl -sk -X POST -H "Content-Type: application/json" -d '{"UserName": "<admin-user-name>", "Password": "<admin-password>"}' https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions \| jq` | See [Create Session](#create-session-login-1) for details |
+| **Get Session Details**<br/>Get details of a specific session<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions/<session-id> \| jq` | See [Get Session Details](#get-session-details) for details |
+| **Delete Session (Logout)**<br/>End a session and invalidate token<br/>*Requires Authentication* | `curl -sk -X DELETE -H "X-Auth-Token: <your-auth-token>" https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions/<session-id>` | See [Delete Session](#delete-session-logout-1) for details |
 
 
 ---
