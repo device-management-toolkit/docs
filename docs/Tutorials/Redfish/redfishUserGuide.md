@@ -412,6 +412,16 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
 redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Systems -I <device-guid> reset PowerCycle
 ```
 
+#### Reset to BIOS
+
+**Description:** Set the system to boot into BIOS setup on the next restart. The override applies once and reverts to normal boot order afterwards. After sending this command, issue a restart (e.g., `ForceRestart`) to trigger the BIOS boot.
+
+**Requires Authentication:** Yes
+
+```bash
+redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Systems -I <device-guid> setBootOverride Once BiosSetup
+```
+
 #### Get System Power State
 
 **Description:** Check the current power state of a specific system.
@@ -478,6 +488,7 @@ The following table provides curl commands for common Redfish API operations. Fo
 | **Force Off**<br/>Immediate power off (non-graceful)<br/>*Requires Authentication* | `curl -sk -X POST -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{"ResetType": "ForceOff"}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/ComputerSystem.Reset` | See [Perform Power Actions](#perform-power-actions) for details on all power operations |
 | **Force Restart**<br/>Immediate restart (non-graceful)<br/>*Requires Authentication* | `curl -sk -X POST -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{"ResetType": "ForceRestart"}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/ComputerSystem.Reset` | See [Perform Power Actions](#perform-power-actions) for details on all power operations |
 | **Power Cycle**<br/>Power cycle (off then on)<br/>*Requires Authentication* | `curl -sk -X POST -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{"ResetType": "PowerCycle"}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/ComputerSystem.Reset` | See [Perform Power Actions](#perform-power-actions) for details on all power operations |
+| **Reset to BIOS**<br/>Reset to BIOS<br/>*Requires Authentication* | `curl -sk -X PATCH -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{"Boot": {"BootSourceOverrideTarget": "BiosSetup", "BootSourceOverrideEnabled": "Once"}}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>` | See [Reset to BIOS](#reset-to-bios) for details |
 | **Get System Power State**<br/>Check current power state<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id> \| jq .PowerState` | See [Get System Power State](#get-system-power-state) for details |
 
 
