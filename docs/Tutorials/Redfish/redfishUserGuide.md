@@ -6,7 +6,9 @@ This tutorial demonstrates how to set up, configure, and test the DMT Console Re
 
 In this tutorial, you will:
 
-- Download and run the DMT Console Release supporting Redfish end points
+- Download and run the DMT Console Release supporting Redfish endpoints
+- Configure and execute the DMT Console application
+- Query Redfish endpoints using curl commands or the DMTF Redfish Tool
 - Test Redfish endpoints using curl commands or the DMTF Redfish Tool
 - Troubleshoot common issues
 
@@ -37,8 +39,8 @@ The DMT Console implements the following Redfish API v1.19.0 features for remote
 Follow these sections in order:
 
 1. **[Prerequisites](#prerequisites)** - Tools installation
-2. **[Download the Pre-built Redfish Binary](#download-the-pre-built-redfish-binary)** - Download and prepare the release package
-3. **[Configuring and Executing the DMT Console Application](#configuring-and-executing-the-dmt-console-application)** - Configuration settings and server startup
+2. **[Download and Configure the Pre-built Redfish Binary](#download-and-configure-the-pre-built-redfish-binary)** - Download and prepare the release package
+3. **[Verifying the Redfish Endpoint](#verifying-the-redfish-endpoint)** - Configuration verification and server endpoint validation
 4. **[Using the Redfish API through DMTF Redfish Tool](#using-the-redfish-api-through-dmtf-redfish-tool)** - API testing with the official DMTF Redfish tool
 5. **[Using the Redfish API through curl commands](#using-the-redfish-api-through-curl-commands)** - API testing with curl commands
 6. **[Troubleshooting](#troubleshooting)** - Common issues and solutions
@@ -87,9 +89,11 @@ graph TB
 
 Install the following tools before running this tutorial:
 
-1. **curl** (for API calls) : Comes pre-installed on most of the OS'es, if not available install it from the official website(<https://curl.se/download.html>) or your OS package manager.
+1. **curl** (for API calls) : Comes pre-installed on most operating systems; if not available, install it from the official website (<https://curl.se/download.html>) or your OS package manager.
 
 2. **DMTF Redfish Tool** (for Redfish CLI testing) : Repository and install guidance: <https://github.com/DMTF/Redfishtool>. The version used in this tutorial is 1.1.8 or later.
+
+3. **jq** (for JSON filtering/pretty-printing in non-table examples) : Install it from your OS package manager (for example, `sudo apt-get install jq` on Debian/Ubuntu, `brew install jq` on macOS, or `choco install jq` / `winget install jqlang.jq` on Windows) or from the official repository at <https://jqlang.github.io/jq/>.
 
 ## Download and Configure the Pre-built Redfish Binary
 
@@ -106,11 +110,21 @@ Test that the Redfish Endpoint is running:
 
 > **Note:** On Windows, PowerShell has a built-in `curl` alias for `Invoke-WebRequest`. To use the native curl executable instead, either use `curl.exe` explicitly in commands, or remove the alias by running `Remove-Item Alias:curl` in your PowerShell session.
 
-```bash
-# Check if the server is listening (use -k to ignore self-signed certificate, -s for silent mode)
-curl -sk https://<console_host_or_ip>:<console_port>/redfish/v1/ | jq
+=== "Windows"
+    ```
+    # Check if the server is listening (use -k to ignore self-signed certificate, -s for silent mode)
+    curl.exe -sk https://<console_host_or_ip>:<console_port>/redfish/v1/ | jq
+    ```
 
-# Reference  response:
+=== "Linux"
+    ```bash
+    # Check if the server is listening (use -k to ignore self-signed certificate, -s for silent mode)
+    curl -sk https://<console_host_or_ip>:<console_port>/redfish/v1/ | jq
+    ```
+
+**Reference  response:**
+
+```json
 {
   "@odata.context": "/redfish/v1/$metadata#ServiceRoot.ServiceRoot",
   "@odata.id": "/redfish/v1",
@@ -125,8 +139,11 @@ curl -sk https://<console_host_or_ip>:<console_port>/redfish/v1/ | jq
   "UUID": "ebc6c6c9-1ed3-4f12-ae0b-7b877c55de07",
   "Vendor": "Device Management Toolkit"
 }
+```
 
-# Reference log on the Console
+**Reference log on the Console:**
+
+```json
 {"level":"info","time":"2025-12-06T15:22:40+05:30","caller":"/home/admin/dmt/console-redfish-nm/pkg/logger/adapters.go:29","message":"[GIN] 2025/12/06 - 15:22:40 | 200 |     795.431µs |   10.190.213.16 | GET      \"/redfish/v1/\""}
 ```
 
@@ -354,7 +371,7 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
   "@odata.type": "#ComputerSystem.v1_0_0.ComputerSystem",
   "Actions": {
     "#ComputerSystem.Reset": {
-      "target": "/redfish/v1/Systems/device-guid-12345/Actions/ComputerSystem.Reset"
+      "target": "/redfish/v1/Systems/device-guid-12345/Actions/ComputerSystem.Reset",
       "title": "Reset"
     }
   },
@@ -366,7 +383,7 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
   "Name": "device-guid-12345",
   "PowerState": "On",
   "SerialNumber": "SN1234567890",
-  "SystemType": "Physical",
+  "SystemType": "Physical"
 }
 ```
 
@@ -387,6 +404,8 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
 - `ForceOff` - Immediate power off (non-graceful)
 - `ForceRestart` - Immediate restart (non-graceful)
 - `PowerCycle` - Power cycle (off then on)
+- `GracefulShutdown` - Graceful OS shutdown
+- `GracefulRestart` - Graceful OS restart
 
 **Power On:**
 
@@ -543,10 +562,10 @@ Most Redfish endpoints require Basic Authentication. Use the credentials as prov
     curl.exe -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/Systems
     ```
 === "Linux"
-  ``` bash
-  # Using curl with Basic Auth
-  curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/Systems
-  ```
+    ``` bash
+    # Using curl with Basic Auth
+    curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/Systems
+    ```
 
 **Public endpoints (no authentication required):**
 
@@ -562,22 +581,22 @@ The following table provides curl commands for common Redfish API operations. Fo
 
 | Scenario | Curl Command | Reference |
 |----------|--------------|-----------|
-| **Get Service Root**<br/>Retrieve the Redfish service root document | `curl -sk https://<console_host_or_ip>:<console_port>/redfish/v1/ \| jq` | See [Get Service Root](#get-service-root) for response format and verification steps |
-| **Get OData Service Document**<br/>Retrieve the OData service document | `curl -sk https://<console_host_or_ip>:<console_port>/redfish/v1/odata \| jq` | See [Get OData Service Document](#get-odata-service-document) for response format and verification steps |
+| **Get Service Root**<br/>Retrieve the Redfish service root document | `curl -sk https://<console_host_or_ip>:<console_port>/redfish/v1/` | See [Get Service Root](#get-service-root) for response format and verification steps |
+| **Get OData Service Document**<br/>Retrieve the OData service document | `curl -sk https://<console_host_or_ip>:<console_port>/redfish/v1/odata` | See [Get OData Service Document](#get-odata-service-document) for response format and verification steps |
 | **Get Metadata Document**<br/>Retrieve the Redfish metadata document in XML format | `curl -sk https://<console_host_or_ip>:<console_port>/redfish/v1/\$metadata` | See [Get Metadata Document](#get-metadata-document) for response format and verification steps |
-| **Get Systems Collection**<br/>Retrieve all computer systems<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/Systems \| jq` | See [Get Systems Collection](#get-systems-collection) for response format and verification steps |
-| **Get Specific System Details**<br/>Retrieve detailed information about a specific system<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id> \| jq` | See [Get Specific System Details](#get-specific-system-details) for response format and verification steps |
+| **Get Systems Collection**<br/>Retrieve all computer systems<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/Systems` | See [Get Systems Collection](#get-systems-collection) for response format and verification steps |
+| **Get Specific System Details**<br/>Retrieve detailed information about a specific system<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>` | See [Get Specific System Details](#get-specific-system-details) for response format and verification steps |
 | **Power On**<br/>Power on a system<br/>*Requires Authentication* | `curl -sk -X POST -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{"ResetType": "On"}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/ComputerSystem.Reset` | See [Perform Power Actions](#perform-power-actions) for details on all power operations |
 | **Force Off**<br/>Immediate power off (non-graceful)<br/>*Requires Authentication* | `curl -sk -X POST -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{"ResetType": "ForceOff"}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/ComputerSystem.Reset` | See [Perform Power Actions](#perform-power-actions) for details on all power operations |
 | **Force Restart**<br/>Immediate restart (non-graceful)<br/>*Requires Authentication* | `curl -sk -X POST -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{"ResetType": "ForceRestart"}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/ComputerSystem.Reset` | See [Perform Power Actions](#perform-power-actions) for details on all power operations |
 | **Power Cycle**<br/>Power cycle (off then on)<br/>*Requires Authentication* | `curl -sk -X POST -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{"ResetType": "PowerCycle"}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/ComputerSystem.Reset` | See [Perform Power Actions](#perform-power-actions) for details on all power operations |
 | **Reset to BIOS**<br/>Reset to BIOS<br/>*Requires Authentication* | `curl -sk -X PATCH -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{"Boot": {"BootSourceOverrideTarget": "BiosSetup", "BootSourceOverrideEnabled": "Once"}}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>` | See [Reset to BIOS](#reset-to-bios) for details |
-| **Get System Power State**<br/>Check current power state<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id> \| jq .PowerState` | See [Get System Power State](#get-system-power-state) for details |
-| **Get SessionService**<br/>Get SessionService metadata<br/>*No Authentication Required* | `curl -sk https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService \| jq` | See [Get SessionService](#get-sessionservice) for details |
-| **Get Sessions**<br/>Get all active sessions<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions \| jq` | See [Get Sessions](#get-sessions-1) for details |
-| **Create Session (Login)**<br/>Authenticate and obtain session token<br/>*No Pre-Authentication Required* | `curl -sk -X POST -H "Content-Type: application/json" -d '{"UserName": "<admin-user-name>", "Password": "<admin-password>"}' https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions \| jq` | See [Create Session](#create-session-login-1) for details |
-| **Get Session Details**<br/>Get details of a specific session<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions/<session-id> \| jq` | See [Get Session Details](#get-session-details) for details |
-| **Delete Session (Logout)**<br/>End a session and invalidate token<br/>*Requires Authentication* | `curl -sk -X DELETE -H "X-Auth-Token: <your-auth-token>" https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions/<session-id>` | See [Delete Session](#delete-session-logout-1) for details |
+| **Get System Power State**<br/>Check current power state<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>` | See [Get System Power State](#get-system-power-state) for details |
+| **Get SessionService**<br/>Get SessionService metadata<br/>*No Authentication Required* | `curl -sk https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService` | See [Get SessionService](#get-sessionservice) for details |
+| **Get Sessions**<br/>Get all active sessions<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions` | See [Get Sessions](#get-sessions) for details |
+| **Create Session (Login)**<br/>Authenticate and obtain session token<br/>*No Pre-Authentication Required* | `curl -sk -X POST -H "Content-Type: application/json" -d '{"UserName": "<admin-user-name>", "Password": "<admin-password>"}' https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions` | See [Create Session](#create-session-login) for details |
+| **Get Session Details**<br/>Get details of a specific session<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions/<session-id>` | See [Get Session Details](#get-session-details) for details |
+| **Delete Session (Logout)**<br/>End a session and invalidate token<br/>*Requires Authentication* | `curl -sk -X DELETE -H "X-Auth-Token: <your-auth-token>" https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions/<session-id>` | See [Delete Session](#delete-session-logout) for details |
 
 
 ---
@@ -740,15 +759,23 @@ All errors follow the Redfish standard error format:
 
 ### Example: Invalid Reset Type
 
-```bash
-curl -sk -X POST \
-  -u admin:password123 \
-  -H "Content-Type: application/json" \
-  -d '{"ResetType": "InvalidType"}' \
+=== "Windows"
+    ```
+    curl.exe -sk -X POST `
+      -u admin:password123 `
+      -H "Content-Type: application/json" `
+      -d '{"ResetType": "InvalidType"}' `
+      https://localhost:8181/redfish/v1/Systems/device-guid-12345/Actions/ComputerSystem.Reset
+    ```
 
-  http://localhost:8181/redfish/v1/Systems/device-guid-12345/Actions/ComputerSystem.Reset
-
-```
+=== "Linux"
+    ```bash
+    curl -sk -X POST \
+      -u admin:password123 \
+      -H "Content-Type: application/json" \
+      -d '{"ResetType": "InvalidType"}' \
+      https://localhost:8181/redfish/v1/Systems/device-guid-12345/Actions/ComputerSystem.Reset
+    ```
 
 **Response:**
 
