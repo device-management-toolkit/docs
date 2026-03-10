@@ -161,6 +161,7 @@ nav:
         - RPC Library: Reference/RPC/v2/libraryRPC.md
       - v3 (Beta):
         - About v3: Reference/RPC/v3/about-v3.md
+        - RPC CLI: Reference/RPC/v3/commandsRPC.md
       - Transition Activated Device: Reference/RPC/transitionDeviceRPC.md
     - UI Toolkit React:
       - Overview: Reference/UIToolkit/overview.md
