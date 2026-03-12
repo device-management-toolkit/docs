@@ -1,6 +1,7 @@
 # DMT Console Redfish User Guide
 
-This tutorial demonstrates how to set up, configure, and test the DMT Console Redfish API implementation. The Redfish API is a REST interface that lets you manage Intel AMT-enabled devices through standardized HTTP endpoints.
+This tutorial demonstrates how to set up, configure, and test the DMT Console Redfish implementation.
+Redfish is a standardized REST API for device management over HTTP; for the specification, see the Distributed Management Task Force (DMTF) Redfish standards here:  <https://www.dmtf.org/standards/redfish>
 
 ## What You Will Do
 
@@ -8,8 +9,7 @@ In this tutorial, you will:
 
 - Download and run the DMT Console Release supporting Redfish endpoints
 - Configure and execute the DMT Console application
-- Query Redfish endpoints using curl commands or the DMTF Redfish Tool
-- Test Redfish endpoints using curl commands or the DMTF Redfish Tool
+- Query and test Redfish endpoints using curl commands or the DMTF Redfish Tool
 - Troubleshoot common issues
 
 ## Supported Redfish Features
@@ -25,12 +25,12 @@ The DMT Console implements the following Redfish API v1.19.0 features for remote
 **Computer System Management:**
 
 - **Systems Collection** (`/redfish/v1/Systems`) - List all managed Intel AMT devices
-- **System Information** (`/redfish/v1/Systems/{id}`) - Retrieve detailed system properties:
-- **Power Control Actions** (`/redfish/v1/Systems/{id}/Actions/ComputerSystem.Reset`) - Remote power management via `ComputerSystem.Reset`:
+- **System Information** (`/redfish/v1/Systems/{id}`) - Retrieve detailed system properties
+- **Power Control Actions** (`/redfish/v1/Systems/{id}/Actions/ComputerSystem.Reset`) - Remote power management
 
 **Standards Compliance:**
 
-- Redfish API v1.19.0
+- [Redfish API v1.19.0](<https://github.com/DMTF/Redfish-Publications/tree/2025.3>)
 - OData Version 4.0
 - DMTF ComputerSystem v1.26.0 schema
 
@@ -52,8 +52,8 @@ The following diagram shows how the components connect during this tutorial:
 
 ```mermaid
 graph TB
-    subgraph "Admin Machine"
-        A[DMT Console<br/>with Redfish Service<br/>Port 8181]
+    subgraph "Helpdesk Machine"
+        A[DMT Console<br/> with Redfish Service<br/>Port 8181]
         B[curl]
         C[Redfish Tool]
 
@@ -97,12 +97,12 @@ Install the following tools before running this tutorial:
 
 ## Download and Configure the Pre-built Redfish Binary
 
-Download the pre-built release package from <https://github.com/device-management-toolkit/console/releases>
+Download the pre-built release package from <https://github.com/device-management-toolkit/console/releases>.
 Use a release that includes the Redfish functionality you want to test, then extract the archive.
 
 After downloading and extracting the Redfish binary, continue with the Enterprise setup guide: [Configuration](../../GetStarted/Enterprise/setup.md#configuration) and follow the instructions to run the Console application and Add Devices. Once the console is running, you can proceed to test the Redfish API using either curl commands or the DMTF Redfish Tool as described in the next sections.
 
-> **Note:** Configure the Console application to run with TLS enabled before testing Redfish endpoints. Redfish access in this guide assumes HTTPS.
+> **Note:** Configure the Console application to run with TLS enabled before testing Redfish endpoints. Redfish access in this guide expects HTTPS.
 
 ### Verifying the Redfish Endpoint
 
@@ -151,8 +151,6 @@ Test that the Redfish Endpoint is running:
 
 ## Using the Redfish API through DMTF Redfish Tool
 
-The DMTF Redfish Tool is a Python-based command-line utility that provides a more user-friendly interface for interacting with Redfish services compared to raw curl commands. It automatically handles authentication, response formatting, and provides convenient shortcuts for common operations.
-
 ### About DMTF Redfish Tool
 
 The DMTF Redfish Tool is the official reference implementation tool from the Distributed Management Task Force (DMTF) for interacting with Redfish APIs. It provides:
@@ -184,7 +182,7 @@ redfishtool [options] <command> [command-options]
 
 ### Using Redfish Tool with DMT Console
 
-The following examples demonstrate how to use the DMTF Redfish tool with DMT Console for all common Redfish operations. These correspond to the same scenarios covered in the curl commands section.
+The following examples demonstrate how to use the Redfish tool with DMT Console for all common Redfish operations. These correspond to the same scenarios covered in the curl commands section.
 
 #### Get Service Root
 
@@ -202,29 +200,38 @@ redfishtool -r <console_host_or_ip>:<console_port> -S Always root
 
 ```json
 {
-  "@odata.context": "/redfish/v1/$metadata#ServiceRoot.ServiceRoot",
-  "@odata.id": "/redfish/v1",
-  "@odata.type": "#ServiceRoot.v1_19_0.ServiceRoot",
-  "Id": "RootService",
-  "Name": "Root Service",
-  "Product": "Device Management Toolkit - Redfish Service",
-  "RedfishVersion": "1.19.0",
-  "Systems": {
-    "@odata.id": "/redfish/v1/Systems"
-  },
-  "UUID": "998ecc0a-b980-4ec4-9738-2a3303daad7d",
-  "Vendor": "Device Management Toolkit"
+    "@odata.context": "/redfish/v1/$metadata#ServiceRoot.ServiceRoot",
+    "@odata.id": "/redfish/v1",
+    "@odata.type": "#ServiceRoot.v1_19_0.ServiceRoot",
+    "Id": "RootService",
+    "Links": {
+        "Sessions": {
+            "@odata.id": "/redfish/v1/SessionService/Sessions"
+        }
+    },
+    "Name": "Root Service",
+    "Product": "Device Management Toolkit - Redfish Service",
+    "RedfishVersion": "1.19.0",
+    "Systems": {
+        "@odata.id": "/redfish/v1/Systems"
+    },
+    "UUID": "5ea6dfb3-bcdc-443a-9a9d-3035a7b73fe7",
+    "Vendor": "Device Management Toolkit",
+    "SessionService": {
+        "@odata.id": "/redfish/v1/SessionService"
+    }
 }
+
 ```
 
 **What to verify:**
 
 - ✓ Response has `@odata.context`, `@odata.id`, `@odata.type`
-- ✓ Contains links to Systems collections
+- ✓ Contains links to Systems collections and Session Service
 - ✓ Header `OData-Version: 4.0` is present
 - ✓ `RedfishVersion` is `1.19.0`
 - ✓ `Vendor` is `Device Management Toolkit`
-- ✓ `UUID` is a valid GUID and would the same on subsequent requests
+- ✓ `UUID` is a valid GUID and would be the same on subsequent requests
 
 #### Get OData Service Document
 
@@ -240,15 +247,21 @@ redfishtool -r <console_host_or_ip>:<console_port> -S Always odata
 
 ```json
 {
-  "@odata.context": "/redfish/v1/$metadata#ServiceRoot.ServiceRoot",
-  "value": [
-    {
-      "name": "Systems",
-      "kind": "Singleton",
-      "url": "/redfish/v1/Systems"
-    }
-  ]
+    "@odata.context": "/redfish/v1/$metadata#ServiceRoot.ServiceRoot",
+    "value": [
+        {
+            "name": "SessionService",
+            "kind": "Singleton",
+            "url": "/redfish/v1/SessionService"
+        },
+        {
+            "name": "Systems",
+            "kind": "Singleton",
+            "url": "/redfish/v1/Systems"
+        }
+    ]
 }
+
 
 ```
 
@@ -299,12 +312,24 @@ redfishtool -r <console_host_or_ip>:<console_port> -S Always metadata
         <edmx:Include Namespace="ServiceRoot"/>
         <edmx:Include Namespace="ServiceRoot.1_19_0"/>
     </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SessionCollection_v1.xml">
+        <edmx:Include Namespace="SessionCollection"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SessionService_v1.xml">
+        <edmx:Include Namespace="SessionService"/>
+        <edmx:Include Namespace="SessionService.1_2_0"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Session_v1.xml">
+        <edmx:Include Namespace="Session"/>
+        <edmx:Include Namespace="Session.1_8_0"/>
+    </edmx:Reference>
     <edmx:DataServices>
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Service">
             <EntityContainer Name="Service" Extends="ServiceRoot.v1_19_0.ServiceContainer"/>
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>
+
 ```
 
 **What to verify:**
@@ -376,12 +401,33 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
     }
   },
   "BiosVersion": "1.2.3",
-  "HostName": "test-host",
+  "Boot": {
+        "AutomaticRetryAttempts": null,
+        "BootNext": null,
+        "BootSourceOverrideEnabled": "Disabled",
+        "BootSourceOverrideMode": "UEFI",
+        "BootSourceOverrideTarget": "None",
+        "HttpBootUri": null,
+        "RemainingAutomaticRetryAttempts": null,
+        "UefiTargetBootSourceOverride": null
+    },
+  "HostName": "null",
   "Id": "device-guid-12345",
   "Manufacturer": "Intel Corporation",
   "Model": "NUC14RVH-B",
   "Name": "device-guid-12345",
   "PowerState": "On",
+  "ProcessorSummary": {
+        "CoreCount": null,
+        "Count": 1,
+        "LogicalProcessorCount": null,
+        "Model": null,
+        "Status": {
+            "Health": "OK",
+            "HealthRollup": "OK",
+            "State": "Enabled"
+        }
+    },
   "SerialNumber": "SN1234567890",
   "SystemType": "Physical"
 }
@@ -404,31 +450,29 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
 - `ForceOff` - Immediate power off (non-graceful)
 - `ForceRestart` - Immediate restart (non-graceful)
 - `PowerCycle` - Power cycle (off then on)
-- `GracefulShutdown` - Graceful OS shutdown
-- `GracefulRestart` - Graceful OS restart
 
 **Power On:**
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Systems -I <device-guid> reset On
+redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Systems -I <device-guid> reset On -T 30
 ```
 
 **Power Off (Force):**
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Systems -I <device-guid> reset ForceOff
+redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Systems -I <device-guid> reset ForceOff -T 30
 ```
 
 **Force Restart:**
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Systems -I <device-guid> reset ForceRestart
+redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Systems -I <device-guid> reset ForceRestart -T 30
 ```
 
 **PowerCycle:**
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Systems -I <device-guid> reset PowerCycle
+redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Systems -I <device-guid> reset PowerCycle -T 30
 ```
 
 #### Reset to BIOS
@@ -438,7 +482,7 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
 **Requires Authentication:** Yes
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Systems -I <device-guid> setBootOverride Once BiosSetup
+redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Systems -I <device-guid> setBootOverride Once BiosSetup -T 30
 ```
 
 #### Get System Power State
@@ -453,17 +497,38 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
 
 #### Get SessionService
 
-**Description:** Retrieve SessionService metadata including session timeout configuration and supported authentication methods.
+**Description:** Retrieve SessionService metadata including session timeout configuration.
 
-**Requires Authentication:** No
+**Requires Authentication:** Yes
 
 ```bash
-redfishtool sessions info
+redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always SessionService
+```
+
+**Reference Successful Response:**
+
+```json
+{
+    "@odata.context": "/redfish/v1/$metadata#SessionService.SessionService",
+    "@odata.id": "/redfish/v1/SessionService",
+    "@odata.type": "#SessionService.v1_2_0.SessionService",
+    "Description": "Session Service for DMT Console Redfish API",
+    "Id": "SessionService",
+    "Name": "Session Service",
+    "ServiceEnabled": true,
+    "SessionTimeout": 1800,
+    "Sessions": {
+        "@odata.id": "/redfish/v1/SessionService/Sessions"
+    },
+    "Status": {
+        "Health": "OK",
+        "State": "Enabled"
+    }
+}
 ```
 
 **What to verify:**
 
-- ✓ Response HTTP 200 OK
 - ✓ SessionTimeout value is returned (default 24 hours)
 - ✓ ServiceEnabled is true
 - ✓ Sessions collection URI is present
@@ -474,16 +539,29 @@ redfishtool sessions info
 
 **Requires Authentication:** Basic Auth (username and password)
 
+> NOTE: The current version supports only a single account for sessions. This account username and password are the admin username and password configured for the console.
+
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Sessions
+redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always SessionService login
+```
+
+**Reference Successful Response:**
+
+```json
+{
+    "SessionId": "83efab82-aa7a-4e39-84f7-6a888a701a5b",
+    "SessionLocation": "/redfish/v1/SessionService/Sessions/83efab82-aa7a-4e39-84f7-6a888a701a5b",
+    "X-Auth-Token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTc3MzQwMzkwNCwiaWF0IjoxNzczMzE3NTA0LCJqdGkiOiI4M2VmYWI4Mi1hYTdhLTRlMzktODRmNy02YTg4OGE3MDFhNWIifQ.iWwegBCAQGFnRACrIEQT1jV5WOo7YLfrz5xGoc3vXWA"
+}
 ```
 
 **What to verify:**
 
-- ✓ Response HTTP 201 Created
 - ✓ X-Auth-Token header is present in response
 - ✓ Session ID (@odata.id) is returned
-- ✓ Session can be used for subsequent API calls
+- ✓ Session Location is present in response
+
+> NOTE: Redfishtool does not support creating sessions using the above information. For session usage, use the curl API.
 
 #### Get Sessions
 
@@ -492,7 +570,24 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
 **Requires Authentication:** Yes
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Sessions
+redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always SessionService Sessions
+```
+
+**Reference Successful Response:**
+
+```json
+{
+    "@odata.context": "/redfish/v1/$metadata#SessionCollection.SessionCollection",
+    "@odata.id": "/redfish/v1/SessionService/Sessions",
+    "@odata.type": "#SessionCollection.SessionCollection",
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/SessionService/Sessions/83efab82-aa7a-4e39-84f7-6a888a701a5b"
+        }
+    ],
+    "Members@odata.count": 1,
+    "Name": "Session Collection"
+}
 ```
 
 **What to verify:**
@@ -508,12 +603,31 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
 **Requires Authentication:** Yes
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Sessions -I <session-id>
+redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always SessionService Sessions -i<session-id>
+```
+
+**Reference Successful Response:**
+
+```json
+{
+    "@odata.context": "/redfish/v1/$metadata#Session.Session",
+    "@odata.id": "/redfish/v1/SessionService/Sessions/83efab82-aa7a-4e39-84f7-6a888a701a5b",
+    "@odata.type": "#Session.v1_8_0.Session",
+    "ClientOriginIPAddress": "127.0.0.1",
+    "Context": null,
+    "CreatedTime": "2026-03-12T17:41:44.154402877+05:30",
+    "Description": "User Session for admin",
+    "Id": "83efab82-aa7a-4e39-84f7-6a888a701a5b",
+    "Name": "User Session",
+    "Password": null,
+    "SessionType": "Redfish",
+    "Token": null,
+    "UserName": "admin"
+}
 ```
 
 **What to verify:**
 
-- ✓ Response HTTP 200 OK
 - ✓ Session @odata.id matches the requested session-id
 - ✓ UserName is displayed
 - ✓ CreatedTime and other session metadata is present
@@ -525,13 +639,16 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
 **Requires Authentication:** Yes (session token or Basic Auth)
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -t <your-auth-token> -S Always Sessions -I <session-id> -m DELETE
+redfishtool -r <console_host_or_ip>:<console_port> -t <your-auth-token> -S Always SessionService logout -i<session-id>
 ```
+
+**Reference Successful Response:**
+
+A successful response will print no content on the output
 
 **What to verify:**
 
-- ✓ HTTP 204 No Content response
-- ✓ Session no longer appears in active sessions list
+- ✓ Session no longer appears in the active sessions list (see [Get Sessions](#get-sessions))
 - ✓ Session token is invalidated for future requests
 
 ### Advantages Over curl
