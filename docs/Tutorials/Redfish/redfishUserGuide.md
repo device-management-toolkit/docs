@@ -709,12 +709,118 @@ The following table provides curl commands for common Redfish API operations. Fo
 | **Power Cycle**<br/>Power cycle (off then on)<br/>*Requires Authentication* | `curl -sk -X POST -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{"ResetType": "PowerCycle"}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/ComputerSystem.Reset` | See [Perform Power Actions](#perform-power-actions) for details on all power operations |
 | **Reset to BIOS**<br/>Reset to BIOS<br/>*Requires Authentication* | `curl -sk -X PATCH -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{"Boot": {"BootSourceOverrideTarget": "BiosSetup", "BootSourceOverrideEnabled": "Once"}}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>` | See [Reset to BIOS](#reset-to-bios) for details |
 | **Get System Power State**<br/>Check current power state<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>` | See [Get System Power State](#get-system-power-state) for details |
-| **Get SessionService**<br/>Get SessionService metadata<br/>*No Authentication Required* | `curl -sk https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService` | See [Get SessionService](#get-sessionservice) for details |
+| **Get SessionService**<br/>Get SessionService metadata<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService` | See [Get SessionService](#get-sessionservice) for details |
 | **Get Sessions**<br/>Get all active sessions<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions` | See [Get Sessions](#get-sessions) for details |
 | **Create Session (Login)**<br/>Authenticate and obtain session token<br/>*No Pre-Authentication Required* | `curl -sk -X POST -H "Content-Type: application/json" -d '{"UserName": "<admin-user-name>", "Password": "<admin-password>"}' https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions` | See [Create Session](#create-session-login) for details |
 | **Get Session Details**<br/>Get details of a specific session<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions/<session-id>` | See [Get Session Details](#get-session-details) for details |
 | **Delete Session (Logout)**<br/>End a session and invalidate token<br/>*Requires Authentication* | `curl -sk -X DELETE -H "X-Auth-Token: <your-auth-token>" https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions/<session-id>` | See [Delete Session](#delete-session-logout) for details |
 
+
+### Using Sessions (X-Auth-Token)
+
+**Note:** `redfishtool` cannot use session tokens for most operations. Use `curl` with X-Auth-Token header for session-based requests.
+
+#### Step 1: Create Session and Extract Token
+
+=== "Windows"
+    ```powershell
+    # Create session and get response with headers
+    $RESPONSE = curl.exe -sk -X POST `
+      -u <admin-user-name>:<admin-password> `
+      -H "Content-Type: application/json" `
+      -d '{"UserName":"<admin-user-name>","Password":"<admin-password>"}' `
+      -i `
+      https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions
+
+    # Extract token and location from response
+    $TOKEN = ($RESPONSE | Select-String -Pattern "X-Auth-Token: (.+)").Matches.Groups[1].Value.Trim()
+    $SESSION_LOCATION = ($RESPONSE | Select-String -Pattern "Location: (.+)").Matches.Groups[1].Value.Trim()
+    ```
+
+=== "Linux"
+    ```bash
+    # Create session and extract token from response
+    TOKEN=$(curl -sk -X POST \
+      -u <admin-user-name>:<admin-password> \
+      -H "Content-Type: application/json" \
+      -d '{"UserName":"<admin-user-name>","Password":"<admin-password>"}' \
+      -i \
+      https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions \
+      2>/dev/null | grep -i "X-Auth-Token:" | awk '{print $2}' | tr -d '\r')
+
+    # Extract session location
+    SESSION_LOCATION=$(curl -sk -X POST \
+      -u <admin-user-name>:<admin-password> \
+      -H "Content-Type: application/json" \
+      -d '{"UserName":"<admin-user-name>","Password":"<admin-password>"}' \
+      -i \
+      https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions \
+      2>/dev/null | grep -i "Location:" | awk '{print $2}' | tr -d '\r')
+    ```
+
+#### Step 2: Use Session Token for Operations
+
+Now use the token instead of Basic Auth:
+
+=== "Windows"
+    ```powershell
+    # Get Systems Collection
+    curl.exe -sk -H "X-Auth-Token: $TOKEN" `
+      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems
+
+    # Get Specific System
+    curl.exe -sk -H "X-Auth-Token: $TOKEN" `
+      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>
+
+    # Power Action (ForceRestart)
+    curl.exe -sk -X POST `
+      -H "X-Auth-Token: $TOKEN" `
+      -H "Content-Type: application/json" `
+      -d '{"ResetType":"ForceRestart"}' `
+      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/ComputerSystem.Reset
+
+    # Get Sessions Collection
+    curl.exe -sk -H "X-Auth-Token: $TOKEN" `
+      https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions
+    ```
+
+=== "Linux"
+    ```bash
+    # Get Systems Collection
+    curl -sk -H "X-Auth-Token: $TOKEN" \
+      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems
+
+    # Get Specific System
+    curl -sk -H "X-Auth-Token: $TOKEN" \
+      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>
+
+    # Power Action (ForceRestart)
+    curl -sk -X POST \
+      -H "X-Auth-Token: $TOKEN" \
+      -H "Content-Type: application/json" \
+      -d '{"ResetType":"ForceRestart"}' \
+      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/ComputerSystem.Reset
+
+    # Get Sessions Collection
+    curl -sk -H "X-Auth-Token: $TOKEN" \
+      https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions
+    ```
+
+#### Step 3: Delete Session (Logout)
+
+=== "Windows"
+    ```powershell
+    # Delete the session to invalidate the token
+    curl.exe -sk -X DELETE -H "X-Auth-Token: $TOKEN" `
+      https://<console_host_or_ip>:<console_port>$SESSION_LOCATION
+    ```
+
+=== "Linux"
+    ```bash
+    # Delete the session to invalidate the token
+    curl -sk -X DELETE -H "X-Auth-Token: $TOKEN" \
+      https://<console_host_or_ip>:<console_port>$SESSION_LOCATION
+    ```
 
 ---
 
