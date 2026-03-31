@@ -5500,14 +5500,13 @@
 <p>Add the database client library you will use to connect to your database. To support MSSQL, this example uses the Microsoft SQL Server client* for Node.js, <a href="https://www.npmjs.com/package/mssql"><code>node-mssql</code></a>.</p>
 <p><strong>To add the database:</strong></p>
 <p>Open a Terminal or Command Prompt and navigate to a directory of your choice for development:</p>
-<div class="highlight"><pre><span></span><code>npm install node-mssql --save
-</code></pre></div>
+<p><code>npm install node-mssql --save</code></p>
 <h2 id="update-configuration">Update Configuration<a class="headerlink" href="#update-configuration" title="Permanent link">&para;</a></h2>
 <p>Update the connection string and a folder name for your db either in your ENV or .rc file.</p>
 <p><strong>To modify the configuration:</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;db_provider&quot;</span><span class="p">:</span><span class="s2">&quot;mssql&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">//This will be the name of the folder you create in the next section.</span>
-<span class="nt">&quot;connection_string&quot;</span><span class="p">:</span><span class="s2">&quot;Server=localhost,1433;Database=database;User Id=username;Password=password;Encrypt=true&#39;&quot;</span><span class="p">,</span>
-</code></pre></div>
+<p><code>json
+"db_provider":"mssql", //This will be the name of the folder you create in the next section.
+"connection_string":"Server=localhost,1433;Database=database;User Id=username;Password=password;Encrypt=true'",</code></p>
 <h2 id="implement-the-code">Implement the Code<a class="headerlink" href="#implement-the-code" title="Permanent link">&para;</a></h2>
 <p><strong>To support the new database:</strong></p>
 <ol>
@@ -5521,62 +5520,63 @@
 <li>
 <p>Create a file called <code>index.ts</code> that implements our IDB interface. Below is an example interface and query method:</p>
 <p><strong>Interface</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">IDB</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">ciraConfigs</span><span class="o">:</span><span class="w"> </span><span class="kt">ICiraConfigTable</span>
-<span class="w">  </span><span class="nx">domains</span><span class="o">:</span><span class="w"> </span><span class="kt">IDomainsTable</span>
-<span class="w">  </span><span class="nx">profiles</span><span class="o">:</span><span class="w"> </span><span class="kt">IProfilesTable</span>
-<span class="w">  </span><span class="nx">wirelessProfiles</span><span class="o">:</span><span class="w"> </span><span class="kt">IWirelessProfilesTable</span>
-<span class="w">  </span><span class="nx">profileWirelessConfigs</span><span class="o">:</span><span class="w"> </span><span class="kt">IProfilesWifiConfigsTable</span>
-<span class="w">  </span><span class="nx">query</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">params?</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span>
-<span class="p">}</span>
-</code></pre></div>
+<p><code>typescript
+ export interface IDB {
+   ciraConfigs: ICiraConfigTable
+   domains: IDomainsTable
+   profiles: IProfilesTable
+   wirelessProfiles: IWirelessProfilesTable
+   profileWirelessConfigs: IProfilesWifiConfigsTable
+   query: (text: string, params?: any) =&gt; Promise&lt;any&gt;
+ }</code></p>
 <p><strong>Query Method</strong></p>
 <p>This query function is responsible for taking in the query parameters and performing the execution.</p>
-<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="nx">query</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">params?</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">mssql</span><span class="p">.</span><span class="nx">IResult</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">   </span><span class="kd">let</span><span class="w"> </span><span class="nx">result</span>
-<span class="w">   </span><span class="kd">const</span><span class="w"> </span><span class="nx">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span>
-<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">     </span><span class="k">this</span><span class="p">.</span><span class="nx">sqlPool</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">         </span><span class="k">this</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-<span class="w">         </span><span class="nx">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-<span class="w">       </span><span class="p">}</span>
-<span class="w">       </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">sqlPool</span><span class="p">.</span><span class="nx">request</span><span class="p">().</span><span class="nx">query</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span>
-<span class="w">       </span><span class="kd">const</span><span class="w"> </span><span class="nx">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">start</span>
-<span class="w">       </span><span class="k">this</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">verbose</span><span class="p">(</span><span class="sb">`executed query: </span><span class="si">${</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="p">,</span><span class="w"> </span><span class="nx">duration</span><span class="p">,</span><span class="w"> </span><span class="nx">rows</span><span class="o">:</span><span class="w"> </span><span class="kt">result.recordset.length</span><span class="w"> </span><span class="si">}</span><span class="sb">)}`</span><span class="p">)</span>
-<span class="w">       </span><span class="nx">resolve</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
-<span class="w">       </span><span class="p">})</span>
-<span class="w">   </span><span class="p">})</span>
-<span class="p">}</span>
-</code></pre></div>
+<p><code>typescript
+ async query &lt;T&gt;(text: string, params?: any): Promise&lt;mssql.IResult&lt;T&gt;&gt; {
+    let result
+    const start = Date.now()
+    return await new Promise((resolve, reject) =&gt; {
+      this.sqlPool.connect(async (err) =&gt; {
+        if (err) {
+          this.log.error(err)
+          reject(err)
+        }
+        result = await this.sqlPool.request().query(text)
+        const duration = Date.now() - start
+        this.log.verbose(`executed query: ${JSON.stringify({ text, duration, rows: result.recordset.length })}`)
+        resolve(result)
+        })
+    })
+ }</code></p>
 </li>
 <li>
 <p>Implement each of the table interfaces. The base interface looks like this: 
-    <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">ITable</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">getCount</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">tenantId?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">number</span><span class="o">&gt;</span>
-<span class="w">  </span><span class="nx">get</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">limit</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">offset</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">tenantId?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">[]</span><span class="o">&gt;</span>
-<span class="w">  </span><span class="nx">getByName</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">tenantId?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span>
-<span class="w">  </span><span class="ow">delete</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">tenantId?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">boolean</span><span class="o">&gt;</span>
-<span class="w">  </span><span class="nx">insert</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">item</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span>
-<span class="w">  </span><span class="nx">update</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">item</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span>
-<span class="p">}</span>
-</code></pre></div>
+    <code>typescript
+    export interface ITable&lt;T&gt; {
+      getCount: (tenantId?: string) =&gt; Promise&lt;number&gt;
+      get: (limit: number, offset: number, tenantId?: string) =&gt; Promise&lt;T[]&gt;
+      getByName: (name: string, tenantId?: string) =&gt; Promise&lt;T&gt;
+      delete: (name: string, tenantId?: string) =&gt; Promise&lt;boolean&gt;
+      insert: (item: T) =&gt; Promise&lt;T&gt;
+      update: (item: T) =&gt; Promise&lt;T&gt;
+    }</code>
     There are interfaces for each table in the <code>./interfaces/database</code> which adds specific functions on top of the base <code>ITable&lt;&gt;</code> interface.</p>
 <p>Here's an example of the get implementation for Domains:</p>
-<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
-<span class="cm"> * @description Get all Domains from DB</span>
-<span class="cm"> * @param {number} top</span>
-<span class="cm"> * @param {number} skip</span>
-<span class="cm"> * @returns {AMTDomain[]} returns an array of AMT Domain objects from DB</span>
-<span class="cm"> */</span>
-<span class="k">async</span><span class="w"> </span><span class="nx">get</span><span class="w"> </span><span class="p">(</span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">DEFAULT_TOP</span><span class="p">,</span><span class="w"> </span><span class="nx">skip</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">DEFAULT_SKIP</span><span class="p">,</span><span class="w"> </span><span class="nx">tenantId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">AMTDomain</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">   </span><span class="kd">const</span><span class="w"> </span><span class="nx">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="sb">`</span>
-<span class="sb">   SELECT name as  profileName, domain_suffix as  domainSuffix, provisioning_cert as  provisioningCert, provisioning_cert_storage_format as  provisioningCertStorageFormat, provisioning_cert_key as  provisioningCertPassword, tenant_id tenantId</span>
-<span class="sb">   FROM domains </span>
-<span class="sb">  ORDER BY name`</span><span class="p">)</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">result</span>
-<span class="w"> </span><span class="p">}</span>
-</code></pre></div>
+<p><code>`` typescript
+/**
+ * @description Get all Domains from DB
+ * @param {number} top
+ * @param {number} skip
+ * @returns {AMTDomain[]} returns an array of AMT Domain objects from DB
+ */
+async get (top: number = DEFAULT_TOP, skip: number = DEFAULT_SKIP, tenantId: string = ''): Promise&lt;AMTDomain[]&gt; {
+   const results = await this.db.query(</code>
+   SELECT name as  profileName, domain_suffix as  domainSuffix, provisioning_cert as  provisioningCert, provisioning_cert_storage_format as  provisioningCertStorageFormat, provisioning_cert_key as  provisioningCertPassword, tenant_id tenantId
+   FROM domains 
+  ORDER BY name`)
+  return result
+ }</p>
+<p>```</p>
 </li>
 <li>
 <p>Complete all the queries for each table's functions to finish the implementation.</p>

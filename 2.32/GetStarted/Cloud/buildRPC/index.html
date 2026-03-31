@@ -5519,20 +5519,20 @@
 <ol>
 <li>
 <p>Change to the <code>rpc-go</code> directory of the cloned <code>cloud-deployment</code> repository.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>rpc-go
-</code></pre></div>
+<p><code>bash
+cd rpc-go</code></p>
 <details class="note">
 <summary>Haven't Cloned the <code>cloud-deployment</code> Repository?</summary>
 <ul>
 <li>
 <p>Only clone the <code>rpc-go</code> repository:
-    <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/device-management-toolkit/rpc-go<span class="w"> </span>--branch<span class="w"> </span>v2.49.0
-</code></pre></div></p>
+    <code>bash
+    git clone https://github.com/device-management-toolkit/rpc-go --branch v2.49.0</code></p>
 </li>
 <li>
 <p>Alternatively, clone the whole toolkit repository:
-    <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/device-management-toolkit/cloud-deployment<span class="w"> </span>--branch<span class="w"> </span>v2.32.0<span class="w"> </span>--recursive
-</code></pre></div></p>
+    <code>bash
+    git clone https://github.com/device-management-toolkit/cloud-deployment --branch v2.32.0 --recursive</code></p>
 </li>
 </ul>
 </details>
@@ -5542,16 +5542,16 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux</label><label for="__tabbed_1_2">Windows</label><label for="__tabbed_1_3">Docker (On Linux Host Only)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>go<span class="w"> </span>build<span class="w"> </span>-o<span class="w"> </span>rpc<span class="w"> </span>./cmd/main.go
-</code></pre></div>
+<p><code>bash
+go build -o rpc ./cmd/main.go</code></p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>go<span class="w"> </span>build<span class="w"> </span>-o<span class="w"> </span>rpc.exe<span class="w"> </span>./cmd/main.go
-</code></pre></div>
+<p><code>bash
+go build -o rpc.exe ./cmd/main.go</code></p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;Dockerfile&quot;</span><span class="w"> </span>-t<span class="w"> </span>rpc-go:latest<span class="w"> </span>.
-</code></pre></div>
+<p><code>bash
+docker build -f "Dockerfile" -t rpc-go:latest .</code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The image created with the Docker instruction above is only suitable for Docker on a Linux host. </p>
@@ -5566,16 +5566,15 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Linux</label><label for="__tabbed_2_2">Windows</label><label for="__tabbed_2_3">Docker (On Linux Host Only)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>./rpc<span class="w"> </span>version
-</code></pre></div>
+<p><code>bash
+sudo ./rpc version</code></p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>.\rpc version
-</code></pre></div>
+<p><code>.\rpc version</code>        </p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-it<span class="w"> </span>--device<span class="o">=</span>/dev/mei0<span class="w"> </span>rpc-go:latest<span class="w"> </span>version
-</code></pre></div>
+<p><code>bash
+sudo docker run --rm -it --device=/dev/mei0 rpc-go:latest version</code></p>
 </div>
 </div>
 </div>
@@ -5616,16 +5615,15 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Linux</label><label for="__tabbed_3_2">Windows</label><label for="__tabbed_3_3">Docker (On Linux Host Only)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>./rpc<span class="w"> </span>activate<span class="w"> </span>-u<span class="w"> </span>wss://<span class="o">[</span>Development-IP-Address<span class="o">]</span>/activate<span class="w"> </span>-n<span class="w"> </span>-profile<span class="w"> </span><span class="o">[</span>profileName<span class="o">]</span>
-</code></pre></div>
+<p><code>bash
+sudo ./rpc activate -u wss://[Development-IP-Address]/activate -n -profile [profileName]</code></p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>.\rpc activate -u wss://[Development-IP-Address]/activate -n -profile [profileName]
-</code></pre></div>
+<p><code>.\rpc activate -u wss://[Development-IP-Address]/activate -n -profile [profileName]</code>        </p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-it<span class="w"> </span>--device<span class="o">=</span>/dev/mei0<span class="w"> </span>rpc-go:latest<span class="w"> </span>activate<span class="w"> </span>-u<span class="w"> </span>wss://<span class="o">[</span>Development-IP-Address<span class="o">]</span>/activate<span class="w"> </span>-n<span class="w"> </span>-profile<span class="w"> </span><span class="o">[</span>profileName<span class="o">]</span>
-</code></pre></div>
+<p><code>bash
+sudo docker run --rm -it --device=/dev/mei0 rpc-go:latest activate -u wss://[Development-IP-Address]/activate -n -profile [profileName]</code></p>
 </div>
 </div>
 </div>

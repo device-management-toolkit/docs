@@ -5561,12 +5561,10 @@ When Intel AMT is configured for mutual authentication, it validates incoming cl
 <p class="admonition-title">Alternative Option - Using a Config File</p>
 <p>Rather than passing in individual flag options, a <code>.yaml</code> or <code>.json</code> config file can be passed. See <a href="../../../RPC/v2/commandsRPC/#tls"><code>rpc configure tls</code> Command Documentation</a> for more details and examples.</p>
 </div>
-<div class="highlight"><pre><span></span><code>rpc configure tls -mode [configurationMode] -password [AMTPassword] -eaAddress http://[IP-Address-or-FQDN]:8000 -eaUsername [myUsername] -eaPassword [myPassword]
-</code></pre></div>
+<p><code>rpc configure tls -mode [configurationMode] -password [AMTPassword] -eaAddress http://[IP-Address-or-FQDN]:8000 -eaUsername [myUsername] -eaPassword [myPassword]</code></p>
 <div class="admonition example">
 <p class="admonition-title">Example Command</p>
-<div class="highlight"><pre><span></span><code>rpc configure tls -mode Server -password AMTpassword123! -eaAddress http://192.168.2.50:8000 -eaUsername admin -eaPassword P@ssw0rd
-</code></pre></div>
+<p><code>rpc configure tls -mode Server -password AMTpassword123! -eaAddress http://192.168.2.50:8000 -eaUsername admin -eaPassword P@ssw0rd</code></p>
 </div>
 <p>The toolkit offers two configuration modes: </p>
 <table>

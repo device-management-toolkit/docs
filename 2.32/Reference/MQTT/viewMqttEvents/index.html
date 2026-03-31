@@ -5498,19 +5498,17 @@
 </li>
 <li>
 <p>Pull the Mosquitto image. Read more about profiles in the Docker docs at <a href="https://docs.docker.com/compose/profiles/">Using profiles with Compose</a>.</p>
-<div class="highlight"><pre><span></span><code>docker compose --profile mqtt pull
-</code></pre></div>
+<p><code>docker compose --profile mqtt pull</code></p>
 </li>
 <li>
 <p>Start the Mosquitto container.</p>
-<div class="highlight"><pre><span></span><code>docker compose --profile mqtt up -d
-</code></pre></div>
+<p><code>docker compose --profile mqtt up -d</code>        </p>
 <div class="admonition note">
 <p class="admonition-title">Note - Cleaning up Mosquitto Container</p>
 <p>When stopping and cleaning up containers deployed using the <code>mqtt</code> profile, you must also use that profile when running <code>docker compose down</code> in order to remove all resources.</p>
 <p>Example:
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>--profile<span class="w"> </span>mqtt<span class="w"> </span>down<span class="w"> </span>-v
-</code></pre></div></p>
+<code>bash
+docker compose --profile mqtt down -v</code></p>
 </div>
 </li>
 </ol>

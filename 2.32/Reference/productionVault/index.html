@@ -3268,6 +3268,18 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VAULT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VAULT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3275,6 +3287,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -5480,8 +5497,6 @@
   
 
 
-  <h1>Production Mode Vault</h1>
-
 <p>Learn how to run <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> using Vault in production server mode. The current local <code>docker-compose.yml</code> file runs Vault in development mode which makes experimenting with the services easier since static tokens can be used for access and unsealing Vault is not required. The downside to this approach is that all Vault data is only stored in memory and is lost once the Vault container is stopped. Running Vault in production mode requires additional steps, but allows Vault data to persist on host filesystem after the container restarts.</p>
 <h2 id="configure-the-toolkit">Configure the Toolkit<a class="headerlink" href="#configure-the-toolkit" title="Permanent link">&para;</a></h2>
 <ol>
@@ -5490,49 +5505,48 @@
 </li>
 <li>
 <p>Update the vault section in the <code>docker-compose.yml</code> file with the section below.
-    <div class="highlight"><pre><span></span><code><span class="nt">vault</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hashicorp/vault</span>
-<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openamtnetwork</span>
-<span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"> </span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8200:8200&quot;</span>
-<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">private-volume:/vault/data:rw</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./vault:/vault/config:rw</span>
-<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span>
-<span class="w">      </span><span class="nt">VAULT_DEV_ROOT_TOKEN_ID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${VAULT_TOKEN}</span>
-<span class="w">      </span><span class="nt">VAULT_DEV_LISTEN_ADDRESS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0:8200</span>
-<span class="w">    </span><span class="nt">cap_add</span><span class="p">:</span><span class="w"> </span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IPC_LOCK</span>
-<span class="w">    </span><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault server -config=/vault/config/vault.json</span>
-</code></pre></div></p>
+    <code>yaml
+    vault:
+        restart: always
+        image: hashicorp/vault
+        networks:
+          - openamtnetwork
+        ports: 
+          - "8200:8200"
+        volumes:
+          - private-volume:/vault/data:rw
+          - ./vault:/vault/config:rw
+        environment: 
+          VAULT_DEV_ROOT_TOKEN_ID: ${VAULT_TOKEN}
+          VAULT_DEV_LISTEN_ADDRESS: 0.0.0.0:8200
+        cap_add: 
+          - IPC_LOCK
+        entrypoint: vault server -config=/vault/config/vault.json</code></p>
 </li>
 <li>
 <p>Create a folder named <code>vault</code> located in <code>./cloud-deployment</code> directory and create a new file named <code>vault.json</code> in that folder with the contents below:
-    <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;storage&quot;</span><span class="p">:{</span>
-<span class="w">        </span><span class="nt">&quot;file&quot;</span><span class="p">:{</span>
-<span class="w">            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/vault/data&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;listener&quot;</span><span class="p">:{</span>
-<span class="w">        </span><span class="nt">&quot;tcp&quot;</span><span class="p">:{</span>
-<span class="w">            </span><span class="nt">&quot;address&quot;</span><span class="p">:</span><span class="s2">&quot;0.0.0.0:8200&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;tls_disable&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;default_lease_ttl&quot;</span><span class="p">:</span><span class="s2">&quot;168h&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;max_lease_ttl&quot;</span><span class="p">:</span><span class="s2">&quot;0h&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;ui&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;log_level&quot;</span><span class="p">:</span><span class="s2">&quot;Debug&quot;</span>
-<span class="p">}</span>
-</code></pre></div></p>
+    <code>json
+    {
+        "storage":{
+            "file":{
+                "path":"/vault/data"
+            }
+        },
+        "listener":{
+            "tcp":{
+                "address":"0.0.0.0:8200",
+                "tls_disable": "true"
+            }
+        },
+        "default_lease_ttl":"168h",
+        "max_lease_ttl":"0h",
+        "ui":true,
+        "log_level":"Debug"
+    }</code></p>
 </li>
 <li>
 <p>Run `docker compose`` to start the containers from the ./cloud-deployment directory.
-    <div class="highlight"><pre><span></span><code>docker compose up -d --build
-</code></pre></div></p>
+    <code>docker compose up -d --build</code></p>
 </li>
 </ol>
 <h2 id="initialize-and-unseal-vault">Initialize and Unseal Vault<a class="headerlink" href="#initialize-and-unseal-vault" title="Permanent link">&para;</a></h2>
@@ -5578,17 +5592,17 @@
 <p>Update the <code>VAULT_TOKEN</code> to the Root Token generated by Vault.</p>
 <div class="admonition example -">
 <p class="admonition-title">Example - Vault Section of .env file</p>
-<div class="highlight"><pre><span></span><code># VAULT
-SECRETS_PATH=kv/data/
+<p>```</p>
+<h1 id="vault">VAULT<a class="headerlink" href="#vault" title="Permanent link">&para;</a></h1>
+<p>SECRETS_PATH=kv/data/
 VAULT_ADDRESS=http://vault:8200
 VAULT_TOKEN=s.Mw7t070naY4PfyJk5KEkcX3I
-</code></pre></div>
+```</p>
 </div>
 </li>
 <li>
 <p>Rebuild and restart your Docker images and containers.</p>
-<div class="highlight"><pre><span></span><code>docker compose up -d --build
-</code></pre></div>
+<p><code>docker compose up -d --build</code></p>
 </li>
 <li>
 <p>Unseal Vault at <code>http://localhost:8200</code> after restarting the container.</p>

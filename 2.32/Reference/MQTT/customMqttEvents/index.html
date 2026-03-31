@@ -5542,11 +5542,11 @@
 <li>Use the <code>publishEvent</code> method to add <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> or <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> events. </li>
 </ol>
 <p>Example:</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">MqttProvider</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../../utils/mqttProvider&#39;</span>
-
-<span class="nx">MqttProvider</span><span class="p">.</span><span class="nx">publishEvent</span><span class="p">(</span><span class="s1">&#39;success&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;Example&#39;</span><span class="p">],</span><span class="w"> </span><span class="s1">&#39;Hello World&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">guid</span><span class="p">)</span>
-</code></pre></div>
-The <code>publishEvent</code> method parameters:</p>
+<p>``` ts
+import { MqttProvider } from '../../utils/mqttProvider'</p>
+<p>MqttProvider.publishEvent('success', ['Example'], 'Hello World', guid)
+<code>``
+The</code>publishEvent` method parameters:</p>
 <table>
 <thead>
 <tr>
@@ -5591,9 +5591,9 @@ The <code>publishEvent</code> method parameters:</p>
 <li>Open the <code>index.ts</code> file of <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> or <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>.</li>
 <li>Add the following:</li>
 </ol>
-<p><div class="highlight"><pre><span></span><code><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">mqtt</span><span class="o">:</span><span class="w"> </span><span class="kt">MqttProvider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MqttProvider</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span>
-<span class="w">  </span><span class="nx">mqtt</span><span class="p">.</span><span class="nx">connectBroker</span><span class="p">()</span>
-</code></pre></div>
+<p><code>ts
+  const mqtt: MqttProvider = new MqttProvider(config)
+  mqtt.connectBroker()</code>
 The <code>connectBroker</code> method creates the connection between a client, stored in the class, and the <code>mosquitto</code> docker container, which acts as the <abbr title="Message Queuing Telemetry Transport - A lightweight publisher / subscriber network protocol for transferring messages between devices.">MQTT</abbr> Broker. The instance of the class, after it has been created and connected, is stored as a static object within the class. This storage enables access to the methods in the class with a simple import rather than passing the instance to <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> or <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>.</p>
 <p>The config parameter contains the config types of <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>. <code>MqttProvider</code> uses the <code>MQTT_ADDRESS</code> environment variable to establish a connection. </p>
 <div class="admonition important">

@@ -5497,14 +5497,14 @@
 <h2 id="via-api-method">Via API Method<a class="headerlink" href="#via-api-method" title="Permanent link">&para;</a></h2>
 <p>A device's GUID can also be found via the AllDevices or ConnectedDevices <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> methods. Users can follow the <a href="../../Tutorials/apiTutorial/">Construct a Rest API Call</a> tutorial on constructing and running the ConnectedDevices method as an example.</p>
 <p>Example ConnectedDevices Output:
-<div class="highlight"><pre><span></span><code><span class="p">[{</span>
-<span class="hll"><span class="w">    </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d12428be-9fa1-4226-9784-54b2038beab6&quot;</span><span class="p">,</span>
-</span><span class="w">    </span><span class="nt">&quot;amtuser&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;mpsuser&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;standalone&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;conn&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d12428be-9fa1-4226-9784-54b2038beab6&quot;</span>
-<span class="p">}]</span>
-</code></pre></div></p>
+<code>json hl_lines="2"
+[{
+    "host": "d12428be-9fa1-4226-9784-54b2038beab6",
+    "amtuser": "admin",
+    "mpsuser": "standalone",
+    "conn": 1,
+    "name": "d12428be-9fa1-4226-9784-54b2038beab6"
+}]</code></p>
 
 
 

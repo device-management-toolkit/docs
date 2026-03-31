@@ -5662,8 +5662,7 @@
 <ol>
 <li>
 <p>Clone the cloud-deployment repository.</p>
-<div class="highlight"><pre><span></span><code>git clone https://github.com/device-management-toolkit/cloud-deployment.git --branch v2.32.0
-</code></pre></div>
+<p><code>git clone https://github.com/device-management-toolkit/cloud-deployment.git --branch v2.32.0</code></p>
 </li>
 </ol>
 <h2 id="create-a-new-eks-cluster">Create a New EKS Cluster<a class="headerlink" href="#create-a-new-eks-cluster" title="Permanent link">&para;</a></h2>
@@ -5671,16 +5670,14 @@
 <li>
 <p>Login or Authenticate to AWS. See <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html">Configure AWS CLI for SSO</a>, if not setup yet.</p>
 <p>If your organization does not use SSO, see <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-authentication.html">Authentication and access credentials</a> for all authentication options to choose from and how to configure the AWS CLI.</p>
-<div class="highlight"><pre><span></span><code>aws sso login
-</code></pre></div>
+<p><code>aws sso login</code></p>
 </li>
 <li>
 <p>Follow steps to <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html">Create a key pair using Amazon EC2</a> to create a SSH key for accessing the cluster.</p>
 </li>
 <li>
 <p>Create a new EKS cluster and supporting components.</p>
-<div class="highlight"><pre><span></span><code>eksctl create cluster --name &lt;cluster-name&gt; --region &lt;region&gt; --with-oidc --ssh-access --ssh-public-key &lt;ssh-keypair-name&gt; --managed
-</code></pre></div>
+<p><code>eksctl create cluster --name &lt;cluster-name&gt; --region &lt;region&gt; --with-oidc --ssh-access --ssh-public-key &lt;ssh-keypair-name&gt; --managed</code></p>
 <p>Where:</p>
 <ul>
 <li><strong>&lt;cluster-name&gt;</strong> is the name of the new EKS cluster.</li>
@@ -5694,8 +5691,7 @@
 <ol>
 <li>
 <p>Provide your region and cluster name.</p>
-<div class="highlight"><pre><span></span><code>aws eks update-kubeconfig --region &lt;region&gt; --name &lt;cluster-name&gt;
-</code></pre></div>
+<p><code>aws eks update-kubeconfig --region &lt;region&gt; --name &lt;cluster-name&gt;</code></p>
 <p>Where:</p>
 <ul>
 <li><strong>&lt;cluster-name&gt;</strong> is the name of your EKS cluster.</li>
@@ -5794,8 +5790,7 @@
 </li>
 <li>
 <p>Create the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> database and tables. Provide the database password when prompted.</p>
-<div class="highlight"><pre><span></span><code>psql -h &lt;SERVERURL&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -f ./data/init.sql -f ./data/initMPS.sql
-</code></pre></div>
+<p><code>psql -h &lt;SERVERURL&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -f ./data/init.sql -f ./data/initMPS.sql</code></p>
 </li>
 </ol>
 <h2 id="create-kubernetes-secrets">Create Kubernetes Secrets<a class="headerlink" href="#create-kubernetes-secrets" title="Permanent link">&para;</a></h2>
@@ -5924,8 +5919,7 @@
 </li>
 <li>
 <p>Apply the configuration file to create the secrets.</p>
-<div class="highlight"><pre><span></span><code>kubectl apply -f ./kubernetes/charts/secrets.yaml
-</code></pre></div>
+<p><code>kubectl apply -f ./kubernetes/charts/secrets.yaml</code></p>
 </li>
 </ol>
 <h2 id="update-configuration">Update Configuration<a class="headerlink" href="#update-configuration" title="Permanent link">&para;</a></h2>
@@ -5936,11 +5930,11 @@
 </li>
 <li>
 <p>Remove the <strong>annotations</strong> section and <code>service.beta.kubernetes.io/azure-dns-label-name</code> key in the <code>kong:</code> section. These are Azure-specific implementations.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">kong</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">proxy</span><span class="p">:</span>
-<span class="hll"><span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span><span class="c1"># Delete this line</span>
-</span><span class="hll"><span class="w">      </span><span class="nt">service.beta.kubernetes.io/azure-dns-label-name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;your-domain-name&gt;&quot;</span><span class="w"> </span><span class="c1"># Delete this line</span>
-</span></code></pre></div>
+<p><code>yaml hl_lines="3 4"
+kong:
+  proxy:
+    annotations: # Delete this line
+      service.beta.kubernetes.io/azure-dns-label-name: "&lt;your-domain-name&gt;" # Delete this line</code></p>
 </li>
 <li>
 <p>Save the file.</p>
@@ -5950,34 +5944,31 @@
 <ol>
 <li>
 <p>Deploy using Helm.</p>
-<div class="highlight"><pre><span></span><code>helm install devicemgmtstack ./kubernetes/charts
-</code></pre></div>
+<p><code>helm install devicemgmtstack ./kubernetes/charts</code></p>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>NAME: devicemgmtstack
+<p><code>NAME: devicemgmtstack
 LAST DEPLOYED: Thu Jul 15 11:17:38 2021
 NAMESPACE: default
 STATUS: deployed
 REVISION: 1
-TEST SUITE: None
-</code></pre></div>
+TEST SUITE: None</code></p>
 </div>
 </li>
 <li>
 <p>View the pods. You might notice <code>mps</code>, <code>rps</code>, and <code>devicemgmtstack-vault-0</code> are not ready. This will change after we initialize and unseal Vault. All others should be Ready and Running.</p>
-<div class="highlight"><pre><span></span><code>kubectl get pods
-</code></pre></div>
+<p><code>kubectl get pods</code></p>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>NAME                                                 READY   STATUS                       RESTARTS   AGE
-<span class="hll">mps-69786bfb47-92mpc                                 0/1     CreateContainerConfigError   0          2m6s
-</span>mpsrouter-9b9bc499b-2tkb2                            1/1     Running                      0          2m6s
+<p><code>hl_lines="2 5 7"
+NAME                                                 READY   STATUS                       RESTARTS   AGE
+mps-69786bfb47-92mpc                                 0/1     CreateContainerConfigError   0          2m6s
+mpsrouter-9b9bc499b-2tkb2                            1/1     Running                      0          2m6s
 devicemgmtstack-kong-68d6c84bcc-fp8dl                   2/2     Running                      0          2m6s
-<span class="hll">devicemgmtstack-vault-0                                 0/1     Running                      0          2m6s
-</span>devicemgmtstack-vault-agent-injector-6b564845db-zss78   1/1     Running                      0          2m6s
-<span class="hll">rps-79877bf5c5-dsg5p                                 0/1     CreateContainerConfigError   0          2m6s
-</span>webui-6cc48f4d68-6r8b5                               1/1     Running                      0          2m6s
-</code></pre></div>
+devicemgmtstack-vault-0                                 0/1     Running                      0          2m6s
+devicemgmtstack-vault-agent-injector-6b564845db-zss78   1/1     Running                      0          2m6s
+rps-79877bf5c5-dsg5p                                 0/1     CreateContainerConfigError   0          2m6s
+webui-6cc48f4d68-6r8b5                               1/1     Running                      0          2m6s</code></p>
 </div>
 </li>
 </ol>
@@ -5989,8 +5980,7 @@ devicemgmtstack-kong-68d6c84bcc-fp8dl                   2/2     Running         
 <div class="admonition tip">
 <p class="admonition-title">Tip - Finding the Vault UI External IP Address</p>
 <p>The external IP of your Vault UI service can be found by running:</p>
-<div class="highlight"><pre><span></span><code>kubectl get services devicemgmtstack-vault-ui
-</code></pre></div>
+<p><code>kubectl get services devicemgmtstack-vault-ui</code></p>
 </div>
 <ol>
 <li>
@@ -6026,55 +6016,49 @@ devicemgmtstack-kong-68d6c84bcc-fp8dl                   2/2     Running         
 </li>
 <li>
 <p>Update the Kubernetes <code>vault</code> secret.</p>
-<div class="highlight"><pre><span></span><code>kubectl apply -f ./kubernetes/charts/secrets.yaml -l app=vault
-</code></pre></div>
+<p><code>kubectl apply -f ./kubernetes/charts/secrets.yaml -l app=vault</code></p>
 </li>
 </ol>
 <h3 id="update-commonname-in-valuesyml">Update commonName in values.yml<a class="headerlink" href="#update-commonname-in-valuesyml" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p>Get the <code>External-IP</code> for accessing the UI. Note and save the value under <code>EXTERNAL-IP</code>.</p>
-<div class="highlight"><pre><span></span><code>kubectl get service devicemgmtstack-kong-proxy
-</code></pre></div>
+<p><code>kubectl get service devicemgmtstack-kong-proxy</code></p>
 </li>
 <li>
 <p>Update the value for <code>commonName</code> in the <strong>mps</strong> section in the <code>values.yml</code> file with the <code>External-IP</code> from above.  Recall that <code>values.yml</code> is located in <code>./kubernetes/charts/</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">mps</span><span class="p">:</span>
-<span class="hll"><span class="w">    </span><span class="nt">commonName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="c1"># update with External-IP from `kubectl get services`</span>
-</span><span class="w">    </span><span class="nt">replicaCount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">    </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;silly&quot;</span>
-<span class="w">    </span><span class="nt">jwtExpiration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1440</span>
-</code></pre></div>
+<p><code>yaml hl_lines="2"
+mps:
+    commonName: "" # update with External-IP from `kubectl get services`
+    replicaCount: 1
+    logLevel: "silly"
+    jwtExpiration: 1440</code></p>
 </li>
 <li>
 <p>Update the stack using helm.</p>
-<div class="highlight"><pre><span></span><code>helm upgrade devicemgmtstack ./kubernetes/charts 
-</code></pre></div>
+<p><code>helm upgrade devicemgmtstack ./kubernetes/charts</code></p>
 </li>
 </ol>
 <h2 id="verify-running-pods">Verify running pods<a class="headerlink" href="#verify-running-pods" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>View the pods. All pods should now be Ready and Running.</p>
-<div class="highlight"><pre><span></span><code>kubectl get pods
-</code></pre></div>
+<p><code>kubectl get pods</code></p>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>NAME                                                 READY   STATUS      RESTARTS   AGE
+<p><code>NAME                                                 READY   STATUS      RESTARTS   AGE
 mps-69786bfb47-92mpc                                 1/1     Running     0          4m5s
 mpsrouter-9b9bc499b-2tkb2                            1/1     Running     0          4m5s
 devicemgmtstack-kong-68d6c84bcc-fp8dl                   2/2     Running     0          4m5s
 devicemgmtstack-vault-0                                 1/1     Running     0          4m5s
 devicemgmtstack-vault-agent-injector-6b564845db-zss78   1/1     Running     0          4m5s
 rps-79877bf5c5-dsg5p                                 1/1     Running     0          4m5s
-webui-6cc48f4d68-6r8b5                               1/1     Running     0          4m5s
-</code></pre></div>
+webui-6cc48f4d68-6r8b5                               1/1     Running     0          4m5s</code></p>
 </div>
 </li>
 <li>
 <p>Check that the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Certificate is correct in your browser. Go to your FQDN at port 4433.</p>
-<div class="highlight"><pre><span></span><code>https://&lt;Your-AWS-FQDN&gt;:4433
-</code></pre></div>
+<p><code>https://&lt;Your-AWS-FQDN&gt;:4433</code></p>
 </li>
 <li>
 <p>Verify the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Certificate in your browser has the correct Issuer information and is Issued to your FQDN.</p>
@@ -6101,16 +6085,14 @@ webui-6cc48f4d68-6r8b5                               1/1     Running     0      
 </li>
 <li>
 <p>In a terminal, run the following command.</p>
-<div class="highlight"><pre><span></span><code>kubectl rollout restart deployment mps 
-</code></pre></div>
+<p><code>kubectl rollout restart deployment mps</code></p>
 </li>
 <li>
 <p>A new, correct <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Cert should be generated.</p>
 </li>
 <li>
 <p>Go back to the webserver in your browser.</p>
-<div class="highlight"><pre><span></span><code>https://&lt;Your-AWS-FQDN&gt;:4433
-</code></pre></div>
+<p><code>https://&lt;Your-AWS-FQDN&gt;:4433</code></p>
 </li>
 <li>
 <p>Verify the <code>Issued to:</code> field is no longer NaN/blank and now shows the correct FQDN.</p>

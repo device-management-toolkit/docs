@@ -5664,20 +5664,20 @@
 <ol>
 <li>
 <p>Clone the repository:</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/device-management-toolkit/ui-toolkit-react.git
-<span class="nb">cd</span><span class="w"> </span>ui-toolkit-react
-</code></pre></div>
+<p><code>bash
+git clone https://github.com/device-management-toolkit/ui-toolkit-react.git
+cd ui-toolkit-react</code></p>
 </li>
 <li>
 <p>Navigate to the example directory and install dependencies:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>example
-npm<span class="w"> </span>install
-</code></pre></div>
+<p><code>bash
+cd example
+npm install</code></p>
 </li>
 <li>
 <p>Start the development server:</p>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>dev
-</code></pre></div>
+<p><code>bash
+npm run dev</code></p>
 <p>By default, Vite runs on port <code>5173</code>. If port <code>5173</code> is already in use, Vite will automatically use the next available port.</p>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
@@ -5753,15 +5753,14 @@ npm<span class="w"> </span>install
 <li>Click <strong>Connect</strong>. The button changes to <em>Connecting...</em> while the WebSocket session is established.</li>
 <li>
 <p>Once connected, reset the device to BIOS with <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr> enabled by sending a Power Action via the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> API:</p>
-<div class="highlight"><pre><span></span><code>POST /api/v1/amt/power/bootOptions/{guid}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PowerAction&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;useSOL&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;bootDetails&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
-<span class="p">}</span>
-</code></pre></div>
+<p><code>POST /api/v1/amt/power/bootOptions/{guid}</code></p>
+<p><code>json
+{
+  "method": "PowerAction",
+  "action": 101,
+  "useSOL": true,
+  "bootDetails": {}
+}</code></p>
 </li>
 <li>
 <p>The terminal window displays the serial console output. All keyboard input is sent directly to the remote device.</p>

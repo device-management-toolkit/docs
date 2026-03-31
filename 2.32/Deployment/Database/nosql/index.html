@@ -2269,6 +2269,23 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mps-router" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MPS ROUTER
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MPS ROUTER">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#edit-docker-composeyml" class="md-nav__link">
     <span class="md-ellipsis">
@@ -5468,8 +5485,6 @@
   
 
 
-  <h1>NoSQL Databases</h1>
-
 <p><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> can support NoSQL databases. This is an optional alternative to the existing SQL-based reference deployment that uses Postgres. <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> will still require a relational database such as PostgreSQL.</p>
 <p>NoSQL databases come in a variety of types based on their data model. The main types are document, key-value, wide-column, and graph. They provide flexible schemas and scale easily with large amounts of data and high user loads.</p>
 <p>NoSQL support is integrated using the MongoDB API. This does not just limit integration options to MongoDB itself, but can utilize other providers such as:</p>
@@ -5483,8 +5498,8 @@
 <ol>
 <li>
 <p>Stop any running containers. This will wipe all data and devices will have to be reprovisioned against the new <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>/<abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> servers.</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>down<span class="w"> </span>-v
-</code></pre></div>
+<p><code>bash
+docker compose down -v</code></p>
 </li>
 </ol>
 <h3 id="edit-environment-variables">Edit Environment Variables<a class="headerlink" href="#edit-environment-variables" title="Permanent link">&para;</a></h3>
@@ -5494,16 +5509,16 @@
 </li>
 <li>
 <p>Add a new environment variable in the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> section.</p>
-<div class="highlight"><pre><span></span><code>...
+<p>``` hl_lines="5"
+...
 MPS_JWT_SECRET=secret
 MPS_JWT_ISSUER=9EmRJTbIiIb4bIeSsmgcWIjrR6HyETqc
 MPS_MQTT_ADDRESS=
-<span class="hll">MPS_DB_PROVIDER=mongo
-</span>
-# MPS ROUTER
-PORT=8003
+MPS_DB_PROVIDER=mongo</p>
+<h1 id="mps-router"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> ROUTER<a class="headerlink" href="#mps-router" title="Permanent link">&para;</a></h1>
+<p>PORT=8003
 ...
-</code></pre></div>
+```</p>
 </li>
 <li>
 <p>Save the file.</p>
@@ -5516,17 +5531,17 @@ PORT=8003
 </li>
 <li>
 <p>Add the Mongo image and configuration. This guide reuses the preexisting <code>POSTGRES_USER</code> and <code>POSTGRES_PASSWORD</code> environment variables for the MongoDB credentials and connection strings for easy configuration and demonstration. </p>
-<div class="highlight"><pre><span></span><code><span class="nt">mongo</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mongo</span>
-<span class="w">  </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
-<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">27017:27017</span>
-<span class="w">  </span><span class="nt">networks</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openamtnetwork</span>
-<span class="w">  </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">MONGO_INITDB_ROOT_USERNAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${POSTGRES_USER}</span>
-<span class="w">    </span><span class="nt">MONGO_INITDB_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${POSTGRES_PASSWORD}</span>
-</code></pre></div>
+<p><code>yaml
+mongo:
+  image: mongo
+  restart: always
+  ports:
+    - 27017:27017
+  networks:
+    - openamtnetwork
+  environment:
+    MONGO_INITDB_ROOT_USERNAME: ${POSTGRES_USER}
+    MONGO_INITDB_ROOT_PASSWORD: ${POSTGRES_PASSWORD}</code></p>
 </li>
 <li>
 <p>Update connection strings of <code>mps</code> and <code>mpsrouter</code>.</p>
@@ -5555,25 +5570,25 @@ PORT=8003
 <ol>
 <li>
 <p>Start the containers.</p>
-<div class="highlight"><pre><span></span><code>docker compose up -d
-</code></pre></div>
+<p><code>docker compose up -d</code></p>
 </li>
 <li>
 <p>Check that all the containers are running and healthy.</p>
-<div class="highlight"><pre><span></span><code>docker ps --format &quot;table {{.Image}}\t{{.Status}}\t{{.Names}}&quot;
-</code></pre></div>
+<p>```</p>
+<p>docker ps --format "table {{.Image}}\t{{.Status}}\t{{.Names}}"</p>
+<p>```</p>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>IMAGE<span class="w">                               </span>STATUS<span class="w">                        </span>NAMES
-intel/oact-rps:latest<span class="w">               </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-rps-1<span class="w">      </span>
-hashicorp/vault<span class="w">                     </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w">                  </span>device-management-toolkit-vault-1<span class="w">    </span>
-intel/oact-mpsrouter:latest<span class="w">         </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-mpsrouter-1
-postgres:15<span class="w">                         </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-db-1<span class="w">       </span>
-intel/oact-webui:latest<span class="w">             </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w">                  </span>device-management-toolkit-webui-1<span class="w">    </span>
-kong:3.1<span class="w">                            </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-kong-1<span class="w">     </span>
-intel/oact-mps:latest<span class="w">               </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-mps-1
-<span class="hll">mongo<span class="w">                               </span>Up<span class="w"> </span><span class="m">19</span><span class="w"> </span>seconds<span class="w">                  </span>device-management-toolkit-mongo-1
-</span></code></pre></div>
+<p><code>bash hl_lines="9"
+IMAGE                               STATUS                        NAMES
+intel/oact-rps:latest               Up 19 seconds (healthy)        device-management-toolkit-rps-1      
+hashicorp/vault                     Up 19 seconds                  device-management-toolkit-vault-1    
+intel/oact-mpsrouter:latest         Up 19 seconds (healthy)        device-management-toolkit-mpsrouter-1
+postgres:15                         Up 19 seconds (healthy)        device-management-toolkit-db-1       
+intel/oact-webui:latest             Up 19 seconds                  device-management-toolkit-webui-1    
+kong:3.1                            Up 19 seconds (healthy)        device-management-toolkit-kong-1     
+intel/oact-mps:latest               Up 19 seconds (healthy)        device-management-toolkit-mps-1
+mongo                               Up 19 seconds                  device-management-toolkit-mongo-1</code></p>
 </div>
 </li>
 <li>

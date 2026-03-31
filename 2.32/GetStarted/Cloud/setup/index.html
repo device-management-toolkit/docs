@@ -5478,13 +5478,13 @@
 <ol>
 <li>
 <p>Open a Terminal or Command Prompt and navigate to a directory of your choice for development:</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/device-management-toolkit/cloud-deployment<span class="w"> </span>--branch<span class="w"> </span>v2.32.0<span class="w"> </span>--recursive
-</code></pre></div>
+<p><code>bash
+git clone https://github.com/device-management-toolkit/cloud-deployment --branch v2.32.0 --recursive</code></p>
 </li>
 <li>
 <p>Change to the cloned <code>device-management-toolkit</code> directory.
-    <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>device-management-toolkit
-</code></pre></div></p>
+    <code>bash
+    cd device-management-toolkit</code></p>
 </li>
 </ol>
 <h2 id="set-environment-variables">Set Environment Variables<a class="headerlink" href="#set-environment-variables" title="Permanent link">&para;</a></h2>
@@ -5496,12 +5496,10 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux/Powershell</label><label for="__tabbed_1_2">Windows (Cmd Prompt)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>cp .env.template .env
-</code></pre></div>
+<p><code>cp .env.template .env</code></p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>copy .env.template .env
-</code></pre></div>
+<p><code>copy .env.template .env</code></p>
 </div>
 </div>
 </div>
@@ -5577,11 +5575,11 @@
 </li>
 <li>
 <p>Update the <em>secret</em> field with your MPS_JWT_SECRET.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">jwt_secrets</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">consumer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
-<span class="w">    </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9EmRJTbIiIb4bIeSsmgcWIjrR6HyETqc</span><span class="w"> </span><span class="c1">#sample key</span>
-<span class="hll"><span class="w">    </span><span class="nt">secret</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Yq3t6w9z6CbE3HRMcQfTjWnZr4u7x6AJ&quot;</span><span class="w"> </span><span class="c1">#sample secret, DO NOT use for production</span>
-</span></code></pre></div>
+<p><code>yaml hl_lines="4"
+jwt_secrets:
+  - consumer: admin
+    key: 9EmRJTbIiIb4bIeSsmgcWIjrR6HyETqc #sample key
+    secret: "Yq3t6w9z6CbE3HRMcQfTjWnZr4u7x6AJ" #sample secret, DO NOT use for production</code></p>
 </li>
 <li>
 <p>Save and close the file.</p>
@@ -5595,13 +5593,11 @@
 <summary>Important for Linux - Using <code>sudo</code> with Docker</summary>
 <p>The Docker daemon always runs as the root user and therefore requires <code>sudo</code>. If you do not want to preface all Docker commands with <code>sudo</code>, see <a href="https://docs.docker.com/engine/install/linux-postinstall/">Linux post-installation steps for Docker Engine</a> in the Docker Documentation.</p>
 </details>
-<div class="highlight"><pre><span></span><code>docker compose pull
-</code></pre></div>
+<p><code>docker compose pull</code></p>
 <details class="note">
 <summary>Note for ARM -  ARM-based Devices must Build Images</summary>
 <p>ARM-based devices (i.e. newer-generation Mac products and others) will need to build the images rather than use the prebuilt Dockerhub images.
-<div class="highlight"><pre><span></span><code>docker compose up -d --build
-</code></pre></div></p>
+<code>docker compose up -d --build</code></p>
 </details>
 <details class="note">
 <summary>Note - Using SSL with Postgres Container</summary>
@@ -5610,25 +5606,25 @@
 </li>
 <li>
 <p>Start the containers.</p>
-<div class="highlight"><pre><span></span><code>docker compose up -d
-</code></pre></div>
+<p><code>docker compose up -d</code></p>
 </li>
 <li>
 <p>Check that all the containers are running and healthy.</p>
-<div class="highlight"><pre><span></span><code>docker ps --format &quot;table {{.Image}}\t{{.Status}}\t{{.Names}}&quot;
-</code></pre></div>
+<p>```</p>
+<p>docker ps --format "table {{.Image}}\t{{.Status}}\t{{.Names}}"</p>
+<p>```</p>
 <p><strong>Because Vault is running in a dev mode, stored secrets will be lost upon a restart</strong>, and profiles and configs must be recreated. They are not persistent in this mode. To persist data, run vault in production mode. See <a href="../../../Reference/productionVault/">Production Mode Vault</a>.</p>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>IMAGE<span class="w">                               </span>STATUS<span class="w">                        </span>NAMES
-intel/oact-rps:latest<span class="w">               </span>Up<span class="w"> </span><span class="m">2</span><span class="w"> </span>minutes<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-rps-1<span class="w">      </span>
-hashicorp/vault<span class="w">                     </span>Up<span class="w"> </span><span class="m">2</span><span class="w"> </span>minutes<span class="w">                  </span>device-management-toolkit-vault-1<span class="w">    </span>
-intel/oact-mpsrouter:latest<span class="w">         </span>Up<span class="w"> </span><span class="m">2</span><span class="w"> </span>minutes<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-mpsrouter-1
-postgres:15<span class="w">                         </span>Up<span class="w"> </span><span class="m">2</span><span class="w"> </span>minutes<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-db-1<span class="w">       </span>
-intel/oact-webui:latest<span class="w">             </span>Up<span class="w"> </span><span class="m">2</span><span class="w"> </span>minutes<span class="w">                  </span>device-management-toolkit-webui-1<span class="w">    </span>
-kong:3.1<span class="w">                            </span>Up<span class="w"> </span><span class="m">2</span><span class="w"> </span>minutes<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-kong-1<span class="w">     </span>
-intel/oact-mps:latest<span class="w">               </span>Up<span class="w"> </span><span class="m">2</span><span class="w"> </span>minutes<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-mps-1
-</code></pre></div>
+<p><code>bash
+IMAGE                               STATUS                        NAMES
+intel/oact-rps:latest               Up 2 minutes (healthy)        device-management-toolkit-rps-1      
+hashicorp/vault                     Up 2 minutes                  device-management-toolkit-vault-1    
+intel/oact-mpsrouter:latest         Up 2 minutes (healthy)        device-management-toolkit-mpsrouter-1
+postgres:15                         Up 2 minutes (healthy)        device-management-toolkit-db-1       
+intel/oact-webui:latest             Up 2 minutes                  device-management-toolkit-webui-1    
+kong:3.1                            Up 2 minutes (healthy)        device-management-toolkit-kong-1     
+intel/oact-mps:latest               Up 2 minutes (healthy)        device-management-toolkit-mps-1</code></p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning - Container Issues</p>

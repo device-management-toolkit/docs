@@ -5635,8 +5635,8 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Run the following command to install:
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>build-essential
-</code></pre></div></p>
+<code>bash
+sudo apt install build-essential</code></p>
 </div>
 <div class="tabbed-block">
 <p>Download and Install <a href="https://jmeubank.github.io/tdm-gcc/download/">tdm-gcc</a>.</p>
@@ -5647,12 +5647,12 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Linux Lib (.so file)</label><label for="__tabbed_2_2">Windows Lib (.dll file)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>go<span class="w"> </span>build<span class="w"> </span>-buildmode<span class="o">=</span>c-shared<span class="w"> </span>-o<span class="w"> </span>librpc.so<span class="w"> </span>./cmd<span class="w"> </span>
-</code></pre></div>
+<p><code>bash
+go build -buildmode=c-shared -o librpc.so ./cmd</code></p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>go<span class="w"> </span>build<span class="w"> </span>-buildmode<span class="o">=</span>c-shared<span class="w"> </span>-o<span class="w"> </span>rpc.dll<span class="w"> </span>./cmd
-</code></pre></div>
+<p><code>bash
+go build -buildmode=c-shared -o rpc.dll ./cmd</code></p>
 </div>
 </div>
 </div>
@@ -5683,38 +5683,39 @@
 <p>Find a simple sample client in the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-go's <a href="https://github.com/device-management-toolkit/rpc-go/tree/main/samples/dotnet">dotnet folder</a>. </p>
 <h3 id="include-in-c">Include in <code>C#</code><a class="headerlink" href="#include-in-c" title="Permanent link">&para;</a></h3>
 <p>This sample code demonstrates how to import the DLL's functions:</p>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1">//Linux-style example (.so extension)</span>
-<span class="w">    </span><span class="na">[DllImport(&quot;rpc&quot;)]</span>
-<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">extern</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">rpcCheckAccess</span><span class="p">();</span>
-</code></pre></div>
+<p><code>c#
+    //Linux-style example (.so extension)
+    [DllImport("rpc")]
+    static extern int rpcCheckAccess();</code></p>
 <h3 id="call-a-function">Call a Function<a class="headerlink" href="#call-a-function" title="Permanent link">&para;</a></h3>
 <p>This sample provides an example of calling the <code>rpcExec</code> function to activate a device:</p>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1">//Import</span>
-<span class="w">    </span><span class="na">[DllImport(&quot;rpc&quot;)]</span>
-<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">extern</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">rpcExec</span><span class="p">([</span><span class="n">In</span><span class="p">]</span><span class="w"> </span><span class="kt">byte</span><span class="p">[]</span><span class="w"> </span><span class="n">rpccmd</span><span class="p">,</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="n">IntPtr</span><span class="w"> </span><span class="n">output</span><span class="p">);</span>
+<p>``` c#
+    //Import
+    [DllImport("rpc")]
+    static extern int rpcExec([In] byte[] rpccmd, ref IntPtr output);</p>
+<pre><code>int returnCode;
 
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">returnCode</span><span class="p">;</span>
+Console.WriteLine("... CALLING rpcCheckAccess ...");
+returnCode = rpcCheckAccess();
+Console.WriteLine("... rpcCheckAccess completed: return code[" + returnCode + "] ");
+Console.WriteLine();
 
-<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;... CALLING rpcCheckAccess ...&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">returnCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rpcCheckAccess</span><span class="p">();</span>
-<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;... rpcCheckAccess completed: return code[&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">returnCode</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;] &quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">();</span>
+var res = "";
+foreach (var arg in args)
+{
+    res += $"{arg} ";
+}
 
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">arg</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">res</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">$&quot;{arg} &quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+// Example commands to be passed in
+// string res = "activate -u wss://192.168.1.96/activate -n -profile Test_Profile";
+// string res = "amtinfo";
 
-<span class="w">    </span><span class="c1">// Example commands to be passed in</span>
-<span class="w">    </span><span class="c1">// string res = &quot;activate -u wss://192.168.1.96/activate -n -profile Test_Profile&quot;;</span>
-<span class="w">    </span><span class="c1">// string res = &quot;amtinfo&quot;;</span>
-
-<span class="w">    </span><span class="n">IntPtr</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IntPtr</span><span class="p">.</span><span class="n">Zero</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;... CALLING rpcExec with argument string: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">res</span><span class="p">);</span>
-<span class="w">    </span><span class="n">returnCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rpcExec</span><span class="p">(</span><span class="n">Encoding</span><span class="p">.</span><span class="n">ASCII</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="n">res</span><span class="p">),</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="n">output</span><span class="p">);</span>
-<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;... rpcExec completed: return code[&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">returnCode</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;] &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Marshal</span><span class="p">.</span><span class="n">PtrToStringAnsi</span><span class="p">(</span><span class="n">output</span><span class="p">));</span>
-</code></pre></div>
+IntPtr output = IntPtr.Zero;
+Console.WriteLine("... CALLING rpcExec with argument string: " + res);
+returnCode = rpcExec(Encoding.ASCII.GetBytes(res), ref output);
+Console.WriteLine("... rpcExec completed: return code[" + returnCode + "] " + Marshal.PtrToStringAnsi(output));
+</code></pre>
+<p>```</p>
 <h2 id="rpc-error-code-charts"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Error Code Charts<a class="headerlink" href="#rpc-error-code-charts" title="Permanent link">&para;</a></h2>
 <h3 id="general-errors">General Errors<a class="headerlink" href="#general-errors" title="Permanent link">&para;</a></h3>
 <h4 id="1-19-basic-errors-outside-of-device-management-toolkit">(1-19) Basic Errors Outside of Device Management Toolkit<a class="headerlink" href="#1-19-basic-errors-outside-of-device-management-toolkit" title="Permanent link">&para;</a></h4>

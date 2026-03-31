@@ -5525,13 +5525,11 @@
 <ol>
 <li>
 <p>If you do not have the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> repository, clone the latest version.</p>
-<div class="highlight"><pre><span></span><code>git clone https://github.com/device-management-toolkit/sample-web-ui.git --branch v3.54.0
-</code></pre></div>
+<p><code>git clone https://github.com/device-management-toolkit/sample-web-ui.git --branch v3.54.0</code></p>
 </li>
 <li>
 <p>If you do not have the Console repository, clone the latest version.</p>
-<div class="highlight"><pre><span></span><code>git clone https://github.com/device-management-toolkit/console.git
-</code></pre></div>
+<p><code>git clone https://github.com/device-management-toolkit/console.git</code></p>
 </li>
 </ol>
 <h2 id="translate-strings">Translate Strings<a class="headerlink" href="#translate-strings" title="Permanent link">&para;</a></h2>
@@ -5562,45 +5560,45 @@
 </li>
 <li>
 <p>Add the below <code>i18n:</code> block to the <code>openamtui:</code> section. Additional locales can be appended for each additional language to support.</p>
-<div class="highlight"><pre><span></span><code><span class="err">...</span>
-<span class="nt">&quot;openamtui&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;projectType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;schematics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;@schematics/angular:component&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;scss&quot;</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;@schematics/angular:application&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;strict&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;root&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;sourceRoot&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;src&quot;</span><span class="p">,</span>
-<span class="hll"><span class="w">  </span><span class="nt">&quot;i18n&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span class="hll"><span class="w">    </span><span class="nt">&quot;sourceLocale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span>
-</span><span class="hll"><span class="w">    </span><span class="nt">&quot;locales&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span class="hll"><span class="w">      </span><span class="nt">&quot;fr&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span class="hll"><span class="w">        </span><span class="nt">&quot;translation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;src/locale/messages.fr.xlf&quot;</span><span class="p">,</span>
-</span><span class="hll"><span class="w">        </span><span class="nt">&quot;baseHref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/&quot;</span>
-</span><span class="hll"><span class="w">      </span><span class="p">}</span>
-</span><span class="hll"><span class="w">    </span><span class="p">}</span>
-</span><span class="hll"><span class="w">  </span><span class="p">},</span>
-</span><span class="err">...</span>
-</code></pre></div>
+<p><code>json hl_lines="14-22"
+...
+"openamtui": {
+  "projectType": "application",
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    },
+    "@schematics/angular:application": {
+      "strict": true
+    }
+  },
+  "root": "",
+  "sourceRoot": "src",
+  "i18n": {
+    "sourceLocale": "en-US",
+    "locales": {
+      "fr": {
+        "translation": "src/locale/messages.fr.xlf",
+        "baseHref": "/"
+      }
+    }
+  },
+...</code></p>
 </li>
 <li>
 <p>Add <code>localize:</code> field to the <code>build:</code> section.</p>
-<div class="highlight"><pre><span></span><code><span class="err">...</span>
-<span class="nt">&quot;build&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;builder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@angular-devkit/build-angular:browser&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;options&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;outputPath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dist/openamtui&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;src/index.html&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;main&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;src/main.ts&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;polyfills&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;src/polyfills.ts&quot;</span><span class="p">,</span>
-<span class="hll"><span class="w">    </span><span class="nt">&quot;localize&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;fr&quot;</span><span class="p">],</span>
-</span><span class="w">    </span><span class="nt">&quot;tsConfig&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tsconfig.app.json&quot;</span><span class="p">,</span>
-<span class="err">...</span>
-</code></pre></div>
+<p><code>json hl_lines="9"
+...
+"build": {
+  "builder": "@angular-devkit/build-angular:browser",
+  "options": {
+    "outputPath": "dist/openamtui",
+    "index": "src/index.html",
+    "main": "src/main.ts",
+    "polyfills": "src/polyfills.ts",
+    "localize": ["fr"],
+    "tsConfig": "tsconfig.app.json",
+...</code></p>
 </li>
 <li>
 <p>Save the file.</p>
@@ -5611,8 +5609,7 @@
 <ol>
 <li>
 <p>Build the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>.</p>
-<div class="highlight"><pre><span></span><code>npm run build-enterprise
-</code></pre></div>
+<p><code>npm run build-enterprise</code></p>
 </li>
 <li>
 <p>Copy the newly generated <code>sample-web-ui/ui/</code> directory.</p>
@@ -5625,12 +5622,12 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Windows</label><label for="__tabbed_1_2">Linux</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>go<span class="w"> </span>build<span class="w"> </span>-o<span class="w"> </span>console_windows_x64.exe<span class="w"> </span>./cmd/app/main.go
-</code></pre></div>
+<p><code>bash
+go build -o console_windows_x64.exe ./cmd/app/main.go</code></p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>go<span class="w"> </span>build<span class="w"> </span>-o<span class="w"> </span>console_linux_x64<span class="w"> </span>./cmd/app/main.go
-</code></pre></div>
+<p><code>bash
+go build -o console_linux_x64 ./cmd/app/main.go</code></p>
 </div>
 </div>
 </div>
