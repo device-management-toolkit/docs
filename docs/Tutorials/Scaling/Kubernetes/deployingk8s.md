@@ -175,6 +175,7 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
 ## Deploy Device Management Toolkit Using Helm
 
 1. Deploy using Helm.
+
     ```
     helm install devicemgmtstack ./kubernetes/charts
     ```
@@ -253,6 +254,7 @@ Add the root token as a secret to the cluster so that the services can access Va
     ```
 
 5. View the pods. All pods should now be Ready and Running.
+
     ```
     kubectl get pods
     ```

@@ -54,11 +54,13 @@ If you are building an executable on a development system, you will copy the exe
     ??? note "Haven't Cloned the `cloud-deployment` Repository?"
 
         * Only clone the `rpc-go` repository:
+
             ``` bash
             git clone https://github.com/device-management-toolkit/rpc-go --branch v{{ repoVersion.rpc_go }}
             ```
 
         * Alternatively, clone the whole toolkit repository:
+
             ``` bash
             git clone https://github.com/device-management-toolkit/cloud-deployment --branch v{{ repoVersion.oamtct }} --recursive
             ```

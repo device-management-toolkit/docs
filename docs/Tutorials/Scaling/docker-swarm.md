@@ -19,6 +19,7 @@ This sample deployment demonstrates the use of Docker* in swarm mode. The follow
     ```
   
 2. Change to the cloned `cloud-deployment` directory.
+
     ``` bash
     cd cloud-deployment
     ```
@@ -30,11 +31,13 @@ This sample deployment demonstrates the use of Docker* in swarm mode. The follow
 
 
 1. Initialize a swarm.
+
      ```
      docker swarm init
      ```      
 
 2. Copy docker compose config to temporary `swarm.yml` file.
+
     ```
     docker compose -f .\docker-compose.yml config > swarm.yml
     ```
@@ -55,16 +58,19 @@ This sample deployment demonstrates the use of Docker* in swarm mode. The follow
 
 
 4. If you've run `docker compose` previously, as in the instructions in [**Express Setup**](../../GetStarted/Cloud/setup.md), run `docker compose down` to stop the device-management-toolkit services:
+
    ```
    docker compose down -v
    ```
 
 5. Create the stack.
+
     ```
     docker stack deploy -c swarm.yml scalingdemo
     ```
 
 6. Check all of the services are running.
+
     ```
     docker stack services scalingdemo
     ```
@@ -84,6 +90,7 @@ This sample deployment demonstrates the use of Docker* in swarm mode. The follow
 
 
 7. Scale the mps service.
+
     ```
     docker service scale scalingdemo_mps=2
     ```
@@ -102,6 +109,7 @@ This sample deployment demonstrates the use of Docker* in swarm mode. The follow
         |pc143h8ml4ua  |scalingdemo_webui          |replicated      | 1/1             |webui:latest   |                 |
    
 8. Remove the stack:
+
     ```
     docker stack rm scalingdemo
     ```

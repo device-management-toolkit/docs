@@ -50,6 +50,7 @@ The 2.28 release of DMT Cloud Deployment requires updates to the `rpsdb` databas
         1. Open a Command Prompt or Terminal.
 
         2. Connect to your Postgres instance and `rpsdb` database. Provide the hostname of the database, the port (Postgres default is 5432), the database `rpsdb`, and your database user.
+
                 ```
                 psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
                 ```
@@ -68,6 +69,7 @@ The 2.28 release of DMT Cloud Deployment requires updates to the `rpsdb` databas
         4. Run the SQL Statements.
 
         5. Verify the changes were applied correctly.
+
                 ```sql
                 \d profiles
                 \d proxyconfigs
@@ -93,6 +95,7 @@ The 2.17 release of Open AMT requires an upgrade to the `rpsdb` database.
         1. Open a Command Prompt or Terminal.
 
         2. Connect to your Postgres instance and `rpsdb` database. Provide the hostname of the database, the port (Postgres default is 5432), the database `rpsdb`, and your database user.
+
             ```
             psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
             ```
@@ -111,6 +114,7 @@ The 2.17 release of Open AMT requires an upgrade to the `rpsdb` database.
         4. Run the SQL Statements.
 
         5. Verify the constraints were modified correctly.
+
             ``` sql
             SELECT * FROM profiles;
             ```
@@ -134,6 +138,7 @@ The 2.17 release of Open AMT requires an upgrade to the `mpsdb` database.
         1. Open a Command Prompt or Terminal.
 
         2. Connect to your Postgres instance and `mpsdb` database. Provide the hostname of the database, the port (Postgres default is 5432), the database `mpsdb`, and your database user.
+
             ```
             psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]
             ```
@@ -152,6 +157,7 @@ The 2.17 release of Open AMT requires an upgrade to the `mpsdb` database.
         4. Run the SQL Statements.
 
         5. Verify the constraints were modified correctly.
+
             ``` sql
             SELECT * FROM devices;
             ```
@@ -180,6 +186,7 @@ The 2.16 release of Open AMT requires an upgrade to both the `mpsdb` and `rpsdb`
         1. Open a Command Prompt or Terminal.
 
         2. Connect to your Postgres instance and `mpsdb` database. Provide the hostname of the database, the port (Postgres default is 5432), the database `mpsdb`, and your database user.
+
             ```
             psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]
             ```
@@ -198,6 +205,7 @@ The 2.16 release of Open AMT requires an upgrade to both the `mpsdb` and `rpsdb`
         4. Run the SQL Statements.
 
         5. Verify the constraints were modified correctly.
+
             ``` sql
             SELECT * FROM devices;
             ```
@@ -226,6 +234,7 @@ The 2.15 release of Open AMT requires an upgrade to the `rpsdb` database. More i
         1. Open a Command Prompt or Terminal.
 
         2. Connect to your Postgres instance and `rpsdb` database. Provide the hostname of the database, the port (Postgres default is 5432), the database `rpsdb`, and your database user.
+
             ```
             psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
             ```
@@ -244,6 +253,7 @@ The 2.15 release of Open AMT requires an upgrade to the `rpsdb` database. More i
         4. Run the SQL Statements.
 
         5. Verify the constraints were modified correctly.
+
             ``` sql
             \d domains;
             ```
@@ -269,6 +279,7 @@ The 2.11 release of RPS requires an upgrade to the `rpsdb` database.
         1. Open a Command Prompt or Terminal.
 
         2. Connect to your Postgres instance and `rpsdb` database. Provide the hostname of the database, the port (Postgres default is 5432), the database `rpsdb`, and your database user.
+
             ```
             psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
             ```
@@ -287,6 +298,7 @@ The 2.11 release of RPS requires an upgrade to the `rpsdb` database.
         4. Run the SQL Statements.
 
         5. Verify the column was added to the table.
+
             ``` sql
             SELECT * FROM profiles;
             ```
@@ -311,6 +323,7 @@ The 2.10 release of RPS requires an upgrade to the `rpsdb` database.
         1. Open a Command Prompt or Terminal.
 
         2. Connect to your Postgres instance and `rpsdb` database. Provide the hostname of the database, the port (Postgres default is 5432), the database `rpsdb`, and your database user.
+
             ```
             psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
             ```
@@ -329,6 +342,7 @@ The 2.10 release of RPS requires an upgrade to the `rpsdb` database.
         4. Run the SQL Statements.
 
         5. Verify the column was added to the table.
+
             ``` sql
             SELECT * FROM wirelessconfigs;
             ```
@@ -372,6 +386,7 @@ The 2.9 release of RPS requires an upgrade to the `rpsdb` database.
         1. Open a Command Prompt or Terminal.
 
         2. Connect to your Postgres instance and `rpsdb` database. Provide the hostname of the database, the port (Postgres default is 5432), the database `rpsdb`, and your database user.
+
             ```
             psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
             ```
@@ -390,6 +405,7 @@ The 2.9 release of RPS requires an upgrade to the `rpsdb` database.
         4. Run the SQL Statements.
 
         5. Verify the column was added to the table.
+
             ``` sql
             SELECT * FROM ieee8021xconfigs;
             ```
@@ -413,6 +429,7 @@ The 2.8 release of RPS requires an upgrade to the `rpsdb` database.
         1. Open a Command Prompt or Terminal.
 
         2. Connect to your Postgres instance and `rpsdb` database. Provide the hostname of the database, the port (Postgres default is 5432), the database `rpsdb`, and your database user.
+
             ```
             psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
             ```
@@ -431,6 +448,7 @@ The 2.8 release of RPS requires an upgrade to the `rpsdb` database.
         4. Run the SQL Statement.
 
         5. Verify the column was added to the table.
+
             ``` sql
             SELECT * FROM profiles;
             ```
@@ -455,6 +473,7 @@ The 2.7 release of MPS requires an upgrade to the `mpsdb` database.
         1. Open a Command Prompt or Terminal.
 
         2. Connect to your Postgres instance and `mpsdb` database. Provide the hostname of the database, the port (Postgres default is 5432), the database `mpsdb`, and your database user.
+
             ```
             psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]
             ```
@@ -473,6 +492,7 @@ The 2.7 release of MPS requires an upgrade to the `mpsdb` database.
         4. Run the SQL Statement.
 
         5. Verify the columns were added to the table.
+
             ``` sql
             SELECT * FROM devices;
             ```
@@ -574,11 +594,13 @@ Is the functionality not working as expected? Rollback to the previous deploymen
 The following steps outline how to upgrade using the public Docker Hub images. Data will not be lost unless Postgres or Vault need to be upgraded and restarted.
 
 1. From the `.\cloud-deployment\` directory, pull the latest branches.
+
     ```
     git pull
     ```
 
 2. Checkout the new release.
+
     ```
     git checkout v{{ repoVersion.oamtct }}
     ```
@@ -587,11 +609,13 @@ The following steps outline how to upgrade using the public Docker Hub images. D
         If building your own images, you will also have to checkout the newer release from each repo within `.\cloud-deployment\`.
 
         1. Pull the new releases of the submodules.
+
             ```
             git submodule update --recursive
             ```
 
         2. Checkout the release for each of the services you want to upgrade.
+
             ```
             cd mps
             git checkout v{{ repoVersion.mpsAPI }}
@@ -600,21 +624,25 @@ The following steps outline how to upgrade using the public Docker Hub images. D
         3. Repeat for other services.
 
         4. Build the new images.
+
             ```
             docker compose up -d --build
             ```
 
 3. Pull the new release Docker Hub images.
+
     ```
     docker compose pull
     ```
 
 4. Start the new containers.
+
     ```
     docker compose up -d --remove-orphans
     ```
 
 5. OPTIONAL. If using versioned tags rather than `latest`, you can delete older tagged images using the following. **This will delete all unused images**. If you have other non Device Management Toolkit images you wish to keep, **do NOT** run this command.
+
     ```
     docker image prune -a
     ```
