@@ -13,6 +13,7 @@ This setup runs the MPS and RPS microservices as Docker* containers, standardize
     ```
   
 2. Change to the cloned `device-management-toolkit` directory.
+
     ``` bash
     cd device-management-toolkit
     ```
