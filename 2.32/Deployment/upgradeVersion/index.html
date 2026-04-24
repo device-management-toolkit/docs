@@ -5660,9 +5660,12 @@ Please ensure you follow your organization’s internal deployment, security, an
 <p>Open a Command Prompt or Terminal.</p>
 </li>
 <li>
-<p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.
-        <code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]</code></p>
-<pre><code>??? example "Example Commands"
+<p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.</p>
+<pre><code>```
+psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
+```
+
+??? example "Example Commands"
         ```
         Azure:
         psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql
@@ -5679,11 +5682,13 @@ Please ensure you follow your organization’s internal deployment, security, an
 <p>Run the SQL Statements.</p>
 </li>
 <li>
-<p>Verify the changes were applied correctly.
-        <code>sql
-        \d profiles
-        \d proxyconfigs
-        \d profiles_proxyconfigs</code></p>
+<p>Verify the changes were applied correctly.</p>
+<pre><code>```sql
+\d profiles
+\d proxyconfigs
+\d profiles_proxyconfigs
+```
+</code></pre>
 </li>
 </ol>
 </details>
@@ -5708,8 +5713,8 @@ Please ensure you follow your organization’s internal deployment, security, an
 <p>Open a Command Prompt or Terminal.</p>
 </li>
 <li>
-<p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.
-    <code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]</code></p>
+<p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.</p>
+<p><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]</code></p>
 <details class="example">
 <summary>Example Commands</summary>
 <p>```
@@ -5727,9 +5732,9 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U p
 <p>Run the SQL Statements.</p>
 </li>
 <li>
-<p>Verify the constraints were modified correctly.
-    <code>sql
-    SELECT * FROM profiles;</code></p>
+<p>Verify the constraints were modified correctly.</p>
+<p><code>sql
+SELECT * FROM profiles;</code></p>
 </li>
 </ol>
 </details>
@@ -5753,8 +5758,8 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U p
 <p>Open a Command Prompt or Terminal.</p>
 </li>
 <li>
-<p>Connect to your Postgres instance and <code>mpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>mpsdb</code>, and your database user.
-    <code>psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]</code></p>
+<p>Connect to your Postgres instance and <code>mpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>mpsdb</code>, and your database user.</p>
+<p><code>psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]</code></p>
 <details class="example">
 <summary>Example Commands</summary>
 <p>```
@@ -5772,9 +5777,9 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U p
 <p>Run the SQL Statements.</p>
 </li>
 <li>
-<p>Verify the constraints were modified correctly.
-    <code>sql
-    SELECT * FROM devices;</code></p>
+<p>Verify the constraints were modified correctly.</p>
+<p><code>sql
+SELECT * FROM devices;</code></p>
 </li>
 </ol>
 </details>
@@ -5802,8 +5807,8 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U p
 <p>Open a Command Prompt or Terminal.</p>
 </li>
 <li>
-<p>Connect to your Postgres instance and <code>mpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>mpsdb</code>, and your database user.
-    <code>psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]</code></p>
+<p>Connect to your Postgres instance and <code>mpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>mpsdb</code>, and your database user.</p>
+<p><code>psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]</code></p>
 <details class="example">
 <summary>Example Commands</summary>
 <p>```
@@ -5821,9 +5826,9 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U p
 <p>Run the SQL Statements.</p>
 </li>
 <li>
-<p>Verify the constraints were modified correctly.
-    <code>sql
-    SELECT * FROM devices;</code></p>
+<p>Verify the constraints were modified correctly.</p>
+<p><code>sql
+SELECT * FROM devices;</code></p>
 </li>
 </ol>
 </details>
@@ -5853,8 +5858,8 @@ ADD PRIMARY KEY (name, domain_suffix, tenant_id);</code></p>
 <p>Open a Command Prompt or Terminal.</p>
 </li>
 <li>
-<p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.
-    <code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]</code></p>
+<p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.</p>
+<p><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]</code></p>
 <details class="example">
 <summary>Example Commands</summary>
 <p>```
@@ -5872,9 +5877,9 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U p
 <p>Run the SQL Statements.</p>
 </li>
 <li>
-<p>Verify the constraints were modified correctly.
-    <code>sql
-    \d domains;</code></p>
+<p>Verify the constraints were modified correctly.</p>
+<p><code>sql
+\d domains;</code></p>
 </li>
 </ol>
 </details>
@@ -5900,8 +5905,8 @@ ADD COLUMN IF NOT EXISTS ip_sync_enabled BOOLEAN NULL;</code></p>
 <p>Open a Command Prompt or Terminal.</p>
 </li>
 <li>
-<p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.
-    <code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]</code></p>
+<p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.</p>
+<p><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]</code></p>
 <details class="example">
 <summary>Example Commands</summary>
 <p>```
@@ -5919,9 +5924,9 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U p
 <p>Run the SQL Statements.</p>
 </li>
 <li>
-<p>Verify the column was added to the table.
-    <code>sql
-    SELECT * FROM profiles;</code></p>
+<p>Verify the column was added to the table.</p>
+<p><code>sql
+SELECT * FROM profiles;</code></p>
 </li>
 </ol>
 </details>
@@ -5947,8 +5952,8 @@ ADD CONSTRAINT ieee8021xconfigs_fk FOREIGN KEY (ieee8021x_profile_name, tenant_i
 <p>Open a Command Prompt or Terminal.</p>
 </li>
 <li>
-<p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.
-    <code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]</code></p>
+<p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.</p>
+<p><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]</code></p>
 <details class="example">
 <summary>Example Commands</summary>
 <p>```
@@ -5966,9 +5971,9 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U p
 <p>Run the SQL Statements.</p>
 </li>
 <li>
-<p>Verify the column was added to the table.
-    <code>sql
-    SELECT * FROM wirelessconfigs;</code></p>
+<p>Verify the column was added to the table.</p>
+<p><code>sql
+SELECT * FROM wirelessconfigs;</code></p>
 </li>
 </ol>
 </details>
@@ -6012,8 +6017,8 @@ ADD CONSTRAINT ieee8021xconfigs_fk FOREIGN KEY (ieee8021x_profile_name, tenant_i
 <p>Open a Command Prompt or Terminal.</p>
 </li>
 <li>
-<p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.
-    <code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]</code></p>
+<p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.</p>
+<p><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]</code></p>
 <details class="example">
 <summary>Example Commands</summary>
 <p>```
@@ -6031,9 +6036,9 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U p
 <p>Run the SQL Statements.</p>
 </li>
 <li>
-<p>Verify the column was added to the table.
-    <code>sql
-    SELECT * FROM ieee8021xconfigs;</code></p>
+<p>Verify the column was added to the table.</p>
+<p><code>sql
+SELECT * FROM ieee8021xconfigs;</code></p>
 </li>
 </ol>
 </details>
@@ -6058,8 +6063,8 @@ ADD COLUMN IF NOT EXISTS tls_signing_authority varchar(40) NULL;</code></p>
 <p>Open a Command Prompt or Terminal.</p>
 </li>
 <li>
-<p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.
-    <code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]</code></p>
+<p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.</p>
+<p><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]</code></p>
 <details class="example">
 <summary>Example Commands</summary>
 <p>```
@@ -6077,9 +6082,9 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U p
 <p>Run the SQL Statement.</p>
 </li>
 <li>
-<p>Verify the column was added to the table.
-    <code>sql
-    SELECT * FROM profiles;</code></p>
+<p>Verify the column was added to the table.</p>
+<p><code>sql
+SELECT * FROM profiles;</code></p>
 </li>
 </ol>
 </details>
@@ -6105,8 +6110,8 @@ ADD COLUMN IF NOT EXISTS dnssuffix varchar(256);</code></p>
 <p>Open a Command Prompt or Terminal.</p>
 </li>
 <li>
-<p>Connect to your Postgres instance and <code>mpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>mpsdb</code>, and your database user.
-    <code>psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]</code></p>
+<p>Connect to your Postgres instance and <code>mpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>mpsdb</code>, and your database user.</p>
+<p><code>psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]</code></p>
 <details class="example">
 <summary>Example Commands</summary>
 <p>```
@@ -6124,9 +6129,9 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U p
 <p>Run the SQL Statement.</p>
 </li>
 <li>
-<p>Verify the columns were added to the table.
-    <code>sql
-    SELECT * FROM devices;</code></p>
+<p>Verify the columns were added to the table.</p>
+<p><code>sql
+SELECT * FROM devices;</code></p>
 </li>
 </ol>
 </details>
@@ -6214,46 +6219,46 @@ webui-6d9b96c989-29r9z                               1/1     Running   0        
 <p>The following steps outline how to upgrade using the public Docker Hub images. Data will not be lost unless Postgres or Vault need to be upgraded and restarted.</p>
 <ol>
 <li>
-<p>From the <code>.\cloud-deployment\</code> directory, pull the latest branches.
-    <code>git pull</code></p>
+<p>From the <code>.\cloud-deployment\</code> directory, pull the latest branches.</p>
+<p><code>git pull</code></p>
 </li>
 <li>
-<p>Checkout the new release.
-    <code>git checkout v2.32.0</code></p>
+<p>Checkout the new release.</p>
+<p><code>git checkout v2.32.0</code></p>
 <details class="note">
 <summary>Note - Rebuilding New Images Locally</summary>
 <p>If building your own images, you will also have to checkout the newer release from each repo within <code>.\cloud-deployment\</code>.</p>
 <ol>
 <li>
-<p>Pull the new releases of the submodules.
-    <code>git submodule update --recursive</code></p>
+<p>Pull the new releases of the submodules.</p>
+<p><code>git submodule update --recursive</code></p>
 </li>
 <li>
-<p>Checkout the release for each of the services you want to upgrade.
-    <code>cd mps
-    git checkout v2.26.0</code></p>
+<p>Checkout the release for each of the services you want to upgrade.</p>
+<p><code>cd mps
+git checkout v2.26.0</code></p>
 </li>
 <li>
 <p>Repeat for other services.</p>
 </li>
 <li>
-<p>Build the new images.
-    <code>docker compose up -d --build</code></p>
+<p>Build the new images.</p>
+<p><code>docker compose up -d --build</code></p>
 </li>
 </ol>
 </details>
 </li>
 <li>
-<p>Pull the new release Docker Hub images.
-    <code>docker compose pull</code></p>
+<p>Pull the new release Docker Hub images.</p>
+<p><code>docker compose pull</code></p>
 </li>
 <li>
-<p>Start the new containers.
-    <code>docker compose up -d --remove-orphans</code></p>
+<p>Start the new containers.</p>
+<p><code>docker compose up -d --remove-orphans</code></p>
 </li>
 <li>
-<p>OPTIONAL. If using versioned tags rather than <code>latest</code>, you can delete older tagged images using the following. <strong>This will delete all unused images</strong>. If you have other non Device Management Toolkit images you wish to keep, <strong>do NOT</strong> run this command.
-    <code>docker image prune -a</code></p>
+<p>OPTIONAL. If using versioned tags rather than <code>latest</code>, you can delete older tagged images using the following. <strong>This will delete all unused images</strong>. If you have other non Device Management Toolkit images you wish to keep, <strong>do NOT</strong> run this command.</p>
+<p><code>docker image prune -a</code></p>
 </li>
 </ol>
 <!-- ## Upgrade LTS or Major Versions (i.e. 2.X to 3.Y) -->

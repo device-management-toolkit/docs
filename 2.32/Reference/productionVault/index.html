@@ -5504,49 +5504,50 @@
 <p>Follow steps to Get the Toolkit, Set Environment Variables, and Set Kong JSON Web Token in the <a href="../../GetStarted/Cloud/setup/">Get Started guide</a>.</p>
 </li>
 <li>
-<p>Update the vault section in the <code>docker-compose.yml</code> file with the section below.
-    <code>yaml
-    vault:
-        restart: always
-        image: hashicorp/vault
-        networks:
-          - openamtnetwork
-        ports: 
-          - "8200:8200"
-        volumes:
-          - private-volume:/vault/data:rw
-          - ./vault:/vault/config:rw
-        environment: 
-          VAULT_DEV_ROOT_TOKEN_ID: ${VAULT_TOKEN}
-          VAULT_DEV_LISTEN_ADDRESS: 0.0.0.0:8200
-        cap_add: 
-          - IPC_LOCK
-        entrypoint: vault server -config=/vault/config/vault.json</code></p>
+<p>Update the vault section in the <code>docker-compose.yml</code> file with the section below.</p>
+<p><code>yaml
+vault:
+    restart: always
+    image: hashicorp/vault
+    networks:
+      - openamtnetwork
+    ports: 
+      - "8200:8200"
+    volumes:
+      - private-volume:/vault/data:rw
+      - ./vault:/vault/config:rw
+    environment: 
+      VAULT_DEV_ROOT_TOKEN_ID: ${VAULT_TOKEN}
+      VAULT_DEV_LISTEN_ADDRESS: 0.0.0.0:8200
+    cap_add: 
+      - IPC_LOCK
+    entrypoint: vault server -config=/vault/config/vault.json</code></p>
 </li>
 <li>
-<p>Create a folder named <code>vault</code> located in <code>./cloud-deployment</code> directory and create a new file named <code>vault.json</code> in that folder with the contents below:
-    <code>json
-    {
-        "storage":{
-            "file":{
-                "path":"/vault/data"
-            }
-        },
-        "listener":{
-            "tcp":{
-                "address":"0.0.0.0:8200",
-                "tls_disable": "true"
-            }
-        },
-        "default_lease_ttl":"168h",
-        "max_lease_ttl":"0h",
-        "ui":true,
-        "log_level":"Debug"
-    }</code></p>
+<p>Create a folder named <code>vault</code> located in <code>./cloud-deployment</code> directory and create a new file named <code>vault.json</code> in that folder with the contents below:</p>
+<p><code>json
+{
+    "storage":{
+        "file":{
+            "path":"/vault/data"
+        }
+    },
+    "listener":{
+        "tcp":{
+            "address":"0.0.0.0:8200",
+            "tls_disable": "true"
+        }
+    },
+    "default_lease_ttl":"168h",
+    "max_lease_ttl":"0h",
+    "ui":true,
+    "log_level":"Debug"
+}</code></p>
 </li>
 <li>
-<p>Run `docker compose`` to start the containers from the ./cloud-deployment directory.
-    <code>docker compose up -d --build</code></p>
+<p>Run <code>docker compose</code> to start the containers from the ./cloud-deployment directory.</p>
+<p><code>bash
+docker compose up -d --build</code></p>
 </li>
 </ol>
 <h2 id="initialize-and-unseal-vault">Initialize and Unseal Vault<a class="headerlink" href="#initialize-and-unseal-vault" title="Permanent link">&para;</a></h2>
@@ -5602,7 +5603,8 @@ VAULT_TOKEN=s.Mw7t070naY4PfyJk5KEkcX3I
 </li>
 <li>
 <p>Rebuild and restart your Docker images and containers.</p>
-<p><code>docker compose up -d --build</code></p>
+<p><code>bash
+docker compose up -d --build</code></p>
 </li>
 <li>
 <p>Unseal Vault at <code>http://localhost:8200</code> after restarting the container.</p>

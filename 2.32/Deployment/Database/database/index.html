@@ -5550,17 +5550,17 @@
  }</code></p>
 </li>
 <li>
-<p>Implement each of the table interfaces. The base interface looks like this: 
-    <code>typescript
-    export interface ITable&lt;T&gt; {
-      getCount: (tenantId?: string) =&gt; Promise&lt;number&gt;
-      get: (limit: number, offset: number, tenantId?: string) =&gt; Promise&lt;T[]&gt;
-      getByName: (name: string, tenantId?: string) =&gt; Promise&lt;T&gt;
-      delete: (name: string, tenantId?: string) =&gt; Promise&lt;boolean&gt;
-      insert: (item: T) =&gt; Promise&lt;T&gt;
-      update: (item: T) =&gt; Promise&lt;T&gt;
-    }</code>
-    There are interfaces for each table in the <code>./interfaces/database</code> which adds specific functions on top of the base <code>ITable&lt;&gt;</code> interface.</p>
+<p>Implement each of the table interfaces. The base interface looks like this: </p>
+<p><code>typescript
+export interface ITable&lt;T&gt; {
+  getCount: (tenantId?: string) =&gt; Promise&lt;number&gt;
+  get: (limit: number, offset: number, tenantId?: string) =&gt; Promise&lt;T[]&gt;
+  getByName: (name: string, tenantId?: string) =&gt; Promise&lt;T&gt;
+  delete: (name: string, tenantId?: string) =&gt; Promise&lt;boolean&gt;
+  insert: (item: T) =&gt; Promise&lt;T&gt;
+  update: (item: T) =&gt; Promise&lt;T&gt;
+}</code>
+There are interfaces for each table in the <code>./interfaces/database</code> which adds specific functions on top of the base <code>ITable&lt;&gt;</code> interface.</p>
 <p>Here's an example of the get implementation for Domains:</p>
 <p><code>`` typescript
 /**
