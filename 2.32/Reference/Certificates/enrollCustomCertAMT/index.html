@@ -5564,8 +5564,8 @@ Both options require manual, hands-on configuration of each AMT device. In this 
 <li>Please ensure you installed the <a href="https://github.com/device-management-toolkit/rpc-go/releases">rpc-go utility</a> in the AMT target device</li>
 <li>
 <p>Open a console with administrative permissions and run the following command:</p>
-<p><code>bash
-rpc_windows_x64.exe amtinfo -cert</code></p>
+<div class="highlight"><pre><span></span><code>rpc_windows_x64.exe<span class="w"> </span>amtinfo<span class="w"> </span>-cert
+</code></pre></div>
 <p>Note: The rpc-go binary could have a different name depending on the target OS. You can update the "rpc_windows_64.exe" in the command with the corresponding binary file name without concern.</p>
 <p><figure class="figure-image">
 <img src="..\..\..\assets\images\screenshots\usbenroll_fig01_amtcertverification.png" alt="Figure 1: Available Certificates in the AMT Device">
@@ -5580,8 +5580,8 @@ rpc_windows_x64.exe amtinfo -cert</code></p>
 <li>Copy and Paste the rootCA.crt file in the utility directory (for example, <em>"<AMT_dir>/USB_File_Module/Bin"</em>)</li>
 <li>
 <p>Go into the Bin directory. Create the setup.bin file running the following command:</p>
-<p><code>bash
-USBFile.exe -create setup.bin &lt;old_MEBx_password&gt; &lt;new_MEBx_password&gt; -dns example.com -ztc 1 -consume 1 -hash rootCA.crt example.com sha256</code></p>
+<div class="highlight"><pre><span></span><code>USBFile.exe<span class="w"> </span>-create<span class="w"> </span>setup.bin<span class="w"> </span>&lt;old_MEBx_password&gt;<span class="w"> </span>&lt;new_MEBx_password&gt;<span class="w"> </span>-dns<span class="w"> </span>example.com<span class="w"> </span>-ztc<span class="w"> </span><span class="m">1</span><span class="w"> </span>-consume<span class="w"> </span><span class="m">1</span><span class="w"> </span>-hash<span class="w"> </span>rootCA.crt<span class="w"> </span>example.com<span class="w"> </span>sha256
+</code></pre></div>
 <p>Where:
 - <strong>setup.bin</strong> is the generated file using the utility. Please keep this name.
 - <strong><old_MEBx_password></strong> represents the current password to access MEBx in the device.
@@ -5593,8 +5593,8 @@ USBFile.exe -create setup.bin &lt;old_MEBx_password&gt; &lt;new_MEBx_password&gt
 </li>
 <li>
 <p>Visualize the setup.bin file content for verification:</p>
-<p><code>bash
-USBFile.exe -view setup.bin</code></p>
+<div class="highlight"><pre><span></span><code>USBFile.exe<span class="w"> </span>-view<span class="w"> </span>setup.bin
+</code></pre></div>
 <p>You should see an output similar to the following figure.</p>
 <p><figure class="figure-image">
 <img src="..\..\..\assets\images\screenshots\usbenroll_fig02_setupbin.png" alt="Figure 2: Generation and View of the setup.bin file">
@@ -5618,9 +5618,9 @@ USBFile.exe -view setup.bin</code></p>
 <li>Enter the UEFI boot menu. Select the "Intel(R) Management Engine BIOS Extension (MEBx)" entry. If the entry is unavailable, ensure MEBx access is not limited to the UEFI setup.</li>
 <li>
 <p>The AMT will detect the file in the USB drive and prompt whether to incorporate the PKI record. You will see a message similar to the following one:</p>
-<p><code>bash
-Found USB Key for provisioning.
-Continue with Auto Provisioning (Y/N) ?</code></p>
+<div class="highlight"><pre><span></span><code>Found<span class="w"> </span>USB<span class="w"> </span>Key<span class="w"> </span><span class="k">for</span><span class="w"> </span>provisioning.
+Continue<span class="w"> </span>with<span class="w"> </span>Auto<span class="w"> </span>Provisioning<span class="w"> </span><span class="o">(</span>Y/N<span class="o">)</span><span class="w"> </span>?
+</code></pre></div>
 </li>
 <li>
 <p>Press "Y" to confirm. If the prompt does not appear or an error message about disabled USB provisioning appears, enable Intel AMT USB Provisioning in UEFI Setup and try again.</p>
@@ -5628,8 +5628,8 @@ Continue with Auto Provisioning (Y/N) ?</code></p>
 </ol>
 <h3 id="verify-the-custom-certificate-availability">Verify the Custom Certificate availability<a class="headerlink" href="#verify-the-custom-certificate-availability" title="Permanent link">&para;</a></h3>
 <p>It uses the rpc-go utility to check the available certificates on the AMT target device after the installment.</p>
-<p><code>bash
-rpc_windows_x64.exe amtinfo -cert</code></p>
+<div class="highlight"><pre><span></span><code>rpc_windows_x64.exe<span class="w"> </span>amtinfo<span class="w"> </span>-cert
+</code></pre></div>
 <p>It provides an output similar to the following, which describes the trust CA certificates installed locally in the AMT device.</p>
 <figure class="figure-image">
 <img src="..\..\..\assets\images\screenshots\usbenroll_fig03_certready.png" alt="Figure 3: Checking the Custom Certificate  in the AMT Device">

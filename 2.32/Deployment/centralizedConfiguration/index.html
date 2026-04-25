@@ -2136,17 +2136,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#consul" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        CONSUL
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -5468,6 +5457,8 @@
   
 
 
+  <h1>Enable Consul</h1>
+
 <div class="admonition warning">
 <p class="admonition-title">Centralized Configuration (Consul) is a Preview Feature</p>
 <p>The Consul implementation feature is a Preview Feature and is subject to change. This means it has not been fully validated and cannot be guaranteed to work. There are still potential bugs and tweaks needed for a production-level feature standard. Interested in this feature and helping us test it? Reach out via GitHub.</p>
@@ -5496,24 +5487,24 @@
 <h3 id="consul-configuration">Consul Configuration<a class="headerlink" href="#consul-configuration" title="Permanent link">&para;</a></h3>
 <p>By default, Consul is deployed as part of the local Docker deployment in the <code>docker-compose.yml</code> file.  This is the default configuration. Currently, we do not provide a Kubernetes deployment example.</p>
 <p>The Consul configurations are stored in a local volume. When cleaning up containers, make sure to delete existing volumes.</p>
-<p><code>yaml
-  consul:
-    restart: always
-    image: hashicorp/consul
-    networks:
-      - openamtnetwork
-    ports: 
-      - 8500:8500
-    volumes: 
-       - type: volume 
-         source: consul-config 
-         target: /consul/config 
-         volume: {} 
-       - type: volume 
-         source: consul-data 
-         target: /consul/data 
-         volume: {}    
-    command: "agent -server -ui -node=OACT-1 -bootstrap-expect=1 -client=0.0.0.0"</code></p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">consul</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hashicorp/consul</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openamtnetwork</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8500:8500</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w"> </span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span><span class="w"> </span>
+<span class="w">         </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">consul-config</span><span class="w"> </span>
+<span class="w">         </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/consul/config</span><span class="w"> </span>
+<span class="w">         </span><span class="nt">volume</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w"> </span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span><span class="w"> </span>
+<span class="w">         </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">consul-data</span><span class="w"> </span>
+<span class="w">         </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/consul/data</span><span class="w"> </span>
+<span class="w">         </span><span class="nt">volume</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w">    </span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;agent</span><span class="nv"> </span><span class="s">-server</span><span class="nv"> </span><span class="s">-ui</span><span class="nv"> </span><span class="s">-node=OACT-1</span><span class="nv"> </span><span class="s">-bootstrap-expect=1</span><span class="nv"> </span><span class="s">-client=0.0.0.0&quot;</span>
+</code></pre></div>
 <h2 id="enable-consul">Enable Consul<a class="headerlink" href="#enable-consul" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
@@ -5521,20 +5512,21 @@
 </li>
 <li>
 <p>In the <code>.env</code>, enable Consul and Save.</p>
-<p>``` yaml</p>
-<h1 id="consul">CONSUL<a class="headerlink" href="#consul" title="Permanent link">&para;</a></h1>
-<p>CONSUL_ENABLED=true #update from false to true
-CONSUL_HOST=consul
-CONSUL_PORT=8500
-```</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># CONSUL</span>
+<span class="l l-Scalar l-Scalar-Plain">CONSUL_ENABLED=true</span><span class="w"> </span><span class="c1">#update from false to true</span>
+<span class="l l-Scalar l-Scalar-Plain">CONSUL_HOST=consul</span>
+<span class="l l-Scalar l-Scalar-Plain">CONSUL_PORT=8500</span>
+</code></pre></div>
 </li>
 <li>
 <p>Pull the Consul image. Read more about profiles in the Docker docs at <a href="https://docs.docker.com/compose/profiles/">Using profiles with Compose</a>.</p>
-<p><code>docker compose --profile consul pull</code></p>
+<div class="highlight"><pre><span></span><code>docker compose --profile consul pull
+</code></pre></div>
 </li>
 <li>
 <p>Start the Consul container.</p>
-<p><code>docker compose --profile consul up -d</code></p>
+<div class="highlight"><pre><span></span><code>docker compose --profile consul up -d
+</code></pre></div>
 </li>
 <li>
 <p>To view the Consul UI, visit <code>http://localhost:8500</code>.</p>
@@ -5559,8 +5551,8 @@ CONSUL_PORT=8500
 <p class="admonition-title">Note - Cleaning up Consul Container</p>
 <p>When stopping and cleaning up containers deployed using the <code>consul</code> profile, you must also use that profile when running <code>docker compose down</code> in order to remove all resources.</p>
 <p>Example:
-<code>bash
-docker compose --profile consul down -v</code></p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>--profile<span class="w"> </span>consul<span class="w"> </span>down<span class="w"> </span>-v
+</code></pre></div></p>
 </div>
 </li>
 </ol>

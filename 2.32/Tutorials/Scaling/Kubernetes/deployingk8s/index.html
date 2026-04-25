@@ -2951,73 +2951,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#type-database-user-address-method" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TYPE DATABASE USER ADDRESS METHOD
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#local-is-for-unix-domain-socket-connections-only" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        "local" is for Unix domain socket connections only
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ipv4-local-connections" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        IPv4 local connections:
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ipv6-local-connections" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        IPv6 local connections:
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#allow-replication-connections-from-localhost-by-a-user-with-the" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Allow replication connections from localhost, by a user with the
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#replication-privilege" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        replication privilege.
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="replication privilege.">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#get-the-toolkit" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3027,8 +2960,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#create-kubernetes-secrets" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3038,8 +2971,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#update-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3066,8 +2999,8 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#create-databases" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3077,8 +3010,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#deploy-device-management-toolkit-using-helm" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3088,8 +3021,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#initialize-and-unseal-vault" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3116,8 +3049,8 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3125,11 +3058,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -5637,6 +5565,8 @@
   
 
 
+  <h1>Kubernetes (K8S)</h1>
+
 <p>This tutorial demonstrates how to deploy the Device Management Toolkit on a local Kubernetes single-node cluster. Alternatively, you can also deploy using a managed service through a Cloud Service Provider such as Azure Kubernetes Service (<abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr>). See <a href="../deployingk8s-aks/"><abbr title="Azure Kubernetes Service - A scaling service for deploying a managed Kubernetes cluster.">AKS</abbr></a>.</p>
 <p>Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications.  Learn more about Kubernetes <a href="https://kubernetes.io/docs/home/">here</a>.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
@@ -5663,18 +5593,21 @@
 <ol>
 <li>
 <p>Clone the cloud-deployment repository.</p>
-<p><code>git clone https://github.com/device-management-toolkit/cloud-deployment --branch v2.32.0</code></p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/device-management-toolkit/cloud-deployment --branch v2.32.0
+</code></pre></div>
 </li>
 <li>
 <p>Copy the <code>.env.template</code> file to <code>.env</code>.</p>
-<p><code>copy .env.template .env</code></p>
+<div class="highlight"><pre><span></span><code>copy .env.template .env
+</code></pre></div>
 </li>
 <li>
 <p>Set the POSTGRES_USER and POSTGRES_PASSWORD to the credentials you want.</p>
 </li>
 <li>
 <p>Build and start the container.</p>
-<p><code>docker compose  -f "docker-compose.yml" up -d db</code></p>
+<div class="highlight"><pre><span></span><code>docker compose  -f &quot;docker-compose.yml&quot; up -d db
+</code></pre></div>
 </li>
 <li>
 <p>Continue from <a href="#create-kubernetes-secrets">Create Kubernetes Secrets</a>.</p>
@@ -5695,26 +5628,27 @@
 <p>Add your device's IP Address under <strong>IPv4 local connections</strong>.</p>
 <details class="example" open="open">
 <summary>Example - pg_hba.conf File</summary>
-<p>``` hl_lines="7"</p>
-<h1 id="type-database-user-address-method">TYPE  DATABASE        USER            ADDRESS                 METHOD<a class="headerlink" href="#type-database-user-address-method" title="Permanent link">&para;</a></h1>
-<h1 id="local-is-for-unix-domain-socket-connections-only">"local" is for Unix domain socket connections only<a class="headerlink" href="#local-is-for-unix-domain-socket-connections-only" title="Permanent link">&para;</a></h1>
-<p>local   all             all                                             scram-sha-256</p>
-<h1 id="ipv4-local-connections">IPv4 local connections:<a class="headerlink" href="#ipv4-local-connections" title="Permanent link">&para;</a></h1>
-<p>host    all             all             127.0.0.1/32                    scram-sha-256
-host    all             all             <Your-IP-Address>/24            scram-sha-256</p>
-<h1 id="ipv6-local-connections">IPv6 local connections:<a class="headerlink" href="#ipv6-local-connections" title="Permanent link">&para;</a></h1>
-<p>host    all             all             ::1/128                         scram-sha-256</p>
-<h1 id="allow-replication-connections-from-localhost-by-a-user-with-the">Allow replication connections from localhost, by a user with the<a class="headerlink" href="#allow-replication-connections-from-localhost-by-a-user-with-the" title="Permanent link">&para;</a></h1>
-<h1 id="replication-privilege">replication privilege.<a class="headerlink" href="#replication-privilege" title="Permanent link">&para;</a></h1>
-<p>local   replication     all                                             scram-sha-256
+<div class="highlight"><pre><span></span><code># TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+# &quot;local&quot; is for Unix domain socket connections only
+local   all             all                                             scram-sha-256
+# IPv4 local connections:
+host    all             all             127.0.0.1/32                    scram-sha-256
+<span class="hll">host    all             all             &lt;Your-IP-Address&gt;/24            scram-sha-256
+</span># IPv6 local connections:
+host    all             all             ::1/128                         scram-sha-256
+# Allow replication connections from localhost, by a user with the
+# replication privilege.
+local   replication     all                                             scram-sha-256
 host    replication     all             127.0.0.1/32                    scram-sha-256
 host    replication     all             ::1/128                         scram-sha-256
-```</p>
+</code></pre></div>
 </details>
 </li>
 <li>
 <p>Reload the configuration file to use the updated values.</p>
-<p><code>psql -U &lt;user&gt; -p 5432 -c "SELECT pg_reload_conf();"</code></p>
+<div class="highlight"><pre><span></span><code>psql -U &lt;user&gt; -p 5432 -c &quot;SELECT pg_reload_conf();&quot;
+</code></pre></div>
 </li>
 <li>
 <p>**From here, use your IP Address as the &lt;SERVERURL&gt;. DO NOT use localhost or 127.0.0.1. **</p>
@@ -5728,7 +5662,8 @@ host    replication     all             ::1/128                         scram-sh
 <ol>
 <li>
 <p>Clone the cloud-deployment repository.</p>
-<p><code>git clone https://github.com/device-management-toolkit/cloud-deployment.git --branch v2.32.0</code></p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/device-management-toolkit/cloud-deployment.git --branch v2.32.0
+</code></pre></div>
 </li>
 </ol>
 <h2 id="create-kubernetes-secrets">Create Kubernetes Secrets<a class="headerlink" href="#create-kubernetes-secrets" title="Permanent link">&para;</a></h2>
@@ -5855,7 +5790,8 @@ host    replication     all             ::1/128                         scram-sh
 </li>
 <li>
 <p>Apply the configuration file to create the secrets.</p>
-<p><code>kubectl apply -f ./kubernetes/charts/secrets.yaml</code></p>
+<div class="highlight"><pre><span></span><code>kubectl apply -f ./kubernetes/charts/secrets.yaml
+</code></pre></div>
 </li>
 </ol>
 <h2 id="update-configuration">Update Configuration<a class="headerlink" href="#update-configuration" title="Permanent link">&para;</a></h2>
@@ -5866,12 +5802,12 @@ host    replication     all             ::1/128                         scram-sh
 </li>
 <li>
 <p>Update the <code>commonName</code> key in the <strong>mps</strong> section with the IP Address of your development device.</p>
-<p><code>yaml hl_lines="2"
-mps:
-    commonName: "&lt;your-ip-address&gt;"
-    replicaCount: 1
-    logLevel: "silly"
-    jwtExpiration: 1440</code></p>
+<div class="highlight"><pre><span></span><code><span class="nt">mps</span><span class="p">:</span>
+<span class="hll"><span class="w">    </span><span class="nt">commonName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;your-ip-address&gt;&quot;</span>
+</span><span class="w">    </span><span class="nt">replicaCount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;silly&quot;</span>
+<span class="w">    </span><span class="nt">jwtExpiration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1440</span>
+</code></pre></div>
 </li>
 <li>
 <p>Save and close the file.</p>
@@ -5889,38 +5825,42 @@ mps:
 </li>
 <li>
 <p>Create the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> database and tables. Provide the database password when prompted.</p>
-<p><code>psql -h &lt;SERVERURL&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -f ./data/init.sql -f ./data/initMPS.sql</code></p>
+<div class="highlight"><pre><span></span><code>psql -h &lt;SERVERURL&gt; -p 5432 -d postgres -U &lt;USERNAME&gt; -W -f ./data/init.sql -f ./data/initMPS.sql
+</code></pre></div>
 </li>
 </ol>
 <h2 id="deploy-device-management-toolkit-using-helm">Deploy Device Management Toolkit Using Helm<a class="headerlink" href="#deploy-device-management-toolkit-using-helm" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>Deploy using Helm.</p>
-<p><code>helm install devicemgmtstack ./kubernetes/charts</code></p>
+<div class="highlight"><pre><span></span><code>helm install devicemgmtstack ./kubernetes/charts
+</code></pre></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<p><code>NAME: devicemgmtstack
+<div class="highlight"><pre><span></span><code>NAME: devicemgmtstack
 LAST DEPLOYED: Wed Jul 14 12:59:29 2021
 NAMESPACE: default
 STATUS: deployed
 REVISION: 1
-TEST SUITE: None</code></p>
+TEST SUITE: None
+</code></pre></div>
 </div>
 </li>
 <li>
 <p>View the pods. You might notice <code>mps</code>, <code>rps</code>, and <code>devicemgmtstack-vault-0</code> are not ready. This will change after we initialize and unseal Vault. All others should be Ready and Running.</p>
-<p><code>kubectl get pods</code></p>
+<div class="highlight"><pre><span></span><code>kubectl get pods
+</code></pre></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<p><code>hl_lines="2 5 7"
-NAME                                                 READY   STATUS                       RESTARTS   AGE
-mps-6984b7c69d-8d5gf                                 0/1     CreateContainerConfigError   0          5m
-mpsrouter-9b9bc499b-pwn9j                            1/1     Running                      0          5m
+<div class="highlight"><pre><span></span><code>NAME                                                 READY   STATUS                       RESTARTS   AGE
+<span class="hll">mps-6984b7c69d-8d5gf                                 0/1     CreateContainerConfigError   0          5m
+</span>mpsrouter-9b9bc499b-pwn9j                            1/1     Running                      0          5m
 devicemgmtstack-kong-55b65d558c-gzv4d                   2/2     Running                      0          5m
-devicemgmtstack-vault-0                                 0/1     Running                      0          5m
-devicemgmtstack-vault-agent-injector-7fb7dcfcbd-dlqqg   1/1     Running                      0          5m
-rps-79877bf5c5-hnv8t                                 0/1     CreateContainerConfigError   0          5m
-webui-784cd49976-bj7z5                               1/1     Running                      0          5m</code></p>
+<span class="hll">devicemgmtstack-vault-0                                 0/1     Running                      0          5m
+</span>devicemgmtstack-vault-agent-injector-7fb7dcfcbd-dlqqg   1/1     Running                      0          5m
+<span class="hll">rps-79877bf5c5-hnv8t                                 0/1     CreateContainerConfigError   0          5m
+</span>webui-784cd49976-bj7z5                               1/1     Running                      0          5m
+</code></pre></div>
 </div>
 </li>
 </ol>
@@ -5932,11 +5872,13 @@ webui-784cd49976-bj7z5                               1/1     Running            
 <ol>
 <li>
 <p>Connect to the Vault UI using a web browser.</p>
-<p><code>http://localhost:8200</code></p>
+<div class="highlight"><pre><span></span><code>http://localhost:8200
+</code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Troubleshoot - Vault UI External IP</p>
 <p>If you cannot connect, verify the External IP Address by running:
-<code>kubectl get services devicemgmtstack-vault-ui</code></p>
+<div class="highlight"><pre><span></span><code>kubectl get services devicemgmtstack-vault-ui
+</code></pre></div></p>
 </div>
 </li>
 <li>
@@ -5972,21 +5914,24 @@ webui-784cd49976-bj7z5                               1/1     Running            
 </li>
 <li>
 <p>Update the Kubernetes <code>vault</code> secret.</p>
-<p><code>kubectl apply -f ./kubernetes/charts/secrets.yaml -l app=vault</code></p>
+<div class="highlight"><pre><span></span><code>kubectl apply -f ./kubernetes/charts/secrets.yaml -l app=vault
+</code></pre></div>
 </li>
 <li>
 <p>View the pods. All pods should now be Ready and Running.</p>
-<p><code>kubectl get pods</code></p>
+<div class="highlight"><pre><span></span><code>kubectl get pods
+</code></pre></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<p><code>NAME                                                 READY   STATUS    RESTARTS   AGE
+<div class="highlight"><pre><span></span><code>NAME                                                 READY   STATUS    RESTARTS   AGE
 mps-6984b7c69d-8d5gf                                 1/1     Running   0          7m
 mpsrouter-9b9bc499b-pwn9j                            1/1     Running   0          7m
 devicemgmtstack-kong-55b65d558c-gzv4d                   2/2     Running   0          7m
 devicemgmtstack-vault-0                                 1/1     Running   0          7m
 devicemgmtstack-vault-agent-injector-7fb7dcfcbd-dlqqg   1/1     Running   0          7m
 rps-79877bf5c5-hnv8t                                 1/1     Running   0          7m
-webui-784cd49976-bj7z5                               1/1     Running   0          7m</code></p>
+webui-784cd49976-bj7z5                               1/1     Running   0          7m
+</code></pre></div>
 </div>
 </li>
 </ol>

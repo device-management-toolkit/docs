@@ -5583,30 +5583,30 @@
 </li>
 <li>
 <p>Import the new locale file.</p>
-<p>``` ts hl_lines="7"
-import i18next from 'i18next'
-import { initReactI18next } from 'react-i18next'</p>
-<p>import en from './locales/en.json'
-import es from './locales/es.json'
-import fr from './locales/fr.json'
-import kn from './locales/kn.json'
-...
-```</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">i18next</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;i18next&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">initReactI18next</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-i18next&#39;</span>
+
+<span class="k">import</span><span class="w"> </span><span class="nx">en</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./locales/en.json&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">es</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./locales/es.json&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">fr</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./locales/fr.json&#39;</span>
+<span class="hll"><span class="k">import</span><span class="w"> </span><span class="nx">kn</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./locales/kn.json&#39;</span>
+</span><span class="p">...</span>
+</code></pre></div>
 </li>
 <li>
 <p>Add the new translation to the <code>resources</code> object.</p>
-<p><code>ts hl_lines="8-10"
-...
-const resources = {
-  en: { translation: en },
-  es: { translation: es },
-  fr: { translation: fr },
-  de: { translation: de },
-  ja: { translation: ja },
-  zh: { translation: zh },
-  kn: { translation: kn }
-}
-...</code></p>
+<div class="highlight"><pre><span></span><code><span class="p">...</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">en</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">translation</span><span class="o">:</span><span class="w"> </span><span class="kt">en</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">es</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">translation</span><span class="o">:</span><span class="w"> </span><span class="kt">es</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">fr</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">translation</span><span class="o">:</span><span class="w"> </span><span class="kt">fr</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">de</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">translation</span><span class="o">:</span><span class="w"> </span><span class="kt">de</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">ja</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">translation</span><span class="o">:</span><span class="w"> </span><span class="kt">ja</span><span class="w"> </span><span class="p">},</span>
+<span class="hll"><span class="w">  </span><span class="nx">zh</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">translation</span><span class="o">:</span><span class="w"> </span><span class="kt">zh</span><span class="w"> </span><span class="p">},</span>
+</span><span class="hll"><span class="w">  </span><span class="nx">kn</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">translation</span><span class="o">:</span><span class="w"> </span><span class="kt">kn</span><span class="w"> </span><span class="p">}</span>
+</span><span class="hll"><span class="p">}</span>
+</span><span class="p">...</span>
+</code></pre></div>
 </li>
 <li>
 <p>Save the file.</p>
@@ -5617,32 +5617,32 @@ const resources = {
 </ol>
 <h3 id="translation-file-structure">Translation File Structure<a class="headerlink" href="#translation-file-structure" title="Permanent link">&para;</a></h3>
 <p>Translation files use a flat namespace structure organized by component:</p>
-<p><code>json
-{
-  "kvm": {
-    "connect": "Connect KVM",
-    "disconnect": "Disconnect KVM",
-    "encoding": "Encoding",
-    ...
-  },
-  "sol": {
-    "connect": "Connect",
-    "disconnect": "Disconnect",
-    ...
-  },
-  "ider": {
-    "start": "Start IDER",
-    "stop": "Stop IDER",
-    "selectFile": "Choose File",
-    ...
-  }
-}</code></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;kvm&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;connect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Connect KVM&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;disconnect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Disconnect KVM&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;encoding&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Encoding&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;sol&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;connect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Connect&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;disconnect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Disconnect&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;ider&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Start IDER&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Stop IDER&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;selectFile&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Choose File&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="setting-the-language">Setting the Language<a class="headerlink" href="#setting-the-language" title="Permanent link">&para;</a></h2>
 <p>The default language is English (<code>en</code>). To change the language programmatically:</p>
-<p>``` typescript
-import { i18n } from '@device-management-toolkit/ui-toolkit-react'</p>
-<p>i18n.changeLanguage('fr') // Switch to French
-```</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">i18n</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@device-management-toolkit/ui-toolkit-react&#39;</span>
+
+<span class="nx">i18n</span><span class="p">.</span><span class="nx">changeLanguage</span><span class="p">(</span><span class="s1">&#39;fr&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1">// Switch to French</span>
+</code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Browser language auto-detection is no longer supported. The language must be set explicitly using <code>i18n.changeLanguage()</code>.</p>

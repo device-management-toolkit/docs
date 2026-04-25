@@ -5581,7 +5581,8 @@ You may stay on v2.x without upgrading until you are ready.</p>
 <h3 id="1-improved-activation-workflow-faster-local-activation">1. Improved Activation Workflow (Faster Local Activation)<a class="headerlink" href="#1-improved-activation-workflow-faster-local-activation" title="Permanent link">&para;</a></h3>
 <p>In earlier versions, <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go (and before that, the C-based <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>) primarily acted as a proxy between the Remote Provisioning Server (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) and <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>. <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> determined the sequence of WSMAN messages required for activation, and <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go relayed them to <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> over a secure WebSocket connection. This <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>-driven flow remains fully supported in v3.x.</p>
 <p>What v3.x adds is the ability for <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go to directly call the encrypted profile export endpoint:</p>
-<p><code>https://&lt;RPS or Console Host&gt;/api/v1/admin/profiles/export/&lt;profile-name&gt;?domainName=&lt;domain-profile-name&gt;</code></p>
+<div class="highlight"><pre><span></span><code>https://&lt;RPS or Console Host&gt;/api/v1/admin/profiles/export/&lt;profile-name&gt;?domainName=&lt;domain-profile-name&gt;
+</code></pre></div>
 <p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go can authenticate using either username/password or an auth-token, retrieve the encrypted profile, and orchestrate <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> activation <strong>locally on the device</strong>.<br />
 This results in <strong>faster and more efficient activation</strong> compared to the legacy proxy model.</p>
 <p>This new workflow currently requires some additional configuration (endpoints, tokens, auth settings), and we plan to simplify it in future releases. This is also why v3.x remains in Beta—we want to incorporate customer feedback and ensure the workflow becomes easier as it evolves.</p>
@@ -5597,29 +5598,31 @@ This results in <strong>faster and more efficient activation</strong> compared t
 <p>Long flags now use <code>--</code><br />
 Short flags use <code>-</code></p>
 <p>Examples:</p>
-<p><code>bash
---profile
+<div class="highlight"><pre><span></span><code>--profile
 --config
 -p
--c</code></p>
+-c
+</code></pre></div>
 <p>This brings <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go in line with modern CLI conventions and makes scripts cleaner.</p>
 <h3 id="4-removal-of-legacy-configv2">4. Removal of Legacy <code>configv2</code><a class="headerlink" href="#4-removal-of-legacy-configv2" title="Permanent link">&para;</a></h3>
 <p>The old provisioning flag:</p>
-<p><code>--configv2</code></p>
+<div class="highlight"><pre><span></span><code>--configv2
+</code></pre></div>
 <p>has been removed.</p>
 <p>Use:</p>
-<p><code>--profile</code></p>
+<div class="highlight"><pre><span></span><code>--profile
+</code></pre></div>
 <p>instead.</p>
 <h2 id="migration-guide-v2x-v3x">Migration Guide (v2.x → v3.x)<a class="headerlink" href="#migration-guide-v2x-v3x" title="Permanent link">&para;</a></h2>
 <h3 id="before-v2x">Before (v2.x)<a class="headerlink" href="#before-v2x" title="Permanent link">&para;</a></h3>
-<p><code>bash
-rpc-go configure --configv2 ./profile.yaml</code></p>
+<div class="highlight"><pre><span></span><code>rpc-go<span class="w"> </span>configure<span class="w"> </span>--configv2<span class="w"> </span>./profile.yaml
+</code></pre></div>
 <h3 id="after-v3x">After (v3.x)<a class="headerlink" href="#after-v3x" title="Permanent link">&para;</a></h3>
-<p><code>bash
-rpc-go configure --profile ./profile.yaml</code></p>
+<div class="highlight"><pre><span></span><code>rpc-go<span class="w"> </span>configure<span class="w"> </span>--profile<span class="w"> </span>./profile.yaml
+</code></pre></div>
 <p>Short form:</p>
-<p><code>bash
-rpc-go configure -p ./profile.yaml</code></p>
+<div class="highlight"><pre><span></span><code>rpc-go<span class="w"> </span>configure<span class="w"> </span>-p<span class="w"> </span>./profile.yaml
+</code></pre></div>
 <h2 id="what-stays-the-same-in-v3x">What Stays the Same in v3.x<a class="headerlink" href="#what-stays-the-same-in-v3x" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Encrypted profiles remain supported (same format as v2.x).</li>

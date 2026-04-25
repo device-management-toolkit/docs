@@ -5488,34 +5488,36 @@
 <p>The example implementation has a tenantId that is passed as part of the JWT token header when an API is called. The token is decoded and its tenantId is checked against the available tenants in <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> or <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>. This verifies that the user has the correct access to the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> or <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> data being added, modified, or deleted.</p>
 <div class="admonition example">
 <p class="admonition-title">Multitenancy Example Code</p>
-<p>``` typescript
-import { Request, Response } from 'express'
-import { devices } from '../../server/mpsserver'
-import { Environment } from '../../utils/Environment'</p>
-<p>const tenantMiddleware = (req: Request, res: Response, next): void =&gt; {
-  const jwtTokenHeader = Environment.Config.jwt_token_header ??     'x-id-token'
-  const token = req.headers[jwtTokenHeader]
-  req.tenantId = ''
-  if (token != null &amp;&amp; token !== '') {
-    try {
-      const decodedToken = Buffer.from(token as string, 'base64').  toString  ()
-      if (decodedToken != null &amp;&amp; decodedToken !== '') {
-        const dt = JSON.parse(decodedToken)
-        const tenantProp = Environment.Config.jwt_tenant_property ?? ''
-        req.tenantId = dt[tenantProp] ?? ''
-      }
-    } catch (err) {
-      console.error(err)
-    }
-  }
-  next()
-}</p>
-<p>export default tenantMiddleware
-```</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">Response</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;express&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">devices</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../../server/mpsserver&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Environment</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../../utils/Environment&#39;</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">tenantMiddleware</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="o">:</span><span class="w"> </span><span class="kt">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="o">:</span><span class="w"> </span><span class="kt">Response</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">jwtTokenHeader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Environment</span><span class="p">.</span><span class="nx">Config</span><span class="p">.</span><span class="nx">jwt_token_header</span><span class="w"> </span><span class="o">??</span><span class="w">     </span><span class="s1">&#39;x-id-token&#39;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="nx">jwtTokenHeader</span><span class="p">]</span>
+<span class="w">  </span><span class="nx">req</span><span class="p">.</span><span class="nx">tenantId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">token</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">decodedToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Buffer</span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="nx">token</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;base64&#39;</span><span class="p">).</span><span class="w">  </span><span class="nx">toString</span><span class="w">  </span><span class="p">()</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">decodedToken</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">decodedToken</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">dt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">decodedToken</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">tenantProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Environment</span><span class="p">.</span><span class="nx">Config</span><span class="p">.</span><span class="nx">jwt_tenant_property</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">tenantId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dt</span><span class="p">[</span><span class="nx">tenantProp</span><span class="p">]</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">next</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">tenantMiddleware</span>
+</code></pre></div>
 </div>
 <p>After implementing the multitenancy code changes and starting the services, profiles and configs can be created by providing a <code>tenantID</code> as part of the <a href="../../APIs/indexRPS/">API calls</a>.</p>
 <p>Then when activating and configuring the AMT device using <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>, provide the <code>-tenant</code> flag with the <code>tenantID</code> of the profile. <a href="../RPC/v2/commandsRPC/">Find all <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> flags in the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> CLI docs</a>.  See example command below.</p>
-<p><code>rpc activate -u wss://server/activate -n -profile profilename -tenant profileTenantID</code></p>
+<div class="highlight"><pre><span></span><code>rpc activate -u wss://server/activate -n -profile profilename -tenant profileTenantID
+</code></pre></div>
 <p><br></p>
 
 

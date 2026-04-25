@@ -5714,15 +5714,16 @@ psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
 </li>
 <li>
 <p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.</p>
-<p><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]</code></p>
+<div class="highlight"><pre><span></span><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
+</code></pre></div>
 <details class="example">
 <summary>Example Commands</summary>
-<p>```
-Azure:
-psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql</p>
-<p>AWS:
+<div class="highlight"><pre><span></span><code>Azure:
+psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql
+
+AWS:
 psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U postgresadmin
-```</p>
+</code></pre></div>
 </details>
 </li>
 <li>
@@ -5733,8 +5734,8 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U p
 </li>
 <li>
 <p>Verify the constraints were modified correctly.</p>
-<p><code>sql
-SELECT * FROM profiles;</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">profiles</span><span class="p">;</span>
+</code></pre></div>
 </li>
 </ol>
 </details>
@@ -5759,15 +5760,16 @@ SELECT * FROM profiles;</code></p>
 </li>
 <li>
 <p>Connect to your Postgres instance and <code>mpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>mpsdb</code>, and your database user.</p>
-<p><code>psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]</code></p>
+<div class="highlight"><pre><span></span><code>psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]
+</code></pre></div>
 <details class="example">
 <summary>Example Commands</summary>
-<p>```
-Azure:
-psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d mpsdb -U postgresadmin@myazuredb-sql</p>
-<p>AWS:
+<div class="highlight"><pre><span></span><code>Azure:
+psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d mpsdb -U postgresadmin@myazuredb-sql
+
+AWS:
 psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U postgresadmin
-```</p>
+</code></pre></div>
 </details>
 </li>
 <li>
@@ -5778,8 +5780,8 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U p
 </li>
 <li>
 <p>Verify the constraints were modified correctly.</p>
-<p><code>sql
-SELECT * FROM devices;</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">devices</span><span class="p">;</span>
+</code></pre></div>
 </li>
 </ol>
 </details>
@@ -5808,15 +5810,16 @@ SELECT * FROM devices;</code></p>
 </li>
 <li>
 <p>Connect to your Postgres instance and <code>mpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>mpsdb</code>, and your database user.</p>
-<p><code>psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]</code></p>
+<div class="highlight"><pre><span></span><code>psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]
+</code></pre></div>
 <details class="example">
 <summary>Example Commands</summary>
-<p>```
-Azure:
-psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d mpsdb -U postgresadmin@myazuredb-sql</p>
-<p>AWS:
+<div class="highlight"><pre><span></span><code>Azure:
+psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d mpsdb -U postgresadmin@myazuredb-sql
+
+AWS:
 psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U postgresadmin
-```</p>
+</code></pre></div>
 </details>
 </li>
 <li>
@@ -5827,8 +5830,8 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U p
 </li>
 <li>
 <p>Verify the constraints were modified correctly.</p>
-<p><code>sql
-SELECT * FROM devices;</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">devices</span><span class="p">;</span>
+</code></pre></div>
 </li>
 </ol>
 </details>
@@ -5842,14 +5845,14 @@ SELECT * FROM devices;</code></p>
 <ol>
 <li>
 <p>Run the following SQL script to alter constraints before upgrading the services.</p>
-<p><code>sql
-ALTER TABLE domains
-DROP CONSTRAINT IF EXISTS domains_pkey;
-DROP INDEX CONCURRENTLY IF EXISTS lower_name_suffix_idx;
-ALTER TABLE domains
-ADD CONSTRAINT domainname UNIQUE (name, tenant_id);
-ALTER TABLE domains
-ADD PRIMARY KEY (name, domain_suffix, tenant_id);</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">domains</span>
+<span class="k">DROP</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">domains_pkey</span><span class="p">;</span>
+<span class="k">DROP</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">CONCURRENTLY</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">lower_name_suffix_idx</span><span class="p">;</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">domains</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">domainname</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">tenant_id</span><span class="p">);</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">domains</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">domain_suffix</span><span class="p">,</span><span class="w"> </span><span class="n">tenant_id</span><span class="p">);</span>
+</code></pre></div>
 <details class="example">
 <summary>Example - Adding Columns to PostgresDB using psql</summary>
 <p>This example walks through one potential option to update a Postgres Database using psql.</p>
@@ -5859,15 +5862,16 @@ ADD PRIMARY KEY (name, domain_suffix, tenant_id);</code></p>
 </li>
 <li>
 <p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.</p>
-<p><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]</code></p>
+<div class="highlight"><pre><span></span><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
+</code></pre></div>
 <details class="example">
 <summary>Example Commands</summary>
-<p>```
-Azure:
-psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql</p>
-<p>AWS:
+<div class="highlight"><pre><span></span><code>Azure:
+psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql
+
+AWS:
 psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U postgresadmin
-```</p>
+</code></pre></div>
 </details>
 </li>
 <li>
@@ -5878,8 +5882,8 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U p
 </li>
 <li>
 <p>Verify the constraints were modified correctly.</p>
-<p><code>sql
-\d domains;</code></p>
+<div class="highlight"><pre><span></span><code><span class="err">\</span><span class="n">d</span><span class="w"> </span><span class="n">domains</span><span class="p">;</span>
+</code></pre></div>
 </li>
 </ol>
 </details>
@@ -5894,9 +5898,9 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U p
 <ol>
 <li>
 <p>Run the following SQL script to add the new table before upgrading the services.</p>
-<p><code>sql
-ALTER TABLE IF EXISTS profiles
-ADD COLUMN IF NOT EXISTS ip_sync_enabled BOOLEAN NULL;</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">profiles</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">ip_sync_enabled</span><span class="w"> </span><span class="nb">BOOLEAN</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div>
 <details class="example">
 <summary>Example - Adding Columns to PostgresDB using psql</summary>
 <p>This example walks through one potential option to update a Postgres Database using psql.</p>
@@ -5906,15 +5910,16 @@ ADD COLUMN IF NOT EXISTS ip_sync_enabled BOOLEAN NULL;</code></p>
 </li>
 <li>
 <p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.</p>
-<p><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]</code></p>
+<div class="highlight"><pre><span></span><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
+</code></pre></div>
 <details class="example">
 <summary>Example Commands</summary>
-<p>```
-Azure:
-psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql</p>
-<p>AWS:
+<div class="highlight"><pre><span></span><code>Azure:
+psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql
+
+AWS:
 psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U postgresadmin
-```</p>
+</code></pre></div>
 </details>
 </li>
 <li>
@@ -5925,8 +5930,8 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U p
 </li>
 <li>
 <p>Verify the column was added to the table.</p>
-<p><code>sql
-SELECT * FROM profiles;</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">profiles</span><span class="p">;</span>
+</code></pre></div>
 </li>
 </ol>
 </details>
@@ -5940,10 +5945,10 @@ SELECT * FROM profiles;</code></p>
 <ol>
 <li>
 <p>Run the following SQL script to add the new table before upgrading the services.</p>
-<p><code>sql
-ALTER TABLE IF EXISTS wirelessconfigs
-ADD COLUMN IF NOT EXISTS ieee8021x_profile_name citext,
-ADD CONSTRAINT ieee8021xconfigs_fk FOREIGN KEY (ieee8021x_profile_name, tenant_id)  REFERENCES ieee8021xconfigs (profile_name, tenant_id);</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">wirelessconfigs</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">ieee8021x_profile_name</span><span class="w"> </span><span class="n">citext</span><span class="p">,</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">ieee8021xconfigs_fk</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">ieee8021x_profile_name</span><span class="p">,</span><span class="w"> </span><span class="n">tenant_id</span><span class="p">)</span><span class="w">  </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">ieee8021xconfigs</span><span class="w"> </span><span class="p">(</span><span class="n">profile_name</span><span class="p">,</span><span class="w"> </span><span class="n">tenant_id</span><span class="p">);</span>
+</code></pre></div>
 <details class="example">
 <summary>Example - Adding Columns to PostgresDB using psql</summary>
 <p>This example walks through one potential option to update a Postgres Database using psql.</p>
@@ -5953,15 +5958,16 @@ ADD CONSTRAINT ieee8021xconfigs_fk FOREIGN KEY (ieee8021x_profile_name, tenant_i
 </li>
 <li>
 <p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.</p>
-<p><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]</code></p>
+<div class="highlight"><pre><span></span><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
+</code></pre></div>
 <details class="example">
 <summary>Example Commands</summary>
-<p>```
-Azure:
-psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql</p>
-<p>AWS:
+<div class="highlight"><pre><span></span><code>Azure:
+psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql
+
+AWS:
 psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U postgresadmin
-```</p>
+</code></pre></div>
 </details>
 </li>
 <li>
@@ -5972,8 +5978,8 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U p
 </li>
 <li>
 <p>Verify the column was added to the table.</p>
-<p><code>sql
-SELECT * FROM wirelessconfigs;</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">wirelessconfigs</span><span class="p">;</span>
+</code></pre></div>
 </li>
 </ol>
 </details>
@@ -5987,28 +5993,28 @@ SELECT * FROM wirelessconfigs;</code></p>
 <ol>
 <li>
 <p>Run the following SQL script to add the new table before upgrading the services.</p>
-<p><code>sql
-CREATE TABLE IF NOT EXISTS ieee8021xconfigs(
-    profile_name citext,
-    auth_protocol integer,
-    servername VARCHAR(255),
-    domain VARCHAR(255),
-    username VARCHAR(255),
-    password VARCHAR(255),
-    roaming_identity VARCHAR(255),
-    active_in_s0 BOOLEAN,
-    pxe_timeout integer,
-    wired_interface BOOLEAN NOT NULL,
-    tenant_id varchar(36) NOT NULL,
-    PRIMARY KEY (profile_name, tenant_id),
-);</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">ieee8021xconfigs</span><span class="p">(</span>
+<span class="w">    </span><span class="n">profile_name</span><span class="w"> </span><span class="n">citext</span><span class="p">,</span>
+<span class="w">    </span><span class="n">auth_protocol</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span>
+<span class="w">    </span><span class="n">servername</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="w">    </span><span class="k">domain</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="w">    </span><span class="n">username</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="w">    </span><span class="n">password</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="w">    </span><span class="n">roaming_identity</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="w">    </span><span class="n">active_in_s0</span><span class="w"> </span><span class="nb">BOOLEAN</span><span class="p">,</span>
+<span class="w">    </span><span class="n">pxe_timeout</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span>
+<span class="w">    </span><span class="n">wired_interface</span><span class="w"> </span><span class="nb">BOOLEAN</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">tenant_id</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">36</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">profile_name</span><span class="p">,</span><span class="w"> </span><span class="n">tenant_id</span><span class="p">),</span>
+<span class="p">);</span>
+</code></pre></div>
 </li>
 <li>
 <p>Update the Profiles table.</p>
-<p><code>sql
-ALTER TABLE IF EXISTS profiles
-ADD COLUMN IF NOT EXISTS ieee8021x_profile_name citext,
-ADD CONSTRAINT ieee8021xconfigs_fk FOREIGN KEY (ieee8021x_profile_name, tenant_id)  REFERENCES ieee8021xconfigs (profile_name, tenant_id);</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">profiles</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">ieee8021x_profile_name</span><span class="w"> </span><span class="n">citext</span><span class="p">,</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">ieee8021xconfigs_fk</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">ieee8021x_profile_name</span><span class="p">,</span><span class="w"> </span><span class="n">tenant_id</span><span class="p">)</span><span class="w">  </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">ieee8021xconfigs</span><span class="w"> </span><span class="p">(</span><span class="n">profile_name</span><span class="p">,</span><span class="w"> </span><span class="n">tenant_id</span><span class="p">);</span>
+</code></pre></div>
 <details class="example">
 <summary>Example - Adding Columns to PostgresDB using psql</summary>
 <p>This example walks through one potential option to update a Postgres Database using psql.</p>
@@ -6018,15 +6024,16 @@ ADD CONSTRAINT ieee8021xconfigs_fk FOREIGN KEY (ieee8021x_profile_name, tenant_i
 </li>
 <li>
 <p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.</p>
-<p><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]</code></p>
+<div class="highlight"><pre><span></span><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
+</code></pre></div>
 <details class="example">
 <summary>Example Commands</summary>
-<p>```
-Azure:
-psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql</p>
-<p>AWS:
+<div class="highlight"><pre><span></span><code>Azure:
+psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql
+
+AWS:
 psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U postgresadmin
-```</p>
+</code></pre></div>
 </details>
 </li>
 <li>
@@ -6037,8 +6044,8 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U p
 </li>
 <li>
 <p>Verify the column was added to the table.</p>
-<p><code>sql
-SELECT * FROM ieee8021xconfigs;</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">ieee8021xconfigs</span><span class="p">;</span>
+</code></pre></div>
 </li>
 </ol>
 </details>
@@ -6052,9 +6059,9 @@ SELECT * FROM ieee8021xconfigs;</code></p>
 <ol>
 <li>
 <p>Run the following SQL script to add the new column before upgrading the services.</p>
-<p><code>sql
-ALTER TABLE IF EXISTS profiles
-ADD COLUMN IF NOT EXISTS tls_signing_authority varchar(40) NULL;</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">profiles</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">tls_signing_authority</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div>
 <details class="example">
 <summary>Example - Adding Columns to PostgresDB using psql</summary>
 <p>This example walks through one potential option to update a Postgres Database using psql.</p>
@@ -6064,15 +6071,16 @@ ADD COLUMN IF NOT EXISTS tls_signing_authority varchar(40) NULL;</code></p>
 </li>
 <li>
 <p>Connect to your Postgres instance and <code>rpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>rpsdb</code>, and your database user.</p>
-<p><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]</code></p>
+<div class="highlight"><pre><span></span><code>psql -h [HOSTNAME] -p 5432 -d rpsdb -U [DATABASE USER]
+</code></pre></div>
 <details class="example">
 <summary>Example Commands</summary>
-<p>```
-Azure:
-psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql</p>
-<p>AWS:
+<div class="highlight"><pre><span></span><code>Azure:
+psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d rpsdb -U postgresadmin@myazuredb-sql
+
+AWS:
 psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U postgresadmin
-```</p>
+</code></pre></div>
 </details>
 </li>
 <li>
@@ -6083,8 +6091,8 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d rpsdb -U p
 </li>
 <li>
 <p>Verify the column was added to the table.</p>
-<p><code>sql
-SELECT * FROM profiles;</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">profiles</span><span class="p">;</span>
+</code></pre></div>
 </li>
 </ol>
 </details>
@@ -6098,10 +6106,10 @@ SELECT * FROM profiles;</code></p>
 <ol>
 <li>
 <p>Run the following SQL script to add two new columns before upgrading the services.</p>
-<p><code>sql
-ALTER TABLE devices 
-ADD COLUMN IF NOT EXISTS friendlyname varchar(256),
-ADD COLUMN IF NOT EXISTS dnssuffix varchar(256);</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">devices</span><span class="w"> </span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">friendlyname</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
+<span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">dnssuffix</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">);</span>
+</code></pre></div>
 <details class="example">
 <summary>Example - Adding Columns to PostgresDB using psql</summary>
 <p>This example walks through one potential option to update a Postgres Database using psql.</p>
@@ -6111,15 +6119,16 @@ ADD COLUMN IF NOT EXISTS dnssuffix varchar(256);</code></p>
 </li>
 <li>
 <p>Connect to your Postgres instance and <code>mpsdb</code> database. Provide the hostname of the database, the port (Postgres default is 5432), the database <code>mpsdb</code>, and your database user.</p>
-<p><code>psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]</code></p>
+<div class="highlight"><pre><span></span><code>psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]
+</code></pre></div>
 <details class="example">
 <summary>Example Commands</summary>
-<p>```
-Azure:
-psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d mpsdb -U postgresadmin@myazuredb-sql</p>
-<p>AWS:
+<div class="highlight"><pre><span></span><code>Azure:
+psql -h myazuredb-sql.postgres.database.azure.com -p 5432 -d mpsdb -U postgresadmin@myazuredb-sql
+
+AWS:
 psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U postgresadmin
-```</p>
+</code></pre></div>
 </details>
 </li>
 <li>
@@ -6130,8 +6139,8 @@ psql -h myawsdb-1.jotd7t2abapq.us-west-2.rds.amazonaws.com -p 5432 -d mpsdb -U p
 </li>
 <li>
 <p>Verify the columns were added to the table.</p>
-<p><code>sql
-SELECT * FROM devices;</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">devices</span><span class="p">;</span>
+</code></pre></div>
 </li>
 </ol>
 </details>
@@ -6150,56 +6159,63 @@ SELECT * FROM devices;</code></p>
 <ol>
 <li>
 <p>Pull the latest release within <code>.\cloud-deployment</code> directory.</p>
-<p><code>git pull</code></p>
+<div class="highlight"><pre><span></span><code>git pull
+</code></pre></div>
 </li>
 <li>
 <p>Merge the latest changes into your existing branch.</p>
-<p><code>git merge v2.32.0</code></p>
+<div class="highlight"><pre><span></span><code>git merge v2.32.0
+</code></pre></div>
 </li>
 <li>
 <p>In the values.yaml file, update the images to the new version wanted. Alternatively, you can use the <code>latest</code> tags.</p>
 <div class="admonition example">
 <p class="admonition-title">Example - values.yaml File</p>
-<p><code>yaml hl_lines="2-5"
-images:
-  mps: "intel/oact-mps:latest"
-  rps: "intel/oact-rps:latest"
-  webui: "intel/oact-webui:latest"
-  mpsrouter: "intel/oact-mpsrouter:latest"
-mps:
-  ...</code></p>
+<div class="highlight"><pre><span></span><code><span class="nt">images</span><span class="p">:</span>
+<span class="hll"><span class="w">  </span><span class="nt">mps</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;intel/oact-mps:latest&quot;</span>
+</span><span class="hll"><span class="w">  </span><span class="nt">rps</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;intel/oact-rps:latest&quot;</span>
+</span><span class="hll"><span class="w">  </span><span class="nt">webui</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;intel/oact-webui:latest&quot;</span>
+</span><span class="hll"><span class="w">  </span><span class="nt">mpsrouter</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;intel/oact-mpsrouter:latest&quot;</span>
+</span><span class="nt">mps</span><span class="p">:</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
 </div>
 </li>
 <li>
 <p>In Terminal or Command Prompt, go to the deployed cloud-deployment repository directory.</p>
-<p><code>cd ./YOUR-DIRECTORY-PATH/cloud-deployment</code></p>
+<div class="highlight"><pre><span></span><code>cd ./YOUR-DIRECTORY-PATH/cloud-deployment
+</code></pre></div>
 </li>
 <li>
 <p>Use Helm to upgrade and deploy the new images.</p>
-<p><code>helm upgrade devicemgmtstack ./kubernetes/charts</code></p>
+<div class="highlight"><pre><span></span><code>helm upgrade devicemgmtstack ./kubernetes/charts
+</code></pre></div>
 <div class="admonition success">
 <p class="admonition-title">Successful Helm Upgrade</p>
-<p><code>Release "devicemgmtstack" has been upgraded. Happy Helming!
+<div class="highlight"><pre><span></span><code>Release &quot;devicemgmtstack&quot; has been upgraded. Happy Helming!
 NAME: devicemgmtstack
 LAST DEPLOYED: Wed Mar 23 09:36:10 2022
 NAMESPACE: default
 STATUS: deployed
-REVISION: 2</code></p>
+REVISION: 2
+</code></pre></div>
 </div>
 </li>
 <li>
 <p>Verify the new pods are running. Notice the only restarted and recreated pods are <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, and the WebUI.</p>
-<p><code>kubectl get pods</code></p>
+<div class="highlight"><pre><span></span><code>kubectl get pods
+</code></pre></div>
 <div class="admonition example">
 <p class="admonition-title">Example - Upgraded Running Pods</p>
-<p><code>NAME                                                 READY   STATUS    RESTARTS   AGE
+<div class="highlight"><pre><span></span><code>NAME                                                 READY   STATUS    RESTARTS   AGE
 mps-55f558666b-5m9bq                                 1/1     Running   0          2m47s
 mpsrouter-6975577696-wn8wm                           1/1     Running   0          27d
 devicemgmtstack-kong-5999cc6b97-wbmdw                   2/2     Running   0          27d
 devicemgmtstack-vault-0                                 1/1     Running   0          27d
 devicemgmtstack-vault-agent-injector-6d6c75f7d5-sh5nm   1/1     Running   0          27d
 rps-597d7894b5-mbdz5                                 1/1     Running   0          2m47s
-webui-6d9b96c989-29r9z                               1/1     Running   0          2m47s</code></p>
+webui-6d9b96c989-29r9z                               1/1     Running   0          2m47s
+</code></pre></div>
 </div>
 </li>
 </ol>
@@ -6208,10 +6224,12 @@ webui-6d9b96c989-29r9z                               1/1     Running   0        
 <ol>
 <li>
 <p>Use the Helm rollback command with the Revision you want to rollback to. In this example deployment, we would rollback to the original deployment revision which would be 1.</p>
-<p><code>helm rollback devicemgmtstack [Revision-Number]</code></p>
+<div class="highlight"><pre><span></span><code>helm rollback devicemgmtstack [Revision-Number]
+</code></pre></div>
 <div class="admonition success -">
 <p class="admonition-title">Successful Rollback</p>
-<p><code>Rollback was a success! Happy Helming!</code></p>
+<div class="highlight"><pre><span></span><code>Rollback was a success! Happy Helming!
+</code></pre></div>
 </div>
 </li>
 </ol>
@@ -6220,45 +6238,53 @@ webui-6d9b96c989-29r9z                               1/1     Running   0        
 <ol>
 <li>
 <p>From the <code>.\cloud-deployment\</code> directory, pull the latest branches.</p>
-<p><code>git pull</code></p>
+<div class="highlight"><pre><span></span><code>git pull
+</code></pre></div>
 </li>
 <li>
 <p>Checkout the new release.</p>
-<p><code>git checkout v2.32.0</code></p>
+<div class="highlight"><pre><span></span><code>git checkout v2.32.0
+</code></pre></div>
 <details class="note">
 <summary>Note - Rebuilding New Images Locally</summary>
 <p>If building your own images, you will also have to checkout the newer release from each repo within <code>.\cloud-deployment\</code>.</p>
 <ol>
 <li>
 <p>Pull the new releases of the submodules.</p>
-<p><code>git submodule update --recursive</code></p>
+<div class="highlight"><pre><span></span><code>git submodule update --recursive
+</code></pre></div>
 </li>
 <li>
 <p>Checkout the release for each of the services you want to upgrade.</p>
-<p><code>cd mps
-git checkout v2.26.0</code></p>
+<div class="highlight"><pre><span></span><code>cd mps
+git checkout v2.26.0
+</code></pre></div>
 </li>
 <li>
 <p>Repeat for other services.</p>
 </li>
 <li>
 <p>Build the new images.</p>
-<p><code>docker compose up -d --build</code></p>
+<div class="highlight"><pre><span></span><code>docker compose up -d --build
+</code></pre></div>
 </li>
 </ol>
 </details>
 </li>
 <li>
 <p>Pull the new release Docker Hub images.</p>
-<p><code>docker compose pull</code></p>
+<div class="highlight"><pre><span></span><code>docker compose pull
+</code></pre></div>
 </li>
 <li>
 <p>Start the new containers.</p>
-<p><code>docker compose up -d --remove-orphans</code></p>
+<div class="highlight"><pre><span></span><code>docker compose up -d --remove-orphans
+</code></pre></div>
 </li>
 <li>
 <p>OPTIONAL. If using versioned tags rather than <code>latest</code>, you can delete older tagged images using the following. <strong>This will delete all unused images</strong>. If you have other non Device Management Toolkit images you wish to keep, <strong>do NOT</strong> run this command.</p>
-<p><code>docker image prune -a</code></p>
+<div class="highlight"><pre><span></span><code>docker image prune -a
+</code></pre></div>
 </li>
 </ol>
 <!-- ## Upgrade LTS or Major Versions (i.e. 2.X to 3.Y) -->

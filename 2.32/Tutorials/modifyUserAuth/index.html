@@ -5600,35 +5600,35 @@
 </li>
 <li>
 <p>Modify the <code>ldap_host</code> to that of your development system or cloud instance. </p>
-<p><code>yaml hl_lines="7 20"
-plugins:
-- name: cors
-- name: ldap-auth
-  route: mps-route
-  config: 
-    hide_credentials: true
-    ldap_host: &lt;Server IP-Address or FQDN&gt; # Replace
-    ldap_port: 3893
-    start_tls: false
-    ldaps: false
-    base_dn: dc=glauth,dc=com
-    verify_ldap_host: false
-    attribute: cn
-    cache_ttl: 60
-    header_type: ldap
-- name: ldap-auth
-  route: rps-route
-  config: 
-    hide_credentials: true
-    ldap_host: &lt;Server IP-Address or FQDN&gt; # Replace
-    ldap_port: 3893
-    start_tls: false
-    ldaps: false
-    base_dn: dc=glauth,dc=com
-    verify_ldap_host: false
-    attribute: cn
-    cache_ttl: 60
-    header_type: ldap</code></p>
+<div class="highlight"><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cors</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ldap-auth</span>
+<span class="w">  </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mps-route</span>
+<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">hide_credentials</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="hll"><span class="w">    </span><span class="nt">ldap_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;Server IP-Address or FQDN&gt;</span><span class="w"> </span><span class="c1"># Replace</span>
+</span><span class="w">    </span><span class="nt">ldap_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3893</span>
+<span class="w">    </span><span class="nt">start_tls</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">ldaps</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">base_dn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dc=glauth,dc=com</span>
+<span class="w">    </span><span class="nt">verify_ldap_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">attribute</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cn</span>
+<span class="w">    </span><span class="nt">cache_ttl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span>
+<span class="w">    </span><span class="nt">header_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ldap</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ldap-auth</span>
+<span class="w">  </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps-route</span>
+<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">hide_credentials</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="hll"><span class="w">    </span><span class="nt">ldap_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;Server IP-Address or FQDN&gt;</span><span class="w"> </span><span class="c1"># Replace</span>
+</span><span class="w">    </span><span class="nt">ldap_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3893</span>
+<span class="w">    </span><span class="nt">start_tls</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">ldaps</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">base_dn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dc=glauth,dc=com</span>
+<span class="w">    </span><span class="nt">verify_ldap_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">attribute</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cn</span>
+<span class="w">    </span><span class="nt">cache_ttl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span>
+<span class="w">    </span><span class="nt">header_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ldap</span>
+</code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The following code was adapted for the toolkit. For the default configuration details, see <strong>Enable the plugin on a route</strong>, on the tab <strong>Declarative YAML</strong>, in <a href="https://docs.konghq.com/hub/kong-inc/ldap-auth/#main">Kong documentation</a></p>
@@ -5639,11 +5639,13 @@ plugins:
 <ol>
 <li>Open a Terminal or Powershell/Command Prompt and run the command to list the containers:</li>
 </ol>
-<p><code>docker ps</code></p>
+<div class="highlight"><pre><span></span><code>docker ps
+</code></pre></div>
 <ol>
 <li>Restart the Kong container:</li>
 </ol>
-<p><code>docker restart &lt;container ID&gt;</code></p>
+<div class="highlight"><pre><span></span><code>docker restart &lt;container ID&gt;
+</code></pre></div>
 <h2 id="test-the-configuration">Test the Configuration<a class="headerlink" href="#test-the-configuration" title="Permanent link">&para;</a></h2>
 <p>Authenticate a user to test the configuration by using an API of your choice. You will need to set the Authorization header to <code>ldap base64encode(user:pass)</code>.</p>
 <p><strong>Test the configuration with <abbr title="command line URL - A command line tool and library for transferring data with URLs.">curl</abbr>:</strong></p>
@@ -5651,15 +5653,15 @@ plugins:
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Get Devices (<abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Route)</label><label for="__tabbed_1_2">Get Profiles (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> Route)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><code>bash
-curl --insecure https://[IP-Address or FQDN]/mps/api/v1/devices \
-    -H "Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx"</code>
+<p><div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/mps/api/v1/devices<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx&quot;</span>
+</code></pre></div>
 See <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.26.0#/Devices/get_api_v1_devices">Devices API Docs</a> for more information and expected responses.</p>
 </div>
 <div class="tabbed-block">
-<p><code>bash
-curl --insecure https://[IP-Address or FQDN]/rps/api/v1/admin/profiles \
-    -H "Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx"</code>
+<p><div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/rps/api/v1/admin/profiles<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: ldap am9obmRvZTpUZXN0QXBwUHcx&quot;</span>
+</code></pre></div>
 See <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/rps/2.31.3#/Profiles/GetAllProfiles">Get Profiles API Docs</a> for more information and expected responses.</p>
 </div>
 </div>

@@ -5453,13 +5453,13 @@
 <ol>
 <li>
 <p>Open a Terminal or Command Prompt and navigate to a directory of your choice for development:</p>
-<p><code>bash
-git clone --recursive https://github.com/device-management-toolkit/cloud-deployment --branch v2.32.0</code></p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/device-management-toolkit/cloud-deployment<span class="w"> </span>--branch<span class="w"> </span>v2.32.0
+</code></pre></div>
 </li>
 <li>
 <p>Change to the cloned <code>cloud-deployment</code> directory.</p>
-<p><code>bash
-cd cloud-deployment</code></p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>cloud-deployment
+</code></pre></div>
 </li>
 </ol>
 <h2 id="deploy-the-stack-to-the-swarm">Deploy the stack to the swarm<a class="headerlink" href="#deploy-the-stack-to-the-swarm" title="Permanent link">&para;</a></h2>
@@ -5470,23 +5470,25 @@ cd cloud-deployment</code></p>
 <ol>
 <li>
 <p>Initialize a swarm.</p>
-<p><code>docker swarm init</code>      </p>
+<div class="highlight"><pre><span></span><code>docker swarm init
+</code></pre></div>
 </li>
 <li>
 <p>Copy docker compose config to temporary <code>swarm.yml</code> file.</p>
-<p><code>docker compose -f .\docker-compose.yml config &gt; swarm.yml</code></p>
+<div class="highlight"><pre><span></span><code>docker compose -f .\docker-compose.yml config &gt; swarm.yml
+</code></pre></div>
 </li>
 <li>
 <p>Set the network driver to overlay in the <code>swarm.yml</code> file.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux</label><label for="__tabbed_1_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><code>bash
-sed -i "s|driver: bridge|driver: overlay|g" swarm.yml</code></p>
+<div class="highlight"><pre><span></span><code>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s|driver: bridge|driver: overlay|g&quot;</span><span class="w"> </span>swarm.yml
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<p><code>powershell
-(Get-Content -Path './swarm.yml') -replace 'driver: bridge', 'driver: overlay' | Set-Content -Path './swarm.yml'</code></p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s1">&#39;./swarm.yml&#39;</span><span class="p">)</span> <span class="o">-replace</span> <span class="s1">&#39;driver: bridge&#39;</span><span class="p">,</span> <span class="s1">&#39;driver: overlay&#39;</span> <span class="p">|</span> <span class="nb">Set-Content</span> <span class="n">-Path</span> <span class="s1">&#39;./swarm.yml&#39;</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -5499,15 +5501,18 @@ sed -i "s|driver: bridge|driver: overlay|g" swarm.yml</code></p>
 <p>If you've run <code>docker compose</code> previously, as in the instructions in <a href="../../../GetStarted/Cloud/setup/"><strong>Express Setup</strong></a>, run <code>docker compose down</code> to stop the device-management-toolkit services:</p>
 </li>
 </ol>
-<p><code>docker compose down -v</code></p>
+<div class="highlight"><pre><span></span><code>docker compose down -v
+</code></pre></div>
 <ol>
 <li>
 <p>Create the stack.</p>
-<p><code>docker stack deploy -c swarm.yml scalingdemo</code></p>
+<div class="highlight"><pre><span></span><code>docker stack deploy -c swarm.yml scalingdemo
+</code></pre></div>
 </li>
 <li>
 <p>Check all of the services are running.</p>
-<p><code>docker stack services scalingdemo</code></p>
+<div class="highlight"><pre><span></span><code>docker stack services scalingdemo
+</code></pre></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
 <p>The table below is an example of a services list: </p>
@@ -5585,7 +5590,8 @@ sed -i "s|driver: bridge|driver: overlay|g" swarm.yml</code></p>
 </li>
 <li>
 <p>Scale the mps service.</p>
-<p><code>docker service scale scalingdemo_mps=2</code></p>
+<div class="highlight"><pre><span></span><code>docker service scale scalingdemo_mps=2
+</code></pre></div>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
 <p>The table below is an example of a services list after scaling the mps: </p>
@@ -5663,7 +5669,8 @@ sed -i "s|driver: bridge|driver: overlay|g" swarm.yml</code></p>
 </li>
 <li>
 <p>Remove the stack:</p>
-<p><code>docker stack rm scalingdemo</code></p>
+<div class="highlight"><pre><span></span><code>docker stack rm scalingdemo
+</code></pre></div>
 </li>
 </ol>
 

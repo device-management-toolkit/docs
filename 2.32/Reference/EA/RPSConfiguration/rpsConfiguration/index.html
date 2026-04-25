@@ -3952,6 +3952,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#settings-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settings Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5515,19 +5526,18 @@
 </li>
 <li>
 <p>Uncomment the <code>rps-ea</code> block to enable the <code>/ea</code> route.</p>
-<p>```</p>
-<h1 id="uncomment-to-use-with-enterprise-assistant">uncomment to use with enterprise assistant<a class="headerlink" href="#uncomment-to-use-with-enterprise-assistant" title="Permanent link">&para;</a></h1>
-<h1 id="-name-rps-ea">- name: rps-ea<a class="headerlink" href="#-name-rps-ea" title="Permanent link">&para;</a></h1>
-<h1 id="host-rps">host: rps<a class="headerlink" href="#host-rps" title="Permanent link">&para;</a></h1>
-<h1 id="port-8082">port: 8082<a class="headerlink" href="#port-8082" title="Permanent link">&para;</a></h1>
-<h1 id="tags">tags:<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h1>
-<h1 id="-rps">- rps<a class="headerlink" href="#-rps" title="Permanent link">&para;</a></h1>
-<h1 id="routes">routes:<a class="headerlink" href="#routes" title="Permanent link">&para;</a></h1>
-<h1 id="-name-rps-ea-route">- name: rps-ea-route<a class="headerlink" href="#-name-rps-ea-route" title="Permanent link">&para;</a></h1>
-<h1 id="strip_path-true">strip_path: true<a class="headerlink" href="#strip_path-true" title="Permanent link">&para;</a></h1>
-<h1 id="paths">paths:<a class="headerlink" href="#paths" title="Permanent link">&para;</a></h1>
-<h1 id="-ea">- /ea<a class="headerlink" href="#-ea" title="Permanent link">&para;</a></h1>
-<p>```</p>
+<div class="highlight"><pre><span></span><code># uncomment to use with enterprise assistant
+# - name: rps-ea
+#   host: rps
+#   port: 8082
+#   tags:
+#   - rps
+#   routes:
+#   - name: rps-ea-route
+#     strip_path: true
+#     paths:
+#     - /ea
+</code></pre></div>
 </li>
 <li>
 <p>Restart the Kong service.</p>

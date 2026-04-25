@@ -5526,10 +5526,10 @@
 <li>Copy and paste the example code below into a text editor.</li>
 <li>
 <p>Update the values of the <code>[IP-Address or FQDN]</code>, <code>[MPS_WEB_ADMIN_USER]</code>, and <code>[MPS_WEB_ADMIN_PASSWORD]</code> fields.</p>
-<p><code>bash
-curl --insecure -X POST https://[IP-Address or FQDN]/mps/login/api/v1/authorize \
-    -H "Content-Type:application/json" \
-    -d "{\"username\":\"[MPS_WEB_ADMIN_USER]\", \"password\":\" [MPS_WEB_ADMIN_PASSWORD]\"}"</code></p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/mps/login/api/v1/authorize<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type:application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s2">&quot;{\&quot;username\&quot;:\&quot;[MPS_WEB_ADMIN_USER]\&quot;, \&quot;password\&quot;:\&quot; [MPS_WEB_ADMIN_PASSWORD]\&quot;}&quot;</span>
+</code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info - Using the --insecure Flag</p>
 <p>Because we are using self-signed certificates for <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> for development and testing purposes, we must supply this flag to bypass SSL certificate verification.</p>
@@ -5539,8 +5539,8 @@ curl --insecure -X POST https://[IP-Address or FQDN]/mps/login/api/v1/authorize 
 <p>Run the command.</p>
 <div class="admonition example">
 <p class="admonition-title">Example - Response of Authorize Method</p>
-<p><code>json
-{"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5RW1SSlRiSWlJYjRiSWVTc21nY1dJanJSNkh5RVRxYyIsImV4cCI6MTYyMDE2OTg2NH0.GUib9sq0RWRLqJ7JpNNlj2AluuROLICCfdZaQzyWy90"}</code></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="s2">&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5RW1SSlRiSWlJYjRiSWVTc21nY1dJanJSNkh5RVRxYyIsImV4cCI6MTYyMDE2OTg2NH0.GUib9sq0RWRLqJ7JpNNlj2AluuROLICCfdZaQzyWy90&quot;</span><span class="p">}</span>
+</code></pre></div>
 </div>
 </li>
 <li>
@@ -5554,29 +5554,29 @@ curl --insecure -X POST https://[IP-Address or FQDN]/mps/login/api/v1/authorize 
 <li>Copy and paste the example code below into a text editor.</li>
 <li>
 <p>Update the values of the <code>[IP-Address or FQDN]</code> and <code>[JWT-Token]</code> fields.</p>
-<p><code>bash
-curl --insecure https://[IP-Address or FQDN]/mps/api/v1/devices \
-    -H "Authorization: Bearer [JWT-Token]"</code></p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/mps/api/v1/devices<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer [JWT-Token]&quot;</span>
+</code></pre></div>
 </li>
 <li>
 <p>Run the command.</p>
 <div class="admonition example">
 <p class="admonition-title">Example - Response of Devices Method</p>
 <p>Example Terminal Output:</p>
-<p><code>json
-[{"guid":"3beae094-34f8-11ea-b6f5-ffed08129200","hostname":"vpro3-NUC8v5PNK","tags":[],"mpsInstance":"mps","connectionStatus":true,"mpsusername":"admin"}]</code>
+<p><div class="highlight"><pre><span></span><code><span class="p">[{</span><span class="nt">&quot;guid&quot;</span><span class="p">:</span><span class="s2">&quot;3beae094-34f8-11ea-b6f5-ffed08129200&quot;</span><span class="p">,</span><span class="nt">&quot;hostname&quot;</span><span class="p">:</span><span class="s2">&quot;vpro3-NUC8v5PNK&quot;</span><span class="p">,</span><span class="nt">&quot;tags&quot;</span><span class="p">:[],</span><span class="nt">&quot;mpsInstance&quot;</span><span class="p">:</span><span class="s2">&quot;mps&quot;</span><span class="p">,</span><span class="nt">&quot;connectionStatus&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;mpsusername&quot;</span><span class="p">:</span><span class="s2">&quot;admin&quot;</span><span class="p">}]</span>
+</code></pre></div>
 Example JSON Pretty Print:</p>
-<p><code>json
-[
-    {
-        "guid": "3beae094-34f8-11ea-b6f5-ffed08129200",
-        "hostname": "vpro3-NUC8v5PNK",
-        "tags": [],
-        "mpsInstance": "mps",
-        "connectionStatus": true,
-        "mpsusername": "admin"
-    }
-]</code></p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;guid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3beae094-34f8-11ea-b6f5-ffed08129200&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;hostname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vpro3-NUC8v5PNK&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">        </span><span class="nt">&quot;mpsInstance&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mps&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;connectionStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;mpsusername&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>This is one way to retrieve a device's GUID in the <em>host</em> field.  <strong>For <em>amt</em> path methods (i.e., <a href="../../Reference/powerstates/">Power Actions</a>, Audit Logs, etc), the device GUID is <em>required</em> as part of the GET path.</strong> Save this value if you want to try other <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> methods. Other ways to retrieve a GUID can be found <a href="../../Reference/guids/">here</a>.</p>
@@ -5589,17 +5589,17 @@ Example JSON Pretty Print:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Power Capabilities (GET Template)</label><label for="__tabbed_1_2">Power Action (POST Template)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><code>bash
-curl --insecure https://[IP-Address or FQDN]/mps/api/v1/amt/powercapabilities/[AMT-Device-GUID] \
-    -H "Authorization: Bearer [JWT-Token]"</code>
+<p><div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/mps/api/v1/amt/powercapabilities/<span class="o">[</span>AMT-Device-GUID<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer [JWT-Token]&quot;</span>
+</code></pre></div>
 See <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.26.0#/AMT/get_api_v1_amt_power_capabilities__guid_">Power Capabilities API Docs</a> for more information and expected responses.</p>
 </div>
 <div class="tabbed-block">
-<p><code>bash
-curl --insecure -X POST https://[IP-Address or FQDN]/mps/api/v1/amt/power/action/[AMT-Device-GUID] \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer [JWT-Token]" \
-    -d "{\"action\": [Power-Action], \"useSOL\": false}"</code>
+<p><div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://<span class="o">[</span>IP-Address<span class="w"> </span>or<span class="w"> </span>FQDN<span class="o">]</span>/mps/api/v1/amt/power/action/<span class="o">[</span>AMT-Device-GUID<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer [JWT-Token]&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s2">&quot;{\&quot;action\&quot;: [Power-Action], \&quot;useSOL\&quot;: false}&quot;</span>
+</code></pre></div>
 See <a href="https://app.swaggerhub.com/apis-docs/rbheopenamt/mps/2.26.0#/AMT/post_api_v1_amt_power_action__guid_">Power Action API Docs</a> for more information and expected responses.</p>
 </div>
 </div>

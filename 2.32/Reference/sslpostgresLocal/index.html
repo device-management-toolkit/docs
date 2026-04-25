@@ -5466,44 +5466,44 @@
 <ol>
 <li>
 <p>Update the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> connection strings to <code>no-verify</code> instead of <code>disable</code>.</p>
-<p><code>yaml hl_lines="7"
-...
-environment: 
-  RPS_MPS_SERVER: http://mps:3000
-  RPS_SECRETS_PATH: ${SECRETS_PATH}
-  RPS_VAULT_TOKEN: ${VAULT_TOKEN}
-  RPS_VAULT_ADDRESS: ${VAULT_ADDRESS}
-  RPS_CONNECTION_STRING: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/rpsdb?sslmode=no-verify
-...</code></p>
-<p>```yaml hl_lines="7"</p>
-<p>...
-environment: 
-  MPS_INSTANCE_NAME: '{{.Task.Name}}'
-  MPS_SECRETS_PATH: ${SECRETS_PATH}
-  MPS_VAULT_TOKEN: ${VAULT_TOKEN}
-  MPS_VAULT_ADDRESS: ${VAULT_ADDRESS}
-  MPS_CONNECTION_STRING: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/mpsdb?sslmode=no-verify
-...</p>
-<p>```</p>
+<div class="highlight"><pre><span></span><code><span class="nn">...</span>
+<span class="nt">environment</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">RPS_MPS_SERVER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://mps:3000</span>
+<span class="w">  </span><span class="nt">RPS_SECRETS_PATH</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${SECRETS_PATH}</span>
+<span class="w">  </span><span class="nt">RPS_VAULT_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${VAULT_TOKEN}</span>
+<span class="w">  </span><span class="nt">RPS_VAULT_ADDRESS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${VAULT_ADDRESS}</span>
+<span class="hll"><span class="w">  </span><span class="nt">RPS_CONNECTION_STRING</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/rpsdb?sslmode=no-verify</span>
+</span><span class="nn">...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nn">...</span>
+<span class="nt">environment</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">MPS_INSTANCE_NAME</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{{.Task.Name}}&#39;</span>
+<span class="w">  </span><span class="nt">MPS_SECRETS_PATH</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${SECRETS_PATH}</span>
+<span class="w">  </span><span class="nt">MPS_VAULT_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${VAULT_TOKEN}</span>
+<span class="w">  </span><span class="nt">MPS_VAULT_ADDRESS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${VAULT_ADDRESS}</span>
+<span class="hll"><span class="w">  </span><span class="nt">MPS_CONNECTION_STRING</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/mpsdb?sslmode=no-verify</span>
+</span><span class="nn">...</span>
+</code></pre></div>
 </li>
 <li>
 <p>Uncomment the <code>command:</code> line in the <code>db</code> section.</p>
-<p><code>yaml hl_lines="5"
-...
-build:
-  context: ./pg
-  dockerfile: ./Dockerfile
-command: -c ssl=on -c ssl_cert_file=/var/lib/postgresql/server.crt -c ssl_key_file=/var/lib/postgresql/server.key
-networks:
-  - openamtnetwork
-...</code></p>
+<div class="highlight"><pre><span></span><code><span class="nn">...</span>
+<span class="nt">build</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./pg</span>
+<span class="w">  </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./Dockerfile</span>
+<span class="hll"><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c ssl=on -c ssl_cert_file=/var/lib/postgresql/server.crt -c ssl_key_file=/var/lib/postgresql/server.key</span>
+</span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openamtnetwork</span>
+<span class="nn">...</span>
+</code></pre></div>
 </li>
 </ol>
 <h2 id="build-image">Build Image<a class="headerlink" href="#build-image" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>Build the new Postgres image with SSL enabled. </p>
-<p><code>docker compose up -d --build</code></p>
+<div class="highlight"><pre><span></span><code>docker compose up -d --build
+</code></pre></div>
 </li>
 </ol>
 

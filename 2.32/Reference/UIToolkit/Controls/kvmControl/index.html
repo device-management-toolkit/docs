@@ -5474,33 +5474,33 @@ Open <code>src/App.tsx</code> and add the code shown below:</p>
 <p class="admonition-title">Note</p>
 <p>Change <code>deviceId</code> value to your device GUID, <code>mpsServer</code> value to your <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> server address, and pass in a valid JWT  for <code>authToken</code>.</p>
 </div>
-<p>``` typescript
-import { <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> } from '@device-management-toolkit/ui-toolkit-react'</p>
-<p><KVM
-  deviceId="4c4c4544-005a-3510-8047-b4c04f564433"
-  mpsServer="https://localhost/mps/ws/relay"
-  authToken=""
-  autoConnect
-  mouseDebounceTime={200}
-  canvasHeight="480px"
-  canvasWidth="100%"
-  containerClassName=""
-  containerStyle={{ padding: '10px' }}
-  connectButtonClassName=""
-  connectButtonStyle={{
-    padding: '10px 20px',
-    fontSize: '14px',
-    fontWeight: 'bold',
-    color: '#fff',
-    backgroundColor: '#007bff',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer'
-  }}
-  canvasClassName=""
-  canvasStyle={{ border: '1px solid #ccc', borderRadius: '4px' }}
-/>
-```</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">KVM</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@device-management-toolkit/ui-toolkit-react&#39;</span>
+
+<span class="o">&lt;</span><span class="nx">KVM</span>
+<span class="w">  </span><span class="nx">deviceId</span><span class="o">=</span><span class="s2">&quot;4c4c4544-005a-3510-8047-b4c04f564433&quot;</span>
+<span class="w">  </span><span class="nx">mpsServer</span><span class="o">=</span><span class="s2">&quot;https://localhost/mps/ws/relay&quot;</span>
+<span class="w">  </span><span class="nx">authToken</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="w">  </span><span class="nx">autoConnect</span>
+<span class="w">  </span><span class="nx">mouseDebounceTime</span><span class="o">=</span><span class="p">{</span><span class="mf">200</span><span class="p">}</span>
+<span class="w">  </span><span class="nx">canvasHeight</span><span class="o">=</span><span class="s2">&quot;480px&quot;</span>
+<span class="w">  </span><span class="nx">canvasWidth</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span>
+<span class="w">  </span><span class="nx">containerClassName</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="w">  </span><span class="nx">containerStyle</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;10px&#39;</span><span class="w"> </span><span class="p">}}</span>
+<span class="w">  </span><span class="nx">connectButtonClassName</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="w">  </span><span class="nx">connectButtonStyle</span><span class="o">=</span><span class="p">{{</span>
+<span class="w">    </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;10px 20px&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;14px&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">fontWeight</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bold&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#fff&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#007bff&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;none&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">borderRadius</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;4px&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">cursor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;pointer&#39;</span>
+<span class="w">  </span><span class="p">}}</span>
+<span class="w">  </span><span class="nx">canvasClassName</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="w">  </span><span class="nx">canvasStyle</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;1px solid #ccc&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">borderRadius</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;4px&#39;</span><span class="w"> </span><span class="p">}}</span>
+<span class="err">/&gt;</span>
+</code></pre></div>
 <h3 id="props">Props<a class="headerlink" href="#props" title="Permanent link">&para;</a></h3>
 <table>
 <thead>

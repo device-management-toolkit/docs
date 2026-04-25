@@ -5763,26 +5763,26 @@
 <li>
 <p><strong>Authenticate and Get Login Token:</strong></p>
 <p>First, authenticate with <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and retrieve a token to use for all subsequent API calls. Save this token to use in the <code>Authorization</code> header for the next steps.</p>
-<p><code>bash
-curl --insecure -X POST https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/mps/login/api/v1/authorize -H "Content-Type:application/json" -d "{\"username\":\"&lt;MPS_WEB_ADMIN_USER&gt;\", \"password\":\"&lt;MPS_WEB_ADMIN_PASSWORD&gt;\"}"</code></p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/mps/login/api/v1/authorize<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type:application/json&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;{\&quot;username\&quot;:\&quot;&lt;MPS_WEB_ADMIN_USER&gt;\&quot;, \&quot;password\&quot;:\&quot;&lt;MPS_WEB_ADMIN_PASSWORD&gt;\&quot;}&quot;</span>
+</code></pre></div>
 <p><strong>Expected Response:</strong></p>
-<p><code>json
-{"token":"&lt;YOUR_JWT_TOKEN&gt;"}</code></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="s2">&quot;&lt;YOUR_JWT_TOKEN&gt;&quot;</span><span class="p">}</span>
+</code></pre></div>
 </li>
 <li>
 <p><strong>Get Connected Devices:</strong></p>
 <p>Fetch the list of connected devices.</p>
-<p><code>bash
-curl --insecure https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/mps/api/v1/devices -H "Authorization: Bearer &lt;YOUR_JWT_TOKEN&gt;"</code></p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/mps/api/v1/devices<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer &lt;YOUR_JWT_TOKEN&gt;&quot;</span>
+</code></pre></div>
 <p><em>Example Response:</em></p>
-<p><code>json
-[
-  {
-    "guid": "5d52da54-199c-cc3c-3e96-88aedd668dff",
-    "hostname": "DESKTOP-VDGKNB5"
-    "....."
-  }
-]</code></p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;guid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5d52da54-199c-cc3c-3e96-88aedd668dff&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;hostname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DESKTOP-VDGKNB5&quot;</span>
+<span class="w">    </span><span class="s2">&quot;.....&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Next Steps</p>
 <p>Select the GUID of your target device (e.g., 5d52da54-199c-cc3c-3e96-88aedd668dff) for use in subsequent steps.</p>
@@ -5791,12 +5791,12 @@ curl --insecure https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/mps/api/v1/devices 
 <li>
 <p><strong>Check AMT Features and OCR Support:</strong></p>
 <p>Verify that the target device supports OCR and HTTPS Boot. If "ocr": false, proceed to Step 4 to enable it.</p>
-<p><code>bash
-curl --insecure https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/mps/api/v1/amt/features/&lt;DEVICE_GUID&gt; -H "Authorization: Bearer &lt;YOUR_JWT_TOKEN&gt;"</code></p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/mps/api/v1/amt/features/&lt;DEVICE_GUID&gt;<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer &lt;YOUR_JWT_TOKEN&gt;&quot;</span>
+</code></pre></div>
 <p><strong>Look for:</strong></p>
-<p><code>json
-"ocr": true,
-"httpsBootSupported": true</code></p>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;ocr&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="nt">&quot;httpsBootSupported&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+</code></pre></div>
 <div class="admonition question">
 <p class="admonition-title">Is HTTPS Network Boot supported?</p>
 <p>If the <code>httpsBootSupported</code> property is <code>false</code>, the device does not support HTTPS Boot using Intel AMT. This is a read-only value reported by Intel AMT and cannot be modified.</p>
@@ -5805,11 +5805,11 @@ curl --insecure https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/mps/api/v1/amt/feat
 <li>
 <p><strong>Enable OCR (if not already enabled):</strong></p>
 <p>If OCR is not enabled from Step 3, use this command to enable it:</p>
-<p><code>bash
-curl --insecure -X POST https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/mps/api/v1/amt/features/&lt;DEVICE_GUID&gt; -H "Content-Type: application/json" -H "Authorization: Bearer &lt;YOUR_JWT_TOKEN&gt;" -d "{\"enableIDER\":true,\"enableKVM\":true,\"enableSOL\":true,\"userConsent\":\"none\",\"redirection\":true,\"ocr\":true}"</code></p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/mps/api/v1/amt/features/&lt;DEVICE_GUID&gt;<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer &lt;YOUR_JWT_TOKEN&gt;&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;{\&quot;enableIDER\&quot;:true,\&quot;enableKVM\&quot;:true,\&quot;enableSOL\&quot;:true,\&quot;userConsent\&quot;:\&quot;none\&quot;,\&quot;redirection\&quot;:true,\&quot;ocr\&quot;:true}&quot;</span>
+</code></pre></div>
 <p><strong>Expected Response:</strong></p>
-<p><code>json
-{"status":"AMT Features updated"}</code></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;AMT Features updated&quot;</span><span class="p">}</span>
+</code></pre></div>
 </li>
 <li>
 <p><strong>Upload Trusted Root Certificate:</strong></p>
@@ -5818,30 +5818,30 @@ curl --insecure -X POST https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/mps/api/v1/
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">PowerShell</label><label for="__tabbed_1_2">Linux/macOS</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>```powershell</p>
-<p>```</p>
+<div class="highlight"><pre><span></span><code><span class="no">[Convert]</span><span class="p">::</span><span class="n">ToBase64String</span><span class="p">(</span><span class="no">[IO.File]</span><span class="p">::</span><span class="n">ReadAllBytes</span><span class="p">(</span><span class="s2">&quot;&lt;PATH_TO_CERTIFICATE_FILE&gt;&quot;</span><span class="p">))</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<p><code>bash
-base64 -i &lt;PATH_TO_CERTIFICATE_FILE&gt;</code></p>
+<div class="highlight"><pre><span></span><code>base64<span class="w"> </span>-i<span class="w"> </span>&lt;PATH_TO_CERTIFICATE_FILE&gt;
+</code></pre></div>
 </div>
 </div>
 </div>
 <p>Then, to upload the certificate use the <abbr title="command line URL - A command line tool and library for transferring data with URLs.">curl</abbr> command:</p>
-<p><code>bash
-curl --insecure -X POST https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/mps/api/v1/amt/certificates/&lt;DEVICE_GUID&gt; -H "Content-Type: application/json" -H "Authorization: Bearer &lt;YOUR_JWT_TOKEN&gt;" -d "{\"cert\":\"&lt;BASE64_ENCODED_CERT&gt;\",\"isTrusted\":true}"</code></p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/mps/api/v1/amt/certificates/&lt;DEVICE_GUID&gt;<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer &lt;YOUR_JWT_TOKEN&gt;&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;{\&quot;cert\&quot;:\&quot;&lt;BASE64_ENCODED_CERT&gt;\&quot;,\&quot;isTrusted\&quot;:true}&quot;</span>
+</code></pre></div>
 <p><strong>Expected Response:</strong></p>
-<p><code>json
-{"handle":"Intel(r) AMT Certificate: Handle: 2"}</code></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;handle&quot;</span><span class="p">:</span><span class="s2">&quot;Intel(r) AMT Certificate: Handle: 2&quot;</span><span class="p">}</span>
+</code></pre></div>
 </li>
 <li>
 <p><strong>Trigger OCR via HTTPS Boot:</strong></p>
 <p>Send the power action to initiate OCR with the HTTPS ISO:</p>
-<p><code>bash
-curl --insecure -X POST https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/mps/api/v1/amt/power/bootoptions/&lt;DEVICE_GUID&gt; -H "Content-Type: application/json" -H "Authorization: Bearer &lt;YOUR_JWT_TOKEN&gt;" -d "{\"action\":105,\"useSOL\":false,\"bootDetails\":{\"url\":\"&lt;ISO_URL&gt;\",\"username\":\"\",\"password\":\"\",\"enforceSecureBoot\":true}}"</code></p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/mps/api/v1/amt/power/bootoptions/&lt;DEVICE_GUID&gt;<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer &lt;YOUR_JWT_TOKEN&gt;&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;{\&quot;action\&quot;:105,\&quot;useSOL\&quot;:false,\&quot;bootDetails\&quot;:{\&quot;url\&quot;:\&quot;&lt;ISO_URL&gt;\&quot;,\&quot;username\&quot;:\&quot;\&quot;,\&quot;password\&quot;:\&quot;\&quot;,\&quot;enforceSecureBoot\&quot;:true}}&quot;</span>
+</code></pre></div>
 <p><strong>Expected Response:</strong></p>
-<p><code>json
-{"Body":{"ReturnValue":0,"ReturnValueStr":"SUCCESS"}}</code></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;Body&quot;</span><span class="p">:{</span><span class="nt">&quot;ReturnValue&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="nt">&quot;ReturnValueStr&quot;</span><span class="p">:</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">}}</span>
+</code></pre></div>
 </li>
 <li>
 <p>Optionally, Connect to <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> and verify that the device loads the ISO.</p>

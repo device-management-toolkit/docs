@@ -5647,41 +5647,42 @@ CN = test.example.com
 <ol>
 <li>
 <p>Open a terminal and verify OpenSSL is installed.</p>
-<p><code>bash
-openssl version</code></p>
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>version
+</code></pre></div>
 </li>
 <li>
 <p>Create a self-signed CA root certificate file named <code>rootCA.crt</code> with a key file named <code>rootCA.key</code>.</p>
-<p><code>bash
-openssl req -x509 -sha256 -days 3560 -nodes -newkey rsa:2048 -subj "//SKIP=skip/CN=CA Custom Root Certificate/C=US/ST=Arizona/L=Chandler" -keyout rootCA.key -out rootCA.crt</code></p>
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>req<span class="w"> </span>-x509<span class="w"> </span>-sha256<span class="w"> </span>-days<span class="w"> </span><span class="m">3560</span><span class="w"> </span>-nodes<span class="w"> </span>-newkey<span class="w"> </span>rsa:2048<span class="w"> </span>-subj<span class="w"> </span><span class="s2">&quot;//SKIP=skip/CN=CA Custom Root Certificate/C=US/ST=Arizona/L=Chandler&quot;</span><span class="w"> </span>-keyout<span class="w"> </span>rootCA.key<span class="w"> </span>-out<span class="w"> </span>rootCA.crt
+</code></pre></div>
 </li>
 <li>
 <p>Generate a RSA private key named <strong>server.key</strong>.</p>
-<p><code>bash
-openssl genrsa -out server.key 2048</code></p>
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>genrsa<span class="w"> </span>-out<span class="w"> </span>server.key<span class="w"> </span><span class="m">2048</span>
+</code></pre></div>
 </li>
 <li>
 <p>Generate a Certificate Signing Request using the private key and <code>cert.conf</code> file.</p>
-<p><code>bash
-openssl req -new -key server.key -out server.csr -config csr.conf</code></p>
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>req<span class="w"> </span>-new<span class="w"> </span>-key<span class="w"> </span>server.key<span class="w"> </span>-out<span class="w"> </span>server.csr<span class="w"> </span>-config<span class="w"> </span>csr.conf
+</code></pre></div>
 </li>
 <li>
 <p>Sign the Certificate Signing Request with the CA certificate and <code>cert.conf</code> file.</p>
-<p><code>bash
-openssl x509 -req -in server.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out server.crt -days 3650 -sha256 -extfile cert.conf</code></p>
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>x509<span class="w"> </span>-req<span class="w"> </span>-in<span class="w"> </span>server.csr<span class="w"> </span>-CA<span class="w"> </span>rootCA.crt<span class="w"> </span>-CAkey<span class="w"> </span>rootCA.key<span class="w"> </span>-CAcreateserial<span class="w"> </span>-out<span class="w"> </span>server.crt<span class="w"> </span>-days<span class="w"> </span><span class="m">3650</span><span class="w"> </span>-sha256<span class="w"> </span>-extfile<span class="w"> </span>cert.conf
+</code></pre></div>
 </li>
 <li>
 <p>Create a <code>.pfx</code> file using the private key, server certificate, and CA root certificate. It will prompt to create a password. This password will be used when creating a Domain profile.</p>
-<p><code>bash
-openssl pkcs12 -export -out vprodemo_custom.pfx -inkey server.key -in server.crt -certfile rootCA.crt</code></p>
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>pkcs12<span class="w"> </span>-export<span class="w"> </span>-out<span class="w"> </span>vprodemo_custom.pfx<span class="w"> </span>-inkey<span class="w"> </span>server.key<span class="w"> </span>-in<span class="w"> </span>server.crt<span class="w"> </span>-certfile<span class="w"> </span>rootCA.crt
+</code></pre></div>
 </li>
 <li>
 <p>Get the SHA1 hash of the root certificate. </p>
-<p><code>bash
-openssl x509 -noout -fingerprint -sha1 -inform pem -in rootCA.crt</code></p>
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>x509<span class="w"> </span>-noout<span class="w"> </span>-fingerprint<span class="w"> </span>-sha1<span class="w"> </span>-inform<span class="w"> </span>pem<span class="w"> </span>-in<span class="w"> </span>rootCA.crt
+</code></pre></div>
 <div class="admonition success">
 <p class="admonition-title">Success - SHA1 Output</p>
-<p><code>SHA1 Fingerprint=51:45:E3:A4:AE:66:88:E0:AF:85:EC:EB:06:74:6B:8D:C3:07:C1:9D</code></p>
+<div class="highlight"><pre><span></span><code>SHA1 Fingerprint=51:45:E3:A4:AE:66:88:E0:AF:85:EC:EB:06:74:6B:8D:C3:07:C1:9D
+</code></pre></div>
 </div>
 </li>
 </ol>
@@ -5769,7 +5770,8 @@ openssl x509 -noout -fingerprint -sha1 -inform pem -in rootCA.crt</code></p>
 <li>
 <p>Verify the certificate hash was inserted correctly.</p>
 <p>The new hash should be listed.</p>
-<p><code>rpc amtinfo -cert</code></p>
+<div class="highlight"><pre><span></span><code>rpc amtinfo -cert
+</code></pre></div>
 <div class="admonition success">
 <p class="admonition-title">Success - Hash Inserted Correctly</p>
 <p><figure class="figure-image">
@@ -5783,18 +5785,19 @@ openssl x509 -noout -fingerprint -sha1 -inform pem -in rootCA.crt</code></p>
 <details class="warning">
 <summary>Troubleshoot - Error During Activation</summary>
 <p>The following error may occur during the first attempt at activation.</p>
-<p><code>hl_lines="5"
-time="2023-08-17T11:38:57-07:00" level=trace msg="HTTP/1.1 200 OK\r\nDate: Thu, 17 Aug 2023 18:38:57 GMT\r\nServer: Intel(R) Active Management Technology 15.0.35.2039\r\nX-Frame-Options: DENY\r\nContent-Type: application/soap+xml; charset=UTF-8\r\nTransfer-Encoding: chunked\r\n\r\n043E\r\n&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;&lt;a:Envelope xmlns:a=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:b=\"http://schemas.xmlsoap.org/ws/2004/08/addressing\" xmlns:c=\"http://schemas.dmtf.org/wbem/wsman/1/wsman.xsd\" xmlns:d=\"http://schemas.xmlsoap.org/ws/2005/02/trust\" xmlns:e=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\" xmlns:f=\"http://schemas.dmtf.org/wbem/wsman/1/cimbinding.xsd\" xmlns:g=\"http://intel.com/wbem/wscim/1/ips-schema/1/IPS_HostBasedSetupService\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"&gt;&lt;a:Header&gt;&lt;b:To&gt;http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous&lt;/b:To&gt;&lt;b:RelatesTo&gt;3&lt;/b:RelatesTo&gt;&lt;b:Action a:mustUnderstand=\"true\"&gt;http://intel.com/wbem/wscim/1/ips-schema/1/IPS_HostBasedSetupService/AdminSetupResponse&lt;/b:Acti"
-time="2023-08-17T11:38:57-07:00" level=debug msg="sending message to RPS"
-time="2023-08-17T11:38:57-07:00" level=debug msg="closing connection to lms"
-time="2023-08-17T11:38:57-07:00" level=debug msg="received messages from RPS"
-time="2023-08-17T11:38:57-07:00" level=error msg="Unknown error has occured"
-time="2023-08-17T11:38:57-07:00" level=debug msg="closing connection to lms"</code></p>
+<div class="highlight"><pre><span></span><code>time=&quot;2023-08-17T11:38:57-07:00&quot; level=trace msg=&quot;HTTP/1.1 200 OK\r\nDate: Thu, 17 Aug 2023 18:38:57 GMT\r\nServer: Intel(R) Active Management Technology 15.0.35.2039\r\nX-Frame-Options: DENY\r\nContent-Type: application/soap+xml; charset=UTF-8\r\nTransfer-Encoding: chunked\r\n\r\n043E\r\n&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;&lt;a:Envelope xmlns:a=\&quot;http://www.w3.org/2003/05/soap-envelope\&quot; xmlns:b=\&quot;http://schemas.xmlsoap.org/ws/2004/08/addressing\&quot; xmlns:c=\&quot;http://schemas.dmtf.org/wbem/wsman/1/wsman.xsd\&quot; xmlns:d=\&quot;http://schemas.xmlsoap.org/ws/2005/02/trust\&quot; xmlns:e=\&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\&quot; xmlns:f=\&quot;http://schemas.dmtf.org/wbem/wsman/1/cimbinding.xsd\&quot; xmlns:g=\&quot;http://intel.com/wbem/wscim/1/ips-schema/1/IPS_HostBasedSetupService\&quot; xmlns:xsi=\&quot;http://www.w3.org/2001/XMLSchema-instance\&quot;&gt;&lt;a:Header&gt;&lt;b:To&gt;http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous&lt;/b:To&gt;&lt;b:RelatesTo&gt;3&lt;/b:RelatesTo&gt;&lt;b:Action a:mustUnderstand=\&quot;true\&quot;&gt;http://intel.com/wbem/wscim/1/ips-schema/1/IPS_HostBasedSetupService/AdminSetupResponse&lt;/b:Acti&quot;
+time=&quot;2023-08-17T11:38:57-07:00&quot; level=debug msg=&quot;sending message to RPS&quot;
+time=&quot;2023-08-17T11:38:57-07:00&quot; level=debug msg=&quot;closing connection to lms&quot;
+time=&quot;2023-08-17T11:38:57-07:00&quot; level=debug msg=&quot;received messages from RPS&quot;
+<span class="hll">time=&quot;2023-08-17T11:38:57-07:00&quot; level=error msg=&quot;Unknown error has occured&quot;
+</span>time=&quot;2023-08-17T11:38:57-07:00&quot; level=debug msg=&quot;closing connection to lms&quot;
+</code></pre></div>
 <p><br></p>
 <ol>
 <li>
 <p>If this error occurs, verify the device was activated successfully.</p>
-<p><code>rpc amtinfo</code></p>
+<div class="highlight"><pre><span></span><code>rpc amtinfo
+</code></pre></div>
 </li>
 <li>
 <p>If the device shows it was activated into <strong>admin control mode</strong>, rerun the activate command to successfully finish AMT configuration.</p>

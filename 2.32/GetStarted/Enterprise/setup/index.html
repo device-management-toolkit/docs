@@ -5550,29 +5550,28 @@
 </li>
 <li>
 <p>The executable automatically generates a <code>config.yml</code> file in the <code>/config</code> directory, relative to where the executable is run. A default User Name and Password for the console login is stored in the <code>config.yml</code> file. To change the User Name and Password, edit the file and update <code>adminUsername</code> and <code>adminPassword</code> fields.</p>
-<p><code>yml hl_lines="6 8 9"
-app:
+<div class="highlight"><pre><span></span><code>app:
   name: console
   repo: device-management-toolkit/console
   version: DEVELOPMENT
-  encryption_key: ""
-  allow_insecure_ciphers: false
-http:
-  host: localhost
-  port: "8181"
-  allowed_origins:
-    - "*"
+  encryption_key: &quot;&quot;
+<span class="hll">  allow_insecure_ciphers: false
+</span>http:
+<span class="hll">  host: localhost
+</span><span class="hll">  port: &quot;8181&quot;
+</span>  allowed_origins:
+    - &quot;*&quot;
   allowed_headers:
-    - "*"
+    - &quot;*&quot;
 logger:
   log_level: info
 postgres:
   pool_max: 2
-  url: ""
+  url: &quot;&quot;
 ea:
   url: http://localhost:8000
-  username: ""
-  password: ""
+  username: &quot;&quot;
+  password: &quot;&quot;
 auth:
   disabled: false
   adminUsername: standalone
@@ -5580,8 +5579,9 @@ auth:
   jwtKey: your_secret_jwt_key
   jwtExpiration: 24h0m0s
   redirectionJWTExpiration: 5m0s
-  clientId: ""
-  issuer: ""</code></p>
+  clientId: &quot;&quot;
+  issuer: &quot;&quot;
+</code></pre></div>
 </li>
 </ol>
 <div class="admonition important">

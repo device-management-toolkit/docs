@@ -2812,17 +2812,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#stage-2-run" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        STAGE 2: Run
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -5566,7 +5555,8 @@
 <ol>
 <li>
 <p>If you do not have the repository, clone the latest <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>.</p>
-<p><code>git clone https://github.com/device-management-toolkit/sample-web-ui.git --branch v3.54.0</code></p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/device-management-toolkit/sample-web-ui.git --branch v3.54.0
+</code></pre></div>
 </li>
 </ol>
 <h2 id="translate-strings">Translate Strings<a class="headerlink" href="#translate-strings" title="Permanent link">&para;</a></h2>
@@ -5597,30 +5587,30 @@
 </li>
 <li>
 <p>Add the below <code>i18n:</code> block to the <code>openamtui:</code> section. Additional locales can be appended for each additional language to support.</p>
-<p><code>json hl_lines="14-22"
-...
-"openamtui": {
-  "projectType": "application",
-  "schematics": {
-    "@schematics/angular:component": {
-      "style": "scss"
-    },
-    "@schematics/angular:application": {
-      "strict": true
-    }
-  },
-  "root": "",
-  "sourceRoot": "src",
-  "i18n": {
-    "sourceLocale": "en-US",
-    "locales": {
-      "fr": {
-        "translation": "src/locale/messages.fr.xlf",
-        "baseHref": "/fr/"
-      }
-    }
-  },
-...</code></p>
+<div class="highlight"><pre><span></span><code><span class="err">...</span>
+<span class="nt">&quot;openamtui&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;projectType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;schematics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;@schematics/angular:component&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;style&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;scss&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;@schematics/angular:application&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;strict&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;root&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sourceRoot&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;src&quot;</span><span class="p">,</span>
+<span class="hll"><span class="w">  </span><span class="nt">&quot;i18n&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="w">    </span><span class="nt">&quot;sourceLocale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span>
+</span><span class="hll"><span class="w">    </span><span class="nt">&quot;locales&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="w">      </span><span class="nt">&quot;fr&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="w">        </span><span class="nt">&quot;translation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;src/locale/messages.fr.xlf&quot;</span><span class="p">,</span>
+</span><span class="hll"><span class="w">        </span><span class="nt">&quot;baseHref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/fr/&quot;</span>
+</span><span class="hll"><span class="w">      </span><span class="p">}</span>
+</span><span class="hll"><span class="w">    </span><span class="p">}</span>
+</span><span class="hll"><span class="w">  </span><span class="p">},</span>
+</span><span class="err">...</span>
+</code></pre></div>
 </li>
 <li>
 <p>Add <code>localize:</code> field to the <code>build:</code> section.</p>
@@ -5629,18 +5619,18 @@
 <p><code>localize: true</code> will build application variants for all locales defined in the build configuration. This is ideal for production. If you want to build and serve on the Angular development server for testing, this will cause errors. Angular development server can only support localizing a single locale at a time.</p>
 <p>To build only one locale, see <a href="https://angular.dev/guide/i18n/merge#apply-specific-build-options-for-just-one-locale">Apply specific build options for just one locale</a> Angular Documentation.</p>
 </div>
-<p><code>json hl_lines="9"
-...
-"build": {
-  "builder": "@angular-devkit/build-angular:browser",
-  "options": {
-    "outputPath": "dist/openamtui",
-    "index": "src/index.html",
-    "main": "src/main.ts",
-    "polyfills": "src/polyfills.ts",
-    "localize": true,
-    "tsConfig": "tsconfig.app.json",
-...</code></p>
+<div class="highlight"><pre><span></span><code><span class="err">...</span>
+<span class="nt">&quot;build&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;builder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@angular-devkit/build-angular:browser&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;options&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;outputPath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dist/openamtui&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;src/index.html&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;main&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;src/main.ts&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;polyfills&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;src/polyfills.ts&quot;</span><span class="p">,</span>
+<span class="hll"><span class="w">    </span><span class="nt">&quot;localize&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span class="w">    </span><span class="nt">&quot;tsConfig&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tsconfig.app.json&quot;</span><span class="p">,</span>
+<span class="err">...</span>
+</code></pre></div>
 </li>
 <li>
 <p>Save the file.</p>
@@ -5653,13 +5643,13 @@
 </li>
 <li>
 <p>Modify the last line of the file to the following.</p>
-<p><code>sh hl_lines="6"
-sed -i \
--e "s|##RPS_SERVER##|$RPS_SERVER|g" \
--e "s|##MPS_SERVER##|$MPS_SERVER|g" \
--e "s|##VAULT_SERVER##|$VAULT_SERVER|g" \
--e "s|##AUTH_MODE_ENABLED##|$AUTH_MODE_ENABLED|g" \
- /usr/share/nginx/html/*/*.js</code></p>
+<div class="highlight"><pre><span></span><code>sed<span class="w"> </span>-i<span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="s2">&quot;s|##RPS_SERVER##|</span><span class="nv">$RPS_SERVER</span><span class="s2">|g&quot;</span><span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="s2">&quot;s|##MPS_SERVER##|</span><span class="nv">$MPS_SERVER</span><span class="s2">|g&quot;</span><span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="s2">&quot;s|##VAULT_SERVER##|</span><span class="nv">$VAULT_SERVER</span><span class="s2">|g&quot;</span><span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="s2">&quot;s|##AUTH_MODE_ENABLED##|</span><span class="nv">$AUTH_MODE_ENABLED</span><span class="s2">|g&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="hll"><span class="w"> </span>/usr/share/nginx/html/*/*.js
+</span></code></pre></div>
 </li>
 <li>
 <p>Save the file.</p>
@@ -5672,38 +5662,37 @@ sed -i \
 </li>
 <li>
 <p>Copy and paste the new configuration below.</p>
-<p>```conf
-server {
+<div class="highlight"><pre><span></span><code>server {
     listen 80 default_server;
     listen [::]:80 default_server;
-    server_name _;</p>
-<pre><code>root   /usr/share/nginx/html;
-index  index.html index.htm;
+    server_name _;
 
-# Set default language to en-US
-if ($accept_language ~ "^$") {
-    set $accept_language "en-US";
-}
-
-# Redirect "/" to Angular application in the preferred language of the browser
-rewrite ^/$ /$accept_language;
-
-# Everything under the Angular application is always redirected to Angular in the correct language
-location ~ ^/(fr|en-US) {
-    try_files $uri /$1/index.html?$args;
-}
-
-error_page  404              /index.html;
-
-# redirect server error pages to the static page /50x.html
-#
-error_page   500 502 503 504  /50x.html;
-location = /50x.html {
     root   /usr/share/nginx/html;
+    index  index.html index.htm;
+
+    # Set default language to en-US
+    if ($accept_language ~ &quot;^$&quot;) {
+        set $accept_language &quot;en-US&quot;;
+    }
+
+    # Redirect &quot;/&quot; to Angular application in the preferred language of the browser
+    rewrite ^/$ /$accept_language;
+
+    # Everything under the Angular application is always redirected to Angular in the correct language
+    location ~ ^/(fr|en-US) {
+        try_files $uri /$1/index.html?$args;
+    }
+
+    error_page  404              /index.html;
+
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
 }
-</code></pre>
-<p>}
-```</p>
+</code></pre></div>
 </li>
 <li>
 <p>Save the file.</p>
@@ -5716,17 +5705,19 @@ location = /50x.html {
 </li>
 <li>
 <p>Update the following lines in Stage 2.</p>
-<p>```dockerfile hl_lines="9-10"</p>
-<h3 id="stage-2-run">STAGE 2: Run<a class="headerlink" href="#stage-2-run" title="Permanent link">&para;</a></h3>
-<p>FROM nginx:mainline-alpine-slim@sha256:a529900d9252ce5d04531a4a594f93736dbbe3ec155a692d10484be82aaa159a</p>
-<p>LABEL license='SPDX-License-Identifier: Apache-2.0' \
-      copyright='Copyright (c) 2021: Intel'</p>
-<p>RUN apk update &amp;&amp; apk upgrade --no-cache</p>
-<p>COPY --from=build /usr/src/app/dist/openamtui/en-US /usr/share/nginx/html/en-US
-COPY --from=build /usr/src/app/dist/openamtui/fr /usr/share/nginx/html/fr
-COPY --from=build /usr/src/app/init.sh /docker-entrypoint.d/init.sh
-EXPOSE 80
-```</p>
+<div class="highlight"><pre><span></span><code><span class="c">### STAGE 2: Run ###</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">nginx:mainline-alpine-slim@sha256:a529900d9252ce5d04531a4a594f93736dbbe3ec155a692d10484be82aaa159a</span>
+
+<span class="k">LABEL</span><span class="w"> </span><span class="nv">license</span><span class="o">=</span><span class="s1">&#39;SPDX-License-Identifier: Apache-2.0&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span><span class="nv">copyright</span><span class="o">=</span><span class="s1">&#39;Copyright (c) 2021: Intel&#39;</span>
+
+<span class="k">RUN</span><span class="w"> </span>apk<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apk<span class="w"> </span>upgrade<span class="w"> </span>--no-cache
+
+<span class="hll"><span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>build<span class="w"> </span>/usr/src/app/dist/openamtui/en-US<span class="w"> </span>/usr/share/nginx/html/en-US
+</span><span class="hll"><span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>build<span class="w"> </span>/usr/src/app/dist/openamtui/fr<span class="w"> </span>/usr/share/nginx/html/fr
+</span><span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>build<span class="w"> </span>/usr/src/app/init.sh<span class="w"> </span>/docker-entrypoint.d/init.sh
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">80</span>
+</code></pre></div>
 </li>
 <li>
 <p>Save the file.</p>
@@ -5737,11 +5728,13 @@ EXPOSE 80
 <ol>
 <li>
 <p>Build the image and start the container.</p>
-<p><code>docker compose up -d</code></p>
+<div class="highlight"><pre><span></span><code>docker compose up -d
+</code></pre></div>
 </li>
 <li>
 <p>Navigate to the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> in a browser.</p>
-<p><code>http://localhost:8089</code></p>
+<div class="highlight"><pre><span></span><code>http://localhost:8089
+</code></pre></div>
 <p>With no path provided, it should default to <code>/en-US/</code> and display the English page.</p>
 <div class="admonition example">
 <p class="admonition-title">Example - <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> Home Page</p>
@@ -5753,7 +5746,8 @@ EXPOSE 80
 </li>
 <li>
 <p>Change the URL path to <code>/fr</code>.</p>
-<p><code>http://localhost:8089/fr</code></p>
+<div class="highlight"><pre><span></span><code>http://localhost:8089/fr
+</code></pre></div>
 <p>The page should now be displaying the French translated site.</p>
 <div class="admonition note">
 <p class="admonition-title">Note - File Structure</p>

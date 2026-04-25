@@ -5499,27 +5499,27 @@
 <p>If you are upgrading from <abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> React v4, review the breaking changes below.</p>
 <h2 id="import-path-changes">Import Path Changes<a class="headerlink" href="#import-path-changes" title="Permanent link">&para;</a></h2>
 <p>The bundle-based import paths have been removed. Update all imports to use the main package export.</p>
-<p>``` typescript
-// v4 (old) - no longer works
-import { <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> } from '@device-management-toolkit/ui-toolkit-react/reactjs/src/kvm.bundle'
-import { Sol } from '@device-management-toolkit/ui-toolkit-react/reactjs/src/sol.bundle'
-import { AttachDiskImage } from '@device-management-toolkit/ui-toolkit-react/reactjs/src/ider.bundle'</p>
-<p>// v5 (new)
-import { <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>, Sol, AttachDiskImage } from '@device-management-toolkit/ui-toolkit-react'
-```</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// v4 (old) - no longer works</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">KVM</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@device-management-toolkit/ui-toolkit-react/reactjs/src/kvm.bundle&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Sol</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@device-management-toolkit/ui-toolkit-react/reactjs/src/sol.bundle&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">AttachDiskImage</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@device-management-toolkit/ui-toolkit-react/reactjs/src/ider.bundle&#39;</span>
+
+<span class="c1">// v5 (new)</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">KVM</span><span class="p">,</span><span class="w"> </span><span class="nx">Sol</span><span class="p">,</span><span class="w"> </span><span class="nx">AttachDiskImage</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@device-management-toolkit/ui-toolkit-react&#39;</span>
+</code></pre></div>
 <h2 id="styling-changes">Styling Changes<a class="headerlink" href="#styling-changes" title="Permanent link">&para;</a></h2>
 <p>SCSS and CSS file-based styling has been removed. Components now accept <code>className</code> and <code>style</code> props directly for customization.</p>
-<p>``` typescript
-// v4 (old) - CSS/SCSS class overrides
-// Required importing SCSS files and overriding CSS classes</p>
-<p>// v5 (new) - inline style props
-<KVM deviceId={deviceId} mpsServer={mpsServer} authToken={authToken}
-  mouseDebounceTime={200} canvasHeight="100%" canvasWidth="100%"
-  containerStyle={{ padding: '10px' }}
-  connectButtonStyle={{ backgroundColor: '#007bff', color: '#fff' }}
-  canvasStyle={{ border: '1px solid #ccc' }}
-/>
-```</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// v4 (old) - CSS/SCSS class overrides</span>
+<span class="c1">// Required importing SCSS files and overriding CSS classes</span>
+
+<span class="c1">// v5 (new) - inline style props</span>
+<span class="o">&lt;</span><span class="nx">KVM</span><span class="w"> </span><span class="nx">deviceId</span><span class="o">=</span><span class="p">{</span><span class="nx">deviceId</span><span class="p">}</span><span class="w"> </span><span class="nx">mpsServer</span><span class="o">=</span><span class="p">{</span><span class="nx">mpsServer</span><span class="p">}</span><span class="w"> </span><span class="nx">authToken</span><span class="o">=</span><span class="p">{</span><span class="nx">authToken</span><span class="p">}</span>
+<span class="w">  </span><span class="nx">mouseDebounceTime</span><span class="o">=</span><span class="p">{</span><span class="mf">200</span><span class="p">}</span><span class="w"> </span><span class="nx">canvasHeight</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="w"> </span><span class="nx">canvasWidth</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span>
+<span class="w">  </span><span class="nx">containerStyle</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;10px&#39;</span><span class="w"> </span><span class="p">}}</span>
+<span class="w">  </span><span class="nx">connectButtonStyle</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#007bff&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#fff&#39;</span><span class="w"> </span><span class="p">}}</span>
+<span class="w">  </span><span class="nx">canvasStyle</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;1px solid #ccc&#39;</span><span class="w"> </span><span class="p">}}</span>
+<span class="err">/&gt;</span>
+</code></pre></div>
 <h2 id="build-system-changes">Build System Changes<a class="headerlink" href="#build-system-changes" title="Permanent link">&para;</a></h2>
 <p>The build system has moved from <abbr title="A module bundler that packages various assets and files (e.g., CSS, JS, JPG, etc.).">Webpack</abbr> to Rollup. If you were using custom <abbr title="A module bundler that packages various assets and files (e.g., CSS, JS, JPG, etc.).">Webpack</abbr> configurations for bundling, these are no longer needed. The package now ships as:</p>
 <ul>
@@ -5535,14 +5535,14 @@ import { <abbr title="Keyboard Video Mouse - A feature that allows a user to con
 </ul>
 <h2 id="development-setup">Development Setup<a class="headerlink" href="#development-setup" title="Permanent link">&para;</a></h2>
 <p>The example application now uses Vite instead of webpack-dev-server.</p>
-<p>``` bash</p>
-<h1 id="v4-old">v4 (old)<a class="headerlink" href="#v4-old" title="Permanent link">&para;</a></h1>
-<p>npx create-react-app my-app
-npm start  # webpack-dev-server on port 3000</p>
-<h1 id="v5-new">v5 (new)<a class="headerlink" href="#v5-new" title="Permanent link">&para;</a></h1>
-<p>npm create vite@latest my-app -- --template react-ts
-npm run dev  # Vite dev server on port 5173
-```</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># v4 (old)</span>
+npx<span class="w"> </span>create-react-app<span class="w"> </span>my-app
+npm<span class="w"> </span>start<span class="w">  </span><span class="c1"># webpack-dev-server on port 3000</span>
+
+<span class="c1"># v5 (new)</span>
+npm<span class="w"> </span>create<span class="w"> </span>vite@latest<span class="w"> </span>my-app<span class="w"> </span>--<span class="w"> </span>--template<span class="w"> </span>react-ts
+npm<span class="w"> </span>run<span class="w"> </span>dev<span class="w">  </span><span class="c1"># Vite dev server on port 5173</span>
+</code></pre></div>
 
 
 

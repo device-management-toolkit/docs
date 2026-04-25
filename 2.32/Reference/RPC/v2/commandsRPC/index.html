@@ -6026,7 +6026,8 @@
 <h2 id="list-commands">List Commands<a class="headerlink" href="#list-commands" title="Permanent link">&para;</a></h2>
 <p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> must run with elevated privileges. Commands require <code>sudo</code> on Linux or an Administrator Command Prompt on Windows.</p>
 <p>Run the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> application on the command line with no arguments to see supported commands:</p>
-<p><code>rpc</code></p>
+<div class="highlight"><pre><span></span><code>rpc
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -6070,17 +6071,20 @@
 </table>
 <h2 id="list-command-options">List Command Options<a class="headerlink" href="#list-command-options" title="Permanent link">&para;</a></h2>
 <p>Run the application with a command to see available options for the command:</p>
-<p><code>rpc [COMMAND]</code></p>
+<div class="highlight"><pre><span></span><code>rpc [COMMAND]
+</code></pre></div>
 <h3 id="activate">activate<a class="headerlink" href="#activate" title="Permanent link">&para;</a></h3>
 <h4 id="activate-and-configure-the-device-using-rps">Activate and Configure the device using <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>:<a class="headerlink" href="#activate-and-configure-the-device-using-rps" title="Permanent link">&para;</a></h4>
 <p>Activate the device with a specified profile:</p>
-<p><code>rpc activate -u wss://server/activate -profile profilename</code></p>
+<div class="highlight"><pre><span></span><code>rpc activate -u wss://server/activate -profile profilename
+</code></pre></div>
 <h4 id="activate-the-device-locally">Activate the device locally:<a class="headerlink" href="#activate-the-device-locally" title="Permanent link">&para;</a></h4>
 <p>This capability is only supported for activating unprovisioned (e.g. pre-provisioning state) devices. This command <strong>only</strong> activates AMT. It does not do profile-based configuration.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr></label><label for="__tabbed_1_2"><abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> w/ Config File</label><label for="__tabbed_1_3"><abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr></label><label for="__tabbed_1_4"><abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> w/ Config File</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><code>rpc activate -local -ccm -password NewAMTPassword</code></p>
+<div class="highlight"><pre><span></span><code>rpc activate -local -ccm -password NewAMTPassword
+</code></pre></div>
 </div>
 <div class="tabbed-block">
 <p>Options can be passed via a config file. This can also be combined into a single config file with <a href="#wireless">addwifisettings</a> information.</p>
@@ -6097,7 +6101,8 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Local Stored Config File</label><label for="__tabbed_3_2">Remote Stored Config File</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><code>rpc activate -local -ccm -config config.yaml</code></p>
+<div class="highlight"><pre><span></span><code>rpc activate -local -ccm -config config.yaml
+</code></pre></div>
 </div>
 <div class="tabbed-block">
 <p>Currently, the only supported remote network share is Server Message Block (SMB) based shares.</p>
@@ -6115,7 +6120,8 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Local Stored Provisioning Cert</label><label for="__tabbed_4_2">Remote Stored Provisioning Cert</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><code>rpc activate -local -acm -amtPassword NewAMTPassword -provisioningCert "{BASE64_PROV_CERT}" -provisioningCertPwd certPassword</code></p>
+<div class="highlight"><pre><span></span><code>rpc activate -local -acm -amtPassword NewAMTPassword -provisioningCert &quot;{BASE64_PROV_CERT}&quot; -provisioningCertPwd certPassword
+</code></pre></div>
 </div>
 <div class="tabbed-block">
 <p>Currently, the only supported remote network share is Server Message Block (SMB) based shares. </p>
@@ -6146,7 +6152,8 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Local Stored Config File</label><label for="__tabbed_6_2">Remote Stored Config File</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><code>rpc activate -local -acm -config config.yaml</code></p>
+<div class="highlight"><pre><span></span><code>rpc activate -local -acm -config config.yaml
+</code></pre></div>
 </div>
 <div class="tabbed-block">
 <p>Currently, the only supported remote network share is Server Message Block (SMB) based shares.</p>
@@ -6319,9 +6326,11 @@
 <p><strong>We have now enabled the <code>/deactivate</code> Kong route.</strong> The previous <code>/activate</code> route will still function for deactivate commands to avoid breaking changes. However, the <code>/activate</code> route's use with deactivate will be deprecated in the future and it is recommended to utilize the new, <code>/deactivate</code> route for new development.</p>
 </div>
 <h4 id="deactivate-the-device-using-rps">Deactivate the device using <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>:<a class="headerlink" href="#deactivate-the-device-using-rps" title="Permanent link">&para;</a></h4>
-<p><code>rpc deactivate -u wss://server/deactivate</code></p>
+<div class="highlight"><pre><span></span><code>rpc deactivate -u wss://server/deactivate
+</code></pre></div>
 <h4 id="deactivate-the-device-locally">Deactivate the device locally:<a class="headerlink" href="#deactivate-the-device-locally" title="Permanent link">&para;</a></h4>
-<p><code>rpc deactivate -local -password AMTPassword</code></p>
+<div class="highlight"><pre><span></span><code>rpc deactivate -local -password AMTPassword
+</code></pre></div>
 <p><br></p>
 <h4 id="deactivate-options"><code>deactivate</code> Options<a class="headerlink" href="#deactivate-options" title="Permanent link">&para;</a></h4>
 <table>
@@ -6513,7 +6522,8 @@
 <p><br></p>
 <h4 id="changepassword">changepassword<a class="headerlink" href="#changepassword" title="Permanent link">&para;</a></h4>
 <p>Change the AMT password. A random password is generated by default if <code>static</code> option is not passed.</p>
-<p><code>rpc maintenance changepassword -u wss://server/maintenance</code></p>
+<div class="highlight"><pre><span></span><code>rpc maintenance changepassword -u wss://server/maintenance
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -6531,19 +6541,23 @@
 <p><br></p>
 <h4 id="syncclock-maintenance">syncclock (maintenance)<a class="headerlink" href="#syncclock-maintenance" title="Permanent link">&para;</a></h4>
 <p>Syncs the host OS clock to AMT.</p>
-<p><code>rpc maintenance syncclock -u wss://server/maintenance</code></p>
+<div class="highlight"><pre><span></span><code>rpc maintenance syncclock -u wss://server/maintenance
+</code></pre></div>
 <p><br></p>
 <h4 id="syncdeviceinfo">syncdeviceinfo<a class="headerlink" href="#syncdeviceinfo" title="Permanent link">&para;</a></h4>
 <p>Sync stored device info within the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> database to the current, local device info. On device activation, <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> will store some device information as a JSON object. Some of this data may change over time like the firmware versions, activation modes, or IP address and could be outdated.</p>
-<p><code>rpc maintenance syncdeviceinfo -u wss://server/maintenance</code></p>
+<div class="highlight"><pre><span></span><code>rpc maintenance syncdeviceinfo -u wss://server/maintenance
+</code></pre></div>
 <p><br></p>
 <h4 id="synchostname">synchostname<a class="headerlink" href="#synchostname" title="Permanent link">&para;</a></h4>
 <p>Sync the OS hostname to AMT Network Settings.</p>
-<p><code>rpc maintenance synchostname -u wss://server/maintenance</code></p>
+<div class="highlight"><pre><span></span><code>rpc maintenance synchostname -u wss://server/maintenance
+</code></pre></div>
 <p><br></p>
 <h4 id="syncip">syncip<a class="headerlink" href="#syncip" title="Permanent link">&para;</a></h4>
 <p>Sync the static IP of host OS to AMT Network Settings.</p>
-<p><code>rpc maintenance syncip -staticip 192.168.1.7 -netmask 255.255.255.0 -gateway 192.168.1.1 -primarydns 8.8.8.8 -secondarydns 4.4.4.4 -u wss://server/maintenance</code></p>
+<div class="highlight"><pre><span></span><code>rpc maintenance syncip -staticip 192.168.1.7 -netmask 255.255.255.0 -gateway 192.168.1.1 -primarydns 8.8.8.8 -secondarydns 4.4.4.4 -u wss://server/maintenance
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -6658,7 +6672,8 @@
 <p class="admonition-title">Control Mode and User Consent</p>
 <p>User consent can only be configured if the device is activated in <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> mode. In <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>, User Consent is set to <code>all</code> and cannot be changed.</p>
 </div>
-<p><code>rpc configure amtfeatures -kvm -sol -ider -userConsent none</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure amtfeatures -kvm -sol -ider -userConsent none
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -6692,7 +6707,8 @@
 <p class="admonition-title"><code>configure amtpassword</code> versus <code>maintenance changepassword</code></p>
 <p><code>configure amtpassword</code> is a local command. This does not communicate with a centralized database storing the new AMT passwords so make sure to take note of any changes made! To ensure the database is updated with the new passwords for deployments utilizing <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <a href="#changepassword">see the <code>rpc maintenance changepassword</code> command.</a></p>
 </div>
-<p><code>rpc configure amtpassword -password CurrentAMTPassword -newamtpassword NewAMTPassword</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure amtpassword -password CurrentAMTPassword -newamtpassword NewAMTPassword   
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -6710,7 +6726,8 @@
 <p><br></p>
 <h4 id="enablewifiport">enablewifiport<a class="headerlink" href="#enablewifiport" title="Permanent link">&para;</a></h4>
 <p>Enables WiFi port and local profile synchronization settings in AMT. This feature synchronizes the wireless profile set in the OS with the wireless profile set in AMT. AMT Password is required.</p>
-<p><code>rpc configure enablewifiport -password AMTPassword</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure enablewifiport -password AMTPassword
+</code></pre></div>
 <p><br></p>
 <h4 id="mebx">mebx<a class="headerlink" href="#mebx" title="Permanent link">&para;</a></h4>
 <p>Configure the MEBx password. The MEBx password can only be configured if the device is activated in <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> mode. AMT password is required.</p>
@@ -6718,7 +6735,8 @@
 <p class="admonition-title"><code>configure mebx</code> Storing Passwords</p>
 <p><code>configure mebx</code> is a local command. This does not communicate with a centralized database storing the new MEBx passwords so make sure to take note of any changes made!</p>
 </div>
-<p><code>rpc configure mebx -mebxpassword newMEBxPassword -password AMTPassword</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure mebx -mebxpassword newMEBxPassword -password AMTPassword
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -6748,7 +6766,8 @@
 <p><br></p>
 <h4 id="syncclock-configure">syncclock (configure)<a class="headerlink" href="#syncclock-configure" title="Permanent link">&para;</a></h4>
 <p>Syncs the host OS clock to AMT. AMT password is required.</p>
-<p><code>rpc configure syncclock -password AMTPassword</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure syncclock -password AMTPassword
+</code></pre></div>
 <p><br></p>
 <h4 id="tls">tls<a class="headerlink" href="#tls" title="Permanent link">&para;</a></h4>
 <p>Configures <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> in AMT. AMT password is required.</p>
@@ -6756,7 +6775,8 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Use the <code>-config</code> flag to pass either a <code>.yaml</code> or <code>.json</code> file. </p>
-<p><code>rpc configure tls -config config.yaml</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure tls -config config.yaml
+</code></pre></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Using Enterprise Assistant</label><label for="__tabbed_8_2">Without Enterprise Assistant</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -6821,11 +6841,13 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Provide the EA Address and configured <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go Credentials. See the <a href="../../../EA/RPCConfiguration/localtlsconfig/"><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Configuration using Enterprise Assistant and <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go</a> documentation for more details.</p>
-<p><code>rpc configure tls -mode Server -password AMTPassword -eaAddress http://&lt;YOUR-IPADDRESS-OR-FQDN&gt;:8000 -eaUsername eaUser -eaPassword eaPass</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure tls -mode Server -password AMTPassword -eaAddress http://&lt;YOUR-IPADDRESS-OR-FQDN&gt;:8000 -eaUsername eaUser -eaPassword eaPass
+</code></pre></div>
 </div>
 <div class="tabbed-block">
 <p>If Enterprise Assistant is not used, a self-signed <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> certificate will be generated and used by AMT.</p>
-<p><code>rpc configure tls -mode Server -password AMTPassword</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure tls -mode Server -password AMTPassword
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -6949,7 +6971,8 @@
 </li>
 <li>
 <p>Provide the <code>config.yaml</code> or <code>config.json</code> file using the <code>-config</code> flag. </p>
-<p><code>rpc configure wired -config config.yaml</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure wired -config config.yaml
+</code></pre></div>
 </li>
 </ol>
 <h6 id="with-8021x">with 802.1x<a class="headerlink" href="#with-8021x" title="Permanent link">&para;</a></h6>
@@ -7110,7 +7133,8 @@
 </li>
 <li>
 <p>Provide the <code>secrets.yaml</code> file using the <code>-secrets</code> flag. </p>
-<p><code>rpc configure wired -config config.yaml -secrets secrets.yaml</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure wired -config config.yaml -secrets secrets.yaml
+</code></pre></div>
 </li>
 </ol>
 </div>
@@ -7124,10 +7148,12 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="21:2"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><input id="__tabbed_21_2" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">DHCP</label><label for="__tabbed_21_2">Static</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><code>rpc configure wired -dhcp -ipsync -password AMTPassword</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure wired -dhcp -ipsync -password AMTPassword
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<p><code>rpc configure wired -static -ipaddress 192.168.1.50 -subnetmask 255.255.255.0 -gateway 192.168.1.1 -primarydns 8.8.8.8 -secondarydns 4.4.4.4 -password AMTPassword</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure wired -static -ipaddress 192.168.1.50 -subnetmask 255.255.255.0 -gateway 192.168.1.1 -primarydns 8.8.8.8 -secondarydns 4.4.4.4 -password AMTPassword
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -7136,10 +7162,12 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Using Enterprise Assistant for 802.1x configuration offers the most secure path. See <a href="../../../EA/RPCConfiguration/localIEEE8021xConfig/">Enterprise Assistant <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go 802.1x Configuration</a> for more information.</p>
-<p><code>rpc configure wired -dhcp -ipsync -password AMTPassword -ieee8021xProfileName example8021xProfile -eaAddress http://&lt;YOUR-IPADDRESS-OR-FQDN&gt;:8000 -eaUsername eaUser -eaPassword eaPass -authenticationProtocol 0</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure wired -dhcp -ipsync -password AMTPassword -ieee8021xProfileName example8021xProfile -eaAddress http://&lt;YOUR-IPADDRESS-OR-FQDN&gt;:8000 -eaUsername eaUser -eaPassword eaPass -authenticationProtocol 0
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<p><code>rpc configure wired -dhcp -ipsync -password AMTPassword -ieee8021xProfileName example8021xProfile -authenticationProtocol 0 -clientCert "" -caCert "" -privateKey ""</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure wired -dhcp -ipsync -password AMTPassword -ieee8021xProfileName example8021xProfile -authenticationProtocol 0 -clientCert &quot;&quot; -caCert &quot;&quot; -privateKey &quot;&quot;
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -7154,10 +7182,12 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="23:2"><input checked="checked" id="__tabbed_23_1" name="__tabbed_23" type="radio" /><input id="__tabbed_23_2" name="__tabbed_23" type="radio" /><div class="tabbed-labels"><label for="__tabbed_23_1">DHCP</label><label for="__tabbed_23_2">Static</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><code>rpc configure wired -configJson "{ "password": "AMTPassword", "wiredConfig": { "dhcp": true, "ipsync": true } }"</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure wired -configJson &quot;{ &quot;password&quot;: &quot;AMTPassword&quot;, &quot;wiredConfig&quot;: { &quot;dhcp&quot;: true, &quot;ipsync&quot;: true } }&quot;
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<p><code>rpc configure wired -configJson "{ "password": "AMTPassword", "wiredConfig": { "static": true, "ipaddress": "192.168.1.50", "subnetmask": "255.255.255.0", "gateway": "192.168.1.1", "primarydns": "8.8.8.8", "secondarydns": "4.4.4.4" } }"</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure wired -configJson &quot;{ &quot;password&quot;: &quot;AMTPassword&quot;, &quot;wiredConfig&quot;: { &quot;static&quot;: true, &quot;ipaddress&quot;: &quot;192.168.1.50&quot;, &quot;subnetmask&quot;: &quot;255.255.255.0&quot;, &quot;gateway&quot;: &quot;192.168.1.1&quot;, &quot;primarydns&quot;: &quot;8.8.8.8&quot;, &quot;secondarydns&quot;: &quot;4.4.4.4&quot; } }&quot;
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -7166,10 +7196,12 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Using Enterprise Assistant for 802.1x configuration offers the most secure path. See <a href="../../../EA/RPCConfiguration/localIEEE8021xConfig/">Enterprise Assistant <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go 802.1x Configuration</a> for more information.</p>
-<p><code>rpc configure wired -configJson "{ "password": "AMTPassword", "wiredConfig": { "dhcp": true, "ipsync": true, "ieee8021xProfileName": "exampleIeee8021xEAP-TLS" }, "enterpriseAssistant": { "eaAddress": "http://&lt;YOUR-IPADDRESS-OR-FQDN&gt;:8000", "eaUsername": "eaUser", "eaPassword": "eaPass" }, "ieee8021xConfigs": [ { "profileName": "exampleIeee8021xEAP-TLS", "authenticationProtocol": 0 } ] }"</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure wired -configJson &quot;{ &quot;password&quot;: &quot;AMTPassword&quot;, &quot;wiredConfig&quot;: { &quot;dhcp&quot;: true, &quot;ipsync&quot;: true, &quot;ieee8021xProfileName&quot;: &quot;exampleIeee8021xEAP-TLS&quot; }, &quot;enterpriseAssistant&quot;: { &quot;eaAddress&quot;: &quot;http://&lt;YOUR-IPADDRESS-OR-FQDN&gt;:8000&quot;, &quot;eaUsername&quot;: &quot;eaUser&quot;, &quot;eaPassword&quot;: &quot;eaPass&quot; }, &quot;ieee8021xConfigs&quot;: [ { &quot;profileName&quot;: &quot;exampleIeee8021xEAP-TLS&quot;, &quot;authenticationProtocol&quot;: 0 } ] }&quot;
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<p><code>rpc configure wired -configJson "{ "password": "AMTPassword", "wiredConfig": { "dhcp": true, "ipsync": true, "ieee8021xProfileName": "exampleIeee8021xEAP-TLS" }, "ieee8021xConfigs": [ { "profileName": "exampleIeee8021xEAP-TLS", "username": "exampleUserName", "authenticationProtocol": 0, "clientCert": "", "caCert": "", "privateKey": "" } ] }"</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure wired -configJson &quot;{ &quot;password&quot;: &quot;AMTPassword&quot;, &quot;wiredConfig&quot;: { &quot;dhcp&quot;: true, &quot;ipsync&quot;: true, &quot;ieee8021xProfileName&quot;: &quot;exampleIeee8021xEAP-TLS&quot; }, &quot;ieee8021xConfigs&quot;: [ { &quot;profileName&quot;: &quot;exampleIeee8021xEAP-TLS&quot;, &quot;username&quot;: &quot;exampleUserName&quot;, &quot;authenticationProtocol&quot;: 0, &quot;clientCert&quot;: &quot;&quot;, &quot;caCert&quot;: &quot;&quot;, &quot;privateKey&quot;: &quot;&quot; } ] }&quot;
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -7322,7 +7354,8 @@
 </li>
 <li>
 <p>Provide the <code>config.yaml</code> file using the <code>-config</code> flag. </p>
-<p><code>rpc configure wireless -config config.yaml</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure wireless -config config.yaml
+</code></pre></div>
 </li>
 </ol>
 <h6 id="with-8021x_3">with 802.1x<a class="headerlink" href="#with-8021x_3" title="Permanent link">&para;</a></h6>
@@ -7542,7 +7575,8 @@
 </li>
 <li>
 <p>Provide the <code>secrets.yaml</code> file using the <code>-secrets</code> flag. </p>
-<p><code>rpc configure wireless -config config.yaml -secrets secrets.yaml</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure wireless -config config.yaml -secrets secrets.yaml
+</code></pre></div>
 </li>
 </ol>
 </div>
@@ -7553,16 +7587,19 @@
 <p class="admonition-title">Warning - Use Case and Security</p>
 <p>The CLI option is intended for use as part of an integration of <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> as a shared library. The passing of secrets directly via command line is highly insecure and <strong>NOT</strong> recommended.</p>
 </div>
-<p><code>rpc configure wireless -profileName profileName -password AMTPassword -authenticationMethod 6 -encryptionMethod 4 -ssid "networkSSID" -pskPassphrase networkPass -authenticationProtocol 0 -priority 1</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure wireless -profileName profileName -password AMTPassword -authenticationMethod 6 -encryptionMethod 4 -ssid &quot;networkSSID&quot; -pskPassphrase networkPass -authenticationProtocol 0 -priority 1
+</code></pre></div>
 <h6 id="with-8021x_4">with 802.1x<a class="headerlink" href="#with-8021x_4" title="Permanent link">&para;</a></h6>
 <div class="tabbed-set tabbed-alternate" data-tabs="32:2"><input checked="checked" id="__tabbed_32_1" name="__tabbed_32" type="radio" /><input id="__tabbed_32_2" name="__tabbed_32" type="radio" /><div class="tabbed-labels"><label for="__tabbed_32_1">Using Enterprise Assistant</label><label for="__tabbed_32_2">Without Enterprise Assistant</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Using Enterprise Assistant for 802.1x configuration offers the most secure path. See <a href="../../../EA/RPCConfiguration/localIEEE8021xConfig/">Enterprise Assistant <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go 802.1x Configuration</a> for more information.</p>
-<p><code>rpc configure wireless -profileName profileName -password AMTPassword -authenticationMethod 7 -encryptionMethod 4 -ssid "networkSSID" -pskPassphrase networkPass -authenticationProtocol 0 -priority 1 -eaAddress http://&lt;YOUR-IPADDRESS-OR-FQDN&gt;:8000 -eaUsername eaUser -eaPassword eaPass</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure wireless -profileName profileName -password AMTPassword -authenticationMethod 7 -encryptionMethod 4 -ssid &quot;networkSSID&quot; -pskPassphrase networkPass -authenticationProtocol 0 -priority 1 -eaAddress http://&lt;YOUR-IPADDRESS-OR-FQDN&gt;:8000 -eaUsername eaUser -eaPassword eaPass
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<p><code>rpc configure wireless -profileName profileName -password AMTPassword -authenticationMethod 7 -encryptionMethod 4 -ssid "networkSSID" -pskPassphrase networkPass -username "username" -authenticationProtocol 0 -priority 1 -clientCert "" -caCert "" -privateKey ""</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure wireless -profileName profileName -password AMTPassword -authenticationMethod 7 -encryptionMethod 4 -ssid &quot;networkSSID&quot; -pskPassphrase networkPass -username &quot;username&quot; -authenticationProtocol 0 -priority 1 -clientCert &quot;&quot; -caCert &quot;&quot; -privateKey &quot;&quot;
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -7574,16 +7611,19 @@
 <p class="admonition-title">Warning - Use Case and Security</p>
 <p>The CLI option is intended for use as part of an integration of <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> as a shared library. The passing of secrets directly via command line is highly insecure and <strong>NOT</strong> recommended.</p>
 </div>
-<p><code>rpc configure wireless -configJson "{ "wifiConfigs": [ { "profileName": "exampleWifi", "authenticationMethod": 6, "encryptionMethod": 4, "ssid": "networkSSID", "username": "username", "authenticationProtocol": 0, "priority": 1 } ] }"</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure wireless -configJson &quot;{ &quot;wifiConfigs&quot;: [ { &quot;profileName&quot;: &quot;exampleWifi&quot;, &quot;authenticationMethod&quot;: 6, &quot;encryptionMethod&quot;: 4, &quot;ssid&quot;: &quot;networkSSID&quot;, &quot;username&quot;: &quot;username&quot;, &quot;authenticationProtocol&quot;: 0, &quot;priority&quot;: 1 } ] }&quot;
+</code></pre></div>
 <h6 id="with-8021x_5">with 802.1x<a class="headerlink" href="#with-8021x_5" title="Permanent link">&para;</a></h6>
 <div class="tabbed-set tabbed-alternate" data-tabs="33:2"><input checked="checked" id="__tabbed_33_1" name="__tabbed_33" type="radio" /><input id="__tabbed_33_2" name="__tabbed_33" type="radio" /><div class="tabbed-labels"><label for="__tabbed_33_1">Using Enterprise Assistant</label><label for="__tabbed_33_2">Without Enterprise Assistant</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Using Enterprise Assistant for 802.1x configuration offers the most secure path. See <a href="../../../EA/RPCConfiguration/localIEEE8021xConfig/">Enterprise Assistant <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go 802.1x Configuration</a> for more information.</p>
-<p><code>rpc configure wireless -configJson "{ "password": "AMTPassword", "enterpriseAssistant": { "eaAddress": "http://&lt;YOUR-IPADDRESS-OR-FQDN&gt;:8000", "eaUsername": "eaUser", "eaPassword": "eaPass" }, "wifiConfigs": [ { "profileName": "exampleWifi8021x", "ssid": "ssid", "priority": 1, "authenticationMethod": 7, "encryptionMethod": 4, "ieee8021xProfileName": "exampleIeee8021xEAP-TLS" } ], "ieee8021xConfigs": [ { "profileName": "exampleIeee8021xEAP-TLS", "authenticationProtocol": 0 } ] }"</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure wireless -configJson &quot;{ &quot;password&quot;: &quot;AMTPassword&quot;, &quot;enterpriseAssistant&quot;: { &quot;eaAddress&quot;: &quot;http://&lt;YOUR-IPADDRESS-OR-FQDN&gt;:8000&quot;, &quot;eaUsername&quot;: &quot;eaUser&quot;, &quot;eaPassword&quot;: &quot;eaPass&quot; }, &quot;wifiConfigs&quot;: [ { &quot;profileName&quot;: &quot;exampleWifi8021x&quot;, &quot;ssid&quot;: &quot;ssid&quot;, &quot;priority&quot;: 1, &quot;authenticationMethod&quot;: 7, &quot;encryptionMethod&quot;: 4, &quot;ieee8021xProfileName&quot;: &quot;exampleIeee8021xEAP-TLS&quot; } ], &quot;ieee8021xConfigs&quot;: [ { &quot;profileName&quot;: &quot;exampleIeee8021xEAP-TLS&quot;, &quot;authenticationProtocol&quot;: 0 } ] }&quot;
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<p><code>rpc configure wireless -configJson "{ "wifiConfigs": [ { "profileName": "exampleWifi8021x", "ssid": "networkSSID", "priority": 1, "authenticationMethod": 7, "encryptionMethod": 4, "ieee8021xProfileName": "exampleIeee8021xEAP-TLS" } ], "ieee8021xConfigs": [ { "profileName": "exampleIeee8021xEAP-TLS", "username": "exampleUserName", "password": "", "authenticationProtocol": 0, "clientCert": "", "caCert": "", "privateKey": "" } ] }"</code></p>
+<div class="highlight"><pre><span></span><code>rpc configure wireless -configJson &quot;{ &quot;wifiConfigs&quot;: [ { &quot;profileName&quot;: &quot;exampleWifi8021x&quot;, &quot;ssid&quot;: &quot;networkSSID&quot;, &quot;priority&quot;: 1, &quot;authenticationMethod&quot;: 7, &quot;encryptionMethod&quot;: 4, &quot;ieee8021xProfileName&quot;: &quot;exampleIeee8021xEAP-TLS&quot; } ], &quot;ieee8021xConfigs&quot;: [ { &quot;profileName&quot;: &quot;exampleIeee8021xEAP-TLS&quot;, &quot;username&quot;: &quot;exampleUserName&quot;, &quot;password&quot;: &quot;&quot;, &quot;authenticationProtocol&quot;: 0, &quot;clientCert&quot;: &quot;&quot;, &quot;caCert&quot;: &quot;&quot;, &quot;privateKey&quot;: &quot;&quot; } ] }&quot;
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -7676,7 +7716,8 @@
 <p><br></p>
 <h3 id="amtinfo">amtinfo<a class="headerlink" href="#amtinfo" title="Permanent link">&para;</a></h3>
 <p>Display AMT status and configuration:</p>
-<p><code>rpc amtinfo [OPTIONS]</code></p>
+<div class="highlight"><pre><span></span><code>rpc amtinfo [OPTIONS]
+</code></pre></div>
 <p><strong>Not passing <code>[OPTIONS]</code> will print all information.</strong></p>
 <table>
 <thead>
@@ -7815,7 +7856,8 @@
 see <a href="../../../../Tutorials/createWiFiConfig/">Wireless Activation</a>.</p>
 <h3 id="version">version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h3>
 <p>Display the current version of <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> and the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Protocol version:</p>
-<p><code>rpc version</code></p>
+<div class="highlight"><pre><span></span><code>rpc version
+</code></pre></div>
 
 
 

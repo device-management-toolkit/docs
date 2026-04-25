@@ -5454,12 +5454,12 @@
 <ol>
 <li>Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> with the <code>amtinfo</code> argument.</li>
 </ol>
-<p><code>rpc amtinfo</code></p>
+<div class="highlight"><pre><span></span><code>rpc amtinfo
+</code></pre></div>
 <ol>
 <li>
 <p>Look at the output for the LAN Interface section as highlighted below. <strong>If <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> does NOT return a section for wireless</strong>, the AMT device does not support wireless functionality. </p>
-<p><code>hl_lines="19-24"
-Version                : 15.0.10
+<div class="highlight"><pre><span></span><code>Version                : 15.0.10
 Build Number           : 1447
 SKU                    : 16392
 UUID                   : 4c4b4568-195a-4260-8097-a4c14f566733
@@ -5477,16 +5477,17 @@ DHCP Mode              : passive
 Link Status            : up
 AMT IP Address         : 0.0.0.0
 OS IP Address          : 192.168.1.90
-MAC Address            : 80:c4:a8:58:df:e9
----Wireless Adapter---
-DHCP Enabled           : true
-DHCP Mode              : passive
-Link Status            : down
-AMT IP Address         : 0.0.0.0
-OS IP Address          : 192.168.1.90
+<span class="hll">MAC Address            : 80:c4:a8:58:df:e9
+</span><span class="hll">---Wireless Adapter---
+</span><span class="hll">DHCP Enabled           : true
+</span><span class="hll">DHCP Mode              : passive
+</span><span class="hll">Link Status            : down
+</span><span class="hll">AMT IP Address         : 0.0.0.0
+</span>OS IP Address          : 192.168.1.90
 MAC Address            : 00:00:00:00:00:00
 Certificate Hashes     : 
-...</code></p>
+...
+</code></pre></div>
 </li>
 </ol>
 <h2 id="create-a-wifi-config">Create a WiFi Config<a class="headerlink" href="#create-a-wifi-config" title="Permanent link">&para;</a></h2>
