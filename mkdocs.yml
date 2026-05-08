@@ -4,7 +4,7 @@ site_url: "https://device-management-toolkit.github.io/docs/"
 repo_url: "https://github.com/device-management-toolkit/cloud-deployment"
 repo_name: "device-management-toolkit/cloud-deployment"
 copyright: "Copyright &copy; 2021 Intel Corporation"
-site_dir: site/2.32
+site_dir: site/2.33
 # Configuration
 theme:
   name: "material"
@@ -238,13 +238,13 @@ extra:
   repoVersion:
     mpsAPI: 2.26.0
     rpsAPI: 2.31.3
-    oamtct: 2.32.0
-    rpc_go: 2.49.0
-    webui: 3.54.0
+    oamtct: 2.33.1
+    rpc_go: 2.50.1
+    webui: 3.57.1
     rpc_c: 2.0.0
-    ui_toolkit: 3.3.10
-    ui_toolkit_react: 5.0.1
-    ui_toolkit_angular: 11.1.1
+    ui_toolkit: 3.3.12
+    ui_toolkit_react: 5.0.3
+    ui_toolkit_angular: 11.1.3
   analytics:
     provider: google
     property: "G-00QEDJW2TS"
