@@ -31,12 +31,12 @@ Before using HTTPS Network Boot, ensure the following prerequisites are met:
 1. Enable HTTP(S) Boot in BIOS settings. This may be disabled by default on some devices.
 
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\OCR_HTTPSBOOT_BIOS.png" alt="Figure 1: Enable HTTP(S) Boot in BIOS">
+      <img src="..\..\assets\images\OCR_HTTPSBOOT_BIOS.png" alt="Figure 1: Enable HTTP(S) Boot in BIOS">
     </figure>
 
 2. When recovering a device using an ISO that isn’t signed by a trusted certificate authority, you’ll need to disable Secure Boot in the BIOS settings.
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\OCR_Disable_Secure_Boot.jpg" alt="Figure 2: Disable Secure Boot in BIOS">
+      <img src="..\..\assets\images\OCR_Disable_Secure_Boot.jpg" alt="Figure 2: Disable Secure Boot in BIOS">
     </figure>
 
 3. Set up an HTTPS server to host the ISO.
@@ -56,7 +56,7 @@ You can use our [MPS APIs](#triggering-https-boot-via-mps-apis) to perform recov
 1. Make sure that the target device shows as connected
     
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\OCR_MPS_Device_Connected.png" alt="Figure 3: Device connected to MPS">
+      <img src="..\..\assets\images\OCR_MPS_Device_Connected.png" alt="Figure 3: Device connected to MPS">
     </figure>
 
 2. Enable `One Click Recovery (OCR)` feature in `General AMT Info` Section.
@@ -66,19 +66,19 @@ You can use our [MPS APIs](#triggering-https-boot-via-mps-apis) to perform recov
         See the snapshot below — if the **HTTPS Network Boot** field shows **Supported**, the feature is available on the device.
     
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\OCR_MPS_HTTPS_Boot_Supported.png" alt="Figure 4: Enable HTTPS Network Boot">
+      <img src="..\..\assets\images\OCR_MPS_HTTPS_Boot_Supported.png" alt="Figure 4: Enable HTTPS Network Boot">
     </figure>
 
 3. Upload the Root Certificate of the HTTPS server hosting the ISO via the `Add New` certificates option.
     
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\OCR_MPS_ADD_TRUSTEDROOTCERT.png" alt="Figure 5: Add Root Certificate of HTTPS Server">
+      <img src="..\..\assets\images\OCR_MPS_ADD_TRUSTEDROOTCERT.png" alt="Figure 5: Add Root Certificate of HTTPS Server">
     </figure>
 
 4. Click on the three-dot menu and select **Reset to HTTPS Boot (OCR)**.
     
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\OCR_MPS_Reset_to_HTTPS_Boot.png" alt="Figure 6: Reset to HTTPS Boot (OCR)">
+      <img src="..\..\assets\images\OCR_MPS_Reset_to_HTTPS_Boot.png" alt="Figure 6: Reset to HTTPS Boot (OCR)">
     </figure>
 
 5. Enter the ISO URL (e.g., https://192.168.88.216:5443/ubuntu.iso).
@@ -88,7 +88,7 @@ You can use our [MPS APIs](#triggering-https-boot-via-mps-apis) to perform recov
         Ensure the HTTPS Server ISO URL is accessible to the device.
     
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\OCR_MPS_HTTPSBOOT_URL.png" alt="Figure 7: URL to the .iso hosted on HTTPS Server">
+      <img src="..\..\assets\images\OCR_MPS_HTTPSBOOT_URL.png" alt="Figure 7: URL to the .iso hosted on HTTPS Server">
     </figure>
 
 6. Optionally, enable `Enforce Secure Boot` to boot only a secure `.iso` file.
@@ -108,11 +108,11 @@ You can use our [MPS APIs](#triggering-https-boot-via-mps-apis) to perform recov
 8. Optionally, Connect to KVM and verify that the device loads the ISO.
     
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\OCR_MPS_HTTPSBoot_Recovery_Start.png" alt="Figure 8: View KVM screen while the ISO boots">
+      <img src="..\..\assets\images\OCR_MPS_HTTPSBoot_Recovery_Start.png" alt="Figure 8: View KVM screen while the ISO boots">
     </figure>
 
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\OCR_MPS_HTTPS_BOOT_UbuntuOS.png" alt="Figure 9: Full Ubuntu LTS Boot">
+      <img src="..\..\assets\images\OCR_MPS_HTTPS_BOOT_UbuntuOS.png" alt="Figure 9: Full Ubuntu LTS Boot">
     </figure>
     
     !!! bug "KVM Keyboard Issue"
@@ -242,7 +242,7 @@ You can use our [MPS APIs](#triggering-https-boot-via-mps-apis) to perform recov
 7. Optionally, Connect to KVM and verify that the device loads the ISO.
     
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\OCR_HTTPSBoot_Recovery_Start_MPS.png" alt="Figure 10: View KVM screen while the ISO boots">
+      <img src="..\..\assets\images\OCR_HTTPSBoot_Recovery_Start_MPS.png" alt="Figure 10: View KVM screen while the ISO boots">
     </figure>
 
 #### API Reference
@@ -282,7 +282,7 @@ Before triggering a Boot to Windows Recovery Environment (WinRE), ensure that th
 1. Make sure that the target device shows as connected
     
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\OCR_MPS_Device_Connected.png" alt="Figure 11: Device connected to MPS">
+      <img src="..\..\assets\images\OCR_MPS_Device_Connected.png" alt="Figure 11: Device connected to MPS">
     </figure>
 
 2. Enable `One Click Recovery (OCR)` feature in `General AMT Info` Section.
@@ -292,7 +292,7 @@ Before triggering a Boot to Windows Recovery Environment (WinRE), ensure that th
         See the snapshot below — if the **Windows Recovery Boot** field shows **Supported**, the feature is available on this device.
     
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\OCR_MPS_Boot_To_WinRE_Supported.png" alt="Figure 12: Enable OCR feature">
+      <img src="..\..\assets\images\OCR_MPS_Boot_To_WinRE_Supported.png" alt="Figure 12: Enable OCR feature">
     </figure>
 
 3. Optionally, start a **KVM session** if you want to observe the full recovery process.  
@@ -300,13 +300,13 @@ Before triggering a Boot to Windows Recovery Environment (WinRE), ensure that th
 4. Click the **⋯ (three-dot)** menu and select **Reset to WinRE (OCR)**.
 
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\OCR_MPS_Reset_to_WinRE.png" alt="Figure 13: Select Reset to WinRE (OCR)">
+      <img src="..\..\assets\images\OCR_MPS_Reset_to_WinRE.png" alt="Figure 13: Select Reset to WinRE (OCR)">
     </figure>
 
 5. The device will immediately restart and boot into Windows Recovery Environment.
 
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\OCR_MPS_Win_Recovery_Screen.png" alt="Figure 14: Windows Recovery Screen">
+      <img src="..\..\assets\images\OCR_MPS_Win_Recovery_Screen.png" alt="Figure 14: Windows Recovery Screen">
     </figure>
 
 #### API Reference
@@ -339,7 +339,7 @@ Before triggering a Local PBA boot, ensure that the EFI environment is properly 
     Connect to the device over **TLS** using Console, select **Reset to OCR**, and view the available PBA options to confirm the exact EFI path registered with AMT.
 
       <figure class="figure-image">
-       <img src="..\..\assets\images\screenshots\OCR_MPS_Reset_to_PBA_EFIPATH.png" alt="Figure 15: PBA Path registered with AMT">
+       <img src="..\..\assets\images\OCR_MPS_Reset_to_PBA_EFIPATH.png" alt="Figure 15: PBA Path registered with AMT">
       </figure>
 
 3. The signing certificate of the PBA must be enrolled in the BIOS **Authorized Signatures (db)**.  
@@ -356,7 +356,7 @@ Before triggering a Local PBA boot, ensure that the EFI environment is properly 
 1. Make sure that the target device shows as connected
     
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\OCR_MPS_Device_Connected.png" alt="Figure 16: Device connected to MPS">
+      <img src="..\..\assets\images\OCR_MPS_Device_Connected.png" alt="Figure 16: Device connected to MPS">
     </figure>
 
 2. Enable `One Click Recovery (OCR)` feature in `General AMT Info` Section.
@@ -366,7 +366,7 @@ Before triggering a Local PBA boot, ensure that the EFI environment is properly 
         See the snapshot below — if the **PBA Boot** field shows **Supported**, the feature is available on this device.
     
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\OCR_Boot_To_PBA_Supported.png" alt="Figure 17: Enable OCR">
+      <img src="..\..\assets\images\OCR_Boot_To_PBA_Supported.png" alt="Figure 17: Enable OCR">
     </figure>
 
 3. Optionally, start a **KVM session** if you want to observe the full recovery process.
@@ -374,7 +374,7 @@ Before triggering a Local PBA boot, ensure that the EFI environment is properly 
 4. Click the **⋯ (three-dot)** menu and select **Reset to PBA (OCR)**.
 
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\OCR_MPS_Reset_to_PBA.png" alt="Figure 18: Reset to PBA (OCR)">
+      <img src="..\..\assets\images\OCR_MPS_Reset_to_PBA.png" alt="Figure 18: Reset to PBA (OCR)">
     </figure>
 
 5. From the dropdown, select the local recovery option corresponding to your EFI entry (for example, `\OemPba.efi`).
@@ -387,7 +387,7 @@ Before triggering a Local PBA boot, ensure that the EFI environment is properly 
 
    
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\OCR_MPS_Reset_to_PBA_SelectPBA_Dropdown.png" alt="Figure 19: Select PBA">
+      <img src="..\..\assets\images\OCR_MPS_Reset_to_PBA_SelectPBA_Dropdown.png" alt="Figure 19: Select PBA">
     </figure>
 
 6. Click **OK** to confirm.
@@ -395,7 +395,7 @@ Before triggering a Local PBA boot, ensure that the EFI environment is properly 
 7. The device will immediately restart and boot into the selected PBA EFI application.
 
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\OCR_MPS_PBA_Boot_Netboot_EFI.png" alt="Figure 20: Booting into Local PBA (.efi)">
+      <img src="..\..\assets\images\OCR_MPS_PBA_Boot_Netboot_EFI.png" alt="Figure 20: Booting into Local PBA (.efi)">
     </figure>
 
 

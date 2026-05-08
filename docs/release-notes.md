@@ -4,70 +4,64 @@
 
 !!! note "Note From the Team"
 
-    This release includes several enhancements across Console, RPS, RPC-Go, and the Sample Web UI, including support for redirection over CIRA, improved connection tracking, KVM performance metrics, hardware information improvements, and multiple validation and stability fixes across the toolkit.
+    This release brings a major update to the React UI Toolkit with the v5 modernization, expanded hotkey support across UI components, and improved redirection handling in the Web UI. On the backend side, we focused on improving activation reliability for newer AMT platforms and refining Secure Boot handling in OCR workflows.
 
-    The end-to-end TLS work included in this release is still considered preview support and will continue to evolve over the next few releases as we refine the provisioning and TLS configuration flow across different AMT versions.
+    Looking ahead, work on rpc-go `v3` continues to ramp up. We’re adding new diagnostic capabilities, including flash logs, CIRA logs, and WSMAN class retrieval, which will begin rolling out in upcoming beta releases. We’re also improving rpc-go behavior when LMS is not available and adding better KVM feedback so users get clearer insight when starting a session. **And of course, steady progress continues toward the broader v3 direction**.
 
-    In upcoming releases, you should start seeing improvements coming to rpc-go v3, including a revamped `amtinfo` experience, proxy information support in `amtinfo`, non-admin support for basic commands, along with wireless profile configuration support in Console, and a lot more.
-
-    Follow our [Sprint Board](https://github.com/orgs/device-management-toolkit/projects/10/views/2) to learn more and track upcoming features.
-
-    As always, thanks to everyone providing feedback, testing new functionality, and contributing to the toolkit.
+    As always, thanks for the feedback and contributions, especially to our external contributors helping expand platform support.
 
     Cheers,<br>
     **The Device Management Toolkit Team**
 
 ## 🚀 What's New?
 
-### Console: Redirection Over CIRA
+### UI Toolkit React: v5 Release (Breaking Change)
 
-Console now supports launching redirection sessions over CIRA connections, enabling remote KVM, SOL, and IDER workflows when devices are outside the enterprise network. This builds on the broader effort to make Console support cloud-based deployment scenarios.
+The React UI Toolkit received a major update introducing functional components and a style-props API. Builds now use Rollup, and component exports were restructured to better support future UI integrations.
 
-### Console: KVM Performance Metrics
+You can see a summary of the improvements in PR [#1906](https://github.com/device-management-toolkit/ui-toolkit-react/pull/1906)
 
-Console now includes KVM performance timing metrics and monitoring support, helping users better understand remote session responsiveness and troubleshoot performance-related issues.
+Along with this release, we’ve also published an example app to help users test KVM, IDER, and SOL components. Instructions to get started are available [here](https://device-management-toolkit.github.io/docs/2.32/Tutorials/uitoolkitReact/#test-the-react-library-with-the-example-app)
 
-### Sample Web UI: Improved Hardware Information Layout
+### Console: Linux `arm64` Binary
 
-The Hardware Information experience in the Sample Web UI was updated with layout improvements to make device details easier to navigate and review.
+We now publish Console binaries for Linux `arm64`, expanding deployment options for edge and ARM-based environments. This extends the build workflow to generate Linux `arm64` binaries as part of the release assets.
 
-### RPS & RPC-Go: Preview Support for End-to-End TLS Between AMT and RPS
+Thanks to external contributor **@justfrt** for helping enable this support.
 
-This release includes preview support for end-to-end TLS communication between Intel AMT and RPS using the `-tls-tunnel` flag in rpc-go.
+### UI Toolkit & UI Toolkit Angular: Expanded Hotkey Support
 
-This capability is still being improved and is not considered fully ready for all deployment scenarios yet. We are continuing to refine the provisioning and TLS configuration flow across different AMT versions, and more documentation around this workflow will be added in later releases.
+New keyboard shortcuts were added, including *ALT + F1* through *F12* and *CTRL + ALT + F1* through *F12*, giving users more options for sending remote key combinations.
+
+### Web UI: Option to Enable Redirection
+
+The Web UI now displays a warning when KVM, SOL, or IDER is enabled but the overall *Redirection feature* is disabled. Users can now enable Redirection through Console or MPS before starting a session.
 
 ## 🧩 Enhancements & Improvements
 
-### Sample Web UI: Improved Request Handling and Performance
+### Console & MPS: Secure Boot Handling Improvements for OCR
 
-The Sample Web UI now cancels pending requests when navigating between pages and caches AMT feature queries to reduce duplicate HTTP requests.
+For One-Click Recovery workflows, Console and MPS now provide clearer feedback when *EnforceSecureBoot* is used in CCM mode. These updates align behavior with firmware expectations and help prevent unsupported boot scenarios earlier in the workflow.
 
-### Console: Connection Status Tracking
+### RPC-Go: Activation Stability Improvements for AMT 19 and above versions
 
-Console now tracks device connection status changes along with last connected and disconnected timestamps, improving visibility into device connectivity state.
-
-### RPS: Provisioning Certificate Validation Improvements
-
-RPS now validates that provisioning certificates include the expected root certificate before activation begins. Additional validation and error handling improvements were also added for unsupported ECDSA/EC provisioning certificates.
+Updates the local ACM activation workflow to better support AMT 19+ platforms with TLS enforcement. This includes improved handling of MEBx password requirements and activation state transitions, resulting in more reliable activation on newer firmware versions.
 
 ## 🔧 Fixes & Maintenance
 
-- Console stability and validation fixes for CIRA cleanup, invalid CIRA configuration names, auth handling, and WiFi profile validation
+- Console fixes related to encryption and decryption error handling, along with case-insensitive UUID comparisons
 
-- Console Hardware Information fixes for Memory Summary display, CIM_Chip formatting, and power state handling
+- Console fix for IDER boot order handling
 
-- Console and redirection fixes for KVM websocket cleanup, redirect session handling, and no-UI browser launch behavior
+- RPC-Go fixes for LME timeout handling and formatted log stability
 
-- RPS activation and profile export fixes for domain suffix handling, shared static IP export, and invalid CIRA configuration validation
+- RPS update to consistently use SHA256 for compatibility with older firmware versions
 
-- Sample Web UI fixes for cloud activation, reconnect handling, AMT 19+ activation support, validation messaging, translations, and redirection form state
+- RPS improvement to validate upgrade results before reporting ACM activation success
 
-- RPC-Go fix to prevent crashes on fresh Windows 11 systems with outdated or missing MEI drivers
+- UI Toolkit keyboard event handling fixes
 
-- Go WSMAN Messages fixes for non-chunked responses over CIRA channels
-
-- WSMAN Messages `v6` migration from CommonJS to ESM modules
+- Cypress test fixes for Linux environments in Sample Web UI
 
 - Minor dependency updates and general maintenance across toolkit components
 
@@ -75,161 +69,54 @@ RPS now validates that provisioning certificates include the expected root certi
   
 ### RPS
 
-#### [2.34.2](https://github.com/device-management-toolkit/rps/compare/v2.34.1...v2.34.2) (2026-04-10)
-
-#### [2.34.1](https://github.com/device-management-toolkit/rps/compare/v2.34.0...v2.34.1) (2026-04-09)
+#### [2.31.3](https://github.com/device-management-toolkit/rps/compare/v2.31.2...v2.31.3) (2026-02-18)
 
 Bug Fixes
 
-* return clear error for unsupported ECDSA/EC provisioning certificates ([#2604](https://github.com/device-management-toolkit/rps/issues/2604)) ([35d4840](https://github.com/device-management-toolkit/rps/commit/35d484017b1b8428e53eef3c550a75da2a843298))
+* always use sha256 in createSignedString for firmware compatibility ([#2537](https://github.com/device-management-toolkit/rps/issues/2537)) ([8fc2c95](https://github.com/device-management-toolkit/rps/commit/8fc2c952985b4f655954ac9fd8bdc6dcefbec44a))
 
-#### [2.34.0](https://github.com/device-management-toolkit/rps/compare/v2.33.1...v2.34.0) (2026-04-02)
-
-Features
-
-* adds support for E2E TLS connection between AMT and RPS ([#2598](https://github.com/device-management-toolkit/rps/issues/2598)) ([73baf43](https://github.com/device-management-toolkit/rps/commit/73baf4318b23b8ed1d9ad2e5749b5fcce5bc9346))
-
-#### [2.33.1](https://github.com/device-management-toolkit/rps/compare/v2.33.0...v2.33.1) (2026-03-30)
+#### [2.31.2](https://github.com/device-management-toolkit/rps/compare/v2.31.1...v2.31.2) (2026-01-16)
 
 Bug Fixes
 
-* tighten CIRA config name validation to prevent 500 errors ([#2635](https://github.com/device-management-toolkit/rps/issues/2635)) ([3ebeae6](https://github.com/device-management-toolkit/rps/commit/3ebeae64f304a15e5c94788c7e221bd3132bc73d))
-
-#### [2.33.0](https://github.com/device-management-toolkit/rps/compare/v2.32.2...v2.33.0) (2026-03-30)
-
-Features
-
-* validate root certificate exists in provisioning cert ([#2627](https://github.com/device-management-toolkit/rps/issues/2627)) ([62315a7](https://github.com/device-management-toolkit/rps/commit/62315a76ac3d8a15e8fbc37ea06a6616c5bc8573))
-
-#### [2.32.2](https://github.com/device-management-toolkit/rps/compare/v2.32.1...v2.32.2) (2026-03-24)
-
-Bug Fixes
-
-* ACM activation fails when device FQDN has more segments than stored domain suffix ([#2622](https://github.com/device-management-toolkit/rps/issues/2622)) ([e360876](https://github.com/device-management-toolkit/rps/commit/e360876bc9db288cb9288ab632029350cc09ffb2))
-
-#### [2.32.1](https://github.com/device-management-toolkit/rps/compare/v2.32.0...v2.32.1) (2026-03-23)
-
-Bug Fixes
-
-* derive sharedStaticIP from DHCPEnabled in profile export ([#2618](https://github.com/device-management-toolkit/rps/issues/2618)) ([e86a250](https://github.com/device-management-toolkit/rps/commit/e86a250cb1e42243a047bc4549a987ade60ecba5))
-
-#### [2.32.0](https://github.com/device-management-toolkit/rps/compare/v2.31.4...v2.32.0) (2026-03-18)
-
-Features
-
-* adds support for E2E TLS connection between AMT and RPS ([0a60ff3](https://github.com/device-management-toolkit/rps/commit/0a60ff3cf4242ba6bef6bf3e413210588b9eaabf))
-
-#### [2.31.4](https://github.com/device-management-toolkit/rps/compare/v2.31.3...v2.31.4) (2026-03-11)
+* **activation:** check upgrade result before reporting ACM activation success ([#2503](https://github.com/device-management-toolkit/rps/issues/2503)) ([765cb93](https://github.com/device-management-toolkit/rps/commit/765cb932bbf87bdd0e63d2a71827fb953fd4a03c))
 
 ### MPS
 
-#### [2.26.4](https://github.com/device-management-toolkit/mps/compare/v2.26.3...v2.26.4) (2026-04-10)
+#### [2.26.0](https://github.com/device-management-toolkit/mps/compare/v2.25.4...v2.26.0) (2026-02-18)
 
-#### [2.26.3](https://github.com/device-management-toolkit/mps/compare/v2.26.2...v2.26.3) (2026-03-24)
+Features
 
-Bug Fixes
-
-* remove tenantId filter from clearInstanceStatus ([#2404](https://github.com/device-management-toolkit/mps/issues/2404)) ([5084072](https://github.com/device-management-toolkit/mps/commit/508407208fc788d13e564e1649f1c574edfce9cc))
-
-#### [2.26.2](https://github.com/device-management-toolkit/mps/compare/v2.26.1...v2.26.2) (2026-03-11)
-
-#### [2.26.1](https://github.com/device-management-toolkit/mps/compare/v2.26.0...v2.26.1) (2026-03-02)
-
-Bug Fixes
-
-* prevent redirect session crash during device validation ([#2359](https://github.com/device-management-toolkit/mps/issues/2359)) ([3aa2c0c](https://github.com/device-management-toolkit/mps/commit/3aa2c0cfc8ada76405eb14ff4fbcf39cf57475b6))
+* **api:** Add CCM validation for EnforceSecureBoot in boot options ([#2323](https://github.com/device-management-toolkit/mps/issues/2323)) ([5f4193c](https://github.com/device-management-toolkit/mps/commit/5f4193c0e25e2d1cc10619e77b6bd0086302599d))
 
 ### RPC Go
 
-#### [2.50.1](https://github.com/device-management-toolkit/rpc-go/compare/v2.50.0...v2.50.1) (2026-04-10)
-
-#### [2.50.0](https://github.com/device-management-toolkit/rpc-go/compare/v2.49.2...v2.50.0) (2026-03-28)
-
-Features
-
-* enable tls tunnel for e2e tls connection for RPS <-> AMT ([a9cf653](https://github.com/device-management-toolkit/rpc-go/commit/a9cf653529c211ee60cd4b195f5c0b88c09a9ff0))
-
-#### [2.49.2](https://github.com/device-management-toolkit/rpc-go/compare/v2.49.1...v2.49.2) (2026-03-20)
-
-#### [2.49.1](https://github.com/device-management-toolkit/rpc-go/compare/v2.49.0...v2.49.1) (2026-02-23)
+#### [2.49.0](https://github.com/device-management-toolkit/rpc-go/compare/v2.48.16...v2.49.0) (2026-02-17)
 
 Bug Fixes
 
-* prevent crash when MEI driver on fresh Windows 11 install is not updated ([4cbec7f](https://github.com/device-management-toolkit/rpc-go/commit/4cbec7f5a0035d6e6a9cb4077d546f10ed9c1f68))
+* addresses amt19+ activation on new machines ([#1162](https://github.com/device-management-toolkit/rpc-go/issues/1162)) ([e56715b](https://github.com/device-management-toolkit/rpc-go/commit/e56715bac4d256c89359b45a9aa5fd9780e5c4bc))
+* updating redirection log proccess using thread safe and buffer ([36b0a07](https://github.com/device-management-toolkit/rpc-go/commit/36b0a07698b0a96cdf9b88b038ac0efde9d582d7))
+
+Features
+
+* support for SHA-384 provisioning certificates in rpc-go ([#1078](https://github.com/device-management-toolkit/rpc-go/issues/1078)) ([a60c97d](https://github.com/device-management-toolkit/rpc-go/commit/a60c97d3228c7a675e9d049aaaba18d934828243))
+
+#### [2.48.16](https://github.com/device-management-toolkit/rpc-go/compare/v2.48.15...v2.48.16) (2026-01-30)
+
+Bug Fixes
+
+* **lme:** add timeout in lme-execute method ([bffd2d3](https://github.com/device-management-toolkit/rpc-go/commit/bffd2d322d3898b0a12e2af244387dc9aa15ccc6))
+
+#### [2.48.15](https://github.com/device-management-toolkit/rpc-go/compare/v2.48.14...v2.48.15) (2026-01-15)
+
+Bug Fixes
+
+* workaround for fixing crash in formated logs ([996b559](https://github.com/device-management-toolkit/rpc-go/commit/996b5599a2ba23e4e5842d248f6b840f8e8568d2))
 
 ### Sample Web UI
 
-#### [3.57.1](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.57.0...v3.57.1) (2026-04-10)
-
-#### [3.57.0](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.56.0...v3.57.0) (2026-04-06)
-
-Features
-
-* improves layout for HW Info ([24f0aca](https://github.com/device-management-toolkit/sample-web-ui/commit/24f0aca6eb01e1c9bdf2a44d971f9873a855110f))
-
-#### [3.56.0](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.55.10...v3.56.0) (2026-04-06)
-
-Features
-
-* support cancel requests upon navigating away from page ([7d94c74](https://github.com/device-management-toolkit/sample-web-ui/commit/7d94c741a3ae2ca9ab2874a09d389a1d3f0ea703))
-
-#### [3.55.10](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.55.9...v3.55.10) (2026-03-31)
-
-Bug Fixes
-
-* Fix cloud activation to support version-specific RPC flags and overlay handling ([#3232](https://github.com/device-management-toolkit/sample-web-ui/issues/3232)) ([f15a08f](https://github.com/device-management-toolkit/sample-web-ui/commit/f15a08ff6ba3706fcdf1cbbc58ce5db19af4d179))
-
-#### [3.55.9](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.55.8...v3.55.9) (2026-03-30)
-
-Bug Fixes
-
-* add pattern validation for CIRA config name field ([#3233](https://github.com/device-management-toolkit/sample-web-ui/issues/3233)) ([dacbb63](https://github.com/device-management-toolkit/sample-web-ui/commit/dacbb63f566675f188d2384006b8344c3fb19843)), closes [device-management-toolkit/rps#2599](https://github.com/device-management-toolkit/rps/issues/2599)
-
-#### [3.55.8](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.55.7...v3.55.8) (2026-03-30)
-
-Bug Fixes
-
-* show msg only in validation errors ([#3223](https://github.com/device-management-toolkit/sample-web-ui/issues/3223)) ([610d0ed](https://github.com/device-management-toolkit/sample-web-ui/commit/610d0edf061b85799674036a28c8dbfca287994f))
-
-#### [3.55.7](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.55.6...v3.55.7) (2026-03-20)
-
-#### [3.55.6](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.55.5...v3.55.6) (2026-03-16)
-
-Performance Improvements
-
-* cache AMT features to reduce duplicate HTTP requests ([#3169](https://github.com/device-management-toolkit/sample-web-ui/issues/3169)) ([48942cd](https://github.com/device-management-toolkit/sample-web-ui/commit/48942cde89a749d789415bba38bcb440bc18b8ed))
-
-#### [3.55.5](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.55.4...v3.55.5) (2026-03-16)
-
-Bug Fixes
-
-* **devices:** show Connect button after disconnect and refresh auth token on reconnect ([#3159](https://github.com/device-management-toolkit/sample-web-ui/issues/3159)) ([3fc4793](https://github.com/device-management-toolkit/sample-web-ui/commit/3fc4793f17b5d91d73b8b0a4be14239a1e10259d))
-
-#### [3.55.4](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.55.3...v3.55.4) (2026-03-16)
-
-Bug Fixes
-
-* add skipamtcertcheck flag for AMT19+ activation support ([#3195](https://github.com/device-management-toolkit/sample-web-ui/issues/3195)) ([26eb87a](https://github.com/device-management-toolkit/sample-web-ui/commit/26eb87a67aef8fade90872c76d7ade30e575f99c))
-
-#### [3.55.3](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.55.2...v3.55.3) (2026-03-11)
-
-Bug Fixes
-
-* shows correct error message on device load failure ([56fcf1b](https://github.com/device-management-toolkit/sample-web-ui/commit/56fcf1bbcde8021f6d093252b4bc87b6f112d079))
-
-#### [3.55.2](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.55.1...v3.55.2) (2026-03-09)
-
-Bug Fixes
-
-* **i18n:** add and update missing translations ([528ea4d](https://github.com/device-management-toolkit/sample-web-ui/commit/528ea4dc5996fc95e047f7ea7905c11950950f70))
-
-#### [3.55.1](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.55.0...v3.55.1) (2026-02-26)
-
-Bug Fixes
-
-* false "Redirection is disabled" alert after updating AMT features ([#3157](https://github.com/device-management-toolkit/sample-web-ui/issues/3157)) ([2512a5f](https://github.com/device-management-toolkit/sample-web-ui/commit/2512a5f6de936a2b53ff2fa513a6fcc2f6e4cc78))
-
-#### [3.55.0](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.54.1...v3.55.0) (2026-02-24)
+#### [3.54.0](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.53.1...v3.54.0) (2026-02-18)
 
 Bug Fixes
 
@@ -240,158 +127,111 @@ Features
 
 * show redirection warning when KVM/SOL/IDER is enabled but redirection is off ([#3125](https://github.com/device-management-toolkit/sample-web-ui/issues/3125)) ([a532bf7](https://github.com/device-management-toolkit/sample-web-ui/commit/a532bf7421e750350a2a9985465df4cc47bed852))
 
-#### [3.54.1](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.54.0...v3.54.1) (2026-02-24)
+#### [3.53.1](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.53.0...v3.53.1) (2026-01-29)
 
 Bug Fixes
 
-* alarm creation and deletion with proper validation and instant feedback ([#3135](https://github.com/device-management-toolkit/sample-web-ui/issues/3135)) ([d7d4188](https://github.com/device-management-toolkit/sample-web-ui/commit/d7d4188507c7b8ea094c26e0c2040e4d8d711fac))
+* fixed cypress ts code for Linux device ([#3085](https://github.com/device-management-toolkit/sample-web-ui/issues/3085)) ([cfcfb8e](https://github.com/device-management-toolkit/sample-web-ui/commit/cfcfb8e7b9e07abad53cce961938928254309243))
+
+#### [3.53.0](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.52.4...v3.53.0) (2026-01-28)
+
+Features
+
+* Added hotkey support for ALT+Fx and CTL+ATL+Fx ([bd681b7](https://github.com/device-management-toolkit/sample-web-ui/commit/bd681b7f2b9212f62a24aebe2d18a40583fdbd35))
+
+#### [3.52.4](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.52.3...v3.52.4) (2026-01-16)
+
+Bug Fixes
+
+* hide edit device button in cloud deployment mode ([#3078](https://github.com/device-management-toolkit/sample-web-ui/issues/3078)) ([6e56b04](https://github.com/device-management-toolkit/sample-web-ui/commit/6e56b043312c7e4f9e0cb93f3e3c11dcb04f691b))
 
 ### UI Toolkit
 
-#### [3.3.12](https://github.com/device-management-toolkit/ui-toolkit/compare/v3.3.11...v3.3.12) (2026-04-09)
+#### [3.3.10](https://github.com/device-management-toolkit/ui-toolkit/compare/v3.3.9...v3.3.10) (2026-02-09)
 
-#### [3.3.11](https://github.com/device-management-toolkit/ui-toolkit/compare/v3.3.10...v3.3.11) (2026-03-11)
+Bug Fixes
+
+* KeyboardHelper overrides kb event listener ([#1583](https://github.com/device-management-toolkit/ui-toolkit/issues/1583)) ([15a9157](https://github.com/device-management-toolkit/ui-toolkit/commit/15a9157239a3316085da44e91fbddd1b302c1106))
 
 ### UI Toolkit Angular
 
-#### [11.1.3](https://github.com/device-management-toolkit/ui-toolkit-angular/compare/v11.1.2...v11.1.3) (2026-04-10)
+#### [11.1.1](https://github.com/device-management-toolkit/ui-toolkit-angular/compare/v11.1.0...v11.1.1) (2026-02-09)
 
-#### [11.1.2](https://github.com/device-management-toolkit/ui-toolkit-angular/compare/v11.1.1...v11.1.2) (2026-03-20)
+#### [11.1.0](https://github.com/device-management-toolkit/ui-toolkit-angular/compare/v11.0.1...v11.1.0) (2026-01-27)
+
+Features
+
+* Added new hotkeys support for ALT+F1-F12 and CTRL+ALT+F1-F12 ([463c352](https://github.com/device-management-toolkit/ui-toolkit-angular/commit/463c35246da7f6e91f01afe331f68e8dee6a6529))
 
 ### UI Toolkit React
 
-#### [5.0.3](https://github.com/device-management-toolkit/ui-toolkit-react/compare/v5.0.2...v5.0.3) (2026-04-10)
-
-#### [5.0.2](https://github.com/device-management-toolkit/ui-toolkit-react/compare/v5.0.1...v5.0.2) (2026-03-11)
-
-### Console
-
-#### [1.22.9](https://github.com/device-management-toolkit/console/compare/v1.22.8...v1.22.9) (2026-04-10)
-
-#### [1.22.8](https://github.com/device-management-toolkit/console/compare/v1.22.7...v1.22.8) (2026-04-07)
+#### [5.0.1](https://github.com/device-management-toolkit/ui-toolkit-react/compare/v5.0.0...v5.0.1) (2026-02-24)
 
 Bug Fixes
 
-* check len of state before accessing power state ([efd1dac](https://github.com/device-management-toolkit/console/commit/efd1dac121a56ead2af2d9aa90795ed70b2413db))
+* remove prepublishOnly  to fix publish failure ([#1907](https://github.com/device-management-toolkit/ui-toolkit-react/issues/1907)) ([bed6e83](https://github.com/device-management-toolkit/ui-toolkit-react/commit/bed6e83ac147a3ba92207e9381897a192333a098))
 
-#### [1.22.7](https://github.com/device-management-toolkit/console/compare/v1.22.6...v1.22.7) (2026-04-06)
+#### [5.0.0](https://github.com/device-management-toolkit/ui-toolkit-react/compare/v4.0.6...v5.0.0) (2026-02-24)
 
-Bug Fixes
-
-* ensure CIM_Chip is returned in correct format ([14fb6da](https://github.com/device-management-toolkit/console/commit/14fb6dafbe5c8f7219a821edae11e2e1738397d4))
-
-#### [1.22.6](https://github.com/device-management-toolkit/console/compare/v1.22.5...v1.22.6) (2026-03-30)
-
-Bug Fixes
-
-* add name validation to CIRA config to prevent 500 on invalid configName ([#867](https://github.com/device-management-toolkit/console/issues/867)) ([220e5fa](https://github.com/device-management-toolkit/console/commit/220e5fa07476538f97b8fb3942fca923c78db9af)), closes [device-management-toolkit/rps#2599](https://github.com/device-management-toolkit/rps/issues/2599)
-
-#### [1.22.5](https://github.com/device-management-toolkit/console/compare/v1.22.4...v1.22.5) (2026-03-23)
-
-Bug Fixes
-
-* derive sharedStaticIP from DHCPEnabled in profile export ([#853](https://github.com/device-management-toolkit/console/issues/853)) ([92f460f](https://github.com/device-management-toolkit/console/commit/92f460f90c5cb7f465bc8880087889db02f8f48d))
-
-#### [1.22.4](https://github.com/device-management-toolkit/console/compare/v1.22.3...v1.22.4) (2026-03-19)
-
-Bug Fixes
-
-* add connection status tracking with last connected/disconnected ([#828](https://github.com/device-management-toolkit/console/issues/828)) ([476f798](https://github.com/device-management-toolkit/console/commit/476f798d788c0e06930835dff3884d7caafcba55))
-
-#### [1.22.3](https://github.com/device-management-toolkit/console/compare/v1.22.2...v1.22.3) (2026-03-18)
-
-Bug Fixes
-
-* add connection status tracking with last connected/disconnected ([#849](https://github.com/device-management-toolkit/console/issues/849)) ([bec829a](https://github.com/device-management-toolkit/console/commit/bec829a9f6b1b8dcf15e861e8ffa1b6a97b48300))
-
-#### [1.22.2](https://github.com/device-management-toolkit/console/compare/v1.22.1...v1.22.2) (2026-03-16)
-
-Bug Fixes
-
-* kvm: close browser websocket immediately on AMT disconnect ([#820](https://github.com/device-management-toolkit/console/issues/820)) ([3cead82](https://github.com/device-management-toolkit/console/commit/3cead8201330e8496a909b82eaa056af1cd87756))
-
-#### [1.22.1](https://github.com/device-management-toolkit/console/compare/v1.22.0...v1.22.1) (2026-03-11)
-
-Bug Fixes
-
-* resolve Memory Summary showing no data in Hardware Information ([#821](https://github.com/device-management-toolkit/console/issues/821)) ([c8521ae](https://github.com/device-management-toolkit/console/commit/c8521ae86d9c6ec5fe64a67156ace69d08380210)), closes [#816](https://github.com/device-management-toolkit/console/issues/816)
-
-#### [1.22.0](https://github.com/device-management-toolkit/console/compare/v1.21.3...v1.22.0) (2026-03-09)
-
-Features
-
-* enables support for redirection over CIRA ([10adaf9](https://github.com/device-management-toolkit/console/commit/10adaf9bcb93b2bfb9198d2113782bd28f309d28)), closes [#743](https://github.com/device-management-toolkit/console/issues/743)
-
-#### [1.21.3](https://github.com/device-management-toolkit/console/compare/v1.21.2...v1.21.3) (2026-02-25)
-
-Bug Fixes
-
-* ensure auth failure returns without next() call ([#803](https://github.com/device-management-toolkit/console/issues/803)) ([76161c2](https://github.com/device-management-toolkit/console/commit/76161c239e04c33ff23602898af39795dbae599e))
-* suppress browser launch in noui builds ([#812](https://github.com/device-management-toolkit/console/issues/812)) ([26f5b47](https://github.com/device-management-toolkit/console/commit/26f5b47d5e80a59566ecf90ccb1b2088410b1a72))
-
-#### [1.21.2](https://github.com/device-management-toolkit/console/compare/v1.21.1...v1.21.2) (2026-02-23)
-
-Bug Fixes
-
-* Update the validator criteria to allow wifi config is empty when DHCP is false ([#799](https://github.com/device-management-toolkit/console/issues/799)) ([f3c3926](https://github.com/device-management-toolkit/console/commit/f3c39265e365d0f25ad89d0c0689d98613875152))
-
-#### [1.21.1](https://github.com/device-management-toolkit/console/compare/v1.21.0...v1.21.1) (2026-02-20)
-
-Bug Fixes
-
-* prevent segfault in CIRA cleanup and EOF errors in hardware collection ([#776](https://github.com/device-management-toolkit/console/issues/776)) ([#788](https://github.com/device-management-toolkit/console/issues/788)) ([3c87e88](https://github.com/device-management-toolkit/console/commit/3c87e88ce89554ff74d86369f81fcb0cf78edc3e))
-
-#### [1.21.0](https://github.com/device-management-toolkit/console/compare/v1.20.1...v1.21.0) (2026-02-18)
-
-Features
-
-* add KVM performance timing metrics and monitoring ([#761](https://github.com/device-management-toolkit/console/issues/761)) ([5b7221f](https://github.com/device-management-toolkit/console/commit/5b7221ff2ebb6e31ab5debe3a23d4a8f1833a309))
-
-### Go WSMAN Messages
-
-#### [2.38.1](https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.38.0...v2.38.1) (2026-04-10)
-
-#### [2.38.0](https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.37.0...v2.38.0) (2026-03-17)
-
-Features
-
-* add tags to config ([#653](https://github.com/device-management-toolkit/go-wsman-messages/issues/653)) ([fb5dad2](https://github.com/device-management-toolkit/go-wsman-messages/commit/fb5dad2f9dee5bc09bdf512841142222a1ca546c))
-
-#### [2.37.0](https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.36.3...v2.37.0) (2026-03-06)
-
-Features
-
-* adds support for redirection over CIRA ([#649](https://github.com/device-management-toolkit/go-wsman-messages/issues/649)) ([45f7abd](https://github.com/device-management-toolkit/go-wsman-messages/commit/45f7abd877feadc0ed6953cc70a058a8b7b3a105))
-
-#### [2.36.3](https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.36.2...v2.36.3) (2026-03-06)
-
-Bug Fixes
-
-* address issue with non-chunked responses over CIRA channel ([#648](https://github.com/device-management-toolkit/go-wsman-messages/issues/648)) ([cf7dead](https://github.com/device-management-toolkit/go-wsman-messages/commit/cf7deadb54132ec5f830ca3acf05de8d976bf448))
-
-
-### WSMAN Messages
-
-#### [6.0.1](https://github.com/device-management-toolkit/wsman-messages/compare/v6.0.0...v6.0.1) (2026-04-09)
-
-#### [6.0.0](https://github.com/device-management-toolkit/wsman-messages/compare/v5.15.0...v6.0.0) (2026-04-06)
-
-* build!: moves to ESM from CJS ([6c05e50](https://github.com/device-management-toolkit/wsman-messages/commit/6c05e503a7f2556d41cd91ea5e5a0d91bb3339b7))
+* feat!: modernize library with functional components and style props API ([#1906](https://github.com/device-management-toolkit/ui-toolkit-react/issues/1906)) ([50a6183](https://github.com/device-management-toolkit/ui-toolkit-react/commit/50a618347db3b25fbc4a8886276ae762b67cd51b))
 
 BREAKING CHANGES
 
-* require() will no longer work with this package.
+* Component styling now uses style props (containerStyle, canvasStyle, etc.) instead of CSS classes, canvasWidth/canvasHeight
+props now apply to CSS display size, replaced webpack with rollup for builds, restructured exports from src/components/*
 
-#### [5.15.0](https://github.com/device-management-toolkit/wsman-messages/compare/v5.14.5...v5.15.0) (2026-03-17)
+### Console
+
+#### [1.20.1](https://github.com/device-management-toolkit/console/compare/v1.20.0...v1.20.1) (2026-02-16)
+
+Bug Fixes
+
+* handle encryption and decryption errors instead of silently ignoring them ([#778](https://github.com/device-management-toolkit/console/issues/778)) ([ba02a58](https://github.com/device-management-toolkit/console/commit/ba02a5811d0f3ac1417692f2cf2ec6d515d24f55))
+
+#### [1.20.0](https://github.com/device-management-toolkit/console/compare/v1.19.2...v1.20.0) (2026-02-11)
 
 Features
 
-* adds Put to AMT TLS Credential Context ([86b1791](https://github.com/device-management-toolkit/wsman-messages/commit/86b179102cdc06492548c989c3a2183b0242270c))
+* **power:** add EnforceSecureBoot error message for CCM mode ([#779](https://github.com/device-management-toolkit/console/issues/779)) ([e16afa8](https://github.com/device-management-toolkit/console/commit/e16afa862d86cba094eb182b20f24f08e16b8505))
 
-#### [5.14.5](https://github.com/device-management-toolkit/wsman-messages/compare/v5.14.4...v5.14.5) (2026-03-11)
+#### [1.19.2](https://github.com/device-management-toolkit/console/compare/v1.19.1...v1.19.2) (2026-02-06)
+
+Bug Fixes
+
+* case-insensitive UUID comparison for CIRA ([#784](https://github.com/device-management-toolkit/console/issues/784)) ([4d3e507](https://github.com/device-management-toolkit/console/commit/4d3e50761d1ff5840672039f97d00eae803d99b6))
+
+#### [1.19.1](https://github.com/device-management-toolkit/console/compare/v1.19.0...v1.19.1) (2026-02-04)
+
+Bug Fixes
+
+* return empty boot source for IDER actions ([#783](https://github.com/device-management-toolkit/console/issues/783)) ([865fd9b](https://github.com/device-management-toolkit/console/commit/865fd9b48db9de4c5bfedae1c5a4933ed25d44b3))
+
+#### [1.19.0](https://github.com/device-management-toolkit/console/compare/v1.18.2...v1.19.0) (2026-01-22)
+
+Features
+
+* adds support for linux arm64 builds ([5820237](https://github.com/device-management-toolkit/console/commit/5820237f0763d873b87e00c960354a993cfe4ae1))
+
+#### [1.18.2](https://github.com/device-management-toolkit/console/compare/v1.18.1...v1.18.2) (2026-01-14)
+
+Bug Fixes
+
+* gracefully handles failures setting up wsman client connections ([#754](https://github.com/device-management-toolkit/console/issues/754)) ([b37698a](https://github.com/device-management-toolkit/console/commit/b37698a2e6d4d10ecf5402387c5de63d70cbc641))
+
+#### [1.18.1](https://github.com/device-management-toolkit/console/compare/v1.18.0...v1.18.1) (2026-01-12)
+
+Bug Fixes
+
+* supports null values for MEBX and MPSPasswords ([#753](https://github.com/device-management-toolkit/console/issues/753)) ([e568fca](https://github.com/device-management-toolkit/console/commit/e568fca24e188b20b07db1515c59269b794a1257))
+
+### Go WSMAN Messages
+
+#### [2.36.2](https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.36.1...v2.36.2) (2026-02-09)
+
+### WSMAN Messages
+
+#### [5.14.4](https://github.com/device-management-toolkit/wsman-messages/compare/v5.14.3...v5.14.4) (2026-02-09)
 
 ### MPS Router
 
-#### [2.5.9](https://github.com/device-management-toolkit/mps-router/compare/v2.5.8...v2.5.9) (2026-04-09)
-
-#### [2.5.8](https://github.com/device-management-toolkit/mps-router/compare/v2.5.7...v2.5.8) (2026-03-11)
+#### [2.5.7](https://github.com/device-management-toolkit/mps-router/compare/v2.5.6...v2.5.7) (2026-02-18)
