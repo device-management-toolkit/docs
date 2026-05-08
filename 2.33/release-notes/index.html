@@ -1,0 +1,6908 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://device-management-toolkit.github.io/docs/release-notes/">
+      
+      
+        <link rel="prev" href="../announcements/">
+      
+      
+        <link rel="next" href="../videos/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Release Notes - Device Management Toolkit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/branding.css">
+    
+      <link rel="stylesheet" href="../assets/stylesheets/index.css">
+    
+      <link rel="stylesheet" href="../assets/stylesheets/videos.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-00QEDJW2TS"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-00QEDJW2TS",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-00QEDJW2TS",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#release-notes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Device Management Toolkit" class="md-header__button md-logo" aria-label="Device Management Toolkit" data-md-component="logo">
+      
+  <img src="../assets/images/logos/logo-white-75px.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Device Management Toolkit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Release Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-schemes)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/device-management-toolkit/cloud-deployment" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    device-management-toolkit/cloud-deployment
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href=".." class="md-tabs__link">
+          
+  
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../GetStarted/overview/" class="md-tabs__link">
+          
+  
+  
+  Get Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Concepts/oobManagement/" class="md-tabs__link">
+          
+  
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Deployment/overview/" class="md-tabs__link">
+          
+  
+  
+  Deployment
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Tutorials/overview/" class="md-tabs__link">
+          
+  
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Reference/architectureOverview/" class="md-tabs__link">
+          
+  
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../APIs/indexMPS/" class="md-tabs__link">
+          
+  
+  
+  APIs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Device Management Toolkit" class="md-nav__button md-logo" aria-label="Device Management Toolkit" data-md-component="logo">
+      
+  <img src="../assets/images/logos/logo-white-75px.png" alt="logo">
+
+    </a>
+    Device Management Toolkit
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/device-management-toolkit/cloud-deployment" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    device-management-toolkit/cloud-deployment
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Home
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../announcements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Announcements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Notes
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#whats-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 What's New?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 What&#39;s New?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#console-redirection-over-cira" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Console: Redirection Over CIRA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#console-kvm-performance-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Console: KVM Performance Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-web-ui-improved-hardware-information-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample Web UI: Improved Hardware Information Layout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rps-rpc-go-preview-support-for-end-to-end-tls-between-amt-and-rps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RPS &amp; RPC-Go: Preview Support for End-to-End TLS Between AMT and RPS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enhancements-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 Enhancements &amp; Improvements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧩 Enhancements &amp; Improvements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sample-web-ui-improved-request-handling-and-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample Web UI: Improved Request Handling and Performance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#console-connection-status-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Console: Connection Status Tracking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rps-provisioning-certificate-validation-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RPS: Provisioning Certificate Validation Improvements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fixes-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 Fixes &amp; Maintenance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changelog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changelog
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Changelog">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RPS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2342-2026-04-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.34.2 (2026-04-10)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2341-2026-04-09" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.34.1 (2026-04-09)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2340-2026-04-02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.34.0 (2026-04-02)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2331-2026-03-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.33.1 (2026-03-30)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2330-2026-03-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.33.0 (2026-03-30)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2322-2026-03-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.32.2 (2026-03-24)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2321-2026-03-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.32.1 (2026-03-23)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2320-2026-03-18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.32.0 (2026-03-18)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2314-2026-03-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.31.4 (2026-03-11)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MPS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2264-2026-04-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.26.4 (2026-04-10)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2263-2026-03-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.26.3 (2026-03-24)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2262-2026-03-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.26.2 (2026-03-11)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2261-2026-03-02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.26.1 (2026-03-02)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rpc-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RPC Go
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RPC Go">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2501-2026-04-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.50.1 (2026-04-10)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2500-2026-03-28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.50.0 (2026-03-28)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2492-2026-03-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.49.2 (2026-03-20)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2491-2026-02-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.49.1 (2026-02-23)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-web-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample Web UI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sample Web UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3571-2026-04-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.57.1 (2026-04-10)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3570-2026-04-06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.57.0 (2026-04-06)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3560-2026-04-06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.56.0 (2026-04-06)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35510-2026-03-31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.55.10 (2026-03-31)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3559-2026-03-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.55.9 (2026-03-30)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3558-2026-03-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.55.8 (2026-03-30)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3557-2026-03-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.55.7 (2026-03-20)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3556-2026-03-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.55.6 (2026-03-16)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3555-2026-03-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.55.5 (2026-03-16)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3554-2026-03-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.55.4 (2026-03-16)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3553-2026-03-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.55.3 (2026-03-11)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3552-2026-03-09" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.55.2 (2026-03-09)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3551-2026-02-26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.55.1 (2026-02-26)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3550-2026-02-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.55.0 (2026-02-24)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3541-2026-02-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.54.1 (2026-02-24)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui-toolkit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UI Toolkit
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UI Toolkit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3312-2026-04-09" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.12 (2026-04-09)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3311-2026-03-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.11 (2026-03-11)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui-toolkit-angular" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UI Toolkit Angular
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UI Toolkit Angular">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1113-2026-04-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1.3 (2026-04-10)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1112-2026-03-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1.2 (2026-03-20)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui-toolkit-react" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UI Toolkit React
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UI Toolkit React">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#503-2026-04-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.0.3 (2026-04-10)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#502-2026-03-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.0.2 (2026-03-11)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#console" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Console
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Console">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1229-2026-04-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.22.9 (2026-04-10)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1228-2026-04-07" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.22.8 (2026-04-07)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1227-2026-04-06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.22.7 (2026-04-06)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1226-2026-03-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.22.6 (2026-03-30)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1225-2026-03-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.22.5 (2026-03-23)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1224-2026-03-19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.22.4 (2026-03-19)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1223-2026-03-18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.22.3 (2026-03-18)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1222-2026-03-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.22.2 (2026-03-16)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1221-2026-03-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.22.1 (2026-03-11)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1220-2026-03-09" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.22.0 (2026-03-09)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1213-2026-02-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.21.3 (2026-02-25)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1212-2026-02-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.21.2 (2026-02-23)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1211-2026-02-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.21.1 (2026-02-20)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1210-2026-02-18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.21.0 (2026-02-18)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go-wsman-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Go WSMAN Messages
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Go WSMAN Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2381-2026-04-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.38.1 (2026-04-10)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2380-2026-03-17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.38.0 (2026-03-17)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2370-2026-03-06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.37.0 (2026-03-06)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2363-2026-03-06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.36.3 (2026-03-06)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wsman-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WSMAN Messages
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WSMAN Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#601-2026-04-09" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.0.1 (2026-04-09)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#600-2026-04-06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.0.0 (2026-04-06)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5150-2026-03-17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.15.0 (2026-03-17)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5145-2026-03-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.14.5 (2026-03-11)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mps-router" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MPS Router
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MPS Router">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#259-2026-04-09" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5.9 (2026-04-09)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#258-2026-03-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5.8 (2026-03-11)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../videos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Video Walkthroughs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get Help
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Get Help
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Get Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GetStarted/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cloud
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cloud
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GetStarted/Cloud/prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GetStarted/Cloud/setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Set Up
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_3" id="__nav_2_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GetStarted/Cloud/loginToUI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Login to Sample Web UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GetStarted/Cloud/createCIRAConfig/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create a CIRA Config
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_3_3" id="__nav_2_2_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create an AMT Profile
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_2_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Create an AMT Profile
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GetStarted/Cloud/createProfileCCM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create a Profile with CCM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GetStarted/Cloud/createProfileACM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create a Profile with ACM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_4" id="__nav_2_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connect
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Connect
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GetStarted/Cloud/buildRPC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build & Run RPC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GetStarted/Cloud/manageDevice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manage AMT Device
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Enterprise
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GetStarted/Enterprise/setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download and Run
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_2" id="__nav_2_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create Profiles
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Create Profiles
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GetStarted/Enterprise/createProfileCCM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CCM Activation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GetStarted/Enterprise/createProfileACM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ACM Activation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GetStarted/Enterprise/exportProfile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Export Profile
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GetStarted/Enterprise/activateDevice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Activate a Device
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GetStarted/Enterprise/addDevice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add a Device
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GetStarted/Enterprise/manageDevice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manage a Device
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Concepts/oobManagement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OOB Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Concepts/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture & Components
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Concepts/remoteProvisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Concepts/controlModes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control Modes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Concepts/security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deployment
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Deployment/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Deployment/upgradeVersion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrade Toolkit Version
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Centralized Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Centralized Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Deployment/centralizedConfiguration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enable Consul
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Database
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Deployment/Database/schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Deployment/Database/database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL Database Replacement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Deployment/Database/nosql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NoSQL Databases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Secrets Management
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Secrets Management
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Deployment/secrets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Secrets Store Replacement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/uitoolkitReact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI Toolkit Redirection Modules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/apiTutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    REST API Call
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/ideRedirection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IDE-Redirection (IDER)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/createWiFiConfig/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wireless Activation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/modifyUserAuth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modify User Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/ocrTutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    One Click Recovery (OCR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Localization
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Localization
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/Localization/consoleLocalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Console
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/Localization/webuiLocalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sample Web UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scaling Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Scaling Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/Scaling/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/Scaling/docker-swarm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker Swarm*
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_9_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_9_3" id="__nav_5_9_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes Deployments
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Kubernetes Deployments
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/Scaling/Kubernetes/deployingk8s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes (K8S)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/Scaling/Kubernetes/deployingk8s-aks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AKS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/Scaling/Kubernetes/deployingk8s-eks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EKS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/Scaling/Kubernetes/service-mesh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KUMA Service Mesh
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/architectureOverview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/powerstates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AMT Power States
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/guids/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GUIDs in Intel® AMT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/logging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/middlewareExtensibility/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Middleware Extensibility
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/productionVault/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Mode Vault
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/sslpostgresLocal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSL with Local Postgres
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_8" id="__nav_6_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Console
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Console
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/Console/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/Console/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/Console/upgrade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/Console/securityConsole/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security Information
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_8_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_8_5" id="__nav_6_8_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_8_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/Console/Features/ocr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    One Click Recovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/Console/Features/wsmanExplorer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WSMAN Explorer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_9" id="__nav_6_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise Assistant
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Enterprise Assistant
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/EA/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/EA/tlsCertTemplate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TLS Certificate Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_9_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_9_3" id="__nav_6_9_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RPC-Go Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RPC-Go Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/EA/RPCConfiguration/rpcgoConfiguration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EA Configuration for RPC-Go
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/EA/RPCConfiguration/localtlsconfig/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TLS Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/EA/RPCConfiguration/localIEEE8021xConfig/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    802.1x Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_9_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_9_4" id="__nav_6_9_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RPS Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_9_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_9_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    RPS Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/EA/RPSConfiguration/rpsConfiguration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EA Configuration for RPS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/EA/RPSConfiguration/remoteIEEE8021xConfig/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    802.1x Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_10" id="__nav_6_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Event Monitoring (MQTT)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Event Monitoring (MQTT)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/MQTT/customMqttEvents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Customizing MQTT Events
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/MQTT/viewMqttEvents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Viewing MQTT Events
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_11" id="__nav_6_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Management Presence Server
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Management Presence Server
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/MPS/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/MPS/securityMPS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security Information
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_12" id="__nav_6_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Provisioning Server
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Remote Provisioning Server
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/RPS/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/RPS/securityRPS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security Information
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/RPS/createProfileTLSConfig/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create Profile with TLS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_13" id="__nav_6_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Provisioning Client
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Remote Provisioning Client
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/RPC/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/RPC/buildRPC_Manual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build RPC-Go Manually
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_13_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_13_3" id="__nav_6_13_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v2.x
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_13_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_13_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    v2.x
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/RPC/v2/commandsRPC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RPC CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/RPC/v2/libraryRPC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RPC Library
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_13_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_13_4" id="__nav_6_13_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v3 (Beta)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_13_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_13_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    v3 (Beta)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/RPC/v3/about-v3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About v3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/RPC/transitionDeviceRPC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transition Activated Device
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_14" id="__nav_6_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI Toolkit React
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UI Toolkit React
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/UIToolkit/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/UIToolkit/gettingStarted/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_14_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_14_3" id="__nav_6_14_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    React Controls
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_14_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_14_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    React Controls
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/UIToolkit/Controls/kvmControl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Keyboard, Video, Mouse
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/UIToolkit/Controls/serialOverLANControl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Serial Over LAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/UIToolkit/Controls/ideRedirectionControl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IDE Redirection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/UIToolkit/reactLocalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    React Localization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/UIToolkit/migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration from v4 to v5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_15" id="__nav_6_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intel&reg; MEBX
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Intel&reg; MEBX
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/MEBX/dnsSuffix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DNS Suffix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/MEBX/unprovision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unprovisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_16" id="__nav_6_16_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certificates
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Certificates
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/Certificates/generateProvisioningCert/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Provisioning Certificate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/Certificates/enrollCustomCertAMT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enroll Custom Provisioning Certificate using USBFile
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/Certificates/tls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TLS Certificate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    APIs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/indexMPS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Management Presence Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../APIs/indexRPS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Provisioning Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="release-notes">Release Notes<a class="headerlink" href="#release-notes" title="Permanent link">&para;</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note From the Team</p>
+<p>This release includes several enhancements across Console, <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>, <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go, and the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>, including support for redirection over <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>, improved connection tracking, <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> performance metrics, hardware information improvements, and multiple validation and stability fixes across the toolkit.</p>
+<p>The end-to-end <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> work included in this release is still considered preview support and will continue to evolve over the next few releases as we refine the provisioning and <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> configuration flow across different AMT versions.</p>
+<p>In upcoming releases, you should start seeing improvements coming to rpc-go v3, including a revamped <code>amtinfo</code> experience, proxy information support in <code>amtinfo</code>, non-admin support for basic commands, along with wireless profile configuration support in Console, and a lot more.</p>
+<p>Follow our <a href="https://github.com/orgs/device-management-toolkit/projects/10/views/2">Sprint Board</a> to learn more and track upcoming features.</p>
+<p>As always, thanks to everyone providing feedback, testing new functionality, and contributing to the toolkit.</p>
+<p>Cheers,<br>
+<strong>The Device Management Toolkit Team</strong></p>
+</div>
+<h2 id="whats-new">🚀 What's New?<a class="headerlink" href="#whats-new" title="Permanent link">&para;</a></h2>
+<h3 id="console-redirection-over-cira">Console: Redirection Over <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr><a class="headerlink" href="#console-redirection-over-cira" title="Permanent link">&para;</a></h3>
+<p>Console now supports launching redirection sessions over <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> connections, enabling remote <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>, <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>, and <abbr title="IDE-Redirection - AMT Redirection feature enabling remote mounting of a CD-ROM drive for tasks like OS reimaging or disk reformatting.">IDER</abbr> workflows when devices are outside the enterprise network. This builds on the broader effort to make Console support cloud-based deployment scenarios.</p>
+<h3 id="console-kvm-performance-metrics">Console: <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> Performance Metrics<a class="headerlink" href="#console-kvm-performance-metrics" title="Permanent link">&para;</a></h3>
+<p>Console now includes <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> performance timing metrics and monitoring support, helping users better understand remote session responsiveness and troubleshoot performance-related issues.</p>
+<h3 id="sample-web-ui-improved-hardware-information-layout"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>: Improved Hardware Information Layout<a class="headerlink" href="#sample-web-ui-improved-hardware-information-layout" title="Permanent link">&para;</a></h3>
+<p>The Hardware Information experience in the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> was updated with layout improvements to make device details easier to navigate and review.</p>
+<h3 id="rps-rpc-go-preview-support-for-end-to-end-tls-between-amt-and-rps"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> &amp; <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go: Preview Support for End-to-End <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Between AMT and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps-rpc-go-preview-support-for-end-to-end-tls-between-amt-and-rps" title="Permanent link">&para;</a></h3>
+<p>This release includes preview support for end-to-end <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> communication between Intel AMT and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> using the <code>-tls-tunnel</code> flag in rpc-go.</p>
+<p>This capability is still being improved and is not considered fully ready for all deployment scenarios yet. We are continuing to refine the provisioning and <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> configuration flow across different AMT versions, and more documentation around this workflow will be added in later releases.</p>
+<h2 id="enhancements-improvements">🧩 Enhancements &amp; Improvements<a class="headerlink" href="#enhancements-improvements" title="Permanent link">&para;</a></h2>
+<h3 id="sample-web-ui-improved-request-handling-and-performance"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>: Improved Request Handling and Performance<a class="headerlink" href="#sample-web-ui-improved-request-handling-and-performance" title="Permanent link">&para;</a></h3>
+<p>The <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> now cancels pending requests when navigating between pages and caches AMT feature queries to reduce duplicate HTTP requests.</p>
+<h3 id="console-connection-status-tracking">Console: Connection Status Tracking<a class="headerlink" href="#console-connection-status-tracking" title="Permanent link">&para;</a></h3>
+<p>Console now tracks device connection status changes along with last connected and disconnected timestamps, improving visibility into device connectivity state.</p>
+<h3 id="rps-provisioning-certificate-validation-improvements"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>: Provisioning Certificate Validation Improvements<a class="headerlink" href="#rps-provisioning-certificate-validation-improvements" title="Permanent link">&para;</a></h3>
+<p><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> now validates that provisioning certificates include the expected root certificate before activation begins. Additional validation and error handling improvements were also added for unsupported ECDSA/EC provisioning certificates.</p>
+<h2 id="fixes-maintenance">🔧 Fixes &amp; Maintenance<a class="headerlink" href="#fixes-maintenance" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Console stability and validation fixes for <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> cleanup, invalid <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> configuration names, auth handling, and WiFi profile validation</p>
+</li>
+<li>
+<p>Console Hardware Information fixes for Memory Summary display, CIM_Chip formatting, and power state handling</p>
+</li>
+<li>
+<p>Console and redirection fixes for <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> websocket cleanup, redirect session handling, and no-UI browser launch behavior</p>
+</li>
+<li>
+<p><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> activation and profile export fixes for <abbr title="domain suffix - The top-level portion or end of a domain name (i.e., com, net, org).">domain suffix</abbr> handling, shared static IP export, and invalid <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> configuration validation</p>
+</li>
+<li>
+<p><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> fixes for cloud activation, reconnect handling, AMT 19+ activation support, validation messaging, translations, and redirection form state</p>
+</li>
+<li>
+<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go fix to prevent crashes on fresh Windows 11 systems with outdated or missing MEI drivers</p>
+</li>
+<li>
+<p>Go WSMAN Messages fixes for non-chunked responses over <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> channels</p>
+</li>
+<li>
+<p>WSMAN Messages <code>v6</code> migration from CommonJS to ESM modules</p>
+</li>
+<li>
+<p>Minor dependency updates and general maintenance across toolkit components</p>
+</li>
+</ul>
+<h2 id="changelog"><span class="twemoji icon-log"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 10.12h-6.78l2.74-2.82c-2.73-2.7-7.15-2.8-9.88-.1a6.887 6.887 0 0 0 0 9.8c2.73 2.7 7.15 2.7 9.88 0 1.36-1.35 2.04-2.92 2.04-4.9h2c0 1.98-.88 4.55-2.64 6.29-3.51 3.48-9.21 3.48-12.72 0-3.5-3.47-3.53-9.11-.02-12.58a8.987 8.987 0 0 1 12.65 0L21 3zM12.5 8v4.25l3.5 2.08-.72 1.21L11 13V8z"/></svg></span> Changelog<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h2>
+<h3 id="rps"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps" title="Permanent link">&para;</a></h3>
+<h4 id="2342-2026-04-10"><a href="https://github.com/device-management-toolkit/rps/compare/v2.34.1...v2.34.2">2.34.2</a> (2026-04-10)<a class="headerlink" href="#2342-2026-04-10" title="Permanent link">&para;</a></h4>
+<h4 id="2341-2026-04-09"><a href="https://github.com/device-management-toolkit/rps/compare/v2.34.0...v2.34.1">2.34.1</a> (2026-04-09)<a class="headerlink" href="#2341-2026-04-09" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>return clear error for unsupported ECDSA/EC provisioning certificates (<a href="https://github.com/device-management-toolkit/rps/issues/2604">#2604</a>) (<a href="https://github.com/device-management-toolkit/rps/commit/35d484017b1b8428e53eef3c550a75da2a843298">35d4840</a>)</li>
+</ul>
+<h4 id="2340-2026-04-02"><a href="https://github.com/device-management-toolkit/rps/compare/v2.33.1...v2.34.0">2.34.0</a> (2026-04-02)<a class="headerlink" href="#2340-2026-04-02" title="Permanent link">&para;</a></h4>
+<p>Features</p>
+<ul>
+<li>adds support for E2E <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> connection between AMT and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> (<a href="https://github.com/device-management-toolkit/rps/issues/2598">#2598</a>) (<a href="https://github.com/device-management-toolkit/rps/commit/73baf4318b23b8ed1d9ad2e5749b5fcce5bc9346">73baf43</a>)</li>
+</ul>
+<h4 id="2331-2026-03-30"><a href="https://github.com/device-management-toolkit/rps/compare/v2.33.0...v2.33.1">2.33.1</a> (2026-03-30)<a class="headerlink" href="#2331-2026-03-30" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>tighten <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> config name validation to prevent 500 errors (<a href="https://github.com/device-management-toolkit/rps/issues/2635">#2635</a>) (<a href="https://github.com/device-management-toolkit/rps/commit/3ebeae64f304a15e5c94788c7e221bd3132bc73d">3ebeae6</a>)</li>
+</ul>
+<h4 id="2330-2026-03-30"><a href="https://github.com/device-management-toolkit/rps/compare/v2.32.2...v2.33.0">2.33.0</a> (2026-03-30)<a class="headerlink" href="#2330-2026-03-30" title="Permanent link">&para;</a></h4>
+<p>Features</p>
+<ul>
+<li>validate root certificate exists in provisioning cert (<a href="https://github.com/device-management-toolkit/rps/issues/2627">#2627</a>) (<a href="https://github.com/device-management-toolkit/rps/commit/62315a76ac3d8a15e8fbc37ea06a6616c5bc8573">62315a7</a>)</li>
+</ul>
+<h4 id="2322-2026-03-24"><a href="https://github.com/device-management-toolkit/rps/compare/v2.32.1...v2.32.2">2.32.2</a> (2026-03-24)<a class="headerlink" href="#2322-2026-03-24" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li><abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> activation fails when device FQDN has more segments than stored <abbr title="domain suffix - The top-level portion or end of a domain name (i.e., com, net, org).">domain suffix</abbr> (<a href="https://github.com/device-management-toolkit/rps/issues/2622">#2622</a>) (<a href="https://github.com/device-management-toolkit/rps/commit/e360876bc9db288cb9288ab632029350cc09ffb2">e360876</a>)</li>
+</ul>
+<h4 id="2321-2026-03-23"><a href="https://github.com/device-management-toolkit/rps/compare/v2.32.0...v2.32.1">2.32.1</a> (2026-03-23)<a class="headerlink" href="#2321-2026-03-23" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>derive sharedStaticIP from DHCPEnabled in profile export (<a href="https://github.com/device-management-toolkit/rps/issues/2618">#2618</a>) (<a href="https://github.com/device-management-toolkit/rps/commit/e86a250cb1e42243a047bc4549a987ade60ecba5">e86a250</a>)</li>
+</ul>
+<h4 id="2320-2026-03-18"><a href="https://github.com/device-management-toolkit/rps/compare/v2.31.4...v2.32.0">2.32.0</a> (2026-03-18)<a class="headerlink" href="#2320-2026-03-18" title="Permanent link">&para;</a></h4>
+<p>Features</p>
+<ul>
+<li>adds support for E2E <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> connection between AMT and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> (<a href="https://github.com/device-management-toolkit/rps/commit/0a60ff3cf4242ba6bef6bf3e413210588b9eaabf">0a60ff3</a>)</li>
+</ul>
+<h4 id="2314-2026-03-11"><a href="https://github.com/device-management-toolkit/rps/compare/v2.31.3...v2.31.4">2.31.4</a> (2026-03-11)<a class="headerlink" href="#2314-2026-03-11" title="Permanent link">&para;</a></h4>
+<h3 id="mps"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps" title="Permanent link">&para;</a></h3>
+<h4 id="2264-2026-04-10"><a href="https://github.com/device-management-toolkit/mps/compare/v2.26.3...v2.26.4">2.26.4</a> (2026-04-10)<a class="headerlink" href="#2264-2026-04-10" title="Permanent link">&para;</a></h4>
+<h4 id="2263-2026-03-24"><a href="https://github.com/device-management-toolkit/mps/compare/v2.26.2...v2.26.3">2.26.3</a> (2026-03-24)<a class="headerlink" href="#2263-2026-03-24" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>remove tenantId filter from clearInstanceStatus (<a href="https://github.com/device-management-toolkit/mps/issues/2404">#2404</a>) (<a href="https://github.com/device-management-toolkit/mps/commit/508407208fc788d13e564e1649f1c574edfce9cc">5084072</a>)</li>
+</ul>
+<h4 id="2262-2026-03-11"><a href="https://github.com/device-management-toolkit/mps/compare/v2.26.1...v2.26.2">2.26.2</a> (2026-03-11)<a class="headerlink" href="#2262-2026-03-11" title="Permanent link">&para;</a></h4>
+<h4 id="2261-2026-03-02"><a href="https://github.com/device-management-toolkit/mps/compare/v2.26.0...v2.26.1">2.26.1</a> (2026-03-02)<a class="headerlink" href="#2261-2026-03-02" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>prevent redirect session crash during device validation (<a href="https://github.com/device-management-toolkit/mps/issues/2359">#2359</a>) (<a href="https://github.com/device-management-toolkit/mps/commit/3aa2c0cfc8ada76405eb14ff4fbcf39cf57475b6">3aa2c0c</a>)</li>
+</ul>
+<h3 id="rpc-go"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Go<a class="headerlink" href="#rpc-go" title="Permanent link">&para;</a></h3>
+<h4 id="2501-2026-04-10"><a href="https://github.com/device-management-toolkit/rpc-go/compare/v2.50.0...v2.50.1">2.50.1</a> (2026-04-10)<a class="headerlink" href="#2501-2026-04-10" title="Permanent link">&para;</a></h4>
+<h4 id="2500-2026-03-28"><a href="https://github.com/device-management-toolkit/rpc-go/compare/v2.49.2...v2.50.0">2.50.0</a> (2026-03-28)<a class="headerlink" href="#2500-2026-03-28" title="Permanent link">&para;</a></h4>
+<p>Features</p>
+<ul>
+<li>enable tls tunnel for e2e tls connection for <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> &lt;-&gt; AMT (<a href="https://github.com/device-management-toolkit/rpc-go/commit/a9cf653529c211ee60cd4b195f5c0b88c09a9ff0">a9cf653</a>)</li>
+</ul>
+<h4 id="2492-2026-03-20"><a href="https://github.com/device-management-toolkit/rpc-go/compare/v2.49.1...v2.49.2">2.49.2</a> (2026-03-20)<a class="headerlink" href="#2492-2026-03-20" title="Permanent link">&para;</a></h4>
+<h4 id="2491-2026-02-23"><a href="https://github.com/device-management-toolkit/rpc-go/compare/v2.49.0...v2.49.1">2.49.1</a> (2026-02-23)<a class="headerlink" href="#2491-2026-02-23" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>prevent crash when MEI driver on fresh Windows 11 install is not updated (<a href="https://github.com/device-management-toolkit/rpc-go/commit/4cbec7f5a0035d6e6a9cb4077d546f10ed9c1f68">4cbec7f</a>)</li>
+</ul>
+<h3 id="sample-web-ui"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr><a class="headerlink" href="#sample-web-ui" title="Permanent link">&para;</a></h3>
+<h4 id="3571-2026-04-10"><a href="https://github.com/device-management-toolkit/sample-web-ui/compare/v3.57.0...v3.57.1">3.57.1</a> (2026-04-10)<a class="headerlink" href="#3571-2026-04-10" title="Permanent link">&para;</a></h4>
+<h4 id="3570-2026-04-06"><a href="https://github.com/device-management-toolkit/sample-web-ui/compare/v3.56.0...v3.57.0">3.57.0</a> (2026-04-06)<a class="headerlink" href="#3570-2026-04-06" title="Permanent link">&para;</a></h4>
+<p>Features</p>
+<ul>
+<li>improves layout for HW Info (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/24f0aca6eb01e1c9bdf2a44d971f9873a855110f">24f0aca</a>)</li>
+</ul>
+<h4 id="3560-2026-04-06"><a href="https://github.com/device-management-toolkit/sample-web-ui/compare/v3.55.10...v3.56.0">3.56.0</a> (2026-04-06)<a class="headerlink" href="#3560-2026-04-06" title="Permanent link">&para;</a></h4>
+<p>Features</p>
+<ul>
+<li>support cancel requests upon navigating away from page (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/7d94c741a3ae2ca9ab2874a09d389a1d3f0ea703">7d94c74</a>)</li>
+</ul>
+<h4 id="35510-2026-03-31"><a href="https://github.com/device-management-toolkit/sample-web-ui/compare/v3.55.9...v3.55.10">3.55.10</a> (2026-03-31)<a class="headerlink" href="#35510-2026-03-31" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>Fix cloud activation to support version-specific <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> flags and overlay handling (<a href="https://github.com/device-management-toolkit/sample-web-ui/issues/3232">#3232</a>) (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/f15a08ff6ba3706fcdf1cbbc58ce5db19af4d179">f15a08f</a>)</li>
+</ul>
+<h4 id="3559-2026-03-30"><a href="https://github.com/device-management-toolkit/sample-web-ui/compare/v3.55.8...v3.55.9">3.55.9</a> (2026-03-30)<a class="headerlink" href="#3559-2026-03-30" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>add pattern validation for <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> config name field (<a href="https://github.com/device-management-toolkit/sample-web-ui/issues/3233">#3233</a>) (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/dacbb63f566675f188d2384006b8344c3fb19843">dacbb63</a>), closes <a href="https://github.com/device-management-toolkit/rps/issues/2599">device-management-toolkit/rps#2599</a></li>
+</ul>
+<h4 id="3558-2026-03-30"><a href="https://github.com/device-management-toolkit/sample-web-ui/compare/v3.55.7...v3.55.8">3.55.8</a> (2026-03-30)<a class="headerlink" href="#3558-2026-03-30" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>show msg only in validation errors (<a href="https://github.com/device-management-toolkit/sample-web-ui/issues/3223">#3223</a>) (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/610d0edf061b85799674036a28c8dbfca287994f">610d0ed</a>)</li>
+</ul>
+<h4 id="3557-2026-03-20"><a href="https://github.com/device-management-toolkit/sample-web-ui/compare/v3.55.6...v3.55.7">3.55.7</a> (2026-03-20)<a class="headerlink" href="#3557-2026-03-20" title="Permanent link">&para;</a></h4>
+<h4 id="3556-2026-03-16"><a href="https://github.com/device-management-toolkit/sample-web-ui/compare/v3.55.5...v3.55.6">3.55.6</a> (2026-03-16)<a class="headerlink" href="#3556-2026-03-16" title="Permanent link">&para;</a></h4>
+<p>Performance Improvements</p>
+<ul>
+<li>cache AMT features to reduce duplicate HTTP requests (<a href="https://github.com/device-management-toolkit/sample-web-ui/issues/3169">#3169</a>) (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/48942cde89a749d789415bba38bcb440bc18b8ed">48942cd</a>)</li>
+</ul>
+<h4 id="3555-2026-03-16"><a href="https://github.com/device-management-toolkit/sample-web-ui/compare/v3.55.4...v3.55.5">3.55.5</a> (2026-03-16)<a class="headerlink" href="#3555-2026-03-16" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li><strong>devices:</strong> show Connect button after disconnect and refresh auth token on reconnect (<a href="https://github.com/device-management-toolkit/sample-web-ui/issues/3159">#3159</a>) (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/3fc4793f17b5d91d73b8b0a4be14239a1e10259d">3fc4793</a>)</li>
+</ul>
+<h4 id="3554-2026-03-16"><a href="https://github.com/device-management-toolkit/sample-web-ui/compare/v3.55.3...v3.55.4">3.55.4</a> (2026-03-16)<a class="headerlink" href="#3554-2026-03-16" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>add skipamtcertcheck flag for AMT19+ activation support (<a href="https://github.com/device-management-toolkit/sample-web-ui/issues/3195">#3195</a>) (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/26eb87a67aef8fade90872c76d7ade30e575f99c">26eb87a</a>)</li>
+</ul>
+<h4 id="3553-2026-03-11"><a href="https://github.com/device-management-toolkit/sample-web-ui/compare/v3.55.2...v3.55.3">3.55.3</a> (2026-03-11)<a class="headerlink" href="#3553-2026-03-11" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>shows correct error message on device load failure (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/56fcf1bbcde8021f6d093252b4bc87b6f112d079">56fcf1b</a>)</li>
+</ul>
+<h4 id="3552-2026-03-09"><a href="https://github.com/device-management-toolkit/sample-web-ui/compare/v3.55.1...v3.55.2">3.55.2</a> (2026-03-09)<a class="headerlink" href="#3552-2026-03-09" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li><strong>i18n:</strong> add and update missing translations (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/528ea4dc5996fc95e047f7ea7905c11950950f70">528ea4d</a>)</li>
+</ul>
+<h4 id="3551-2026-02-26"><a href="https://github.com/device-management-toolkit/sample-web-ui/compare/v3.55.0...v3.55.1">3.55.1</a> (2026-02-26)<a class="headerlink" href="#3551-2026-02-26" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>false "Redirection is disabled" alert after updating AMT features (<a href="https://github.com/device-management-toolkit/sample-web-ui/issues/3157">#3157</a>) (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/2512a5f6de936a2b53ff2fa513a6fcc2f6e4cc78">2512a5f</a>)</li>
+</ul>
+<h4 id="3550-2026-02-24"><a href="https://github.com/device-management-toolkit/sample-web-ui/compare/v3.54.1...v3.55.0">3.55.0</a> (2026-02-24)<a class="headerlink" href="#3550-2026-02-24" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>disable Enforce Secure Boot checkbox in <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> mode (<a href="https://github.com/device-management-toolkit/sample-web-ui/issues/3101">#3101</a>) (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/17ad7eab4ec323d11ed74114e8e6b8e508598e69">17ad7ea</a>)</li>
+<li>update redirection form state after enabling AMT features (<a href="https://github.com/device-management-toolkit/sample-web-ui/issues/3131">#3131</a>) (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/40a0276e0eb98a91d89cfbc8ad897b054cd4c3d1">40a0276</a>)</li>
+</ul>
+<p>Features</p>
+<ul>
+<li>show redirection warning when <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>/<abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>/<abbr title="IDE-Redirection - AMT Redirection feature enabling remote mounting of a CD-ROM drive for tasks like OS reimaging or disk reformatting.">IDER</abbr> is enabled but redirection is off (<a href="https://github.com/device-management-toolkit/sample-web-ui/issues/3125">#3125</a>) (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/a532bf7421e750350a2a9985465df4cc47bed852">a532bf7</a>)</li>
+</ul>
+<h4 id="3541-2026-02-24"><a href="https://github.com/device-management-toolkit/sample-web-ui/compare/v3.54.0...v3.54.1">3.54.1</a> (2026-02-24)<a class="headerlink" href="#3541-2026-02-24" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>alarm creation and deletion with proper validation and instant feedback (<a href="https://github.com/device-management-toolkit/sample-web-ui/issues/3135">#3135</a>) (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/d7d4188507c7b8ea094c26e0c2040e4d8d711fac">d7d4188</a>)</li>
+</ul>
+<h3 id="ui-toolkit"><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr><a class="headerlink" href="#ui-toolkit" title="Permanent link">&para;</a></h3>
+<h4 id="3312-2026-04-09"><a href="https://github.com/device-management-toolkit/ui-toolkit/compare/v3.3.11...v3.3.12">3.3.12</a> (2026-04-09)<a class="headerlink" href="#3312-2026-04-09" title="Permanent link">&para;</a></h4>
+<h4 id="3311-2026-03-11"><a href="https://github.com/device-management-toolkit/ui-toolkit/compare/v3.3.10...v3.3.11">3.3.11</a> (2026-03-11)<a class="headerlink" href="#3311-2026-03-11" title="Permanent link">&para;</a></h4>
+<h3 id="ui-toolkit-angular"><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> Angular<a class="headerlink" href="#ui-toolkit-angular" title="Permanent link">&para;</a></h3>
+<h4 id="1113-2026-04-10"><a href="https://github.com/device-management-toolkit/ui-toolkit-angular/compare/v11.1.2...v11.1.3">11.1.3</a> (2026-04-10)<a class="headerlink" href="#1113-2026-04-10" title="Permanent link">&para;</a></h4>
+<h4 id="1112-2026-03-20"><a href="https://github.com/device-management-toolkit/ui-toolkit-angular/compare/v11.1.1...v11.1.2">11.1.2</a> (2026-03-20)<a class="headerlink" href="#1112-2026-03-20" title="Permanent link">&para;</a></h4>
+<h3 id="ui-toolkit-react"><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> React<a class="headerlink" href="#ui-toolkit-react" title="Permanent link">&para;</a></h3>
+<h4 id="503-2026-04-10"><a href="https://github.com/device-management-toolkit/ui-toolkit-react/compare/v5.0.2...v5.0.3">5.0.3</a> (2026-04-10)<a class="headerlink" href="#503-2026-04-10" title="Permanent link">&para;</a></h4>
+<h4 id="502-2026-03-11"><a href="https://github.com/device-management-toolkit/ui-toolkit-react/compare/v5.0.1...v5.0.2">5.0.2</a> (2026-03-11)<a class="headerlink" href="#502-2026-03-11" title="Permanent link">&para;</a></h4>
+<h3 id="console">Console<a class="headerlink" href="#console" title="Permanent link">&para;</a></h3>
+<h4 id="1229-2026-04-10"><a href="https://github.com/device-management-toolkit/console/compare/v1.22.8...v1.22.9">1.22.9</a> (2026-04-10)<a class="headerlink" href="#1229-2026-04-10" title="Permanent link">&para;</a></h4>
+<h4 id="1228-2026-04-07"><a href="https://github.com/device-management-toolkit/console/compare/v1.22.7...v1.22.8">1.22.8</a> (2026-04-07)<a class="headerlink" href="#1228-2026-04-07" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>check len of state before accessing power state (<a href="https://github.com/device-management-toolkit/console/commit/efd1dac121a56ead2af2d9aa90795ed70b2413db">efd1dac</a>)</li>
+</ul>
+<h4 id="1227-2026-04-06"><a href="https://github.com/device-management-toolkit/console/compare/v1.22.6...v1.22.7">1.22.7</a> (2026-04-06)<a class="headerlink" href="#1227-2026-04-06" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>ensure CIM_Chip is returned in correct format (<a href="https://github.com/device-management-toolkit/console/commit/14fb6dafbe5c8f7219a821edae11e2e1738397d4">14fb6da</a>)</li>
+</ul>
+<h4 id="1226-2026-03-30"><a href="https://github.com/device-management-toolkit/console/compare/v1.22.5...v1.22.6">1.22.6</a> (2026-03-30)<a class="headerlink" href="#1226-2026-03-30" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>add name validation to <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> config to prevent 500 on invalid configName (<a href="https://github.com/device-management-toolkit/console/issues/867">#867</a>) (<a href="https://github.com/device-management-toolkit/console/commit/220e5fa07476538f97b8fb3942fca923c78db9af">220e5fa</a>), closes <a href="https://github.com/device-management-toolkit/rps/issues/2599">device-management-toolkit/rps#2599</a></li>
+</ul>
+<h4 id="1225-2026-03-23"><a href="https://github.com/device-management-toolkit/console/compare/v1.22.4...v1.22.5">1.22.5</a> (2026-03-23)<a class="headerlink" href="#1225-2026-03-23" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>derive sharedStaticIP from DHCPEnabled in profile export (<a href="https://github.com/device-management-toolkit/console/issues/853">#853</a>) (<a href="https://github.com/device-management-toolkit/console/commit/92f460f90c5cb7f465bc8880087889db02f8f48d">92f460f</a>)</li>
+</ul>
+<h4 id="1224-2026-03-19"><a href="https://github.com/device-management-toolkit/console/compare/v1.22.3...v1.22.4">1.22.4</a> (2026-03-19)<a class="headerlink" href="#1224-2026-03-19" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>add connection status tracking with last connected/disconnected (<a href="https://github.com/device-management-toolkit/console/issues/828">#828</a>) (<a href="https://github.com/device-management-toolkit/console/commit/476f798d788c0e06930835dff3884d7caafcba55">476f798</a>)</li>
+</ul>
+<h4 id="1223-2026-03-18"><a href="https://github.com/device-management-toolkit/console/compare/v1.22.2...v1.22.3">1.22.3</a> (2026-03-18)<a class="headerlink" href="#1223-2026-03-18" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>add connection status tracking with last connected/disconnected (<a href="https://github.com/device-management-toolkit/console/issues/849">#849</a>) (<a href="https://github.com/device-management-toolkit/console/commit/bec829a9f6b1b8dcf15e861e8ffa1b6a97b48300">bec829a</a>)</li>
+</ul>
+<h4 id="1222-2026-03-16"><a href="https://github.com/device-management-toolkit/console/compare/v1.22.1...v1.22.2">1.22.2</a> (2026-03-16)<a class="headerlink" href="#1222-2026-03-16" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>kvm: close browser websocket immediately on AMT disconnect (<a href="https://github.com/device-management-toolkit/console/issues/820">#820</a>) (<a href="https://github.com/device-management-toolkit/console/commit/3cead8201330e8496a909b82eaa056af1cd87756">3cead82</a>)</li>
+</ul>
+<h4 id="1221-2026-03-11"><a href="https://github.com/device-management-toolkit/console/compare/v1.22.0...v1.22.1">1.22.1</a> (2026-03-11)<a class="headerlink" href="#1221-2026-03-11" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>resolve Memory Summary showing no data in Hardware Information (<a href="https://github.com/device-management-toolkit/console/issues/821">#821</a>) (<a href="https://github.com/device-management-toolkit/console/commit/c8521ae86d9c6ec5fe64a67156ace69d08380210">c8521ae</a>), closes <a href="https://github.com/device-management-toolkit/console/issues/816">#816</a></li>
+</ul>
+<h4 id="1220-2026-03-09"><a href="https://github.com/device-management-toolkit/console/compare/v1.21.3...v1.22.0">1.22.0</a> (2026-03-09)<a class="headerlink" href="#1220-2026-03-09" title="Permanent link">&para;</a></h4>
+<p>Features</p>
+<ul>
+<li>enables support for redirection over <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> (<a href="https://github.com/device-management-toolkit/console/commit/10adaf9bcb93b2bfb9198d2113782bd28f309d28">10adaf9</a>), closes <a href="https://github.com/device-management-toolkit/console/issues/743">#743</a></li>
+</ul>
+<h4 id="1213-2026-02-25"><a href="https://github.com/device-management-toolkit/console/compare/v1.21.2...v1.21.3">1.21.3</a> (2026-02-25)<a class="headerlink" href="#1213-2026-02-25" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>ensure auth failure returns without next() call (<a href="https://github.com/device-management-toolkit/console/issues/803">#803</a>) (<a href="https://github.com/device-management-toolkit/console/commit/76161c239e04c33ff23602898af39795dbae599e">76161c2</a>)</li>
+<li>suppress browser launch in noui builds (<a href="https://github.com/device-management-toolkit/console/issues/812">#812</a>) (<a href="https://github.com/device-management-toolkit/console/commit/26f5b47d5e80a59566ecf90ccb1b2088410b1a72">26f5b47</a>)</li>
+</ul>
+<h4 id="1212-2026-02-23"><a href="https://github.com/device-management-toolkit/console/compare/v1.21.1...v1.21.2">1.21.2</a> (2026-02-23)<a class="headerlink" href="#1212-2026-02-23" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>Update the validator criteria to allow wifi config is empty when DHCP is false (<a href="https://github.com/device-management-toolkit/console/issues/799">#799</a>) (<a href="https://github.com/device-management-toolkit/console/commit/f3c39265e365d0f25ad89d0c0689d98613875152">f3c3926</a>)</li>
+</ul>
+<h4 id="1211-2026-02-20"><a href="https://github.com/device-management-toolkit/console/compare/v1.21.0...v1.21.1">1.21.1</a> (2026-02-20)<a class="headerlink" href="#1211-2026-02-20" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>prevent segfault in <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> cleanup and EOF errors in hardware collection (<a href="https://github.com/device-management-toolkit/console/issues/776">#776</a>) (<a href="https://github.com/device-management-toolkit/console/issues/788">#788</a>) (<a href="https://github.com/device-management-toolkit/console/commit/3c87e88ce89554ff74d86369f81fcb0cf78edc3e">3c87e88</a>)</li>
+</ul>
+<h4 id="1210-2026-02-18"><a href="https://github.com/device-management-toolkit/console/compare/v1.20.1...v1.21.0">1.21.0</a> (2026-02-18)<a class="headerlink" href="#1210-2026-02-18" title="Permanent link">&para;</a></h4>
+<p>Features</p>
+<ul>
+<li>add <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> performance timing metrics and monitoring (<a href="https://github.com/device-management-toolkit/console/issues/761">#761</a>) (<a href="https://github.com/device-management-toolkit/console/commit/5b7221ff2ebb6e31ab5debe3a23d4a8f1833a309">5b7221f</a>)</li>
+</ul>
+<h3 id="go-wsman-messages">Go WSMAN Messages<a class="headerlink" href="#go-wsman-messages" title="Permanent link">&para;</a></h3>
+<h4 id="2381-2026-04-10"><a href="https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.38.0...v2.38.1">2.38.1</a> (2026-04-10)<a class="headerlink" href="#2381-2026-04-10" title="Permanent link">&para;</a></h4>
+<h4 id="2380-2026-03-17"><a href="https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.37.0...v2.38.0">2.38.0</a> (2026-03-17)<a class="headerlink" href="#2380-2026-03-17" title="Permanent link">&para;</a></h4>
+<p>Features</p>
+<ul>
+<li>add tags to config (<a href="https://github.com/device-management-toolkit/go-wsman-messages/issues/653">#653</a>) (<a href="https://github.com/device-management-toolkit/go-wsman-messages/commit/fb5dad2f9dee5bc09bdf512841142222a1ca546c">fb5dad2</a>)</li>
+</ul>
+<h4 id="2370-2026-03-06"><a href="https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.36.3...v2.37.0">2.37.0</a> (2026-03-06)<a class="headerlink" href="#2370-2026-03-06" title="Permanent link">&para;</a></h4>
+<p>Features</p>
+<ul>
+<li>adds support for redirection over <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> (<a href="https://github.com/device-management-toolkit/go-wsman-messages/issues/649">#649</a>) (<a href="https://github.com/device-management-toolkit/go-wsman-messages/commit/45f7abd877feadc0ed6953cc70a058a8b7b3a105">45f7abd</a>)</li>
+</ul>
+<h4 id="2363-2026-03-06"><a href="https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.36.2...v2.36.3">2.36.3</a> (2026-03-06)<a class="headerlink" href="#2363-2026-03-06" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>address issue with non-chunked responses over <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr> channel (<a href="https://github.com/device-management-toolkit/go-wsman-messages/issues/648">#648</a>) (<a href="https://github.com/device-management-toolkit/go-wsman-messages/commit/cf7deadb54132ec5f830ca3acf05de8d976bf448">cf7dead</a>)</li>
+</ul>
+<h3 id="wsman-messages">WSMAN Messages<a class="headerlink" href="#wsman-messages" title="Permanent link">&para;</a></h3>
+<h4 id="601-2026-04-09"><a href="https://github.com/device-management-toolkit/wsman-messages/compare/v6.0.0...v6.0.1">6.0.1</a> (2026-04-09)<a class="headerlink" href="#601-2026-04-09" title="Permanent link">&para;</a></h4>
+<h4 id="600-2026-04-06"><a href="https://github.com/device-management-toolkit/wsman-messages/compare/v5.15.0...v6.0.0">6.0.0</a> (2026-04-06)<a class="headerlink" href="#600-2026-04-06" title="Permanent link">&para;</a></h4>
+<ul>
+<li>build!: moves to ESM from CJS (<a href="https://github.com/device-management-toolkit/wsman-messages/commit/6c05e503a7f2556d41cd91ea5e5a0d91bb3339b7">6c05e50</a>)</li>
+</ul>
+<p>BREAKING CHANGES</p>
+<ul>
+<li>require() will no longer work with this package.</li>
+</ul>
+<h4 id="5150-2026-03-17"><a href="https://github.com/device-management-toolkit/wsman-messages/compare/v5.14.5...v5.15.0">5.15.0</a> (2026-03-17)<a class="headerlink" href="#5150-2026-03-17" title="Permanent link">&para;</a></h4>
+<p>Features</p>
+<ul>
+<li>adds Put to AMT <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Credential Context (<a href="https://github.com/device-management-toolkit/wsman-messages/commit/86b179102cdc06492548c989c3a2183b0242270c">86b1791</a>)</li>
+</ul>
+<h4 id="5145-2026-03-11"><a href="https://github.com/device-management-toolkit/wsman-messages/compare/v5.14.4...v5.14.5">5.14.5</a> (2026-03-11)<a class="headerlink" href="#5145-2026-03-11" title="Permanent link">&para;</a></h4>
+<h3 id="mps-router"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router<a class="headerlink" href="#mps-router" title="Permanent link">&para;</a></h3>
+<h4 id="259-2026-04-09"><a href="https://github.com/device-management-toolkit/mps-router/compare/v2.5.8...v2.5.9">2.5.9</a> (2026-04-09)<a class="headerlink" href="#259-2026-04-09" title="Permanent link">&para;</a></h4>
+<h4 id="258-2026-03-11"><a href="https://github.com/device-management-toolkit/mps-router/compare/v2.5.7...v2.5.8">2.5.8</a> (2026-03-11)<a class="headerlink" href="#258-2026-03-11" title="Permanent link">&para;</a></h4>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 Intel Corporation
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://discord.gg/yrcMp2kDWh" target="_blank" rel="noopener" title="Join Us on Discord" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M492.5 69.8c-.2-.3-.4-.6-.8-.7-38.1-17.5-78.4-30-119.7-37.1-.4-.1-.8 0-1.1.1s-.6.4-.8.8c-5.5 9.9-10.5 20.2-14.9 30.6-44.6-6.8-89.9-6.8-134.4 0-4.5-10.5-9.5-20.7-15.1-30.6-.2-.3-.5-.6-.8-.8s-.7-.2-1.1-.2C162.5 39 122.2 51.5 84.1 69c-.3.1-.6.4-.8.7C7.1 183.5-13.8 294.6-3.6 404.2c0 .3.1.5.2.8s.3.4.5.6c44.4 32.9 94 58 146.8 74.2.4.1.8.1 1.1 0s.7-.4.9-.7c11.3-15.4 21.4-31.8 30-48.8.1-.2.2-.5.2-.8s0-.5-.1-.8-.2-.5-.4-.6-.4-.3-.7-.4c-15.8-6.1-31.2-13.4-45.9-21.9-.3-.2-.5-.4-.7-.6s-.3-.6-.3-.9 0-.6.2-.9.3-.5.6-.7c3.1-2.3 6.2-4.7 9.1-7.1.3-.2.6-.4.9-.4s.7 0 1 .1c96.2 43.9 200.4 43.9 295.5 0 .3-.1.7-.2 1-.2s.7.2.9.4c2.9 2.4 6 4.9 9.1 7.2.2.2.4.4.6.7s.2.6.2.9-.1.6-.3.9-.4.5-.6.6c-14.7 8.6-30 15.9-45.9 21.8-.2.1-.5.2-.7.4s-.3.4-.4.7-.1.5-.1.8.1.5.2.8c8.8 17 18.8 33.3 30 48.8.2.3.6.6.9.7s.8.1 1.1 0c52.9-16.2 102.6-41.3 147.1-74.2.2-.2.4-.4.5-.6s.2-.5.2-.8c12.3-126.8-20.5-236.9-86.9-334.5zm-302 267.7c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.4 59.2-52.8 59.2m195.4 0c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.2 59.2-52.8 59.2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://hub.docker.com/search?q=intel%2Foact" target="_blank" rel="noopener" title="Find our Dockerhub Images" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M349.9 236.3h-66.1v-59.4h66.1zm0-204.3h-66.1v60.7h66.1zm78.2 144.8H362v59.4h66.1zm-156.3-72.1h-66.1v60.1h66.1zm78.1 0h-66.1v60.1h66.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1zm78.1 0h-66.1v59.4h66.1zm-78.1-72.1h-66.1v60.1h66.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/device-management-toolkit" target="_blank" rel="noopener" title="Device Management Toolkit Github Repository" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+  
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+    
+      
+        
+  
+  
+    
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="analytics" checked>
+      <span class="task-list-indicator"></span>
+      Google Analytics
+    </label>
+  </li>
+
+      
+    
+    
+      
+        
+  
+  
+    
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="github" checked>
+      <span class="task-list-indicator"></span>
+      GitHub
+    </label>
+  </li>
+
+      
+    
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.instant", "search.suggest", "search.highlight", "navigation.top", "toc.integrate", "content.code.copy", "content.tooltips"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": ["rapid", "dev"], "provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
