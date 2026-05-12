@@ -35,8 +35,9 @@ Console can also be configured using environment variables. These `.env` variabl
 | HTTP_ALLOWED_ORIGINS | http.allowed_origins | `*` | Allowed origins for CORS policy. |
 | HTTP_ALLOWED_HEADERS | http.allowed_headers | `*` | Allowed headers for CORS policy. |
 | LOG_LEVEL | logger.log_level | `info` | Controls the level of logging. Options: `error`, `warn`, `info`, `debug`, `fatal`. |
-| DB_POOL_MAX | db.pool_max | `2` | Maximum number of database connections in the pool. |
-| DB_URL | db.url | No Value | By default, Console uses a SQLite database to store device data locally. Users can optionally configure this variable to provide a PostgreSQL connection string, enabling the use of an external PostgreSQL database for data storage. This allows for greater scalability and centralized database management. |
+| DB_PROVIDER | db.provider | `sqlite` | Selects the storage backend. Valid values: `postgres`, `sqlite` (default), `mongo`. See [MongoDB](MongoDB/overview.md) for the NoSQL option. |
+| DB_POOL_MAX | db.pool_max | `2` | Maximum number of database connections in the pool. Honored by the SQL backends only; the MongoDB driver manages its own pool via the `DB_URL`. See [MongoDB](MongoDB/overview.md) for connection-string pool options. |
+| DB_URL | db.url | No Value | Connection string for the selected backend. Examples: `postgres://user:pass@host:5432/dbname` for Postgres; `mongodb://user:pass@host:27017/?authSource=admin` for MongoDB. Leave empty to use the embedded SQLite database. |
 | EA_URL | ea.url | `http://localhost:8000` | URL for the Enterprise Assistant service. |
 | EA_USERNAME | ea.username | No Value | Username for the Enterprise Assistant service. |
 | EA_PASSWORD | ea.password | No Value | Password for the Enterprise Assistant service. |
