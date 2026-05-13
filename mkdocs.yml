@@ -128,6 +128,12 @@ nav:
     - Console:
       - Overview: Reference/Console/overview.md
       - Configuration: Reference/Console/configuration.md
+      - MongoDB:
+        - Overview: Reference/Console/MongoDB/overview.md
+        - Quick Start: Reference/Console/MongoDB/quickStart.md
+        - Collections and Indexes: Reference/Console/MongoDB/collections.md
+        - Schema Changes: Reference/Console/MongoDB/schemaChanges.md
+        - Adding a New NoSQL DB: Reference/Console/MongoDB/extending.md
       - Upgrade: Reference/Console/upgrade.md
       - Security Information: Reference/Console/securityConsole.md
       - Features:
