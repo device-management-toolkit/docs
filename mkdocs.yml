@@ -128,6 +128,18 @@ nav:
     - Console:
       - Overview: Reference/Console/overview.md
       - Configuration: Reference/Console/configuration.md
+      - Database:
+        - Overview: Reference/Console/Database/overview.md
+        - SQL:
+          - SQLite: Reference/Console/Database/SQL/sqlite.md
+          - Postgres: Reference/Console/Database/SQL/postgres.md
+        - NoSQL:
+          - MongoDB:
+            - Overview: Reference/Console/Database/NoSQL/MongoDB/overview.md
+            - Quick Start: Reference/Console/Database/NoSQL/MongoDB/quickStart.md
+            - Collections and Indexes: Reference/Console/Database/NoSQL/MongoDB/collections.md
+            - Schema Changes: Reference/Console/Database/NoSQL/MongoDB/schemaChanges.md
+            - Adding a New NoSQL DB: Reference/Console/Database/NoSQL/MongoDB/extending.md
       - Upgrade: Reference/Console/upgrade.md
       - Security Information: Reference/Console/securityConsole.md
       - Features:
