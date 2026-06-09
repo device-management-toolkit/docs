@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://device-management-toolkit.github.io/docs/Reference/Certificates/generateProvisioningCert/">
+        <link rel="canonical" href="https://device-management-toolkit.github.io/docs/Reference/Console/tlsConfiguration/">
       
       
-        <link rel="prev" href="../../MEBX/unprovision/">
+        <link rel="prev" href="../configuration/">
       
       
-        <link rel="next" href="../enrollCustomCertAMT/">
+        <link rel="next" href="../Database/overview/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Custom Provisioning Certificate - Device Management Toolkit</title>
+        <title>TLS Configuration - Device Management Toolkit</title>
       
     
     
@@ -92,7 +92,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#generate-custom-provisioning-certificate" class="md-skip">
+        <a href="#configure-tls-in-console" class="md-skip">
           Skip to content
         </a>
       
@@ -131,7 +131,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Custom Provisioning Certificate
+              TLS Configuration
             
           </span>
         </div>
@@ -3232,8 +3232,10 @@
                 
   
   
+    
   
   
+  
     
     
     
@@ -3247,13 +3249,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8" checked>
         
           
           <label class="md-nav__link" for="__nav_6_8" id="__nav_6_8_label" tabindex="">
@@ -3274,7 +3274,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_8">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3292,7 +3292,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Console/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   
@@ -3320,7 +3320,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Console/configuration/" class="md-nav__link">
+      <a href="../configuration/" class="md-nav__link">
         
   
   
@@ -3345,10 +3345,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../Console/tlsConfiguration/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TLS Configuration
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -3364,6 +3391,81 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-need" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you need
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-1-set-certificate-paths-in-configyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option 1: Set certificate paths in config.yml
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-2-set-certificate-paths-with-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option 2: Set certificate paths with environment variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-console-behaves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Console behaves
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3430,7 +3532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Console/Database/overview/" class="md-nav__link">
+      <a href="../Database/overview/" class="md-nav__link">
         
   
   
@@ -3512,7 +3614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Console/Database/SQL/sqlite/" class="md-nav__link">
+      <a href="../Database/SQL/sqlite/" class="md-nav__link">
         
   
   
@@ -3540,7 +3642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Console/Database/SQL/postgres/" class="md-nav__link">
+      <a href="../Database/SQL/postgres/" class="md-nav__link">
         
   
   
@@ -3684,7 +3786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Console/Database/NoSQL/MongoDB/overview/" class="md-nav__link">
+      <a href="../Database/NoSQL/MongoDB/overview/" class="md-nav__link">
         
   
   
@@ -3712,7 +3814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Console/Database/NoSQL/MongoDB/quickStart/" class="md-nav__link">
+      <a href="../Database/NoSQL/MongoDB/quickStart/" class="md-nav__link">
         
   
   
@@ -3740,7 +3842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Console/Database/NoSQL/MongoDB/collections/" class="md-nav__link">
+      <a href="../Database/NoSQL/MongoDB/collections/" class="md-nav__link">
         
   
   
@@ -3768,7 +3870,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Console/Database/NoSQL/MongoDB/schemaChanges/" class="md-nav__link">
+      <a href="../Database/NoSQL/MongoDB/schemaChanges/" class="md-nav__link">
         
   
   
@@ -3796,7 +3898,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Console/Database/NoSQL/MongoDB/extending/" class="md-nav__link">
+      <a href="../Database/NoSQL/MongoDB/extending/" class="md-nav__link">
         
   
   
@@ -3848,7 +3950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Console/upgrade/" class="md-nav__link">
+      <a href="../upgrade/" class="md-nav__link">
         
   
   
@@ -3876,7 +3978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Console/securityConsole/" class="md-nav__link">
+      <a href="../securityConsole/" class="md-nav__link">
         
   
   
@@ -3958,7 +4060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Console/Features/ocr/" class="md-nav__link">
+      <a href="../Features/ocr/" class="md-nav__link">
         
   
   
@@ -3986,7 +4088,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Console/Features/wsmanExplorer/" class="md-nav__link">
+      <a href="../Features/wsmanExplorer/" class="md-nav__link">
         
   
   
@@ -5604,8 +5706,6 @@
                 
   
   
-    
-  
   
   
     
@@ -5621,11 +5721,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_16" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_16" >
         
           
           <label class="md-nav__link" for="__nav_6_16" id="__nav_6_16_label" tabindex="">
@@ -5646,7 +5748,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_16_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_16_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_16">
             <span class="md-nav__icon md-icon"></span>
             
@@ -5661,35 +5763,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Custom Provisioning Certificate
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Certificates/generateProvisioningCert/" class="md-nav__link">
         
   
   
@@ -5705,152 +5782,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#generate-custom-provisioning-certificate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Generate Custom Provisioning Certificate
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Generate Custom Provisioning Certificate">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-youll-need" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What You'll Need
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configuration-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration Files
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Configuration Files">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-certconf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create cert.conf
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-csrconf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create csr.conf
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-the-certificate-and-hash" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create the Certificate and Hash
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#upload-provisioning-certificate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Upload Provisioning Certificate
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Upload Provisioning Certificate">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-domain-profile" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create Domain Profile
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#insert-the-hash-using-mebx" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Insert the Hash using MEBx
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verify-the-hash" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Verify the Hash
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -5863,7 +5794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../enrollCustomCertAMT/" class="md-nav__link">
+      <a href="../../Certificates/enrollCustomCertAMT/" class="md-nav__link">
         
   
   
@@ -5891,7 +5822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tls/" class="md-nav__link">
+      <a href="../../Certificates/tls/" class="md-nav__link">
         
   
   
@@ -6064,252 +5995,96 @@
   
 
 
-  <h1>Custom Provisioning Certificate</h1>
-
-<p>For production deployments, we highly recommend purchasing a 3rd party provisioning certificate. <a href="../../../Concepts/remoteProvisioning/#purchase">See all available vendors here.</a> </p>
-<div class="admonition warning">
-<p class="admonition-title">Warning - Custom Provisioning Certificates in Production Deployments</p>
-<p>The hash of custom provisioning certificates must be manually added to all devices that will be configured into <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>. This can be done through MEBx or USB Configuration. Both options require manual, hands-on configuration of each AMT device. <strong>Adding the hash to AMT's trusted list is a mandatory requirement for the device to successfully activate.</strong></p>
+<h1 id="configure-tls-in-console">Configure <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> in Console<a class="headerlink" href="#configure-tls-in-console" title="Permanent link">&para;</a></h1>
+<p>This guide shows how to use your own HTTPS certificate with Console.
+This is the certificate your browser receives and checks when you open the Console UI over HTTPS.</p>
+<p>By default, when Console runs with <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> enabled and no certificate files are configured, Console generates a self-signed certificate and stores it in the OS temp directory as <code>console_selfsigned.crt</code> and <code>console_selfsigned.key</code>.</p>
+<p>For customer deployments, use certificates your organization manages and owns, then configure Console to use those certificates.</p>
+<div class="admonition info">
+<p class="admonition-title">What this changes</p>
+<p>After configuration, Console serves HTTPS with your certificate and key instead of a generated self-signed certificate.</p>
 </div>
-<p>However, some developers opt to use a custom provisioning certificate for testing and validation purposes.</p>
-<p>The steps below outline how to generate a custom certificate based on the requirements within the <a href="https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/WordDocuments/acquiringanintelvprocertificate.htm"><abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> SDK</a>.</p>
+<h2 id="what-you-need">What you need<a class="headerlink" href="#what-you-need" title="Permanent link">&para;</a></h2>
+<ol>
+<li>A certificate file in PEM format.</li>
+<li>A private key file in PEM format that matches that certificate.</li>
+<li>File paths that Console can access.</li>
+</ol>
 <div class="admonition note">
-<p class="admonition-title">Note - Unprovisioning will Delete Custom Hashes</p>
-<p>When a device is unprovisioned, AMT will delete and remove all hashes inserted. If you want to then activate the device again, you will have to reinsert the certificate hash again.</p>
+<p class="admonition-title">Scope</p>
+<p>This page currently applies to users running the Console executable (<code>.exe</code>).
+<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> guidance for Docker deployments will be added in the future.</p>
 </div>
-<h2 id="generate-custom-provisioning-certificate">Generate Custom Provisioning Certificate<a class="headerlink" href="#generate-custom-provisioning-certificate" title="Permanent link">&para;</a></h2>
-<p>These steps create a certificate for a domain <code>example.com</code> and walk through how to successfully activate a device using the <code>example.com</code> <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr>.</p>
-<h3 id="what-youll-need">What You'll Need<a class="headerlink" href="#what-youll-need" title="Permanent link">&para;</a></h3>
-<p><strong>Software</strong> </p>
-<ul>
-<li><a href="https://www.openssl.org/">OpenSSL</a></li>
-</ul>
-<h3 id="configuration-files">Configuration Files<a class="headerlink" href="#configuration-files" title="Permanent link">&para;</a></h3>
-<p>First, we need to prepare two files:</p>
-<ul>
-<li><strong>cert.conf</strong> - Certificate configuration file. It is used to define the specific settings for the certificate.</li>
-<li><strong>csr.conf</strong> - Certificate signing request configuration file. </li>
-</ul>
-<h4 id="create-certconf">Create <code>cert.conf</code><a class="headerlink" href="#create-certconf" title="Permanent link">&para;</a></h4>
+<h2 id="option-1-set-certificate-paths-in-configyml">Option 1: Set certificate paths in config.yml<a class="headerlink" href="#option-1-set-certificate-paths-in-configyml" title="Permanent link">&para;</a></h2>
 <ol>
+<li>Close the Console application.</li>
 <li>
-<p>Create a new file named <code>cert.conf</code>.</p>
+<p>Open your Console <code>config.yml</code> file and set:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">http</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">tls</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="hll"><span class="w">    </span><span class="nt">certFile</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;C:/console/tls/server-cert.pem&quot;</span>
+</span><span class="hll"><span class="w">    </span><span class="nt">keyFile</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;C:/console/tls/server-key.pem&quot;</span>
+</span></code></pre></div>
 </li>
 <li>
-<p>Copy and paste the below example into the file.</p>
-<p><strong>Do not remove the OID 2.16.840.1.113741.1.2.3 from the <em>extendedKeyUsage</em>.</strong> This is an AMT requirement.</p>
-<p><strong>Optionally</strong>, update the <strong>[alt_names]</strong> section with your own server DNS  information.</p>
-<div class="highlight"><span class="filename">cert.conf</span><pre><span></span><code>basicConstraints = CA:FALSE
-subjectKeyIdentifier = hash
-authorityKeyIdentifier = keyid,issuer:always
-keyUsage = digitalSignature, keyEncipherment
-extendedKeyUsage = serverAuth, 2.16.840.1.113741.1.2.3 
-subjectAltName = @alt_names
-
-[alt_names]
-DNS.1 = test.example.com
-DNS.2 = example.com
-IP.1 = 192.168.1.1
-</code></pre></div>
+<p>Save <code>config.yml</code>.</p>
 </li>
-<li>
-<p>Save and close.</p>
-</li>
+<li>Start Console again (for example, double-click the Console <code>.exe</code> on Windows).</li>
 </ol>
-<h4 id="create-csrconf">Create <code>csr.conf</code><a class="headerlink" href="#create-csrconf" title="Permanent link">&para;</a></h4>
-<ol>
-<li>
-<p>Create a new file named <code>csr.conf</code>.</p>
-</li>
-<li>
-<p>Copy and paste the below example into the file.</p>
-<p><strong>Optionally</strong>, update the <strong>[dn]</strong> section and <strong>CN</strong> field with your own server FQDN and information.</p>
-<div class="highlight"><span class="filename">csr.conf</span><pre><span></span><code>[ req ]
-default_bits = 2048
-prompt = no
-default_md = sha256
-distinguished_name = dn
-
-[ dn ]
-C = US
-ST = Arizona
-L = Chandler 
-O = Organization
-OU = Department
-CN = test.example.com
-</code></pre></div>
-</li>
-<li>
-<p>Save and close.</p>
-</li>
-</ol>
-<h3 id="create-the-certificate-and-hash">Create the Certificate and Hash<a class="headerlink" href="#create-the-certificate-and-hash" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p>Open a terminal and verify OpenSSL is installed.</p>
-<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>version
-</code></pre></div>
-</li>
-<li>
-<p>Create a self-signed CA root certificate file named <code>rootCA.crt</code> with a key file named <code>rootCA.key</code>.</p>
-<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>req<span class="w"> </span>-x509<span class="w"> </span>-sha256<span class="w"> </span>-days<span class="w"> </span><span class="m">3560</span><span class="w"> </span>-nodes<span class="w"> </span>-newkey<span class="w"> </span>rsa:2048<span class="w"> </span>-subj<span class="w"> </span><span class="s2">&quot;//SKIP=skip/CN=CA Custom Root Certificate/C=US/ST=Arizona/L=Chandler&quot;</span><span class="w"> </span>-keyout<span class="w"> </span>rootCA.key<span class="w"> </span>-out<span class="w"> </span>rootCA.crt
-</code></pre></div>
-</li>
-<li>
-<p>Generate a RSA private key named <strong>server.key</strong>.</p>
-<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>genrsa<span class="w"> </span>-out<span class="w"> </span>server.key<span class="w"> </span><span class="m">2048</span>
-</code></pre></div>
-</li>
-<li>
-<p>Generate a Certificate Signing Request using the private key and <code>cert.conf</code> file.</p>
-<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>req<span class="w"> </span>-new<span class="w"> </span>-key<span class="w"> </span>server.key<span class="w"> </span>-out<span class="w"> </span>server.csr<span class="w"> </span>-config<span class="w"> </span>csr.conf
-</code></pre></div>
-</li>
-<li>
-<p>Sign the Certificate Signing Request with the CA certificate and <code>cert.conf</code> file.</p>
-<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>x509<span class="w"> </span>-req<span class="w"> </span>-in<span class="w"> </span>server.csr<span class="w"> </span>-CA<span class="w"> </span>rootCA.crt<span class="w"> </span>-CAkey<span class="w"> </span>rootCA.key<span class="w"> </span>-CAcreateserial<span class="w"> </span>-out<span class="w"> </span>server.crt<span class="w"> </span>-days<span class="w"> </span><span class="m">3650</span><span class="w"> </span>-sha256<span class="w"> </span>-extfile<span class="w"> </span>cert.conf
-</code></pre></div>
-</li>
-<li>
-<p>Create a <code>.pfx</code> file using the private key, server certificate, and CA root certificate. It will prompt to create a password. This password will be used when creating a Domain profile.</p>
-<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>pkcs12<span class="w"> </span>-export<span class="w"> </span>-out<span class="w"> </span>vprodemo_custom.pfx<span class="w"> </span>-inkey<span class="w"> </span>server.key<span class="w"> </span>-in<span class="w"> </span>server.crt<span class="w"> </span>-certfile<span class="w"> </span>rootCA.crt
-</code></pre></div>
-</li>
-<li>
-<p>Get the SHA1 hash of the root certificate. </p>
-<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>x509<span class="w"> </span>-noout<span class="w"> </span>-fingerprint<span class="w"> </span>-sha1<span class="w"> </span>-inform<span class="w"> </span>pem<span class="w"> </span>-in<span class="w"> </span>rootCA.crt
-</code></pre></div>
-<div class="admonition success">
-<p class="admonition-title">Success - SHA1 Output</p>
-<div class="highlight"><pre><span></span><code>SHA1 Fingerprint=51:45:E3:A4:AE:66:88:E0:AF:85:EC:EB:06:74:6B:8D:C3:07:C1:9D
-</code></pre></div>
-</div>
-</li>
-</ol>
-<h2 id="upload-provisioning-certificate">Upload Provisioning Certificate<a class="headerlink" href="#upload-provisioning-certificate" title="Permanent link">&para;</a></h2>
-<h3 id="create-domain-profile">Create <abbr title="Domain Profile - A profile enabling the remote activation of an Intel® AMT device into Admin Control Mode.">Domain Profile</abbr><a class="headerlink" href="#create-domain-profile" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p>Open the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> and Login.</p>
-</li>
-<li>
-<p>Create a domain profile. Upload the <code>.pfx</code> file and enter the password set for it. See <a href="../../../GetStarted/Cloud/createProfileACM/#create-a-domain-profile">Create a <abbr title="Domain Profile - A profile enabling the remote activation of an Intel® AMT device into Admin Control Mode.">Domain Profile</abbr></a> for more details. </p>
-</li>
-</ol>
-<h3 id="insert-the-hash-using-mebx">Insert the Hash using MEBx<a class="headerlink" href="#insert-the-hash-using-mebx" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
-<p class="admonition-title">Warning - Adding Hash for AMT 16 or Newer</p>
-<p>These steps may not be exact or available within MEBx on AMT 16 or newer devices due to OEM restrictions. USB Configuration may be required. </p>
+<p class="admonition-title">Apply changes correctly</p>
+<p>You must restart the Console application itself. Closing and reopening the browser is not enough.</p>
 </div>
+<h2 id="option-2-set-certificate-paths-with-environment-variables">Option 2: Set certificate paths with environment variables<a class="headerlink" href="#option-2-set-certificate-paths-with-environment-variables" title="Permanent link">&para;</a></h2>
 <ol>
+<li>Close the Console application.</li>
+<li>Open the same terminal you will use to start Console.</li>
 <li>
-<p>Switch to the AMT device.</p>
-</li>
-<li>
-<p>Restart the device. While the device is booting up, press <strong>Ctrl+P</strong> to reach the MEBX login screen.</p>
-<details class="note">
-<summary>Note - Other Keybinds to Enter MEBx</summary>
-<p>The keystroke combination <strong>Ctrl+P</strong> typically invokes the BIOS to display the MEBX login screen. If this does not work, check the manufacturer's instructions or try function keys (e.g., F2, F12).</p>
-</details>
-</li>
-<li>
-<p>Enter the MEBx password.</p>
-<details class="note">
-<summary>Note - Default MEBx Password for First Time Use</summary>
-<p>If it is the first time entering MEBX and the device has not been provisioned previously, the default password is <code>admin</code>. Create a new password when prompted.</p>
-</details>
-</li>
-<li>
-<p>Select <strong>Intel(r) AMT Configuration</strong>.</p>
-</li>
-<li>
-<p>Verify that the device is in <strong>pre-provisioning</strong> mode. If not, perform a full unprovision under <strong>Unconfigure Network Access</strong>.</p>
-</li>
-<li>
-<p>Select <strong>Remote Setup and Configuration</strong>.</p>
-</li>
-<li>
-<p>Select <strong><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> PKI</strong>.</p>
-</li>
-<li>
-<p>Set the <strong>PKI <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr></strong> to <code>example.com</code>.</p>
-<p>Or, if using a different <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr>, set it to that instead. See <a href="../../../GetStarted/Cloud/createProfileACM/#dns-suffix">DNS Suffix</a> for more details.</p>
-</li>
-<li>
-<p>Select <strong>Manage Hashes</strong>.</p>
-<p><figure class="figure-image">
-<img src="..\..\..\assets\images\Manage_Hashes.jpg" alt="Figure 1: Manage Hashes">
-<figcaption>Figure 1: Manage Hashes</figcaption>
-</figure></p>
-</li>
-<li>
-<p>Press the <code>Insert</code> key.</p>
-</li>
-<li>
-<p>Provide a name for the new hash and press Enter.</p>
-</li>
-<li>
-<p>Insert the new SHA1 hash using the fingerprint obtained from Step 7 in <a href="#create-the-certificate-and-hash">Create the Certificate and Hash</a>. <strong>The hash must be formatted as shown in example.</strong></p>
-<p><figure class="figure-image">
-<img src="..\..\..\assets\images\MEBXHASH.jpg" alt="Figure 2: Hash Input">
-<figcaption>Figure 2: Hash Input</figcaption>
-</figure></p>
-</li>
-<li>
-<p>Press the <code>Y</code> key to set the hash as active.</p>
-</li>
-<li>
-<p>Press the <code>esc</code> key repeatedly to exit MEBx and reboot the device.</p>
-</li>
-</ol>
-<h3 id="verify-the-hash">Verify the Hash<a class="headerlink" href="#verify-the-hash" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p>After the device reboots, open Terminal or Command Prompt as Administrator.</p>
-</li>
-<li>
-<p>Verify the certificate hash was inserted correctly.</p>
-<p>The new hash should be listed.</p>
-<div class="highlight"><pre><span></span><code>rpc amtinfo -cert
+<p>Set these environment variables:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">PowerShell</label><label for="__tabbed_1_2">Command Prompt</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nv">$env:HTTP_TLS_ENABLED</span><span class="p">=</span><span class="s2">&quot;true&quot;</span>
+<span class="nv">$env:HTTP_TLS_CERT_FILE</span><span class="p">=</span><span class="s2">&quot;C:/console/tls/server-cert.pem&quot;</span>
+<span class="nv">$env:HTTP_TLS_KEY_FILE</span><span class="p">=</span><span class="s2">&quot;C:/console/tls/server-key.pem&quot;</span>
 </code></pre></div>
-<div class="admonition success">
-<p class="admonition-title">Success - Hash Inserted Correctly</p>
-<p><figure class="figure-image">
-<img src="..\..\..\assets\images\screenshots\HASH_OUTPUT.png" alt="Figure 4: Hash Output">
-<figcaption>Figure 4: Hash Output</figcaption>
-</figure></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>set HTTP_TLS_ENABLED=true
+set HTTP_TLS_CERT_FILE=C:\console\tls\server-cert.pem
+set HTTP_TLS_KEY_FILE=C:\console\tls\server-key.pem
+</code></pre></div>
+</div>
+</div>
 </div>
 </li>
 <li>
-<p>Activate the AMT device with an <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr>. See <a href="../../../GetStarted/Cloud/createProfileACM/#create-a-profile">Create a <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> with <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr></a> and <a href="../../../GetStarted/Cloud/buildRPC/#run-rpc-to-activate-configure-and-connect-the-amt-device">Build &amp; Run <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr></a> for more details.</p>
-<details class="warning">
-<summary>Troubleshoot - Error During Activation</summary>
-<p>The following error may occur during the first attempt at activation.</p>
-<div class="highlight"><pre><span></span><code>time=&quot;2023-08-17T11:38:57-07:00&quot; level=trace msg=&quot;HTTP/1.1 200 OK\r\nDate: Thu, 17 Aug 2023 18:38:57 GMT\r\nServer: Intel(R) Active Management Technology 15.0.35.2039\r\nX-Frame-Options: DENY\r\nContent-Type: application/soap+xml; charset=UTF-8\r\nTransfer-Encoding: chunked\r\n\r\n043E\r\n&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;&lt;a:Envelope xmlns:a=\&quot;http://www.w3.org/2003/05/soap-envelope\&quot; xmlns:b=\&quot;http://schemas.xmlsoap.org/ws/2004/08/addressing\&quot; xmlns:c=\&quot;http://schemas.dmtf.org/wbem/wsman/1/wsman.xsd\&quot; xmlns:d=\&quot;http://schemas.xmlsoap.org/ws/2005/02/trust\&quot; xmlns:e=\&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\&quot; xmlns:f=\&quot;http://schemas.dmtf.org/wbem/wsman/1/cimbinding.xsd\&quot; xmlns:g=\&quot;http://intel.com/wbem/wscim/1/ips-schema/1/IPS_HostBasedSetupService\&quot; xmlns:xsi=\&quot;http://www.w3.org/2001/XMLSchema-instance\&quot;&gt;&lt;a:Header&gt;&lt;b:To&gt;http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous&lt;/b:To&gt;&lt;b:RelatesTo&gt;3&lt;/b:RelatesTo&gt;&lt;b:Action a:mustUnderstand=\&quot;true\&quot;&gt;http://intel.com/wbem/wscim/1/ips-schema/1/IPS_HostBasedSetupService/AdminSetupResponse&lt;/b:Acti&quot;
-time=&quot;2023-08-17T11:38:57-07:00&quot; level=debug msg=&quot;sending message to RPS&quot;
-time=&quot;2023-08-17T11:38:57-07:00&quot; level=debug msg=&quot;closing connection to lms&quot;
-time=&quot;2023-08-17T11:38:57-07:00&quot; level=debug msg=&quot;received messages from RPS&quot;
-<span class="hll">time=&quot;2023-08-17T11:38:57-07:00&quot; level=error msg=&quot;Unknown error has occured&quot;
-</span>time=&quot;2023-08-17T11:38:57-07:00&quot; level=debug msg=&quot;closing connection to lms&quot;
-</code></pre></div>
-<p><br></p>
+<p>Start Console from that same terminal/session.</p>
+</li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">Important note about environment variables</p>
+<p>Console only sees environment variables from where it is started.
+Set the variables and start Console in the same PowerShell window, Command Prompt, service, or tool.</p>
+</div>
+<h2 id="how-console-behaves">How Console behaves<a class="headerlink" href="#how-console-behaves" title="Permanent link">&para;</a></h2>
 <ol>
-<li>
-<p>If this error occurs, verify the device was activated successfully.</p>
-<div class="highlight"><pre><span></span><code>rpc amtinfo
-</code></pre></div>
-</li>
-<li>
-<p>If the device shows it was activated into <strong>admin control mode</strong>, rerun the activate command to successfully finish AMT configuration.</p>
-</li>
+<li>If <code>certFile</code> and <code>keyFile</code> are both set, Console uses your files.</li>
+<li>If both are empty and <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> is enabled, Console creates or reuses a self-signed certificate from the OS temp directory (<code>console_selfsigned.crt</code> and <code>console_selfsigned.key</code>).</li>
+<li>If only one is set, Console fails to start <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> because both are required.</li>
 </ol>
-</details>
-</li>
-<li>
-<p>During device unprovisioning, AMT will delete any inserted hashes and will have to be manually reinserted.</p>
-</li>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<ol>
+<li><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> does not start: confirm both cert and key paths are set.</li>
+<li>File not found errors: confirm the paths are correct and readable by Console.</li>
+<li>Browser warning for self-signed cert: expected; use a CA-issued cert for production.</li>
 </ol>
-<p><br><br></p>
+<div class="admonition note">
+<p class="admonition-title">Certificate and key ownership</p>
+<p>Console does not manage your certificate or private key lifecycle.
+Customers should store these files securely and limit read access to authorized users and the Console service account.</p>
+</div>
 
 
 
