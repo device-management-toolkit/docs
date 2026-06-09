@@ -128,6 +128,7 @@ nav:
     - Console:
       - Overview: Reference/Console/overview.md
       - Configuration: Reference/Console/configuration.md
+      - TLS Configuration: Reference/Console/tlsConfiguration.md
       - Database:
         - Overview: Reference/Console/Database/overview.md
         - SQL:
