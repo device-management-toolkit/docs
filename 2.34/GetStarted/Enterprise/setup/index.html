@@ -6049,23 +6049,35 @@
 </div>
 </li>
 <li>
-<p>The executable automatically generates a <code>config.yml</code> file in the <code>/config</code> directory, relative to where the executable is run. A default User Name and Password for the console login is stored in the <code>config.yml</code> file. To change the User Name and Password, edit the file and update <code>adminUsername</code> and <code>adminPassword</code> fields.</p>
+<p>The executable automatically generates a <code>config.yml</code> file in the <code>/config</code> directory, relative to where the executable is run. If no password is provided, Console generates a random value for <code>adminPassword</code> and stores it in <code>config.yml</code>. Before logging in, open <code>config.yml</code> and note the values for <code>adminUsername</code> and <code>adminPassword</code>. To set your own credentials, update these fields in the file.</p>
 <div class="highlight"><pre><span></span><code>app:
   name: console
   repo: device-management-toolkit/console
   version: DEVELOPMENT
+  common_name: &quot;&quot;
   encryption_key: &quot;&quot;
-<span class="hll">  allow_insecure_ciphers: false
-</span>http:
-<span class="hll">  host: localhost
-</span><span class="hll">  port: &quot;8181&quot;
-</span>  allowed_origins:
+  allow_insecure_ciphers: false
+  disable_cira: true
+http:
+  host: &quot;&quot;
+  port: &quot;8181&quot;
+  allowed_origins:
     - &quot;*&quot;
   allowed_headers:
     - &quot;*&quot;
+  ws_compression: true
+  tls:
+    enabled: true
+    certFile: &quot;&quot;
+    keyFile: &quot;&quot;
 logger:
   log_level: info
+secrets:
+  address: http://localhost:8200
+  token: &quot;&quot;
+  path: secret/data/console
 postgres:
+  provider: sqlite
   pool_max: 2
   url: &quot;&quot;
 ea:
@@ -6074,19 +6086,30 @@ ea:
   password: &quot;&quot;
 auth:
   disabled: false
-  adminUsername: standalone
-  adminPassword: G@ppm0ym
-  jwtKey: your_secret_jwt_key
+<span class="hll">  adminUsername: standalone
+</span><span class="hll">  adminPassword: &lt;randomly-generated-password&gt;
+</span>  jwtKey: your_secret_jwt_key
   jwtExpiration: 24h0m0s
   redirectionJWTExpiration: 5m0s
   clientId: &quot;&quot;
   issuer: &quot;&quot;
+  tlsSkipVerify: false
+  ui:
+    clientId: &quot;&quot;
+    issuer: &quot;&quot;
+    redirectUri: &quot;&quot;
+    scope: &quot;&quot;
+    responseType: &quot;&quot;
+    requireHttps: false
+    strictDiscoveryDocumentValidation: true
+ui:
+  externalUrl: &quot;&quot;
 </code></pre></div>
 </li>
 </ol>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Using the default credentials is for TESTING ONLY. Not setting these values to your own values will result in an insecure deployment. For production deployments we recommended using an OAUTH provider (Auth0, Azure Entra AD, etc..) and configuring Console to use that instead. We may remove the default values in the future.</p>
+<p>The generated credentials are for initial access and testing only. You should set your own strong credentials for <code>adminUsername</code> and <code>adminPassword</code> as soon as possible. For production deployments we recommend using an OAUTH provider (Auth0, Azure Entra AD, etc..) and configuring Console to use that instead.</p>
 </div>
 <h2 id="run">Run<a class="headerlink" href="#run" title="Permanent link">&para;</a></h2>
 <ol>
@@ -6107,7 +6130,7 @@ auth:
 <h2 id="login">Login<a class="headerlink" href="#login" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Log in to Console using the set credentials, <code>adminUsername</code> and <code>adminPassword</code>.</p>
+<p>Log in to Console using the credentials currently set in <code>config.yml</code> (<code>adminUsername</code> and <code>adminPassword</code>).</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <p><figure class="figure-image">
