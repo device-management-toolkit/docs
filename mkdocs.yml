@@ -143,6 +143,7 @@ nav:
       - Upgrade: Reference/Console/upgrade.md
       - Security Information: Reference/Console/securityConsole.md
       - Features:
+        - CIRA: Reference/Console/Features/cira.md
         - One Click Recovery: Reference/Console/Features/ocr.md
         - WSMAN Explorer: Reference/Console/Features/wsmanExplorer.md
     - Enterprise Assistant:
