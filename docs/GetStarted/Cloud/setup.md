@@ -38,7 +38,7 @@ The  `.env.template` file is used by docker to set environment variables.
 
 2. In a text editor or IDE of choice, open the new `.env` file to edit.
 
-3. Update the following fields for configuring the MPS, Sample Web UI, Vault and Postgres. Save and keep track of the values you choose.
+3. Update the required fields for configuring MPS, Sample Web UI, Vault, and Postgres (`MPS_COMMON_NAME`, `MPS_WEB_ADMIN_USER`, `MPS_WEB_ADMIN_PASSWORD`, `MPS_JWT_SECRET`, `POSTGRES_PASSWORD`, and `VAULT_TOKEN`).
 
     | Field Name | Required | Usage |
     | -------------          | ------------------ | ------------ |
@@ -48,21 +48,29 @@ The  `.env.template` file is used by docker to set environment variables.
     | MPS_JWT_SECRET         | A strong secret of your choice (Example: A unique, random 256-bit string. See another example in [code snippet below](#set-kong-json-web-token-jwt)).    | Used when generating a JSON Web Token (JWT) for authentication. This example implementation uses a symmetrical key and HS256 to create the signature. [Learn more about JWT](https://jwt.io/introduction){target=_blank}.|
     | POSTGRES_PASSWORD      | **Strong** password of your choice | For logging into the Postgres |
     | VAULT_TOKEN            | **Strong** token of your choice    | For logging into the vault |
-    | WEBUI_VERSION          | Optional. Default is **latest**. For recommended version, see the [Sample Web UI release notes](../../release-notes.md#sample-web-ui). | Docker image tag for **intel/oact-webui**. |
-    | RPS_VERSION            | Optional. Default is **latest**. For recommended version, see the [RPS release notes](../../release-notes.md#rps). | Docker image tag for **intel/oact-rps**. |
-    | MPS_VERSION            | Optional. Default is **latest**. For recommended version, see the [MPS release notes](../../release-notes.md#mps). | Docker image tag for **intel/oact-mps**. |
-    | MPSROUTER_VERSION      | Optional. Default is **latest**. For recommended version, see the [MPS Router release notes](../../release-notes.md#mps-router). | Docker image tag for **intel/oact-mpsrouter**. |
 
-    !!! important "Important - Using Strong Passwords and Docker Images"
+    !!! important "Important - Using Strong Passwords"
         The MPS_WEB_ADMIN_PASSWORD must meet standard, **strong** password requirements:
 
         - 8 to 32 characters
 
         - One uppercase, one lowercase, one numerical digit, one special character
 
-        For production environments, set **WEBUI_VERSION**, **RPS_VERSION**, **MPS_VERSION**, and **MPSROUTER_VERSION** to explicit release versions (do not rely on `latest`). Refer to the [Release Notes](../../release-notes.md#changelog) for recommended versions.
+4. Optional: Update `WEBUI_VERSION`, `RPS_VERSION`, `MPS_VERSION`, and `MPSROUTER_VERSION` only if you want to pin to a specific tagged release.
 
-4. Save the file.
+    !!! important "Important - Image Version Selection"
+        The version fields are optional for the Getting Started guide. Leaving them blank pulls `latest`, giving you the most recent changes for each component. If you want to use the **{{ repoVersion.release_name }}** tagged release, which is important for customers who are already in production, set the following values:
+
+        ```
+        WEBUI_VERSION={{ repoVersion.webui }}
+        RPS_VERSION={{ repoVersion.rps }}
+        MPS_VERSION={{ repoVersion.mps }}
+        MPSROUTER_VERSION={{ repoVersion['mps-router'] }}
+        ```
+
+        See the [Release Notes](../../release-notes.md#changelog) for iterative changelog details.
+
+5. Save the file.
 
 ## Set Kong JSON Web Token (JWT)
 
@@ -120,14 +128,14 @@ Set the shared secret used in Kong for JWT authentication.
 
     !!! success
         ``` bash
-        IMAGE                               STATUS                        NAMES
-        intel/oact-rps:latest               Up 2 minutes (healthy)        device-management-toolkit-rps-1
-        hashicorp/vault                     Up 2 minutes                  device-management-toolkit-vault-1
-        intel/oact-mpsrouter:latest         Up 2 minutes (healthy)        device-management-toolkit-mpsrouter-1
-        postgres:15                         Up 2 minutes (healthy)        device-management-toolkit-db-1
-        intel/oact-webui:latest             Up 2 minutes                  device-management-toolkit-webui-1
-        kong:3.1                            Up 2 minutes (healthy)        device-management-toolkit-kong-1
-        intel/oact-mps:latest               Up 2 minutes (healthy)        device-management-toolkit-mps-1
+        IMAGE                                               STATUS                        NAMES
+        intel/oact-rps:latest                               Up 2 minutes (healthy)        device-management-toolkit-rps-1
+        hashicorp/vault                                     Up 2 minutes                  device-management-toolkit-vault-1
+        intel/oact-mpsrouter:latest                         Up 2 minutes (healthy)        device-management-toolkit-mpsrouter-1
+        postgres:15                                         Up 2 minutes (healthy)        device-management-toolkit-db-1
+        intel/oact-webui:latest                             Up 2 minutes                  device-management-toolkit-webui-1
+        kong:3.1                                            Up 2 minutes (healthy)        device-management-toolkit-kong-1
+        intel/oact-mps:latest                               Up 2 minutes (healthy)        device-management-toolkit-mps-1
         ```
 
     !!! warning "Warning - Container Issues"
