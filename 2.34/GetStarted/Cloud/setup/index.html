@@ -5972,7 +5972,7 @@
 
   <h1>Set Up</h1>
 
-<p>This setup runs the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> microservices as Docker* containers, standardized packages containing an application's source code, libraries, environment, and dependencies. </p>
+<p>This setup runs the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> microservices as Docker* containers, standardized packages containing an application's source code, libraries, environment, and dependencies.</p>
 <h2 id="get-the-toolkit">Get the Toolkit<a class="headerlink" href="#get-the-toolkit" title="Permanent link">&para;</a></h2>
 <p><strong>To clone the repositories:</strong></p>
 <ol>
@@ -6010,7 +6010,7 @@
 <p>In a text editor or IDE of choice, open the new <code>.env</code> file to edit.</p>
 </li>
 <li>
-<p>Update the following fields for configuring the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>, Vault and Postgres. Save and keep track of the values you choose.</p>
+<p>Update the required fields for configuring <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr>, Vault, and Postgres (<code>MPS_COMMON_NAME</code>, <code>MPS_WEB_ADMIN_USER</code>, <code>MPS_WEB_ADMIN_PASSWORD</code>, <code>MPS_JWT_SECRET</code>, <code>POSTGRES_PASSWORD</code>, and <code>VAULT_TOKEN</code>).</p>
 <table>
 <thead>
 <tr>
@@ -6063,6 +6063,19 @@
 <p>One uppercase, one lowercase, one numerical digit, one special character</p>
 </li>
 </ul>
+</div>
+</li>
+<li>
+<p>Optional: Update <code>WEBUI_VERSION</code>, <code>RPS_VERSION</code>, <code>MPS_VERSION</code>, and <code>MPSROUTER_VERSION</code> only if you want to pin to a specific tagged release.</p>
+<div class="admonition important">
+<p class="admonition-title">Important - Image Version Selection</p>
+<p>The version fields are optional for the Getting Started guide. Leaving them blank pulls <code>latest</code>, giving you the most recent changes for each component. If you want to use the <strong>April 2026</strong> tagged release, which is important for customers who are already in production, set the following values:</p>
+<div class="highlight"><pre><span></span><code>WEBUI_VERSION=3.57.7
+RPS_VERSION=2.36.4
+MPS_VERSION=2.26.6
+MPSROUTER_VERSION=2.5.10
+</code></pre></div>
+<p>See the <a href="../../../release-notes/#changelog">Release Notes</a> for iterative changelog details.</p>
 </div>
 </li>
 <li>
@@ -6120,14 +6133,14 @@
 <p><strong>Because Vault is running in a dev mode, stored secrets will be lost upon a restart</strong>, and profiles and configs must be recreated. They are not persistent in this mode. To persist data, run vault in production mode. See <a href="../../../Reference/productionVault/">Production Mode Vault</a>.</p>
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<div class="highlight"><pre><span></span><code>IMAGE<span class="w">                               </span>STATUS<span class="w">                        </span>NAMES
-intel/oact-rps:latest<span class="w">               </span>Up<span class="w"> </span><span class="m">2</span><span class="w"> </span>minutes<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-rps-1<span class="w">      </span>
-hashicorp/vault<span class="w">                     </span>Up<span class="w"> </span><span class="m">2</span><span class="w"> </span>minutes<span class="w">                  </span>device-management-toolkit-vault-1<span class="w">    </span>
-intel/oact-mpsrouter:latest<span class="w">         </span>Up<span class="w"> </span><span class="m">2</span><span class="w"> </span>minutes<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-mpsrouter-1
-postgres:15<span class="w">                         </span>Up<span class="w"> </span><span class="m">2</span><span class="w"> </span>minutes<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-db-1<span class="w">       </span>
-intel/oact-webui:latest<span class="w">             </span>Up<span class="w"> </span><span class="m">2</span><span class="w"> </span>minutes<span class="w">                  </span>device-management-toolkit-webui-1<span class="w">    </span>
-kong:3.1<span class="w">                            </span>Up<span class="w"> </span><span class="m">2</span><span class="w"> </span>minutes<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-kong-1<span class="w">     </span>
-intel/oact-mps:latest<span class="w">               </span>Up<span class="w"> </span><span class="m">2</span><span class="w"> </span>minutes<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-mps-1
+<div class="highlight"><pre><span></span><code>IMAGE<span class="w">                                               </span>STATUS<span class="w">                        </span>NAMES
+intel/oact-rps:latest<span class="w">                               </span>Up<span class="w"> </span><span class="m">2</span><span class="w"> </span>minutes<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-rps-1
+hashicorp/vault<span class="w">                                     </span>Up<span class="w"> </span><span class="m">2</span><span class="w"> </span>minutes<span class="w">                  </span>device-management-toolkit-vault-1
+intel/oact-mpsrouter:latest<span class="w">                         </span>Up<span class="w"> </span><span class="m">2</span><span class="w"> </span>minutes<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-mpsrouter-1
+postgres:15<span class="w">                                         </span>Up<span class="w"> </span><span class="m">2</span><span class="w"> </span>minutes<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-db-1
+intel/oact-webui:latest<span class="w">                             </span>Up<span class="w"> </span><span class="m">2</span><span class="w"> </span>minutes<span class="w">                  </span>device-management-toolkit-webui-1
+kong:3.1<span class="w">                                            </span>Up<span class="w"> </span><span class="m">2</span><span class="w"> </span>minutes<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-kong-1
+intel/oact-mps:latest<span class="w">                               </span>Up<span class="w"> </span><span class="m">2</span><span class="w"> </span>minutes<span class="w"> </span><span class="o">(</span>healthy<span class="o">)</span><span class="w">        </span>device-management-toolkit-mps-1
 </code></pre></div>
 </div>
 <div class="admonition warning">
