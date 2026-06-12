@@ -7,7 +7,8 @@ Learn how to run MPS and RPS using Vault in production server mode. The current 
 1. Follow steps to Get the Toolkit, Set Environment Variables, and Set Kong JSON Web Token in the [Get Started guide](../GetStarted/Cloud/setup.md).
 
 2. Update the vault section in the `docker-compose.yml` file with the section below.
-    ``` yaml
+
+    ```yaml
     vault:
         restart: always
         image: hashicorp/vault
@@ -27,7 +28,8 @@ Learn how to run MPS and RPS using Vault in production server mode. The current 
     ```
 
 3. Create a folder named `vault` located in `./cloud-deployment` directory and create a new file named `vault.json` in that folder with the contents below:
-    ``` json
+
+    ```json
     {
         "storage":{
             "file":{
@@ -47,8 +49,9 @@ Learn how to run MPS and RPS using Vault in production server mode. The current 
     }
     ```
 
-4. Run `docker compose`` to start the containers from the ./cloud-deployment directory.
-    ```
+4. Run `docker compose` to start the containers from the ./cloud-deployment directory.
+
+    ```bash
     docker compose up -d --build
     ```
 
@@ -91,7 +94,7 @@ Learn how to run MPS and RPS using Vault in production server mode. The current 
 
 4. Rebuild and restart your Docker images and containers.
 
-    ```
+    ```bash
     docker compose up -d --build
     ```
 

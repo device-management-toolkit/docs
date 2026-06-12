@@ -4,7 +4,7 @@ site_url: "https://device-management-toolkit.github.io/docs/"
 repo_url: "https://github.com/device-management-toolkit/cloud-deployment"
 repo_name: "device-management-toolkit/cloud-deployment"
 copyright: "Copyright &copy; 2021 Intel Corporation"
-site_dir: site/2.32
+site_dir: site/2.34
 # Configuration
 theme:
   name: "material"
@@ -130,6 +130,19 @@ nav:
     - Console:
       - Overview: Reference/Console/overview.md
       - Configuration: Reference/Console/configuration.md
+      - TLS Configuration: Reference/Console/tlsConfiguration.md
+      - Database:
+        - Overview: Reference/Console/Database/overview.md
+        - SQL:
+          - SQLite: Reference/Console/Database/SQL/sqlite.md
+          - Postgres: Reference/Console/Database/SQL/postgres.md
+        - NoSQL:
+          - MongoDB:
+            - Overview: Reference/Console/Database/NoSQL/MongoDB/overview.md
+            - Quick Start: Reference/Console/Database/NoSQL/MongoDB/quickStart.md
+            - Collections and Indexes: Reference/Console/Database/NoSQL/MongoDB/collections.md
+            - Schema Changes: Reference/Console/Database/NoSQL/MongoDB/schemaChanges.md
+            - Adding a New NoSQL DB: Reference/Console/Database/NoSQL/MongoDB/extending.md
       - Upgrade: Reference/Console/upgrade.md
       - Security Information: Reference/Console/securityConsole.md
       - Features:
@@ -238,15 +251,19 @@ extra:
       - rapid
       - dev
   repoVersion:
+    release_name: "April 2026"
     mpsAPI: 2.26.0
     rpsAPI: 2.31.3
-    oamtct: 2.32.0
-    rpc_go: 2.49.0
-    webui: 3.54.0
+    oamtct: 2.34.0
+    mps: 2.26.6
+    rps: 2.36.4
+    mps-router: 2.5.10
+    rpc_go: 2.50.6
+    webui: 3.57.7
     rpc_c: 2.0.0
-    ui_toolkit: 3.3.10
-    ui_toolkit_react: 5.0.1
-    ui_toolkit_angular: 11.1.1
+    ui_toolkit: 3.3.15
+    ui_toolkit_react: 5.0.4
+    ui_toolkit_angular: 11.1.4
   analytics:
     provider: google
     property: "G-00QEDJW2TS"

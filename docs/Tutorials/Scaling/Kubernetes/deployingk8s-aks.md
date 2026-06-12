@@ -189,6 +189,7 @@ Ensure your `kubectl` is connected to the Kubernetes cluster you wish to deploy/
 ## Deploy Device Management Toolkit using Helm
 
 1. Deploy using Helm.
+
     ```
     helm install devicemgmtstack ./kubernetes/charts
     ```

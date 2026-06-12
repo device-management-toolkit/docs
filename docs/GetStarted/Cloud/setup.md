@@ -1,6 +1,6 @@
 
 
-This setup runs the MPS and RPS microservices as Docker* containers, standardized packages containing an application's source code, libraries, environment, and dependencies. 
+This setup runs the MPS and RPS microservices as Docker* containers, standardized packages containing an application's source code, libraries, environment, and dependencies.
 
 ## Get the Toolkit
 
@@ -11,13 +11,14 @@ This setup runs the MPS and RPS microservices as Docker* containers, standardize
     ``` bash
     git clone https://github.com/device-management-toolkit/cloud-deployment --branch v{{ repoVersion.oamtct }} --recursive
     ```
-  
+
 2. Change to the cloned `device-management-toolkit` directory.
+
     ``` bash
     cd device-management-toolkit
     ```
 
-## Set Environment Variables  
+## Set Environment Variables
 
 The  `.env.template` file is used by docker to set environment variables.
 
@@ -29,7 +30,7 @@ The  `.env.template` file is used by docker to set environment variables.
         ```
         cp .env.template .env
         ```
-    
+
     === "Windows (Cmd Prompt)"
         ```
         copy .env.template .env
@@ -37,7 +38,7 @@ The  `.env.template` file is used by docker to set environment variables.
 
 2. In a text editor or IDE of choice, open the new `.env` file to edit.
 
-3. Update the following fields for configuring the MPS, Sample Web UI, Vault and Postgres. Save and keep track of the values you choose.
+3. Update the required fields for configuring MPS, Sample Web UI, Vault, and Postgres (`MPS_COMMON_NAME`, `MPS_WEB_ADMIN_USER`, `MPS_WEB_ADMIN_PASSWORD`, `MPS_JWT_SECRET`, `POSTGRES_PASSWORD`, and `VAULT_TOKEN`).
 
     | Field Name | Required | Usage |
     | -------------          | ------------------ | ------------ |
@@ -55,7 +56,21 @@ The  `.env.template` file is used by docker to set environment variables.
 
         - One uppercase, one lowercase, one numerical digit, one special character
 
-4. Save the file.
+4. Optional: Update `WEBUI_VERSION`, `RPS_VERSION`, `MPS_VERSION`, and `MPSROUTER_VERSION` only if you want to pin to a specific tagged release.
+
+    !!! important "Important - Image Version Selection"
+        The version fields are optional for the Getting Started guide. Leaving them blank pulls `latest`, giving you the most recent changes for each component. If you want to use the **{{ repoVersion.release_name }}** tagged release, which is important for customers who are already in production, set the following values:
+
+        ```
+        WEBUI_VERSION={{ repoVersion.webui }}
+        RPS_VERSION={{ repoVersion.rps }}
+        MPS_VERSION={{ repoVersion.mps }}
+        MPSROUTER_VERSION={{ repoVersion['mps-router'] }}
+        ```
+
+        See the [Release Notes](../../release-notes.md#changelog) for iterative changelog details.
+
+5. Save the file.
 
 ## Set Kong JSON Web Token (JWT)
 
@@ -96,7 +111,7 @@ Set the shared secret used in Kong for JWT authentication.
         By default in the Getting Started Guide, we do not enable an SSL connection for Postgres for ease of development. See [SSL with Local Postgres](../../Reference/sslpostgresLocal.md) for how to enable SSL in your local Postgres container. For production environments, using a cloud-hosted database with an SSL connection to MPS/RPS is highly recommended as one step to maintain a secure deployment. Read more about cloud deployments for [Azure or AWS here](../../Tutorials/Scaling/overview.md).
 
 2.  Start the containers.
-    
+
     ```
     docker compose up -d
     ```
@@ -110,25 +125,25 @@ Set the shared secret used in Kong for JWT authentication.
     ```
 
     **Because Vault is running in a dev mode, stored secrets will be lost upon a restart**, and profiles and configs must be recreated. They are not persistent in this mode. To persist data, run vault in production mode. See [Production Mode Vault](../../Reference/productionVault.md).
-    
+
     !!! success
         ``` bash
-        IMAGE                               STATUS                        NAMES
-        intel/oact-rps:latest               Up 2 minutes (healthy)        device-management-toolkit-rps-1      
-        hashicorp/vault                     Up 2 minutes                  device-management-toolkit-vault-1    
-        intel/oact-mpsrouter:latest         Up 2 minutes (healthy)        device-management-toolkit-mpsrouter-1
-        postgres:15                         Up 2 minutes (healthy)        device-management-toolkit-db-1       
-        intel/oact-webui:latest             Up 2 minutes                  device-management-toolkit-webui-1    
-        kong:3.1                            Up 2 minutes (healthy)        device-management-toolkit-kong-1     
-        intel/oact-mps:latest               Up 2 minutes (healthy)        device-management-toolkit-mps-1
+        IMAGE                                               STATUS                        NAMES
+        intel/oact-rps:latest                               Up 2 minutes (healthy)        device-management-toolkit-rps-1
+        hashicorp/vault                                     Up 2 minutes                  device-management-toolkit-vault-1
+        intel/oact-mpsrouter:latest                         Up 2 minutes (healthy)        device-management-toolkit-mpsrouter-1
+        postgres:15                                         Up 2 minutes (healthy)        device-management-toolkit-db-1
+        intel/oact-webui:latest                             Up 2 minutes                  device-management-toolkit-webui-1
+        kong:3.1                                            Up 2 minutes (healthy)        device-management-toolkit-kong-1
+        intel/oact-mps:latest                               Up 2 minutes (healthy)        device-management-toolkit-mps-1
         ```
-  
-    !!! warning "Warning - Container Issues" 
+
+    !!! warning "Warning - Container Issues"
 
         If any of the above containers are not running, walk through the steps again or file a GitHub issue [here]( https://github.com/device-management-toolkit/cloud-deployment/issues).
 
         If the Kong container reloads repeatedly, verify kong.yaml edits. Misconfiguration of this file will cause the container to reload.
-    
+
 
 ## Next up
 [**Login to Sample Web UI**](loginToUI.md)

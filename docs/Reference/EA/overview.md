@@ -20,6 +20,7 @@ Enterprise Assistant is based off the open-source project [MeshCentral Satellite
 The Enterprise Assistant source code must be compiled into a Windows executable before it can be run.
 
 1. Clone the Enterprise Assistant Repository.
+
     ```
     git clone https://github.com/device-management-toolkit/enterprise-assistant.git
     ```

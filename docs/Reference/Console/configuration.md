@@ -30,13 +30,17 @@ Console can also be configured using environment variables. These `.env` variabl
 | AUTH_REDIRECTION_JWT_EXPIRATION | auth.redirectionJWTExpiration | `5m0s` | This setting determines the expiration time for redirection JWT tokens, which are used for features like KVM, SOL, and IDER. It controls how long these redirection sessions will remain valid. |
 | AUTH_CLIENT_ID | auth.clientId | No Value | A unique identifier assigned to the application by the OAuth2/OIDC provider. This is used by the authorization server to recognize the client making authentication requests. |
 | AUTH_ISSUER | auth.issuer | No Value | The entity that issued the authentication tokens. This is typically the URL of the authorization server and is used to validate tokens and discover relevant OAuth2/OIDC endpoints. |
-| HTTP_HOST | http.host | `localhost` | By default, Console listens only on `localhost`, restricting network access. For now, it's recommended to keep Console accessible only from `localhost` until HTTPS is available to ensure secure access.|
+| HTTP_HOST | http.host | `localhost` | By default, Console listens only on `localhost`, restricting network access. Keep this value unless you intentionally need remote access. |
 | HTTP_PORT | http.port | `8181` | This is the port on which the Console HTTP server will listen. Users will access the Console UI through this port in their browser. |
 | HTTP_ALLOWED_ORIGINS | http.allowed_origins | `*` | Allowed origins for CORS policy. |
 | HTTP_ALLOWED_HEADERS | http.allowed_headers | `*` | Allowed headers for CORS policy. |
+| HTTP_TLS_ENABLED | http.tls.enabled | `true` | Enables TLS for the Console web server. When enabled and no certificate files are provided, Console generates (or reuses) a self-signed certificate at startup in the OS temp directory as `console_selfsigned.crt` and `console_selfsigned.key` (Windows: `%TEMP%\\console_selfsigned.crt` / `%TEMP%\\console_selfsigned.key`). |
+| HTTP_TLS_CERT_FILE | http.tls.certFile | No Value | Path to the TLS certificate file in PEM format. Must be set together with `HTTP_TLS_KEY_FILE` when using your own certificate. |
+| HTTP_TLS_KEY_FILE | http.tls.keyFile | No Value | Path to the TLS private key file in PEM format. Must be set together with `HTTP_TLS_CERT_FILE` when using your own certificate. |
 | LOG_LEVEL | logger.log_level | `info` | Controls the level of logging. Options: `error`, `warn`, `info`, `debug`, `fatal`. |
-| DB_POOL_MAX | db.pool_max | `2` | Maximum number of database connections in the pool. |
-| DB_URL | db.url | No Value | By default, Console uses a SQLite database to store device data locally. Users can optionally configure this variable to provide a PostgreSQL connection string, enabling the use of an external PostgreSQL database for data storage. This allows for greater scalability and centralized database management. |
+| DB_PROVIDER | db.provider | `sqlite` | Selects the storage backend. Valid values: [`sqlite`](Database/SQL/sqlite.md) (default), [`postgres`](Database/SQL/postgres.md), [`mongo`](Database/NoSQL/MongoDB/overview.md). See the [Database overview](Database/overview.md) for choosing and switching backends. |
+| DB_POOL_MAX | db.pool_max | `2` | Maximum number of database connections in the pool. Honored by the SQL backends only; the MongoDB driver manages its own pool via the `DB_URL`. See [MongoDB](Database/NoSQL/MongoDB/overview.md) for connection-string pool options. |
+| DB_URL | db.url | No Value | Connection string for the selected backend. Examples: `postgres://user:pass@host:5432/dbname` for Postgres; `mongodb://user:pass@host:27017/?authSource=admin` for MongoDB. Leave empty to use the embedded SQLite database. |
 | EA_URL | ea.url | `http://localhost:8000` | URL for the Enterprise Assistant service. |
 | EA_USERNAME | ea.username | No Value | Username for the Enterprise Assistant service. |
 | EA_PASSWORD | ea.password | No Value | Password for the Enterprise Assistant service. |

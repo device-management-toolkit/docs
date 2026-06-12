@@ -97,6 +97,7 @@ Update the connection string and a folder name for your db either in your ENV or
      ```
 
 3. Implement each of the table interfaces. The base interface looks like this: 
+
     ``` typescript
     export interface ITable<T> {
       getCount: (tenantId?: string) => Promise<number>

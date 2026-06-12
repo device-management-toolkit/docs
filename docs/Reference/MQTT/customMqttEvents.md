@@ -65,7 +65,7 @@ The config parameter contains the config types of MPS and RPS. `MqttProvider` us
 !!! Important
     The `MQTT_ADDRESS` environment variables for MPS and RPS are left blank in the .env.template file. This corresponds to the **OFF** state. To turn event logging with mosquitto **ON** provide the address of the MQTT Broker, `mqtt://mosquitto:8883`, to the `MPS_MQTT_ADDRESS` and `RPS_MQTT_ADDRESS` environment variables.
 
-#### Usage <a name="MQTTUsage"></>
+#### Usage <a name="MQTTUsage"></a>
 
 The `publishEvent` method publishes events to the MQTT Broker where subscribers can access event data. The method accepts information about an event, organizes it, adds a timestamp, and sends it to the MQTT Broker. 
 
