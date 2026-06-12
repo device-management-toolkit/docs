@@ -249,6 +249,7 @@ extra:
       - rapid
       - dev
   repoVersion:
+    release_name: "April 2026"
     mpsAPI: 2.26.0
     rpsAPI: 2.31.3
     oamtct: 2.34.0
