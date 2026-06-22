@@ -1,7 +1,6 @@
 
 
-RPC-Go v3.x introduces a faster activation workflow and a clearer configuration model.  
-In addition to the existing RPS-driven proxy flow, v3.x adds support for retrieving an encrypted AMT profile directly from the Console or RPS and applying it locally on the device. This significantly improves activation speed, especially in environments where RPS is not required. See the **What Changed in v3.x** section below for more details.
+RPC-Go v3.x introduces a faster activation workflow and a clearer configuration model. In addition to the existing RPS-driven proxy flow, v3.x adds support for retrieving an encrypted AMT profile directly from the Console or RPS and applying it locally on the device. This significantly improves activation speed, especially in environments where RPS is not required. See the **What Changed in v3.x** section below for more details.
 
 v3.x also addresses several long-standing inconsistencies in the configuration and CLI structure:
 
@@ -9,9 +8,9 @@ v3.x also addresses several long-standing inconsistencies in the configuration a
 - CLI flags were not fully consistent.
 - Application configuration and provisioning configuration were mixed together.
 
-The goal of v3.x is clarity, consistency, and ease of use—improving how RPC-Go is configured and executed without changing its underlying activation and configuration capabilities.
+The goal of v3.x is clarity, consistency, and ease of use, improving how RPC-Go is configured and executed without changing its underlying activation and configuration capabilities.
 
-!!! important "v2.x is fully supported — no immediate action required"
+!!! important "v2.x is fully supported, no immediate action required"
     RPC-Go v2.x continues to work exactly as before.  
     All existing activation flows, encrypted profiles, and RPS interactions remain fully supported.  
     You may stay on v2.x without upgrading until you are ready.
@@ -35,7 +34,7 @@ https://<RPS or Console Host>/api/v1/admin/profiles/export/<profile-name>?domain
 RPC-Go can authenticate using either username/password or an auth-token, retrieve the encrypted profile, and orchestrate Intel® AMT activation **locally on the device**.  
 This results in **faster and more efficient activation** compared to the legacy proxy model.
 
-This new workflow currently requires some additional configuration (endpoints, tokens, auth settings), and we plan to simplify it in future releases. This is also why v3.x remains in Beta—we want to incorporate customer feedback and ensure the workflow becomes easier as it evolves.
+This new workflow currently requires some additional configuration (endpoints, tokens, auth settings), and we plan to simplify it in future releases. This is also why v3.x remains in Beta. We want to incorporate customer feedback and ensure the workflow becomes easier as it evolves.
 
 If you prefer the traditional RPS-driven model, you can continue using it in both v2.x and v3.x.
 
