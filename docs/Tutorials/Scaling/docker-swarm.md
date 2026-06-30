@@ -4,7 +4,7 @@ This sample deployment demonstrates the use of Docker* in swarm mode. The follow
 
 - All images are built and tested with `docker compose`. To learn more about building the images with `docker compose`, refer to [**Express Setup**](../../GetStarted/Cloud/setup.md). 
 - Push images to the registry to make them available for deployment on other systems.  
-- Run the commands below from the `cloud-deployment` install directory. 
+- Run the commands below from the `deployment` install directory. 
 
 
 !!! important
@@ -15,13 +15,13 @@ This sample deployment demonstrates the use of Docker* in swarm mode. The follow
 1. Open a Terminal or Command Prompt and navigate to a directory of your choice for development:
 
     ``` bash
-    git clone --recursive https://github.com/device-management-toolkit/cloud-deployment --branch v{{ repoVersion.oamtct }}
+    git clone --recursive https://github.com/device-management-toolkit/deployment --branch v{{ repoVersion.oamtct }}
     ```
   
-2. Change to the cloned `cloud-deployment` directory.
+2. Change to the cloned `deployment` directory.
 
     ``` bash
-    cd cloud-deployment
+    cd deployment
     ```
 
 ## Deploy the stack to the swarm

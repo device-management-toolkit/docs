@@ -24,10 +24,10 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
     
             ### Build and Start
     
-            1. Clone the cloud-deployment repository.
+            1. Clone the deployment repository.
 
                 ```
-                git clone https://github.com/device-management-toolkit/cloud-deployment --branch v{{ repoVersion.oamtct }}
+                git clone https://github.com/device-management-toolkit/deployment --branch v{{ repoVersion.oamtct }}
                 ```
     
             2. Copy the `.env.template` file to `.env`.
@@ -86,16 +86,16 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
 
 ## Get the Toolkit
 
-1. Clone the cloud-deployment repository.
+1. Clone the `deployment` repository.
 
     ```
-    git clone https://github.com/device-management-toolkit/cloud-deployment.git --branch v{{ repoVersion.oamtct }}
+    git clone https://github.com/device-management-toolkit/deployment.git --branch v{{ repoVersion.oamtct }}
     ```
 
 
 ## Create Kubernetes Secrets 
 
-1. Open the `secrets.yaml` file in the `cloud-deployment/kubernetes/charts/` directory.
+1. Open the `secrets.yaml` file in the `deployment/kubernetes/charts/` directory.
 
     ??? note "Note - Additional Information about Secrets Created"
 
@@ -143,7 +143,7 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
 
 ### Edit values.yaml
 
-1. Open the `values.yaml` file in `./cloud-deployment/kubernetes/charts/`.
+1. Open the `values.yaml` file in `./deployment/kubernetes/charts/`.
 
 2. Update the `commonName` key in the **mps** section with the IP Address of your development device.
 
@@ -241,7 +241,7 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
 
 Add the root token as a secret to the cluster so that the services can access Vault.
 
-1. Open the `secrets.yaml` file again in the `cloud-deployment/kubernetes/charts/` directory.
+1. Open the `secrets.yaml` file again in the `deployment/kubernetes/charts/` directory.
 
 2. Replace `<VAULT-ROOT-TOKEN>` in the `vaultKey:` field (line 66) with the actual Vault root token.
 

@@ -509,7 +509,7 @@ Upgrading from a previous minor version to a new minor version release is simple
 ??? note "Note - Using Private Images"
     The steps are the same if using your own images built and stored on a platform like Azure Container Registry (ACR) or Elastic Container Registry (ECR). Simply point to the new private images rather than the public Intel Dockerhub.
 
-1. Pull the latest release within `.\cloud-deployment` directory.
+1. Pull the latest release within `.\deployment` directory.
 
     ```
     git pull
@@ -534,10 +534,10 @@ Upgrading from a previous minor version to a new minor version release is simple
           ...
         ```
 
-4. In Terminal or Command Prompt, go to the deployed cloud-deployment repository directory.
+4. In Terminal or Command Prompt, go to the deployed `deployment` repository directory.
 
     ```
-    cd ./YOUR-DIRECTORY-PATH/cloud-deployment
+    cd ./YOUR-DIRECTORY-PATH/deployment
     ```
 
 5. Use Helm to upgrade and deploy the new images.
@@ -593,7 +593,7 @@ Is the functionality not working as expected? Rollback to the previous deploymen
 
 The following steps outline how to upgrade using the public Docker Hub images. Data will not be lost unless Postgres or Vault need to be upgraded and restarted.
 
-1. From the `.\cloud-deployment\` directory, pull the latest branches.
+1. From the `.\deployment\` directory, pull the latest branches.
 
     ```
     git pull
@@ -606,7 +606,7 @@ The following steps outline how to upgrade using the public Docker Hub images. D
     ```
 
     ??? note "Note - Rebuilding New Images Locally"
-        If building your own images, you will also have to checkout the newer release from each repo within `.\cloud-deployment\`.
+        If building your own images, you will also have to checkout the newer release from each repo within `.\deployment\`.
 
         1. Pull the new releases of the submodules.
 

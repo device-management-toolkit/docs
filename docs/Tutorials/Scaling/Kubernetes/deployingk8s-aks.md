@@ -15,10 +15,10 @@ Azure Kubernetes Service (AKS) offers serverless Kubernetes, an integrated conti
 
 ## Get the Toolkit
 
-1. Clone the cloud-deployment repository.
+1. Clone the `deployment` repository.
 
     ```
-    git clone https://github.com/device-management-toolkit/cloud-deployment.git --branch v{{ repoVersion.oamtct }}
+    git clone https://github.com/device-management-toolkit/deployment.git --branch v{{ repoVersion.oamtct }}
     ```
 
 ## Create SSH Key
@@ -46,7 +46,7 @@ This key is required by Azure to create VMs that use SSH keys for authentication
     az group create --name <your-resource-group-name> --location <region>
     ```
 
-3. Provide the name of your new resource group from the last step and start a deployment at that resource group based on `aks.json` in the `./cloud-deployment` directory.
+3. Provide the name of your new resource group from the last step and start a deployment at that resource group based on `aks.json` in the `./deployment` directory.
 
     ``` bash
     az deployment group create --resource-group <your-resource-group-name> --template-file aks.json
@@ -86,7 +86,7 @@ Ensure your `kubectl` is connected to the Kubernetes cluster you wish to deploy/
 
 ## Create Kubernetes Secrets 
 
-1. Open the `secrets.yaml` file in the `cloud-deployment/kubernetes/charts/` directory.
+1. Open the `secrets.yaml` file in the `deployment/kubernetes/charts/` directory.
 
     ??? note "Note - Additional Information about Secrets Created"
 
@@ -131,7 +131,7 @@ Ensure your `kubectl` is connected to the Kubernetes cluster you wish to deploy/
 
 ### Edit values.yaml
 
-1. Open the `values.yaml` file in `./cloud-deployment/kubernetes/charts/`.
+1. Open the `values.yaml` file in `./deployment/kubernetes/charts/`.
 
 2. Update the `service.beta.kubernetes.io/azure-dns-label-name` key in the **kong** section with a desired subdomain name for the URL that you would like for your cluster (i.e. myopenamtk8s).
 
@@ -250,7 +250,7 @@ Ensure your `kubectl` is connected to the Kubernetes cluster you wish to deploy/
 
 Add the root token as a secret to the AKS cluster so that the services can access Vault.
 
-1. Open the `secrets.yaml` file again in the `cloud-deployment/kubernetes/charts/` directory.
+1. Open the `secrets.yaml` file again in the `deployment/kubernetes/charts/` directory.
 
 2. Replace `<VAULT-ROOT-TOKEN>` in the `vaultKey:` field (line 66) with the actual Vault root token.
 
