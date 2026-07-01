@@ -37,5 +37,5 @@ jobs:
           severity: "HIGH"
           output-format: sarif
           semgrep-extra-args: >
-            --exclude-rule missing-user
-            --exclude-rule missing-user-entrypoint
+            --exclude-rule dockerfile.security.missing-user \
+            --exclude-rule dockerfile.security.missing-user-entrypoint
