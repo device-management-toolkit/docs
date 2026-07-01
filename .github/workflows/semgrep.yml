@@ -35,4 +35,4 @@ jobs:
         with:
           scan-scope: all
           severity: "HIGH"
-          output-format: "text"
+          output-format: sarif
