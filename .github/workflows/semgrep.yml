@@ -36,6 +36,6 @@ jobs:
           scan-scope: all
           severity: "HIGH"
           output-format: sarif
-          semgrep-extra-args: >
-            --exclude-rule dockerfile.security.missing-user \
+          semgrep-extra-args: |
+            --exclude-rule dockerfile.security.missing-user
             --exclude-rule dockerfile.security.missing-user-entrypoint
