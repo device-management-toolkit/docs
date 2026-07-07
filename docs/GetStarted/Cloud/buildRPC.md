@@ -46,12 +46,12 @@ Alternatively, the RPC-Go binaries can be manually built using Go for developmen
 
 If you are building an executable on a development system, you will copy the executable to the AMT device afterwards. 
 
-1. Change to the `rpc-go` directory of the cloned `cloud-deployment` repository.
+1. Change to the `rpc-go` directory of the cloned `deployment` repository.
    
     ``` bash
     cd rpc-go
     ```
-    ??? note "Haven't Cloned the `cloud-deployment` Repository?"
+    ??? note "Haven't Cloned the `deployment` Repository?"
 
         * Only clone the `rpc-go` repository:
 
@@ -62,7 +62,7 @@ If you are building an executable on a development system, you will copy the exe
         * Alternatively, clone the whole toolkit repository:
 
             ``` bash
-            git clone https://github.com/device-management-toolkit/cloud-deployment --branch v{{ repoVersion.oamtct }} --recursive
+            git clone https://github.com/device-management-toolkit/deployment --branch v{{ repoVersion.oamtct }} --recursive
             ```
 
 2. Open a Terminal (Linux) or Powershell/Command Prompt **as Administrator** (Windows):

@@ -9,13 +9,13 @@ This setup runs the MPS and RPS microservices as Docker* containers, standardize
 1. Open a Terminal or Command Prompt and navigate to a directory of your choice for development:
 
     ``` bash
-    git clone https://github.com/device-management-toolkit/cloud-deployment --branch v{{ repoVersion.oamtct }} --recursive
+    git clone https://github.com/device-management-toolkit/deployment --branch v{{ repoVersion.oamtct }} --recursive
     ```
 
-2. Change to the cloned `device-management-toolkit` directory.
+2. Change to the cloned `deployment` directory.
 
     ``` bash
-    cd device-management-toolkit
+    cd deployment
     ```
 
 ## Set Environment Variables
@@ -140,7 +140,7 @@ Set the shared secret used in Kong for JWT authentication.
 
     !!! warning "Warning - Container Issues"
 
-        If any of the above containers are not running, walk through the steps again or file a GitHub issue [here]( https://github.com/device-management-toolkit/cloud-deployment/issues).
+        If any of the above containers are not running, walk through the steps again or file a GitHub issue [here]( https://github.com/device-management-toolkit/deployment/issues).
 
         If the Kong container reloads repeatedly, verify kong.yaml edits. Misconfiguration of this file will cause the container to reload.
 
