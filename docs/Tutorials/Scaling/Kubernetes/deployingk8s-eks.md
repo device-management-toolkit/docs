@@ -17,10 +17,10 @@ Amazon EKS offers serverless Kubernetes, an integrated continuous integration an
 
 ## Get the Toolkit
 
-1. Clone the cloud-deployment repository.
+1. Clone the `deployment` repository.
 
     ```
-    git clone https://github.com/device-management-toolkit/cloud-deployment.git --branch v{{ repoVersion.oamtct }}
+    git clone https://github.com/device-management-toolkit/deployment.git --branch v{{ repoVersion.oamtct }}
     ```
 
 ## Create a New EKS Cluster
@@ -128,7 +128,7 @@ The Amazon EBS CSI plugin requires IAM permissions to make calls to Amazon APIs 
     ```
 
 ## Create Kubernetes Secrets 
-1. Open the `secrets.yaml` file in the `cloud-deployment/kubernetes/charts/` directory.
+1. Open the `secrets.yaml` file in the `deployment/kubernetes/charts/` directory.
 
     ??? note "Note - Additional Information about Secrets Created"
 
@@ -181,7 +181,7 @@ The Amazon EBS CSI plugin requires IAM permissions to make calls to Amazon APIs 
 
 ### Edit values.yaml
 
-1. Open the `values.yaml` file in the `./cloud-deployment/kubernetes/charts/` directory.
+1. Open the `values.yaml` file in the `./deployment/kubernetes/charts/` directory.
 
 2. Remove the **annotations** section and `service.beta.kubernetes.io/azure-dns-label-name` key in the `kong:` section. These are Azure-specific implementations.
 
@@ -259,7 +259,7 @@ The Amazon EBS CSI plugin requires IAM permissions to make calls to Amazon APIs 
 
 Add the root token as a secret to the AKS cluster so that the services can access Vault.
 
-1. Open the `secrets.yaml` file again in the `cloud-deployment/kubernetes/charts/` directory.
+1. Open the `secrets.yaml` file again in the `deployment/kubernetes/charts/` directory.
 
 2. Replace `<VAULT-ROOT-TOKEN>` in the `vaultKey:` field (line 66) with the actual Vault root token.
 
