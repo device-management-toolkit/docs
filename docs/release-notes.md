@@ -2,13 +2,11 @@
 
 !!! note "Note From the Team"
 
-    This release marks the beginning of the next evolution of our deployment experience. As part of this effort, the `cloud-deployment` repository has been renamed to `deployment` to better reflect its long-term direction of supporting both on-premises and cloud deployments from a common deployment framework.
+    This release marks an important milestone for rpc-go v3 (Beta) with the introduction of provisioning over the Local Manageability Engine (LME). For Linux users, this addresses a longstanding deployment pain point by enabling Intel® AMT provisioning on supported platforms without requiring Intel® LMS. It's important to note that this work is currently focused on provisioning. Other host-based capabilities that depend on Intel® LMS, such as host power management features (for example, Soft-On/Off), will continue to require LMS. We will continue expanding and hardening LME support over the coming releases.
 
-    The current production deployment assets remain available on the [`v2` branch](https://github.com/device-management-toolkit/deployment/tree/v2), which continues to be supported for existing deployments. New deployment capabilities and features are being developed on the `main` branch as we continue expanding Console support for both cloud and on-premises deployment scenarios. You can follow the latest work here: https://github.com/device-management-toolkit/deployment.
+    This release also introduces real-time provisioning progress, structured provisioning diagnostics in RPS, and expanded networking APIs that continue building toward richer device management experiences in MPS/Console.
 
-    This release also introduces a random administrator password during Console setup, continues the rollout of discovery and wireless profile management capabilities, and includes several quality improvements across Console, RPC-Go, Go WSMAN Messages, and the Sample Web UI.
-
-    In upcoming releases, you will continue to see investments in deployment capabilities, expanded discovery information (OS details such as OS version, CPU model, and network adapters; AMT fields such as TLS mode and DHCP status; and hardware insights like monitor detection), wireless profile management, AMT 22 platform support, installer enhancements, and additional device management capabilities across the toolkit.
+    In upcoming releases, you will continue to see investments in Console stability, usability, and user experience, along with continued enhancements to discovery and health checker capabilities. We're also getting very close to introducing Remote Platform Erase (RPE) support in both Console and MPS, with many more exciting features and improvements planned over the coming releases.
 
     Follow our [Sprint Board](https://github.com/orgs/device-management-toolkit/projects/10/views/2) to learn more and track upcoming features.
 
@@ -19,55 +17,55 @@
 
 ## 🚀 What's New?
 
-### Deployment Repository: Expanded Beyond Cloud Deployments
+### RPC-Go v3 (Beta): Local Manageability Engine (LME) Support
 
-The `cloud-deployment` repository has been renamed to `deployment` to better reflect its long-term direction. The repository is evolving to support multiple deployment models, including both on-premises and cloud deployments, from a common deployment framework.
+rpc-go v3 (Beta) now introduces support for communicating directly with the Intel® Local Manageability Engine (LME) driver, significantly reducing the dependency on Intel® Local Management Service.
 
-The current production deployment assets remain available on the [`v2` branch](https://github.com/device-management-toolkit/deployment/tree/v2), which continues to be supported for existing deployments. New deployment capabilities and features, however, are being developed on the `main` branch as Console expands its support for both cloud and on-premises deployment scenarios.
+This has been one of the most requested capabilities for Linux deployments, where Intel® LMS is often unavailable. The new LME transport enables provisioning, deactivation, upgrades, and local management workflows without requiring LMS.
 
-You can follow the latest deployment work in the `main` branch [here](https://github.com/device-management-toolkit/deployment).
+While rpc-go v3 remains in Beta, we encourage the community to begin testing these capabilities and sharing feedback. Additional resiliency improvements and remaining LME enhancements are already underway as we continue preparing rpc-go v3 for production readiness.
 
-### Console: Random Administrator Password on First Run
+### RPS & RPC-Go: Real-Time Provisioning Progress
 
-Console now generates a random administrator password during the initial setup, ensuring each installation starts with a unique administrator credential.
+Provisioning now reports real-time activation progress from RPS directly to rpc-go, allowing users to monitor each stage of the activation workflow as it happens instead of waiting until the operation completes.
 
-Users can update the generated password to a password of their choice as part of their normal deployment and security practices.
+In addition, provisioning results are now returned as structured per-component status, making it significantly easier to understand which provisioning step succeeded or failed when troubleshooting activation issues.
 
-!!! note
-    A dedicated Console installer is currently in development. Once available, the random password generation may no longer be required and could be removed in a future release.
+### MPS: Expanded Network Management APIs
 
-### Console & RPC-Go v3 (Beta): Discovery Improvements
+MPS continues to expand its network management capabilities with new APIs for wired network configuration, combined network settings, wireless radio state, wireless profile synchronization, and wireless profile retrieval.
 
-Support has been added for capturing Intel LMS installation status during device registration when using rpc-go v3 (Beta). Rpc-go v3 detects the presence of Intel LMS on the endpoint, and Console stores this information as part of the device details.
+### RPS & MPS: Persistent Provisioning Status
 
-This is the first of several planned discovery enhancements that will continue to expand the device information and health insights available in Console over the coming releases.
-
-### Go WSMAN Messages: Wireless Profile Management
-
-The Go WSMAN Messages library now includes the underlying support for Intel AMT WiFi profile management. In upcoming releases, these capabilities will be surfaced through new Console APIs and user interface enhancements, making wireless profile management easier and more intuitive.
+RPS now persists provisioning status to the device information stored in MPS. Users can query this status through the MPS API to review the current or most recent provisioning result for a device.
 
 ## 🧩 Enhancements & Improvements
 
-### Console: OAuth Configuration Improvements
+### RPC-Go v3 (Beta): Device Discovery
 
-Console now supports additional `AUTH_*` environment variables for OAuth configuration beyond the configuration file, providing greater flexibility when deploying Console in containerized and cloud environments.
+rpc-go v3 (Beta) now collects and synchronizes significantly more device information with Console during discovery and device registration, including operating system details, CPU information, networking information, Intel® AMT configuration, TLS settings, and other platform details.
 
-This is one of several ongoing improvements to support the evolving deployment architecture. Additional deployment capabilities and documentation will continue to be added to the `deployment` repository over the coming releases.
+We'll continue building on these discovery capabilities, with much more to come in future releases.
 
-### Console: Platform Information Improvements
+### Sample Web UI: Enterprise-Aware CIRA Experience
 
-Console now retrieves processor information using Enumerate/Pull operations, more accurately reports KVM availability after AMT feature configuration, and launches the browser using the configured Console host.
+The Sample Web UI now automatically enables or hides CIRA functionality based on the capabilities exposed by the connected server, providing a more streamlined experience across different deployment environments.
 
+### Go WSMAN Messages & WSMAN Messages: Continued Wireless Management Enhancements
+
+The underlying WS-MAN libraries continue to expand support for Intel® AMT wireless management, including additional WiFi management operations and improvements to tunneled communication over APF channels.
+
+These enhancements continue building toward richer wireless management capabilities that will be surfaced through future Console APIs and user interface improvements.
 
 ## 🔧 Fixes & Maintenance
 
-- RPC-Go fix to gracefully handle busy Intel ME watchdog (HECI) clients during `amtinfo`
+- RPS fixes for activation timeout handling, WiFi/proxy configuration handling, and domain certificate validation
 
-- Sample Web UI fixes for Intel AMT feature selection persistence and AUTH_MODE parsing
+- MPS fix to prevent Vault secrets from being deleted when the associated device lookup returns `null`
 
-- Go WSMAN Messages fixes for WiFi profile updates and UEFI WiFi profile handling
+- Go WSMAN Messages and WSMAN Messages improvements for WiFi management and APF tunneled communication
 
-- RPC-Go v3 (Beta) fixes for activation workflows, including CCM activation and local profile activation
+- Expanded automated fuzz testing coverage for rpc-go activation workflows
 
 - Minor dependency updates and general maintenance across toolkit components
 
@@ -75,114 +73,235 @@ Console now retrieves processor information using Enumerate/Pull operations, mor
   
 ### RPS
 
-#### [2.36.5](https://github.com/device-management-toolkit/rps/compare/v2.36.4...v2.36.5) (2026-06-03)
+#### [2.39.1](https://github.com/device-management-toolkit/rps/compare/v2.39.0...v2.39.1) (2026-07-01)
+
+#### [2.39.0](https://github.com/device-management-toolkit/rps/compare/v2.38.2...v2.39.0) (2026-07-01)
+
+Features
+
+* activation: persist provisioning status to MPS deviceInfo ([#2771](https://github.com/device-management-toolkit/rps/issues/2771)) ([1a22e3b](https://github.com/device-management-toolkit/rps/commit/1a22e3b6ecb85f391d29ea79bb1ef7e2c489de7b)), closes [#2665](https://github.com/device-management-toolkit/rps/issues/2665)
+
+#### [2.38.2](https://github.com/device-management-toolkit/rps/compare/v2.38.1...v2.38.2) (2026-07-01)
+
+Bug Fixes
+
+* db: dedupe profile wifi/proxy configs in Cartesian-product join ([#2770](https://github.com/device-management-toolkit/rps/issues/2770)) ([630f666](https://github.com/device-management-toolkit/rps/commit/630f666574c4c7913bd555def41f92bf68dc9679)), closes [#2665](https://github.com/device-management-toolkit/rps/issues/2665)
+
+#### [2.38.1](https://github.com/device-management-toolkit/rps/compare/v2.38.0...v2.38.1) (2026-07-01)
+
+Bug Fixes
+
+* dedupe wifi/proxy added & failed status lists ([#2766](https://github.com/device-management-toolkit/rps/issues/2766)) ([2d5d9a3](https://github.com/device-management-toolkit/rps/commit/2d5d9a30632479d51637efe25509f2f6c47dc492))
+
+#### [2.38.0](https://github.com/device-management-toolkit/rps/compare/v2.37.0...v2.38.0) (2026-07-01)
+
+Features
+
+* activation: stream real-time provisioning progress to rpc-go ([#2765](https://github.com/device-management-toolkit/rps/issues/2765)) ([4416fbb](https://github.com/device-management-toolkit/rps/commit/4416fbbfa4cd46494a7efd1ee5b0b073a4e3a86c)), closes [device-management-toolkit/rps#2665](https://github.com/device-management-toolkit/rps/issues/2665)
+
+#### [2.37.0](https://github.com/device-management-toolkit/rps/compare/v2.36.7...v2.37.0) (2026-07-01)
+
+Features
+
+* activation: structured per-component provisioning result ([#2744](https://github.com/device-management-toolkit/rps/issues/2744)) ([47f1166](https://github.com/device-management-toolkit/rps/commit/47f1166fb5be9cd590694ef0e2787af347d80683)), closes [#2665](https://github.com/device-management-toolkit/rps/issues/2665)
+
+#### [2.36.7](https://github.com/device-management-toolkit/rps/compare/v2.36.6...v2.36.7) (2026-06-30)
+
+Bug Fixes
+
+* Update the domain cert checking to cater for the edit of domain cert reupload ([#2757](https://github.com/device-management-toolkit/rps/issues/2757)) ([febfc0f](https://github.com/device-management-toolkit/rps/commit/febfc0ff632599fcf3391482c53ec25acf98426d))
+
+#### [2.36.6](https://github.com/device-management-toolkit/rps/compare/v2.36.5...v2.36.6) (2026-06-17)
+
+Bug Fixes
+
+* activation: don't retry one-shot ACM activation calls on timeout ([#2743](https://github.com/device-management-toolkit/rps/issues/2743)) ([0602b24](https://github.com/device-management-toolkit/rps/commit/0602b24e161a7f3be67969a0b93730a5be9fcb1c))
+
 
 ### MPS
 
-#### [2.26.7](https://github.com/device-management-toolkit/mps/compare/v2.26.6...v2.26.7) (2026-06-03)
+#### [2.32.2](https://github.com/device-management-toolkit/mps/compare/v2.32.1...v2.32.2) (2026-07-01)
+
+#### [2.32.1](https://github.com/device-management-toolkit/mps/compare/v2.32.0...v2.32.1) (2026-07-01)
+
+Bug Fixes
+
+* api: never delete Vault secrets on a null device lookup ([#2542](https://github.com/device-management-toolkit/mps/issues/2542)) ([78b2f4d](https://github.com/device-management-toolkit/mps/commit/78b2f4d1a364e97e544a9bbcc919c48bfd9d8476))
+
+#### [2.32.0](https://github.com/device-management-toolkit/mps/compare/v2.31.0...v2.32.0) (2026-06-26)
+
+Features
+
+* api: add get wireless profiles endpoint ([#2541](https://github.com/device-management-toolkit/mps/issues/2541)) ([117d97d](https://github.com/device-management-toolkit/mps/commit/117d97d80d0646dd2e4f39d276c911be3ff5d877))
+
+#### [2.31.0](https://github.com/device-management-toolkit/mps/compare/v2.30.0...v2.31.0) (2026-06-26)
+
+Features
+
+* api: add wireless profile sync endpoints ([#2540](https://github.com/device-management-toolkit/mps/issues/2540)) ([fead077](https://github.com/device-management-toolkit/mps/commit/fead0772579b449eb0b5899e4786e5e7c753ec1e))
+
+#### [2.30.0](https://github.com/device-management-toolkit/mps/compare/v2.29.0...v2.30.0) (2026-06-25)
+
+Features
+
+* api: add wireless radio state endpoints ([#2539](https://github.com/device-management-toolkit/mps/issues/2539)) ([266e2e6](https://github.com/device-management-toolkit/mps/commit/266e2e630b1e64202c16af211c53c00da45fcbd1))
+
+#### [2.29.0](https://github.com/device-management-toolkit/mps/compare/v2.28.0...v2.29.0) (2026-06-19)
+
+Features
+
+* api: add combined network settings endpoint ([#2536](https://github.com/device-management-toolkit/mps/issues/2536)) ([2abcac7](https://github.com/device-management-toolkit/mps/commit/2abcac72a95ee16f632fb8f464ae276610b8a9b9))
+
+#### [2.28.0](https://github.com/device-management-toolkit/mps/compare/v2.27.0...v2.28.0) (2026-06-19)
+
+Features
+
+* api: add patch wired network settings endpoint ([#2535](https://github.com/device-management-toolkit/mps/issues/2535)) ([abf3985](https://github.com/device-management-toolkit/mps/commit/abf3985b9ca2f8c9450510ab7138a3695017725c))
+
+#### [2.27.0](https://github.com/device-management-toolkit/mps/compare/v2.26.7...v2.27.0) (2026-06-19)
+
+Features
+
+* api: add get wired network settings endpoint ([#2534](https://github.com/device-management-toolkit/mps/issues/2534)) ([d082a38](https://github.com/device-management-toolkit/mps/commit/d082a38c8010d2a8b12b5da990525ddd9630e27f))
+
 
 ### RPC Go
 
-#### [2.50.8](https://github.com/device-management-toolkit/rpc-go/compare/v2.50.7...v2.50.8) (2026-06-03)
+#### [2.52.1](https://github.com/device-management-toolkit/rpc-go/compare/v2.52.0...v2.52.1) (2026-07-01)
 
-#### [2.50.7](https://github.com/device-management-toolkit/rpc-go/compare/v2.50.6...v2.50.7) (2026-05-28)
+#### [2.52.0](https://github.com/device-management-toolkit/rpc-go/compare/v2.51.0...v2.52.0) (2026-07-01)
+
+Features
+
+* rps: display real-time activation progress on the CLI ([#1391](https://github.com/device-management-toolkit/rpc-go/issues/1391)) ([241f53c](https://github.com/device-management-toolkit/rpc-go/commit/241f53c221b958a3b6d276a5bb46305a65e1a43d)), closes [device-management-toolkit/rps#2665](https://github.com/device-management-toolkit/rps/issues/2665)
+
+#### [2.51.0](https://github.com/device-management-toolkit/rpc-go/compare/v2.50.8...v2.51.0) (2026-07-01)
+
+Features
+
+* rps: display structured per-component activation result ([#1349](https://github.com/device-management-toolkit/rpc-go/issues/1349)) ([91260ad](https://github.com/device-management-toolkit/rpc-go/commit/91260ade241c412389154182b3475bef9c24118f)), closes [device-management-toolkit/rps#2665](https://github.com/device-management-toolkit/rps/issues/2665)
+
+### RPC-Go v3 (Beta)
+
+#### [3.0.0-beta.39](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.38...v3.0.0-beta.39) (2026-06-25)
+
+Features
+
+* include discovered flag in device sync payloads ([#1397](https://github.com/device-management-toolkit/rpc-go/issues/1397)) ([cf35329](https://github.com/device-management-toolkit/rpc-go/commit/cf353295882a0483ee6eecbce1957e4e38c8655e))
+
+#### [3.0.0-beta.38](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.37...v3.0.0-beta.38) (2026-06-25)
+
+Features
+
+* auto-register device on 404 and sync on activation lifecycle ([#1369](https://github.com/device-management-toolkit/rpc-go/issues/1369)) ([8909e5d](https://github.com/device-management-toolkit/rpc-go/commit/8909e5dbbba24be5872e742ffec216d90a3bcd0a))
+
+#### [3.0.0-beta.37](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.36...v3.0.0-beta.37) (2026-06-24)
+
+Features
+
+* Enabled ODCA verification for rpc-go activation ([cab9e79](https://github.com/device-management-toolkit/rpc-go/commit/cab9e7979f80b4ba42425a1514148a44f8b0bb88))
+
+#### [3.0.0-beta.36](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.35...v3.0.0-beta.36) (2026-06-24)
+
+#### [3.0.0-beta.35](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.34...v3.0.0-beta.35) (2026-06-19)
 
 Bug Fixes
 
-* handle busy watchdog HECI client in amtinfo ([#1343](https://github.com/device-management-toolkit/rpc-go/issues/1343)) ([b473599](https://github.com/device-management-toolkit/rpc-go/commit/b473599ef87ec8202ff9f5473f2296581714f89d))
+* Update fuzz tests to avoid panic supress with recoverPanic ([32b91da](https://github.com/device-management-toolkit/rpc-go/commit/32b91da5760aeb1e531f92c9c614ad22b16e2137))
+
+#### [3.0.0-beta.34](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.33...v3.0.0-beta.34) (2026-06-19)
+
+Bug Fixes
+
+* copilot fix ([2d4fa93](https://github.com/device-management-toolkit/rpc-go/commit/2d4fa938c8f855bf1c199e1948fdabb6dce3ce8c))
+* fix review comments ([20ff868](https://github.com/device-management-toolkit/rpc-go/commit/20ff868268196e26fb821b9ae8e9144a0158d038))
+* lme: fall back to LME on TLS-enforced AMT when LMS is unavailable ([f1a87e3](https://github.com/device-management-toolkit/rpc-go/commit/f1a87e365fbfd6a0bfabb0d08fa0944ebe6a62cb))
+* lme: make AMT 18.x LME activation reliable through TLS port switch ([7a279b9](https://github.com/device-management-toolkit/rpc-go/commit/7a279b940ec1eea00c62a8e77bdbb29de71d8c26))
+* lme: stabilize persistent APF TLS tunnel and channel-close recovery ([379298e](https://github.com/device-management-toolkit/rpc-go/commit/379298ea722f57cf9b083c08fedd98826f062114))
+* rps: copilot fix, avoid immediate reset after payload+channel-close ([fbcf8e0](https://github.com/device-management-toolkit/rpc-go/commit/fbcf8e0c5417936e7e610f532499122d4a5a5773))
+* rps: copilot fix, send APF close sentinel with bounded wait ([c369418](https://github.com/device-management-toolkit/rpc-go/commit/c36941812be795e206e1d673a9ae1366b1987a41))
+* rps: keep LME HECI handle open between requests ([b127efe](https://github.com/device-management-toolkit/rpc-go/commit/b127efe3252c7983723ab7c69f1e7a307a3b4d5c))
+
+#### [3.0.0-beta.33](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.32...v3.0.0-beta.33) (2026-06-18)
+
+Bug Fixes
+
+* remove cleartext HTTP from localTransport.go and engine.go ([19cdbf6](https://github.com/device-management-toolkit/rpc-go/commit/19cdbf6e333068de3048b58f75fed301321fd4fd))
+
+#### [3.0.0-beta.32](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.31...v3.0.0-beta.32) (2026-06-17)
+
+Features
+
+* SMBIOS UUID fallback for non-vPro device sync ([#1356](https://github.com/device-management-toolkit/rpc-go/issues/1356)) ([7f692f7](https://github.com/device-management-toolkit/rpc-go/commit/7f692f74f8ee6777918611baeb596c067f801848)), closes [#1355](https://github.com/device-management-toolkit/rpc-go/issues/1355)
+
+#### [3.0.0-beta.31](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.30...v3.0.0-beta.31) (2026-06-17)
+
+Bug Fixes
+
+* fixed copilot review comments ([1356c48](https://github.com/device-management-toolkit/rpc-go/commit/1356c485c65fd45eccfa26244d62a0751143f9df))
+
+#### [3.0.0-beta.30](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.29...v3.0.0-beta.30) (2026-06-15)
+
+Features
+
+* expand deviceInfo with discovery fields ([#1341](https://github.com/device-management-toolkit/rpc-go/issues/1341)) ([24170fc](https://github.com/device-management-toolkit/rpc-go/commit/24170fc4e584702510280315b130a76cb0b1aa05)), closes [#1340](https://github.com/device-management-toolkit/rpc-go/issues/1340)
 
 ### Sample Web UI
 
-#### [3.57.10](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.57.9...v3.57.10) (2026-06-03)
+#### [3.58.1](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.58.0...v3.58.1) (2026-07-01)
 
-#### [3.57.9](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.57.8...v3.57.9) (2026-05-27)
+#### [3.58.0](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.57.11...v3.58.0) (2026-06-11)
+
+Features
+
+* gate CIRA UI on server features API (enterprise) ([#3350](https://github.com/device-management-toolkit/sample-web-ui/issues/3350)) ([ed104ea](https://github.com/device-management-toolkit/sample-web-ui/commit/ed104ea31450887a433e7e170075d5279d49804c)), closes [#3200](https://github.com/device-management-toolkit/sample-web-ui/issues/3200)
+
+#### [3.57.11](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.57.10...v3.57.11) (2026-06-04)
 
 Bug Fixes
 
-* ensure amt features remain selected upon form re-entry ([#3343](https://github.com/device-management-toolkit/sample-web-ui/issues/3343)) ([e376bd5](https://github.com/device-management-toolkit/sample-web-ui/commit/e376bd5f604f27f326c88652052a4f7450aed809))
+* e2e: update cloud activation spec for tls-tunnel implementation ([#3352](https://github.com/device-management-toolkit/sample-web-ui/issues/3352)) ([3d2f199](https://github.com/device-management-toolkit/sample-web-ui/commit/3d2f199ce77c0d864c961e94ac6ead8dc45e13b7))
 
-#### [3.57.8](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.57.7...v3.57.8) (2026-05-26)
-
-Bug Fixes
-
-* correctly parse AUTH_MODE_ENABLED ([#3329](https://github.com/device-management-toolkit/sample-web-ui/issues/3329)) ([f4a6f9b](https://github.com/device-management-toolkit/sample-web-ui/commit/f4a6f9b4739ecdd0e93ec7b5dee952ac65a8d735))
 
 ### UI Toolkit
 
-#### [3.3.16](https://github.com/device-management-toolkit/ui-toolkit/compare/v3.3.15...v3.3.16) (2026-06-03)
+#### [3.3.17](https://github.com/device-management-toolkit/ui-toolkit/compare/v3.3.16...v3.3.17) (2026-07-01)
+
 
 ### UI Toolkit Angular
 
-#### [11.1.5](https://github.com/device-management-toolkit/ui-toolkit-angular/compare/v11.1.4...v11.1.5) (2026-06-03)
+#### [11.1.6](https://github.com/device-management-toolkit/ui-toolkit-angular/compare/v11.1.5...v11.1.6) (2026-07-01)
+
 
 ### UI Toolkit React
 
-#### [5.0.5](https://github.com/device-management-toolkit/ui-toolkit-react/compare/v5.0.4...v5.0.5) (2026-06-03)
+#### [5.0.6](https://github.com/device-management-toolkit/ui-toolkit-react/compare/v5.0.5...v5.0.6) (2026-07-01)
 
-### Console
-
-#### [1.29.1](https://github.com/device-management-toolkit/console/compare/v1.29.0...v1.29.1) (2026-06-04)
-
-#### [1.29.0](https://github.com/device-management-toolkit/console/compare/v1.28.1...v1.29.0) (2026-06-01)
-
-Features
-
-* store lmsInstalled in deviceInfo JSON column ([#905](https://github.com/device-management-toolkit/console/issues/905)) ([f01cb2b](https://github.com/device-management-toolkit/console/commit/f01cb2b4f599dad6a215a5574cc9e44fb8f23e1c)), closes [device-management-toolkit/rpc-go#1246](https://github.com/device-management-toolkit/rpc-go/issues/1246)
-
-#### [1.28.1](https://github.com/device-management-toolkit/console/compare/v1.28.0...v1.28.1) (2026-05-27)
-
-Bug Fixes
-
-* ensure kvmavailable is returned accurately upon amtfeature set ([#1030](https://github.com/device-management-toolkit/console/issues/1030)) ([1d0d432](https://github.com/device-management-toolkit/console/commit/1d0d432092966454da72f54aad29901002d7a89b))
-
-#### [1.28.0](https://github.com/device-management-toolkit/console/compare/v1.27.5...v1.28.0) (2026-05-27)
-
-Features
-
-* adds support for randomly generated admin password on first run ([d60f24c](https://github.com/device-management-toolkit/console/commit/d60f24c96d24f63c230f3bd219106a8dfd822993))
-
-#### [1.27.5](https://github.com/device-management-toolkit/console/compare/v1.27.4...v1.27.5) (2026-05-27)
-
-Bug Fixes
-
-* fetch processor info via Enumerate/Pull instead of Get ([#1028](https://github.com/device-management-toolkit/console/issues/1028)) ([6d891f3](https://github.com/device-management-toolkit/console/commit/6d891f3d6eadeb18aad7c2856e7dba7b908a46d3))
-
-#### [1.27.4](https://github.com/device-management-toolkit/console/compare/v1.27.3...v1.27.4) (2026-05-25)
-
-Bug Fixes
-
-* default browser launch host to configured host ([#1015](https://github.com/device-management-toolkit/console/issues/1015)) ([5a076ce](https://github.com/device-management-toolkit/console/commit/5a076cef2bb0bd09e640ce613871f8d011445451))
-
-#### [1.27.3](https://github.com/device-management-toolkit/console/compare/v1.27.2...v1.27.3) (2026-05-22)
-
-Bug Fixes
-
-* allow AUTH_ env vars for OAuth Configuration beyond just config ([5e11665](https://github.com/device-management-toolkit/console/commit/5e116650985e188142fef17933cfd095d2d29cf0))
 
 ### Go WSMAN Messages
 
-#### [2.47.2](https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.47.1...v2.47.2) (2026-06-03)
+#### [2.48.1](https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.48.0...v2.48.1) (2026-07-01)
 
-Bug Fixes
-
-* Remove wiFiPortConfigurationService Put post-processes check ([#706](https://github.com/device-management-toolkit/go-wsman-messages/issues/706)) ([5276af1](https://github.com/device-management-toolkit/go-wsman-messages/commit/5276af138bd79737bf416f5a92b9678f236c0d27))
-
-#### [2.47.1](https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.47.0...v2.47.1) (2026-06-03)
-
-Bug Fixes
-
-* Remove omitempty from UEFIWiFiProfileShareEnabled ([#705](https://github.com/device-management-toolkit/go-wsman-messages/issues/705)) ([b5e72ad](https://github.com/device-management-toolkit/go-wsman-messages/commit/b5e72ad02166c39c249e937f8d682e6d826c0544))
-
-#### [2.47.0](https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.46.1...v2.47.0) (2026-06-03)
+#### [2.48.0](https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.47.2...v2.48.0) (2026-06-11)
 
 Features
 
-* add update wifi profile wsman adapter ([#686](https://github.com/device-management-toolkit/go-wsman-messages/issues/686)) ([3fb0776](https://github.com/device-management-toolkit/go-wsman-messages/commit/3fb07769fe6e52b1c24696a98e027d8d35350226))
+* apf: support tunneled channel streams; fix close and cancel replies ([#682](https://github.com/device-management-toolkit/go-wsman-messages/issues/682)) ([de80d31](https://github.com/device-management-toolkit/go-wsman-messages/commit/de80d318d93b63c4d9c1f68f7ef343d666893d4c))
+
 
 ### WSMAN Messages
 
-#### [6.0.3](https://github.com/device-management-toolkit/wsman-messages/compare/v6.0.2...v6.0.3) (2026-06-03)
+#### [6.1.2](https://github.com/device-management-toolkit/wsman-messages/compare/v6.1.1...v6.1.2) (2026-07-01)
+
+#### [6.1.1](https://github.com/device-management-toolkit/wsman-messages/compare/v6.1.0...v6.1.1) (2026-07-01)
+
+#### [6.1.0](https://github.com/device-management-toolkit/wsman-messages/compare/v6.0.3...v6.1.0) (2026-06-24)
+
+Features
+
+* amt: add UpdateWiFiSettings to WiFiPortConfigurationService ([#1299](https://github.com/device-management-toolkit/wsman-messages/issues/1299)) ([b6557d5](https://github.com/device-management-toolkit/wsman-messages/commit/b6557d5d6f3dce04a5d6babb9160fa4b7b497b6e)), closes [#1298](https://github.com/device-management-toolkit/wsman-messages/issues/1298)
+
 
 ### MPS Router
 
-#### [2.5.11](https://github.com/device-management-toolkit/mps-router/compare/v2.5.10...v2.5.11) (2026-06-03)
+#### [2.5.12](https://github.com/device-management-toolkit/mps-router/compare/v2.5.11...v2.5.12) (2026-07-01)
