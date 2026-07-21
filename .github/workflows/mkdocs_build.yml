@@ -37,6 +37,8 @@ jobs:
           egress-policy: audit
 
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.11"
@@ -46,7 +48,8 @@ jobs:
           pip install -r ./requirements.txt --require-hashes
           mkdocs build --strict
       #checkout the gh-pages branch
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # credentials must persist here: the "Publish content" step pushes to gh-pages
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1 # zizmor: ignore[artipacked]
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
           path: "to-be-published"
@@ -65,5 +68,5 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
-          git commit -m "ci: ${{env.MESSAGE}}"
+          git commit -m "ci: $MESSAGE"
           git push origin gh-pages
