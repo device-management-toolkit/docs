@@ -1,0 +1,25 @@
+.divider {
+    border-top: 3px solid #0068B5;
+    padding-bottom: 40px;
+}
+
+@media screen and (max-width: 500px) {
+  .home-nav-column {
+    width: 100%;
+    display: block;
+  }
+}
+
+@media screen and (min-width: 501px) and (max-width: 900px) {
+  .home-nav-column {
+    width: 46%;
+    display: block;
+  }
+}
+
+/* Make main navigation section titles slightly larger */
+.md-nav__item--section > .md-nav__link,
+.md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link {
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+}
