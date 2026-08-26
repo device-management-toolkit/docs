@@ -3,5 +3,5 @@ mkdocs-macros-plugin==1.5.0
 mkdocs-material==9.7.7
 mkdocs-mermaid2-plugin==1.2.3
 mkdocs-render-swagger-plugin==0.1.2
-pymdown-extensions>=11.0.1
+pymdown-extensions>=11.0.2
 click>=8.4.2
