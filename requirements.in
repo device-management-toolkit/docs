@@ -4,4 +4,4 @@ mkdocs-material==9.7.7
 mkdocs-mermaid2-plugin==1.2.3
 mkdocs-render-swagger-plugin==0.1.2
 pymdown-extensions>=11.0.2
-click>=8.4.2
+click>=8.5.0
