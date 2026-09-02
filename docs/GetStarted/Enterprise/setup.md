@@ -64,10 +64,20 @@
     http:
       host: ""
       port: "8181"
+      # Origins allowed to make cross-origin calls and to open a redirection
+      # (KVM/SOL/IDER) websocket. Replace with the origin your UI is served
+      # from. Never use "*": it exposes every API response to any site, and the
+      # relay refuses cross-origin handshakes while it is set.
       allowed_origins:
-        - "*"
+        - "https://console.example.com"
       allowed_headers:
-        - "*"
+        - "Origin"
+        - "Accept"
+        - "Content-Type"
+        - "Content-Length"
+        - "Authorization"
+        - "If-Match"
+      allow_credentials: true
       ws_compression: true
       tls:
         enabled: true
