@@ -147,6 +147,7 @@ nav:
         - CIRA: Reference/Console/Features/cira.md
         - One Click Recovery: Reference/Console/Features/ocr.md
         - WSMAN Explorer: Reference/Console/Features/wsmanExplorer.md
+        - Remote Platform Erase: Reference/Console/Features/rpe.md
     - Enterprise Assistant:
       - Overview: Reference/EA/overview.md
       - TLS Certificate Template: Reference/EA/tlsCertTemplate.md
