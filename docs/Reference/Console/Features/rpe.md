@@ -15,7 +15,6 @@ The platform provides multiple remote erase actions:
 | **Secure Erase SSDs** | Wipes all SSD drives securely |
 | **Clear TPM** | Clears TPM data and persistent keys |
 | **Restore BIOS** | Restores BIOS settings to OEM golden state |
-| **Fourth Capability** | Reserved/Firmware-specific action |
 
 ---
 
