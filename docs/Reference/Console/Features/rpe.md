@@ -1,143 +1,199 @@
-# Remote Platform Erase (RPE) Tutorial
 
-This tutorial provides step-by-step instructions on how to use the **Remote Platform Erase (RPE)** feature in the Device Management Console. RPE is a powerful capability used to securely reset and sanitize supported Intel vPro® systems remotely.
 
----
+Remote Platform Erase (RPE) lets IT administrators remotely sanitize a supported Intel vPro® system and restore it to a known manufacturer baseline (its "golden state") using Intel AMT's out-of-band (OOB) connection. It is used when decommissioning systems, preparing devices for reuse, or recovering a machine from a compromised state.
 
-## Overview
+## Supported Erase Options
 
-Remote Platform Erase (RPE) allows administrators to securely sanitize and restore systems to a known manufacturer baseline ("golden state"). This capability is essential for decommissioning systems, preparing devices for reuse, or recovering from a compromised state.
+RPE supports three erase actions, which can be selected individually or together:
 
-The platform provides multiple remote erase actions:
+- **Secure Erase SSDs**: Securely wipes the attached SSDs.
 
-| Erase Capability | Description |
-|:---|:---|
-| **Secure Erase SSDs** | Wipes all SSD drives securely |
-| **Clear TPM** | Clears TPM data and persistent keys |
-| **Restore BIOS** | Restores BIOS settings to OEM golden state |
+- **Clear TPM**: Clears TPM data and persistent keys.
+
+- **Restore BIOS to OEM Config**: Restores BIOS settings to the OEM golden state.
+
+!!! danger "This Operation Is Irreversible"
+
+    RPE permanently destroys data on the target system. Erased drives, cleared TPM keys, and overwritten BIOS settings cannot be recovered. Confirm you have selected the correct device before initiating an erase.
+
+## Where to Start
+
+- To confirm the device can run RPE and expose the feature in Console, start with [Verify and Enable RPE Support](#verify-and-enable-rpe-support).
+- To run an erase on a device that is already enabled, go to [Triggering a Remote Platform Erase](#triggering-a-remote-platform-erase).
+- To confirm the erase completed as expected, continue with [Verifying the Erase](#verifying-the-erase).
 
 ---
 
 ## Prerequisites
 
 Before using RPE, ensure the target system meets the following requirements:
-* **Intel AMT Version:** Intel AMT 16.0 or above.
-* **Hardware Support:** Both BIOS and firmware must explicitly support RPE.
-* **Enabled Feature:** The RPE feature must be enabled under the device settings in the Console.
+
+1. The device must be running **Intel AMT 16.0 or above**.
+
+2. Both the **BIOS and firmware** must explicitly support Remote Platform Erase. Support is per-capability — a device may support Clear TPM but not Secure Erase SSDs, for example.
+
+3. The **Remote Platform Erase** feature must be enabled for the device in Console. See [Verify and Enable RPE Support](#verify-and-enable-rpe-support) below.
+
+    !!! info "Checking Capability Support"
+
+        Console reads the supported erase capabilities directly from AMT. If a capability is not listed under **AMT Enabled Features**, the platform does not support it and no Console setting will make it available.
 
 ---
 
-## Step 1: Verify and Enable RPE Support
+## Verify and Enable RPE Support
 
-1. In the **Device Management Console**, select your target device from the list.
-   
-   ![01_device_list.png](./images/01_device_list.png)  
-   *Caption: Device Management Console listing registered vPro devices.*
+1. Open Console and navigate to the **Devices** tab on the left-hand menu, then select your target device.
 
-2. Select a device (e.g., ASUS NUC) and under the **AMT Enabled Features** panel on the right, verify that **Remote Platform Erase** is supported and listed.
-   
-   ![02_verify_rpe_support.png](./images/02_verify_rpe_support.png)  
-   *Caption: Verifying RPE capability support under AMT Enabled Features on the right side panel.*
+    <figure class="figure-image">
+      <img src="..\..\..\..\assets\images\screenshots\RPE_Device_List.png" alt="Figure 1: Device list in Console">
+    </figure>
 
-3. Toggle the option to **Enable** if it is currently disabled. This action syncs the capability with the platform UI and displays the **Remote Platform Erase** tab on the left navigation panel.
-   
-   ![03_rpe_tab_visible.png](./images/03_rpe_tab_visible.png)  
-   *Caption: Enabling RPE to reveal the Remote Platform Erase tab in the left-hand navigation.*
+2. In the **General AMT Info** section, check the **AMT Enabled Features** panel and confirm **Remote Platform Erase** is listed.
 
-> **Note on Unsupported Devices:** If a device does not support RPE, the toggle will display "Remote Platform Erase is not supported" and the options will remain unavailable. The tab on the left navigation will still appear but will clearly state that the feature is unsupported.
-> 
-> ![04_unsupported_device.png](./images/04_unsupported_device.png)  
-> *Caption: View of the RPE tab on an unsupported system.*
+    !!! question "Is Remote Platform Erase supported?"
 
----
+        See the snapshot below — if the **Remote Platform Erase** field shows **Supported**, the feature is available on this device.
 
-## Step 2: Prepare and Modify System State (Testing/Demo Setup)
+    <figure class="figure-image">
+      <img src="..\..\..\..\assets\images\screenshots\RPE_Supported_Features.png" alt="Figure 2: Verify Remote Platform Erase support under AMT Enabled Features">
+    </figure>
 
-To demonstrate or test the capabilities of RPE, you can manually modify the target system's state before running the erase operation:
+3. Toggle **Remote Platform Erase** to **Enabled**. Console syncs the capability and adds the **Remote Platform Erase** tab to the left-hand navigation for that device.
 
-### A. Verify TPM Initial State
-1. Open a terminal on the target system (or connect via SSH/KVM).
-2. Run the following command to check if there are any persistent handles or keys currently stored in the TPM:
-   ```bash
-   sudo tpm2_getcap handles-persistent
-   ```
-3. Confirm that the TPM returns active persistent handle addresses (indicating existing data).
+    <figure class="figure-image">
+      <img src="..\..\..\..\assets\images\screenshots\RPE_Tab_Enabled.png" alt="Figure 3: Remote Platform Erase tab in the left-hand navigation">
+    </figure>
 
-   ![05_tpm_before_erase.png](./images/05_tpm_before_erase.png)  
-   *Caption: Command terminal showing active persistent TPM handles prior to initiating the clear action.*
+    !!! note "Unsupported Devices"
 
-### B. Manually Modify BIOS Settings
-1. Boot the device into BIOS (accessible via **KVM** or manual reboot).
-2. Navigate to the power and thermal settings and make the following changes to demonstrate restoration:
-   * **Ambient Temperature Tolerance:** Change from the default `35°C` to `40°C`.
-   * **Dynamic Support Options:** Disable/uncheck specific dynamic support options.
-   * **After Power Failure:** Under *Secondary Power Settings*, change the configuration from the default `Always Power Off` to `Power On`.
+        On a device that does not support RPE, the toggle reads *Remote Platform Erase is not supported* and the options stay unavailable. The tab still appears in the left-hand navigation, but states that the feature is unsupported.
 
-   ![06_modify_bios_thermal.png](./images/06_modify_bios_thermal.png)  
-   *Caption: Modifying BIOS thermal thresholds and unchecking dynamic support in KVM.*
-
-   ![07_modify_bios_power.png](./images/07_modify_bios_power.png)  
-   *Caption: Changing the After Power Failure setting from Always Power Off to Power On.*
-
-3. Save the changes and exit.
+        <figure class="figure-image">
+          <img src="..\..\..\..\assets\images\screenshots\RPE_Not_Supported.png" alt="Figure 4: Remote Platform Erase tab on an unsupported device">
+        </figure>
 
 ---
 
-## Step 3: Execute Remote Platform Erase
+## Preparing a Test Device (Optional)
 
-Once the system state has been prepared, you can initiate the erase process:
+If you are demonstrating or validating RPE rather than erasing a production machine, change the device's state first so the restoration is visible afterwards. Skip this section for a real erase.
 
-1. In the device detail view, navigate to the **Remote Platform Erase** tab on the left navigation menu.
-2. Select the erase options you wish to execute:
-   * [x] **Clear TPM**
-   * [x] **Restore BIOS to OEM Config**
-   * [ ] **Secure Erase SSDs** *(Optional)*
-3. Click the **Initiate Erase** button at the top right.
+### Record the TPM State
 
-   ![08_select_erase_capabilities.png](./images/08_select_erase_capabilities.png)  
-   *Caption: Selecting Clear TPM and Restore BIOS options in the Remote Platform Erase panel.*
+1. Open a terminal on the target system, either locally, over SSH, or via a KVM session.
 
-4. A warning modal will pop up to prevent accidental execution:
-   > **Did you want?**
-   > Erase and restart the vPro system. Please click YES to run. This will perform the TPM clear and the restore BIOS to OEM state. This action is irreversible.
-   
-   ![09_erase_warning_dialog.png](./images/09_erase_warning_dialog.png)  
-   *Caption: Confirmation warning dialog explaining that the operation is irreversible.*
+2. List the persistent handles currently stored in the TPM:
 
-5. Click **YES** to confirm.
-6. The target system will automatically reboot and start the secure erasure and restoration processes.
+    ```bash
+    sudo tpm2_getcap handles-persistent
+    ```
 
-   ![10_system_rebooting.png](./images/10_system_rebooting.png)  
-   *Caption: KVM screen showing the system rebooting automatically to apply the RPE commands.*
+3. Confirm the command returns active persistent handle addresses, indicating existing TPM data.
+
+    <figure class="figure-image">
+      <img src="..\..\..\..\assets\images\screenshots\RPE_TPM_Before.png" alt="Figure 5: Persistent TPM handles before the erase">
+    </figure>
+
+### Change BIOS Settings
+
+1. Boot the device into BIOS, either through **KVM** or a manual reboot.
+
+2. Under the power and thermal settings, change the following values away from their defaults:
+
+    | Setting | Default | Change To |
+    |:---|:---|:---|
+    | Ambient Temperature Tolerance | `35°C` | `40°C` |
+    | Dynamic Support Options | Enabled | Disabled |
+    | After Power Failure *(Secondary Power Settings)* | `Always Power Off` | `Power On` |
+
+    <figure class="figure-image">
+      <img src="..\..\..\..\assets\images\screenshots\RPE_BIOS_Thermal_Modified.png" alt="Figure 6: Modified BIOS thermal thresholds and dynamic support options">
+    </figure>
+
+    <figure class="figure-image">
+      <img src="..\..\..\..\assets\images\screenshots\RPE_BIOS_Power_Modified.png" alt="Figure 7: After Power Failure changed from Always Power Off to Power On">
+    </figure>
+
+3. Save the changes and exit BIOS.
+
+---
+
+## Triggering a Remote Platform Erase
+
+1. In the device detail view, select the **Remote Platform Erase** tab in the left-hand navigation.
+
+2. Select the erase capabilities to run. Any combination of the supported options can be selected:
+
+    - **Clear TPM**
+    - **Restore BIOS to OEM Config**
+    - **Secure Erase SSDs**
+
+    <figure class="figure-image">
+      <img src="..\..\..\..\assets\images\screenshots\RPE_Select_Options.png" alt="Figure 8: Selecting erase capabilities in the Remote Platform Erase panel">
+    </figure>
+
+3. Optionally, start a **KVM session** if you want to observe the reboot and erase process.
+
+4. Click **Initiate Erase** in the top right.
+
+5. Review the confirmation dialog, which describes exactly which actions will run, and click **YES** to confirm.
+
+    !!! warning "Point of No Return"
+
+        Clicking **YES** immediately restarts the device and applies the selected erase actions. There is no cancel or undo once the operation begins.
+
+    <figure class="figure-image">
+      <img src="..\..\..\..\assets\images\screenshots\RPE_Confirm_Dialog.png" alt="Figure 9: Confirmation dialog warning that the operation is irreversible">
+    </figure>
+
+6. The device restarts automatically and performs the selected erase and restore actions during boot.
+
+    <figure class="figure-image">
+      <img src="..\..\..\..\assets\images\screenshots\RPE_System_Reboot.png" alt="Figure 10: KVM view of the system rebooting to apply the RPE commands">
+    </figure>
 
 ---
 
-## Step 4: Post-Execution Verification
+## Verifying the Erase
 
-After the system completes the reboot cycle, verify that RPE was executed successfully:
+Once the device has finished its reboot cycle, confirm each selected capability was applied.
 
-### A. Confirm TPM is Cleared
-1. Log back into the target system.
-2. Open a terminal and run the TPM status command again:
-   ```bash
-   sudo tpm2_getcap handles-persistent
-   ```
-3. Confirm that the command returns no persistent handles, showing that the TPM has been fully cleared.
+### Confirm the TPM Was Cleared
 
-   ![11_tpm_after_erase.png](./images/11_tpm_after_erase.png)  
-   *Caption: Terminal output confirming that no persistent TPM handles remain after RPE execution.*
+1. Log back into the target system and open a terminal.
 
-### B. Confirm BIOS Settings are Restored
-1. Access the BIOS configuration on the target system via KVM.
-2. Verify that the settings have been restored to default manufacturer defaults:
-   * **Ambient Temperature Tolerance:** Restored back to the default `35°C`.
-   * **Dynamic Support Options:** Re-enabled/checked.
-   * **After Power Failure:** Restored back to the default `Always Power Off`.
+2. Run the TPM capability command again:
 
-   ![12_verified_bios_thermal.png](./images/12_verified_bios_thermal.png)  
-   *Caption: KVM view of BIOS thermal settings restored to default manufacturer configurations.*
+    ```bash
+    sudo tpm2_getcap handles-persistent
+    ```
 
-   ![13_verified_bios_power.png](./images/13_verified_bios_power.png)  
-   *Caption: KVM view of Secondary Power Settings showing the power recovery option successfully reset to default.*
+3. Confirm the command returns no persistent handles, showing the TPM has been fully cleared.
+
+    <figure class="figure-image">
+      <img src="..\..\..\..\assets\images\screenshots\RPE_TPM_After.png" alt="Figure 11: No persistent TPM handles remain after the erase">
+    </figure>
+
+### Confirm the BIOS Was Restored
+
+1. Boot into BIOS on the target system through KVM.
+
+2. Confirm the settings changed earlier are back at their manufacturer defaults:
+
+    | Setting | Restored Value |
+    |:---|:---|
+    | Ambient Temperature Tolerance | `35°C` |
+    | Dynamic Support Options | Enabled |
+    | After Power Failure *(Secondary Power Settings)* | `Always Power Off` |
+
+    <figure class="figure-image">
+      <img src="..\..\..\..\assets\images\screenshots\RPE_BIOS_Thermal_Restored.png" alt="Figure 12: BIOS thermal settings restored to manufacturer defaults">
+    </figure>
+
+    <figure class="figure-image">
+      <img src="..\..\..\..\assets\images\screenshots\RPE_BIOS_Power_Restored.png" alt="Figure 13: Secondary Power Settings reset to the default power recovery option">
+    </figure>
 
 ---
+
+If you see any issues, please log them on our [GitHub Issues page](https://github.com/device-management-toolkit/console/issues) or reach out to us on our **Discord channel**.
