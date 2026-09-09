@@ -23,6 +23,11 @@ Configure and use One Click Recovery to reimage devices remotely.
 
 [Explore OCR](./ocrTutorial.md){: .md-button .md-button--primary }
 
+### Remote Platform Erase (RPE)
+Use Remote Platform Erase to securely sanitize and restore supported devices.
+
+[Explore RPE](./rpeTutorial.md){: .md-button .md-button--primary }
+
 ## Integration
 
 ### REST API Call
