@@ -1,5 +1,5 @@
 
-Intel® Remote Platform Erase (RPE) lets IT administrators remotely sanitize a supported Intel vPro® system and restore it to a known manufacturer baseline (its "golden state") using Intel AMT's out-of-band (OOB) connection. It is used when decommissioning systems, preparing devices for reuse, or recovering a machine from a compromised state.
+Intel® Remote Platform Erase (RPE) lets IT administrators remotely wipe a supported Intel vPro® system and restore it to a known manufacturer baseline (its "golden state") using Intel AMT's out-of-band (OOB) connection. It is used when decommissioning systems, preparing devices for reuse, or recovering a machine from a compromised state.
 
 ## Supported Erase Options
 
@@ -7,7 +7,7 @@ RPE supports three erase actions, which can be selected individually or together
 
 - **Secure Erase SSDs**: Securely wipes the attached SSDs.
 
-- **Clear TPM**: Clears TPM data and persistent keys.
+- **Clear Trusted Platform Module (TPM)**: Clears TPM data and persistent keys.
 
 - **Restore BIOS**: Restores BIOS settings to the OEM golden state.
 
@@ -17,7 +17,7 @@ RPE supports three erase actions, which can be selected individually or together
 
 ## Where to Start
 
-- To confirm the device can run RPE and expose the feature in Console, start with [Verify and Enable RPE Support](#verify-and-enable-rpe-support).
+- To confirm the device can run RPE and exposes the feature, start with [Verify and Enable RPE Support](#verify-and-enable-rpe-support).
 - To run an erase on a device that is already enabled, go to [Triggering a Remote Platform Erase](#triggering-a-remote-platform-erase).
 
 ---

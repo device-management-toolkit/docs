@@ -1,5 +1,5 @@
 
-Intel® Remote Platform Erase (RPE) lets IT administrators remotely sanitize a supported Intel vPro® system and restore it to a known manufacturer baseline (its "golden state") using Intel AMT's out-of-band (OOB) connection. It is used when decommissioning systems, preparing devices for reuse, or recovering a machine from a compromised state.
+Intel® Remote Platform Erase (RPE) lets IT administrators remotely wipe a supported Intel vPro® system and restore it to a known manufacturer baseline (its "golden state") using Intel AMT's out-of-band (OOB) connection. It is used when decommissioning systems, preparing devices for reuse, or recovering a machine from a compromised state.
 
 ## Supported Erase Options
 
