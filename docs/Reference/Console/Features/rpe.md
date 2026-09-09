@@ -21,9 +21,7 @@ RPE supports three erase actions, which can be selected individually or together
 - To confirm the device can run RPE and expose the feature in Console, start with [Verify and Enable RPE Support](#verify-and-enable-rpe-support).
 - To run an erase on a device that is already enabled, go to [Triggering a Remote Platform Erase](#triggering-a-remote-platform-erase).
 - To confirm the erase completed as expected, continue with [Verifying the Erase](#verifying-the-erase).
-
 ---
-
 ## Prerequisites
 
 Before using RPE, ensure the target system meets the following requirements:
@@ -60,18 +58,9 @@ Before using RPE, ensure the target system meets the following requirements:
 
 3. Toggle **Remote Platform Erase** to **Enabled**. Console syncs the capability and adds the **Remote Platform Erase** tab to the left-hand navigation for that device.
 
-    <figure class="figure-image">
-      <img src="..\..\..\..\assets\images\screenshots\RPE_Tab_Enabled.png" alt="Figure 3: Remote Platform Erase tab in the left-hand navigation">
-    </figure>
-
     !!! note "Unsupported Devices"
 
         On a device that does not support RPE, the toggle reads *Remote Platform Erase is not supported* and the options stay unavailable. The tab still appears in the left-hand navigation, but states that the feature is unsupported.
-
-        <figure class="figure-image">
-          <img src="..\..\..\..\assets\images\screenshots\RPE_Not_Supported.png" alt="Figure 4: Remote Platform Erase tab on an unsupported device">
-        </figure>
-
 ---
 
 ## Preparing a Test Device (Optional)
@@ -148,10 +137,7 @@ If you are demonstrating or validating RPE rather than erasing a production mach
 
 6. The device restarts automatically and performs the selected erase and restore actions during boot.
 
-    <figure class="figure-image">
-      <img src="..\..\..\..\assets\images\screenshots\RPE_System_Reboot.png" alt="Figure 10: KVM view of the system rebooting to apply the RPE commands">
-    </figure>
-
+   
 ---
 
 ## Verifying the Erase
@@ -170,9 +156,6 @@ Once the device has finished its reboot cycle, confirm each selected capability 
 
 3. Confirm the command returns no persistent handles, showing the TPM has been fully cleared.
 
-    <figure class="figure-image">
-      <img src="..\..\..\..\assets\images\screenshots\RPE_TPM_After.png" alt="Figure 11: No persistent TPM handles remain after the erase">
-    </figure>
 
 ### Confirm the BIOS Was Restored
 
