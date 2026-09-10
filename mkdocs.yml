@@ -56,7 +56,7 @@ nav:
       - License: license.md
       - Get Help:
           - FAQ: Reference/faq.md
-          - Glossary: Glossary.md      
+          - Glossary: Glossary.md
           - Troubleshooting: Reference/troubleshooting.md
   - Get Started:
       - Overview: GetStarted/overview.md
@@ -106,7 +106,8 @@ nav:
       - Wireless Activation: Tutorials/createWiFiConfig.md
       - Modify User Authentication: Tutorials/modifyUserAuth.md
       - One Click Recovery (OCR): Tutorials/ocrTutorial.md
-      - Localization:   
+      - Remote Platform Erase (RPE): Tutorials/rpeTutorial.md
+      - Localization:
           - Console: Tutorials/Localization/consoleLocalization.md
           - Sample Web UI: Tutorials/Localization/webuiLocalization.md
       - Scaling Tutorials:
@@ -147,6 +148,7 @@ nav:
         - CIRA: Reference/Console/Features/cira.md
         - One Click Recovery: Reference/Console/Features/ocr.md
         - WSMAN Explorer: Reference/Console/Features/wsmanExplorer.md
+        - Remote Platform Erase: Reference/Console/Features/rpe.md
     - Enterprise Assistant:
       - Overview: Reference/EA/overview.md
       - TLS Certificate Template: Reference/EA/tlsCertTemplate.md
