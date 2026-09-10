@@ -1,5 +1,5 @@
 
-Intel® Remote Platform Erase (RPE) lets IT administrators remotely wipe a supported Intel vPro® system and restore it to a known manufacturer baseline (its "golden state") using Intel AMT's out-of-band (OOB) connection. It is used when decommissioning systems, preparing devices for reuse, or recovering a machine from a compromised state.
+Intel® Remote Platform Erase (RPE) allows IT administrators to remotely wipe a supported Intel vPro® system and restore it to a known manufacturer baseline (its "golden state") using Intel AMT's out-of-band (OOB) connection. It is used when decommissioning systems, preparing devices for reuse, or recovering a machine from a compromised state.
 
 ## Supported Erase Options
 
@@ -53,9 +53,9 @@ Before using RPE, ensure the target system meets the following requirements:
 
         See the snapshot below — if the **Remote Platform Erase** field shows **Supported**, the feature is available on this device.
 
-    <<figure class="figure-image">
+    <figure class="figure-image">
       <img src="../../assets/images/screenshots/RPE_Supported_Features.png" alt="Figure 2: Verify Remote Platform Erase support under AMT Enabled Features">
-    </figure>>
+    </figure>
 
 3. Toggle **Remote Platform Erase** to **Enabled**. Console syncs the capability and adds the **Remote Platform Erase** tab to the left-hand navigation for that device.
 
@@ -125,7 +125,7 @@ If you are demonstrating or validating RPE rather than erasing a production mach
 
 3. Optionally, start a **KVM session** if you want to observe the reboot and erase process.
 
-4. Click **Initiate Erase** in the top right.
+4. Click **Initiate Remote Erase** in the top right.
 
 5. Review the confirmation dialog, which describes exactly which actions will run, and click **YES** to confirm.
 
@@ -170,13 +170,12 @@ Once the device has finished its reboot cycle, confirm each selected capability 
     | After Power Failure *(Secondary Power Settings)* | `Always Power Off` |
 
     <figure class="figure-image">
-      <img src="../../assets/images/screenshots/RPE_BIOS_Thermal_Restored.png" alt="Figure 12: BIOS thermal settings restored to manufacturer defaults">
+      <img src="../../assets/images/screenshots/RPE_BIOS_Thermal_Restored.png" alt="Figure 8: BIOS thermal settings restored to manufacturer defaults">
     </figure>
 
     <figure class="figure-image">
-      <img src="../../assets/images/screenshots/RPE_BIOS_Power_Restored.png" alt="Figure 13: Secondary Power Settings reset to the default power recovery option">
+      <img src="../../assets/images/screenshots/RPE_BIOS_Power_Restored.png" alt="Figure 9: Secondary Power Settings reset to the default power recovery option">
     </figure>
-
 
 ---
 

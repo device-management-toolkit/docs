@@ -1,5 +1,5 @@
 
-Intel® Remote Platform Erase (RPE) lets IT administrators remotely wipe a supported Intel vPro® system and restore it to a known manufacturer baseline (its "golden state") using Intel AMT's out-of-band (OOB) connection. It is used when decommissioning systems, preparing devices for reuse, or recovering a machine from a compromised state.
+Intel® Remote Platform Erase (RPE) allows IT administrators to remotely wipe a supported Intel vPro® system and restore it to a known manufacturer baseline (its "golden state") using Intel AMT's out-of-band (OOB) connection. It is used when decommissioning systems, preparing devices for reuse, or recovering a machine from a compromised state.
 
 ## Supported Erase Options
 
@@ -66,12 +66,6 @@ Before using RPE, ensure the target system meets the following requirements:
 
         On a device that does not support RPE, the toggle reads *Remote Platform Erase is not supported* and the options stay unavailable. The tab still appears in the left-hand navigation, but states that the feature is unsupported.
 
-        <figure class="figure-image">
-          <img src="../../../../assets/images/screenshots/RPE_Not_Supported.png" alt="Figure 4: Remote Platform Erase tab on an unsupported device">
-        </figure>
-
----
-
 ---
 
 ## Triggering a Remote Platform Erase
@@ -84,13 +78,13 @@ Before using RPE, ensure the target system meets the following requirements:
     - **Restore BIOS to OEM Config**
     - **Secure Erase SSDs**
 
-   <figure class="figure-image">
+    <figure class="figure-image">
       <img src="../../../../assets/images/screenshots/RPE_Select_Options.png" alt="Figure 4: Selecting erase capabilities in the Remote Platform Erase panel">
     </figure>
 
 3. Optionally, start a **KVM session** if you want to observe the reboot and erase process.
 
-4. Click **Initiate Erase** in the top right.
+4. Click **Initiate Remote Erase** in the top right.
 
 5. Review the confirmation dialog, which describes exactly which actions will run, and click **YES** to confirm.
 
