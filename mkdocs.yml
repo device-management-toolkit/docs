@@ -4,7 +4,7 @@ site_url: "https://device-management-toolkit.github.io/docs/"
 repo_url: "https://github.com/device-management-toolkit/deployment"
 repo_name: "device-management-toolkit/deployment"
 copyright: "Copyright &copy; 2021 Intel Corporation"
-site_dir: site/2.37
+site_dir: site/2.38
 # Configuration
 theme:
   name: "material"
@@ -252,19 +252,19 @@ extra:
       - rapid
       - dev
   repoVersion:
-    release_name: "July 2026"
+    release_name: "August 2026"
     mpsAPI: 2.26.0
     rpsAPI: 2.31.3
     oamtct: 2.37.0
-    mps: 2.34.1
-    rps: 2.39.4
-    mps-router: 2.5.13
-    rpc_go: 2.52.3
-    webui: 3.61.0
+    mps: 2.34.2
+    rps: 2.40.1
+    mps-router: 2.5.14
+    rpc_go: 2.52.5
+    webui: 3.65.1
     rpc_c: 2.0.0
-    ui_toolkit: 3.3.19
-    ui_toolkit_react: 5.0.7
-    ui_toolkit_angular: 11.1.7
+    ui_toolkit: 3.3.20
+    ui_toolkit_react: 5.0.8
+    ui_toolkit_angular: 11.1.8
   analytics:
     provider: google
     property: "G-00QEDJW2TS"
