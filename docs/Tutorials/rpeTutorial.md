@@ -43,8 +43,8 @@ Before using RPE, ensure the target system meets the following requirements:
 
 1. Open Console and navigate to the **Devices** tab on the left-hand menu, then select your target device.
 
-    <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\RPE_Device_List.png" alt="Figure 1: Device list in Console">
+   <figure class="figure-image">
+      <img src="../../assets/images/screenshots/RPE_Device_List.png" alt="Figure 1: Device list in Console">
     </figure>
 
 2. In the **General AMT Info** section, check the **AMT Enabled Features** panel and confirm **Remote Platform Erase** is listed.
@@ -53,23 +53,15 @@ Before using RPE, ensure the target system meets the following requirements:
 
         See the snapshot below — if the **Remote Platform Erase** field shows **Supported**, the feature is available on this device.
 
-    <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\RPE_Supported_Features.png" alt="Figure 2: Verify Remote Platform Erase support under AMT Enabled Features">
-    </figure>
+    <<figure class="figure-image">
+      <img src="../../assets/images/screenshots/RPE_Supported_Features.png" alt="Figure 2: Verify Remote Platform Erase support under AMT Enabled Features">
+    </figure>>
 
 3. Toggle **Remote Platform Erase** to **Enabled**. Console syncs the capability and adds the **Remote Platform Erase** tab to the left-hand navigation for that device.
-
-    <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\RPE_Tab_Enabled.png" alt="Figure 3: Remote Platform Erase tab in the left-hand navigation">
-    </figure>
 
     !!! note "Unsupported Devices"
 
         On a device that does not support RPE, the toggle reads *Remote Platform Erase is not supported* and the options stay unavailable. The tab still appears in the left-hand navigation, but states that the feature is unsupported.
-
-        <figure class="figure-image">
-          <img src="..\..\assets\images\screenshots\RPE_Not_Supported.png" alt="Figure 4: Remote Platform Erase tab on an unsupported device">
-        </figure>
 
 ---
 
@@ -89,8 +81,8 @@ If you are demonstrating or validating RPE rather than erasing a production mach
 
 3. Confirm the command returns active persistent handle addresses, indicating existing TPM data.
 
-    <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\RPE_TPM_Before.png" alt="Figure 5: Persistent TPM handles before the erase">
+   <figure class="figure-image">
+      <img src="../../assets/images/screenshots/RPE_TPM_Before.png" alt="Figure 3: Persistent TPM handles before the erase">
     </figure>
 
 ### Change BIOS Settings
@@ -105,12 +97,12 @@ If you are demonstrating or validating RPE rather than erasing a production mach
     | Dynamic Support Options | Enabled | Disabled |
     | After Power Failure *(Secondary Power Settings)* | `Always Power Off` | `Power On` |
 
-    <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\RPE_BIOS_Thermal_Modified.png" alt="Figure 6: Modified BIOS thermal thresholds and dynamic support options">
+     <figure class="figure-image">
+      <img src="../../assets/images/screenshots/RPE_BIOS_Thermal_Modified.png" alt="Figure 4: Modified BIOS thermal thresholds and dynamic support options">
     </figure>
 
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\RPE_BIOS_Power_Modified.png" alt="Figure 7: After Power Failure changed from Always Power Off to Power On">
+      <img src="../../assets/images/screenshots/RPE_BIOS_Power_Modified.png" alt="Figure 5: After Power Failure changed from Always Power Off to Power On">
     </figure>
 
 3. Save the changes and exit BIOS.
@@ -128,7 +120,7 @@ If you are demonstrating or validating RPE rather than erasing a production mach
     - **Secure Erase SSDs**
 
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\RPE_Select_Options.png" alt="Figure 8: Selecting erase capabilities in the Remote Platform Erase panel">
+      <img src="../../assets/images/screenshots/RPE_Select_Options.png" alt="Figure 6: Selecting erase capabilities in the Remote Platform Erase panel">
     </figure>
 
 3. Optionally, start a **KVM session** if you want to observe the reboot and erase process.
@@ -142,14 +134,10 @@ If you are demonstrating or validating RPE rather than erasing a production mach
         Clicking **YES** immediately restarts the device and applies the selected erase actions. There is no cancel or undo once the operation begins.
 
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\RPE_Confirm_Dialog.png" alt="Figure 9: Confirmation dialog warning that the operation is irreversible">
+      <img src="../../assets/images/screenshots/RPE_Confirm_Dialog.png" alt="Figure 7: Confirmation dialog warning that the operation is irreversible">
     </figure>
 
 6. The device restarts automatically and performs the selected erase and restore actions during boot.
-
-    <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\RPE_System_Reboot.png" alt="Figure 10: KVM view of the system rebooting to apply the RPE commands">
-    </figure>
 
 ---
 
@@ -169,10 +157,6 @@ Once the device has finished its reboot cycle, confirm each selected capability 
 
 3. Confirm the command returns no persistent handles, showing the TPM has been fully cleared.
 
-    <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\RPE_TPM_After.png" alt="Figure 11: No persistent TPM handles remain after the erase">
-    </figure>
-
 ### Confirm the BIOS Was Restored
 
 1. Boot into BIOS on the target system through KVM.
@@ -186,12 +170,13 @@ Once the device has finished its reboot cycle, confirm each selected capability 
     | After Power Failure *(Secondary Power Settings)* | `Always Power Off` |
 
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\RPE_BIOS_Thermal_Restored.png" alt="Figure 12: BIOS thermal settings restored to manufacturer defaults">
+      <img src="../../assets/images/screenshots/RPE_BIOS_Thermal_Restored.png" alt="Figure 12: BIOS thermal settings restored to manufacturer defaults">
     </figure>
 
     <figure class="figure-image">
-      <img src="..\..\assets\images\screenshots\RPE_BIOS_Power_Restored.png" alt="Figure 13: Secondary Power Settings reset to the default power recovery option">
+      <img src="../../assets/images/screenshots/RPE_BIOS_Power_Restored.png" alt="Figure 13: Secondary Power Settings reset to the default power recovery option">
     </figure>
+
 
 ---
 

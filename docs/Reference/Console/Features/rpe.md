@@ -43,7 +43,7 @@ Before using RPE, ensure the target system meets the following requirements:
 1. Open Console and navigate to the **Devices** tab on the left-hand menu, then select your target device.
 
     <figure class="figure-image">
-      <img src="..\..\..\..\assets\images\screenshots\RPE_Device_List.png" alt="Figure 1: Device list in Console">
+      <img src="../../../../assets/images/screenshots/RPE_Device_List.png" alt="Figure 1: Device list in Console">
     </figure>
 
 2. In the **General AMT Info** section, check the **AMT Enabled Features** panel and confirm **Remote Platform Erase** is listed.
@@ -53,13 +53,13 @@ Before using RPE, ensure the target system meets the following requirements:
         See the snapshot below — if the **Remote Platform Erase** field shows **Supported**, the feature is available on this device.
 
     <figure class="figure-image">
-      <img src="..\..\..\..\assets\images\screenshots\RPE_Supported_Features.png" alt="Figure 2: Verify Remote Platform Erase support under AMT Enabled Features">
+      <img src="../../../../assets/images/screenshots/RPE_Supported_Features.png" alt="Figure 2: Verify Remote Platform Erase support under AMT Enabled Features">
     </figure>
 
 3. Toggle **Remote Platform Erase** to **Enabled**. Console syncs the capability and adds the **Remote Platform Erase** tab to the left-hand navigation for that device.
 
     <figure class="figure-image">
-      <img src="..\..\..\..\assets\images\screenshots\RPE_Tab_Enabled.png" alt="Figure 3: Remote Platform Erase tab in the left-hand navigation">
+      <img src="../../../../assets/images/screenshots/RPE_Tab_Enabled.png" alt="Figure 3: Remote Platform Erase tab in the left-hand navigation">
     </figure>
 
     !!! note "Unsupported Devices"
@@ -67,7 +67,7 @@ Before using RPE, ensure the target system meets the following requirements:
         On a device that does not support RPE, the toggle reads *Remote Platform Erase is not supported* and the options stay unavailable. The tab still appears in the left-hand navigation, but states that the feature is unsupported.
 
         <figure class="figure-image">
-          <img src="..\..\..\..\assets\images\screenshots\RPE_Not_Supported.png" alt="Figure 4: Remote Platform Erase tab on an unsupported device">
+          <img src="../../../../assets/images/screenshots/RPE_Not_Supported.png" alt="Figure 4: Remote Platform Erase tab on an unsupported device">
         </figure>
 
 ---
@@ -84,8 +84,8 @@ Before using RPE, ensure the target system meets the following requirements:
     - **Restore BIOS to OEM Config**
     - **Secure Erase SSDs**
 
-    <figure class="figure-image">
-      <img src="..\..\..\..\assets\images\screenshots\RPE_Select_Options.png" alt="Figure 8: Selecting erase capabilities in the Remote Platform Erase panel">
+   <figure class="figure-image">
+      <img src="../../../../assets/images/screenshots/RPE_Select_Options.png" alt="Figure 4: Selecting erase capabilities in the Remote Platform Erase panel">
     </figure>
 
 3. Optionally, start a **KVM session** if you want to observe the reboot and erase process.
@@ -98,15 +98,11 @@ Before using RPE, ensure the target system meets the following requirements:
 
         Clicking **YES** immediately restarts the device and applies the selected erase actions. There is no cancel or undo once the operation begins.
 
-    <figure class="figure-image">
-      <img src="..\..\..\..\assets\images\screenshots\RPE_Confirm_Dialog.png" alt="Figure 9: Confirmation dialog warning that the operation is irreversible">
+     <figure class="figure-image">
+      <img src="../../../../assets/images/screenshots/RPE_Confirm_Dialog.png" alt="Figure 5: Confirmation dialog warning that the operation is irreversible">
     </figure>
 
 6. The device restarts automatically and performs the selected erase and restore actions during boot.
-
-    <figure class="figure-image">
-      <img src="..\..\..\..\assets\images\screenshots\RPE_System_Reboot.png" alt="Figure 10: KVM view of the system rebooting to apply the RPE commands">
-    </figure>
 
 ---
 
