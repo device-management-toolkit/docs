@@ -48,29 +48,25 @@ Before using RPE, ensure the target system meets the following requirements:
 
 2. In the **General AMT Info** section, check the **AMT Enabled Features** panel and confirm **Remote Platform Erase** is listed.
 
-    !!! question "Is Remote Platform Erase supported?"
+    !!! note "Remote Platform Erase availability"
 
-        See the snapshot below — if the **Remote Platform Erase** field shows **Supported**, the feature is available on this device.
+        Confirm the Remote Platform Erase checkbox is available and not greyed out. See the snapshot below — if the **Remote Platform Erase** field shows **Supported**, the feature is available on this device.
 
     <figure class="figure-image">
       <img src="../../../../assets/images/screenshots/RPE_Supported_Features.png" alt="Figure 2: Verify Remote Platform Erase support under AMT Enabled Features">
     </figure>
 
-3. Toggle **Remote Platform Erase** to **Enabled**. Console syncs the capability and adds the **Remote Platform Erase** tab to the left-hand navigation for that device.
-
-    <figure class="figure-image">
-      <img src="../../../../assets/images/screenshots/RPE_Tab_Enabled.png" alt="Figure 3: Remote Platform Erase tab in the left-hand navigation">
-    </figure>
+3. Toggle **Remote Platform Erase** to **Enabled**. Console syncs the capability and adds the **Remote Platform Erase** tab to the right-hand navigation for that device.
 
     !!! note "Unsupported Devices"
 
-        On a device that does not support RPE, the toggle reads *Remote Platform Erase is not supported* and the options stay unavailable. The tab still appears in the left-hand navigation, but states that the feature is unsupported.
+        On a device that does not support RPE, the toggle reads *Remote Platform Erase is not supported* and the options stay unavailable. The tab still appears in the right-hand navigation, but states that the feature is unsupported.
 
 ---
 
 ## Triggering a Remote Platform Erase
 
-1. In the device detail view, select the **Remote Platform Erase** tab in the left-hand navigation.
+1. In the device detail view, select the **Remote Platform Erase** tab in the right-hand navigation.
 
 2. Select the erase capabilities to run. Any combination of the supported options can be selected:
 
@@ -81,6 +77,11 @@ Before using RPE, ensure the target system meets the following requirements:
     <figure class="figure-image">
       <img src="../../../../assets/images/screenshots/RPE_Select_Options.png" alt="Figure 4: Selecting erase capabilities in the Remote Platform Erase panel">
     </figure>
+
+    !!! note "Important Notes on Erase operations"
+
+        * Secure Erase of All SSDs removes the OS and requires it to be reinstalled.
+        * Restore BIOS will reconfigure AMT config, need reprovision to reconnect to DMT.
 
 3. Optionally, start a **KVM session** if you want to observe the reboot and erase process.
 
@@ -95,6 +96,7 @@ Before using RPE, ensure the target system meets the following requirements:
      <figure class="figure-image">
       <img src="../../../../assets/images/screenshots/RPE_Confirm_Dialog.png" alt="Figure 5: Confirmation dialog warning that the operation is irreversible">
     </figure>
+    
 
 6. The device restarts automatically and performs the selected erase and restore actions during boot.
 
