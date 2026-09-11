@@ -27,6 +27,7 @@ Console supports a wide range of features to simplify device management, includi
 - *SOL (Serial Over LAN)* – Intel AMT enables the redirection of serial and data storage communications from a managed client to a management console. Console handles this functionality for remote management.
 - *[One Click Recovery](./Features/ocr.md)* – Perform secure recovery from failures using One Click Recovery feature.
 - *[WSMAN Explorer Feature](./Features/wsmanExplorer.md)* – View WSMAN input sent to AMT and its response.
+- *[Remote Platform Erase Feature](./Features/rpe.md)* – Remote Platform Erase for CSME (ME) and SSDs.
 
 ## Additional Resources
 
