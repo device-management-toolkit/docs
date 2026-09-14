@@ -6136,16 +6136,16 @@
 
 <p>Intel® Remote Platform Erase (RPE) allows IT administrators to remotely wipe a supported Intel vPro® system and restore it to a known manufacturer baseline (its "golden state") using Intel AMT's out-of-band (OOB) connection. It is used when decommissioning systems, preparing devices for reuse, or recovering a machine from a compromised state.</p>
 <h2 id="supported-erase-options">Supported Erase Options<a class="headerlink" href="#supported-erase-options" title="Permanent link">&para;</a></h2>
-<p>RPE supports three erase actions, which can be selected individually or together:</p>
+<p>Console exposes three erase actions, which can be selected individually or together:</p>
 <ul>
 <li>
-<p><strong>Secure Erase SSDs</strong>: Securely wipes the attached SSDs.</p>
+<p><strong>Secure Erase of All SSDs</strong>: Removes all content from ATA and NVM drives through a combination of media erase and crypto erase.</p>
 </li>
 <li>
-<p><strong>Clear TPM</strong>: Clears TPM data and persistent keys.</p>
+<p><strong>TPM Clear</strong>: Deletes all keys created in the Trusted Platform Module (TPM) and any data protected by those keys, such as a virtual smart card or a login PIN.</p>
 </li>
 <li>
-<p><strong>Restore BIOS</strong>: Restores BIOS settings to the OEM golden state.</p>
+<p><strong>Restore BIOS to EOM State</strong>: Restores the BIOS to the End of Manufacture (EOM) golden configuration specified by the system designer.</p>
 </li>
 </ul>
 <div class="admonition danger">
@@ -6158,53 +6158,51 @@
 <li>To run an erase on a device that is already enabled, go to <a href="#triggering-a-remote-platform-erase">Triggering a Remote Platform Erase</a>.</li>
 <li>To confirm the erase completed as expected, continue with <a href="#verifying-the-erase">Verifying the Erase</a>.</li>
 </ul>
-<hr />
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>Before using RPE, ensure the target system meets the following requirements:</p>
-<ol>
+<p>Before you start, confirm the target device meets all of these:</p>
+<ul>
 <li>
-<p>The device must be running <strong>Intel AMT 16.0 or above</strong>.</p>
+<p>Console is <strong>connected to the device over <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr></strong>.</p>
 </li>
 <li>
-<p>Both the <strong>BIOS and firmware</strong> must explicitly support Remote Platform Erase. Support is per-capability — a device may support Clear TPM but not Secure Erase SSDs, for example.</p>
+<p>Its <strong>BIOS and firmware support</strong> Remote Platform Erase. Console disables any erase action the platform does not report as supported, so the available options can differ between devices.</p>
 </li>
 <li>
-<p>The <strong>Remote Platform Erase</strong> feature must be enabled for the device in Console. See <a href="#verify-and-enable-rpe-support">Verify and Enable RPE Support</a> below.</p>
-<div class="admonition info">
-<p class="admonition-title">Checking Capability Support</p>
-<p>Console reads the supported erase capabilities directly from AMT. If a capability is not listed under <strong>AMT Enabled Features</strong>, the platform does not support it and no Console setting will make it available.</p>
-</div>
+<p><strong>Remote Platform Erase is enabled in the target's BIOS menu.</strong> This cannot be set from Console, and it is the most common reason an erase fails. If you are following <a href="#preparing-a-test-device-optional">Preparing a Test Device</a> below, check it while you are already in the BIOS menu.</p>
 </li>
-</ol>
-<hr />
+<li>
+<p>The <strong>Remote Platform Erase</strong> feature is enabled for the device in Console. See <a href="#verify-and-enable-rpe-support">Verify and Enable RPE Support</a> below.</p>
+</li>
+</ul>
+<p>Each requirement is explained in full, including the firmware versions Intel requires, in the <a href="../../Reference/Console/Features/rpe/#prerequisites">Remote Platform Erase reference</a>.</p>
 <h2 id="verify-and-enable-rpe-support">Verify and Enable RPE Support<a class="headerlink" href="#verify-and-enable-rpe-support" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Open Console and navigate to the <strong>Devices</strong> tab on the left-hand menu, then select your target device.</li>
-</ol>
-<figure class="figure-image">
-      <img src="../../assets/images/screenshots/RPE_Device_List.png" alt="Figure 1: Device list in Console">
-    </figure>
-
-<ol>
 <li>
-<p>In the <strong>General AMT Info</strong> section, check the <strong>AMT Enabled Features</strong> panel and confirm <strong>Remote Platform Erase</strong> is listed.</p>
-<div class="admonition question">
-<p class="admonition-title">Is Remote Platform Erase supported?</p>
-<p>See the snapshot below — if the <strong>Remote Platform Erase</strong> field shows <strong>Supported</strong>, the feature is available on this device.</p>
-</div>
+<p>Open Console and navigate to the <strong>Devices</strong> tab on the left-hand menu, then select your target device.</p>
 <p><figure class="figure-image">
-  <img src="../../assets/images/screenshots/RPE_Supported_Features.png" alt="Figure 2: Verify Remote Platform Erase support under AMT Enabled Features">
+  <img src="../../assets/images/screenshots/RPE_Device_List.png" alt="Figure 1: Device list in Console">
 </figure></p>
 </li>
 <li>
-<p>Toggle <strong>Remote Platform Erase</strong> to <strong>Enabled</strong>. Console syncs the capability and adds the <strong>Remote Platform Erase</strong> tab to the left-hand navigation for that device.</p>
+<p>In the <strong>General AMT Info</strong> section, check the <strong>AMT Enabled Features</strong> panel and confirm <strong>Remote Platform Erase</strong> is listed.</p>
 <div class="admonition note">
-<p class="admonition-title">Unsupported Devices</p>
-<p>On a device that does not support RPE, the toggle reads <em>Remote Platform Erase is not supported</em> and the options stay unavailable. The tab still appears in the left-hand navigation, but states that the feature is unsupported.</p>
+<p class="admonition-title">Remote Platform Erase availability</p>
+<p>Confirm the <strong>Remote Platform Erase</strong> checkbox is available and not greyed out, as shown in the snapshot below. A greyed-out checkbox means the platform does not support the feature.</p>
 </div>
+<p><figure class="figure-image">
+  <img src="../../assets/images/screenshots/RPE_Enabled_Features.png" alt="Figure 2: Remote Platform Erase listed under AMT Enabled Features">
+</figure></p>
+</li>
+<li>
+<p>Select the <strong>Remote Platform Erase</strong> tab in the device navigation on the right.</p>
+<p><figure class="figure-image">
+  <img src="../../assets/images/screenshots/RPE_Tab_Location.png" alt="Figure 3: Remote Platform Erase tab in the device navigation on the right">
+</figure></p>
+</li>
+<li>
+<p>Make sure <strong>Enable Remote Platform Erase on this device</strong> is switched on. This is the same setting as the <strong>Remote Platform Erase</strong> checkbox on the <strong>AMT Enabled Features</strong> panel, so it is already on if you enabled it there. The erase options below it stay inactive until it is on.</p>
 </li>
 </ol>
-<hr />
 <h2 id="preparing-a-test-device-optional">Preparing a Test Device (Optional)<a class="headerlink" href="#preparing-a-test-device-optional" title="Permanent link">&para;</a></h2>
 <p>If you are demonstrating or validating RPE rather than erasing a production machine, change the device's state first so the restoration is visible afterwards. Skip this section for a real erase.</p>
 <h3 id="record-the-tpm-state">Record the TPM State<a class="headerlink" href="#record-the-tpm-state" title="Permanent link">&para;</a></h3>
@@ -6219,12 +6217,11 @@
 </li>
 <li>
 <p>Confirm the command returns active persistent handle addresses, indicating existing TPM data.</p>
+<p><figure class="figure-image">
+  <img src="../../assets/images/screenshots/RPE_TPM_Before.png" alt="Figure 4: Persistent TPM handles before the erase">
+</figure></p>
 </li>
 </ol>
-<figure class="figure-image">
-      <img src="../../assets/images/screenshots/RPE_TPM_Before.png" alt="Figure 3: Persistent TPM handles before the erase">
-    </figure>
-
 <h3 id="change-bios-settings">Change BIOS Settings<a class="headerlink" href="#change-bios-settings" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
@@ -6259,32 +6256,37 @@
 </tbody>
 </table>
 <p><figure class="figure-image">
-  <img src="../../assets/images/screenshots/RPE_BIOS_Thermal_Modified.png" alt="Figure 4: Modified BIOS thermal thresholds and dynamic support options">
+  <img src="../../assets/images/screenshots/RPE_BIOS_Thermal_Modified.png" alt="Figure 5: Modified BIOS thermal thresholds and dynamic support options">
 </figure></p>
 <p><figure class="figure-image">
-  <img src="../../assets/images/screenshots/RPE_BIOS_Power_Modified.png" alt="Figure 5: After Power Failure changed from Always Power Off to Power On">
+  <img src="../../assets/images/screenshots/RPE_BIOS_Power_Modified.png" alt="Figure 6: After Power Failure changed from Always Power Off to Power On">
 </figure></p>
 </li>
 <li>
 <p>Save the changes and exit BIOS.</p>
 </li>
 </ol>
-<hr />
 <h2 id="triggering-a-remote-platform-erase">Triggering a Remote Platform Erase<a class="headerlink" href="#triggering-a-remote-platform-erase" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>In the device detail view, select the <strong>Remote Platform Erase</strong> tab in the left-hand navigation.</p>
-</li>
-<li>
 <p>Select the erase capabilities to run. Any combination of the supported options can be selected:</p>
 <ul>
-<li><strong>Clear TPM</strong></li>
-<li><strong>Restore BIOS to OEM Config</strong></li>
-<li><strong>Secure Erase SSDs</strong></li>
+<li><strong>Secure Erase of All SSDs</strong></li>
+<li><strong>TPM Clear</strong></li>
+<li><strong>Restore BIOS to EOM State</strong></li>
 </ul>
 <p><figure class="figure-image">
-  <img src="../../assets/images/screenshots/RPE_Select_Options.png" alt="Figure 6: Selecting erase capabilities in the Remote Platform Erase panel">
+  <img src="../../assets/images/screenshots/RPE_Select_Options.png" alt="Figure 7: Selecting erase capabilities in the Remote Platform Erase panel">
 </figure></p>
+<div class="admonition warning">
+<p class="admonition-title">Secure Erase of All SSDs removes the operating system</p>
+<p>This option erases every attached SSD, including the drive the operating system is installed on. After it completes, the device cannot boot and an operating system must be reinstalled before the machine can be used again. Console reports this on success with the message <em>OS drive erased successfully. Please reinstall an operating system before using this device.</em></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Encrypted drives need a drive password - not yet validated</p>
+<p>When you select <strong>Secure Erase of All SSDs</strong>, a checkbox labelled <strong>SSD requires disk encryption key</strong> appears below it. Tick it if the drive is self-encrypting, and a <strong>Drive Password</strong> field appears. Console passes that password to Intel AMT as the drive password for the erase operation. Leave both controls alone for drives that are not encrypted.</p>
+<p><strong>Erasing an encrypted drive has not been tested end to end yet.</strong> The controls above are present in Console, but the full flow has not been validated. This section will be updated with detailed steps once it has.</p>
+</div>
 </li>
 <li>
 <p>Optionally, start a <strong><abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> session</strong> if you want to observe the reboot and erase process.</p>
@@ -6299,20 +6301,23 @@
 <p>Clicking <strong>YES</strong> immediately restarts the device and applies the selected erase actions. There is no cancel or undo once the operation begins.</p>
 </div>
 <p><figure class="figure-image">
-  <img src="../../assets/images/screenshots/RPE_Confirm_Dialog.png" alt="Figure 7: Confirmation dialog warning that the operation is irreversible">
+  <img src="../../assets/images/screenshots/RPE_Confirm_Dialog.png" alt="Figure 8: Confirmation dialog warning that the operation is irreversible">
 </figure></p>
 </li>
 <li>
 <p>The device restarts automatically and performs the selected erase and restore actions during boot.</p>
 </li>
 </ol>
-<hr />
 <h2 id="verifying-the-erase">Verifying the Erase<a class="headerlink" href="#verifying-the-erase" title="Permanent link">&para;</a></h2>
 <p>Once the device has finished its reboot cycle, confirm each selected capability was applied.</p>
+<div class="admonition note">
+<p class="admonition-title">These checks need a working operating system</p>
+<p>The TPM check below runs from a terminal on the target system. If you selected <strong>Secure Erase of All SSDs</strong>, the operating system has been erased and the device will not boot, so you cannot run it until an operating system has been reinstalled. The BIOS check does not need an operating system and can be done on any erased device.</p>
+</div>
 <h3 id="confirm-the-tpm-was-cleared">Confirm the TPM Was Cleared<a class="headerlink" href="#confirm-the-tpm-was-cleared" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p>Log back into the target system and open a terminal.</p>
+<p>Log back into the target system and open a terminal. If the OS drive was erased, reinstall an operating system first.</p>
 </li>
 <li>
 <p>Run the TPM capability command again:</p>
@@ -6353,10 +6358,10 @@
 </tbody>
 </table>
 <p><figure class="figure-image">
-  <img src="../../assets/images/screenshots/RPE_BIOS_Thermal_Restored.png" alt="Figure 8: BIOS thermal settings restored to manufacturer defaults">
+  <img src="../../assets/images/screenshots/RPE_BIOS_Thermal_Restored.png" alt="Figure 9: BIOS thermal settings restored to manufacturer defaults">
 </figure></p>
 <p><figure class="figure-image">
-  <img src="../../assets/images/screenshots/RPE_BIOS_Power_Restored.png" alt="Figure 9: Secondary Power Settings reset to the default power recovery option">
+  <img src="../../assets/images/screenshots/RPE_BIOS_Power_Restored.png" alt="Figure 10: Secondary Power Settings reset to the default power recovery option">
 </figure></p>
 </li>
 </ol>

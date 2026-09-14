@@ -4180,6 +4180,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additional Resources
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6079,18 +6090,22 @@
 
 <p>Intel® Remote Platform Erase (RPE) allows IT administrators to remotely wipe a supported Intel vPro® system and restore it to a known manufacturer baseline (its "golden state") using Intel AMT's out-of-band (OOB) connection. It is used when decommissioning systems, preparing devices for reuse, or recovering a machine from a compromised state.</p>
 <h2 id="supported-erase-options">Supported Erase Options<a class="headerlink" href="#supported-erase-options" title="Permanent link">&para;</a></h2>
-<p>RPE supports three erase actions, which can be selected individually or together:</p>
+<p>Console exposes three erase actions, which can be selected individually or together:</p>
 <ul>
 <li>
-<p><strong>Secure Erase SSDs</strong>: Securely wipes the attached SSDs.</p>
+<p><strong>Secure Erase of All SSDs</strong>: Removes all content from ATA and NVM drives through a combination of media erase and crypto erase.</p>
 </li>
 <li>
-<p><strong>Clear Trusted Platform Module (TPM)</strong>: Clears TPM data and persistent keys.</p>
+<p><strong>TPM Clear</strong>: Deletes all keys created in the Trusted Platform Module (TPM) and any data protected by those keys, such as a virtual smart card or a login PIN.</p>
 </li>
 <li>
-<p><strong>Restore BIOS</strong>: Restores BIOS settings to the OEM golden state.</p>
+<p><strong>Restore BIOS to EOM State</strong>: Restores the BIOS to the End of Manufacture (EOM) golden configuration specified by the system designer.</p>
 </li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">A fourth capability is not shown in the UI</p>
+<p>Intel Remote Platform Erase defines a fourth capability, <strong>Unconfigure Intel CSME Firmware</strong>, which fully unprovisions Intel AMT and returns it to its default state, disabling Intel AMT features. Console's <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> API accepts it as <code>unconfigureCSME</code>, but the <abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr> does not currently display it. A device unconfigured this way is removed from Console and cannot be managed remotely until it is reprovisioned.</p>
+</div>
 <div class="admonition danger">
 <p class="admonition-title">This Operation Is Irreversible</p>
 <p>RPE permanently destroys data on the target system. Erased drives, cleared TPM keys, and overwritten BIOS settings cannot be recovered. Confirm you have selected the correct device before initiating an erase.</p>
@@ -6100,25 +6115,26 @@
 <li>To confirm the device can run RPE and exposes the feature, start with <a href="#verify-and-enable-rpe-support">Verify and Enable RPE Support</a>.</li>
 <li>To run an erase on a device that is already enabled, go to <a href="#triggering-a-remote-platform-erase">Triggering a Remote Platform Erase</a>.</li>
 </ul>
-<hr />
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>Before using RPE, ensure the target system meets the following requirements:</p>
 <ol>
 <li>
-<p>The device must be running <strong>Intel AMT 16.0 or above</strong>.</p>
+<p>The device must be running <strong>Intel CSME 16.0 or later</strong>, as documented in the <a href="https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/WordDocuments/Secure_Remote_Platform_Erase.htm"><abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> SDK</a>. Intel CSME 16.0 erases ordinary SSDs; Raptor Lake platforms on <strong>Intel CSME 16.1 and later</strong> also erase Pyrite self-encrypting drives.</p>
 </li>
 <li>
-<p>Both the <strong>BIOS and firmware</strong> must explicitly support Remote Platform Erase. Support is per-capability — a device may support Clear TPM but not Secure Erase SSDs, for example.</p>
+<p>Console must be <strong>connected to the device over <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr></strong>.</p>
 </li>
 <li>
-<p>The <strong>Remote Platform Erase</strong> feature must be enabled for the device in Console. See <a href="#verify-and-enable-rpe-support">Verify and Enable RPE Support</a> below.</p>
-<div class="admonition info">
-<p class="admonition-title">Checking Capability Support</p>
-<p>Console reads the supported erase capabilities directly from AMT. If a capability is not listed under <strong>AMT Enabled Features</strong>, the platform does not support it and no Console setting will make it available.</p>
+<p>Both the <strong>BIOS and firmware</strong> must support Remote Platform Erase. Support is reported per capability: Console reads which erase actions the platform allows and disables the rest, so the options offered on one device may differ from another.</p>
+</li>
+<li>
+<p>Remote Platform Erase must be <strong>enabled in the target system's BIOS</strong>. Intel requires the feature to be enabled in two places — in the BIOS and in Intel AMT — and Console can only set the Intel AMT half. Supporting the feature and having it switched on are two different things.</p>
+<div class="admonition warning">
+<p class="admonition-title">Enable RPE in BIOS before you start</p>
+<p>Intel states that the BIOS setting can be changed <strong>only via the BIOS menu</strong>, on the target machine itself. Intel AMT reports it as a read-only value, so no Console setting will turn it on. Reach the BIOS menu over a <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> session or at the machine. If the feature is left disabled there, the erase fails with <em>Remote Platform Erase is not enabled by the BIOS on this device</em>, whatever the device's Console settings say. Where a platform's BIOS does not support Remote Platform Erase at all, the option will not be present in the menu.</p>
 </div>
 </li>
 </ol>
-<hr />
 <h2 id="verify-and-enable-rpe-support">Verify and Enable RPE Support<a class="headerlink" href="#verify-and-enable-rpe-support" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
@@ -6131,32 +6147,30 @@
 <p>In the <strong>General AMT Info</strong> section, check the <strong>AMT Enabled Features</strong> panel and confirm <strong>Remote Platform Erase</strong> is listed.</p>
 <div class="admonition note">
 <p class="admonition-title">Remote Platform Erase availability</p>
-<p>Confirm the Remote Platform Erase checkbox is available and not greyed out. See the snapshot below — if the <strong>Remote Platform Erase</strong> field shows <strong>Supported</strong>, the feature is available on this device.</p>
+<p>Confirm the <strong>Remote Platform Erase</strong> checkbox is available and not greyed out, as shown in the snapshot below. A greyed-out checkbox means the platform does not support the feature.</p>
 </div>
 <p><figure class="figure-image">
-  <img src="../../../../assets/images/screenshots/RPE_Supported_Features.png" alt="Figure 2: Verify Remote Platform Erase support under AMT Enabled Features">
+  <img src="../../../../assets/images/screenshots/RPE_Enabled_Features.png" alt="Figure 2: Remote Platform Erase listed under AMT Enabled Features">
 </figure></p>
 </li>
 <li>
-<p>Toggle <strong>Remote Platform Erase</strong> to <strong>Enabled</strong>. Console syncs the capability and adds the <strong>Remote Platform Erase</strong> tab to the right-hand navigation for that device.</p>
-<div class="admonition note">
-<p class="admonition-title">Unsupported Devices</p>
-<p>On a device that does not support RPE, the toggle reads <em>Remote Platform Erase is not supported</em> and the options stay unavailable. The tab still appears in the right-hand navigation, but states that the feature is unsupported.</p>
-</div>
+<p>Select the <strong>Remote Platform Erase</strong> tab in the device navigation on the right.</p>
+<p><figure class="figure-image">
+  <img src="../../../../assets/images/screenshots/RPE_Tab_Location.png" alt="Figure 3: Remote Platform Erase tab in the device navigation on the right">
+</figure></p>
+</li>
+<li>
+<p>Make sure <strong>Enable Remote Platform Erase on this device</strong> is switched on. This is the same setting as the <strong>Remote Platform Erase</strong> checkbox on the <strong>AMT Enabled Features</strong> panel, so it is already on if you enabled it there. The erase options below it stay inactive until it is on.</p>
 </li>
 </ol>
-<hr />
 <h2 id="triggering-a-remote-platform-erase">Triggering a Remote Platform Erase<a class="headerlink" href="#triggering-a-remote-platform-erase" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>In the device detail view, select the <strong>Remote Platform Erase</strong> tab in the right-hand navigation.</p>
-</li>
-<li>
 <p>Select the erase capabilities to run. Any combination of the supported options can be selected:</p>
 <ul>
-<li><strong>Clear TPM</strong></li>
-<li><strong>Restore BIOS to OEM Config</strong></li>
-<li><strong>Secure Erase SSDs</strong></li>
+<li><strong>Secure Erase of All SSDs</strong></li>
+<li><strong>TPM Clear</strong></li>
+<li><strong>Restore BIOS to EOM State</strong></li>
 </ul>
 <p><figure class="figure-image">
   <img src="../../../../assets/images/screenshots/RPE_Select_Options.png" alt="Figure 4: Selecting erase capabilities in the Remote Platform Erase panel">
@@ -6165,8 +6179,12 @@
 <p class="admonition-title">Important Notes on Erase operations</p>
 <ul>
 <li>Secure Erase of All SSDs removes the OS and requires it to be reinstalled.</li>
-<li>Restore BIOS will reconfigure AMT config, need reprovision to reconnect to DMT.</li>
 </ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Encrypted drives need a drive password - not yet validated</p>
+<p>When you select <strong>Secure Erase of All SSDs</strong>, a checkbox labelled <strong>SSD requires disk encryption key</strong> appears below it. Tick it if the drive is self-encrypting, and a <strong>Drive Password</strong> field appears. Console passes that password to Intel AMT as the drive password for the erase operation. Leave both controls alone for drives that are not encrypted.</p>
+<p><strong>Erasing an encrypted drive has not been tested end to end yet.</strong> The controls above are present in Console, but the full flow has not been validated. This section will be updated with detailed steps once it has.</p>
 </div>
 </li>
 <li>
@@ -6189,6 +6207,13 @@
 <p>The device restarts automatically and performs the selected erase and restore actions during boot.</p>
 </li>
 </ol>
+<h2 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
+<p>The behaviour described on this page is defined by the <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> SDK. These are the specific pages it draws on:</p>
+<ul>
+<li><em><a href="https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/WordDocuments/Secure_Remote_Platform_Erase.htm">Intel® Remote Platform Erase</a></em> – The feature overview: the four erase capabilities and their definitions, the Intel CSME 16.0 minimum, the requirement to run over <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>, and the rule that the feature must be enabled in both the BIOS and Intel AMT.</li>
+<li><em><a href="https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/HTMLDocuments/WS-Management_Class_Reference/AMT_BootCapabilities.htm">AMT_BootCapabilities</a></em> – The <code>PlatformErase</code> bitmask, which defines each erase capability separately and states the firmware versions individual capabilities require.</li>
+<li><em><a href="https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/HTMLDocuments/WS-Management_Class_Reference/AMT_BootSettingData.htm">AMT_BootSettingData</a></em> – The <code>RPEEnabled</code> flag that reports the BIOS setting, plus the <code>PlatformErase</code> and <code>RSEPassword</code> fields used to request an erase.</li>
+</ul>
 <hr />
 <p>If you see any issues, please log them on our <a href="https://github.com/device-management-toolkit/console/issues">GitHub Issues page</a> or reach out to us on our <strong>Discord channel</strong>.</p>
 
