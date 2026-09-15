@@ -255,7 +255,7 @@ extra:
     release_name: "August 2026"
     mpsAPI: 2.26.0
     rpsAPI: 2.31.3
-    oamtct: 2.37.0
+    oamtct: 2.38.0
     mps: 2.34.2
     rps: 2.40.1
     mps-router: 2.5.14
