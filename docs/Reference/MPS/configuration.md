@@ -43,4 +43,18 @@ The `.env` variables set have priority and overwrite the corresponding `.mpsrc` 
 | MPS_CONSUL_PORT                 | consul_port                  | `8500`                            | Consul Port to listen on                                        |
 | MPS_CONSUL_KEY_PREFIX           | consul_key_prefix            | `MPS`                             | Default prefix key for Consul data structure                    |
 
+### Device power-state cache
 
+MPS refreshes the cached power state of connected devices when their CIRA keepalives arrive and the refresh interval has elapsed. The device API returns `powerState`, `osPowerSavingState`, and `powerStateUpdatedAt` as server-owned fields. They describe the last successful refresh, rather than a live reading. A failed refresh leaves the cached values and timestamp unchanged.
+
+| `.env` Variable Name | `.mpsrc` Variable Name | Default | Description |
+| :--- | :--- | :--- | :--- |
+| MPS_POWER_STATE_REFRESH_INTERVAL | power_state_refresh_interval | `300` | Seconds between successful refreshes. Set to `0` to disable background refresh; otherwise use an integer from `30` to `86400`. |
+| MPS_POWER_STATE_REFRESH_JITTER | power_state_refresh_jitter | `60` | Maximum initial delay in seconds after a device connects. Use a nonnegative integer. The first keepalive after this delay makes the device eligible for refresh. |
+| MPS_POWER_STATE_MAX_CONCURRENT | power_state_max_concurrent | `20` | Maximum concurrent background device reads per MPS process. Use an integer from `1` to `500`. |
+
+For ordinary failures, the retry delay doubles with each consecutive failure, up to 64 times the refresh interval, with a maximum delay of 24 hours. The 24-hour limit caps the delay between retries; it does not stop retries after 24 hours of failures. A successful refresh resets the failure count. With the default interval, retry delays are 10, 20, 40, 80, 160, and 320 minutes, then 320 minutes for subsequent failures.
+
+In the current implementation, a request timeout suspends background refresh for that connection until the device reconnects. Disconnecting clears the retry state. Disconnected devices are not refreshed, and reconnecting starts a new initial delay.
+
+Existing PostgreSQL deployments must apply the [cache migration](../../Deployment/upgradeVersion.md#upgrade-to-mps-with-the-device-power-state-cache) before starting the upgraded MPS service, including when background refresh is disabled.
