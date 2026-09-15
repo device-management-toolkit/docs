@@ -18,9 +18,15 @@ The diagrams below illustrates the database schema and relationships for MPS and
           datetime lastconnected
           datetime lastseen
           datetime lastdisconnected
+          int powerstate
+          int ospowersavingstate
+          datetime powerstateupdatedat
       }
   ```
   
+The nullable `powerstate` and `ospowersavingstate` fields store the last successfully refreshed device values. `powerstateupdatedat` records the refresh timestamp as PostgreSQL `timestamp with time zone`. The device API exposes these as `powerState`, `osPowerSavingState`, and `powerStateUpdatedAt`. Failed refreshes preserve the previous values and timestamp, so consumers should check the timestamp when assessing freshness.
+
+Existing PostgreSQL databases require the [power-state cache migration](../upgradeVersion.md#upgrade-to-mps-with-the-device-power-state-cache) before upgrading MPS.
 ### RPS
   ```mermaid
   erDiagram
