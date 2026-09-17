@@ -45,11 +45,11 @@ The `.env` variables set have priority and overwrite the corresponding `.mpsrc` 
 
 ### Device power-state cache
 
-MPS refreshes the cached power state of connected devices when their CIRA keepalives arrive and the refresh interval has elapsed. The device API returns `powerState`, `osPowerSavingState`, and `powerStateUpdatedAt` as server-owned fields. They describe the last successful refresh, rather than a live reading. A failed refresh leaves the cached values and timestamp unchanged.
+MPS refreshes the cached power state of connected devices when their CIRA keepalives arrive and the refresh interval has elapsed. The device API returns `powerState`, `osPowerSavingState`, and `powerStateUpdatedAt` as server-owned fields. They describe the last successfully cached observation. `powerStateUpdatedAt` records when that read started, not when the device changed state or the database write completed. A failed background refresh leaves the cached values and timestamp unchanged.
 
 | `.env` Variable Name | `.mpsrc` Variable Name | Default | Description |
 | :--- | :--- | :--- | :--- |
-| MPS_POWER_STATE_REFRESH_INTERVAL | power_state_refresh_interval | `300` | Seconds between successful refreshes. Set to `0` to disable background refresh; otherwise use an integer from `30` to `86400`. |
+| MPS_POWER_STATE_REFRESH_INTERVAL | power_state_refresh_interval | `300` | Minimum delay in seconds after a successful background refresh before another becomes eligible. Set to `0` to disable background refresh; otherwise use an integer from `30` to `86400`. |
 | MPS_POWER_STATE_REFRESH_JITTER | power_state_refresh_jitter | `60` | Maximum initial delay in seconds after a device connects. Use a nonnegative integer. The first keepalive after this delay makes the device eligible for refresh. |
 | MPS_POWER_STATE_MAX_CONCURRENT | power_state_max_concurrent | `20` | Maximum concurrent background device reads per MPS process. Use an integer from `1` to `500`. |
 
@@ -58,3 +58,11 @@ For ordinary failures, the retry delay doubles with each consecutive failure, up
 In the current implementation, a request timeout suspends background refresh for that connection until the device reconnects. Disconnecting clears the retry state. Disconnected devices are not refreshed, and reconnecting starts a new initial delay.
 
 Existing PostgreSQL deployments must apply the [cache migration](../../Deployment/upgradeVersion.md#upgrade-to-mps-with-the-device-power-state-cache) before starting the upgraded MPS service, including when background refresh is disabled.
+
+Successful live reads through `GET /api/v1/amt/power/state/:guid` also update the cache. MPS sends the live response first, then attempts the cache write; cache-write exceptions are logged without changing the response. After a standard power action returns AMT success (`ReturnValue = 0`), or an OS power-saving-state change succeeds, MPS sends the action response and then reads and caches the actual device state. An OS action that finds the device already in the requested state does not trigger another read. The requested action itself is never used as the cached state, and the device may still be transitioning when the follow-up read occurs.
+
+These route-triggered updates remain enabled when `power_state_refresh_interval` is `0`. They do not reset the background schedule, retry count, or timeout suspension. The process-wide concurrency setting limits background reads; route-triggered reads share the existing per-device limiter.
+
+The optional OS power-saving-state read falls back to `0` (unknown) on ordinary failure. A timeout on this read suspends the background refresher until reconnect, while the live and post-action paths use `0` and can still cache a successful primary power-state reading. Failed primary reads do not update the cache.
+
+PostgreSQL and MongoDB reject cache writes with a read-start timestamp older than the stored timestamp. Because route-triggered cache writes occur after the HTTP response, an immediate device-list request can still return the previous observation. The Sample UI loads the list before fetching live states, so its displayed state can differ from the earlier list response. Use `powerStateUpdatedAt` to assess freshness; live and cached responses are not guaranteed to match at every instant.
