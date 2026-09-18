@@ -1,24 +1,28 @@
 
-# Documentation for development of mkdocs-material documentation site
+# Device Management Toolkit documentation
+
+The site is built with [Zensical](https://zensical.org/) using the existing `mkdocs.yml` configuration.
 
 ## Local Development (docker) (recommended):
 
 `docker compose -f "docker-compose.yml" up -d --build`
 
+The site is served at http://localhost:9000.
+
 ## Local Development (native)
 
-In order to render and preview the site locally (without docker) you will need a few things to get started. 
+1) Install Python 3.10 or newer.
 
-1) You will need to install python and pip
+2) Install the pinned dependencies:
 
-2) After python is installed, you'll need the following python dependencies:
-- `pip install mkdocs`
-- `pip install mkdocs-material==9.5.14`
-- `pip install mkdocs-render-swagger-plugin`
-- `pip install mkdocs-mermaid2-plugin`
-- `pip install mkdocs-macros-plugin`
-- `pip install mkdocs-img2fig-plugin`
+   `pip install -r requirements.txt --require-hashes`
 
-  **Single line command:** `pip install mkdocs mkdocs-material==9.5.14 mkdocs-render-swagger-plugin mkdocs-mermaid2-plugin mkdocs-macros-plugin mkdocs-img2fig-plugin`
+3) Run `zensical serve` and open http://localhost:8000 to preview changes live.
 
-3) Once you have all the pre-reqs installed. You can simply run `mkdocs serve` and view the rendered content locally and makes changes to your documentation and preview them in realtime with a browser open. 
+Run `zensical build --strict` before opening a pull request; CI fails on any build warning, such as a broken link or anchor.
+
+## Updating dependencies
+
+Edit `requirements.in`, then regenerate the hashed lock file:
+
+`uv pip compile --generate-hashes --universal --python-version 3.14 requirements.in -o requirements.txt`

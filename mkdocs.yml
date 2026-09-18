@@ -17,34 +17,46 @@ theme:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.sections
-    - navigation.expand
     - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.path
+    - navigation.prune
     - search.suggest
     - search.highlight
+    - search.share
     - navigation.top
-    - toc.integrate
+    - toc.follow
+    - content.tabs.link
     - content.code.copy
     - content.tooltips
   custom_dir: ./docs/overrides
   palette:
     # Palette toggle for automatic mode
-    - media: "(prefers-color-schemes)"
+    - media: "(prefers-color-scheme)"
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/brightness-auto
+        icon: lucide/sun-moon
         name: Switch to light mode
 
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
+      scheme: default
       primary: custom
+      accent: custom
       toggle:
-        icon: material/brightness-7
+        icon: lucide/sun
         name: Switch to dark mode
 
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/brightness-4
+        icon: lucide/moon
         name: Switch to system preference
 # Page tree
 nav:
@@ -212,8 +224,8 @@ markdown_extensions:
         - References/abbreviations.md
   - attr_list
   - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: zensical.extensions.emoji.twemoji
+      emoji_generator: zensical.extensions.emoji.to_svg
   - md_in_html
   - pymdownx.inlinehilite
   - pymdownx.superfences:
@@ -228,13 +240,14 @@ extra_css:
   - assets/stylesheets/branding.css
   - assets/stylesheets/index.css
   - assets/stylesheets/videos.css
+  - assets/stylesheets/swagger.css
+extra_javascript:
+  - assets/javascripts/swagger.js
 watch:
   - References
 plugins:
-  - render_swagger
   - search
   - macros
-  - img2fig
 extra:
   social:
     - icon: fontawesome/brands/discord

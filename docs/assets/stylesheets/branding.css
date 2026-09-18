@@ -23,6 +23,16 @@
     --md-code-bg-color:                  hsla(0, 0%, 92.5%, 0.5);
     --md-code-fg-color:                  hsla(200, 18%, 26%, 1);
   }
+/* Primary at 35% lightness is too dark to read on the dark background. */
+[data-md-color-scheme="slate"][data-md-color-primary="custom"] {
+    --md-typeset-a-color:                hsla(206, 100%, 60%, 1);
+}
+
+/* Accent at 50% lightness is too light to read on the light background. */
+[data-md-color-scheme="default"][data-md-color-accent="custom"] {
+    --md-accent-fg-color:                hsla(193, 100%, 30%, 1);
+    --md-accent-fg-color--transparent:   hsla(193, 100%, 30%, 0.1);
+}
 .md-header-nav__button.md-logo {
     margin: .1rem;
     padding: 0rem;
@@ -42,3 +52,49 @@
 .icon-doc { color: hsla(210, 80%, 45%, 1); }
 .icon-upgrade { color: hsla(200, 70%, 45%, 1); }
 .icon-handshake { color: hsla(30, 40%, 65%, 1); }
+/* Brand-colored header; the modern theme's default header is translucent white. */
+:root {
+    --brand-header-bg-color:             hsla(206, 100%, 35%, 1);
+}
+[data-md-color-scheme="slate"] {
+    --brand-header-bg-color:             hsla(206, 100%, 22%, 1);
+}
+.md-header {
+    background-color: var(--brand-header-bg-color);
+    color: #fff;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+/* Mobile drawer title shares the header color so the white logo stays visible. */
+.md-nav--primary .md-nav__title[for="__drawer"] {
+    background-color: var(--brand-header-bg-color);
+    color: #fff;
+    /* Cancel the nav's 0.2rem side margin and match the drawer's 0.8rem corners. */
+    margin: 0 -0.2rem;
+    border-radius: 0.8rem 0.8rem 0 0;
+}
+.md-header .md-tabs {
+    color: #fff;
+    box-shadow: none;
+}
+.md-header .md-tabs__item--active {
+    border-bottom-color: #fff;
+}
+/* 0.85 keeps inactive tabs above 4.5:1 contrast on the light-mode blue. */
+.md-header .md-tabs__link {
+    opacity: 0.85;
+}
+.md-header .md-search__button {
+    color: #fff;
+    background-color: hsla(0, 0%, 100%, 0.15);
+}
+.md-header .md-search__button:hover {
+    background-color: hsla(0, 0%, 100%, 0.25);
+}
+.md-header .md-search__button::before {
+    background-color: #fff;
+}
+.md-header .md-search__button::after {
+    color: #fff;
+    background-color: hsla(0, 0%, 100%, 0.2);
+}
