@@ -14,7 +14,7 @@
     The right-hand navigation menu can be used to find additional device information, such as logs and hardware info, and out-of-band capabilities, such as KVM and Serial-Over-LAN.
 
     !!! warning "Warning - Power Actions in KVM"
-        Turn off active redirection sessions, such as KVM or SOL, before specific power state transitions. Power Cycle (Code 5) and Unconditional Power Down (Power Off, Code 8) will be rejected as invalid if there is an active redirection session. Reset (Code 10) **will function** in KVM along with the [other unmentioned Power Actions](../../Reference/powerstates.md#out-of-band).
+        Turn off active redirection sessions, such as KVM or SOL, before specific power state transitions. Power Cycle (Code 5) and Unconditional Power Down (Power Off, Code 8) will be rejected as invalid if there is an active redirection session. Reset (Code 10) **will function** in KVM along with the [other unmentioned Power Actions](../../Reference/powerstates.md#remote-power-actions).
         
 
     <figure class="figure-image">

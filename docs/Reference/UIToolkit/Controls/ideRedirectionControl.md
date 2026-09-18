@@ -11,7 +11,7 @@ Open `src/App.tsx` and add the code shown below:
     Change `deviceId` value to your device GUID, `mpsServer` value to your MPS server address, and pass in a valid JWT  for `authToken`.
 
 {% raw %}
-``` typescript
+``` tsx hl_lines="4-6"
 import { AttachDiskImage } from '@device-management-toolkit/ui-toolkit-react'
 
 <AttachDiskImage
