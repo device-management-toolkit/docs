@@ -1630,7 +1630,7 @@
 <p>The Docker-based PostgreSQL* image used in <code>docker-compose.yml</code> provides enough functionality for proof-of-concept creation and development. However, to enable the toolkit for production, leverage a managed database instance offered by a public cloud provider or a database hosted by your internal IT. </p>
 <p>Regardless of the deployment scenario (i.e., a VM, Kubernetes, Docker Swarm, a native environment), managing state in your cluster comes with a higher risk of data loss than that of a managed database instance.</p>
 <h3 id="default-component">Default Component<a class="headerlink" href="#default-component" title="Permanent link">&para;</a></h3>
-<p><img src=".././../../assets/images/logos/elephant.png" alt="postgres" style="width:50px;"/></p>
+<p><img src="../../assets/images/logos/elephant.png" alt="postgres" style="width:50px;"/></p>
 <ul>
 <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
 </ul>
@@ -1649,7 +1649,7 @@
 <p>While Vault provides a comprehensive solution for managing and persisting state in a K8s cluster, use of a managed secret provider, such as Azure Key Vault, offloads this role and helps reduce the overhead of secrets management in the toolkit. </p>
 <p>Additionally, if a secret provider is not necessary for your deployment, consider removing it and leveraging some other backing store for secrets.</p>
 <h3 id="default-component_1">Default Component<a class="headerlink" href="#default-component_1" title="Permanent link">&para;</a></h3>
-<p><img src=".././../../assets/images/logos/vault.png" alt="vault" style="width:50px;"/></p>
+<p><img src="../../assets/images/logos/vault.png" alt="vault" style="width:50px;"/></p>
 <ul>
 <li><a href="https://www.vaultproject.io/">HashiCorp Vault</a></li>
 </ul>
@@ -1662,7 +1662,7 @@
 <h2 id="api-gateway">API Gateway<a class="headerlink" href="#api-gateway" title="Permanent link">&para;</a></h2>
 <p>The toolkit uses Kong as its open source API gateway. Kong provides an entry point for external clients, anything not a part of the microservice system, and a comprehensive suite of plugins for various scenarios.</p>
 <h3 id="default-component_2">Default Component<a class="headerlink" href="#default-component_2" title="Permanent link">&para;</a></h3>
-<p><img src=".././../../assets/images/logos/kong.svg" alt="kong" style="width:100px;"/></p>
+<p><img src="../../assets/images/logos/kong.svg" alt="kong" style="width:100px;"/></p>
 <ul>
 <li><a href="https://konghq.com/">Kong</a></li>
 </ul>
@@ -1680,7 +1680,7 @@
 </div>
 <p>The toolkit utilizes Consul to implement centralized configuration of the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> services. This is an optional, opt-in service that is deployed, but not enabled by default. </p>
 <h3 id="default-component_3">Default Component<a class="headerlink" href="#default-component_3" title="Permanent link">&para;</a></h3>
-<p><img src=".././../../assets/images/logos/consul.png" alt="kong" style="width:50px;"/></p>
+<p><img src="../../assets/images/logos/consul.png" alt="kong" style="width:50px;"/></p>
 <ul>
 <li><a href="https://www.consul.io/">Hashicorp Consul</a></li>
 </ul>
