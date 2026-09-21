@@ -72,7 +72,7 @@ Learn more about the features of Device Management Toolkit through guided tutori
 	<div class="video-wrapper">
     	<iframe width="1280" height="720" src="https://www.youtube.com/embed/5Zz5RbKHaA4?si=f495o_uJj8tu-j0G" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	</div>
-	<p>Learn how to use IDE-Redirection for OS Reimaging and more using the Sample Web UI. <br><br><b>Additional Resources: </b><a href="./Tutorials/ideRedirection">IDE-Redirection Tutorial</a></p>
+	<p>Learn how to use IDE-Redirection for OS Reimaging and more using the Sample Web UI. <br><br><b>Additional Resources: </b><a href="./Tutorials/ideRedirection.md">IDE-Redirection Tutorial</a></p>
 	<p></p>
 	<p>Check out a hands-on demo of the new web-based application, Console (currently in Alpha).<br><br><b>Additional Resources: </b><a href="./Reference/Console/overview.md">Getting Started with Console</a></p>
 </div>
