@@ -40,7 +40,7 @@ Each requirement is explained in full, including the firmware versions Intel req
 1. Open Console and navigate to the **Devices** tab on the left-hand menu, then select your target device.
 
     <figure class="figure-image">
-      <img src="../../assets/images/screenshots/RPE_Device_List.png" alt="Figure 1: Device list in Console">
+      <img src="../assets/images/screenshots/RPE_Device_List.png" alt="Figure 1: Device list in Console">
     </figure>
 
 2. In the **General AMT Info** section, check the **AMT Enabled Features** panel and confirm **Remote Platform Erase** is listed.
@@ -50,13 +50,13 @@ Each requirement is explained in full, including the firmware versions Intel req
         Confirm the **Remote Platform Erase** checkbox is available and not greyed out, as shown in the snapshot below. A greyed-out checkbox means the platform does not support the feature.
 
     <figure class="figure-image">
-      <img src="../../assets/images/screenshots/RPE_Enabled_Features.png" alt="Figure 2: Remote Platform Erase listed under AMT Enabled Features">
+      <img src="../assets/images/screenshots/RPE_Enabled_Features.png" alt="Figure 2: Remote Platform Erase listed under AMT Enabled Features">
     </figure>
 
 3. Select the **Remote Platform Erase** tab in the device navigation on the right.
 
     <figure class="figure-image">
-      <img src="../../assets/images/screenshots/RPE_Tab_Location.png" alt="Figure 3: Remote Platform Erase tab in the device navigation on the right">
+      <img src="../assets/images/screenshots/RPE_Tab_Location.png" alt="Figure 3: Remote Platform Erase tab in the device navigation on the right">
     </figure>
 
 4. Make sure **Enable Remote Platform Erase on this device** is switched on. This is the same setting as the **Remote Platform Erase** checkbox on the **AMT Enabled Features** panel, so it is already on if you enabled it there. The erase options below it stay inactive until it is on.
@@ -78,7 +78,7 @@ If you are demonstrating or validating RPE rather than erasing a production mach
 3. Confirm the command returns active persistent handle addresses, indicating existing TPM data.
 
     <figure class="figure-image">
-      <img src="../../assets/images/screenshots/RPE_TPM_Before.png" alt="Figure 4: Persistent TPM handles before the erase">
+      <img src="../assets/images/screenshots/RPE_TPM_Before.png" alt="Figure 4: Persistent TPM handles before the erase">
     </figure>
 
 ### Change BIOS Settings
@@ -94,11 +94,11 @@ If you are demonstrating or validating RPE rather than erasing a production mach
     | After Power Failure *(Secondary Power Settings)* | `Always Power Off` | `Power On` |
 
     <figure class="figure-image">
-      <img src="../../assets/images/screenshots/RPE_BIOS_Thermal_Modified.png" alt="Figure 5: Modified BIOS thermal thresholds and dynamic support options">
+      <img src="../assets/images/screenshots/RPE_BIOS_Thermal_Modified.png" alt="Figure 5: Modified BIOS thermal thresholds and dynamic support options">
     </figure>
 
     <figure class="figure-image">
-      <img src="../../assets/images/screenshots/RPE_BIOS_Power_Modified.png" alt="Figure 6: After Power Failure changed from Always Power Off to Power On">
+      <img src="../assets/images/screenshots/RPE_BIOS_Power_Modified.png" alt="Figure 6: After Power Failure changed from Always Power Off to Power On">
     </figure>
 
 3. Save the changes and exit BIOS.
@@ -112,7 +112,7 @@ If you are demonstrating or validating RPE rather than erasing a production mach
     - **Restore BIOS to EOM State**
 
     <figure class="figure-image">
-      <img src="../../assets/images/screenshots/RPE_Select_Options.png" alt="Figure 7: Selecting erase capabilities in the Remote Platform Erase panel">
+      <img src="../assets/images/screenshots/RPE_Select_Options.png" alt="Figure 7: Selecting erase capabilities in the Remote Platform Erase panel">
     </figure>
 
     !!! warning "Secure Erase of All SSDs removes the operating system"
@@ -136,7 +136,7 @@ If you are demonstrating or validating RPE rather than erasing a production mach
         Clicking **YES** immediately restarts the device and applies the selected erase actions. There is no cancel or undo once the operation begins.
 
     <figure class="figure-image">
-      <img src="../../assets/images/screenshots/RPE_Confirm_Dialog.png" alt="Figure 8: Confirmation dialog warning that the operation is irreversible">
+      <img src="../assets/images/screenshots/RPE_Confirm_Dialog.png" alt="Figure 8: Confirmation dialog warning that the operation is irreversible">
     </figure>
 
 5. The device restarts automatically and performs the selected erase and restore actions during boot.
@@ -174,11 +174,11 @@ Once the device has finished its reboot cycle, confirm each selected capability 
     | After Power Failure *(Secondary Power Settings)* | `Always Power Off` |
 
     <figure class="figure-image">
-      <img src="../../assets/images/screenshots/RPE_BIOS_Thermal_Restored.png" alt="Figure 9: BIOS thermal settings restored to manufacturer defaults">
+      <img src="../assets/images/screenshots/RPE_BIOS_Thermal_Restored.png" alt="Figure 9: BIOS thermal settings restored to manufacturer defaults">
     </figure>
 
     <figure class="figure-image">
-      <img src="../../assets/images/screenshots/RPE_BIOS_Power_Restored.png" alt="Figure 10: Secondary Power Settings reset to the default power recovery option">
+      <img src="../assets/images/screenshots/RPE_BIOS_Power_Restored.png" alt="Figure 10: Secondary Power Settings reset to the default power recovery option">
     </figure>
 
 ---

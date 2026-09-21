@@ -8,7 +8,7 @@
 Scaling functionality in MPS enables Device Management Toolkit to support a greater number of managed devices. The toolkit offers various methods for deploying scaling, including Local Kubernetes, Azure Kubernetes Service* (AKS), Amazon Elastic Kubernetes Service* (EKS), and Docker Swarm*. In addition, administrators can use kubectl to manage the AKS. 
 
 <figure class="figure-image">
-<img src="..\..\..\assets\images\diagrams\HighLevelArchitectureScaling.svg" style="height:800px;" alt="Figure 1: High-level Architecture of Scaling Implementation">
+<img src="../../assets/images/diagrams/HighLevelArchitectureScaling.svg" style="height:800px;" alt="Figure 1: High-level Architecture of Scaling Implementation">
 <figcaption>Figure 1: High-level architecture of scaling implementation</figcaption>
 </figure>
 

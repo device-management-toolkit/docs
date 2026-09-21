@@ -40,7 +40,7 @@ The tutorial outlines how to run and test the UI Toolkit controls using the incl
 - Test KVM, SOL, and IDER controls
 
 <figure class="figure-image">
-<img src="..\..\assets\images\diagrams\UIToolkit.svg" style="height:800px" alt="Figure 1: UI Toolkit">
+<img src="../assets/images/diagrams/UIToolkit.svg" style="height:800px" alt="Figure 1: UI Toolkit">
 <figcaption>Figure 1: UI toolkit</figcaption>
 </figure>
 
@@ -77,7 +77,7 @@ An example application is included within the library for quick testing and deve
 
     !!! success
         <figure class="figure-image">
-        <img src="..\..\assets\images\screenshots\UIToolkit_vite_dev.png" alt="Figure 2: Vite dev server running successfully">
+        <img src="../assets/images/screenshots/UIToolkit_vite_dev.png" alt="Figure 2: Vite dev server running successfully">
         <figcaption>Figure 2: Vite dev server running successfully</figcaption>
         </figure>
 
@@ -114,7 +114,7 @@ View and control the remote device's screen using keyboard and mouse.
 5. To end the session, click **Disconnect**.
 
 <figure class="figure-image">
-<img src="../../assets/images/screenshots/UI_Toolkit_React_KVM.png" alt="Figure 3: KVM Control">
+<img src="../assets/images/screenshots/UI_Toolkit_React_KVM.png" alt="Figure 3: KVM Control">
 <figcaption>Figure 3: KVM Control</figcaption>
 </figure>
 
@@ -143,7 +143,7 @@ Interact with the device via a serial terminal.
 5. To end the session, click **Disconnect**.
 
 <figure class="figure-image">
-<img src="../../assets/images/screenshots/UI_Toolkit_React_SOL.png" alt="Figure 4: SOL Control">
+<img src="../assets/images/screenshots/UI_Toolkit_React_SOL.png" alt="Figure 4: SOL Control">
 <figcaption>Figure 4: SOL Control</figcaption>
 </figure>
 
@@ -158,14 +158,14 @@ Attach and mount a disk image (ISO/IMG) to the remote device. The selected image
 5. To end the session, click **Stop**. The virtual drive is unmounted and the connection is closed.
 
 <figure class="figure-image">
-<img src="../../assets/images/screenshots/UI_Toolkit_React_IDER.png" alt="Figure 5: IDER Control">
+<img src="../assets/images/screenshots/UI_Toolkit_React_IDER.png" alt="Figure 5: IDER Control">
 <figcaption>Figure 5: IDER session with netboot.xyz.iso attached</figcaption>
 </figure>
 
 Once mounted, the image appears as a drive on the remote device (e.g. `CD Drive (D:)`). The device can then boot from this image for tasks such as OS recovery or re-installation.
 
 <figure class="figure-image">
-<img src="../../assets/images/screenshots/UI_Toolkit_React_IDER_Mounted.png" alt="Figure 6: Mounted drive on remote device">
+<img src="../assets/images/screenshots/UI_Toolkit_React_IDER_Mounted.png" alt="Figure 6: Mounted drive on remote device">
 <figcaption>Figure 6: ISO mounted as CD Drive on the remote device</figcaption>
 </figure>
 

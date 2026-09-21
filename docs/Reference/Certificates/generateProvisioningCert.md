@@ -171,7 +171,7 @@ First, we need to prepare two files:
 9. Select **Manage Hashes**.
     
     <figure class="figure-image">
-    <img src="..\..\..\assets\images\Manage_Hashes.jpg" alt="Figure 1: Manage Hashes">
+    <img src="../../assets/images/screenshots/Manage_Hashes.jpg" alt="Figure 1: Manage Hashes">
     <figcaption>Figure 1: Manage Hashes</figcaption>
     </figure>
 
@@ -182,7 +182,7 @@ First, we need to prepare two files:
 12. Insert the new SHA1 hash using the fingerprint obtained from Step 7 in [Create the Certificate and Hash](#create-the-certificate-and-hash). **The hash must be formatted as shown in example.**
 
     <figure class="figure-image">
-    <img src="..\..\..\assets\images\MEBXHASH.jpg" alt="Figure 2: Hash Input">
+    <img src="../../assets/images/screenshots/MEBXHASH.jpg" alt="Figure 2: Hash Input">
     <figcaption>Figure 2: Hash Input</figcaption>
     </figure>
 
@@ -204,7 +204,7 @@ First, we need to prepare two files:
 
     !!! success "Success - Hash Inserted Correctly"
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\screenshots\HASH_OUTPUT.png" alt="Figure 4: Hash Output">
+        <img src="../../assets/images/screenshots/HASH_OUTPUT.png" alt="Figure 4: Hash Output">
         <figcaption>Figure 4: Hash Output</figcaption>
         </figure>
 

@@ -8,7 +8,7 @@ Regardless of the deployment scenario (i.e., a VM, Kubernetes, Docker Swarm, a n
 
 ### Default Component
 
-<img src="./../../assets/images/logos/elephant.png" alt="postgres" style="width:50px;"/>
+<img src="../assets/images/logos/elephant.png" alt="postgres" style="width:50px;"/>
 
 - [PostgreSQL](https://www.postgresql.org/)
 
@@ -34,7 +34,7 @@ While Vault provides a comprehensive solution for managing and persisting state 
 Additionally, if a secret provider is not necessary for your deployment, consider removing it and leveraging some other backing store for secrets.
 
 ### Default Component
-<img src="./../../assets/images/logos/vault.png" alt="vault" style="width:50px;"/>
+<img src="../assets/images/logos/vault.png" alt="vault" style="width:50px;"/>
 
 - [HashiCorp Vault](https://www.vaultproject.io/)
 
@@ -51,7 +51,7 @@ The toolkit uses Kong as its open source API gateway. Kong provides an entry poi
 
 ### Default Component
 
-<img src="./../../assets/images/logos/kong.svg" alt="kong" style="width:100px;"/>
+<img src="../assets/images/logos/kong.svg" alt="kong" style="width:100px;"/>
 
 - [Kong](https://konghq.com/)
 
@@ -71,7 +71,7 @@ The toolkit utilizes Consul to implement centralized configuration of the MPS an
 
 ### Default Component
 
-<img src="./../../assets/images/logos/consul.png" alt="kong" style="width:50px;"/>
+<img src="../assets/images/logos/consul.png" alt="kong" style="width:50px;"/>
 
 - [Hashicorp Consul](https://www.consul.io/)
 

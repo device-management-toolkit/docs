@@ -15,9 +15,9 @@ Learn the high-level basics and get familiar with the toolkit. Learn about the d
     	<iframe width="1280" height="720" src="https://www.youtube.com/embed/ovpvPQi7UGo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	</div>
 	<div></div><div></div>
-	<!-- <p>Discover what new features and changes are in our latest rapid release. <b><a href="../release-notes"> See full Release Notes.</a></b></p> -->
+	<!-- <p>Discover what new features and changes are in our latest rapid release. <b><a href="./release-notes.md"> See full Release Notes.</a></b></p> -->
   	<!-- <p></p> -->
-	<p>See what Device Management Toolkit is and what you can do with it. <br><br><b>Additional Resources: </b><a href="../Reference/architectureOverview">Architecture Overview</a>, <a href="../Reference/MPS/securityMPS">MPS Security Considerations</a>, and <a href="../Reference/RPS/securityRPS">RPS Security Considerations</a></p>
+	<p>See what Device Management Toolkit is and what you can do with it. <br><br><b>Additional Resources: </b><a href="./Reference/architectureOverview.md">Architecture Overview</a>, <a href="./Reference/MPS/securityMPS.md">MPS Security Considerations</a>, and <a href="./Reference/RPS/securityRPS.md">RPS Security Considerations</a></p>
 	<p></p><p></p>
 </div>
 
@@ -41,7 +41,7 @@ Watch how to go from cloning the toolkit to managing a device out-of-band remote
 	</div>
 	<p>See how to setup Device Management Toolkit locally using Docker. <br><br><b>Additional Resources: </b><a href="https://www.intel.com/content/www/us/en/developer/topic-technology/edge-5g/hardware/vpro-platform-retail.html">Intel vPro Platform</a></p>
   	<p></p>
-  	<p>Learn how to create custom profiles for device configuration and activation. <br><br><b>Additional Resources: </b><a href="../Concepts/security#authentication--credentials">Passwords and What They Mean</a>, <a href="../Concepts/remoteProvisioning">Provisioning Certificates</a>, and <a href="../Reference/MEBX/dnsSuffix">Setting a DNS Suffix via MEBX</a></p>
+  	<p>Learn how to create custom profiles for device configuration and activation. <br><br><b>Additional Resources: </b><a href="./Concepts/security.md#authentication-credentials">Passwords and What They Mean</a>, <a href="./Concepts/remoteProvisioning.md">Provisioning Certificates</a>, and <a href="./Reference/MEBX/dnsSuffix.md">Setting a DNS Suffix via MEBX</a></p>
 	<h3>Provisioning a Device</h3>
   	<h3></h3>
 	<h3>Managing a Device</h3>
@@ -52,9 +52,9 @@ Watch how to go from cloning the toolkit to managing a device out-of-band remote
 	<div class="video-wrapper">
     	<iframe width="1280" height="720" src="https://www.youtube.com/embed/NyOO3QrD7_c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	</div>
-  	<p>See how to build the Remote Provisioning Client and use it to activate and configure an AMT device. <br><br><b>Additional Resources: </b><a href="../Reference/RPC/libraryRPC">RPC as a Library</a> and <a href="../Reference/RPC/commandsRPC">RPC Commands and Flags</a></p>
+  	<p>See how to build the Remote Provisioning Client and use it to activate and configure an AMT device. <br><br><b>Additional Resources: </b><a href="./Reference/RPC/v2/libraryRPC.md">RPC as a Library</a> and <a href="./Reference/RPC/v2/commandsRPC.md">RPC Commands and Flags</a></p>
   	<p></p>
-  	<p>Try some of the out-of-band manageability features like remote KVM and different Power Actions. <br><br><b>Next Steps: </b><a href="../Tutorials/apiTutorial">Using REST APIs</a> and <a href="../Tutorials/Scaling/overview">Deploying with Kubernetes</a></p>
+  	<p>Try some of the out-of-band manageability features like remote KVM and different Power Actions. <br><br><b>Next Steps: </b><a href="./Tutorials/apiTutorial.md">Using REST APIs</a> and <a href="./Tutorials/Scaling/overview.md">Deploying with Kubernetes</a></p>
 </div>
 
 ## Tutorials
