@@ -8,36 +8,36 @@
       
       
       
-        <link rel="canonical" href="https://device-management-toolkit.github.io/docs/GetStarted/Enterprise/exportProfile/">
+        <link rel="canonical" href="https://device-management-toolkit.github.io/docs/APIs/indexConsole/">
       
       
-        <link rel="prev" href="../createProfileACM/">
+        <link rel="prev" href="../../Reference/Certificates/tls/">
       
       
-        <link rel="next" href="../activateDevice/">
+        <link rel="next" href="../indexMPS/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="zensical-0.0.62">
     
     
       
-        <title>Export Profile - Device Management Toolkit</title>
+        <title>Console - Device Management Toolkit</title>
       
     
     
       
         
       
-      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.ce62732f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.ce62732f.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.812a03bb.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.812a03bb.min.css">
       
       
 
@@ -56,15 +56,15 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/branding.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/branding.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/index.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/index.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/videos.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/videos.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/swagger.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/swagger.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
   
@@ -98,8 +98,7 @@
     <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#steps-to-export-a-profile" class="md-skip">
+        <a href="#__skip" class="md-skip">
           Skip to content
         </a>
       
@@ -119,9 +118,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Device Management Toolkit" class="md-header__button md-logo" aria-label="Device Management Toolkit" data-md-component="logo">
+    <a href="../.." title="Device Management Toolkit" class="md-header__button md-logo" aria-label="Device Management Toolkit" data-md-component="logo">
       
-  <img src="../../../assets/images/logos/logo-white-75px.png" alt="Device Management Toolkit">
+  <img src="../../assets/images/logos/logo-white-75px.png" alt="Device Management Toolkit">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
@@ -138,7 +137,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Export Profile
+              Console
             
           </span>
         </div>
@@ -231,7 +230,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../.." class="md-tabs__link">
+        <a href="../.." class="md-tabs__link">
           
   
   Home
@@ -246,16 +245,14 @@
   
   
   
-    
-  
   
     
       
     
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../overview/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../GetStarted/overview/" class="md-tabs__link">
           
   
   Get Started
@@ -277,7 +274,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../Concepts/oobManagement/" class="md-tabs__link">
+        <a href="../../Concepts/oobManagement/" class="md-tabs__link">
           
   
   Concepts
@@ -299,7 +296,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../Deployment/overview/" class="md-tabs__link">
+        <a href="../../Deployment/overview/" class="md-tabs__link">
           
   
   Deployment
@@ -321,7 +318,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../Tutorials/overview/" class="md-tabs__link">
+        <a href="../../Tutorials/overview/" class="md-tabs__link">
           
   
   Tutorials
@@ -343,7 +340,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../Reference/architectureOverview/" class="md-tabs__link">
+        <a href="../../Reference/architectureOverview/" class="md-tabs__link">
           
   
   Reference
@@ -358,14 +355,16 @@
   
   
   
+    
+  
   
     
       
     
     
     
-      <li class="md-tabs__item">
-        <a href="../../../APIs/indexConsole/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="././" class="md-tabs__link">
           
   
   APIs
@@ -404,9 +403,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Device Management Toolkit" class="md-nav__button md-logo" aria-label="Device Management Toolkit" data-md-component="logo">
+    <a href="../.." title="Device Management Toolkit" class="md-nav__button md-logo" aria-label="Device Management Toolkit" data-md-component="logo">
       
-  <img src="../../../assets/images/logos/logo-white-75px.png" alt="Device Management Toolkit">
+  <img src="../../assets/images/logos/logo-white-75px.png" alt="Device Management Toolkit">
 
     </a>
     Device Management Toolkit
@@ -454,7 +453,7 @@
   
   
   
-    <a href="../../.." class="md-nav__link">
+    <a href="../.." class="md-nav__link">
       
   
   
@@ -483,34 +482,32 @@
       
   
   
+  
+  
     
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
   
   
   
-    
-    
-    
-    
+  
+    <a href="../../GetStarted/overview/" class="md-nav__link">
       
-        
-        
-      
-      
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
-            
   
   
   <span class="md-ellipsis">
@@ -523,197 +520,6 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-  Get Started
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../overview/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Overview
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Cloud
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-  Cloud
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Cloud/prerequisites/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Prerequisites
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Cloud/setup/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Set Up
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-  
-    <a href="../../Cloud/loginToUI/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Configure
-
-    
-  </span>
-  
-  
-
       
         <span class="md-nav__icon md-icon"></span>
       
@@ -724,395 +530,6 @@
     </li>
   
 
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-  
-    <a href="../../Cloud/buildRPC/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Connect
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Enterprise
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-  Enterprise
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../setup/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Download and Run
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-  
-    <a href="../createProfileCCM/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Create Profiles
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Export Profile
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Export Profile
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#steps-to-export-a-profile" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Steps to Export a Profile
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-up" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Next up
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../activateDevice/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Activate a Device
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../addDevice/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Add a Device
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../manageDevice/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Manage a Device
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
     
       
       
@@ -1142,7 +559,7 @@
   
   
   
-    <a href="../../../Concepts/oobManagement/" class="md-nav__link">
+    <a href="../../Concepts/oobManagement/" class="md-nav__link">
       
   
   
@@ -1195,7 +612,7 @@
   
   
   
-    <a href="../../../Deployment/overview/" class="md-nav__link">
+    <a href="../../Deployment/overview/" class="md-nav__link">
       
   
   
@@ -1248,7 +665,7 @@
   
   
   
-    <a href="../../../Tutorials/overview/" class="md-nav__link">
+    <a href="../../Tutorials/overview/" class="md-nav__link">
       
   
   
@@ -1301,7 +718,7 @@
   
   
   
-    <a href="../../../Reference/architectureOverview/" class="md-nav__link">
+    <a href="../../Reference/architectureOverview/" class="md-nav__link">
       
   
   
@@ -1330,12 +747,17 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
@@ -1343,19 +765,16 @@
     
     
       
-        
-        
-      
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
-  
-  
-  
-  
-    <a href="../../../APIs/indexConsole/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
   
   
   <span class="md-ellipsis">
@@ -1368,12 +787,110 @@
   
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  APIs
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
       
-        <span class="md-nav__icon md-icon"></span>
       
-    </a>
+      
+      
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Console
+
+    
+  </span>
+  
   
 
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../indexMPS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Management Presence Server
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../indexRPS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Remote Provisioning Server
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1394,11 +911,6 @@
                     
                     
                     
-                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-                      <div class="md-sidebar-button__wrapper">
-                        <label class="md-sidebar-button" for="__toc"></label>
-                      </div>
-                    
                   
                   <div class="md-sidebar__inner">
                     
@@ -1408,36 +920,6 @@
   
   
   
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#steps-to-export-a-profile" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Steps to Export a Profile
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-up" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Next up
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -1453,57 +935,6 @@
 
 
 
-  <nav class="md-path" aria-label="Navigation" >
-    <ol class="md-path__list">
-      
-      
-        
-  
-  
-    
-    
-    
-    
-    
-      <li class="md-path__item">
-        <a href="../../overview/" class="md-path__link">
-          
-  
-  <span class="md-ellipsis">
-    Get Started
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-    
-    
-    
-    
-    
-      <li class="md-path__item">
-        <a href="../setup/" class="md-path__link">
-          
-  
-  <span class="md-ellipsis">
-    Enterprise
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ol>
-  </nav>
-
               
               <article class="md-content__inner md-typeset">
                 
@@ -1512,45 +943,16 @@
   
 
 
-  <h1 id="__skip">Export Profile</h1>
+  <h1 id="__skip">Console</h1>
 
-<h3 id="steps-to-export-a-profile">Steps to Export a <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr><a class="headerlink" href="#steps-to-export-a-profile" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p>Export the created profiles to a <code>.yaml</code> file that can be given to <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go for device activation and configuration.</p>
-</li>
-<li>
-<p>Click the export button to download profile in <code>yaml</code> format.</p>
-<ul>
-<li>
-<p>For <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> profiles, <abbr title="Domain Profile - A profile enabling the remote activation of an Intel® AMT device into Admin Control Mode.">Domain Profile</abbr> selection is not required or prompted. </p>
-<p><figure class="figure-image">
-    <img src="../../../assets/images/screenshots/Console_ExportProfile.png" alt="Figure 1: Export Profile">
-    <figcaption>Figure 1: Export Button</figcaption>
-</figure></p>
-</li>
-<li>
-<p>For <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> profiles, you will be prompted to select a <abbr title="Domain Profile - A profile enabling the remote activation of an Intel® AMT device into Admin Control Mode.">Domain Profile</abbr>. If the target device is already activated in <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>, you can select 'Skip Domain', and the exported profile will not include a <abbr title="Domain Profile - A profile enabling the remote activation of an Intel® AMT device into Admin Control Mode.">Domain Profile</abbr>. </p>
-<p><figure class="figure-image">
-    <img src="../../../assets/images/screenshots/Console_ExportACMProfile.png" alt="Figure 1: Export ACM Profile">
-    <figcaption>Figure 1: Export Button</figcaption>
-</figure></p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Save the given <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> Key.</strong> It is only given this once. This key is used by <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go to decode the encrypted config file.</p>
-<p><figure class="figure-image">
-    <img src="../../../assets/images/screenshots/Console_ProfileKey.png" alt="Figure 2: Profile Key">
-    <figcaption>Figure 2: <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> Key</figcaption>
-</figure></p>
-</li>
-<li>
-<p>Move or Copy the new, downloaded <code>.yaml</code> config file to the AMT device.</p>
-</li>
-</ol>
-<h2 id="next-up">Next up<a class="headerlink" href="#next-up" title="Permanent link">&para;</a></h2>
-<p><strong><a href="../activateDevice/">Activate a Device</a></strong></p>
+<style>
+  .md-typeset h1,
+  .md-content__button {
+    display: none;
+  }
+</style>
+
+<div data-swagger-url="https://api.swaggerhub.com/apis/rbheopenamt/DMT/1.41.0"></div>
 
 
 
@@ -1726,12 +1128,12 @@
       
         
         
-      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.path","navigation.prune","search.suggest","search.highlight","search.share","navigation.top","toc.follow","content.tabs.link","content.code.copy","content.tooltips"],"redirect":null,"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"default":["rapid","dev"],"provider":"mike"}}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.path","navigation.prune","search.suggest","search.highlight","search.share","navigation.top","toc.follow","content.tabs.link","content.code.copy","content.tooltips"],"redirect":null,"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"default":["rapid","dev"],"provider":"mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.8dcc8e9c.min.js"></script>
+      <script src="../../assets/javascripts/bundle.8dcc8e9c.min.js"></script>
       
-        <script src="../../../assets/javascripts/swagger.js"></script>
+        <script src="../../assets/javascripts/swagger.js"></script>
       
     
   </body>
