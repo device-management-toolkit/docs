@@ -1,6 +1,8 @@
 services:
   docs:
     image: docs:latest
+    # Match the host checkout owner so serve can write site/ on Linux.
+    user: "${UID:-1000}:${GID:-1000}"
     volumes: 
       - ./:/docs
     build:

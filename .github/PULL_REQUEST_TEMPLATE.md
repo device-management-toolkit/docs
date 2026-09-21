@@ -1,7 +1,7 @@
 ## PR Checklist
 <!-- Please check if your PR fulfills the following requirements: -->
 
-- [ ] Leverages formatting as provided by https://squidfunk.github.io/mkdocs-material/reference/abbreviations/ 
+- [ ] Leverages formatting as provided by https://zensical.org/docs/authoring/tooltips/ 
 - [ ] Have viewed and verified edits in rendered form ensuring proper formatting
 
 ## What are you changing?

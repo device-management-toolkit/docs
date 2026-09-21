@@ -22,7 +22,7 @@ import { KVM, Sol, AttachDiskImage } from '@device-management-toolkit/ui-toolkit
 SCSS and CSS file-based styling has been removed. Components now accept `className` and `style` props directly for customization.
 
 {% raw %}
-``` typescript
+``` tsx
 // v4 (old) - CSS/SCSS class overrides
 // Required importing SCSS files and overriding CSS classes
 

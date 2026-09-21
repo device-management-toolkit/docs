@@ -41,12 +41,12 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
-          python-version: "3.11"
+          python-version: "3.14"
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
           pip install -r ./requirements.txt --require-hashes
-          mkdocs build --strict
+          zensical build --strict
       #checkout the gh-pages branch
       # credentials must persist here: the "Publish content" step pushes to gh-pages
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1 # zizmor: ignore[artipacked]
@@ -57,7 +57,10 @@ jobs:
       #copy the built site content
       - name: Copy
         if: ${{ github.ref == 'refs/heads/main' }}
-        run: cp -rlf site/* ./to-be-published/
+        # Remove the built version's existing folder so files dropped from the build don't linger.
+        run: |
+          for dir in site/*/; do rm -rf "./to-be-published/$(basename "$dir")"; done
+          cp -rlf site/* ./to-be-published/
       #publish it
       - name: Publish content
         if: ${{ github.ref == 'refs/heads/main' }}
