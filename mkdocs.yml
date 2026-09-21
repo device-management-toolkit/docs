@@ -268,8 +268,8 @@ extra:
   repoVersion:
     release_name: "August 2026"
     consoleAPI: 1.41.0
-    mpsAPI: 2.26.0
-    rpsAPI: 2.31.3
+    mpsAPI: 2.35.1
+    rpsAPI: 2.40.2
     oamtct: 2.38.0
     mps: 2.34.2
     rps: 2.40.1

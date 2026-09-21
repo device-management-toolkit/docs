@@ -7,4 +7,4 @@
   }
 </style>
 
-<div data-swagger-url="https://api.swaggerhub.com/apis/rbheopenamt/mps/2.26.0"></div>
+<div data-swagger-url="https://api.swaggerhub.com/apis/rbheopenamt/mps/2.35.1"></div>
