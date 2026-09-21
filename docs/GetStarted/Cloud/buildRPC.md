@@ -3,7 +3,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 
 <div style="text-align:center;">
   <iframe width="600" height="337" src="https://www.youtube.com/embed/z9Ia317L0Kk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  <figcaption><b>Getting Started Part 3</b>: Follow along to learn about how to build RPC, some of the information it can provide, and how to activate an AMT device. <b>Additional Resources: </b><a href="../../../Reference/RPC/libraryRPC">RPC as a Library</a> and <a href="../../../Reference/RPC/commandsRPC">RPC Commands and Flags</a></figcaption>
+  <figcaption><b>Getting Started Part 3</b>: Follow along to learn about how to build RPC, some of the information it can provide, and how to activate an AMT device. <b>Additional Resources: </b><a href="../../Reference/RPC/v2/libraryRPC.md">RPC as a Library</a> and <a href="../../Reference/RPC/v2/commandsRPC.md">RPC Commands and Flags</a></figcaption>
 </div>
 
 !!! important "Important - Production Environment"
@@ -11,7 +11,7 @@ Developed in Go* programming language, the Remote Provisioning Client (RPC) appl
 
 
 <figure class="figure-image">
-<img width="800" height="450" src="..\..\..\assets\images\diagrams\RPC_Overview.svg" style="height:800px;"alt="Figure 1: RPC Configuration">
+<img width="800" height="450" src="../../assets/images/diagrams/RPC_Overview.svg" style="height:800px;"alt="Figure 1: RPC Configuration">
 <figcaption>Figure 1: RPC configuration</figcaption>
 </figure>
 
@@ -134,7 +134,7 @@ If you are building an executable on a development system, you will copy the exe
 
     !!! success
         <figure class="figure-image">
-        <img src="..\..\..\assets\images\screenshots\RPC_Success.png" alt="Figure 2: Example output after configuration">
+        <img src="../../assets/images/screenshots/RPC_Success.png" alt="Figure 2: Example output after configuration">
         <figcaption>Figure 2: Example output after configuration</figcaption>
         </figure>
 

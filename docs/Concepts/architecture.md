@@ -4,7 +4,7 @@
 Figure 1 illustrates the high-level architecture of Device Management Toolkit microservice architecture.
 
 <figure class="figure-image">
-  <img src="..\..\assets\images\diagrams\CloudArchitecturalFlow.svg" style="height:800px" alt="Figure 1: Deploy Device Management Toolkit">
+  <img src="../assets/images/diagrams/CloudArchitecturalFlow.svg" style="height:800px" alt="Figure 1: Deploy Device Management Toolkit">
   <figcaption>Figure 1: Deploy Device Management Toolkit</figcaption>
 </figure>
 
