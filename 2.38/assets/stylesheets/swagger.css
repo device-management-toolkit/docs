@@ -1,0 +1,112 @@
+/* Swagger UI has no dark theme, so recolor it with the site palette in dark mode. */
+[data-md-color-scheme="slate"] .swagger-ui {
+  --swagger-fg: var(--md-default-fg-color);
+  --swagger-fg-light: var(--md-default-fg-color--light);
+  --swagger-bg: var(--md-default-bg-color);
+  --swagger-surface: var(--md-code-bg-color);
+  --swagger-border: var(--md-default-fg-color--lightest);
+
+  color: var(--swagger-fg);
+}
+
+[data-md-color-scheme="slate"] .swagger-ui :is(
+  .info .title, .info p, .info li, .info table,
+  .opblock-tag, .opblock-tag small, .opblock-tag p,
+  .opblock .opblock-summary-path, .opblock .opblock-summary-path__deprecated,
+  .opblock .opblock-summary-description, .opblock .opblock-summary-operation-id,
+  .opblock-description-wrapper p, .opblock-external-docs-wrapper p,
+  .opblock-title_normal p, .opblock .opblock-section-header h4,
+  .opblock .opblock-section-header > label, .tab li,
+  .parameter__name, .parameter__type, .parameter__deprecated, .parameter__in,
+  .parameters-col_description, .response-col_status, .response-col_links,
+  .response-col_description, .responses-inner h4, .responses-inner h5,
+  table thead tr th, table thead tr td, .col_header,
+  .model, .model-title, .model .property, .models h4, .models h4 span,
+  .model-box, .prop-name, .renderedMarkdown :is(p, li), .markdown :is(p, li),
+  .scheme-container .schemes > label, .servers-title, .servers > label,
+  .btn, .dialog-ux .modal-ux-header h3, .dialog-ux .modal-ux-content p,
+  .dialog-ux .modal-ux-content h4, .auth-container h4, .auth-container label,
+  section h3, label, .loading-container .loading::after
+) {
+  color: var(--swagger-fg);
+}
+
+[data-md-color-scheme="slate"] .swagger-ui :is(
+  .opblock-tag, table thead tr th, table thead tr td,
+  .opblock .opblock-section-header, .models h4, .model-box-control
+) {
+  border-color: var(--swagger-border);
+}
+
+[data-md-color-scheme="slate"] .swagger-ui :is(.scheme-container, .dialog-ux .modal-ux) {
+  background: var(--swagger-bg);
+  box-shadow: 0 0 0 1px var(--swagger-border);
+}
+
+[data-md-color-scheme="slate"] .swagger-ui .opblock .opblock-section-header {
+  background: var(--swagger-surface);
+  box-shadow: none;
+}
+
+[data-md-color-scheme="slate"] .swagger-ui :is(.models, section.models .model-container, .model-box) {
+  background: var(--swagger-surface);
+  border-color: var(--swagger-border);
+}
+
+[data-md-color-scheme="slate"] .swagger-ui section.models .model-container:hover {
+  background: var(--md-default-fg-color--lightest);
+}
+
+[data-md-color-scheme="slate"] .swagger-ui :is(input[type="text"], input[type="password"], input[type="search"], input[type="email"], input[type="file"], textarea, select) {
+  background-color: var(--swagger-surface);
+  color: var(--swagger-fg);
+  border-color: var(--swagger-border);
+}
+
+[data-md-color-scheme="slate"] .swagger-ui select {
+  background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%23c2c7d6' d='M13.418 7.859a.695.695 0 0 1 .978 0 .68.68 0 0 1 0 .969l-3.908 3.83a.697.697 0 0 1-.979 0l-3.908-3.83a.68.68 0 0 1 0-.969.695.695 0 0 1 .978 0L10 11z'/></svg>");
+}
+
+/* Icons are drawn with currentColor. */
+[data-md-color-scheme="slate"] .swagger-ui :is(.authorization__btn, .opblock-control-arrow, .expand-operation, .models-control, .opblock-tag button, .copy-to-clipboard) {
+  color: var(--swagger-fg-light);
+}
+
+[data-md-color-scheme="slate"] .swagger-ui .auth-wrapper .btn.authorize {
+  color: #49cc90;
+}
+
+[data-md-color-scheme="slate"] .swagger-ui .model-toggle::after {
+  filter: invert(1);
+}
+
+[data-md-color-scheme="slate"] .swagger-ui :is(.prop-type, .model .property.primitive) {
+  color: var(--md-code-hl-constant-color);
+}
+
+[data-md-color-scheme="slate"] .swagger-ui .prop-format {
+  color: var(--swagger-fg-light);
+}
+
+[data-md-color-scheme="slate"] .swagger-ui .parameter__name.required::after,
+[data-md-color-scheme="slate"] .swagger-ui .parameter__name.required span {
+  color: var(--md-code-hl-number-color);
+}
+
+[data-md-color-scheme="slate"] .swagger-ui .info a,
+[data-md-color-scheme="slate"] .swagger-ui .markdown a,
+[data-md-color-scheme="slate"] .swagger-ui .renderedMarkdown a {
+  color: var(--md-typeset-a-color);
+}
+
+[data-md-color-scheme="slate"] .swagger-ui :is(.markdown, .renderedMarkdown, .info) code {
+  color: var(--md-code-hl-constant-color);
+}
+
+[data-md-color-scheme="slate"] .swagger-ui .execute-wrapper .btn.execute.opblock-control__btn {
+  color: #fff;
+}
+
+[data-md-color-scheme="slate"] .swagger-ui .response-control-media-type__accept-message {
+  color: var(--md-code-hl-string-color);
+}
