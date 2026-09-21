@@ -207,6 +207,7 @@ nav:
       - Enroll Custom Provisioning Certificate using USBFile: Reference/Certificates/enrollCustomCertAMT.md
       - TLS Certificate: Reference/Certificates/tls.md
   - APIs:
+      - Console: APIs/indexConsole.md
       - Management Presence Server: APIs/indexMPS.md
       - Remote Provisioning Server: APIs/indexRPS.md
 # Extensions
@@ -266,6 +267,7 @@ extra:
       - dev
   repoVersion:
     release_name: "August 2026"
+    consoleAPI: 1.41.0
     mpsAPI: 2.26.0
     rpsAPI: 2.31.3
     oamtct: 2.38.0
