@@ -62,5 +62,6 @@ This model is useful for environments where profiles are pre-generated, RPS is *
 ## Related Topics
 
 - [Build RPC-Go Manually](./buildRPC_Manual.md)  
+- [RPC Health Checker](./healthChecker.md)
 - For v2.x configuration details and CLI options: [v2.x CLI](./v2/commandsRPC.md)  
 - For v3.x configuration details and CLI options: [v3.x CLI – Work in Progress](./v3/about-v3.md)

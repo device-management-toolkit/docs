@@ -19,6 +19,7 @@ rpc
 | [maintenance](#maintenance) | Execute a maintenance task for the device. You will be prompted for the AMT password.       | ./rpc maintenance syncclock -u wss://server/maintenance      |
 | [configure](#configure)     | Local configuration of a feature on this device. You will be prompted for the AMT password. | ./rpc configure addwifisettings ...                          |
 | [amtinfo](#amtinfo)         | Display AMT status and configuration.                                                       | ./rpc amtinfo                                                |
+| [status](#status)           | Check device readiness and health before and after AMT activation.                           | ./rpc status                                                 |
 | [version](#version)         | Display the current version of RPC and the RPC Protocol version.                            | ./rpc version                                                |
 
 ##List Command Options
@@ -1244,6 +1245,10 @@ rpc amtinfo [OPTIONS]
 
 For more information,
 see [Wireless Activation](../../../Tutorials/createWiFiConfig.md).
+
+### status
+
+Check device readiness before activation and manageability health after activation. See the [RPC Health Checker](../healthChecker.md) guide for command options, output states, JSON results, and troubleshooting.
 
 ### version
 

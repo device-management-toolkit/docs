@@ -184,6 +184,7 @@ nav:
     - Remote Provisioning Client:
       - Overview: Reference/RPC/overview.md
       - Build RPC-Go Manually: Reference/RPC/buildRPC_Manual.md
+      - RPC Health Checker: Reference/RPC/healthChecker.md
       - v2.x:
         - RPC CLI: Reference/RPC/v2/commandsRPC.md
         - RPC Library: Reference/RPC/v2/libraryRPC.md
