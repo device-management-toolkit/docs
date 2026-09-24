@@ -123,6 +123,37 @@ The final summary recommends the next action. Before activation, it reports whet
 
 Some checks apply only in specific configurations. For example, CIRA checks apply only when the device uses CIRA, and features that are not supported by the device are not treated as failures.
 
+### Example: Pre-Activation Status
+
+Before activation, the report evaluates local prerequisites and will produce output similar to the following:
+
+<figure class="figure-image">
+    <img src="../../assets/images/screenshots/RPC_Health_PreActivation.png" alt="RPC health check report showing a device ready for activation">
+    <figcaption>Example pre-activation status for a device ready for activation.</figcaption>
+</figure>
+
+Depending on the selected profile, pre-activation checks can include administrator privileges, MEI availability, platform and AMT-version support, BIOS configuration, DNS suffix, wired-network availability, LMS, and optional management-endpoint reachability. Use `--acm` or `--ccm` to evaluate the requirements for one activation mode.
+
+### Example: Activated Device without a password
+
+After activation, RPC verifies the AMT state and management configuration. Without an AMT password, checks that need a local WSMAN session are listed as **Not verified**:
+
+<figure class="figure-image">
+    <img src="../../assets/images/screenshots/RPC_Health_PostActivation_NoPassword.png" alt="RPC health check report showing an activated device without an AMT password">
+    <figcaption>Example post-activation status when no AMT password is provided.</figcaption>
+</figure>
+
+### Example: Activated Device with a password
+
+With `--password` or `AMT_PASSWORD`, RPC can evaluate WSMAN-dependent checks and reports them under **Passed**, **Warnings**, or **Failed**:
+
+<figure class="figure-image">
+    <img src="../../assets/images/screenshots/RPC_Health_PostActivation_WithPassword.png" alt="RPC health check report showing an activated device with an AMT password">
+    <figcaption>Example post-activation status when an AMT password is provided.</figcaption>
+</figure>
+
+Activated devices can also include control-mode alignment, CIRA configuration and connectivity, remote manageability, One Click Recovery, and management-endpoint reachability checks when applicable.
+
 ## JSON output
 
 Use `--json` to print the health check result in JSON format:
