@@ -18,9 +18,15 @@ The diagrams below illustrates the database schema and relationships for MPS and
           datetime lastconnected
           datetime lastseen
           datetime lastdisconnected
+          int powerstate
+          int ospowersavingstate
+          datetime powerstateupdatedat
       }
   ```
   
+The nullable `powerstate` and `ospowersavingstate` fields store the last successfully cached device observations. `powerstateupdatedat` records the read start time as PostgreSQL `timestamp with time zone`. The device API exposes these as `powerState`, `osPowerSavingState`, and `powerStateUpdatedAt`. The background refresher, successful live power-state reads, and successful reads following power actions can populate these fields. An unavailable optional OS power-saving state is stored as `0` (unknown). Failed primary reads preserve the previous values and timestamp. Writes with an older read-start timestamp are ignored, and disconnecting retains the last-known observation. Consumers should check the timestamp when assessing freshness.
+
+Existing PostgreSQL databases require the [power-state cache migration](../upgradeVersion.md#upgrade-to-mps-with-the-device-power-state-cache) before upgrading MPS.
 ### RPS
   ```mermaid
   erDiagram
