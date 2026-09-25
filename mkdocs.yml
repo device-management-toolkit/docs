@@ -184,12 +184,12 @@ nav:
     - Remote Provisioning Client:
       - Overview: Reference/RPC/overview.md
       - Build RPC-Go Manually: Reference/RPC/buildRPC_Manual.md
-      - RPC Health Checker: Reference/RPC/healthChecker.md
       - v2.x:
         - RPC CLI: Reference/RPC/v2/commandsRPC.md
         - RPC Library: Reference/RPC/v2/libraryRPC.md
       - v3 (Beta):
         - About v3: Reference/RPC/v3/about-v3.md
+        - RPC Health Checker: Reference/RPC/v3/healthChecker.md
       - Transition Activated Device: Reference/RPC/transitionDeviceRPC.md
     - UI Toolkit React:
       - Overview: Reference/UIToolkit/overview.md
