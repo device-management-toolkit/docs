@@ -40,6 +40,8 @@ Before using RPE, ensure the target system meets the following requirements:
 
         Intel states that the BIOS setting can be changed **only via the BIOS menu**, on the target machine itself. Intel AMT reports it as a read-only value, so no Console setting will turn it on. Reach the BIOS menu over a KVM session or at the machine. If the feature is left disabled there, the erase fails with *Remote Platform Erase is not enabled by the BIOS on this device*, whatever the device's Console settings say. Where a platform's BIOS does not support Remote Platform Erase at all, the option will not be present in the menu.
 
+5. Remote Platform Erase is available regardless of activation mode, including devices activated in **Client Control Mode (CCM)** and **Admin Control Mode (ACM)**.
+
 ## Verify and Enable RPE Support
 
 1. Open Console and navigate to the **Devices** tab on the left-hand menu, then select your target device.
@@ -55,7 +57,7 @@ Before using RPE, ensure the target system meets the following requirements:
         Confirm the **Remote Platform Erase** checkbox is available and not greyed out, as shown in the snapshot below. A greyed-out checkbox means the platform does not support the feature.
 
     <figure class="figure-image">
-      <img src="../../../assets/images/screenshots/RPE_Enabled_Features.png" alt="Figure 2: Remote Platform Erase listed under AMT Enabled Features">
+      <img src="../../../assets/images/screenshots/RPE_Enabled_Feature.png" alt="Figure 2: Remote Platform Erase listed under AMT Enabled Features">
     </figure>
 
 3. Select the **Remote Platform Erase** tab in the device navigation on the right.
@@ -65,6 +67,18 @@ Before using RPE, ensure the target system meets the following requirements:
     </figure>
 
 4. Make sure **Enable Remote Platform Erase on this device** is switched on. This is the same setting as the **Remote Platform Erase** checkbox on the **AMT Enabled Features** panel, so it is already on if you enabled it there. The erase options below it stay inactive until it is on.
+
+!!! warning "Remote Platform Erase on Intel® Standard Manageability (ISM) devices"
+
+    On Intel® Standard Manageability (ISM) devices, Remote Platform Erase is not supported. The **Remote Platform Erase** checkbox appears disabled with the tooltip *Remote Platform Erase is not supported*, and the **Remote Platform Erase** tab displays the same message. This limitation is determined by the device's firmware.
+
+    <figure class="figure-image">
+      <img src="../../../assets/images/screenshots/RPE_Not_Supported.png" alt="Figure 3a: AMT Enabled Features panel on an ISM device showing Remote Platform Erase disabled with a not-supported tooltip">
+    </figure>
+
+    <figure class="figure-image">
+      <img src="../../../assets/images/screenshots/RPE_Not_Supported_Tab.png" alt="Figure 3b: Remote Platform Erase tab on an ISM device reporting that the feature is not supported">
+    </figure>
 
 ## Triggering a Remote Platform Erase
 
@@ -92,6 +106,10 @@ Before using RPE, ensure the target system meets the following requirements:
 
 3. Click **Initiate Remote Erase** in the top right.
 
+    !!! note "CCM devices prompt for a user consent code"
+
+        Devices activated in Client Control Mode (CCM) default to requiring consent for all features, so Console prompts for a 6-digit **User Consent Code** before the confirmation dialog appears. Enter the code shown on the target device's local display, then continue. Devices with **User Consent** set to **None**, as ACM profiles typically are, skip this step.
+
 4. Review the confirmation dialog, which describes exactly which actions will run, and click **YES** to confirm.
 
     !!! warning "Point of No Return"
@@ -111,6 +129,32 @@ The behaviour described on this page is defined by the Intel® AMT SDK. These ar
 - *[Intel® Remote Platform Erase](https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/WordDocuments/Secure_Remote_Platform_Erase.htm)* – The feature overview: the four erase capabilities and their definitions, the Intel CSME 16.0 minimum, the requirement to run over TLS, and the rule that the feature must be enabled in both the BIOS and Intel AMT.
 - *[AMT_BootCapabilities](https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/HTMLDocuments/WS-Management_Class_Reference/AMT_BootCapabilities.htm)* – The `PlatformErase` bitmask, which defines each erase capability separately and states the firmware versions individual capabilities require.
 - *[AMT_BootSettingData](https://software.intel.com/sites/manageability/AMT_Implementation_and_Reference_Guide/HTMLDocuments/WS-Management_Class_Reference/AMT_BootSettingData.htm)* – The `RPEEnabled` flag that reports the BIOS setting, plus the `PlatformErase` and `RSEPassword` fields used to request an erase.
+
+## Troubleshooting
+
+### Remote Platform Erase is not enabled by the BIOS on this device
+
+The BIOS-side setting is off. Console can only enable the Console-side toggle; the BIOS setting must be turned on directly on the target machine. Reach the BIOS menu over KVM or locally, enable Remote Platform Erase, and retry.
+
+### Erase capability checkboxes are greyed out
+
+A disabled erase option indicates the device does not support that particular capability. This is determined by the device's hardware and firmware and cannot be changed from Console.
+
+### SSD password must not exceed 64 bytes
+
+The drive password for an encrypted SSD has a 64-byte limit. Shorten the password and retry.
+
+### Erase fails to initiate, or power status cannot be read
+
+Before initiating an erase, Console queries the device's current power state to determine whether to power on or restart the device. If this communication fails—for example, because the device is offline or the connection was interrupted—the erase cannot proceed. Ensure the device is online and the Console connection is stable, then retry.
+
+### Unconfigure CSME performs a full unprovision... / device disappears from Console
+
+This is expected behavior. Selecting this option fully removes all AMT provisioning from the device, causing it to disappear from Console. The device cannot be remotely managed again until it is reprovisioned. This option is hidden by default in Console; if exposed by another tool, treat it as a separate operation distinct from the hardware erase capabilities.
+
+### Prompted for a user consent code, or the code request fails
+
+Client Control Mode (CCM) devices require a user consent code as a security measure. A 6-digit code appears on the device's local display; enter this code in Console to proceed. If the code request fails or the code is rejected, ensure the device is online and has a working display connected, then retry.
 
 ---
 

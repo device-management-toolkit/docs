@@ -33,6 +33,10 @@ Before you start, confirm the target device meets all of these:
 
 - The **Remote Platform Erase** feature is enabled for the device in Console. See [Verify and Enable RPE Support](#verify-and-enable-rpe-support) below.
 
+!!! note "Supported across activation modes"
+
+    Remote Platform Erase is available regardless of activation mode, including devices activated in **Client Control Mode (CCM)** and **Admin Control Mode (ACM)**.
+
 Each requirement is explained in full, including the firmware versions Intel requires, in the [Remote Platform Erase reference](../Reference/Console/Features/rpe.md#prerequisites).
 
 ## Verify and Enable RPE Support
@@ -50,7 +54,7 @@ Each requirement is explained in full, including the firmware versions Intel req
         Confirm the **Remote Platform Erase** checkbox is available and not greyed out, as shown in the snapshot below. A greyed-out checkbox means the platform does not support the feature.
 
     <figure class="figure-image">
-      <img src="../assets/images/screenshots/RPE_Enabled_Features.png" alt="Figure 2: Remote Platform Erase listed under AMT Enabled Features">
+      <img src="../assets/images/screenshots/RPE_Enabled_Feature.png" alt="Figure 2: Remote Platform Erase listed under AMT Enabled Features">
     </figure>
 
 3. Select the **Remote Platform Erase** tab in the device navigation on the right.
@@ -60,6 +64,18 @@ Each requirement is explained in full, including the firmware versions Intel req
     </figure>
 
 4. Make sure **Enable Remote Platform Erase on this device** is switched on. This is the same setting as the **Remote Platform Erase** checkbox on the **AMT Enabled Features** panel, so it is already on if you enabled it there. The erase options below it stay inactive until it is on.
+
+!!! warning "Remote Platform Erase on Intel® Standard Manageability (ISM) devices"
+
+    On Intel® Standard Manageability (ISM) devices, Remote Platform Erase is not supported. The **Remote Platform Erase** checkbox appears disabled with the tooltip *Remote Platform Erase is not supported*, and the **Remote Platform Erase** tab displays the same message. This limitation is determined by the device's firmware.
+
+    <figure class="figure-image">
+      <img src="../assets/images/screenshots/RPE_Not_Supported.png" alt="Figure 3a: AMT Enabled Features panel on an ISM device showing Remote Platform Erase disabled with a not-supported tooltip">
+    </figure>
+
+    <figure class="figure-image">
+      <img src="../assets/images/screenshots/RPE_Not_Supported_Tab.png" alt="Figure 3b: Remote Platform Erase tab on an ISM device reporting that the feature is not supported">
+    </figure>
 
 ## Preparing a Test Device (Optional)
 
@@ -129,6 +145,10 @@ If you are demonstrating or validating RPE rather than erasing a production mach
 
 3. Click **Initiate Remote Erase** in the top right.
 
+    !!! note "CCM devices prompt for a user consent code"
+
+        Devices activated in Client Control Mode (CCM) default to requiring consent for all features, so Console prompts for a 6-digit **User Consent Code** before the confirmation dialog appears. Enter the code shown on the target device's local display, then continue. Devices with **User Consent** set to **None**, as ACM profiles typically are, skip this step.
+
 4. Review the confirmation dialog, which describes exactly which actions will run, and click **YES** to confirm.
 
     !!! warning "Point of No Return"
@@ -180,6 +200,38 @@ Once the device has finished its reboot cycle, confirm each selected capability 
     <figure class="figure-image">
       <img src="../assets/images/screenshots/RPE_BIOS_Power_Restored.png" alt="Figure 10: Secondary Power Settings reset to the default power recovery option">
     </figure>
+
+## Troubleshooting
+
+### Remote Platform Erase is not enabled by the BIOS on this device
+
+The BIOS-side setting is off. Console can only enable the Console-side toggle; the BIOS setting must be turned on directly on the target machine. Reach the BIOS menu over KVM or locally, enable Remote Platform Erase, and retry. See [Verify and Enable RPE Support](#verify-and-enable-rpe-support).
+
+### Erase capability checkboxes are greyed out
+
+A disabled erase option indicates the device does not support that particular capability. This is determined by the device's hardware and firmware and cannot be changed from Console. Check the **AMT Enabled Features** panel to see which erase capabilities your device supports.
+
+### SSD password must not exceed 64 bytes
+
+The **Drive Password** field for an encrypted SSD has a 64-byte limit. Shorten the password and retry.
+
+### Erase fails to initiate, or power status cannot be read
+
+Before initiating an erase, Console queries the device's current power state to determine whether to power on or restart the device. If this communication fails—for example, because the device is offline or the connection was interrupted—the erase cannot proceed. Ensure the device is online and the Console connection is stable, then retry.
+
+### Erase reports success, but the change is not visible
+
+- **TPM Clear**: After the device reboots, run `sudo tpm2_getcap handles-persistent` on the device to verify the TPM has been cleared. If persistent handles are still present, collect diagnostic logs from both Console and the device, then contact support.
+- **Restore BIOS to EOM State**: Verify you are checking the correct BIOS setting and that the device has fully rebooted after the erase operation completes.
+- **Secure Erase of All SSDs**: The OS is erased along with the data. The device cannot boot until you reinstall an operating system. This is the expected behavior.
+
+### Unconfigure CSME performs a full unprovision... / device disappears from Console
+
+This is expected behavior. Selecting this option fully removes all AMT provisioning from the device, causing it to disappear from Console. The device cannot be remotely managed again until it is reprovisioned. This option is hidden by default in Console; if exposed by another tool, treat it as a separate operation distinct from the hardware erase capabilities.
+
+### Prompted for a user consent code, or the code request fails
+
+Client Control Mode (CCM) devices require a user consent code as a security measure. A 6-digit code appears on the device's local display; enter this code in Console to proceed. If the code request fails or the code is rejected, ensure the device is online and has a working display connected, then retry.
 
 ---
 
