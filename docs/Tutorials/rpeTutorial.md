@@ -161,6 +161,222 @@ If you are demonstrating or validating RPE rather than erasing a production mach
 
 5. The device restarts automatically and performs the selected erase and restore actions during boot.
 
+## Triggering Remote Platform Erase via Console APIs
+
+You can use the Console REST APIs to trigger remote platform erase programmatically. This section describes the API endpoints, authentication, and step-by-step examples.
+
+### API Reference
+
+| Endpoint | Method | Description | Request Body |
+|:---|:---|:---|:---|
+| `/api/v1/amt/boot/remoteErase/<GUID>` | GET | Retrieve supported erase capabilities for a device | N/A |
+| `/api/v1/amt/boot/remoteErase/<GUID>` | POST | Trigger remote platform erase | `{"secureEraseAllSSDs":true,"tpmClear":true,"restoreBIOSToEOM":true,"unconfigureCSME":false,"ssdPassword":""}` |
+
+1. **Authenticate and Get Login Token**
+
+    First, authenticate with Console and retrieve a JWT token to use for all subsequent API calls:
+
+    ```bash
+    curl --insecure -X POST https://<IP_ADDRESS_OR_FQDN_OF_SERVER>/api/v1/authorize -H "Content-Type:application/json" -d "{\"username\":\"<CONSOLE_USERNAME>\",\"password\":\"<CONSOLE_PASSWORD>\"}"
+    ```
+
+    Example Response:
+
+    ```json
+    {"token":"<YOUR_JWT_TOKEN>"}
+    ```
+
+    Save this token to use in the `Authorization` header for the next steps.
+
+2. **Retrieve Connected Devices**
+
+    Fetch the list of connected devices to identify the target device's GUID:
+
+    ```bash
+    curl --insecure https://<IP_ADDRESS_OR_FQDN_OF_SERVER>/api/v1/devices -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+    ```
+
+    Example Response:
+
+    ```json
+    [
+      {
+        "guid": "5d52da54-199c-cc3c-3e96-88aedd668dff",
+        "hostname": "Device2",
+      }
+    ]
+    ```
+
+    **Next Steps**: Select the GUID of your target device (e.g., `5d52da54-199c-cc3c-3e96-88aedd668dff`) for use in subsequent steps.
+
+3. **Check RPE Support and Available Capabilities**
+
+    Verify that the target device supports remote platform erase and determine which erase capabilities are available:
+
+    ```bash
+    curl --insecure https://<IP_ADDRESS_OR_FQDN_OF_SERVER>/api/v1/amt/boot/remoteErase/<DEVICE_GUID> -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+    ```
+
+    Example Response:
+
+    ```json
+    {
+      "secureEraseAllSSDs": true,
+      "tpmClear": true,
+      "restoreBIOSToEOM": true,
+      "unconfigureCSME": false
+    }
+    ```
+
+    If all capabilities return `false`, the device does not support remote platform erase. This commonly occurs on devices using Intel® Standard Manageability (ISM), which do not have AMT remote erase capabilities.
+
+4. **Trigger Remote Platform Erase**
+
+    Send the erase request with your selected capabilities. At least one capability must be set to `true`:
+
+    ```bash
+    curl --insecure -X POST https://<IP_ADDRESS_OR_FQDN_OF_SERVER>/api/v1/amt/boot/remoteErase/<DEVICE_GUID> -H "Content-Type:application/json" -H "Authorization: Bearer <YOUR_JWT_TOKEN>" -d "{\"secureEraseAllSSDs\":true,\"tpmClear\":true,\"restoreBIOSToEOM\":true,\"unconfigureCSME\":false,\"ssdPassword\":\"\"}"
+    ```
+
+    **Request Payload Fields**:
+    - `secureEraseAllSSDs` (boolean): Securely erase all SSDs via media and crypto erase
+    - `tpmClear` (boolean): Delete all TPM keys and data
+    - `restoreBIOSToEOM` (boolean): Restore BIOS to manufacturer defaults (End of Manufacture golden state)
+    - `unconfigureCSME` (boolean): Fully unprovision Intel CSME firmware and AMT (removes device from Console)
+    - `ssdPassword` (string, optional): Drive password for encrypted SSDs (leave empty for unencrypted drives)
+
+    Expected Response (on success):
+
+    ```json
+    {"status":"success"}
+    ```
+
+    !!! warning "Encrypted SSDs and drive passwords"
+
+        If you have self-encrypting SSDs and `secureEraseAllSSDs` is set to `true`, provide the drive password in the `ssdPassword` field. Encrypted erase has not been fully tested end to end. Leave this field empty for unencrypted drives.
+
+    !!! note "CCM devices and user consent"
+
+        On Client Control Mode (CCM) devices, the API will prompt for a 6-digit user consent code from the device's local display before proceeding. Provide this code when prompted.
+
+5. **Verify the Erase Completed**
+
+    After the device reboots and erase operations complete, follow the verification steps in [Verifying the Erase](#verifying-the-erase) to confirm all selected capabilities were applied.
+
+## Triggering Remote Platform Erase via MPS APIs
+
+For cloud deployments using the Management Presence Server (MPS), you can trigger remote platform erase through the MPS REST APIs. This section provides API endpoints and step-by-step examples.
+
+### API Reference
+
+| Endpoint | Method | Description | Request Body |
+|:---|:---|:---|:---|
+| `/mps/api/v1/amt/boot/remoteErase/<GUID>` | GET | Retrieve supported erase capabilities for a device | N/A |
+| `/mps/api/v1/amt/boot/remoteErase/<GUID>` | POST | Trigger remote platform erase | `{"secureEraseAllSSDs":true,"tpmClear":true,"restoreBIOSToEOM":true,"unconfigureCSME":false,"ssdPassword":""}` |
+
+1. **Authenticate and Get Login Token**
+
+    First, authenticate with MPS and retrieve a JWT token to use for all subsequent API calls:
+
+    ```bash
+    curl --insecure -X POST https://<IP_ADDRESS_OR_FQDN_OF_SERVER>/mps/login/api/v1/authorize -H "Content-Type:application/json" -d "{\"username\":\"<MPS_WEB_ADMIN_USER>\",\"password\":\"<MPS_WEB_ADMIN_PASSWORD>\"}"
+    ```
+
+    Example Response:
+
+    ```json
+    {"token":"<YOUR_JWT_TOKEN>"}
+    ```
+
+    Save this token to use in the `Authorization` header for the next steps.
+
+2. **Retrieve Connected Devices**
+
+    Fetch the list of devices connected to MPS to identify the target device's GUID:
+
+    ```bash
+    curl --insecure https://<IP_ADDRESS_OR_FQDN_OF_SERVER>/mps/api/v1/devices -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+    ```
+
+    Example Response:
+
+    ```json
+    [
+      {
+        "guid": "5d52da54-199c-cc3c-3e96-88aedd668dff",
+        "hostname": "Device2",
+
+      }
+    ]
+    ```
+
+    **Next Steps**: Select the GUID of your target device (e.g., `5d52da54-199c-cc3c-3e96-88aedd668dff`) for use in subsequent steps.
+
+3. **Check RPE Support and Available Capabilities**
+
+    Verify that the target device supports remote platform erase and determine which erase capabilities are available:
+
+    ```bash
+    curl --insecure https://<IP_ADDRESS_OR_FQDN_OF_SERVER>/mps/api/v1/amt/boot/remoteErase/<DEVICE_GUID> -H "Authorization: Bearer <YOUR_JWT_TOKEN>"
+    ```
+
+    Example Response:
+
+    ```json
+    {
+      "secureEraseAllSSDs": true,
+      "tpmClear": true,
+      "restoreBIOSToEOM": true,
+      "unconfigureCSME": false
+    }
+    ```
+
+    If all capabilities return `false`, the device does not support remote platform erase. This commonly occurs on devices using Intel® Standard Manageability (ISM), which do not have AMT remote erase capabilities.
+
+4. **Trigger Remote Platform Erase**
+
+    Send the erase request with your selected capabilities. At least one capability must be set to `true`:
+
+    ```bash
+    curl --insecure -X POST https://<IP_ADDRESS_OR_FQDN_OF_SERVER>/mps/api/v1/amt/boot/remoteErase/<DEVICE_GUID> -H "Content-Type:application/json" -H "Authorization: Bearer <YOUR_JWT_TOKEN>" -d "{\"secureEraseAllSSDs\":true,\"tpmClear\":true,\"restoreBIOSToEOM\":true,\"unconfigureCSME\":false,\"ssdPassword\":\"\"}"
+    ```
+
+    **Request Payload Fields**:
+    - `secureEraseAllSSDs` (boolean): Securely erase all SSDs via media and crypto erase
+    - `tpmClear` (boolean): Delete all TPM keys and data
+    - `restoreBIOSToEOM` (boolean): Restore BIOS to manufacturer defaults (End of Manufacture golden state)
+    - `unconfigureCSME` (boolean): Fully unprovision Intel CSME firmware and AMT (removes device from MPS)
+    - `ssdPassword` (string, optional): Drive password for encrypted SSDs (leave empty for unencrypted drives)
+
+    Expected Response (on success):
+
+    ```json
+    {"status":"success"}
+    ```
+
+    !!! warning "Encrypted SSDs and drive passwords"
+
+        If you have self-encrypting SSDs and `secureEraseAllSSDs` is set to `true`, provide the drive password in the `ssdPassword` field. Encrypted erase has not been fully tested end to end. Leave this field empty for unencrypted drives.
+
+    !!! note "CCM devices and user consent"
+
+        On Client Control Mode (CCM) devices, the API will prompt for a 6-digit user consent code from the device's local display before proceeding. Provide this code when prompted.
+
+5. **Verify the Erase Completed**
+
+    After the device reboots and erase operations complete, follow the verification steps in [Verifying the Erase](#verifying-the-erase) to confirm all selected capabilities were applied.
+
+## Error Handling
+
+The following error responses apply to both Console and MPS API endpoints:
+
+| HTTP Status | Error | Cause | Solution |
+|:---|:---|:---|:---|
+| 400 | Bad Request | No erase capability selected or invalid request payload | Select at least one capability: `secureEraseAllSSDs`, `tpmClear`, `restoreBIOSToEOM`, or `unconfigureCSME` |
+| 401 | Unauthorized | Invalid or expired JWT token | Re-authenticate and obtain a new token |
+| 404 | Not Found | Device GUID does not exist or device is not connected | Verify the GUID from the devices list and confirm the device is online |
+| 500 | Internal Server Error | RPE is not enabled in BIOS, or device connection was lost | Enable RPE in device BIOS and ensure device is online |
+
 ## Verifying the Erase
 
 Once the device has finished its reboot cycle, confirm each selected capability was applied.
