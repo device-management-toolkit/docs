@@ -107,7 +107,7 @@ Install the following tools before running this tutorial:
 
 1. **curl** (for API calls) : Comes pre-installed on most operating systems; if not available, install it from the official website (<https://curl.se/download.html>) or your OS package manager.
 
-2. **DMTF Redfish Tool** (for Redfish CLI testing) : Repository and install guidance: <https://github.com/DMTF/Redfishtool>. The version used in this tutorial is 1.1.8 or later.
+2. **DMTF Redfish Tool** (for Redfish CLI testing) : Repository and install guidance: <https://github.com/DMTF/Redfishtool>. The version used in this tutorial is 1.1.5, installable with `pip install redfishtool`.
 
 3. **jq** (for JSON filtering/pretty-printing in non-table examples) : Install it from your OS package manager (for example, `sudo apt-get install jq` on Debian/Ubuntu, `brew install jq` on macOS, or `choco install jq` / `winget install jqlang.jq` on Windows) or from the official repository at <https://jqlang.github.io/jq/>.
 
@@ -125,29 +125,37 @@ After downloading and extracting the Redfish binary, continue with the Enterpris
 
 Every example in this guide uses the same placeholders. Console listens on port **8181** by default, so a local install is usually reachable at `https://localhost:8181`.
 
-| Placeholder | Meaning |
-|-------------|---------|
-| `<console_host_or_ip>` | Host or IP where Console is running (for example, `localhost`) |
-| `<console_port>` | Console HTTP port (default `8181`, configurable via `HTTP_PORT`) |
-| `<admin-user-name>` / `<admin-password>` | Console admin credentials you configured during setup |
-| `<system-id>` | Device GUID of a managed Intel AMT device, taken from the Systems collection |
+| Placeholder | Variable used in the examples | Meaning |
+|-------------|-----------------------------------|---------|
+| `<console_host_or_ip>` | `CONSOLE_HOST` | Host or IP where Console is running (for example, `localhost`) |
+| `<console_port>` | `CONSOLE_PORT` | Console HTTP port (default `8181`, configurable via `HTTP_PORT`) |
+| `<admin-user-name>` / `<admin-password>` | `ADMIN_USER` / `ADMIN_PASSWORD` | Console admin credentials you configured during setup |
+| `<system-id>` | `SYSTEM_ID` | Device GUID of a managed Intel AMT device, taken from the Systems collection |
 
-To avoid retyping these, export them once in your shell and reuse them in the curl examples:
+Rather than retyping these values, export them once in your shell. Every curl and redfishtool example in this guide reads them, so the commands can be copied and run as-is:
 
-=== "Windows"
-    ```powershell
-    $CONSOLE = "localhost:8181"
-    $CREDS   = "<admin-user-name>:<admin-password>"
-    ```
-
-=== "Linux"
-    ```bash
-    CONSOLE="localhost:8181"
-    CREDS="<admin-user-name>:<admin-password>"
-    ```
+```bash
+export CONSOLE_HOST="localhost"
+export CONSOLE_PORT="8181"
+export ADMIN_USER="<admin-user-name>"
+export ADMIN_PASSWORD="<admin-password>"
+export SYSTEM_ID="<system-id>"
+```
 
 !!! note
-    Examples under [Common Use Cases](#common-use-cases) use literal sample values such as `localhost:8181` and `admin:password123` so they can be copied and adapted directly. Replace them with your own values.
+    The example above uses Linux shell syntax. The same variables work on Windows — set them in PowerShell instead, and the curl commands are otherwise unchanged:
+
+    ```powershell
+    $env:CONSOLE_HOST    = "localhost"
+    $env:CONSOLE_PORT    = "8181"
+    $env:ADMIN_USER      = "<admin-user-name>"
+    $env:ADMIN_PASSWORD  = "<admin-password>"
+    $env:SYSTEM_ID       = "<system-id>"
+    ```
+
+    The examples use the `${VARIABLE}` form, which both `bash` and PowerShell expand the same way.
+
+You can fill in `SYSTEM_ID` after you list the Systems collection for the first time — see [Get Systems Collection](#get-systems-collection).
 
 ### Verifying the Redfish Endpoint
 
@@ -159,13 +167,13 @@ Test that the Redfish Endpoint is running:
 === "Windows"
     ```
     # Check if the server is listening (use -k to ignore self-signed certificate, -s for silent mode)
-    curl.exe -sk https://<console_host_or_ip>:<console_port>/redfish/v1/ | jq
+    curl.exe -sk https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/ | jq
     ```
 
 === "Linux"
     ```bash
     # Check if the server is listening (use -k to ignore self-signed certificate, -s for silent mode)
-    curl -sk https://<console_host_or_ip>:<console_port>/redfish/v1/ | jq
+    curl -sk https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/ | jq
     ```
 
 **Reference response:**
@@ -182,7 +190,7 @@ Test that the Redfish Endpoint is running:
   "Systems": {
     "@odata.id": "/redfish/v1/Systems"
   },
-  "UUID": "ebc6c6c9-1ed3-4f12-ae0b-7b877c55de07",
+  "UUID": "11111111-1111-1111-1111-111111111111",
   "Vendor": "Device Management Toolkit"
 }
 ```
@@ -190,7 +198,7 @@ Test that the Redfish Endpoint is running:
 **Reference log on the Console:**
 
 ```json
-{"level":"info","time":"2025-12-06T15:22:40+05:30","caller":"/home/admin/dmt/console-redfish-nm/pkg/logger/adapters.go:29","message":"[GIN] 2025/12/06 - 15:22:40 | 200 |     795.431µs |   10.190.213.16 | GET      \"/redfish/v1/\""}
+{"level":"info","time":"2025-12-06T15:22:40+05:30","caller":"/opt/console/pkg/logger/adapters.go:29","message":"[GIN] 2025/12/06 - 15:22:40 | 200 |     795.431µs |   <client-ip> | GET      \"/redfish/v1/\""}
 ```
 
 !!! note
@@ -227,16 +235,16 @@ redfishtool [options] <command> [command-options]
 - `-u <user>` or `--user <user>`: Console Username for authentication
 - `-p <password>` or `--password <password>`: Console Password for authentication
 - `-S Always` or `--Secure=Always`: Always use HTTPS. Required for Console, which serves Redfish over TLS
-- `-I <device-guid>` or `--Id <device-guid>`: Select a specific member of a collection by its `Id`
+- `-I <device-guid>` or `--Id <device-guid>`: Select a specific member of a collection by its `Id`. The examples pass `${SYSTEM_ID}` here
 - `-T <seconds>`: Request timeout. AMT operations can be slow, so the examples use `-T 30`
 - `-v` or `--verbose`: Enable verbose output
-
-!!! note
-    `redfishtool` validates the server certificate. If Console uses a self-signed certificate, add its CA to your trust store, or use the curl examples with `-k` instead.
 
 ### Using Redfish Tool with Console
 
 The following examples demonstrate how to use the Redfish tool with Console for all common Redfish operations. These correspond to the same scenarios covered in the curl commands section.
+
+!!! note
+    Like the curl examples, these commands read the `CONSOLE_HOST`, `CONSOLE_PORT`, `ADMIN_USER`, `ADMIN_PASSWORD`, and `SYSTEM_ID` variables. Export them once as shown in [Setting Your Connection Values](#setting-your-connection-values) — that example uses Linux shell syntax, and the equivalent PowerShell `$env:` assignments work the same way on Windows — then the commands below can be copied and run unchanged.
 
 #### Get Service Root
 
@@ -247,7 +255,7 @@ The following examples demonstrate how to use the Redfish tool with Console for 
 This command displays the service root with available API endpoints and service information.
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -S Always root
+redfishtool -r ${CONSOLE_HOST}:${CONSOLE_PORT} -S Always root
 ```
 
 **Reference Successful Response:**
@@ -269,7 +277,7 @@ redfishtool -r <console_host_or_ip>:<console_port> -S Always root
     "Systems": {
         "@odata.id": "/redfish/v1/Systems"
     },
-    "UUID": "5ea6dfb3-bcdc-443a-9a9d-3035a7b73fe7",
+    "UUID": "11111111-1111-1111-1111-111111111111",
     "Vendor": "Device Management Toolkit",
     "SessionService": {
         "@odata.id": "/redfish/v1/SessionService"
@@ -294,7 +302,7 @@ redfishtool -r <console_host_or_ip>:<console_port> -S Always root
 **Requires Authentication:** No
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -S Always odata
+redfishtool -r ${CONSOLE_HOST}:${CONSOLE_PORT} -S Always odata
 ```
 
 **Reference Successful Response:**
@@ -331,7 +339,7 @@ redfishtool -r <console_host_or_ip>:<console_port> -S Always odata
 **Requires Authentication:** No
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -S Always metadata
+redfishtool -r ${CONSOLE_HOST}:${CONSOLE_PORT} -S Always metadata
 ```
 
 **Reference Successful Response:**
@@ -401,7 +409,7 @@ redfishtool -r <console_host_or_ip>:<console_port> -S Always metadata
 This displays all systems managed by the Console.
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Systems
+redfishtool -r ${CONSOLE_HOST}:${CONSOLE_PORT} -u "${ADMIN_USER}" -p "${ADMIN_PASSWORD}" -S Always Systems
 ```
 
 **Reference Successful Response:**
@@ -414,7 +422,7 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
   "Description": "Collection of Computer Systems",
   "Members": [
     {
-      "@odata.id": "/redfish/v1/Systems/f141c6d4-7b1b-4435-ae10-53d4f45355ab"
+      "@odata.id": "/redfish/v1/Systems/device-guid-12345"
     }
   ],
   "Members@odata.count": 1,
@@ -435,10 +443,10 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
 
 **Requires Authentication:** Yes
 
-Replace `<system-id>` with the actual system identifier (e.g., device GUID).
+`SYSTEM_ID` holds the system identifier (device GUID) taken from the Systems collection.
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Systems -I <device-guid> -T 30
+redfishtool -r ${CONSOLE_HOST}:${CONSOLE_PORT} -u "${ADMIN_USER}" -p "${ADMIN_PASSWORD}" -S Always Systems -I ${SYSTEM_ID} -T 30
 ```
 
 **Reference Successful Response:**
@@ -450,7 +458,7 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
   "@odata.type": "#ComputerSystem.v1_26_0.ComputerSystem",
   "Actions": {
     "#ComputerSystem.Reset": {
-      "target": "/redfish/v1/Systems/device-guid-12345/Actions/ComputerSystem.Reset",
+      "target": "/redfish/v1/Systems/${SYSTEM_ID}/Actions/ComputerSystem.Reset",
       "title": "Reset"
     },
     "Oem": {
@@ -520,7 +528,7 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
   "SerialConsole": {
     "MaxConcurrentSessions": 1,
     "WebSocket": {
-      "ConsoleURI": "/relay/webrelay.ashx?host=device-guid-12345&mode=sol",
+      "ConsoleURI": "wss://<console_host_or_ip>:<console_port>/relay/webrelay.ashx?host=device-guid-12345&mode=sol",
       "Interactive": true,
       "ServiceEnabled": true
     },
@@ -534,16 +542,14 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
       }
     }
   },
+  "MemorySummary": {
+        "TotalSystemMemoryGiB": null
+    },
   "ProcessorSummary": {
         "CoreCount": null,
         "Count": 1,
         "LogicalProcessorCount": null,
-        "Model": null,
-        "Status": {
-            "Health": "OK",
-            "HealthRollup": "OK",
-            "State": "Enabled"
-        }
+        "Model": null
     },
   "SerialNumber": "SN1234567890",
   "SystemType": "Physical"
@@ -557,6 +563,9 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
 - ✓ `GraphicalConsole.ServiceEnabled` reflects KVM availability
 - ✓ `SerialConsole.WebSocket.ServiceEnabled` reflects SOL availability
 - ✓ `Actions.Oem` includes consent and redirection token actions for KVM/SOL workflows
+
+!!! note
+    Intel AMT does not report every inventory field, so `MemorySummary` and several `ProcessorSummary` members are commonly `null`. On some devices the whole `Boot` object is `null` until a boot override has been set at least once. On this endpoint `SerialConsole.WebSocket.ConsoleURI` is returned as an absolute `wss://` URL; the PATCH examples later in this guide accept the relative form.
 
 #### Perform Power Actions
 
@@ -576,7 +585,10 @@ The service accepts the following `ResetType` values. Actual behavior depends on
 | `PowerCycle` | Power cycle (off then on) |
 
 !!! note
-    Any other value is rejected with `400 Bad Request` and a `Base.1.8.PropertyValueNotInList` error. See [Example: Invalid Reset Type](#example-invalid-reset-type).
+    Any other value is rejected with `400 Bad Request`. See [Example: Invalid Reset Type](#example-invalid-reset-type). Acceptance of a value does not guarantee the device will carry it out — behavior still depends on the Intel AMT firmware and the system's current power state.
+
+!!! warning
+    Sending a `ResetType` that matches the state the system is already in returns `409 Conflict` rather than succeeding. Read `PowerState` first and only request a change. See [Example: Reset to the Current Power State](#example-reset-to-the-current-power-state).
 
 **Reference Successful Response:**
 
@@ -591,7 +603,7 @@ A power action is asynchronous, so the service replies with `202 Accepted`, a `L
   "TaskStatus": "OK",
   "Messages": [
     {
-      "MessageId": "Base.1.8.Success",
+      "MessageId": "Base.1.22.0.Success",
       "Message": "Successfully Completed Request",
       "Severity": "OK",
       "Resolution": "None"
@@ -603,25 +615,25 @@ A power action is asynchronous, so the service replies with `202 Accepted`, a `L
 **Power On:**
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Systems -I <device-guid> reset On -T 30
+redfishtool -r ${CONSOLE_HOST}:${CONSOLE_PORT} -u "${ADMIN_USER}" -p "${ADMIN_PASSWORD}" -S Always Systems -I ${SYSTEM_ID} reset On -T 30
 ```
 
 **Power Off (Force):**
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Systems -I <device-guid> reset ForceOff -T 30
+redfishtool -r ${CONSOLE_HOST}:${CONSOLE_PORT} -u "${ADMIN_USER}" -p "${ADMIN_PASSWORD}" -S Always Systems -I ${SYSTEM_ID} reset ForceOff -T 30
 ```
 
 **Force Restart:**
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Systems -I <device-guid> reset ForceRestart -T 30
+redfishtool -r ${CONSOLE_HOST}:${CONSOLE_PORT} -u "${ADMIN_USER}" -p "${ADMIN_PASSWORD}" -S Always Systems -I ${SYSTEM_ID} reset ForceRestart -T 30
 ```
 
 **PowerCycle:**
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Systems -I <device-guid> reset PowerCycle -T 30
+redfishtool -r ${CONSOLE_HOST}:${CONSOLE_PORT} -u "${ADMIN_USER}" -p "${ADMIN_PASSWORD}" -S Always Systems -I ${SYSTEM_ID} reset PowerCycle -T 30
 ```
 
 #### Reset to BIOS
@@ -631,7 +643,7 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
 **Requires Authentication:** Yes
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Systems -I <device-guid> setBootOverride Once BiosSetup -T 30
+redfishtool -r ${CONSOLE_HOST}:${CONSOLE_PORT} -u "${ADMIN_USER}" -p "${ADMIN_PASSWORD}" -S Always Systems -I ${SYSTEM_ID} setBootOverride Once BiosSetup -T 30
 ```
 
 #### Get System Power State
@@ -641,7 +653,7 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
 **Requires Authentication:** Yes
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always Systems -T 30 -I <device-guid> | jq .PowerState
+redfishtool -r ${CONSOLE_HOST}:${CONSOLE_PORT} -u "${ADMIN_USER}" -p "${ADMIN_PASSWORD}" -S Always Systems -T 30 -I ${SYSTEM_ID} | jq .PowerState
 ```
 
 #### Get SessionService
@@ -651,7 +663,7 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
 **Requires Authentication:** Yes
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always SessionService
+redfishtool -r ${CONSOLE_HOST}:${CONSOLE_PORT} -u "${ADMIN_USER}" -p "${ADMIN_PASSWORD}" -S Always SessionService
 ```
 
 **Reference Successful Response:**
@@ -692,7 +704,7 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
     The current version supports only a single account for sessions. This account username and password are the admin username and password configured for the console.
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always SessionService login
+redfishtool -r ${CONSOLE_HOST}:${CONSOLE_PORT} -u "${ADMIN_USER}" -p "${ADMIN_PASSWORD}" -S Always SessionService login
 ```
 
 **Reference Successful Response:**
@@ -701,8 +713,8 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
 
 ```json
 {
-    "SessionId": "83efab82-aa7a-4e39-84f7-6a888a701a5b",
-    "SessionLocation": "/redfish/v1/SessionService/Sessions/83efab82-aa7a-4e39-84f7-6a888a701a5b",
+    "SessionId": "22222222-2222-2222-2222-222222222222",
+    "SessionLocation": "/redfish/v1/SessionService/Sessions/22222222-2222-2222-2222-222222222222",
     "X-Auth-Token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTc3MzQwMzkwNCwiaWF0IjoxNzczMzE3NTA0LCJqdGkiOiI4M2VmYWI4Mi1hYTdhLTRlMzktODRmNy02YTg4OGE3MDFhNWIifQ.iWwegBCAQGFnRACrIEQT1jV5WOo7YLfrz5xGoc3vXWA"
 }
 ```
@@ -712,20 +724,23 @@ The raw API behaves differently. `POST /redfish/v1/SessionService/Sessions` take
 ```text
 HTTP/1.1 201 Created
 X-Auth-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-Location: /redfish/v1/SessionService/Sessions/83efab82-aa7a-4e39-84f7-6a888a701a5b
+Location: /redfish/v1/SessionService/Sessions/22222222-2222-2222-2222-222222222222
 ```
 
 ```json
 {
     "@odata.context": "/redfish/v1/$metadata#Session.Session",
-    "@odata.id": "/redfish/v1/SessionService/Sessions/83efab82-aa7a-4e39-84f7-6a888a701a5b",
+    "@odata.id": "/redfish/v1/SessionService/Sessions/22222222-2222-2222-2222-222222222222",
     "@odata.type": "#Session.v1_8_0.Session",
-    "ClientOriginIPAddress": "127.0.0.1",
+    "ClientOriginIPAddress": "<client-ip>",
+    "Context": null,
     "CreatedTime": "2026-03-12T17:41:44.154402877+05:30",
     "Description": "User Session for admin",
-    "Id": "83efab82-aa7a-4e39-84f7-6a888a701a5b",
+    "Id": "22222222-2222-2222-2222-222222222222",
     "Name": "User Session",
+    "Password": null,
     "SessionType": "Redfish",
+    "Token": null,
     "UserName": "admin"
 }
 ```
@@ -736,9 +751,8 @@ Location: /redfish/v1/SessionService/Sessions/83efab82-aa7a-4e39-84f7-6a888a701a
 - ✓ `X-Auth-Token` response header is present — this is the token to send on later requests
 - ✓ `Location` response header holds the session URI, used later to delete the session
 - ✓ Body contains the Session resource with `Id` and `UserName`
-
-!!! note
-    Redfishtool does not support creating sessions using the above information. For session usage, use the curl API.
+- ✓ `ClientOriginIPAddress` reflects the address of the machine that created the session, so it differs for you
+- ✓ `Password` and `Token` are always `null` in the response — the token is returned only in the `X-Auth-Token` header
 
 #### Get Sessions
 
@@ -747,7 +761,7 @@ Location: /redfish/v1/SessionService/Sessions/83efab82-aa7a-4e39-84f7-6a888a701a
 **Requires Authentication:** Yes
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always SessionService Sessions
+redfishtool -r ${CONSOLE_HOST}:${CONSOLE_PORT} -u "${ADMIN_USER}" -p "${ADMIN_PASSWORD}" -S Always SessionService Sessions
 ```
 
 **Reference Successful Response:**
@@ -759,7 +773,7 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
     "@odata.type": "#SessionCollection.SessionCollection",
     "Members": [
         {
-            "@odata.id": "/redfish/v1/SessionService/Sessions/83efab82-aa7a-4e39-84f7-6a888a701a5b"
+            "@odata.id": "/redfish/v1/SessionService/Sessions/22222222-2222-2222-2222-222222222222"
         }
     ],
     "Members@odata.count": 1,
@@ -780,7 +794,7 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
 **Requires Authentication:** Yes
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admin-user-password> -S Always SessionService Sessions -i<session-id>
+redfishtool -r ${CONSOLE_HOST}:${CONSOLE_PORT} -u "${ADMIN_USER}" -p "${ADMIN_PASSWORD}" -S Always SessionService Sessions -i<session-id>
 ```
 
 **Reference Successful Response:**
@@ -788,13 +802,13 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
 ```json
 {
     "@odata.context": "/redfish/v1/$metadata#Session.Session",
-    "@odata.id": "/redfish/v1/SessionService/Sessions/83efab82-aa7a-4e39-84f7-6a888a701a5b",
+    "@odata.id": "/redfish/v1/SessionService/Sessions/22222222-2222-2222-2222-222222222222",
     "@odata.type": "#Session.v1_8_0.Session",
-    "ClientOriginIPAddress": "127.0.0.1",
+    "ClientOriginIPAddress": "<client-ip>",
     "Context": null,
     "CreatedTime": "2026-03-12T17:41:44.154402877+05:30",
     "Description": "User Session for admin",
-    "Id": "83efab82-aa7a-4e39-84f7-6a888a701a5b",
+    "Id": "22222222-2222-2222-2222-222222222222",
     "Name": "User Session",
     "Password": null,
     "SessionType": "Redfish",
@@ -816,8 +830,11 @@ redfishtool -r <console_host_or_ip>:<console_port> -u <admin-user-name> -p <admi
 **Requires Authentication:** Yes (session token or Basic Auth)
 
 ```bash
-redfishtool -r <console_host_or_ip>:<console_port> -t <your-auth-token> -S Always SessionService logout -i<session-id>
+redfishtool -r ${CONSOLE_HOST}:${CONSOLE_PORT} -A Session -t <your-auth-token> -S Always SessionService logout -i<session-id>
 ```
+
+!!! note
+    `-A Session` is required whenever you pass `-t`. Without it, redfishtool stops with `Invalid mix of --Auth and --token options`.
 
 **Reference Successful Response:**
 
@@ -846,6 +863,9 @@ For comprehensive documentation and all available commands, refer to the DMTF Re
 
 ## Using the Redfish API through curl commands
 
+!!! note
+    Every curl command in this section reads the `CONSOLE_HOST`, `CONSOLE_PORT`, `ADMIN_USER`, `ADMIN_PASSWORD`, and `SYSTEM_ID` variables. Export them once as shown in [Setting Your Connection Values](#setting-your-connection-values) — that example uses Linux shell syntax, and the equivalent PowerShell `$env:` assignments work the same way on Windows — then the commands below can be copied and run unchanged.
+
 ### Authentication
 
 Most Redfish endpoints require Basic Authentication. Use the credentials as provided during the console execution:
@@ -853,12 +873,12 @@ Most Redfish endpoints require Basic Authentication. Use the credentials as prov
 === "Windows"
     ```
     # Using curl with Basic Auth
-    curl.exe -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/Systems
+    curl.exe -sk -u "${ADMIN_USER}:${ADMIN_PASSWORD}" https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems | jq
     ```
 === "Linux"
     ``` bash
     # Using curl with Basic Auth
-    curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/Systems
+    curl -sk -u "${ADMIN_USER}:${ADMIN_PASSWORD}" https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems | jq
     ```
 
 **Public endpoints (no authentication required):**
@@ -876,31 +896,31 @@ The following table provides curl commands for common Redfish API operations. Fo
 
 | Scenario | Curl Command | Reference |
 |----------|--------------|-----------|
-| **Get Service Root**<br/>Retrieve the Redfish service root document | `curl -sk https://<console_host_or_ip>:<console_port>/redfish/v1/` | See [Get Service Root](#get-service-root) for response format and verification steps |
-| **Get OData Service Document**<br/>Retrieve the OData service document | `curl -sk https://<console_host_or_ip>:<console_port>/redfish/v1/odata` | See [Get OData Service Document](#get-odata-service-document) for response format and verification steps |
-| **Get Metadata Document**<br/>Retrieve the Redfish metadata document in XML format | `curl -sk https://<console_host_or_ip>:<console_port>/redfish/v1/\$metadata` | See [Get Metadata Document](#get-metadata-document) for response format and verification steps |
-| **Get Systems Collection**<br/>Retrieve all computer systems<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/Systems` | See [Get Systems Collection](#get-systems-collection) for response format and verification steps |
-| **Get Specific System Details**<br/>Retrieve detailed information about a specific system<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>` | See [Get Specific System Details](#get-specific-system-details) for response format and verification steps |
-| **Enable KVM Service**<br/>Enable GraphicalConsole service<br/>*Requires Authentication* | `curl -sk -X PATCH -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{"GraphicalConsole":{"ServiceEnabled":true}}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>` | KVM service control on `GraphicalConsole.ServiceEnabled` |
-| **Request KVM Consent**<br/>Trigger KVM CCM consent prompt<br/>*Requires Authentication* | `curl -sk -X POST -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/Oem/IntelComputerSystem.RequestKVMConsent` | Use in CCM mode before opening KVM redirection |
-| **Submit KVM Consent Code**<br/>Submit 6-digit KVM consent code<br/>*Requires Authentication* | `curl -sk -X POST -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{"ConsentCode":"<consent-code>"}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/Oem/IntelComputerSystem.SubmitKVMConsentCode` | Completes KVM consent flow in CCM |
-| **Cancel KVM Consent**<br/>Cancel pending KVM consent request<br/>*Requires Authentication* | `curl -sk -X POST -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/Oem/IntelComputerSystem.CancelKVMConsent` | Optional abort for KVM consent flow |
-| **Enable SOL Service**<br/>Enable SerialConsole WebSocket service<br/>*Requires Authentication* | `curl -sk -X PATCH -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{"SerialConsole":{"WebSocket":{"ServiceEnabled":true}}}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>` | SOL service control on `SerialConsole.WebSocket.ServiceEnabled` |
-| **Request SOL Consent**<br/>Trigger SOL CCM consent prompt<br/>*Requires Authentication* | `curl -sk -X POST -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/Oem/IntelComputerSystem.RequestSolConsent` | Use in CCM mode before opening SOL redirection |
-| **Submit SOL Consent Code**<br/>Submit 6-digit SOL consent code<br/>*Requires Authentication* | `curl -sk -X POST -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{"ConsentCode":"<consent-code>"}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/Oem/IntelComputerSystem.SubmitSolConsentCode` | Completes SOL consent flow in CCM |
-| **Cancel SOL Consent**<br/>Cancel pending SOL consent request<br/>*Requires Authentication* | `curl -sk -X POST -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/Oem/IntelComputerSystem.CancelSolConsent` | Optional abort for SOL consent flow |
-| **Generate Redirection Token**<br/>Get short-lived token for KVM/SOL stream auth<br/>*Requires Authentication* | `curl -sk -X POST -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/Oem/IntelComputerSystem.GenerateRedirectionToken` | Use token in `Sec-WebSocket-Protocol` when opening `/relay/webrelay.ashx` |
-| **Power On**<br/>Power on a system<br/>*Requires Authentication* | `curl -sk -X POST -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{"ResetType": "On"}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/ComputerSystem.Reset` | See [Perform Power Actions](#perform-power-actions) for details on all power operations |
-| **Force Off**<br/>Immediate power off (non-graceful)<br/>*Requires Authentication* | `curl -sk -X POST -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{"ResetType": "ForceOff"}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/ComputerSystem.Reset` | See [Perform Power Actions](#perform-power-actions) for details on all power operations |
-| **Force Restart**<br/>Immediate restart (non-graceful)<br/>*Requires Authentication* | `curl -sk -X POST -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{"ResetType": "ForceRestart"}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/ComputerSystem.Reset` | See [Perform Power Actions](#perform-power-actions) for details on all power operations |
-| **Power Cycle**<br/>Power cycle (off then on)<br/>*Requires Authentication* | `curl -sk -X POST -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{"ResetType": "PowerCycle"}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/ComputerSystem.Reset` | See [Perform Power Actions](#perform-power-actions) for details on all power operations |
-| **Reset to BIOS**<br/>Reset to BIOS<br/>*Requires Authentication* | `curl -sk -X PATCH -u <admin-user-name>:<admin-password> -H "Content-Type: application/json" -d '{"Boot": {"BootSourceOverrideTarget": "BiosSetup", "BootSourceOverrideEnabled": "Once"}}' https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>` | See [Reset to BIOS](#reset-to-bios) for details |
-| **Get System Power State**<br/>Check current power state<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>` | See [Get System Power State](#get-system-power-state) for details |
-| **Get SessionService**<br/>Retrieve SessionService metadata<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService` | See [Get SessionService](#get-sessionservice) for details |
-| **Get Sessions**<br/>Retrieve all active sessions<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions` | See [Get Sessions](#get-sessions) for details |
-| **Create Session (Login)**<br/>Authenticate and obtain a session token<br/>*Credentials in Request Body* | `curl -sk -X POST -H "Content-Type: application/json" -d '{"UserName": "<admin-user-name>", "Password": "<admin-password>"}' https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions` | See [Create Session](#create-session-login) for details |
-| **Get Session Details**<br/>Get details of a specific session<br/>*Requires Authentication* | `curl -sk -u <admin-user-name>:<admin-password> https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions/<session-id>` | See [Get Session Details](#get-session-details) for details |
-| **Delete Session (Logout)**<br/>End a session and invalidate token<br/>*Requires Authentication* | `curl -sk -X DELETE -H "X-Auth-Token: <your-auth-token>" https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions/<session-id>` | See [Delete Session](#delete-session-logout) for details |
+| **Get Service Root**<br/>Retrieve the Redfish service root document | `curl -sk https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/ | jq` | See [Get Service Root](#get-service-root) for response format and verification steps |
+| **Get OData Service Document**<br/>Retrieve the OData service document | `curl -sk https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/odata | jq` | See [Get OData Service Document](#get-odata-service-document) for response format and verification steps |
+| **Get Metadata Document**<br/>Retrieve the Redfish metadata document in XML format | `curl -sk https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/\$metadata` | See [Get Metadata Document](#get-metadata-document) for response format and verification steps |
+| **Get Systems Collection**<br/>Retrieve all computer systems<br/>*Requires Authentication* | `curl -sk -u "${ADMIN_USER}:${ADMIN_PASSWORD}" https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems | jq` | See [Get Systems Collection](#get-systems-collection) for response format and verification steps |
+| **Get Specific System Details**<br/>Retrieve detailed information about a specific system<br/>*Requires Authentication* | `curl -sk -u "${ADMIN_USER}:${ADMIN_PASSWORD}" https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID} | jq` | See [Get Specific System Details](#get-specific-system-details) for response format and verification steps |
+| **Enable KVM Service**<br/>Enable GraphicalConsole service<br/>*Requires Authentication* | `curl -sk -X PATCH -u "${ADMIN_USER}:${ADMIN_PASSWORD}" -H "Content-Type: application/json" -d '{"GraphicalConsole":{"ServiceEnabled":true}}' https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID} | jq` | KVM service control on `GraphicalConsole.ServiceEnabled` |
+| **Request KVM Consent**<br/>Trigger KVM CCM consent prompt<br/>*Requires Authentication* | `curl -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" -H "Content-Type: application/json" -d '{}' https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/Oem/IntelComputerSystem.RequestKVMConsent | jq` | Use in CCM mode before opening KVM redirection |
+| **Submit KVM Consent Code**<br/>Submit 6-digit KVM consent code<br/>*Requires Authentication* | `curl -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" -H "Content-Type: application/json" -d '{"ConsentCode":"<consent-code>"}' https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/Oem/IntelComputerSystem.SubmitKVMConsentCode | jq` | Completes KVM consent flow in CCM |
+| **Cancel KVM Consent**<br/>Cancel pending KVM consent request<br/>*Requires Authentication* | `curl -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" -H "Content-Type: application/json" -d '{}' https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/Oem/IntelComputerSystem.CancelKVMConsent | jq` | Optional abort for KVM consent flow |
+| **Enable SOL Service**<br/>Enable SerialConsole WebSocket service<br/>*Requires Authentication* | `curl -sk -X PATCH -u "${ADMIN_USER}:${ADMIN_PASSWORD}" -H "Content-Type: application/json" -d '{"SerialConsole":{"WebSocket":{"ServiceEnabled":true}}}' https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID} | jq` | SOL service control on `SerialConsole.WebSocket.ServiceEnabled` |
+| **Request SOL Consent**<br/>Trigger SOL CCM consent prompt<br/>*Requires Authentication* | `curl -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" -H "Content-Type: application/json" -d '{}' https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/Oem/IntelComputerSystem.RequestSolConsent | jq` | Use in CCM mode before opening SOL redirection |
+| **Submit SOL Consent Code**<br/>Submit 6-digit SOL consent code<br/>*Requires Authentication* | `curl -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" -H "Content-Type: application/json" -d '{"ConsentCode":"<consent-code>"}' https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/Oem/IntelComputerSystem.SubmitSolConsentCode | jq` | Completes SOL consent flow in CCM |
+| **Cancel SOL Consent**<br/>Cancel pending SOL consent request<br/>*Requires Authentication* | `curl -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" -H "Content-Type: application/json" -d '{}' https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/Oem/IntelComputerSystem.CancelSolConsent | jq` | Optional abort for SOL consent flow |
+| **Generate Redirection Token**<br/>Get short-lived token for KVM/SOL stream auth<br/>*Requires Authentication* | `curl -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" -H "Content-Type: application/json" -d '{}' https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/Oem/IntelComputerSystem.GenerateRedirectionToken | jq` | Use token in `Sec-WebSocket-Protocol` when opening `/relay/webrelay.ashx` |
+| **Power On**<br/>Power on a system<br/>*Requires Authentication* | `curl -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" -H "Content-Type: application/json" -d '{"ResetType": "On"}' https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/ComputerSystem.Reset | jq` | See [Perform Power Actions](#perform-power-actions) for details on all power operations |
+| **Force Off**<br/>Immediate power off (non-graceful)<br/>*Requires Authentication* | `curl -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" -H "Content-Type: application/json" -d '{"ResetType": "ForceOff"}' https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/ComputerSystem.Reset | jq` | See [Perform Power Actions](#perform-power-actions) for details on all power operations |
+| **Force Restart**<br/>Immediate restart (non-graceful)<br/>*Requires Authentication* | `curl -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" -H "Content-Type: application/json" -d '{"ResetType": "ForceRestart"}' https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/ComputerSystem.Reset | jq` | See [Perform Power Actions](#perform-power-actions) for details on all power operations |
+| **Power Cycle**<br/>Power cycle (off then on)<br/>*Requires Authentication* | `curl -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" -H "Content-Type: application/json" -d '{"ResetType": "PowerCycle"}' https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/ComputerSystem.Reset | jq` | See [Perform Power Actions](#perform-power-actions) for details on all power operations |
+| **Reset to BIOS**<br/>Reset to BIOS<br/>*Requires Authentication* | `curl -sk -X PATCH -u "${ADMIN_USER}:${ADMIN_PASSWORD}" -H "Content-Type: application/json" -d '{"Boot": {"BootSourceOverrideTarget": "BiosSetup", "BootSourceOverrideEnabled": "Once"}}' https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID} | jq` | See [Reset to BIOS](#reset-to-bios) for details |
+| **Get System Power State**<br/>Check current power state<br/>*Requires Authentication* | `curl -sk -u "${ADMIN_USER}:${ADMIN_PASSWORD}" https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID} | jq` | See [Get System Power State](#get-system-power-state) for details |
+| **Get SessionService**<br/>Retrieve SessionService metadata<br/>*Requires Authentication* | `curl -sk -u "${ADMIN_USER}:${ADMIN_PASSWORD}" https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/SessionService | jq` | See [Get SessionService](#get-sessionservice) for details |
+| **Get Sessions**<br/>Retrieve all active sessions<br/>*Requires Authentication* | `curl -sk -u "${ADMIN_USER}:${ADMIN_PASSWORD}" https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/SessionService/Sessions | jq` | See [Get Sessions](#get-sessions) for details |
+| **Create Session (Login)**<br/>Authenticate and obtain a session token<br/>*Credentials in Request Body* | `curl -sk -X POST -H "Content-Type: application/json" -d "{\"UserName\": \"${ADMIN_USER}\", \"Password\": \"${ADMIN_PASSWORD}\"}" https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/SessionService/Sessions | jq` | See [Create Session](#create-session-login) for details |
+| **Get Session Details**<br/>Get details of a specific session<br/>*Requires Authentication* | `curl -sk -u "${ADMIN_USER}:${ADMIN_PASSWORD}" https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/SessionService/Sessions/<session-id> | jq` | See [Get Session Details](#get-session-details) for details |
+| **Delete Session (Logout)**<br/>End a session and invalidate token<br/>*Requires Authentication* | `curl -sk -X DELETE -H "X-Auth-Token: <your-auth-token>" https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/SessionService/Sessions/<session-id>` | See [Delete Session](#delete-session-logout) for details |
 
 
 ### Using Sessions (X-Auth-Token)
@@ -917,9 +937,9 @@ The following table provides curl commands for common Redfish API operations. Fo
     # Create session and get response with headers (credentials go in the body, not -u)
     $RESPONSE = curl.exe -sk -X POST `
       -H "Content-Type: application/json" `
-      -d '{"UserName":"<admin-user-name>","Password":"<admin-password>"}' `
+      -d "{\"UserName\":\"${ADMIN_USER}\",\"Password\":\"${ADMIN_PASSWORD}\"}" `
       -i `
-      https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/SessionService/Sessions
 
     # Extract token and location from response
     $TOKEN = ($RESPONSE | Select-String -Pattern "X-Auth-Token: (.+)").Matches.Groups[1].Value.Trim()
@@ -931,9 +951,9 @@ The following table provides curl commands for common Redfish API operations. Fo
     # Create session once and capture response headers (credentials go in the body, not -u)
     RESPONSE=$(curl -sk -X POST \
       -H "Content-Type: application/json" \
-      -d '{"UserName":"<admin-user-name>","Password":"<admin-password>"}' \
+      -d "{\"UserName\":\"${ADMIN_USER}\",\"Password\":\"${ADMIN_PASSWORD}\"}" \
       -i \
-      https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions \
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/SessionService/Sessions \
       2>/dev/null)
 
     # Extract token and session location from the same response
@@ -945,58 +965,58 @@ The following table provides curl commands for common Redfish API operations. Fo
 
 Now use the token instead of Basic Auth:
 
-First, resolve `<system-id>` from the Systems collection.
+First, resolve the system ID from the Systems collection. This overrides the `SYSTEM_ID` you exported earlier with the first system the service returns.
 
 === "Windows"
     ```powershell
     # Resolve system-id from the first member
     $SYSTEM_ID = (curl.exe -sk -H "X-Auth-Token: $TOKEN" `
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems | jq -r '.Members[0]."@odata.id"').Split('/')[-1]
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems | jq -r '.Members[0]."@odata.id"').Split('/')[-1]
 
     # Get Systems Collection
     curl.exe -sk -H "X-Auth-Token: $TOKEN" `
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems | jq
 
     # Get Specific System
     curl.exe -sk -H "X-Auth-Token: $TOKEN" `
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/$SYSTEM_ID
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/$SYSTEM_ID | jq
 
     # Power Action (ForceRestart)
     curl.exe -sk -X POST `
       -H "X-Auth-Token: $TOKEN" `
       -H "Content-Type: application/json" `
       -d '{"ResetType":"ForceRestart"}' `
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/$SYSTEM_ID/Actions/ComputerSystem.Reset
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/$SYSTEM_ID/Actions/ComputerSystem.Reset | jq
 
     # Get Sessions Collection
     curl.exe -sk -H "X-Auth-Token: $TOKEN" `
-      https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/SessionService/Sessions | jq
     ```
 
 === "Linux"
     ```bash
     # Resolve system-id from the first member
     SYSTEM_ID=$(curl -sk -H "X-Auth-Token: $TOKEN" \
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems | jq -r '.Members[0]."@odata.id"' | awk -F/ '{print $NF}')
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems | jq -r '.Members[0]."@odata.id"' | awk -F/ '{print $NF}')
 
     # Get Systems Collection
     curl -sk -H "X-Auth-Token: $TOKEN" \
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems | jq
 
     # Get Specific System
     curl -sk -H "X-Auth-Token: $TOKEN" \
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/$SYSTEM_ID
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/$SYSTEM_ID | jq
 
     # Power Action (ForceRestart)
     curl -sk -X POST \
       -H "X-Auth-Token: $TOKEN" \
       -H "Content-Type: application/json" \
       -d '{"ResetType":"ForceRestart"}' \
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/$SYSTEM_ID/Actions/ComputerSystem.Reset
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/$SYSTEM_ID/Actions/ComputerSystem.Reset | jq
 
     # Get Sessions Collection
     curl -sk -H "X-Auth-Token: $TOKEN" \
-      https://<console_host_or_ip>:<console_port>/redfish/v1/SessionService/Sessions
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/SessionService/Sessions | jq
     ```
 
 #### Step 3: Delete Session (Logout)
@@ -1005,14 +1025,14 @@ First, resolve `<system-id>` from the Systems collection.
     ```powershell
     # Delete the session to invalidate the token
     curl.exe -sk -X DELETE -H "X-Auth-Token: $TOKEN" `
-      https://<console_host_or_ip>:<console_port>$SESSION_LOCATION
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}$SESSION_LOCATION
     ```
 
 === "Linux"
     ```bash
     # Delete the session to invalidate the token
     curl -sk -X DELETE -H "X-Auth-Token: $TOKEN" \
-      https://<console_host_or_ip>:<console_port>$SESSION_LOCATION
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}$SESSION_LOCATION
     ```
 
 ---
@@ -1055,7 +1075,8 @@ Before starting a redirection session, read the state from `GET /redfish/v1/Syst
 | `Denied` | The device user rejected the request, or the code was wrong |
 | `Timeout` | The consent request expired before a code was submitted. Request consent again |
 
-> **Tip:** Poll the system resource after `RequestKVMConsent` or `RequestSolConsent` to confirm `UserConsentStatus` has moved to `Requested` before asking the operator for the code.
+!!! note
+    Poll the system resource after `RequestKVMConsent` or `RequestSolConsent` to confirm `UserConsentStatus` has moved to `Requested` before asking the operator for the code.
 
 ### Consent Action Responses
 
@@ -1065,7 +1086,7 @@ The consent actions return `200 OK` with the Redfish success envelope:
 {
   "@Message.ExtendedInfo": [
     {
-      "MessageId": "Base.1.8.Success",
+      "MessageId": "Base.1.22.0.Success",
       "Message": "Successfully Completed Request",
       "Severity": "OK",
       "Resolution": "None"
@@ -1076,18 +1097,24 @@ The consent actions return `200 OK` with the Redfish success envelope:
 
 `SubmitKVMConsentCode` and `SubmitSolConsentCode` require a six-digit `ConsentCode`. Anything else is rejected with `400 Bad Request` before the request reaches the device.
 
+!!! note
+    The consent actions apply only to devices in Client Control Mode (CCM). On a device in Admin Control Mode (ACM) consent is not required, and calling `RequestKVMConsent`, `RequestSolConsent`, or the submit actions returns `400 Bad Request` instead of succeeding. Read `ControlMode` from the OEM section first and skip the consent steps when it is `ACM`.
+
 ### Redirection Token Response
 
 `GenerateRedirectionToken` returns `200 OK` with a short-lived token:
 
 ```json
 {
-  "ExpirationTime": "2026-03-12T18:11:44Z",
+  "ExpirationTime": "2026-03-12T18:11:44.892431107+05:30",
   "RedirectionToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
 ```
 
 Send `RedirectionToken` in the `Sec-WebSocket-Protocol` header when opening the WebSocket at `/relay/webrelay.ashx`. The token is scoped to that one device and expires at `ExpirationTime`, so generate it immediately before opening the session rather than caching it.
+
+!!! note
+    `ExpirationTime` is five minutes after the token is issued.
 
 ---
 
@@ -1115,24 +1142,24 @@ What is required for Redfish KVM/SOL:
 === "Windows"
     ```
     # Get all systems
-    $SYSTEMS = curl.exe -s -k -u admin:password123 https://localhost:8181/redfish/v1/Systems | jq -r '.Members[]."@odata.id"'
+    $SYSTEMS = curl.exe -s -k -u "${ADMIN_USER}:${ADMIN_PASSWORD}" https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems | jq -r '.Members[]."@odata.id"'
 
     # Loop through each system
     foreach ($system in $SYSTEMS) {
       Write-Host "System: $system"
-      curl.exe -s -k -u admin:password123 "https://localhost:8181$system" | jq '.PowerState'
+      curl.exe -s -k -u "${ADMIN_USER}:${ADMIN_PASSWORD}" "https://${CONSOLE_HOST}:${CONSOLE_PORT}$system" | jq '.PowerState'
       Write-Host "---"
     }
     ```
 === "Linux"
     ``` bash
     # Get all systems
-    SYSTEMS=$(curl -sk -u admin:password123 https://localhost:8181/redfish/v1/Systems | jq -r '.Members[]."@odata.id"')
+    SYSTEMS=$(curl -sk -u "${ADMIN_USER}:${ADMIN_PASSWORD}" https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems | jq -r '.Members[]."@odata.id"')
 
     # Loop through each system
     for system in $SYSTEMS; do
       echo "System: $system"
-      curl -sk -u admin:password123 "https://localhost:8181$system" | jq '.PowerState'
+      curl -sk -u "${ADMIN_USER}:${ADMIN_PASSWORD}" "https://${CONSOLE_HOST}:${CONSOLE_PORT}$system" | jq '.PowerState'
       echo "---"
     done
     ```
@@ -1142,32 +1169,32 @@ What is required for Redfish KVM/SOL:
 === "Windows"
     ```
     # Get all systems
-    $SYSTEMS = curl.exe -s -k -u admin:password123 https://localhost:8181/redfish/v1/Systems | jq -r '.Members[]."@odata.id"'
+    $SYSTEMS = curl.exe -s -k -u "${ADMIN_USER}:${ADMIN_PASSWORD}" https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems | jq -r '.Members[]."@odata.id"'
 
     # Power on each system
     foreach ($system in $SYSTEMS) {
       Write-Host "Powering on: $system"
       curl.exe -s -k -X POST `
-        -u admin:password123 `
+        -u "${ADMIN_USER}:${ADMIN_PASSWORD}" `
         -H "Content-Type: application/json" `
         -d '{"ResetType": "On"}' `
-        "https://localhost:8181${system}/Actions/ComputerSystem.Reset"
+        "https://${CONSOLE_HOST}:${CONSOLE_PORT}${system}/Actions/ComputerSystem.Reset" | jq
       Write-Host ""
     }
     ```
 === "Linux"
     ``` bash
     # Get all systems
-    SYSTEMS=$(curl -sk -u admin:password123 https://localhost:8181/redfish/v1/Systems | jq -r '.Members[]."@odata.id"')
+    SYSTEMS=$(curl -sk -u "${ADMIN_USER}:${ADMIN_PASSWORD}" https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems | jq -r '.Members[]."@odata.id"')
 
     # Power on each system
     for system in $SYSTEMS; do
       echo "Powering on: $system"
       curl -sk -X POST \
-        -u admin:password123 \
+        -u "${ADMIN_USER}:${ADMIN_PASSWORD}" \
         -H "Content-Type: application/json" \
         -d '{"ResetType": "On"}' \
-        "https://localhost:8181${system}/Actions/ComputerSystem.Reset"
+        "https://${CONSOLE_HOST}:${CONSOLE_PORT}${system}/Actions/ComputerSystem.Reset" | jq
       echo ""
     done
     ```
@@ -1176,52 +1203,48 @@ What is required for Redfish KVM/SOL:
 
 === "Windows"
     ```
-    # Get detailed system information
-    $SYSTEM_ID = "device-guid-12345"
-
-    curl.exe -s -k -u admin:password123 `
-      "https://localhost:8181/redfish/v1/Systems/$SYSTEM_ID" | jq
+    # Get detailed system information for the device in $env:SYSTEM_ID
+    curl.exe -s -k -u "${ADMIN_USER}:${ADMIN_PASSWORD}" `
+      "https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}" | jq
     ```
 === "Linux"
     ``` bash
-    # Get detailed system information
-    SYSTEM_ID="device-guid-12345"
-
-    curl -sk -u admin:password123 \
-      https://localhost:8181/redfish/v1/Systems/$SYSTEM_ID | jq
+    # Get detailed system information for the device in $SYSTEM_ID
+    curl -sk -u "${ADMIN_USER}:${ADMIN_PASSWORD}" \
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID} | jq
     ```
 
-### Use Case 4: Graceful Shutdown All Systems
+### Use Case 4: Power Off All Systems
 
 === "Windows"
     ```
     # Get all systems
-    $SYSTEMS = curl.exe -s -k -u admin:password123 https://localhost:8181/redfish/v1/Systems | jq -r '.Members[]."@odata.id"'
+    $SYSTEMS = curl.exe -s -k -u "${ADMIN_USER}:${ADMIN_PASSWORD}" https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems | jq -r '.Members[]."@odata.id"'
 
-    # Gracefully shutdown each system
+    # Power off each system
     foreach ($system in $SYSTEMS) {
-      Write-Host "Shutting down: $system"
+      Write-Host "Powering off: $system"
       curl.exe -s -k -X POST `
-        -u admin:password123 `
+        -u "${ADMIN_USER}:${ADMIN_PASSWORD}" `
         -H "Content-Type: application/json" `
-        -d '{"ResetType": "GracefulShutdown"}' `
-        "https://localhost:8181${system}/Actions/ComputerSystem.Reset"
+        -d '{"ResetType": "ForceOff"}' `
+        "https://${CONSOLE_HOST}:${CONSOLE_PORT}${system}/Actions/ComputerSystem.Reset" | jq
       Write-Host ""
     }
     ```
 === "Linux"
     ``` bash
     # Get all systems
-    SYSTEMS=$(curl -sk -u admin:password123 https://localhost:8181/redfish/v1/Systems | jq -r '.Members[]."@odata.id"')
+    SYSTEMS=$(curl -sk -u "${ADMIN_USER}:${ADMIN_PASSWORD}" https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems | jq -r '.Members[]."@odata.id"')
 
-    # Gracefully shutdown each system
+    # Power off each system
     for system in $SYSTEMS; do
-      echo "Shutting down: $system"
+      echo "Powering off: $system"
       curl -sk -X POST \
-        -u admin:password123 \
+        -u "${ADMIN_USER}:${ADMIN_PASSWORD}" \
         -H "Content-Type: application/json" \
-        -d '{"ResetType": "GracefulShutdown"}' \
-        "https://localhost:8181${system}/Actions/ComputerSystem.Reset"
+        -d '{"ResetType": "ForceOff"}' \
+        "https://${CONSOLE_HOST}:${CONSOLE_PORT}${system}/Actions/ComputerSystem.Reset" | jq
       echo ""
     done
     ```
@@ -1233,51 +1256,51 @@ In ACM mode, a typical sequence is: verify state, enable service if needed, gene
 === "Windows"
     ```powershell
     # 1) Check current KVM/SOL state
-    curl.exe -sk -u <admin-user-name>:<admin-password> `
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id> | jq '.GraphicalConsole, .SerialConsole'
+    curl.exe -sk -u "${ADMIN_USER}:${ADMIN_PASSWORD}" `
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID} | jq '.GraphicalConsole, .SerialConsole'
 
     # 2) Enable KVM if disabled
-    curl.exe -sk -X PATCH -u <admin-user-name>:<admin-password> `
+    curl.exe -sk -X PATCH -u "${ADMIN_USER}:${ADMIN_PASSWORD}" `
       -H "Content-Type: application/json" `
       -d '{"GraphicalConsole":{"ServiceEnabled":true}}' `
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID} | jq
 
     # 3) Enable SOL if disabled
-    curl.exe -sk -X PATCH -u <admin-user-name>:<admin-password> `
+    curl.exe -sk -X PATCH -u "${ADMIN_USER}:${ADMIN_PASSWORD}" `
       -H "Content-Type: application/json" `
       -d '{"SerialConsole":{"WebSocket":{"ServiceEnabled":true}}}' `
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID} | jq
 
     # 4) Generate redirection token for KVM/SOL session startup
-    curl.exe -sk -X POST -u <admin-user-name>:<admin-password> `
+    curl.exe -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" `
       -H "Content-Type: application/json" `
       -d '{}' `
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/Oem/IntelComputerSystem.GenerateRedirectionToken
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/Oem/IntelComputerSystem.GenerateRedirectionToken | jq
     ```
 
 === "Linux"
     ```bash
     # 1) Check current KVM/SOL state
-    curl -sk -u <admin-user-name>:<admin-password> \
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id> | jq '.GraphicalConsole, .SerialConsole'
+    curl -sk -u "${ADMIN_USER}:${ADMIN_PASSWORD}" \
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID} | jq '.GraphicalConsole, .SerialConsole'
 
     # 2) Enable KVM if disabled
-    curl -sk -X PATCH -u <admin-user-name>:<admin-password> \
+    curl -sk -X PATCH -u "${ADMIN_USER}:${ADMIN_PASSWORD}" \
       -H "Content-Type: application/json" \
       -d '{"GraphicalConsole":{"ServiceEnabled":true}}' \
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID} | jq
 
     # 3) Enable SOL if disabled
-    curl -sk -X PATCH -u <admin-user-name>:<admin-password> \
+    curl -sk -X PATCH -u "${ADMIN_USER}:${ADMIN_PASSWORD}" \
       -H "Content-Type: application/json" \
       -d '{"SerialConsole":{"WebSocket":{"ServiceEnabled":true}}}' \
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID} | jq
 
     # 4) Generate redirection token for KVM/SOL session startup
-    curl -sk -X POST -u <admin-user-name>:<admin-password> \
+    curl -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" \
       -H "Content-Type: application/json" \
       -d '{}' \
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/Oem/IntelComputerSystem.GenerateRedirectionToken
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/Oem/IntelComputerSystem.GenerateRedirectionToken | jq
     ```
 
 If using UI Toolkit React in Redfish mode, you do not need to call `GenerateRedirectionToken` manually; the toolkit fetches and uses the token automatically.
@@ -1289,57 +1312,57 @@ In CCM mode, consent is required before redirection token generation.
 === "Windows"
     ```powershell
     # 1) Request KVM consent and submit the user-provided 6-digit code
-    curl.exe -sk -X POST -u <admin-user-name>:<admin-password> `
+    curl.exe -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" `
       -H "Content-Type: application/json" -d '{}' `
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/Oem/IntelComputerSystem.RequestKVMConsent
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/Oem/IntelComputerSystem.RequestKVMConsent | jq
 
-    curl.exe -sk -X POST -u <admin-user-name>:<admin-password> `
+    curl.exe -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" `
       -H "Content-Type: application/json" `
       -d '{"ConsentCode":"<kvm-consent-code>"}' `
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/Oem/IntelComputerSystem.SubmitKVMConsentCode
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/Oem/IntelComputerSystem.SubmitKVMConsentCode | jq
 
     # 2) Request SOL consent and submit the user-provided 6-digit code
-    curl.exe -sk -X POST -u <admin-user-name>:<admin-password> `
+    curl.exe -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" `
       -H "Content-Type: application/json" -d '{}' `
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/Oem/IntelComputerSystem.RequestSolConsent
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/Oem/IntelComputerSystem.RequestSolConsent | jq
 
-    curl.exe -sk -X POST -u <admin-user-name>:<admin-password> `
+    curl.exe -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" `
       -H "Content-Type: application/json" `
       -d '{"ConsentCode":"<sol-consent-code>"}' `
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/Oem/IntelComputerSystem.SubmitSolConsentCode
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/Oem/IntelComputerSystem.SubmitSolConsentCode | jq
 
     # 3) Generate token and start KVM/SOL UI session
-    curl.exe -sk -X POST -u <admin-user-name>:<admin-password> `
+    curl.exe -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" `
       -H "Content-Type: application/json" -d '{}' `
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/Oem/IntelComputerSystem.GenerateRedirectionToken
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/Oem/IntelComputerSystem.GenerateRedirectionToken | jq
     ```
 
 === "Linux"
     ```bash
     # 1) Request KVM consent and submit the user-provided 6-digit code
-    curl -sk -X POST -u <admin-user-name>:<admin-password> \
+    curl -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" \
       -H "Content-Type: application/json" -d '{}' \
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/Oem/IntelComputerSystem.RequestKVMConsent
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/Oem/IntelComputerSystem.RequestKVMConsent | jq
 
-    curl -sk -X POST -u <admin-user-name>:<admin-password> \
+    curl -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" \
       -H "Content-Type: application/json" \
       -d '{"ConsentCode":"<kvm-consent-code>"}' \
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/Oem/IntelComputerSystem.SubmitKVMConsentCode
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/Oem/IntelComputerSystem.SubmitKVMConsentCode | jq
 
     # 2) Request SOL consent and submit the user-provided 6-digit code
-    curl -sk -X POST -u <admin-user-name>:<admin-password> \
+    curl -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" \
       -H "Content-Type: application/json" -d '{}' \
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/Oem/IntelComputerSystem.RequestSolConsent
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/Oem/IntelComputerSystem.RequestSolConsent | jq
 
-    curl -sk -X POST -u <admin-user-name>:<admin-password> \
+    curl -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" \
       -H "Content-Type: application/json" \
       -d '{"ConsentCode":"<sol-consent-code>"}' \
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/Oem/IntelComputerSystem.SubmitSolConsentCode
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/Oem/IntelComputerSystem.SubmitSolConsentCode | jq
 
     # 3) Generate token and start KVM/SOL UI session
-    curl -sk -X POST -u <admin-user-name>:<admin-password> \
+    curl -sk -X POST -u "${ADMIN_USER}:${ADMIN_PASSWORD}" \
       -H "Content-Type: application/json" -d '{}' \
-      https://<console_host_or_ip>:<console_port>/redfish/v1/Systems/<system-id>/Actions/Oem/IntelComputerSystem.GenerateRedirectionToken
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/Oem/IntelComputerSystem.GenerateRedirectionToken | jq
     ```
 
 If using UI Toolkit React in Redfish mode, you do not need to call `GenerateRedirectionToken` manually; the toolkit fetches and uses the token automatically.
@@ -1358,15 +1381,15 @@ If the operator cancels consent, call `CancelKVMConsent` or `CancelSolConsent`, 
 | 201 Created | Resource created | Session created; `X-Auth-Token` and `Location` headers returned |
 | 202 Accepted | Action accepted for processing | Power action initiated; body holds a Task resource and `Location` points at it |
 | 204 No Content | Success with an empty body | Session deleted (logout) |
-| 400 Bad Request | Invalid request body or parameters | Invalid `ResetType`; consent code that is not six digits |
+| 400 Bad Request | Invalid request body, parameter, or system ID | Invalid `ResetType`; consent code that is not six digits; system ID that is not a UUID; consent action on an ACM device |
 | 401 Unauthorized | Missing or invalid credentials | No authentication provided; expired session token |
-| 403 Forbidden | Authenticated but not permitted | Operation not allowed for the account |
-| 404 Not Found | Resource does not exist | Invalid system ID |
+| 404 Not Found | Resource does not exist | System ID is a valid UUID but no such device, or the device is registered but unreachable |
 | 405 Method Not Allowed | HTTP method not supported | GET on action endpoint |
-| 409 Conflict | Request conflicts with current state | Consent requested while a consent request is already pending |
-| 412 Precondition Failed | Precondition on the request not met | Conditional request whose `If-Match` ETag does not match |
-| 500 Internal Server Error | Server-side error | Backend service failure |
-| 503 Service Unavailable | Device or dependency unreachable | AMT device offline or not responding |
+| 409 Conflict | Device is already in the requested state, or is in transition | `ResetType: On` sent to a system that is already powered on |
+| 500 Internal Server Error | Server-side error | Console could not reach the device over WS-MAN |
+
+!!! note
+    A malformed system ID and an unknown system ID produce different statuses: a value that is not a UUID is rejected with `400`, while a well-formed UUID that does not match a managed device returns `404`. A device that exists in Console but cannot be reached also returns `404`, not `503`.
 
 ### Error Response Format
 
@@ -1375,60 +1398,143 @@ All errors follow the Redfish standard error format:
 ```json
 {
   "error": {
-    "code": "Base.1.8.GeneralError",
-    "message": "A general error has occurred",
     "@Message.ExtendedInfo": [
       {
-        "MessageId": "Base.1.8.PropertyValueNotInList",
-        "Message": "The value 'InvalidType' for the property ResetType is not in the list of acceptable values",
-        "Severity": "Warning",
-        "Resolution": "Choose a value from the enumeration list and resubmit the request"
+        "Message": "The requested resource of type System named 00000000-0000-0000-0000-000000000000 was not found.",
+        "MessageId": "Base.1.22.0.ResourceMissing",
+        "Resolution": "Provide a valid resource identifier and resubmit the request.",
+        "Severity": "Critical"
       }
-    ]
+    ],
+    "code": "Base.1.22.0.GeneralError",
+    "message": "System not found"
   }
 }
-
 ```
+
+The `code` field is `Base.1.22.0.GeneralError` for nearly every error; the specific condition is carried by `MessageId` inside `@Message.ExtendedInfo`. Message IDs observed from this service include:
+
+| MessageId | Raised when |
+|-----------|-------------|
+| `Base.1.22.0.InsufficientPrivilege` | Credentials are missing, wrong, or the session token has expired |
+| `Base.1.22.0.ResourceMissing` | The requested system does not exist or is unreachable |
+| `Base.1.22.0.MethodNotAllowed` | The HTTP method is not valid for the resource |
+| `Base.1.22.0.ResourceInUse` | The device is already in the requested state, or is in transition |
+| `Base.1.22.0.InternalError` | Console failed to reach the device over WS-MAN |
+| `Base.1.22.0.Success` | Returned in the success envelope of OEM consent actions |
+| `Base.1.22.0.GeneralError` | Used for validation failures that have no more specific registry entry |
+
+!!! note
+    The `Base` message registry version is tied to the Console release. This build reports `Base.1.22.0`; a different release may report another version, so match on the suffix (`ResourceMissing`, `InsufficientPrivilege`, and so on) rather than on the full string.
+
+Many errors return the literal string `None` in `Resolution`, so do not rely on it for guidance.
 
 ### Example: Invalid Reset Type
 
 === "Windows"
     ```
     curl.exe -sk -X POST `
-      -u admin:password123 `
+      -u "${ADMIN_USER}:${ADMIN_PASSWORD}" `
       -H "Content-Type: application/json" `
       -d '{"ResetType": "InvalidType"}' `
-      https://localhost:8181/redfish/v1/Systems/device-guid-12345/Actions/ComputerSystem.Reset
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/ComputerSystem.Reset | jq
     ```
 
 === "Linux"
     ```bash
     curl -sk -X POST \
-      -u admin:password123 \
+      -u "${ADMIN_USER}:${ADMIN_PASSWORD}" \
       -H "Content-Type: application/json" \
       -d '{"ResetType": "InvalidType"}' \
-      https://localhost:8181/redfish/v1/Systems/device-guid-12345/Actions/ComputerSystem.Reset
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/ComputerSystem.Reset | jq
     ```
 
-**Response:**
+**Response:** `400 Bad Request`
 
 ```json
 {
   "error": {
-    "code": "Base.1.8.PropertyValueNotInList",
-    "message": "Invalid ResetType value",
     "@Message.ExtendedInfo": [
       {
-        "MessageId": "Base.1.8.PropertyValueNotInList",
-        "Message": "The value 'InvalidType' for the property ResetType is not in the list of acceptable values",
-        "Severity": "Warning",
-        "Resolution": "Choose a value from the enumeration list and resubmit the request. See Supported Reset Types."
+        "Message": "Invalid reset type: InvalidType",
+        "MessageId": "Base.1.22.0.GeneralError",
+        "Resolution": "None",
+        "Severity": "Critical"
       }
-    ]
+    ],
+    "code": "Base.1.22.0.GeneralError",
+    "message": "Invalid reset type: InvalidType"
   }
 }
-
 ```
+
+The error does not enumerate the acceptable values, so refer to [Supported Reset Types](#perform-power-actions) when a reset is rejected.
+
+### Example: Reset to the Current Power State
+
+Sending a `ResetType` that matches the state the system is already in is rejected rather than ignored. This is the most common surprise when first exercising the Reset action, because `On` against a running system looks like a harmless test.
+
+=== "Windows"
+    ```
+    curl.exe -sk -X POST `
+      -u "${ADMIN_USER}:${ADMIN_PASSWORD}" `
+      -H "Content-Type: application/json" `
+      -d '{"ResetType": "On"}' `
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/ComputerSystem.Reset | jq
+    ```
+
+=== "Linux"
+    ```bash
+    curl -sk -X POST \
+      -u "${ADMIN_USER}:${ADMIN_PASSWORD}" \
+      -H "Content-Type: application/json" \
+      -d '{"ResetType": "On"}' \
+      https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems/${SYSTEM_ID}/Actions/ComputerSystem.Reset | jq
+    ```
+
+**Response:** `409 Conflict` when the system is already powered on
+
+```json
+{
+  "error": {
+    "@Message.ExtendedInfo": [
+      {
+        "Message": "The change to the requested resource failed because the resource is in use or in transition.",
+        "MessageId": "Base.1.22.0.ResourceInUse",
+        "Resolution": "Remove the condition and resubmit the request if the operation failed.",
+        "Severity": "Warning"
+      }
+    ],
+    "code": "Base.1.22.0.GeneralError",
+    "message": "The change to the requested resource failed because the resource is in use or in transition."
+  }
+}
+```
+
+Check `PowerState` first and only send a reset that changes it.
+
+### Example: Device Unreachable
+
+When Console cannot complete the WS-MAN call to the device, the request fails with `500` and the underlying transport error is surfaced in `Message`:
+
+```json
+{
+  "error": {
+    "@Message.ExtendedInfo": [
+      {
+        "Message": "failed to get current boot data: Post \"https://<device-ip>:16993/wsman\": remote error: tls: internal error",
+        "MessageId": "Base.1.22.0.InternalError",
+        "Resolution": "Resubmit the request.  If the problem persists, consider resetting the service.",
+        "Severity": "Critical"
+      }
+    ],
+    "code": "Base.1.22.0.GeneralError",
+    "message": "An internal server error occurred."
+  }
+}
+```
+
+A `500` here points at the device or its AMT TLS configuration, not at your request. Verify the device is online and its AMT credentials and certificate are valid.
 
 ---
 
@@ -1456,66 +1562,96 @@ curl: (7) Failed to connect to localhost port 8181: Connection refused
 
 **Symptom:**
 
+`401 Unauthorized`
+
 ```json
 {
   "error": {
-    "code": "Base.1.8.Unauthorized",
-    "message": "Authentication failed"
+    "@Message.ExtendedInfo": [
+      {
+        "Message": "There are insufficient privileges for the account or credentials associated with the current session to perform the requested operation.",
+        "MessageId": "Base.1.22.0.InsufficientPrivilege",
+        "Resolution": "Either abandon the operation or change the associated access rights and resubmit the request if the operation failed.",
+        "Severity": "Critical"
+      }
+    ],
+    "code": "Base.1.22.0.GeneralError",
+    "message": "Unauthorized access"
   }
 }
-
 ```
 
 **Solution:**
 
 - Verify credentials in `config.yml`
-- Ensure Basic Auth header is correct: `echo -n "admin:password123" | base64`
+- Ensure Basic Auth header is correct: `echo -n "${ADMIN_USER}:${ADMIN_PASSWORD}" | base64`
 - Check if authentication is enabled in config
-- Try with correct credentials: `curl -u admin:password123 ...`
+- Try with correct credentials: `curl -u "${ADMIN_USER}:${ADMIN_PASSWORD}" ...`
+- If using a session token, confirm it has not expired or been deleted — a `401` on a previously working token means the session is gone, so create a new one
 
 
 #### Issue 3: Device Not Found
 
 **Symptom:**
 
+`404 Not Found`
+
 ```json
 {
   "error": {
-    "code": "Base.1.8.ResourceNotFound",
+    "@Message.ExtendedInfo": [
+      {
+        "Message": "The requested resource of type System named 00000000-0000-0000-0000-000000000000 was not found.",
+        "MessageId": "Base.1.22.0.ResourceMissing",
+        "Resolution": "Provide a valid resource identifier and resubmit the request.",
+        "Severity": "Critical"
+      }
+    ],
+    "code": "Base.1.22.0.GeneralError",
     "message": "System not found"
   }
 }
-
 ```
 
 **Solution:**
 
-- List all systems: `curl -sk -u admin:password123 https://localhost:8181/redfish/v1/Systems`
+- List all systems: `curl -sk -u "${ADMIN_USER}:${ADMIN_PASSWORD}" https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/Systems | jq`
 - Verify device GUID is correct
 - Check if device is added to Console
-- Verify device is online and reachable
+- Verify device is online and reachable — a device that is registered in Console but not reachable is left out of the Systems collection and returns `404` here
+- If you instead received `400` with `Invalid system ID: system ID must be a valid UUID`, the identifier is malformed rather than unknown. Use the GUID exactly as it appears in the Systems collection
 
 
 #### Issue 4: Power Action Fails
 
 **Symptom:**
 
+`500 Internal Server Error`
+
 ```json
 {
   "error": {
-    "code": "Base.1.8.GeneralError",
-    "message": "Failed to execute power action"
+    "@Message.ExtendedInfo": [
+      {
+        "Message": "failed to get current boot data: Post \"https://<device-ip>:16993/wsman\": remote error: tls: internal error",
+        "MessageId": "Base.1.22.0.InternalError",
+        "Resolution": "Resubmit the request.  If the problem persists, consider resetting the service.",
+        "Severity": "Critical"
+      }
+    ],
+    "code": "Base.1.22.0.GeneralError",
+    "message": "An internal server error occurred."
   }
 }
-
 ```
 
 **Solution:**
 
 - Check device connectivity
 - Verify AMT credentials are correct
-- Review backend service logs
+- Review backend service logs — `Message` carries the underlying WS-MAN or TLS error, including the device address and port that failed
 - Ensure device supports the requested power action
+- A `409 Conflict` instead means the system is already in the requested state, or is mid-transition. Read `PowerState` and request a different state
 - Check if device is in a valid state for the action
 
 #### Issue 5: KVM or SOL Session Will Not Start
