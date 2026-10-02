@@ -1,10 +1,10 @@
 # Console Redfish User Guide
 
+!!! warning "Redfish API is a Pre-Release Feature"
+    Console's Redfish API (`/redfish/v1`) is a [Pre-Release Feature](../../Reference/faq.md#what-is-a-pre-release-feature) and is subject to change. It is not production ready, and its API and behavior may change without notice. It is available in pre-release builds tagged `-redfish-preview` (for example, [`v1.46.0-redfish-preview.1`](https://github.com/device-management-toolkit/console/releases/tag/v1.46.0-redfish-preview.1)) under [Releases](https://github.com/device-management-toolkit/console/releases).
+
 Use Console's Redfish API to discover and manage Intel AMT devices, including remote power control and KVM/SOL redirection.
 Redfish is a standardized REST API for device management over HTTP. See the [DMTF Redfish standards](https://www.dmtf.org/standards/redfish).
-
-!!! note
-    Console's Redfish API (`/redfish/v1`) is available as a **tech preview** in prerelease builds tagged `-redfish-preview` (for example, `v1.46.0-redfish-preview.1`) under [Releases](https://github.com/device-management-toolkit/console/releases). Tech-preview features are not production ready, and their API and behavior may change without notice.
 
 ## What You Will Do
 
@@ -47,11 +47,20 @@ The Console implements the following Redfish API v1.19.0 features for remote pow
 - **Redirection Token Action (OEM)**:
   - `POST /redfish/v1/Systems/{id}/Actions/Oem/IntelComputerSystem.GenerateRedirectionToken`
 
+**Session Management:**
+
+- **Session Service** (`/redfish/v1/SessionService`) - Session service metadata, including `SessionTimeout`
+- **Sessions Collection** (`/redfish/v1/SessionService/Sessions`) - List all active sessions
+- **Create Session** (`POST /redfish/v1/SessionService/Sessions`) - Authenticate and obtain an `X-Auth-Token`
+- **Session Details** (`GET /redfish/v1/SessionService/Sessions/{id}`) - Retrieve a single session
+- **Delete Session** (`DELETE /redfish/v1/SessionService/Sessions/{id}`) - Log out and invalidate the token
+
 **Standards Compliance:**
 
 - [Redfish API v1.19.0](<https://github.com/DMTF/Redfish-Publications/tree/2025.3>)
 - OData Version 4.0
 - DMTF ComputerSystem v1.26.0 schema
+- DMTF SessionService v1.2.0 and Session v1.8.0 schemas
 
 ## Tutorial Flow
 
@@ -921,7 +930,6 @@ The following table provides curl commands for common Redfish API operations. Fo
 | **Create Session (Login)**<br/>Authenticate and obtain a session token<br/>*Credentials in Request Body* | `curl -sk -X POST -H "Content-Type: application/json" -d "{\"UserName\": \"${ADMIN_USER}\", \"Password\": \"${ADMIN_PASSWORD}\"}" https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/SessionService/Sessions | jq` | See [Create Session](#create-session-login) for details |
 | **Get Session Details**<br/>Get details of a specific session<br/>*Requires Authentication* | `curl -sk -u "${ADMIN_USER}:${ADMIN_PASSWORD}" https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/SessionService/Sessions/<session-id> | jq` | See [Get Session Details](#get-session-details) for details |
 | **Delete Session (Logout)**<br/>End a session and invalidate token<br/>*Requires Authentication* | `curl -sk -X DELETE -H "X-Auth-Token: <your-auth-token>" https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/SessionService/Sessions/<session-id>` | See [Delete Session](#delete-session-logout) for details |
-
 
 ### Using Sessions (X-Auth-Token)
 
