@@ -5,6 +5,40 @@
     Every deployment environment is unique. The prerequisites and setup steps provided here serve as general guidance for running the latest published images.
     Please ensure you follow your organization’s internal deployment, security, and validation procedures when upgrading or updating your environment.
 
+### Upgrade to MPS with the device power-state cache
+
+Before starting an MPS version that includes the device power-state cache, existing PostgreSQL deployments must add the cache columns to the `devices` table in `mpsdb`.
+
+!!! important "Apply the migration before upgrading MPS"
+    These columns are required even when `power_state_refresh_interval` is `0` (background refresh disabled), because device queries include the cache fields. `data/initMPS.sql` defines these columns for fresh installations only; it contains no `ALTER TABLE` migration for an existing table. Apply this migration before starting any upgraded MPS instance.
+
+1. Connect to the MPS database using a database user with permission to alter the `devices` table.
+
+    ```sh
+    psql -h [HOSTNAME] -p 5432 -d mpsdb -U [DATABASE USER]
+    ```
+
+2. Add the nullable cache columns. The statement can be run again safely because each column uses `IF NOT EXISTS`.
+
+    ```sql title="mpsdb - Add device power-state cache columns"
+    ALTER TABLE devices
+    ADD COLUMN IF NOT EXISTS powerstate integer,
+    ADD COLUMN IF NOT EXISTS ospowersavingstate integer,
+    ADD COLUMN IF NOT EXISTS powerstateupdatedat timestamp with time zone;
+    ```
+
+3. Verify that all three columns are present.
+
+    ```text
+    \d devices
+    ```
+
+4. Continue with the [minor version upgrade](#upgrade-a-minor-version-ie-2x-to-2y) steps below.
+
+Fresh PostgreSQL databases initialized with the updated `data/initMPS.sql` already include these columns. MongoDB deployments do not require this SQL migration; the cache fields are added on the first successful cache write.
+
+Existing device rows retain their data, and the new fields remain null until the first successful cache write. With the refresher feature installed, a background refresh, a successful live power-state read, or a successful read following a power action can populate them. Disabling background refresh does not disable updates from live reads or power actions. See [MPS configuration](../Reference/MPS/configuration.md#device-power-state-cache) for refresh settings and [the database schema](Database/schema.md#mps) for cache fields.
+
 ### Upgrade to 2.28 (Sep 25) from 2.18 (Dec 23) or later
 
 The 2.28 release of DMT Cloud Deployment requires updates to the `rpsdb` database. If upgrading from **2.18 (Dec 23)** or any later version, run the following SQL scripts to add or modify tables before continuing with the upgrade
