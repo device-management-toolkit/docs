@@ -155,11 +155,11 @@ export SYSTEM_ID="<system-id>"
     The example above uses Linux shell syntax. The same variables work on Windows — set them in PowerShell instead, and the curl commands are otherwise unchanged:
 
     ```powershell
-    $env:CONSOLE_HOST    = "localhost"
-    $env:CONSOLE_PORT    = "8181"
-    $env:ADMIN_USER      = "<admin-user-name>"
-    $env:ADMIN_PASSWORD  = "<admin-password>"
-    $env:SYSTEM_ID       = "<system-id>"
+    $CONSOLE_HOST    = "localhost"
+    $CONSOLE_PORT    = "8181"
+    $ADMIN_USER      = "<admin-user-name>"
+    $ADMIN_PASSWORD  = "<admin-password>"
+    $SYSTEM_ID       = "<system-id>"
     ```
 
     The examples use the `${VARIABLE}` form, which both `bash` and PowerShell expand the same way.
@@ -601,11 +601,11 @@ The service accepts the following `ResetType` values. Actual behavior depends on
 
 **Reference Successful Response:**
 
-A power action is asynchronous, so the service replies with `202 Accepted`, a `Location` header pointing at the task, and a Task resource in the body:
+The service performs the power action before responding; it does not queue asynchronous work. The response is `202 Accepted` and includes a `Location` header pointing at a Task resource that is already marked `Completed`:
 
 ```json
 {
-  "@odata.type": "#Task.v1_7_3.Task",
+  "@odata.type": "#Task.v1_6_0.Task",
   "Id": "reset-device-guid-12345",
   "Name": "System Reset Task",
   "TaskState": "Completed",
@@ -794,7 +794,7 @@ redfishtool -r ${CONSOLE_HOST}:${CONSOLE_PORT} -u "${ADMIN_USER}" -p "${ADMIN_PA
 
 - ✓ Response contains Members array
 - ✓ Members@odata.count shows number of active sessions
-- ✓ Each session has @odata.id and UserName properties
+- ✓ Each member has an `@odata.id` link; follow it or use [Get Session Details](#get-session-details) to inspect `UserName`
 
 #### Get Session Details
 
@@ -934,7 +934,7 @@ The following table provides curl commands for common Redfish API operations. Fo
 ### Using Sessions (X-Auth-Token)
 
 !!! note
-    `redfishtool` cannot use session tokens for most operations. Use `curl` with X-Auth-Token header for session-based requests.
+    `redfishtool` supports session authentication for its commands via `-A Session -t <token>`. The curl examples below demonstrate the equivalent `X-Auth-Token` header
 
 **Note:** In Windows PowerShell, use `curl.exe` (not the `curl` alias). In Linux/macOS or non-Windows PowerShell, use `curl`.
 
@@ -945,7 +945,7 @@ The following table provides curl commands for common Redfish API operations. Fo
     # Create session and get response with headers (credentials go in the body, not -u)
     $RESPONSE = curl.exe -sk -X POST `
       -H "Content-Type: application/json" `
-      -d "{\"UserName\":\"${ADMIN_USER}\",\"Password\":\"${ADMIN_PASSWORD}\"}" `
+      -d -d (@{ UserName = $ADMIN_USER; Password = $ADMIN_PASSWORD } | ConvertTo-Json -Compress) `
       -i `
       https://${CONSOLE_HOST}:${CONSOLE_PORT}/redfish/v1/SessionService/Sessions
 
@@ -1092,14 +1092,18 @@ The consent actions return `200 OK` with the Redfish success envelope:
 
 ```json
 {
-  "@Message.ExtendedInfo": [
-    {
-      "MessageId": "Base.1.22.0.Success",
-      "Message": "Successfully Completed Request",
-      "Severity": "OK",
-      "Resolution": "None"
-    }
-  ]
+  "error": {
+     "@Message.ExtendedInfo": [
+       {
+         "MessageId": "Base.1.22.0.Success",
+         "Message": "Successfully Completed Request",
+         "Severity": "OK",
+         "Resolution": "None"
+       }
+     ],
+     "code": "Base.1.22.0.Success",
+     "message": "Successfully Completed Request"
+   }
 }
 ```
 
@@ -1387,7 +1391,7 @@ If the operator cancels consent, call `CancelKVMConsent` or `CancelSolConsent`, 
 |-------------|---------|------------------|
 | 200 OK | Successful GET or PATCH | Getting service root, systems collection; enabling KVM or SOL |
 | 201 Created | Resource created | Session created; `X-Auth-Token` and `Location` headers returned |
-| 202 Accepted | Action accepted for processing | Power action initiated; body holds a Task resource and `Location` points at it |
+| 202 Accepted | Action completed; response includes task details | Power action is performed before the response; body holds a completed Task resource and `Location` points at it |
 | 204 No Content | Success with an empty body | Session deleted (logout) |
 | 400 Bad Request | Invalid request body, parameter, or system ID | Invalid `ResetType`; consent code that is not six digits; system ID that is not a UUID; consent action on an ACM device |
 | 401 Unauthorized | Missing or invalid credentials | No authentication provided; expired session token |
