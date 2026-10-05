@@ -4,100 +4,28 @@
         <loc>https://device-management-toolkit.github.io/docs/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/announcements/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/APIs/indexConsole/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/release-notes/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/APIs/indexMPS/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/videos/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/license/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/faq/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/Glossary/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/troubleshooting/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/GetStarted/overview/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/prerequisites/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/setup/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/loginToUI/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/createCIRAConfig/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/createProfileCCM/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/createProfileACM/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/buildRPC/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/manageDevice/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Enterprise/setup/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Enterprise/createProfileCCM/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Enterprise/createProfileACM/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Enterprise/exportProfile/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Enterprise/activateDevice/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Enterprise/addDevice/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Enterprise/manageDevice/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/Concepts/oobManagement/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/APIs/indexRPS/</loc>
       </url>
       <url>
         <loc>https://device-management-toolkit.github.io/docs/Concepts/architecture/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Concepts/remoteProvisioning/</loc>
-      </url>
-      <url>
         <loc>https://device-management-toolkit.github.io/docs/Concepts/controlModes/</loc>
       </url>
       <url>
+        <loc>https://device-management-toolkit.github.io/docs/Concepts/oobManagement/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Concepts/remoteProvisioning/</loc>
+      </url>
+      <url>
         <loc>https://device-management-toolkit.github.io/docs/Concepts/security/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/Deployment/overview/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/Deployment/upgradeVersion/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/Deployment/centralizedConfiguration/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/Deployment/Database/schema/</loc>
       </url>
       <url>
         <loc>https://device-management-toolkit.github.io/docs/Deployment/Database/database/</loc>
@@ -106,94 +34,85 @@
         <loc>https://device-management-toolkit.github.io/docs/Deployment/Database/nosql/</loc>
       </url>
       <url>
+        <loc>https://device-management-toolkit.github.io/docs/Deployment/Database/schema/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Deployment/centralizedConfiguration/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Deployment/overview/</loc>
+      </url>
+      <url>
         <loc>https://device-management-toolkit.github.io/docs/Deployment/secrets/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Tutorials/overview/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Deployment/upgradeVersion/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Tutorials/uitoolkitReact/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/buildRPC/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Tutorials/apiTutorial/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/createCIRAConfig/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Tutorials/ideRedirection/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/createProfileACM/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Tutorials/createWiFiConfig/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/createProfileCCM/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Tutorials/modifyUserAuth/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/loginToUI/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Tutorials/ocrTutorial/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/manageDevice/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Tutorials/rpeTutorial/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/prerequisites/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Tutorials/Localization/consoleLocalization/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Cloud/setup/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Tutorials/Localization/webuiLocalization/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Enterprise/activateDevice/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Tutorials/Scaling/overview/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Enterprise/addDevice/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Tutorials/Scaling/docker-swarm/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Enterprise/createProfileACM/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Tutorials/Scaling/Kubernetes/deployingk8s/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Enterprise/createProfileCCM/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Tutorials/Scaling/Kubernetes/deployingk8s-aks/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Enterprise/exportProfile/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Tutorials/Scaling/Kubernetes/deployingk8s-eks/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Enterprise/manageDevice/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Tutorials/Scaling/Kubernetes/service-mesh/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/GetStarted/Enterprise/setup/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/architectureOverview/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/GetStarted/overview/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/powerstates/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Glossary/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/guids/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/Certificates/enrollCustomCertAMT/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/logging/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/Certificates/generateProvisioningCert/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/middlewareExtensibility/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/Certificates/tls/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/productionVault/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/Console/Database/NoSQL/MongoDB/collections/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/sslpostgresLocal/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/Console/overview/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/Console/configuration/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/Console/tlsConfiguration/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/Console/Database/overview/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/Console/Database/SQL/sqlite/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/Console/Database/SQL/postgres/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/Console/Database/NoSQL/MongoDB/extending/</loc>
       </url>
       <url>
         <loc>https://device-management-toolkit.github.io/docs/Reference/Console/Database/NoSQL/MongoDB/overview/</loc>
@@ -202,19 +121,16 @@
         <loc>https://device-management-toolkit.github.io/docs/Reference/Console/Database/NoSQL/MongoDB/quickStart/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/Console/Database/NoSQL/MongoDB/collections/</loc>
-      </url>
-      <url>
         <loc>https://device-management-toolkit.github.io/docs/Reference/Console/Database/NoSQL/MongoDB/schemaChanges/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/Console/Database/NoSQL/MongoDB/extending/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/Console/Database/SQL/postgres/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/Console/upgrade/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/Console/Database/SQL/sqlite/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/Console/securityConsole/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/Console/Database/overview/</loc>
       </url>
       <url>
         <loc>https://device-management-toolkit.github.io/docs/Reference/Console/Features/cira/</loc>
@@ -223,10 +139,40 @@
         <loc>https://device-management-toolkit.github.io/docs/Reference/Console/Features/ocr/</loc>
       </url>
       <url>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/Console/Features/rpe/</loc>
+      </url>
+      <url>
         <loc>https://device-management-toolkit.github.io/docs/Reference/Console/Features/wsmanExplorer/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/Console/Features/rpe/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/Console/configuration/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/Console/overview/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/Console/securityConsole/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/Console/tlsConfiguration/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/Console/upgrade/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/EA/RPCConfiguration/localIEEE8021xConfig/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/EA/RPCConfiguration/localtlsconfig/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/EA/RPCConfiguration/rpcgoConfiguration/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/EA/RPSConfiguration/remoteIEEE8021xConfig/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/EA/RPSConfiguration/rpsConfiguration/</loc>
       </url>
       <url>
         <loc>https://device-management-toolkit.github.io/docs/Reference/EA/overview/</loc>
@@ -235,25 +181,10 @@
         <loc>https://device-management-toolkit.github.io/docs/Reference/EA/tlsCertTemplate/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/EA/RPCConfiguration/rpcgoConfiguration/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/MEBX/dnsSuffix/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/EA/RPCConfiguration/localtlsconfig/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/EA/RPCConfiguration/localIEEE8021xConfig/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/EA/RPSConfiguration/rpsConfiguration/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/EA/RPSConfiguration/remoteIEEE8021xConfig/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/MQTT/customMqttEvents/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/MQTT/viewMqttEvents/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/MEBX/unprovision/</loc>
       </url>
       <url>
         <loc>https://device-management-toolkit.github.io/docs/Reference/MPS/configuration/</loc>
@@ -262,19 +193,19 @@
         <loc>https://device-management-toolkit.github.io/docs/Reference/MPS/securityMPS/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/RPS/configuration/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/MQTT/customMqttEvents/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/RPS/securityRPS/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/MQTT/viewMqttEvents/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/RPS/createProfileTLSConfig/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/RPC/buildRPC_Manual/</loc>
       </url>
       <url>
         <loc>https://device-management-toolkit.github.io/docs/Reference/RPC/overview/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/RPC/buildRPC_Manual/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/RPC/transitionDeviceRPC/</loc>
       </url>
       <url>
         <loc>https://device-management-toolkit.github.io/docs/Reference/RPC/v2/commandsRPC/</loc>
@@ -286,13 +217,16 @@
         <loc>https://device-management-toolkit.github.io/docs/Reference/RPC/v3/about-v3/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/RPC/transitionDeviceRPC/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/RPS/configuration/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/UIToolkit/overview/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/RPS/createProfileTLSConfig/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/UIToolkit/gettingStarted/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/RPS/securityRPS/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/UIToolkit/Controls/ideRedirectionControl/</loc>
       </url>
       <url>
         <loc>https://device-management-toolkit.github.io/docs/Reference/UIToolkit/Controls/kvmControl/</loc>
@@ -301,36 +235,102 @@
         <loc>https://device-management-toolkit.github.io/docs/Reference/UIToolkit/Controls/serialOverLANControl/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/UIToolkit/Controls/ideRedirectionControl/</loc>
-      </url>
-      <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/UIToolkit/reactLocalization/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/UIToolkit/gettingStarted/</loc>
       </url>
       <url>
         <loc>https://device-management-toolkit.github.io/docs/Reference/UIToolkit/migration/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/MEBX/dnsSuffix/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/UIToolkit/overview/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/MEBX/unprovision/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/UIToolkit/reactLocalization/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/Certificates/generateProvisioningCert/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/architectureOverview/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/Certificates/enrollCustomCertAMT/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/faq/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/Certificates/tls/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/guids/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/APIs/indexConsole/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/logging/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/APIs/indexMPS/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/middlewareExtensibility/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/APIs/indexRPS/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/powerstates/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/productionVault/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/sslpostgresLocal/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/troubleshooting/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Tutorials/Localization/consoleLocalization/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Tutorials/Localization/webuiLocalization/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Tutorials/Scaling/Kubernetes/deployingk8s-aks/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Tutorials/Scaling/Kubernetes/deployingk8s-eks/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Tutorials/Scaling/Kubernetes/deployingk8s/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Tutorials/Scaling/Kubernetes/service-mesh/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Tutorials/Scaling/docker-swarm/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Tutorials/Scaling/overview/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Tutorials/apiTutorial/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Tutorials/createWiFiConfig/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Tutorials/ideRedirection/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Tutorials/modifyUserAuth/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Tutorials/ocrTutorial/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Tutorials/overview/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Tutorials/rpeTutorial/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Tutorials/uitoolkitReact/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/announcements/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/license/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/release-notes/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/videos/</loc>
       </url>
 </urlset>
