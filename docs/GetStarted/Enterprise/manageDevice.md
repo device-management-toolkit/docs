@@ -2,12 +2,17 @@
 
 ## Try out Intel® AMT Capabilities
 
-1. Select the newly added AMT device.
+Enterprise Console separates devices into two tabs:
 
-    <figure class="figure-image">
-        <img src="../../assets/images/screenshots/Console_Devices.png" alt="Figure 1: Devices Tab">
-        <figcaption>Figure 1: Devices Tab</figcaption>
-    </figure>
+- **Discovered**: Devices discovered on the network that have not yet been activated.
+- **Managed**: Devices that are activated or otherwise available for management.
+
+Select the newly added AMT device from the **Managed** tab.
+
+<figure class="figure-image">
+    <img src="../../assets/images/screenshots/Console_Devices.png" alt="Figure 1: Devices page with the Managed tab selected">
+    <figcaption>Figure 1: Devices page with the Managed tab selected</figcaption>
+</figure>
 
 2. Select an action to perform from the Power Actions or Redirection options in the top-right.
 
