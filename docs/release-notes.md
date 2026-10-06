@@ -4,34 +4,46 @@
 
     Hello, DMT community!
 
-    In September, we added multi-tenant management to Console and a new way for enterprise users to download RPC packages through Console and the Sample Web UI. RPC-Go v3 Beta also continues to improve device exports and tenant-aware workflows.
+    In the September release (v2.39.0) we added a number of features to Console: multi-tenancy across Console with RPC-Go v3 (Beta), a new device export API, and the ability to download RPC-Go v3 (Beta) from the Sample Web UI with guided command generation. Full documentation for these new features is currently being finalized and will be published in the coming weeks.
 
     We also fixed issues affecting authentication-disabled Console setups, Linux MEI connectivity, and SOL reconnection. Thanks for testing the releases, sharing feedback, and contributing fixes. Your reports help us decide what to improve next.
 
-    Work on Trusted Endpoint Provisioning (TEP) and other new capabilities is also progressing through development and review. We look forward to sharing more as these efforts mature for future releases.
+    Several other efforts are moving through development and review. We are adding a bulk power state pull to MPS, enabling supported deployment architectures where customers can run Console and RPS together - a key v3 capability - and working toward the official release of RPC-Go v3. Trusted Endpoint Provisioning (TEP), device health, and discovery capabilities are also advancing, console redfish API support is being improved along with much more. We look forward to sharing these as they mature for future releases.
 
     Follow our [Sprint Board](https://github.com/orgs/device-management-toolkit/projects/10/views/2) to learn more and track upcoming features.
+
+    As always, thanks to everyone providing feedback, testing new functionality, and contributing to the toolkit.
 
     Cheers,<br>
     **The Device Management Toolkit Team**
 
 ## 🚀 What's New?
 
-### Console: Multi-Tenancy
+### Console and RPC-Go v3 (Beta): Multi-Tenancy
 
-Organizations that manage devices for multiple customers or business units can now use one Console deployment while keeping each tenant's data and devices organized within its tenant boundary. This can reduce the need to operate separate Console deployments for each tenant.
+The Console backend now supports multi-tenancy, scoping each request to a tenant through the `x-tenant-id` header. Organizations that manage devices for multiple customers or business units can use one Console deployment while keeping each tenant's data and devices inside its own tenant boundary, reducing the need to operate a separate deployment per tenant. This is a key enabler for cloud deployments of Console, where tenant boundaries must be enforced within a single shared service.
 
-### Sample Web UI: Enterprise Download RPC
+RPC-Go v3 (Beta) participates in the same model: it forwards the tenant header and keeps device deactivation synchronized in multi-tenant deployments, so operations stay within the intended tenant and device status stays accurate.
 
-Enterprise users can download RPC packages directly from the Sample Web UI through Console, making packages easier to access when needed without requiring a separate download workflow.
+!!! note
 
-## 🧩 Enhancements & Improvements
+    Documentation for this feature is in progress and will be published in the coming weeks.
 
-### Console and RPC-Go v3 (Beta): Device Export Fields
+### Console and RPC-Go v3 (Beta): Device Export API and Fields
 
-Console now maps additional device export fields collected by RPC-Go v3 (Beta). Customers can retain more device details in their exports and keep the exported data aligned with what RPC-Go v3 collects.
+Console now exposes a device export API, `GET /api/v1/devices/export`, that returns device inventory in a consistent nested shape grouped by subsystem — Management Engine (ME), OS, network and platform — along with an `X-Total-Count` header and an audit log entry for each export attempt. Credentials are excluded from the response, and the endpoint currently serves up to 500 devices per synchronous request.
 
-### RPC-Go v3 (Beta): Tenant-Aware Operations and Credential Guidance
+### Console & Sample Web UI: Download RPC-Go v3 (Beta) and Generate Commands (Preview)
+
+From the Sample Web UI in Console, users can now download the latest supported RPC-Go v3 (Beta) release for their target platform — Windows or Linux — without leaving Console to find the right package. The Sample Web UI also walks users through generating the correct RPC-Go command and configuration for activation and deactivation, which they can copy or download instead of recalling command-line flags.
+
+This is a preview release for online deployments. Support for offline and air-gapped deployments, along with guided configuration for more command operations, is planned for future releases.
+
+!!! note
+
+    Documentation for this feature is in progress and will be published in the coming weeks.
+
+### RPC-Go v3 (Beta): Credential Guidance
 
 RPC-Go v3 (Beta) forwards the tenant header and keeps device deactivation synchronized in multi-tenant deployments, helping operations stay within the intended tenant and reflect device status accurately. It also warns when credentials are supplied through CLI flags, helping users avoid exposing secrets in shell history or process listings.
 
