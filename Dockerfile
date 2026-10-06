@@ -1,4 +1,4 @@
-FROM cgr.dev/chainguard/python:latest-dev@sha256:2d5551e22013aa1bb69c070398273171941c4a0d80414e7f786db8e6d966bb83 AS build
+FROM cgr.dev/chainguard/python:latest-dev@sha256:8c06d75b497c156bb7a42fedb6480fe2c1865e93538215e4a0f7bf99a03f1f99 AS build
 
 # Root for the build stage only; the runtime image keeps its nonroot user.
 USER root
@@ -12,7 +12,7 @@ RUN python -m venv --without-pip venv && \
     python -m pip --python venv/bin/python install -r requirements.txt --require-hashes --no-cache-dir
 
 # Runtime image has no shell or pip; it must match the build image's Python version.
-FROM cgr.dev/chainguard/python:latest@sha256:992f13b3e2f7d7bef9b0d74caf7d05c12329482b7b1455fe0bfc6531361b9b7d
+FROM cgr.dev/chainguard/python:latest@sha256:b7af1ae90e2fcfb5c32be03908e74d32fdfd64156c2b7c535bd3e497e7846d84
 
 COPY --from=build /app/venv /app/venv
 
