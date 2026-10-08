@@ -4,11 +4,15 @@
 
     Hello, DMT community!
 
-    In the September release (v2.39.0) we added a number of features to Console: multi-tenancy across Console with RPC-Go v3 (Beta), a new device export API, and the ability to download RPC-Go v3 (Beta) from the Sample Web UI with guided command generation. Full documentation for these new features is currently being finalized and will be published in the coming weeks.
+    In this September release (v2.39), Console introduced three major features: the ability to download RPC-Go v3 (Beta) with guided command generation from the UI, a new device export API, and multi-tenancy (a key v3 capability) . Additionally, we fixed issues so that Console no longer prompts for authentication when it is disabled, RPC-Go v3 (Beta) can enumerate Linux MEI devices across `/dev/mei0` through `/dev/mei3`, and the UI correctly reflects SOL reconnection state.
 
-    We also fixed issues affecting authentication-disabled Console setups, Linux MEI connectivity, and SOL reconnection. Thanks for testing the releases, sharing feedback, and contributing fixes. Your reports help us decide what to improve next.
+    Remote Platform Erase documentation is now available: [RPE tutorial](Tutorials/rpeTutorial.md), [RPE feature reference](Reference/Console/Features/rpe.md), and the [MPS RPE API documentation](https://github.com/device-management-toolkit/mps/blob/main/swagger.yaml#L302).
 
-    Several other efforts are moving through development and review. We are adding a bulk power state pull to MPS, enabling supported deployment architectures where customers can run Console and RPS together - a key v3 capability - and working toward the official release of RPC-Go v3. Trusted Endpoint Provisioning (TEP), device health, and discovery capabilities are also advancing, console redfish API support is being improved along with much more. We look forward to sharing these as they mature for future releases.
+    As we mentioned previously, Console releases were paused while we completed additional review and compliance approvals. Those approvals are now complete, and Console releases are back on track.
+
+    Looking ahead, we are working on a bulk power state pull in MPS, enabling supported deployment architectures where customers can run Console and RPS together (a key v3 capability), completing the official release of RPC-Go v3, and advancing Trusted Endpoint Provisioning (TEP), device health, discovery, and Console Redfish API support, along with much more.
+
+    Find out [what's new](#whats-new) below, and check the full [changelog](#changelog) at the end of this page.
 
     Follow our [Sprint Board](https://github.com/orgs/device-management-toolkit/projects/10/views/2) to learn more and track upcoming features.
 
@@ -19,44 +23,163 @@
 
 ## 🚀 What's New?
 
+### Console: Download RPC-Go v3 (Beta) and Generate Commands (Preview)
+
+From the Console UI, users can now download the latest supported RPC-Go v3 (Beta) release for their target platform - Windows or Linux - without leaving Console to find the right package. The Console UI also walks users through generating the correct RPC-Go command and configuration for activation and deactivation, which they can copy or download instead of recalling command-line flags.
+
+!!! note
+
+    Documentation for this feature is in progress and will be published in the coming weeks.
+
+### Console: Device Export API
+
+Console now exposes a device export API, `GET /api/v1/devices/export`, that returns device inventory in a consistent nested shape grouped by subsystem - Management Engine (ME), OS, network and platform - along with an `X-Total-Count` header and an audit log entry for each export attempt. Credentials are excluded from the response, and the endpoint currently serves up to 500 devices per synchronous request.
+
+**Example: Device Export Output**
+
+```json
+{
+    "metadata": {
+        "exportedAt": "2026-10-09T06:11:02.14461394Z",
+        "swVersion": "console 1.45.0"
+    },
+    "summary": {
+        "totalCount": 1
+    },
+    "data": [
+        {
+            "guid": "f440232e-da5d-d52a-fd63-48210b50d81d",
+            "hostname": "203.0.113.10",
+            "friendlyName": "",
+            "tags": [],
+            "tenantId": "",
+            "firstDiscovered": "2026-10-05T01:00:03.895685232Z",
+            "lastSynced": "2026-10-05T01:00:03.895685232Z",
+            "lastUpdated": null,
+            "deviceInfo": {
+                "me": {
+                    "dnsSuffix": "",
+                    "currentMode": "not activated",
+                    "mebxEnabledInBIOS": true,
+                    "fwVersion": "16.1.27",
+                    "fwBuild": "2176",
+                    "fwSku": "16392",
+                    "features": "AMT Pro Corporate",
+                    "tlsMode": "",
+                    "dhcpEnabled": true,
+                    "certHashes": [
+                        "..."
+                    ],
+                    "upid": {
+                        "csmeId": "0000000000000000000000000000000000000000000000000000000000000001234",
+                        "oemId": "0000000000000000000000000000000000000000000000000000000000000000",
+                        "oemPlatformIdType": "Not Set (0)"
+                    },
+                    "network": {
+                        "wired": {
+                            "ipAddress": "0.0.0.0",
+                            "dhcpEnabled": true,
+                            "dhcpMode": "passive",
+                            "linkStatus": "up",
+                            "macAddress": "00:00:00:00:00:00"
+                        },
+                        "wireless": {
+                            "ipAddress": "0.0.0.0",
+                            "dhcpEnabled": true,
+                            "dhcpMode": "active",
+                            "linkStatus": "down",
+                            "macAddress": "00:00:00:00:00:00"
+                        }
+                    }
+                },
+                "os": {
+                    "dnsSuffix": "example.com",
+                    "name": "linux",
+                    "version": "6.17.0-29-generic",
+                    "distro": "Ubuntu 24.04 LTS",
+                    "lmsInstalled": false,
+                    "lmsVersion": "",
+                    "meInterfaceVersion": "6.17.0-29-generic",
+                    "monitorConnected": true,
+                    "ieee8021xEnabled": null,
+                    "network": {
+                        "wired": [
+                            {
+                                "name": "enp100s0",
+                                "ipAddress": "203.0.113.10",
+                                "dhcpEnabled": true,
+                                "linkStatus": "up",
+                                "macAddress": "00:00:00:00:00:00"
+                            }
+                        ],
+                        "wireless": {
+                            "name": "wlo1",
+                            "ipAddress": "",
+                            "dhcpEnabled": null,
+                            "linkStatus": "up",
+                            "macAddress": "00:00:00:00:00:00"
+                        }
+                    }
+                },
+                "platform": {
+                    "cpu": "12th Gen Intel(R) Core(TM) i5-1250P",
+                    "ethernetAdapterCount": 2,
+                    "adapters": {
+                        "wired": [
+                            "Ethernet controller: Intel Corporation Ethernet Controller I225-LM (rev 03)"
+                        ],
+                        "wireless": [
+                            "Network controller: Intel Corporation Alder Lake-P PCH CNVi WiFi (rev 01)"
+                        ]
+                    }
+                },
+                "bmc": null
+            }
+        }
+    ]
+}
+```
+
 ### Console and RPC-Go v3 (Beta): Multi-Tenancy
 
-The Console backend now supports multi-tenancy, scoping each request to a tenant through the `x-tenant-id` header. Organizations that manage devices for multiple customers or business units can use one Console deployment while keeping each tenant's data and devices inside its own tenant boundary, reducing the need to operate a separate deployment per tenant. This is a key enabler for cloud deployments of Console, where tenant boundaries must be enforced within a single shared service.
+Console now supports multi-tenancy, letting a single deployment serve multiple customers or business units while keeping each tenant's devices and data fully isolated. This removes the need to stand up and maintain a separate Console deployment per tenant, making it easier to scale cloud deployments where strict tenant boundaries are required.
 
-RPC-Go v3 (Beta) participates in the same model: it forwards the tenant header and keeps device deactivation synchronized in multi-tenant deployments, so operations stay within the intended tenant and device status stays accurate.
-
-!!! note
-
-    Documentation for this feature is in progress and will be published in the coming weeks.
-
-### Console and RPC-Go v3 (Beta): Device Export API and Fields
-
-Console now exposes a device export API, `GET /api/v1/devices/export`, that returns device inventory in a consistent nested shape grouped by subsystem — Management Engine (ME), OS, network and platform — along with an `X-Total-Count` header and an audit log entry for each export attempt. Credentials are excluded from the response, and the endpoint currently serves up to 500 devices per synchronous request.
-
-### Console & Sample Web UI: Download RPC-Go v3 (Beta) and Generate Commands (Preview)
-
-From the Sample Web UI in Console, users can now download the latest supported RPC-Go v3 (Beta) release for their target platform — Windows or Linux — without leaving Console to find the right package. The Sample Web UI also walks users through generating the correct RPC-Go command and configuration for activation and deactivation, which they can copy or download instead of recalling command-line flags.
-
-This is a preview release for online deployments. Support for offline and air-gapped deployments, along with guided configuration for more command operations, is planned for future releases.
+RPC-Go v3 (Beta) works within the same model, so device activation and deactivation stay scoped to the correct tenant end-to-end, keeping device status accurate in multi-tenant deployments.
 
 !!! note
+    This work is currently focused on Cloud deployments (v3). We may revisit multi-tenancy for on-premises deployments, specifically the Console binary, based on customer requests. Documentation for this feature is in progress and will be published in the coming weeks.
 
-    Documentation for this feature is in progress and will be published in the coming weeks.
+## 🧩 Enhancements & Improvements
 
 ### RPC-Go v3 (Beta): Credential Guidance
 
-RPC-Go v3 (Beta) forwards the tenant header and keeps device deactivation synchronized in multi-tenant deployments, helping operations stay within the intended tenant and reflect device status accurately. It also warns when credentials are supplied through CLI flags, helping users avoid exposing secrets in shell history or process listings.
+RPC-Go v3 (Beta) now warns when you pass credentials as CLI flags, helping you avoid exposing secrets in shell history or process listings.
+
+### Console: JWT Key Generation and Handling
+
+Console now generates a unique authentication key automatically the first time it runs, closing a gap where every installation previously shared the same default key.
+
+### Console: Device Details Performance for Powered-Off Devices
+
+Viewing details for a powered-off or sleeping device is now faster and more reliable, with fewer timeouts and a smoother loading experience.
 
 ## 🔧 Fixes & Maintenance
 
-- RPC-Go v3 (Beta) now collects UPID and certificate hashes during post-activation synchronization.
-- RPC-Go v3 (Beta) supports Linux MEI device nodes `/dev/mei0` through `/dev/mei3`.
-- Console accepts credentials when authentication is disabled and does not issue signed tokens in that mode.
-- Console hardens credential validation and corrects the `handleAdminPassword` comment.
-- Console hardens JWT key validation, generates the key on first run, validates the HTTP port, improves Windows browser launch, aligns timeout budgets for slow devices, and limits the PostgreSQL `sslmode` default to migrations.
-- The Sample Web UI fixes SOL reconnection state and the cloud activation CIRA status assertion.
-- MPS Router raises its minimum Go version to 1.26.
-- Minor dependency updates and maintenance across toolkit components.
+- Console
+    - Accepts credentials when authentication is disabled and does not issue signed tokens in that mode.
+    - Password and HTTP Port validation has been hardened.
+    - Improves Windows browser launch handling.
+    - Limits the PostgreSQL `sslmode` default to migrations.
+    - Aligns timeout handling with slow-responding devices to reduce failed requests.
+- RPC-Go v3 (Beta)
+    - Now collects UPID and certificate hashes during post-activation synchronization.
+    - Supports Linux MEI device nodes `/dev/mei0` through `/dev/mei3`.
+- Sample Web UI
+    - Fixes SOL reconnection state, flipping the SOL button back to Connect after a manual disconnect.
+- MPS Router
+    - Raises its minimum Go version to 1.26.
+- Dependencies
+    - Minor dependency updates and maintenance across toolkit components.
 
 ## :material-update:{ .icon-log } Changelog
 
