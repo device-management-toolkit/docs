@@ -4,9 +4,13 @@
 
     Hello, DMT community!
 
-    In the September release (v2.39.0) we added a number of features to Console: multi-tenancy across Console with RPC-Go v3 (Beta), a new device export API, and the ability to download RPC-Go v3 (Beta) from the Sample Web UI with guided command generation. Full documentation for these new features is currently being finalized and will be published in the coming weeks.
+    We would like to inform that, the Console Releases are  back on track, with the required compliance approvals. 
 
-    We also fixed issues affecting authentication-disabled Console setups, Linux MEI connectivity, and SOL reconnection. Thanks for testing the releases, sharing feedback, and contributing fixes. Your reports help us decide what to improve next.
+    In the September release (v2.39.0) we added a number of features to Console: multi-tenancy across Console with RPC-Go v3 (Beta), a new device export API, and the ability to download RPC-Go v3 (Beta) from the Sample Web UI with guided command generation. Full documentation for these new features is currently being finalized and will be published in the coming weeks. 
+
+    Remote Platform Erase Feature documentation is available at /home/lejinjoy/DMT/docs/docs/Tutorials/rpeTutorial.md for Console and /home/lejinjoy/DMT/docs/docs/Reference/Console/Features/rpe.md for MPS. 
+
+    We have fixed issues affecting authentication-disabled Console setups, so that UI does not ask for authentication, Linux MEI connectivity to enumerate devices apart from mei0, and SOL reconnection in the UI. 
 
     Several other efforts are moving through development and review. We are adding a bulk power state pull to MPS, enabling supported deployment architectures where customers can run Console and RPS together - a key v3 capability - and working toward the official release of RPC-Go v3. Trusted Endpoint Provisioning (TEP), device health, and discovery capabilities are also advancing, console redfish API support is being improved along with much more. We look forward to sharing these as they mature for future releases.
 
@@ -26,22 +30,22 @@ The Console backend now supports multi-tenancy, scoping each request to a tenant
 RPC-Go v3 (Beta) participates in the same model: it forwards the tenant header and keeps device deactivation synchronized in multi-tenant deployments, so operations stay within the intended tenant and device status stays accurate.
 
 !!! note
+    This work is currently focused on Cloud deployments (v3). We may revisit multi-tenancy for on-premises deployments, specifically the Console binary, based on customer requests. Documentation for this feature is in progress and will be published in the coming weeks.
 
-    Documentation for this feature is in progress and will be published in the coming weeks.
-
-### Console and RPC-Go v3 (Beta): Device Export API and Fields
+### Console : Device Export API
 
 Console now exposes a device export API, `GET /api/v1/devices/export`, that returns device inventory in a consistent nested shape grouped by subsystem — Management Engine (ME), OS, network and platform — along with an `X-Total-Count` header and an audit log entry for each export attempt. Credentials are excluded from the response, and the endpoint currently serves up to 500 devices per synchronous request.
+<Add an Eg. Todo>
 
 ### Console & Sample Web UI: Download RPC-Go v3 (Beta) and Generate Commands (Preview)
 
-From the Sample Web UI in Console, users can now download the latest supported RPC-Go v3 (Beta) release for their target platform — Windows or Linux — without leaving Console to find the right package. The Sample Web UI also walks users through generating the correct RPC-Go command and configuration for activation and deactivation, which they can copy or download instead of recalling command-line flags.
-
-This is a preview release for online deployments. Support for offline and air-gapped deployments, along with guided configuration for more command operations, is planned for future releases.
+From the Console UI, users can now download the latest supported RPC-Go v3 (Beta) release for their target platform — Windows or Linux — without leaving Console to find the right package. The Sample Web UI also walks users through generating the correct RPC-Go command and configuration for activation and deactivation, which they can copy or download instead of recalling command-line flags.
 
 !!! note
 
     Documentation for this feature is in progress and will be published in the coming weeks.
+
+## Enhancements & Improvements
 
 ### RPC-Go v3 (Beta): Credential Guidance
 
