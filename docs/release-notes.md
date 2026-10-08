@@ -4,13 +4,13 @@
 
     Hello, DMT community!
 
-    We would like to inform that, the Console Releases are  back on track, with the required compliance approvals. 
+    Console releases are back on track following the required compliance approvals.
 
-    In the September release (v2.39.0) we added a number of features to Console: multi-tenancy across Console with RPC-Go v3 (Beta), a new device export API, and the ability to download RPC-Go v3 (Beta) from the Sample Web UI with guided command generation. Full documentation for these new features is currently being finalized and will be published in the coming weeks. 
+    The September release (v2.39.0) introduces new features in Console - multi-tenancy, a new device export API, and the ability to download RPC-Go v3 (Beta) from the Sample Web UI with guided command generation.
 
-    Remote Platform Erase Feature documentation is available at /home/lejinjoy/DMT/docs/docs/Tutorials/rpeTutorial.md for Console and /home/lejinjoy/DMT/docs/docs/Reference/Console/Features/rpe.md for MPS. 
+    Remote Platform Erase documentation is now available: [RPE tutorial](Tutorials/rpeTutorial.md), [RPE feature reference](Reference/Console/Features/rpe.md), and the [MPS RPE API documentation](https://github.com/device-management-toolkit/mps/blob/main/swagger.yaml#L302).
 
-    We have fixed issues affecting authentication-disabled Console setups, so that UI does not ask for authentication, Linux MEI connectivity to enumerate devices apart from mei0, and SOL reconnection in the UI. 
+    We have fixed issues affecting authentication-disabled Console setups, so that UI does not ask for authentication, Linux MEI connectivity to enumerate devices apart from mei0, and SOL reconnection in the UI.
 
     Several other efforts are moving through development and review. We are adding a bulk power state pull to MPS, enabling supported deployment architectures where customers can run Console and RPS together - a key v3 capability - and working toward the official release of RPC-Go v3. Trusted Endpoint Provisioning (TEP), device health, and discovery capabilities are also advancing, console redfish API support is being improved along with much more. We look forward to sharing these as they mature for future releases.
 
@@ -34,12 +34,12 @@ RPC-Go v3 (Beta) participates in the same model: it forwards the tenant header a
 
 ### Console : Device Export API
 
-Console now exposes a device export API, `GET /api/v1/devices/export`, that returns device inventory in a consistent nested shape grouped by subsystem — Management Engine (ME), OS, network and platform — along with an `X-Total-Count` header and an audit log entry for each export attempt. Credentials are excluded from the response, and the endpoint currently serves up to 500 devices per synchronous request.
+Console now exposes a device export API, `GET /api/v1/devices/export`, that returns device inventory in a consistent nested shape grouped by subsystem - Management Engine (ME), OS, network and platform - along with an `X-Total-Count` header and an audit log entry for each export attempt. Credentials are excluded from the response, and the endpoint currently serves up to 500 devices per synchronous request.
 <Add an Eg. Todo>
 
 ### Console & Sample Web UI: Download RPC-Go v3 (Beta) and Generate Commands (Preview)
 
-From the Console UI, users can now download the latest supported RPC-Go v3 (Beta) release for their target platform — Windows or Linux — without leaving Console to find the right package. The Sample Web UI also walks users through generating the correct RPC-Go command and configuration for activation and deactivation, which they can copy or download instead of recalling command-line flags.
+From the Console UI, users can now download the latest supported RPC-Go v3 (Beta) release for their target platform - Windows or Linux - without leaving Console to find the right package. The Sample Web UI also walks users through generating the correct RPC-Go command and configuration for activation and deactivation, which they can copy or download instead of recalling command-line flags.
 
 !!! note
 
