@@ -4,15 +4,17 @@
 
     Hello, DMT community!
 
-    In this September release (v2.39), Console introduced three major features: the ability to download RPC-Go v3 (Beta) with guided command generation from the UI, a new device export API, and multi-tenancy (a key v3 capability) . Additionally, we fixed issues so that Console no longer prompts for authentication when it is disabled, RPC-Go v3 (Beta) can enumerate Linux MEI devices across `/dev/mei0` through `/dev/mei3`, and the UI correctly reflects SOL reconnection state.
+    In this September release (v2.39), Console introduced three major features: the ability to download RPC-Go v3 (Beta) with guided command generation from the UI, a new device export API, and multi-tenancy (a key v3 capability). Additionally, we fixed issues so that Console no longer prompts for authentication when it is disabled, RPC-Go v3 (Beta) can enumerate Linux MEI devices across `/dev/mei0` through `/dev/mei3`, and the UI correctly reflects SOL reconnection state.
 
-    Remote Platform Erase documentation is now available: [RPE tutorial](Tutorials/rpeTutorial.md), [RPE feature reference](Reference/Console/Features/rpe.md), and the [MPS RPE API documentation](https://github.com/device-management-toolkit/mps/blob/main/swagger.yaml#L302).
+    Remote Platform Erase (RPE) documentation is now available:
+
+    - [Tutorial](Tutorials/rpeTutorial.md)
+    - [Feature reference](Reference/Console/Features/rpe.md)
+    - [MPS RPE API documentation](https://github.com/device-management-toolkit/mps/blob/main/swagger.yaml#L302)
 
     As we mentioned previously, Console releases were paused while we completed additional review and compliance approvals. Those approvals are now complete, and Console releases are back on track.
 
     Looking ahead, we are working on a bulk power state pull in MPS, enabling supported deployment architectures where customers can run Console and RPS together (a key v3 capability), completing the official release of RPC-Go v3, and advancing Trusted Endpoint Provisioning (TEP), device health, discovery, and Console Redfish API support, along with much more.
-
-    Find out [what's new](#whats-new) below, and check the full [changelog](#changelog) at the end of this page.
 
     Follow our [Sprint Board](https://github.com/orgs/device-management-toolkit/projects/10/views/2) to learn more and track upcoming features.
 
@@ -27,9 +29,11 @@
 
 From the Console UI, users can now download the latest supported RPC-Go v3 (Beta) release for their target platform - Windows or Linux - without leaving Console to find the right package. The Console UI also walks users through generating the correct RPC-Go command and configuration for activation and deactivation, which they can copy or download instead of recalling command-line flags.
 
-!!! note
+!!! note "Download availability"
 
-    Documentation for this feature is in progress and will be published in the coming weeks.
+    Console supports RPC-Go v3 only and lists the five latest v3 beta releases. If Console cannot access the internet, download the RPC-Go builds into a local directory with a subdirectory for each version, then set `package.local_dir` to that directory in Console's `config.yml`. Set `package.disable_fetch: true` to make Console use only the local files. 
+    
+    Detailed setup instructions are in progress; keep an eye out for their release.
 
 ### Console: Device Export API
 
@@ -157,7 +161,11 @@ RPC-Go v3 (Beta) now warns when you pass credentials as CLI flags, helping you a
 
 ### Console: JWT Key Generation and Handling
 
-Console now generates a unique authentication key automatically the first time it runs, closing a gap where every installation previously shared the same default key.
+On first run, Console generates and saves a unique authentication key for the installation.
+
+!!! warning "Configure your JWT key for production"
+
+    When no key is configured, Console generates 32 random bytes (256 bits), base64-encoded as a 44-character secret, and saves it in `config.yml`. This provides a unique randomized key for the installation; for production, set and securely manage your own strong key using `auth.jwtKey` in `config.yml` or the `AUTH_JWT_KEY` environment variable.
 
 ### Console: Device Details Performance for Powered-Off Devices
 
