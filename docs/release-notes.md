@@ -12,7 +12,7 @@
 
     We have fixed issues affecting authentication-disabled Console setups, so that UI does not ask for authentication, Linux MEI connectivity to enumerate devices apart from mei0, and SOL reconnection in the UI.
 
-    Several other efforts are moving through development and review. We are adding a bulk power state pull to MPS, enabling supported deployment architectures where customers can run Console and RPS together - a key v3 capability - and working toward the official release of RPC-Go v3. Trusted Endpoint Provisioning (TEP), device health, and discovery capabilities are also advancing, console redfish API support is being improved along with much more. We look forward to sharing these as they mature for future releases.
+    Several other efforts are moving through development and review. We are adding a bulk power state pull to MPS, enabling supported deployment architectures where customers can run Console and RPS together - a key v3 capability - and working toward the official release of RPC-Go v3. Trusted Endpoint Provisioning (TEP), device health, and discovery capabilities are also advancing, console redfish API support along with much more. We look forward to sharing these as they mature for future releases.
 
     Follow our [Sprint Board](https://github.com/orgs/device-management-toolkit/projects/10/views/2) to learn more and track upcoming features.
 
@@ -23,6 +23,19 @@
 
 ## 🚀 What's New?
 
+### Console : Download RPC-Go v3 (Beta) and Generate Commands (Preview)
+
+From the Console UI, users can now download the latest supported RPC-Go v3 (Beta) release for their target platform - Windows or Linux - without leaving Console to find the right package. The Sample Web UI also walks users through generating the correct RPC-Go command and configuration for activation and deactivation, which they can copy or download instead of recalling command-line flags.
+
+!!! note
+
+    Documentation for this feature is in progress and will be published in the coming weeks.
+
+### Console : Device Export API
+
+Console now exposes a device export API, `GET /api/v1/devices/export`, that returns device inventory in a consistent nested shape grouped by subsystem - Management Engine (ME), OS, network and platform - along with an `X-Total-Count` header and an audit log entry for each export attempt. Credentials are excluded from the response, and the endpoint currently serves up to 500 devices per synchronous request.
+<Add an Eg. Todo>
+
 ### Console and RPC-Go v3 (Beta): Multi-Tenancy
 
 The Console backend now supports multi-tenancy, scoping each request to a tenant through the `x-tenant-id` header. Organizations that manage devices for multiple customers or business units can use one Console deployment while keeping each tenant's data and devices inside its own tenant boundary, reducing the need to operate a separate deployment per tenant. This is a key enabler for cloud deployments of Console, where tenant boundaries must be enforced within a single shared service.
@@ -32,33 +45,31 @@ RPC-Go v3 (Beta) participates in the same model: it forwards the tenant header a
 !!! note
     This work is currently focused on Cloud deployments (v3). We may revisit multi-tenancy for on-premises deployments, specifically the Console binary, based on customer requests. Documentation for this feature is in progress and will be published in the coming weeks.
 
-### Console : Device Export API
 
-Console now exposes a device export API, `GET /api/v1/devices/export`, that returns device inventory in a consistent nested shape grouped by subsystem - Management Engine (ME), OS, network and platform - along with an `X-Total-Count` header and an audit log entry for each export attempt. Credentials are excluded from the response, and the endpoint currently serves up to 500 devices per synchronous request.
-<Add an Eg. Todo>
-
-### Console & Sample Web UI: Download RPC-Go v3 (Beta) and Generate Commands (Preview)
-
-From the Console UI, users can now download the latest supported RPC-Go v3 (Beta) release for their target platform - Windows or Linux - without leaving Console to find the right package. The Sample Web UI also walks users through generating the correct RPC-Go command and configuration for activation and deactivation, which they can copy or download instead of recalling command-line flags.
-
-!!! note
-
-    Documentation for this feature is in progress and will be published in the coming weeks.
-
-## Enhancements & Improvements
+## 🧩 Enhancements & Improvements
 
 ### RPC-Go v3 (Beta): Credential Guidance
 
-RPC-Go v3 (Beta) forwards the tenant header and keeps device deactivation synchronized in multi-tenant deployments, helping operations stay within the intended tenant and reflect device status accurately. It also warns when credentials are supplied through CLI flags, helping users avoid exposing secrets in shell history or process listings.
+RPC-Go v3 (Beta) now warns when credentials are supplied through CLI flags, helping users avoid exposing secrets in shell history or process listings.
+
+
+### Console : JWT Key Generation and handling
+
+Console now generates JWT key on first run instead of using a hardcoded key as a significant improvement. 
+
+### Console : Device Details Performance for Powered-off devices 
+
+Improvements are done in console towards loading device details when a device is powered off or sleeping. The changes make WSMAN requests more reliable in this scenario, reduce timeout failures, and improve the loading experience and response times. 
 
 ## 🔧 Fixes & Maintenance
 
 - RPC-Go v3 (Beta) now collects UPID and certificate hashes during post-activation synchronization.
 - RPC-Go v3 (Beta) supports Linux MEI device nodes `/dev/mei0` through `/dev/mei3`.
 - Console accepts credentials when authentication is disabled and does not issue signed tokens in that mode.
-- Console hardens credential validation and corrects the `handleAdminPassword` comment.
-- Console hardens JWT key validation, generates the key on first run, validates the HTTP port, improves Windows browser launch, aligns timeout budgets for slow devices, and limits the PostgreSQL `sslmode` default to migrations.
-- The Sample Web UI fixes SOL reconnection state and the cloud activation CIRA status assertion.
+- Console password & HTTP Port validation has been hardened.
+- Console improvents are done for Windows browser launch. 
+- Console limits the PostgreSQL `sslmode` default to migrations.
+- Sample Web UI fixes SOL reconnection state, flip SOL button back to Connect after manual disconnect.
 - MPS Router raises its minimum Go version to 1.26.
 - Minor dependency updates and maintenance across toolkit components.
 
