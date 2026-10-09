@@ -65,3 +65,9 @@ Deploy Device Management Toolkit at scale using Docker Swarm, Kubernetes (local,
     Requires the Cloud deployment path.
 
 [Explore Scaling Options](./Scaling/overview.md){: .md-button .md-button--primary }
+
+
+## Redfish
+Use Console's Redfish API for device discovery, remote power management, and KVM/SOL redirection.
+
+[Explore the Console Redfish API](./Redfish/redfishUserGuide.md){: .md-button .md-button--primary }
