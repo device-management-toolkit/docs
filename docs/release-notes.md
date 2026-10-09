@@ -2,23 +2,16 @@
 
 !!! note "Note From the Team"
 
-    Hello, DMT community!
-
     In this September release (v2.39), Console introduced three major features: the ability to download RPC-Go v3 (Beta) with guided command generation from the UI, a new device export API, and multi-tenancy (a key v3 capability). Additionally, we fixed issues so that Console no longer prompts for authentication when it is disabled, RPC-Go v3 (Beta) can enumerate Linux MEI devices across `/dev/mei0` through `/dev/mei3`, and the UI correctly reflects SOL reconnection state.
 
-    Remote Platform Erase (RPE) documentation is now available:
+    We also have two follow-up updates from the previous release:
 
-    - [Tutorial](Tutorials/rpeTutorial.md)
-    - [Feature reference](Reference/Console/Features/rpe.md)
-    - [MPS RPE API documentation](https://github.com/device-management-toolkit/mps/blob/main/swagger.yaml#L302)
+    - Console releases were paused while we completed additional review and compliance approvals. Those approvals are now complete, and Console releases are back on track.
+    - Instructions for using the Remote Platform Erase (RPE) feature are now available for [MPS](Tutorials/rpeTutorial.md#triggering-remote-platform-erase-via-mps-apis) and [Console](Tutorials/rpeTutorial.md#triggering-remote-platform-erase-via-console-apis).
 
-    As we mentioned previously, Console releases were paused while we completed additional review and compliance approvals. Those approvals are now complete, and Console releases are back on track.
+    Looking ahead, we are working on a bulk power state pull in MPS, enabling supported deployment architectures where customers can run Console and RPS together (a key v3 capability), completing the official release of RPC-Go v3, and advancing Trusted Endpoint Provisioning (TEP), device health, discovery, and Console Redfish API support. Follow our [Sprint Board](https://github.com/orgs/device-management-toolkit/projects/10/views/2) to track progress on these and other upcoming features.
 
-    Looking ahead, we are working on a bulk power state pull in MPS, enabling supported deployment architectures where customers can run Console and RPS together (a key v3 capability), completing the official release of RPC-Go v3, and advancing Trusted Endpoint Provisioning (TEP), device health, discovery, and Console Redfish API support, along with much more.
-
-    Follow our [Sprint Board](https://github.com/orgs/device-management-toolkit/projects/10/views/2) to learn more and track upcoming features.
-
-    As always, thanks to everyone providing feedback, testing new functionality, and contributing to the toolkit.
+    As always, thanks to everyone providing feedback, testing new functionality, and contributing to the toolkit. 
 
     Cheers,<br>
     **The Device Management Toolkit Team**
@@ -31,7 +24,7 @@ From the Console UI, users can now download the latest supported RPC-Go v3 (Beta
 
 !!! note "Download availability"
 
-    Console supports RPC-Go v3 only and lists the five latest v3 beta releases. If Console cannot access the internet, download the RPC-Go builds into a local directory with a subdirectory for each version, then set `package.local_dir` to that directory in Console's `config.yml`. Set `package.disable_fetch: true` to make Console use only the local files. 
+    Console supports RPC-Go v3 only and lists the five latest v3 beta releases. If Console cannot access the internet, download the RPC-Go v3 binaries into a local directory, placing the binary files directly inside a subdirectory for each version (for example, `<local_dir>/<version>/`). Set `package.local_dir` to that directory in Console's `config.yml` and `package.disable_fetch: true` to make Console use only the local files. 
     
     Detailed setup instructions are in progress; keep an eye out for their release.
 
