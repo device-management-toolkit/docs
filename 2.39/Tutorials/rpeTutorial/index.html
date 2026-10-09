@@ -1,0 +1,2699 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://device-management-toolkit.github.io/docs/Tutorials/rpeTutorial/">
+      
+      
+        <link rel="prev" href="../ocrTutorial/">
+      
+      
+        <link rel="next" href="../Localization/consoleLocalization/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.68">
+    
+    
+      
+        <title>Remote Platform Erase (RPE) - Device Management Toolkit</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.595f2bf5.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b27955a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/branding.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/index.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/videos.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/swagger.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-00QEDJW2TS"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-00QEDJW2TS",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-00QEDJW2TS",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Device Management Toolkit" class="md-header__button md-logo" aria-label="Device Management Toolkit" data-md-component="logo">
+      
+  <img src="../../assets/images/logos/logo-white-75px.png" alt="Device Management Toolkit">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Device Management Toolkit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Remote Platform Erase (RPE)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun-moon" viewBox="0 0 24 24"><path d="M12 2v2M14.837 16.385a6 6 0 1 1-7.223-7.222c.624-.147.97.66.715 1.248a4 4 0 0 0 5.26 5.259c.589-.255 1.396.09 1.248.715M16 12a4 4 0 0 0-4-4M19 5l-1.256 1.256M20 12h2"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/device-management-toolkit/deployment" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    device-management-toolkit/deployment
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../GetStarted/overview/" class="md-tabs__link">
+          
+  
+  Get Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Concepts/oobManagement/" class="md-tabs__link">
+          
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Deployment/overview/" class="md-tabs__link">
+          
+  
+  Deployment
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../overview/" class="md-tabs__link">
+          
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Reference/architectureOverview/" class="md-tabs__link">
+          
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../APIs/indexConsole/" class="md-tabs__link">
+          
+  
+  APIs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Device Management Toolkit" class="md-nav__button md-logo" aria-label="Device Management Toolkit" data-md-component="logo">
+      
+  <img src="../../assets/images/logos/logo-white-75px.png" alt="Device Management Toolkit">
+
+    </a>
+    Device Management Toolkit
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/device-management-toolkit/deployment" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    device-management-toolkit/deployment
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../.." class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../../GetStarted/overview/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Get Started
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../../Concepts/oobManagement/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Concepts
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../../Deployment/overview/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Deployment
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Tutorials
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Tutorials
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uitoolkitReact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  UI Toolkit Redirection Modules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apiTutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  REST API Call
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ideRedirection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  IDE-Redirection (IDER)
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../createWiFiConfig/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Wireless Activation
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modifyUserAuth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Modify User Authentication
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ocrTutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  One Click Recovery (OCR)
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Remote Platform Erase (RPE)
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Remote Platform Erase (RPE)
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#supported-erase-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Supported Erase Options
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-to-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Where to Start
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Prerequisites
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify-and-enable-rpe-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Verify and Enable RPE Support
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-a-test-device-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Preparing a Test Device (Optional)
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing a Test Device (Optional)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#record-the-tpm-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record the TPM State
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-bios-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Change BIOS Settings
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#triggering-a-remote-platform-erase" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Triggering a Remote Platform Erase
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#triggering-remote-platform-erase-via-console-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Triggering Remote Platform Erase via Console APIs
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Triggering Remote Platform Erase via Console APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        API Reference
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#triggering-remote-platform-erase-via-mps-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Triggering Remote Platform Erase via MPS APIs
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Triggering Remote Platform Erase via MPS APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-reference_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        API Reference
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Error Handling
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verifying-the-erase" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Verifying the Erase
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Verifying the Erase">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#confirm-the-tpm-was-cleared" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Confirm the TPM Was Cleared
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#confirm-the-bios-was-restored" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Confirm the BIOS Was Restored
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Troubleshooting
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#remote-platform-erase-is-not-enabled-by-the-bios-on-this-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Remote Platform Erase is not enabled by the BIOS on this device
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erase-capability-checkboxes-are-greyed-out" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Erase capability checkboxes are greyed out
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssd-password-must-not-exceed-64-bytes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SSD password must not exceed 64 bytes
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erase-fails-to-initiate-or-power-status-cannot-be-read" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Erase fails to initiate, or power status cannot be read
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erase-reports-success-but-the-change-is-not-visible" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Erase reports success, but the change is not visible
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unconfigure-csme-performs-a-full-unprovision-device-disappears-from-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Unconfigure CSME performs a full unprovision... / device disappears from Console
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompted-for-a-user-consent-code-or-the-code-request-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Prompted for a user consent code, or the code request fails
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Localization
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_9">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Localization
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Localization/consoleLocalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Console
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Localization/webuiLocalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Sample Web UI
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_10" id="__nav_5_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Scaling Tutorials
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_10_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_10">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Scaling Tutorials
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Scaling/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Scaling/docker-swarm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Docker Swarm*
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../Scaling/Kubernetes/deployingk8s/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Kubernetes Deployments
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../../Reference/architectureOverview/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Reference
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../../APIs/indexConsole/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  APIs
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#supported-erase-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Supported Erase Options
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-to-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Where to Start
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Prerequisites
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify-and-enable-rpe-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Verify and Enable RPE Support
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-a-test-device-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Preparing a Test Device (Optional)
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing a Test Device (Optional)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#record-the-tpm-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record the TPM State
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-bios-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Change BIOS Settings
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#triggering-a-remote-platform-erase" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Triggering a Remote Platform Erase
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#triggering-remote-platform-erase-via-console-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Triggering Remote Platform Erase via Console APIs
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Triggering Remote Platform Erase via Console APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        API Reference
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#triggering-remote-platform-erase-via-mps-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Triggering Remote Platform Erase via MPS APIs
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Triggering Remote Platform Erase via MPS APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-reference_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        API Reference
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Error Handling
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verifying-the-erase" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Verifying the Erase
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Verifying the Erase">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#confirm-the-tpm-was-cleared" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Confirm the TPM Was Cleared
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#confirm-the-bios-was-restored" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Confirm the BIOS Was Restored
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Troubleshooting
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#remote-platform-erase-is-not-enabled-by-the-bios-on-this-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Remote Platform Erase is not enabled by the BIOS on this device
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erase-capability-checkboxes-are-greyed-out" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Erase capability checkboxes are greyed out
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssd-password-must-not-exceed-64-bytes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SSD password must not exceed 64 bytes
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erase-fails-to-initiate-or-power-status-cannot-be-read" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Erase fails to initiate, or power status cannot be read
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erase-reports-success-but-the-change-is-not-visible" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Erase reports success, but the change is not visible
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unconfigure-csme-performs-a-full-unprovision-device-disappears-from-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Unconfigure CSME performs a full unprovision... / device disappears from Console
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompted-for-a-user-consent-code-or-the-code-request-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Prompted for a user consent code, or the code request fails
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+  
+  
+
+
+  <h1>Remote Platform Erase (RPE)</h1>
+
+<p>Intel® Remote Platform Erase (RPE) allows IT administrators to remotely wipe a supported Intel vPro® system and restore it to a known manufacturer baseline (its "golden state") using Intel AMT's out-of-band (OOB) connection. It is used when decommissioning systems, preparing devices for reuse, or recovering a machine from a compromised state.</p>
+<h2 id="supported-erase-options">Supported Erase Options<a class="headerlink" href="#supported-erase-options" title="Permanent link">&para;</a></h2>
+<p>Console exposes three erase actions, which can be selected individually or together:</p>
+<ul>
+<li>
+<p><strong>Secure Erase of All SSDs</strong>: Removes all content from ATA and NVM drives through a combination of media erase and crypto erase.</p>
+</li>
+<li>
+<p><strong>TPM Clear</strong>: Deletes all keys created in the Trusted Platform Module (TPM) and any data protected by those keys, such as a virtual smart card or a login PIN.</p>
+</li>
+<li>
+<p><strong>Restore BIOS to EOM State</strong>: Restores the BIOS to the End of Manufacture (EOM) golden configuration specified by the system designer.</p>
+</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">This Operation Is Irreversible</p>
+<p>RPE permanently destroys data on the target system. Erased drives, cleared TPM keys, and overwritten BIOS settings cannot be recovered. Confirm you have selected the correct device before initiating an erase.</p>
+</div>
+<h2 id="where-to-start">Where to Start<a class="headerlink" href="#where-to-start" title="Permanent link">&para;</a></h2>
+<ul>
+<li>To confirm the device can run RPE and expose the feature in Console, start with <a href="#verify-and-enable-rpe-support">Verify and Enable RPE Support</a>.</li>
+<li>To run an erase on a device that is already enabled, go to <a href="#triggering-a-remote-platform-erase">Triggering a Remote Platform Erase</a>.</li>
+<li>To confirm the erase completed as expected, continue with <a href="#verifying-the-erase">Verifying the Erase</a>.</li>
+</ul>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>Before you start, confirm the target device meets all of these:</p>
+<ul>
+<li>
+<p>Console is <strong>connected to the device over <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr></strong>.</p>
+</li>
+<li>
+<p>Its <strong>BIOS and firmware support</strong> Remote Platform Erase. Console disables any erase action the platform does not report as supported, so the available options can differ between devices.</p>
+</li>
+<li>
+<p><strong>Remote Platform Erase is enabled in the target's BIOS menu.</strong> This cannot be set from Console, and it is the most common reason an erase fails. If you are following <a href="#preparing-a-test-device-optional">Preparing a Test Device</a> below, check it while you are already in the BIOS menu.</p>
+</li>
+<li>
+<p>The <strong>Remote Platform Erase</strong> feature is enabled for the device in Console. See <a href="#verify-and-enable-rpe-support">Verify and Enable RPE Support</a> below.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Supported across activation modes</p>
+<p>Remote Platform Erase is available regardless of activation mode, including devices activated in <strong>Client Control Mode (<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>)</strong> and <strong>Admin Control Mode (<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>)</strong>.</p>
+</div>
+<p>Each requirement is explained in full, including the firmware versions Intel requires, in the <a href="../../Reference/Console/Features/rpe/#prerequisites">Remote Platform Erase reference</a>.</p>
+<h2 id="verify-and-enable-rpe-support">Verify and Enable RPE Support<a class="headerlink" href="#verify-and-enable-rpe-support" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Open Console and navigate to the <strong>Devices</strong> tab on the left-hand menu, then select your target device.</p>
+<p><figure class="figure-image">
+  <img src="../../assets/images/screenshots/RPE_Device_List.png" alt="Figure 1: Device list in Console">
+</figure></p>
+</li>
+<li>
+<p>In the <strong>General AMT Info</strong> section, check the <strong>AMT Enabled Features</strong> panel and confirm <strong>Remote Platform Erase</strong> is listed.</p>
+<div class="admonition note">
+<p class="admonition-title">Remote Platform Erase availability</p>
+<p>Confirm the <strong>Remote Platform Erase</strong> checkbox is available and not greyed out, as shown in the snapshot below. A greyed-out checkbox means the platform does not support the feature.</p>
+</div>
+<p><figure class="figure-image">
+  <img src="../../assets/images/screenshots/RPE_Enabled_Feature.png" alt="Figure 2: Remote Platform Erase listed under AMT Enabled Features">
+</figure></p>
+</li>
+<li>
+<p>Select the <strong>Remote Platform Erase</strong> tab in the device navigation on the right.</p>
+<p><figure class="figure-image">
+  <img src="../../assets/images/screenshots/RPE_Tab_Location.png" alt="Figure 3: Remote Platform Erase tab in the device navigation on the right">
+</figure></p>
+</li>
+<li>
+<p>Make sure <strong>Enable Remote Platform Erase on this device</strong> is switched on. This is the same setting as the <strong>Remote Platform Erase</strong> checkbox on the <strong>AMT Enabled Features</strong> panel, so it is already on if you enabled it there. The erase options below it stay inactive until it is on.</p>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Remote Platform Erase on Intel® Standard Manageability (ISM) devices</p>
+<p>On Intel® Standard Manageability (ISM) devices, Remote Platform Erase is not supported. The <strong>Remote Platform Erase</strong> checkbox appears disabled with the tooltip <em>Remote Platform Erase is not supported</em>, and the <strong>Remote Platform Erase</strong> tab displays the same message. This limitation is determined by the device's firmware.</p>
+<p><figure class="figure-image">
+  <img src="../../assets/images/screenshots/RPE_Not_Supported.png" alt="Figure 3a: AMT Enabled Features panel on an ISM device showing Remote Platform Erase disabled with a not-supported tooltip">
+</figure></p>
+<p><figure class="figure-image">
+  <img src="../../assets/images/screenshots/RPE_Not_Supported_Tab.png" alt="Figure 3b: Remote Platform Erase tab on an ISM device reporting that the feature is not supported">
+</figure></p>
+</div>
+<h2 id="preparing-a-test-device-optional">Preparing a Test Device (Optional)<a class="headerlink" href="#preparing-a-test-device-optional" title="Permanent link">&para;</a></h2>
+<p>If you are demonstrating or validating RPE rather than erasing a production machine, change the device's state first so the restoration is visible afterwards. Skip this section for a real erase.</p>
+<h3 id="record-the-tpm-state">Record the TPM State<a class="headerlink" href="#record-the-tpm-state" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Open a terminal on the target system, either locally or over SSH/<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>.</p>
+</li>
+<li>
+<p>List the persistent handles currently stored in the TPM:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>tpm2_getcap<span class="w"> </span>handles-persistent
+</code></pre></div>
+</li>
+<li>
+<p>Confirm the command returns active persistent handle addresses, indicating existing TPM data.</p>
+<p><figure class="figure-image">
+  <img src="../../assets/images/screenshots/RPE_TPM_Before.png" alt="Figure 4: Persistent TPM handles before the erase">
+</figure></p>
+</li>
+</ol>
+<h3 id="change-bios-settings">Change BIOS Settings<a class="headerlink" href="#change-bios-settings" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Boot the device into BIOS, either through <strong><abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr></strong> or a manual reboot.</p>
+</li>
+<li>
+<p>Under the power and thermal settings, change the following values away from their defaults:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Setting</th>
+<th style="text-align: left;">Default</th>
+<th style="text-align: left;">Change To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Ambient Temperature Tolerance</td>
+<td style="text-align: left;"><code>35°C</code></td>
+<td style="text-align: left;"><code>40°C</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Dynamic Support Options</td>
+<td style="text-align: left;">Enabled</td>
+<td style="text-align: left;">Disabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">After Power Failure <em>(Secondary Power Settings)</em></td>
+<td style="text-align: left;"><code>Always Power Off</code></td>
+<td style="text-align: left;"><code>Power On</code></td>
+</tr>
+</tbody>
+</table>
+<p><figure class="figure-image">
+  <img src="../../assets/images/screenshots/RPE_BIOS_Thermal_Modified.png" alt="Figure 5: Modified BIOS thermal thresholds and dynamic support options">
+</figure></p>
+<p><figure class="figure-image">
+  <img src="../../assets/images/screenshots/RPE_BIOS_Power_Modified.png" alt="Figure 6: After Power Failure changed from Always Power Off to Power On">
+</figure></p>
+</li>
+<li>
+<p>Save the changes and exit BIOS.</p>
+</li>
+</ol>
+<h2 id="triggering-a-remote-platform-erase">Triggering a Remote Platform Erase<a class="headerlink" href="#triggering-a-remote-platform-erase" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Select the erase capabilities to run. Any combination of the supported options can be selected:</p>
+<ul>
+<li><strong>Secure Erase of All SSDs</strong></li>
+<li><strong>TPM Clear</strong></li>
+<li><strong>Restore BIOS to EOM State</strong></li>
+</ul>
+<p><figure class="figure-image">
+  <img src="../../assets/images/screenshots/RPE_Select_Options.png" alt="Figure 7: Selecting erase capabilities in the Remote Platform Erase panel">
+</figure></p>
+<div class="admonition warning">
+<p class="admonition-title">Secure Erase of All SSDs removes the operating system</p>
+<p>This option erases every attached SSD, including the drive the operating system is installed on. After it completes, the device cannot boot and an operating system must be reinstalled before the machine can be used again. Console reports this on success with the message <em>OS drive erased successfully. Please reinstall an operating system before using this device.</em></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Encrypted drives need a drive password - not yet validated</p>
+<p>When you select <strong>Secure Erase of All SSDs</strong>, a checkbox labelled <strong>SSD requires disk encryption key</strong> appears below it. Tick it if the drive is self-encrypting, and a <strong>Drive Password</strong> field appears. Console passes that password to Intel AMT as the drive password for the erase operation. Leave both controls alone for drives that are not encrypted.</p>
+<p><strong>Erasing an encrypted drive has not been tested end to end yet.</strong> The controls above are present in Console, but the full flow has not been validated. This section will be updated with detailed steps once it has.</p>
+</div>
+</li>
+<li>
+<p>Optionally, start a <strong><abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> session</strong> if you want to observe the reboot and erase process.</p>
+</li>
+<li>
+<p>Click <strong>Initiate Remote Erase</strong> in the top right.</p>
+<div class="admonition note">
+<p class="admonition-title"><abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> devices prompt for a user consent code</p>
+<p>Devices activated in Client Control Mode (<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>) default to requiring consent for all features, so Console prompts for a 6-digit <strong>User Consent Code</strong> before the confirmation dialog appears. Enter the code shown on the target device's local display, then continue. Devices with <strong>User Consent</strong> set to <strong>None</strong>, as <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> profiles typically are, skip this step.</p>
+</div>
+</li>
+<li>
+<p>Review the confirmation dialog, which describes exactly which actions will run, and click <strong>YES</strong> to confirm.</p>
+<div class="admonition warning">
+<p class="admonition-title">Point of No Return</p>
+<p>Clicking <strong>YES</strong> immediately restarts the device and applies the selected erase actions. There is no cancel or undo once the operation begins.</p>
+</div>
+<p><figure class="figure-image">
+  <img src="../../assets/images/screenshots/RPE_Confirm_Dialog.png" alt="Figure 8: Confirmation dialog warning that the operation is irreversible">
+</figure></p>
+</li>
+<li>
+<p>The device restarts automatically and performs the selected erase and restore actions during boot.</p>
+</li>
+</ol>
+<h2 id="triggering-remote-platform-erase-via-console-apis">Triggering Remote Platform Erase via Console APIs<a class="headerlink" href="#triggering-remote-platform-erase-via-console-apis" title="Permanent link">&para;</a></h2>
+<p>You can use the Console <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> APIs to trigger remote platform erase programmatically. This section describes the API endpoints, authentication, and step-by-step examples.</p>
+<h3 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Endpoint</th>
+<th style="text-align: left;">Method</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Request Body</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>/api/v1/amt/boot/remoteErase/&lt;GUID&gt;</code></td>
+<td style="text-align: left;">GET</td>
+<td style="text-align: left;">Retrieve supported erase capabilities for a device</td>
+<td style="text-align: left;">N/A</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>/api/v1/amt/boot/remoteErase/&lt;GUID&gt;</code></td>
+<td style="text-align: left;">POST</td>
+<td style="text-align: left;">Trigger remote platform erase</td>
+<td style="text-align: left;"><code>{"secureEraseAllSSDs":true,"tpmClear":true,"restoreBIOSToEOM":true,"unconfigureCSME":false,"ssdPassword":""}</code></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>
+<p><strong>Authenticate and Get Login Token</strong></p>
+<p>First, authenticate with Console and retrieve a JWT token to use for all subsequent API calls:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/api/v1/authorize<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Content-Type:application/json"</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">"{\"username\":\"&lt;CONSOLE_USERNAME&gt;\",\"password\":\"&lt;CONSOLE_PASSWORD&gt;\"}"</span>
+</code></pre></div>
+<p>Example Response:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">"token"</span><span class="p">:</span><span class="s2">"&lt;YOUR_JWT_TOKEN&gt;"</span><span class="p">}</span>
+</code></pre></div>
+<p>Save this token to use in the <code>Authorization</code> header for the next steps.</p>
+</li>
+<li>
+<p><strong>Retrieve Connected Devices</strong></p>
+<p>Fetch the list of connected devices to identify the target device's GUID:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/api/v1/devices<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer &lt;YOUR_JWT_TOKEN&gt;"</span>
+</code></pre></div>
+<p>Example Response:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d52da54-199c-cc3c-3e96-88aedd668dff"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Device2"</span><span class="p">,</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<p><strong>Next Steps</strong>: Select the GUID of your target device (e.g., <code>5d52da54-199c-cc3c-3e96-88aedd668dff</code>) for use in subsequent steps.</p>
+</li>
+<li>
+<p><strong>Check RPE Support and Available Capabilities</strong></p>
+<p>Verify that the target device supports remote platform erase and determine which erase capabilities are available:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/api/v1/amt/boot/remoteErase/&lt;DEVICE_GUID&gt;<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer &lt;YOUR_JWT_TOKEN&gt;"</span>
+</code></pre></div>
+<p>Example Response:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"secureEraseAllSSDs"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"tpmClear"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"restoreBIOSToEOM"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"unconfigureCSME"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>If all capabilities return <code>false</code>, the device does not support remote platform erase. This commonly occurs on devices using Intel® Standard Manageability (ISM), which do not have AMT remote erase capabilities.</p>
+</li>
+<li>
+<p><strong>Trigger Remote Platform Erase</strong></p>
+<p>Send the erase request with your selected capabilities. At least one capability must be set to <code>true</code>:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/api/v1/amt/boot/remoteErase/&lt;DEVICE_GUID&gt;<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Content-Type:application/json"</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer &lt;YOUR_JWT_TOKEN&gt;"</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">"{\"secureEraseAllSSDs\":true,\"tpmClear\":true,\"restoreBIOSToEOM\":true,\"unconfigureCSME\":false,\"ssdPassword\":\"\"}"</span>
+</code></pre></div>
+<p><strong>Request Payload Fields</strong>:
+- <code>secureEraseAllSSDs</code> (boolean): Securely erase all SSDs via media and crypto erase
+- <code>tpmClear</code> (boolean): Delete all TPM keys and data
+- <code>restoreBIOSToEOM</code> (boolean): Restore BIOS to manufacturer defaults (End of Manufacture golden state)
+- <code>unconfigureCSME</code> (boolean): Fully unprovision Intel CSME firmware and AMT (removes device from Console)
+- <code>ssdPassword</code> (string, optional): Drive password for encrypted SSDs (leave empty for unencrypted drives)</p>
+<p>Expected Response (on success):</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">"status"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">}</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Encrypted SSDs and drive passwords</p>
+<p>If you have self-encrypting SSDs and <code>secureEraseAllSSDs</code> is set to <code>true</code>, provide the drive password in the <code>ssdPassword</code> field. Encrypted erase has not been fully tested end to end. Leave this field empty for unencrypted drives.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title"><abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> devices and user consent</p>
+<p>On Client Control Mode (<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>) devices, the API will prompt for a 6-digit user consent code from the device's local display before proceeding. Provide this code when prompted.</p>
+</div>
+</li>
+<li>
+<p><strong>Verify the Erase Completed</strong></p>
+<p>After the device reboots and erase operations complete, follow the verification steps in <a href="#verifying-the-erase">Verifying the Erase</a> to confirm all selected capabilities were applied.</p>
+</li>
+</ol>
+<h2 id="triggering-remote-platform-erase-via-mps-apis">Triggering Remote Platform Erase via <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> APIs<a class="headerlink" href="#triggering-remote-platform-erase-via-mps-apis" title="Permanent link">&para;</a></h2>
+<p>For cloud deployments using the Management Presence Server (<abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>), you can trigger remote platform erase through the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> <abbr title="REpresentational State Transfer - An architectural style or set of rules describing constraints that allow administrators and developers to take advantage of various Web services. In the context of OAMTCT, developers can construct REST API calls, use provided REST APIs to expand the reference implementation console, and use provided REST APIs as a springboard for developing and expanding custom consoles.">REST</abbr> APIs. This section provides API endpoints and step-by-step examples.</p>
+<h3 id="api-reference_1">API Reference<a class="headerlink" href="#api-reference_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Endpoint</th>
+<th style="text-align: left;">Method</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Request Body</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>/mps/api/v1/amt/boot/remoteErase/&lt;GUID&gt;</code></td>
+<td style="text-align: left;">GET</td>
+<td style="text-align: left;">Retrieve supported erase capabilities for a device</td>
+<td style="text-align: left;">N/A</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>/mps/api/v1/amt/boot/remoteErase/&lt;GUID&gt;</code></td>
+<td style="text-align: left;">POST</td>
+<td style="text-align: left;">Trigger remote platform erase</td>
+<td style="text-align: left;"><code>{"secureEraseAllSSDs":true,"tpmClear":true,"restoreBIOSToEOM":true,"unconfigureCSME":false,"ssdPassword":""}</code></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>
+<p><strong>Authenticate and Get Login Token</strong></p>
+<p>First, authenticate with <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> and retrieve a JWT token to use for all subsequent API calls:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/mps/login/api/v1/authorize<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Content-Type:application/json"</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">"{\"username\":\"&lt;MPS_WEB_ADMIN_USER&gt;\",\"password\":\"&lt;MPS_WEB_ADMIN_PASSWORD&gt;\"}"</span>
+</code></pre></div>
+<p>Example Response:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">"token"</span><span class="p">:</span><span class="s2">"&lt;YOUR_JWT_TOKEN&gt;"</span><span class="p">}</span>
+</code></pre></div>
+<p>Save this token to use in the <code>Authorization</code> header for the next steps.</p>
+</li>
+<li>
+<p><strong>Retrieve Connected Devices</strong></p>
+<p>Fetch the list of devices connected to <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> to identify the target device's GUID:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/mps/api/v1/devices<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer &lt;YOUR_JWT_TOKEN&gt;"</span>
+</code></pre></div>
+<p>Example Response:</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d52da54-199c-cc3c-3e96-88aedd668dff"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Device2"</span><span class="p">,</span>
+
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<p><strong>Next Steps</strong>: Select the GUID of your target device (e.g., <code>5d52da54-199c-cc3c-3e96-88aedd668dff</code>) for use in subsequent steps.</p>
+</li>
+<li>
+<p><strong>Check RPE Support and Available Capabilities</strong></p>
+<p>Verify that the target device supports remote platform erase and determine which erase capabilities are available:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/mps/api/v1/amt/boot/remoteErase/&lt;DEVICE_GUID&gt;<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer &lt;YOUR_JWT_TOKEN&gt;"</span>
+</code></pre></div>
+<p>Example Response:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"secureEraseAllSSDs"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"tpmClear"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"restoreBIOSToEOM"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"unconfigureCSME"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>If all capabilities return <code>false</code>, the device does not support remote platform erase. This commonly occurs on devices using Intel® Standard Manageability (ISM), which do not have AMT remote erase capabilities.</p>
+</li>
+<li>
+<p><strong>Trigger Remote Platform Erase</strong></p>
+<p>Send the erase request with your selected capabilities. At least one capability must be set to <code>true</code>:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--insecure<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://&lt;IP_ADDRESS_OR_FQDN_OF_SERVER&gt;/mps/api/v1/amt/boot/remoteErase/&lt;DEVICE_GUID&gt;<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Content-Type:application/json"</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer &lt;YOUR_JWT_TOKEN&gt;"</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">"{\"secureEraseAllSSDs\":true,\"tpmClear\":true,\"restoreBIOSToEOM\":true,\"unconfigureCSME\":false,\"ssdPassword\":\"\"}"</span>
+</code></pre></div>
+<p><strong>Request Payload Fields</strong>:
+- <code>secureEraseAllSSDs</code> (boolean): Securely erase all SSDs via media and crypto erase
+- <code>tpmClear</code> (boolean): Delete all TPM keys and data
+- <code>restoreBIOSToEOM</code> (boolean): Restore BIOS to manufacturer defaults (End of Manufacture golden state)
+- <code>unconfigureCSME</code> (boolean): Fully unprovision Intel CSME firmware and AMT (removes device from <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>)
+- <code>ssdPassword</code> (string, optional): Drive password for encrypted SSDs (leave empty for unencrypted drives)</p>
+<p>Expected Response (on success):</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">"status"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">}</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Encrypted SSDs and drive passwords</p>
+<p>If you have self-encrypting SSDs and <code>secureEraseAllSSDs</code> is set to <code>true</code>, provide the drive password in the <code>ssdPassword</code> field. Encrypted erase has not been fully tested end to end. Leave this field empty for unencrypted drives.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title"><abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> devices and user consent</p>
+<p>On Client Control Mode (<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>) devices, the API will prompt for a 6-digit user consent code from the device's local display before proceeding. Provide this code when prompted.</p>
+</div>
+</li>
+<li>
+<p><strong>Verify the Erase Completed</strong></p>
+<p>After the device reboots and erase operations complete, follow the verification steps in <a href="#verifying-the-erase">Verifying the Erase</a> to confirm all selected capabilities were applied.</p>
+</li>
+</ol>
+<h2 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h2>
+<p>The following error responses apply to both Console and <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> API endpoints:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">HTTP Status</th>
+<th style="text-align: left;">Error</th>
+<th style="text-align: left;">Cause</th>
+<th style="text-align: left;">Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">400</td>
+<td style="text-align: left;">Bad Request</td>
+<td style="text-align: left;">No erase capability selected or invalid request payload</td>
+<td style="text-align: left;">Select at least one capability: <code>secureEraseAllSSDs</code>, <code>tpmClear</code>, <code>restoreBIOSToEOM</code>, or <code>unconfigureCSME</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">401</td>
+<td style="text-align: left;">Unauthorized</td>
+<td style="text-align: left;">Invalid or expired JWT token</td>
+<td style="text-align: left;">Re-authenticate and obtain a new token</td>
+</tr>
+<tr>
+<td style="text-align: left;">404</td>
+<td style="text-align: left;">Not Found</td>
+<td style="text-align: left;">Device GUID does not exist or device is not connected</td>
+<td style="text-align: left;">Verify the GUID from the devices list and confirm the device is online</td>
+</tr>
+<tr>
+<td style="text-align: left;">500</td>
+<td style="text-align: left;">Internal Server Error</td>
+<td style="text-align: left;">RPE is not enabled in BIOS, or device connection was lost</td>
+<td style="text-align: left;">Enable RPE in device BIOS and ensure device is online</td>
+</tr>
+</tbody>
+</table>
+<h2 id="verifying-the-erase">Verifying the Erase<a class="headerlink" href="#verifying-the-erase" title="Permanent link">&para;</a></h2>
+<p>Once the device has finished its reboot cycle, confirm each selected capability was applied.</p>
+<div class="admonition note">
+<p class="admonition-title">These checks need a working operating system</p>
+<p>The TPM check below runs from a terminal on the target system. If you selected <strong>Secure Erase of All SSDs</strong>, the operating system has been erased and the device will not boot, so you cannot run it until an operating system has been reinstalled. The BIOS check does not need an operating system and can be done on any erased device.</p>
+</div>
+<h3 id="confirm-the-tpm-was-cleared">Confirm the TPM Was Cleared<a class="headerlink" href="#confirm-the-tpm-was-cleared" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Log back into the target system and open a terminal. If the OS drive was erased, reinstall an operating system first.</p>
+</li>
+<li>
+<p>Run the TPM capability command again:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>tpm2_getcap<span class="w"> </span>handles-persistent
+</code></pre></div>
+</li>
+<li>
+<p>Confirm the command returns no persistent handles, showing the TPM has been fully cleared.</p>
+</li>
+</ol>
+<h3 id="confirm-the-bios-was-restored">Confirm the BIOS Was Restored<a class="headerlink" href="#confirm-the-bios-was-restored" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Boot into BIOS on the target system through <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>.</p>
+</li>
+<li>
+<p>Confirm the settings changed earlier are back at their manufacturer defaults:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Setting</th>
+<th style="text-align: left;">Restored Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Ambient Temperature Tolerance</td>
+<td style="text-align: left;"><code>35°C</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Dynamic Support Options</td>
+<td style="text-align: left;">Enabled</td>
+</tr>
+<tr>
+<td style="text-align: left;">After Power Failure <em>(Secondary Power Settings)</em></td>
+<td style="text-align: left;"><code>Always Power Off</code></td>
+</tr>
+</tbody>
+</table>
+<p><figure class="figure-image">
+  <img src="../../assets/images/screenshots/RPE_BIOS_Thermal_Restored.png" alt="Figure 9: BIOS thermal settings restored to manufacturer defaults">
+</figure></p>
+<p><figure class="figure-image">
+  <img src="../../assets/images/screenshots/RPE_BIOS_Power_Restored.png" alt="Figure 10: Secondary Power Settings reset to the default power recovery option">
+</figure></p>
+</li>
+</ol>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="remote-platform-erase-is-not-enabled-by-the-bios-on-this-device">Remote Platform Erase is not enabled by the BIOS on this device<a class="headerlink" href="#remote-platform-erase-is-not-enabled-by-the-bios-on-this-device" title="Permanent link">&para;</a></h3>
+<p>The BIOS-side setting is off. Console can only enable the Console-side toggle; the BIOS setting must be turned on directly on the target machine. Reach the BIOS menu over <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> or locally, enable Remote Platform Erase, and retry. See <a href="#verify-and-enable-rpe-support">Verify and Enable RPE Support</a>.</p>
+<h3 id="erase-capability-checkboxes-are-greyed-out">Erase capability checkboxes are greyed out<a class="headerlink" href="#erase-capability-checkboxes-are-greyed-out" title="Permanent link">&para;</a></h3>
+<p>A disabled erase option indicates the device does not support that particular capability. This is determined by the device's hardware and firmware and cannot be changed from Console. Check the <strong>AMT Enabled Features</strong> panel to see which erase capabilities your device supports.</p>
+<h3 id="ssd-password-must-not-exceed-64-bytes">SSD password must not exceed 64 bytes<a class="headerlink" href="#ssd-password-must-not-exceed-64-bytes" title="Permanent link">&para;</a></h3>
+<p>The <strong>Drive Password</strong> field for an encrypted SSD has a 64-byte limit. Shorten the password and retry.</p>
+<h3 id="erase-fails-to-initiate-or-power-status-cannot-be-read">Erase fails to initiate, or power status cannot be read<a class="headerlink" href="#erase-fails-to-initiate-or-power-status-cannot-be-read" title="Permanent link">&para;</a></h3>
+<p>Before initiating an erase, Console queries the device's current power state to determine whether to power on or restart the device. If this communication fails—for example, because the device is offline or the connection was interrupted—the erase cannot proceed. Ensure the device is online and the Console connection is stable, then retry.</p>
+<h3 id="erase-reports-success-but-the-change-is-not-visible">Erase reports success, but the change is not visible<a class="headerlink" href="#erase-reports-success-but-the-change-is-not-visible" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>TPM Clear</strong>: After the device reboots, run <code>sudo tpm2_getcap handles-persistent</code> on the device to verify the TPM has been cleared. If persistent handles are still present, collect diagnostic logs from both Console and the device, then contact support.</li>
+<li><strong>Restore BIOS to EOM State</strong>: Verify you are checking the correct BIOS setting and that the device has fully rebooted after the erase operation completes.</li>
+<li><strong>Secure Erase of All SSDs</strong>: The OS is erased along with the data. The device cannot boot until you reinstall an operating system. This is the expected behavior.</li>
+</ul>
+<h3 id="unconfigure-csme-performs-a-full-unprovision-device-disappears-from-console">Unconfigure CSME performs a full unprovision... / device disappears from Console<a class="headerlink" href="#unconfigure-csme-performs-a-full-unprovision-device-disappears-from-console" title="Permanent link">&para;</a></h3>
+<p>This is expected behavior. Selecting this option fully removes all AMT provisioning from the device, causing it to disappear from Console. The device cannot be remotely managed again until it is reprovisioned. This option is hidden by default in Console; if exposed by another tool, treat it as a separate operation distinct from the hardware erase capabilities.</p>
+<h3 id="prompted-for-a-user-consent-code-or-the-code-request-fails">Prompted for a user consent code, or the code request fails<a class="headerlink" href="#prompted-for-a-user-consent-code-or-the-code-request-fails" title="Permanent link">&para;</a></h3>
+<p>Client Control Mode (<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>) devices require a user consent code as a security measure. A 6-digit code appears on the device's local display; enter this code in Console to proceed. If the code request fails or the code is rejected, ensure the device is online and has a working display connected, then retry.</p>
+<hr />
+<p>If you see any issues, please log them on our <a href="https://github.com/device-management-toolkit/console/issues">GitHub Issues page</a> or reach out to us on our <strong>Discord channel</strong>.</p>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 Intel Corporation
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://discord.gg/yrcMp2kDWh" target="_blank" rel="noopener" title="Join Us on Discord" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M492.5 69.8c-.2-.3-.4-.6-.8-.7-38.1-17.5-78.4-30-119.7-37.1-.4-.1-.8 0-1.1.1s-.6.4-.8.8c-5.5 9.9-10.5 20.2-14.9 30.6-44.6-6.8-89.9-6.8-134.4 0-4.5-10.5-9.5-20.7-15.1-30.6-.2-.3-.5-.6-.8-.8s-.7-.2-1.1-.2C162.5 39 122.2 51.5 84.1 69c-.3.1-.6.4-.8.7C7.1 183.5-13.8 294.6-3.6 404.2c0 .3.1.5.2.8s.3.4.5.6c44.4 32.9 94 58 146.8 74.2.4.1.8.1 1.1 0s.7-.4.9-.7c11.3-15.4 21.4-31.8 30-48.8.1-.2.2-.5.2-.8s0-.5-.1-.8-.2-.5-.4-.6-.4-.3-.7-.4c-15.8-6.1-31.2-13.4-45.9-21.9-.3-.2-.5-.4-.7-.6s-.3-.6-.3-.9 0-.6.2-.9.3-.5.6-.7c3.1-2.3 6.2-4.7 9.1-7.1.3-.2.6-.4.9-.4s.7 0 1 .1c96.2 43.9 200.4 43.9 295.5 0 .3-.1.7-.2 1-.2s.7.2.9.4c2.9 2.4 6 4.9 9.1 7.2.2.2.4.4.6.7s.2.6.2.9-.1.6-.3.9-.4.5-.6.6c-14.7 8.6-30 15.9-45.9 21.8-.2.1-.5.2-.7.4s-.3.4-.4.7-.1.5-.1.8.1.5.2.8c8.8 17 18.8 33.3 30 48.8.2.3.6.6.9.7s.8.1 1.1 0c52.9-16.2 102.6-41.3 147.1-74.2.2-.2.4-.4.5-.6s.2-.5.2-.8c12.3-126.8-20.5-236.9-86.9-334.5zm-302 267.7c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.4 59.2-52.8 59.2m195.4 0c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.2 59.2-52.8 59.2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://hub.docker.com/search?q=intel%2Foact" target="_blank" rel="noopener" title="Find our Dockerhub Images" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M349.9 236.3h-66.1v-59.4h66.1zm0-204.3h-66.1v60.7h66.1zm78.2 144.8H362v59.4h66.1zm-156.3-72.1h-66.1v60.1h66.1zm78.1 0h-66.1v60.1h66.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1zm78.1 0h-66.1v59.4h66.1zm-78.1-72.1h-66.1v60.1h66.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/device-management-toolkit" target="_blank" rel="noopener" title="Device Management Toolkit Github Repository" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M216.5 362.5c-66-8-112.5-55.5-112.5-117 0-25 9-52 24-70-6.5-16.5-5.5-51.5 2-66 20-2.5 47 8 63 22.5 19-6 39-9 63.5-9s44.5 3 62.5 8.5c15.5-14 43-24.5 63-22 7 13.5 8 48.5 1.5 65.5 16 19 24.5 44.5 24.5 70.5 0 61.5-46.5 108-113.5 116.5 17 11 28.5 35 28.5 62.5v52c0 15 12.5 23.5 27.5 17.5C441 459.5 512 369 512 257 512 115.5 397 0 255.5 0S0 115.5 0 257c0 111 70.5 203 165.5 237.5 13.5 5 26.5-4 26.5-17.5v-40c-7 3-16 5-24 5-33 0-52.5-18-66.5-51.5-5.5-13.5-11.5-21.5-23-23-6-.5-8-3-8-6 0-6 10-10.5 20-10.5 14.5 0 27 9 40 27.5 10 14.5 20.5 21 33 21s20.5-4.5 32-16c8.5-8.5 15-16 21-21"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      
+<div class="md-progress" data-md-component="progress" role="progressbar" aria-label="Loading"></div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+  
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+    
+      
+        
+  
+  
+    
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="analytics" checked>
+      <span class="task-list-indicator"></span>
+      Google Analytics
+    </label>
+  </li>
+
+      
+    
+    
+      
+        
+  
+  
+    
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="github" checked>
+      <span class="task-list-indicator"></span>
+      GitHub
+    </label>
+  </li>
+
+      
+    
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.path","navigation.prune","search.suggest","search.highlight","search.share","navigation.top","toc.follow","content.tabs.link","content.code.copy","content.tooltips"],"redirect":null,"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"default":["rapid","dev"],"provider":"mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.3c842f4c.min.js"></script>
+      
+        <script src="../../assets/javascripts/swagger.js"></script>
+      
+    
+  </body>
+</html>

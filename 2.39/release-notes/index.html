@@ -1,0 +1,3006 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://device-management-toolkit.github.io/docs/release-notes/">
+      
+      
+        <link rel="prev" href="../announcements/">
+      
+      
+        <link rel="next" href="../videos/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.68">
+    
+    
+      
+        <title>Release Notes - Device Management Toolkit</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.595f2bf5.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../assets/stylesheets/modern/palette.b27955a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/branding.css">
+    
+      <link rel="stylesheet" href="../assets/stylesheets/index.css">
+    
+      <link rel="stylesheet" href="../assets/stylesheets/videos.css">
+    
+      <link rel="stylesheet" href="../assets/stylesheets/swagger.css">
+    
+    <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-00QEDJW2TS"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-00QEDJW2TS",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-00QEDJW2TS",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="./.." title="Device Management Toolkit" class="md-header__button md-logo" aria-label="Device Management Toolkit" data-md-component="logo">
+      
+  <img src="../assets/images/logos/logo-white-75px.png" alt="Device Management Toolkit">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Device Management Toolkit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Release Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun-moon" viewBox="0 0 24 24"><path d="M12 2v2M14.837 16.385a6 6 0 1 1-7.223-7.222c.624-.147.97.66.715 1.248a4 4 0 0 0 5.26 5.259c.589-.255 1.396.09 1.248.715M16 12a4 4 0 0 0-4-4M19 5l-1.256 1.256M20 12h2"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/device-management-toolkit/deployment" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    device-management-toolkit/deployment
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../GetStarted/overview/" class="md-tabs__link">
+          
+  
+  Get Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Concepts/oobManagement/" class="md-tabs__link">
+          
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Deployment/overview/" class="md-tabs__link">
+          
+  
+  Deployment
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Tutorials/overview/" class="md-tabs__link">
+          
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Reference/architectureOverview/" class="md-tabs__link">
+          
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../APIs/indexConsole/" class="md-tabs__link">
+          
+  
+  APIs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="./.." title="Device Management Toolkit" class="md-nav__button md-logo" aria-label="Device Management Toolkit" data-md-component="logo">
+      
+  <img src="../assets/images/logos/logo-white-75px.png" alt="Device Management Toolkit">
+
+    </a>
+    Device Management Toolkit
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/device-management-toolkit/deployment" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    device-management-toolkit/deployment
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Home
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../announcements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Announcements
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Release Notes
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Release Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#whats-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        🚀 What's New?
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 What&#x27;s New?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#console-download-rpc-go-v3-beta-and-generate-commands-preview" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Console: Download RPC-Go v3 (Beta) and Generate Commands (Preview)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#console-device-export-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Console: Device Export API
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#console-and-rpc-go-v3-beta-multi-tenancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Console and RPC-Go v3 (Beta): Multi-Tenancy
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enhancements-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        🧩 Enhancements &amp; Improvements
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧩 Enhancements &amp; Improvements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rpc-go-v3-beta-credential-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RPC-Go v3 (Beta): Credential Guidance
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#console-jwt-key-generation-and-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Console: JWT Key Generation and Handling
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#console-device-details-performance-for-powered-off-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Console: Device Details Performance for Powered-Off Devices
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fixes-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        🔧 Fixes &amp; Maintenance
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changelog" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <span class="twemoji icon-log"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 10.12h-6.78l2.74-2.82c-2.73-2.7-7.15-2.8-9.88-.1a6.887 6.887 0 0 0 0 9.8c2.73 2.7 7.15 2.7 9.88 0 1.36-1.35 2.04-2.92 2.04-4.9h2c0 1.98-.88 4.55-2.64 6.29-3.51 3.48-9.21 3.48-12.72 0-3.5-3.47-3.53-9.11-.02-12.58a8.987 8.987 0 0 1 12.65 0L21 3zM12.5 8v4.25l3.5 2.08-.72 1.21L11 13V8z"/></svg></span> Changelog
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Changelog">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#console" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Console
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Console">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1431-2026-09-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1.43.1 (2026-09-23)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1430-2026-09-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1.43.0 (2026-09-23)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1420-2026-09-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1.42.0 (2026-09-16)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1412-2026-09-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1.41.2 (2026-09-15)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1411-2026-09-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1.41.1 (2026-09-14)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1410-2026-09-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1.41.0 (2026-09-11)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1401-2026-09-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1.40.1 (2026-09-10)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rps" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RPS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2402-2026-09-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2.40.2 (2026-09-21)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mps" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MPS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2351-2026-09-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2.35.1 (2026-09-21)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mps-router" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MPS Router
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MPS Router">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2515-2026-09-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2.5.15 (2026-09-21)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rpc-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RPC Go
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RPC Go">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2527-2026-09-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2.52.7 (2026-09-24)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rpc-go-v3-beta" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RPC Go v3 (Beta)
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RPC Go v3 (Beta)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#300-beta60-2026-09-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.0.0-beta.60 (2026-09-24)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#300-beta59-2026-09-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.0.0-beta.59 (2026-09-21)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#300-beta58-2026-09-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.0.0-beta.58 (2026-09-16)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#300-beta57-2026-09-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.0.0-beta.57 (2026-09-16)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#300-beta56-2026-09-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.0.0-beta.56 (2026-09-16)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#300-beta55-2026-09-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.0.0-beta.55 (2026-09-14)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#300-beta54-2026-09-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.0.0-beta.54 (2026-09-11)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#300-beta53-2026-09-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.0.0-beta.53 (2026-09-01)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-web-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Sample Web UI
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sample Web UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3671-2026-09-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.67.1 (2026-09-24)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3670-2026-09-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.67.0 (2026-09-23)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3662-2026-09-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.66.2 (2026-09-21)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3661-2026-09-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.66.1 (2026-09-03)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go-wsman-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Go WSMAN Messages
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Go WSMAN Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2504-2026-09-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2.50.4 (2026-09-21)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wsman-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        WSMAN Messages
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WSMAN Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#615-2026-09-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.1.5 (2026-09-21)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui-toolkit" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        UI Toolkit
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UI Toolkit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3321-2026-09-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.3.21 (2026-09-21)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui-toolkit-angular" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        UI Toolkit Angular
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UI Toolkit Angular">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1119-2026-09-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        11.1.9 (2026-09-21)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui-toolkit-react" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        UI Toolkit React
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UI Toolkit React">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#509-2026-09-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5.0.9 (2026-09-21)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mps-router_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MPS Router
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MPS Router">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2515-2026-09-21_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2.5.15 (2026-09-21)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../videos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Video Walkthroughs
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  License
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Get Help
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_1_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Get Help
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  FAQ
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Glossary
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference/troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Troubleshooting
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../GetStarted/overview/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Get Started
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../Concepts/oobManagement/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Concepts
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../Deployment/overview/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Deployment
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../Tutorials/overview/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Tutorials
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../Reference/architectureOverview/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Reference
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../APIs/indexConsole/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  APIs
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#whats-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        🚀 What's New?
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 What&#x27;s New?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#console-download-rpc-go-v3-beta-and-generate-commands-preview" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Console: Download RPC-Go v3 (Beta) and Generate Commands (Preview)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#console-device-export-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Console: Device Export API
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#console-and-rpc-go-v3-beta-multi-tenancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Console and RPC-Go v3 (Beta): Multi-Tenancy
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enhancements-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        🧩 Enhancements &amp; Improvements
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧩 Enhancements &amp; Improvements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rpc-go-v3-beta-credential-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RPC-Go v3 (Beta): Credential Guidance
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#console-jwt-key-generation-and-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Console: JWT Key Generation and Handling
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#console-device-details-performance-for-powered-off-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Console: Device Details Performance for Powered-Off Devices
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fixes-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        🔧 Fixes &amp; Maintenance
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changelog" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <span class="twemoji icon-log"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 10.12h-6.78l2.74-2.82c-2.73-2.7-7.15-2.8-9.88-.1a6.887 6.887 0 0 0 0 9.8c2.73 2.7 7.15 2.7 9.88 0 1.36-1.35 2.04-2.92 2.04-4.9h2c0 1.98-.88 4.55-2.64 6.29-3.51 3.48-9.21 3.48-12.72 0-3.5-3.47-3.53-9.11-.02-12.58a8.987 8.987 0 0 1 12.65 0L21 3zM12.5 8v4.25l3.5 2.08-.72 1.21L11 13V8z"/></svg></span> Changelog
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Changelog">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#console" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Console
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Console">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1431-2026-09-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1.43.1 (2026-09-23)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1430-2026-09-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1.43.0 (2026-09-23)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1420-2026-09-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1.42.0 (2026-09-16)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1412-2026-09-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1.41.2 (2026-09-15)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1411-2026-09-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1.41.1 (2026-09-14)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1410-2026-09-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1.41.0 (2026-09-11)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1401-2026-09-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1.40.1 (2026-09-10)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rps" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RPS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2402-2026-09-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2.40.2 (2026-09-21)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mps" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MPS
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2351-2026-09-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2.35.1 (2026-09-21)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mps-router" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MPS Router
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MPS Router">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2515-2026-09-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2.5.15 (2026-09-21)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rpc-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RPC Go
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RPC Go">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2527-2026-09-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2.52.7 (2026-09-24)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rpc-go-v3-beta" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RPC Go v3 (Beta)
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RPC Go v3 (Beta)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#300-beta60-2026-09-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.0.0-beta.60 (2026-09-24)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#300-beta59-2026-09-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.0.0-beta.59 (2026-09-21)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#300-beta58-2026-09-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.0.0-beta.58 (2026-09-16)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#300-beta57-2026-09-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.0.0-beta.57 (2026-09-16)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#300-beta56-2026-09-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.0.0-beta.56 (2026-09-16)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#300-beta55-2026-09-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.0.0-beta.55 (2026-09-14)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#300-beta54-2026-09-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.0.0-beta.54 (2026-09-11)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#300-beta53-2026-09-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.0.0-beta.53 (2026-09-01)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-web-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Sample Web UI
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sample Web UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3671-2026-09-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.67.1 (2026-09-24)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3670-2026-09-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.67.0 (2026-09-23)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3662-2026-09-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.66.2 (2026-09-21)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3661-2026-09-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.66.1 (2026-09-03)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go-wsman-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Go WSMAN Messages
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Go WSMAN Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2504-2026-09-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2.50.4 (2026-09-21)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wsman-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        WSMAN Messages
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WSMAN Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#615-2026-09-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6.1.5 (2026-09-21)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui-toolkit" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        UI Toolkit
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UI Toolkit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3321-2026-09-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.3.21 (2026-09-21)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui-toolkit-angular" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        UI Toolkit Angular
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UI Toolkit Angular">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1119-2026-09-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        11.1.9 (2026-09-21)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui-toolkit-react" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        UI Toolkit React
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UI Toolkit React">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#509-2026-09-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5.0.9 (2026-09-21)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mps-router_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        MPS Router
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MPS Router">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2515-2026-09-21_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2.5.15 (2026-09-21)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+  
+  
+
+
+<h1 id="release-notes">Release Notes<a class="headerlink" href="#release-notes" title="Permanent link">&para;</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note From the Team</p>
+<p>In this September release (v2.39), Console introduced three major features: the ability to download <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go v3 (Beta) with guided command generation from the UI, a new device export API, and multi-tenancy (a key v3 capability). Additionally, we fixed issues so that Console no longer prompts for authentication when it is disabled, <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go v3 (Beta) can enumerate Linux MEI devices across <code>/dev/mei0</code> through <code>/dev/mei3</code>, and the UI correctly reflects <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr> reconnection state.</p>
+<p>We also have two follow-up updates from the previous release:</p>
+<ul>
+<li>Console releases were paused while we completed additional review and compliance approvals. Those approvals are now complete, and Console releases are back on track.</li>
+<li>Instructions for using the Remote Platform Erase (RPE) feature are now available for <a href="../Tutorials/rpeTutorial/#triggering-remote-platform-erase-via-mps-apis"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr></a> and <a href="../Tutorials/rpeTutorial/#triggering-remote-platform-erase-via-console-apis">Console</a>.</li>
+</ul>
+<p>Looking ahead, we are working on a bulk power state pull in <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>, enabling supported deployment architectures where customers can run Console and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> together (a key v3 capability), completing the official release of <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go v3, and advancing Trusted Endpoint Provisioning (TEP), device health, discovery, and Console Redfish API support. Follow our <a href="https://github.com/orgs/device-management-toolkit/projects/10/views/2">Sprint Board</a> to track progress on these and other upcoming features.</p>
+<p>As always, thanks to everyone providing feedback, testing new functionality, and contributing to the toolkit. </p>
+<p>Cheers,<br>
+<strong>The Device Management Toolkit Team</strong></p>
+</div>
+<h2 id="whats-new">🚀 What's New?<a class="headerlink" href="#whats-new" title="Permanent link">&para;</a></h2>
+<h3 id="console-download-rpc-go-v3-beta-and-generate-commands-preview">Console: Download <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go v3 (Beta) and Generate Commands (Preview)<a class="headerlink" href="#console-download-rpc-go-v3-beta-and-generate-commands-preview" title="Permanent link">&para;</a></h3>
+<p>From the Console UI, users can now download the latest supported <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go v3 (Beta) release for their target platform - Windows or Linux - without leaving Console to find the right package. The Console UI also walks users through generating the correct <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go command and configuration for activation and deactivation, which they can copy or download instead of recalling command-line flags.</p>
+<div class="admonition note">
+<p class="admonition-title">Download availability</p>
+<p>Console supports <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go v3 only and lists the five latest v3 beta releases. If Console cannot access the internet, download the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go v3 binaries into a local directory, placing the binary files directly inside a subdirectory for each version (for example, <code>&lt;local_dir&gt;/&lt;version&gt;/</code>). Set <code>package.local_dir</code> to that directory in Console's <code>config.yml</code> and <code>package.disable_fetch: true</code> to make Console use only the local files. </p>
+<p>Detailed setup instructions are in progress; keep an eye out for their release.</p>
+</div>
+<h3 id="console-device-export-api">Console: Device Export API<a class="headerlink" href="#console-device-export-api" title="Permanent link">&para;</a></h3>
+<p>Console now exposes a device export API, <code>GET /api/v1/devices/export</code>, that returns device inventory in a consistent nested shape grouped by subsystem - Management Engine (ME), OS, network and platform - along with an <code>X-Total-Count</code> header and an audit log entry for each export attempt. Credentials are excluded from the response, and the endpoint currently serves up to 500 devices per synchronous request.</p>
+<p><strong>Example: Device Export Output</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"exportedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-10-09T06:11:02.14461394Z"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"swVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"console 1.45.0"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"totalCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f440232e-da5d-d52a-fd63-48210b50d81d"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"203.0.113.10"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"friendlyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">            </span><span class="nt">"tenantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"firstDiscovered"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-10-05T01:00:03.895685232Z"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"lastSynced"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-10-05T01:00:03.895685232Z"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"lastUpdated"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"deviceInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"me"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"dnsSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"currentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"not activated"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"mebxEnabledInBIOS"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"fwVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16.1.27"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"fwBuild"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2176"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"fwSku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16392"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"features"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AMT Pro Corporate"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"tlsMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"dhcpEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"certHashes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">"..."</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">"upid"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">"csmeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000000000000000000000000000000000000000000000000001234"</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">"oemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000000000000000000000000000000000000000000000000000"</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">"oemPlatformIdType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not Set (0)"</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">"network"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">"wired"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">"ipAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0"</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">"dhcpEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">"dhcpMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"passive"</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">"linkStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"up"</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">"macAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00:00:00:00:00:00"</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="nt">"wireless"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">"ipAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0"</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">"dhcpEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">"dhcpMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">"linkStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"down"</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">"macAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00:00:00:00:00:00"</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">"os"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"dnsSuffix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example.com"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linux"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6.17.0-29-generic"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"distro"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ubuntu 24.04 LTS"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"lmsInstalled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"lmsVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"meInterfaceVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6.17.0-29-generic"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"monitorConnected"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"ieee8021xEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"network"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">"wired"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enp100s0"</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">"ipAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"203.0.113.10"</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">"dhcpEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">"linkStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"up"</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">"macAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00:00:00:00:00:00"</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">"wireless"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wlo1"</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">"ipAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">"dhcpEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">"linkStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"up"</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">"macAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00:00:00:00:00:00"</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">"platform"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12th Gen Intel(R) Core(TM) i5-1250P"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"ethernetAdapterCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"adapters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">"wired"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                            </span><span class="s2">"Ethernet controller: Intel Corporation Ethernet Controller I225-LM (rev 03)"</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">"wireless"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                            </span><span class="s2">"Network controller: Intel Corporation Alder Lake-P PCH CNVi WiFi (rev 01)"</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">"bmc"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="console-and-rpc-go-v3-beta-multi-tenancy">Console and <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go v3 (Beta): Multi-Tenancy<a class="headerlink" href="#console-and-rpc-go-v3-beta-multi-tenancy" title="Permanent link">&para;</a></h3>
+<p>Console now supports multi-tenancy, letting a single deployment serve multiple customers or business units while keeping each tenant's devices and data fully isolated. This removes the need to stand up and maintain a separate Console deployment per tenant, making it easier to scale cloud deployments where strict tenant boundaries are required.</p>
+<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go v3 (Beta) works within the same model, so device activation and deactivation stay scoped to the correct tenant end-to-end, keeping device status accurate in multi-tenant deployments.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This work is currently focused on Cloud deployments (v3). We may revisit multi-tenancy for on-premises deployments, specifically the Console binary, based on customer requests. Documentation for this feature is in progress and will be published in the coming weeks.</p>
+</div>
+<h2 id="enhancements-improvements">🧩 Enhancements &amp; Improvements<a class="headerlink" href="#enhancements-improvements" title="Permanent link">&para;</a></h2>
+<h3 id="rpc-go-v3-beta-credential-guidance"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go v3 (Beta): Credential Guidance<a class="headerlink" href="#rpc-go-v3-beta-credential-guidance" title="Permanent link">&para;</a></h3>
+<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go v3 (Beta) now warns when you pass credentials as CLI flags, helping you avoid exposing secrets in shell history or process listings.</p>
+<h3 id="console-jwt-key-generation-and-handling">Console: JWT Key Generation and Handling<a class="headerlink" href="#console-jwt-key-generation-and-handling" title="Permanent link">&para;</a></h3>
+<p>On first run, Console generates and saves a unique authentication key for the installation.</p>
+<div class="admonition warning">
+<p class="admonition-title">Configure your JWT key for production</p>
+<p>When no key is configured, Console generates 32 random bytes (256 bits), base64-encoded as a 44-character secret, and saves it in <code>config.yml</code>. This provides a unique randomized key for the installation; for production, set and securely manage your own strong key using <code>auth.jwtKey</code> in <code>config.yml</code> or the <code>AUTH_JWT_KEY</code> environment variable.</p>
+</div>
+<h3 id="console-device-details-performance-for-powered-off-devices">Console: Device Details Performance for Powered-Off Devices<a class="headerlink" href="#console-device-details-performance-for-powered-off-devices" title="Permanent link">&para;</a></h3>
+<p>Viewing details for a powered-off or sleeping device is now faster and more reliable, with fewer timeouts and a smoother loading experience.</p>
+<h2 id="fixes-maintenance">🔧 Fixes &amp; Maintenance<a class="headerlink" href="#fixes-maintenance" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Console<ul>
+<li>Accepts credentials when authentication is disabled and does not issue signed tokens in that mode.</li>
+<li>Password and HTTP Port validation has been hardened.</li>
+<li>Improves Windows browser launch handling.</li>
+<li>Limits the PostgreSQL <code>sslmode</code> default to migrations.</li>
+<li>Aligns timeout handling with slow-responding devices to reduce failed requests.</li>
+</ul>
+</li>
+<li><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go v3 (Beta)<ul>
+<li>Now collects UPID and certificate hashes during post-activation synchronization.</li>
+<li>Supports Linux MEI device nodes <code>/dev/mei0</code> through <code>/dev/mei3</code>.</li>
+</ul>
+</li>
+<li><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr><ul>
+<li>Fixes <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr> reconnection state, flipping the <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr> button back to Connect after a manual disconnect.</li>
+</ul>
+</li>
+<li><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router<ul>
+<li>Raises its minimum Go version to 1.26.</li>
+</ul>
+</li>
+<li>Dependencies<ul>
+<li>Minor dependency updates and maintenance across toolkit components.</li>
+</ul>
+</li>
+</ul>
+<h2 id="changelog"><span class="twemoji icon-log"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 10.12h-6.78l2.74-2.82c-2.73-2.7-7.15-2.8-9.88-.1a6.887 6.887 0 0 0 0 9.8c2.73 2.7 7.15 2.7 9.88 0 1.36-1.35 2.04-2.92 2.04-4.9h2c0 1.98-.88 4.55-2.64 6.29-3.51 3.48-9.21 3.48-12.72 0-3.5-3.47-3.53-9.11-.02-12.58a8.987 8.987 0 0 1 12.65 0L21 3zM12.5 8v4.25l3.5 2.08-.72 1.21L11 13V8z"/></svg></span> Changelog<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h2>
+<h3 id="console">Console<a class="headerlink" href="#console" title="Permanent link">&para;</a></h3>
+<h4 id="1431-2026-09-23"><a href="https://github.com/device-management-toolkit/console/compare/v1.43.0...v1.43.1">1.43.1</a> (2026-09-23)<a class="headerlink" href="#1431-2026-09-23" title="Permanent link">&para;</a></h4>
+<h4 id="1430-2026-09-23"><a href="https://github.com/device-management-toolkit/console/compare/v1.42.0...v1.43.0">1.43.0</a> (2026-09-23)<a class="headerlink" href="#1430-2026-09-23" title="Permanent link">&para;</a></h4>
+<p>Features</p>
+<ul>
+<li><strong>api:</strong> add download-rpc package endpoints (<a href="https://github.com/device-management-toolkit/console/issues/1279">#1279</a>) (<a href="https://github.com/device-management-toolkit/console/commit/dd4709f16779ff375a17b7913a8e5681dd517cc1">dd4709f</a>)</li>
+</ul>
+<h4 id="1420-2026-09-16"><a href="https://github.com/device-management-toolkit/console/compare/v1.41.2...v1.42.0">1.42.0</a> (2026-09-16)<a class="headerlink" href="#1420-2026-09-16" title="Permanent link">&para;</a></h4>
+<p>Features</p>
+<ul>
+<li><strong>api:</strong> add multi-tenancy support (<a href="https://github.com/device-management-toolkit/console/issues/1220">#1220</a>) (<a href="https://github.com/device-management-toolkit/console/commit/4e10714d67a990392421b967d53dc167c28391aa">4e10714</a>)</li>
+</ul>
+<h4 id="1412-2026-09-15"><a href="https://github.com/device-management-toolkit/console/compare/v1.41.1...v1.41.2">1.41.2</a> (2026-09-15)<a class="headerlink" href="#1412-2026-09-15" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>stop issuing signed tokens when authentication is disabled (<a href="https://github.com/device-management-toolkit/console/issues/1271">#1271</a>) (<a href="https://github.com/device-management-toolkit/console/commit/548308578cfb61b20f630ba2c774ff16abc586d3">5483085</a>)</li>
+</ul>
+<h4 id="1411-2026-09-14"><a href="https://github.com/device-management-toolkit/console/compare/v1.41.0...v1.41.1">1.41.1</a> (2026-09-14)<a class="headerlink" href="#1411-2026-09-14" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>accept credentials when authentication is disabled (<a href="https://github.com/device-management-toolkit/console/commit/0da481a83fefb7466f2447e813d7fe82ca346fb0">0da481a</a>)</li>
+<li>correct the <code>handleAdminPassword</code> comment (<a href="https://github.com/device-management-toolkit/console/commit/732fe7d81af7f1356cf6aec3cae6ddf64286b87c">732fe7d</a>)</li>
+</ul>
+<h4 id="1410-2026-09-11"><a href="https://github.com/device-management-toolkit/console/compare/v1.40.1...v1.41.0">1.41.0</a> (2026-09-11)<a class="headerlink" href="#1410-2026-09-11" title="Permanent link">&para;</a></h4>
+<p>Features</p>
+<ul>
+<li>map additional device export fields (<a href="https://github.com/device-management-toolkit/console/issues/1233">#1233</a>) (<a href="https://github.com/device-management-toolkit/console/commit/c2c3ad8b236bb555b2cc1f2dbf87ea296321b084">c2c3ad8</a>), closes <a href="https://github.com/device-management-toolkit/rpc-go/issues/1513">rpc-go#1513</a></li>
+</ul>
+<h4 id="1401-2026-09-10"><a href="https://github.com/device-management-toolkit/console/compare/v1.40.0...v1.40.1">1.40.1</a> (2026-09-10)<a class="headerlink" href="#1401-2026-09-10" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>align timeout budget with WSMAN client for slow devices (<a href="https://github.com/device-management-toolkit/console/issues/1082">#1082</a>) (<a href="https://github.com/device-management-toolkit/console/commit/374987e848ce22843e77b5e1f0295735b497f00e">374987e</a>)</li>
+<li><strong>auth:</strong> enforce a required JWT key to prevent forged token attacks (<a href="https://github.com/device-management-toolkit/console/commit/2d97b3c36c886ec18e98c3b8ef698adc25e82e69">2d97b3c</a>)</li>
+<li><strong>auth:</strong> support disabled authentication without a JWT key (<a href="https://github.com/device-management-toolkit/console/commit/df00f05e345373eedbc12160010fababfb69930d">df00f05</a>)</li>
+<li><strong>config:</strong> generate <code>auth.jwtKey</code> on first run (<a href="https://github.com/device-management-toolkit/console/issues/1264">#1264</a>) (<a href="https://github.com/device-management-toolkit/console/commit/95ebad91466d8e2ee86675b5c7cf40aafc5ac58c">95ebad9</a>)</li>
+<li><strong>config:</strong> validate the HTTP port and harden Windows browser launch (<a href="https://github.com/device-management-toolkit/console/issues/1198">#1198</a>) (<a href="https://github.com/device-management-toolkit/console/commit/6e0906e921dcbb6fe06d62000fa531dc0a0f29c5">6e0906e</a>)</li>
+<li><strong>db:</strong> default PostgreSQL <code>sslmode</code> only for migrations (<a href="https://github.com/device-management-toolkit/console/commit/b9c232ab2e41a446ca608aece48ecb2e51dac7ec">b9c232a</a>)</li>
+</ul>
+<h3 id="rps"><abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr><a class="headerlink" href="#rps" title="Permanent link">&para;</a></h3>
+<h4 id="2402-2026-09-21"><a href="https://github.com/device-management-toolkit/rps/compare/v2.40.1...v2.40.2">2.40.2</a> (2026-09-21)<a class="headerlink" href="#2402-2026-09-21" title="Permanent link">&para;</a></h4>
+<h3 id="mps"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr><a class="headerlink" href="#mps" title="Permanent link">&para;</a></h3>
+<h4 id="2351-2026-09-21"><a href="https://github.com/device-management-toolkit/mps/compare/v2.35.0...v2.35.1">2.35.1</a> (2026-09-21)<a class="headerlink" href="#2351-2026-09-21" title="Permanent link">&para;</a></h4>
+<h3 id="mps-router"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router<a class="headerlink" href="#mps-router" title="Permanent link">&para;</a></h3>
+<h4 id="2515-2026-09-21"><a href="https://github.com/device-management-toolkit/mps-router/compare/v2.5.14...v2.5.15">2.5.15</a> (2026-09-21)<a class="headerlink" href="#2515-2026-09-21" title="Permanent link">&para;</a></h4>
+<h3 id="rpc-go"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Go<a class="headerlink" href="#rpc-go" title="Permanent link">&para;</a></h3>
+<h4 id="2527-2026-09-24"><a href="https://github.com/device-management-toolkit/rpc-go/compare/v2.52.6...v2.52.7">2.52.7</a> (2026-09-24)<a class="headerlink" href="#2527-2026-09-24" title="Permanent link">&para;</a></h4>
+<h3 id="rpc-go-v3-beta"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Go v3 (Beta)<a class="headerlink" href="#rpc-go-v3-beta" title="Permanent link">&para;</a></h3>
+<h4 id="300-beta60-2026-09-24"><a href="https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.59...v3.0.0-beta.60">3.0.0-beta.60</a> (2026-09-24)<a class="headerlink" href="#300-beta60-2026-09-24" title="Permanent link">&para;</a></h4>
+<h4 id="300-beta59-2026-09-21"><a href="https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.58...v3.0.0-beta.59">3.0.0-beta.59</a> (2026-09-21)<a class="headerlink" href="#300-beta59-2026-09-21" title="Permanent link">&para;</a></h4>
+<h4 id="300-beta58-2026-09-16"><a href="https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.57...v3.0.0-beta.58">3.0.0-beta.58</a> (2026-09-16)<a class="headerlink" href="#300-beta58-2026-09-16" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>collect UPID and certificate hashes during post-activation sync (<a href="https://github.com/device-management-toolkit/rpc-go/issues/1555">#1555</a>) (<a href="https://github.com/device-management-toolkit/rpc-go/commit/0ea20c569e1e96300479d263ab05bc04c8b700af">0ea20c5</a>), closes <a href="https://github.com/device-management-toolkit/rpc-go/issues/1549">#1549</a></li>
+</ul>
+<h4 id="300-beta57-2026-09-16"><a href="https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.56...v3.0.0-beta.57">3.0.0-beta.57</a> (2026-09-16)<a class="headerlink" href="#300-beta57-2026-09-16" title="Permanent link">&para;</a></h4>
+<p>Features</p>
+<ul>
+<li><strong>internal:</strong> forward tenant header and fix deactivation sync (<a href="https://github.com/device-management-toolkit/rpc-go/issues/1533">#1533</a>) (<a href="https://github.com/device-management-toolkit/rpc-go/commit/8daa112c0992ba6cff2377f5214c83a6d94788da">8daa112</a>)</li>
+</ul>
+<h4 id="300-beta56-2026-09-16"><a href="https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.55...v3.0.0-beta.56">3.0.0-beta.56</a> (2026-09-16)<a class="headerlink" href="#300-beta56-2026-09-16" title="Permanent link">&para;</a></h4>
+<p>Features</p>
+<ul>
+<li>warn when credentials are passed via CLI flags for remaining flags (<a href="https://github.com/device-management-toolkit/rpc-go/issues/1543">#1543</a>) (<a href="https://github.com/device-management-toolkit/rpc-go/commit/7303adff4700435a97df4c9467deb2875c324b39">7303adf</a>)</li>
+</ul>
+<h4 id="300-beta55-2026-09-14"><a href="https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.54...v3.0.0-beta.55">3.0.0-beta.55</a> (2026-09-14)<a class="headerlink" href="#300-beta55-2026-09-14" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>support Linux MEI connections on <code>/dev/mei0</code> through <code>/dev/mei3</code> (<a href="https://github.com/device-management-toolkit/rpc-go/commit/3b77c9c3cc8f4df95a77b395efeebe29ffe36a6a">3b77c9c</a>) (<a href="https://github.com/device-management-toolkit/rpc-go/commit/9f85db7d48a05b295fcdcf279568b2367240e7e4">9f85db7</a>)</li>
+</ul>
+<h4 id="300-beta54-2026-09-11"><a href="https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.53...v3.0.0-beta.54">3.0.0-beta.54</a> (2026-09-11)<a class="headerlink" href="#300-beta54-2026-09-11" title="Permanent link">&para;</a></h4>
+<p>Features</p>
+<ul>
+<li>send additional device export fields required for device export (<a href="https://github.com/device-management-toolkit/rpc-go/issues/1529">#1529</a>) (<a href="https://github.com/device-management-toolkit/rpc-go/commit/752595b1a2a5a0cd472baa32dcdfbd9ded154035">752595b</a>), closes <a href="https://github.com/device-management-toolkit/rpc-go/issues/1513">#1513</a></li>
+</ul>
+<h4 id="300-beta53-2026-09-01"><a href="https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.52...v3.0.0-beta.53">3.0.0-beta.53</a> (2026-09-01)<a class="headerlink" href="#300-beta53-2026-09-01" title="Permanent link">&para;</a></h4>
+<h3 id="sample-web-ui"><abbr title="Sample Web UI - A reference UI implementation serving as a demo vehicle and utilizing components of the UI toolkit.">Sample Web UI</abbr><a class="headerlink" href="#sample-web-ui" title="Permanent link">&para;</a></h3>
+<h4 id="3671-2026-09-24"><a href="https://github.com/device-management-toolkit/sample-web-ui/compare/v3.67.0...v3.67.1">3.67.1</a> (2026-09-24)<a class="headerlink" href="#3671-2026-09-24" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li>flip <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr> button back to Connect after manual disconnect (<a href="https://github.com/device-management-toolkit/sample-web-ui/issues/3568">#3568</a>) (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/9d5a302b98055a36ded3cfac3476d6604d5ebdb2">9d5a302</a>)</li>
+</ul>
+<h4 id="3670-2026-09-23"><a href="https://github.com/device-management-toolkit/sample-web-ui/compare/v3.66.2...v3.67.0">3.67.0</a> (2026-09-23)<a class="headerlink" href="#3670-2026-09-23" title="Permanent link">&para;</a></h4>
+<p>Features</p>
+<ul>
+<li><strong>devices:</strong> add enterprise Download <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> page (<a href="https://github.com/device-management-toolkit/sample-web-ui/issues/3572">#3572</a>) (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/8c4108c6de0a7174002c050aeb7609fde7953de0">8c4108c</a>), closes <a href="https://github.com/device-management-toolkit/console/issues/1144">Console#1144</a></li>
+</ul>
+<h4 id="3662-2026-09-21"><a href="https://github.com/device-management-toolkit/sample-web-ui/compare/v3.66.1...v3.66.2">3.66.2</a> (2026-09-21)<a class="headerlink" href="#3662-2026-09-21" title="Permanent link">&para;</a></h4>
+<h4 id="3661-2026-09-03"><a href="https://github.com/device-management-toolkit/sample-web-ui/compare/v3.66.0...v3.66.1">3.66.1</a> (2026-09-03)<a class="headerlink" href="#3661-2026-09-03" title="Permanent link">&para;</a></h4>
+<p>Bug Fixes</p>
+<ul>
+<li><strong>e2e:</strong> match <code>CIRA: Configured</code> output in the cloud activation assertion (<a href="https://github.com/device-management-toolkit/sample-web-ui/issues/3542">#3542</a>) (<a href="https://github.com/device-management-toolkit/sample-web-ui/commit/5e012258eb08f230b8532c27d8fea4a64b48ae66">5e01225</a>)</li>
+</ul>
+<h3 id="go-wsman-messages">Go WSMAN Messages<a class="headerlink" href="#go-wsman-messages" title="Permanent link">&para;</a></h3>
+<h4 id="2504-2026-09-21"><a href="https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.50.3...v2.50.4">2.50.4</a> (2026-09-21)<a class="headerlink" href="#2504-2026-09-21" title="Permanent link">&para;</a></h4>
+<h3 id="wsman-messages">WSMAN Messages<a class="headerlink" href="#wsman-messages" title="Permanent link">&para;</a></h3>
+<h4 id="615-2026-09-21"><a href="https://github.com/device-management-toolkit/wsman-messages/compare/v6.1.4...v6.1.5">6.1.5</a> (2026-09-21)<a class="headerlink" href="#615-2026-09-21" title="Permanent link">&para;</a></h4>
+<h3 id="ui-toolkit"><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr><a class="headerlink" href="#ui-toolkit" title="Permanent link">&para;</a></h3>
+<h4 id="3321-2026-09-21"><a href="https://github.com/device-management-toolkit/ui-toolkit/compare/v3.3.20...v3.3.21">3.3.21</a> (2026-09-21)<a class="headerlink" href="#3321-2026-09-21" title="Permanent link">&para;</a></h4>
+<h3 id="ui-toolkit-angular"><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> Angular<a class="headerlink" href="#ui-toolkit-angular" title="Permanent link">&para;</a></h3>
+<h4 id="1119-2026-09-21"><a href="https://github.com/device-management-toolkit/ui-toolkit-angular/compare/v11.1.8...v11.1.9">11.1.9</a> (2026-09-21)<a class="headerlink" href="#1119-2026-09-21" title="Permanent link">&para;</a></h4>
+<h3 id="ui-toolkit-react"><abbr title="UI Toolkit - A modular, REST-based API consisting of code snippets developers can use to implement KVM and SOL features to their manageability console.">UI Toolkit</abbr> React<a class="headerlink" href="#ui-toolkit-react" title="Permanent link">&para;</a></h3>
+<h4 id="509-2026-09-21"><a href="https://github.com/device-management-toolkit/ui-toolkit-react/compare/v5.0.8...v5.0.9">5.0.9</a> (2026-09-21)<a class="headerlink" href="#509-2026-09-21" title="Permanent link">&para;</a></h4>
+<h3 id="mps-router_1"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> Router<a class="headerlink" href="#mps-router_1" title="Permanent link">&para;</a></h3>
+<h4 id="2515-2026-09-21_1"><a href="https://github.com/device-management-toolkit/mps-router/compare/v2.5.14...v2.5.15">2.5.15</a> (2026-09-21)<a class="headerlink" href="#2515-2026-09-21_1" title="Permanent link">&para;</a></h4>
+<p>Build</p>
+<ul>
+<li>set Go 1.26 as the minimum version (<a href="https://github.com/device-management-toolkit/mps-router/commit/3cacc24f3a43b146f0c353eb466d2b89677ddd50">3cacc24</a>)</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 Intel Corporation
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://discord.gg/yrcMp2kDWh" target="_blank" rel="noopener" title="Join Us on Discord" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M492.5 69.8c-.2-.3-.4-.6-.8-.7-38.1-17.5-78.4-30-119.7-37.1-.4-.1-.8 0-1.1.1s-.6.4-.8.8c-5.5 9.9-10.5 20.2-14.9 30.6-44.6-6.8-89.9-6.8-134.4 0-4.5-10.5-9.5-20.7-15.1-30.6-.2-.3-.5-.6-.8-.8s-.7-.2-1.1-.2C162.5 39 122.2 51.5 84.1 69c-.3.1-.6.4-.8.7C7.1 183.5-13.8 294.6-3.6 404.2c0 .3.1.5.2.8s.3.4.5.6c44.4 32.9 94 58 146.8 74.2.4.1.8.1 1.1 0s.7-.4.9-.7c11.3-15.4 21.4-31.8 30-48.8.1-.2.2-.5.2-.8s0-.5-.1-.8-.2-.5-.4-.6-.4-.3-.7-.4c-15.8-6.1-31.2-13.4-45.9-21.9-.3-.2-.5-.4-.7-.6s-.3-.6-.3-.9 0-.6.2-.9.3-.5.6-.7c3.1-2.3 6.2-4.7 9.1-7.1.3-.2.6-.4.9-.4s.7 0 1 .1c96.2 43.9 200.4 43.9 295.5 0 .3-.1.7-.2 1-.2s.7.2.9.4c2.9 2.4 6 4.9 9.1 7.2.2.2.4.4.6.7s.2.6.2.9-.1.6-.3.9-.4.5-.6.6c-14.7 8.6-30 15.9-45.9 21.8-.2.1-.5.2-.7.4s-.3.4-.4.7-.1.5-.1.8.1.5.2.8c8.8 17 18.8 33.3 30 48.8.2.3.6.6.9.7s.8.1 1.1 0c52.9-16.2 102.6-41.3 147.1-74.2.2-.2.4-.4.5-.6s.2-.5.2-.8c12.3-126.8-20.5-236.9-86.9-334.5zm-302 267.7c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.4 59.2-52.8 59.2m195.4 0c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.2 59.2-52.8 59.2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://hub.docker.com/search?q=intel%2Foact" target="_blank" rel="noopener" title="Find our Dockerhub Images" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M349.9 236.3h-66.1v-59.4h66.1zm0-204.3h-66.1v60.7h66.1zm78.2 144.8H362v59.4h66.1zm-156.3-72.1h-66.1v60.1h66.1zm78.1 0h-66.1v60.1h66.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1zm78.1 0h-66.1v59.4h66.1zm-78.1-72.1h-66.1v60.1h66.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/device-management-toolkit" target="_blank" rel="noopener" title="Device Management Toolkit Github Repository" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M216.5 362.5c-66-8-112.5-55.5-112.5-117 0-25 9-52 24-70-6.5-16.5-5.5-51.5 2-66 20-2.5 47 8 63 22.5 19-6 39-9 63.5-9s44.5 3 62.5 8.5c15.5-14 43-24.5 63-22 7 13.5 8 48.5 1.5 65.5 16 19 24.5 44.5 24.5 70.5 0 61.5-46.5 108-113.5 116.5 17 11 28.5 35 28.5 62.5v52c0 15 12.5 23.5 27.5 17.5C441 459.5 512 369 512 257 512 115.5 397 0 255.5 0S0 115.5 0 257c0 111 70.5 203 165.5 237.5 13.5 5 26.5-4 26.5-17.5v-40c-7 3-16 5-24 5-33 0-52.5-18-66.5-51.5-5.5-13.5-11.5-21.5-23-23-6-.5-8-3-8-6 0-6 10-10.5 20-10.5 14.5 0 27 9 40 27.5 10 14.5 20.5 21 33 21s20.5-4.5 32-16c8.5-8.5 15-16 21-21"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      
+<div class="md-progress" data-md-component="progress" role="progressbar" aria-label="Loading"></div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+  
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+    
+      
+        
+  
+  
+    
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="analytics" checked>
+      <span class="task-list-indicator"></span>
+      Google Analytics
+    </label>
+  </li>
+
+      
+    
+    
+      
+        
+  
+  
+    
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="github" checked>
+      <span class="task-list-indicator"></span>
+      GitHub
+    </label>
+  </li>
+
+      
+    
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.path","navigation.prune","search.suggest","search.highlight","search.share","navigation.top","toc.follow","content.tabs.link","content.code.copy","content.tooltips"],"redirect":null,"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"default":["rapid","dev"],"provider":"mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.3c842f4c.min.js"></script>
+      
+        <script src="../assets/javascripts/swagger.js"></script>
+      
+    
+  </body>
+</html>
