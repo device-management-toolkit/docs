@@ -280,6 +280,9 @@
         <loc>https://device-management-toolkit.github.io/docs/Tutorials/Localization/webuiLocalization/</loc>
       </url>
       <url>
+        <loc>https://device-management-toolkit.github.io/docs/Tutorials/Redfish/redfishUserGuide/</loc>
+      </url>
+      <url>
         <loc>https://device-management-toolkit.github.io/docs/Tutorials/Scaling/Kubernetes/deployingk8s-aks/</loc>
       </url>
       <url>
