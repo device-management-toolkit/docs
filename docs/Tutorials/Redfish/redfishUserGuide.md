@@ -1077,7 +1077,7 @@ Before starting a redirection session, read the state from `GET /redfish/v1/Syst
 | UserConsentStatus | Meaning |
 |-------------------|---------|
 | `NotRequired` | Consent is not needed, typical in ACM |
-| `Required` | Consent is needed but has not been requested yet |
+| `Required` | Consent is needed but has not been requested yet, typical in CCM |
 | `Requested` | A consent code is displayed on the device, waiting for you to submit it |
 | `Granted` | The code was accepted — you can now generate a redirection token |
 | `Denied` | The device user rejected the request, or the code was wrong |
