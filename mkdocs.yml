@@ -130,6 +130,8 @@ nav:
               - AKS: Tutorials/Scaling/Kubernetes/deployingk8s-aks.md
               - EKS: Tutorials/Scaling/Kubernetes/deployingk8s-eks.md
               - KUMA Service Mesh: Tutorials/Scaling/Kubernetes/service-mesh.md
+      - Redfish:
+          - Redfish User Guide: Tutorials/Redfish/redfishUserGuide.md
   - Reference:
     - Architecture Overview: Reference/architectureOverview.md
     - AMT Power States: Reference/powerstates.md
