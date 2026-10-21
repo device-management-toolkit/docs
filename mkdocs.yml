@@ -272,7 +272,7 @@ extra:
     consoleAPI: 1.43.1
     mpsAPI: 2.26.0
     rpsAPI: 2.31.3
-    oamtct: 2.39.0
+    oamtct: 2.39.1
     mps: 2.35.1
     rps: 2.40.2
     mps-router: 2.5.15
