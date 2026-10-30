@@ -60,7 +60,7 @@ The new `diag bundle` command collects diagnostic information into a bundle, mak
 
 - **AMT 22 certificates:** The WSMAN messages libraries now widen the AMT certificate parameter types to support AMT 22, and add an `EnableLocalTimeSync` builder for `AMT_TimeSynchronizationService`.
 
-## 🔧 Fixes & Maintenance
+#### [1.41.1](https://github.com/device-management-toolkit/console/compare/v1.41.0...v1.41.1) (2026-09-14)
 
 ### RPC-Go v3 (Beta)
 
@@ -106,7 +106,7 @@ Features
 
 #### [2.36.0](https://github.com/device-management-toolkit/mps/compare/v2.35.1...v2.36.0) (2026-10-23)
 
-Features
+Bug Fixes
 
 * redir: scope token issuance to request tenant ([#2723](https://github.com/device-management-toolkit/mps/issues/2723)), closes [device-management-toolkit/deployment#711](https://github.com/device-management-toolkit/deployment/issues/711)
 
@@ -168,7 +168,7 @@ Features
 
 #### [3.0.0-beta.64](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.63...v3.0.0-beta.64) (2026-10-15)
 
-Features
+#### [3.66.2](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.66.1...v3.66.2) (2026-09-21)
 
 * rps: report AMT crypto capabilities to RPS ([#1615](https://github.com/device-management-toolkit/rpc-go/issues/1615))
 
@@ -202,7 +202,7 @@ Features
 
 #### [4.0.1](https://github.com/device-management-toolkit/sample-web-ui/compare/v4.0.0...v4.0.1) (2026-10-13)
 
-Bug Fixes
+### WSMAN Messages
 
 * show domain validation errors in snackbar ([#3636](https://github.com/device-management-toolkit/sample-web-ui/issues/3636))
 
@@ -221,7 +221,7 @@ Bug Fixes
 
 #### [3.69.2](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.69.1...v3.69.2) (2026-10-06)
 
-Bug Fixes
+### UI Toolkit
 
 * show the correct number of expired domain certs ([#3599](https://github.com/device-management-toolkit/sample-web-ui/issues/3599))
 
@@ -241,7 +241,7 @@ Bug Fixes
 
 #### [12.0.0](https://github.com/device-management-toolkit/ui-toolkit-angular/compare/v11.1.9...v12.0.0) (2026-10-12)
 
-Features
+### UI Toolkit Angular
 
 * build(deps)!: upgrade angular to v22 ([#2661](https://github.com/device-management-toolkit/ui-toolkit-angular/issues/2661)), closes [#2636](https://github.com/device-management-toolkit/ui-toolkit-angular/issues/2636)
 
@@ -259,13 +259,13 @@ Breaking Changes
 
 #### [1.46.1](https://github.com/device-management-toolkit/console/compare/v1.46.0...v1.46.1) (2026-10-26)
 
-Bug Fixes
+### UI Toolkit React
 
 * require 802.1x username for PEAP-MSCHAPv2 in wireless profile API ([#1319](https://github.com/device-management-toolkit/console/issues/1319))
 
 #### [1.46.0](https://github.com/device-management-toolkit/console/compare/v1.45.5...v1.46.0) (2026-10-16)
 
-Features
+### MPS Router
 
 * add isElevated and heciAvailable to deviceInfo ([#1306](https://github.com/device-management-toolkit/console/issues/1306)), closes [device-management-toolkit/rpc-go#1613](https://github.com/device-management-toolkit/rpc-go/issues/1613)
 
