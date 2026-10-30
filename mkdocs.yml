@@ -116,9 +116,11 @@ nav:
       - REST API Call: Tutorials/apiTutorial.md
       - IDE-Redirection (IDER): Tutorials/ideRedirection.md
       - Wireless Activation: Tutorials/createWiFiConfig.md
-      - Modify User Authentication: Tutorials/modifyUserAuth.md
       - One Click Recovery (OCR): Tutorials/ocrTutorial.md
       - Remote Platform Erase (RPE): Tutorials/rpeTutorial.md
+      - Authentication:
+          - Console OAuth / OIDC: Tutorials/Authentication/consoleOAuth.md
+          - MPS User Authentication: Tutorials/Authentication/modifyUserAuth.md
       - Localization:
           - Console: Tutorials/Localization/consoleLocalization.md
           - Sample Web UI: Tutorials/Localization/webuiLocalization.md
