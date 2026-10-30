@@ -140,6 +140,7 @@ nav:
     - Middleware Extensibility: Reference/middlewareExtensibility.md
     - Production Mode Vault: Reference/productionVault.md
     - SSL with Local Postgres: Reference/sslpostgresLocal.md
+    - Verify Releases (Cosign): Reference/verifyReleases.md
     - Console:
       - Overview: Reference/Console/overview.md
       - Configuration: Reference/Console/configuration.md
