@@ -18,7 +18,9 @@ On the AMT device, download the latest RPC-Go version from the [RPC-Go GitHub Re
     rpc activate -local -configv2 profileName.yaml -configencryptionkey w31W6548+eDZYziC97DnmkzaA4V4r4nC
     ```
 
-4. After finishing successfully, the device can now be added and connected to using Console. 
+4. After finishing successfully, the device can now be added and connected to using Console.
+
+    After you add the activated device to Console, it appears in the **Managed** tab on the **Devices** page.
 
 !!! success
     <figure class="figure-image">
