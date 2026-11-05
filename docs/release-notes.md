@@ -2,340 +2,411 @@
 
 !!! note "Note From the Team"
 
-    In this September release (v2.39), Console introduced three major features: the ability to download RPC-Go v3 (Beta) with guided command generation from the UI, a new device export API, and multi-tenancy (a key v3 capability). Additionally, we fixed issues so that Console no longer prompts for authentication when it is disabled, RPC-Go v3 (Beta) can enumerate Linux MEI devices across `/dev/mei0` through `/dev/mei3`, and the UI correctly reflects SOL reconnection state.
+    Hello, DMT community!
 
-    We also have two follow-up updates from the previous release:
+    October Release (v2.40) brings a refreshed Sample Web UI built on Material 3, Managed and Discovered device views, signed Console and RPC-Go releases, and a new RPC-Go diagnostics bundle. RPS now enables AMT local time synchronization during activation, and MPS scopes redirection tokens to the requesting tenant.
 
-    - Console releases were paused while we completed additional review and compliance approvals. Those approvals are now complete, and Console releases are back on track.
-    - Instructions for using the Remote Platform Erase (RPE) feature are now available for [MPS](Tutorials/rpeTutorial.md#triggering-remote-platform-erase-via-mps-apis) and [Console](Tutorials/rpeTutorial.md#triggering-remote-platform-erase-via-console-apis).
+    This release also includes a breaking change for UI Toolkit Angular users upgrading to v12 detailed below.
 
-    Looking ahead, we are working on a bulk power state pull in MPS, enabling supported deployment architectures where customers can run Console and RPS together (a key v3 capability), completing the official release of RPC-Go v3, and advancing Trusted Endpoint Provisioning (TEP), device health, discovery, and Console Redfish API support. Follow our [Sprint Board](https://github.com/orgs/device-management-toolkit/projects/10/views/2) to track progress on these and other upcoming features.
+    We're working on several features for upcoming DMT releases including, enabling supported deployment architectures where customers can run Console and RPS together (a key v3 capability), bulk power state pull in MPS, completing the official release of RPC-Go v3, Secure Storage of Console Credentials, (TEP) Trusted Endpoint Provisioning device information and a Google Cloud Secret Manager provider for RPS etc.
 
-    As always, thanks to everyone providing feedback, testing new functionality, and contributing to the toolkit. 
+    As always, thanks to everyone providing feedback, testing new functionality, and contributing to the toolkit. Follow our [Sprint Board](https://github.com/orgs/device-management-toolkit/projects/10/views/2) for updates on work in progress.
 
     Cheers,<br>
     **The Device Management Toolkit Team**
 
 ## 🚀 What's New?
 
-### Console: Download RPC-Go v3 (Beta) and Generate Commands (Preview)
+### Sample Web UI: Material 3 Refresh (v4.0)
 
-From the Console UI, users can now download the latest supported RPC-Go v3 (Beta) release for their target platform - Windows or Linux - without leaving Console to find the right package. The Console UI also walks users through generating the correct RPC-Go command and configuration for activation and deactivation, which they can copy or download instead of recalling command-line flags.
+Sample Web UI 4.0 migrates to Angular 22 and Material 3, moves the application controls (app chrome) into the sidebar, updates the product logo, and adds call-to-action empty states to list pages so new users know what to do next.
+!!! note "Custom branding"
+    4.0 is a major release. If you maintain a fork with custom branding or styling, review the logo and layout changes before upgrading
 
-!!! note "Download availability"
+### UI Toolkit Angular: Angular 22 upgrade
 
-    Console supports RPC-Go v3 only and lists the five latest v3 beta releases. If Console cannot access the internet, download the RPC-Go v3 binaries into a local directory, placing the binary files directly inside a subdirectory for each version (for example, `<local_dir>/<version>/`). Set `package.local_dir` to that directory in Console's `config.yml` and `package.disable_fetch: true` to make Console use only the local files. 
-    
-    Detailed setup instructions are in progress; keep an eye out for their release.
+UI Toolkit Angular v12 upgrades the library to Angular 22. As part of the upgrade, `SOLComponent.deviceState` and `IDERComponent.deviceState` are read-only signals. Consumers that previously accessed `deviceState` as a property must now call `deviceState()`.
 
-### Console: Device Export API
+!!! warning "Breaking change"
 
-Console now exposes a device export API, `GET /api/v1/devices/export`, that returns device inventory in a consistent nested shape grouped by subsystem - Management Engine (ME), OS, network and platform - along with an `X-Total-Count` header and an audit log entry for each export attempt. Credentials are excluded from the response, and the endpoint currently serves up to 500 devices per synchronous request.
+    Update integrations that read either component's `deviceState` property to use the signal accessor before upgrading to UI Toolkit Angular v12.
 
-**Example: Device Export Output**
+### RPC-Go v3 (Beta): Diagnostic Bundles
+
+The new `diag bundle` command collects device diagnostics into a single ZIP file to share when investigating deployment or device issues.
+
+```bash
+sudo rpc diag bundle --output diagnostics.zip
+```
+
+The bundle contains `cira.txt` (CIRA diagnostics), `csme_flash_log.bin` (CSME flash log), `wsman.json` (AMT WSMAN state), and `manifest.json` (collection status for each collector). If WSMAN collection fails with AMT/LMS TLS certificate errors, add `--skip-amt-cert-check`.
+
+### Console & Sample Web UI: Managed and Discovered Devices
+
+The Sample Web UI **Devices** page now separates devices into **Managed** and **Discovered (Preview)** tabs, shows a live device count on each tab, and adds **Product Type** (ISM or vPro) and **Control Mode** columns.
+
+To support this view in enterprise (on-premises) deployments, Console adds `activatedCount` and `discoveredCount` to the `GET /api/v1/devices/stats` response. Console also adds the `activated=true` and `discovered=true` query parameters to `GET /api/v1/devices` to filter managed and discovered devices.
 
 ```json
 {
-    "metadata": {
-        "exportedAt": "2026-10-09T06:11:02.14461394Z",
-        "swVersion": "console 1.45.0"
-    },
-    "summary": {
-        "totalCount": 1
-    },
-    "data": [
-        {
-            "guid": "f440232e-da5d-d52a-fd63-48210b50d81d",
-            "hostname": "203.0.113.10",
-            "friendlyName": "",
-            "tags": [],
-            "tenantId": "",
-            "firstDiscovered": "2026-10-05T01:00:03.895685232Z",
-            "lastSynced": "2026-10-05T01:00:03.895685232Z",
-            "lastUpdated": null,
-            "deviceInfo": {
-                "me": {
-                    "dnsSuffix": "",
-                    "currentMode": "not activated",
-                    "mebxEnabledInBIOS": true,
-                    "fwVersion": "16.1.27",
-                    "fwBuild": "2176",
-                    "fwSku": "16392",
-                    "features": "AMT Pro Corporate",
-                    "tlsMode": "",
-                    "dhcpEnabled": true,
-                    "certHashes": [
-                        "..."
-                    ],
-                    "upid": {
-                        "csmeId": "0000000000000000000000000000000000000000000000000000000000000001234",
-                        "oemId": "0000000000000000000000000000000000000000000000000000000000000000",
-                        "oemPlatformIdType": "Not Set (0)"
-                    },
-                    "network": {
-                        "wired": {
-                            "ipAddress": "0.0.0.0",
-                            "dhcpEnabled": true,
-                            "dhcpMode": "passive",
-                            "linkStatus": "up",
-                            "macAddress": "00:00:00:00:00:00"
-                        },
-                        "wireless": {
-                            "ipAddress": "0.0.0.0",
-                            "dhcpEnabled": true,
-                            "dhcpMode": "active",
-                            "linkStatus": "down",
-                            "macAddress": "00:00:00:00:00:00"
-                        }
-                    }
-                },
-                "os": {
-                    "dnsSuffix": "example.com",
-                    "name": "linux",
-                    "version": "6.17.0-29-generic",
-                    "distro": "Ubuntu 24.04 LTS",
-                    "lmsInstalled": false,
-                    "lmsVersion": "",
-                    "meInterfaceVersion": "6.17.0-29-generic",
-                    "monitorConnected": true,
-                    "ieee8021xEnabled": null,
-                    "network": {
-                        "wired": [
-                            {
-                                "name": "enp100s0",
-                                "ipAddress": "203.0.113.10",
-                                "dhcpEnabled": true,
-                                "linkStatus": "up",
-                                "macAddress": "00:00:00:00:00:00"
-                            }
-                        ],
-                        "wireless": {
-                            "name": "wlo1",
-                            "ipAddress": "",
-                            "dhcpEnabled": null,
-                            "linkStatus": "up",
-                            "macAddress": "00:00:00:00:00:00"
-                        }
-                    }
-                },
-                "platform": {
-                    "cpu": "12th Gen Intel(R) Core(TM) i5-1250P",
-                    "ethernetAdapterCount": 2,
-                    "adapters": {
-                        "wired": [
-                            "Ethernet controller: Intel Corporation Ethernet Controller I225-LM (rev 03)"
-                        ],
-                        "wireless": [
-                            "Network controller: Intel Corporation Alder Lake-P PCH CNVi WiFi (rev 01)"
-                        ]
-                    }
-                },
-                "bmc": null
-            }
-        }
-    ]
+  "totalCount": 10,
+  "connectedCount": 0,
+  "disconnectedCount": 0,
+  "activatedCount": 6,
+  "discoveredCount": 4
 }
 ```
 
-### Console and RPC-Go v3 (Beta): Multi-Tenancy
-
-Console now supports multi-tenancy, letting a single deployment serve multiple customers or business units while keeping each tenant's devices and data fully isolated. This removes the need to stand up and maintain a separate Console deployment per tenant, making it easier to scale cloud deployments where strict tenant boundaries are required.
-
-RPC-Go v3 (Beta) works within the same model, so device activation and deactivation stay scoped to the correct tenant end-to-end, keeping device status accurate in multi-tenant deployments.
-
 !!! note
-    This work is currently focused on Cloud deployments (v3). We may revisit multi-tenancy for on-premises deployments, specifically the Console binary, based on customer requests. Documentation for this feature is in progress and will be published in the coming weeks.
+
+    `connectedCount` and `disconnectedCount` apply to cloud deployments. In Console, these fields are always `0`.
+
+### Console and RPC-Go: Signed Releases
+
+Console and RPC-Go release artifacts are now signed with [Cosign](https://docs.sigstore.dev/cosign/signing/overview/) during the GitHub Actions release build. Before extracting or running a downloaded archive or executable, you can confirm it is the file the project published and has not been changed. The signature bundles are published with each release in `cosign-signatures.zip`. See [Verify Console and RPC-Go Releases](Reference/verifyReleases.md) for the signed files, expected signing identities, and verification commands for Linux and Windows. This helps to confirm a download is authentic before deploying it.
+
+### Console: Redfish API (Preview)
+
+Console now offers a preview of its [Redfish API](https://www.dmtf.org/standards/redfish) (`/redfish/v1`), allowing the [DMTF Redfish Tool](https://github.com/DMTF/Redfishtool) or other manageability software that supports Redfish APIs to discover and manage Intel AMT devices. The preview supports session login and logout, system inventory, power control, and KVM and SOL redirection with user consent. See the [Redfish user guide](Tutorials/Redfish/redfishUserGuide.md) to get started, and share your feedback or contributions on our [GitHub repositories](https://github.com/device-management-toolkit).
+
+!!! warning "Pre-release feature"
+
+    Not production ready and subject to change. Available in pre-release builds tagged `-redfish-preview`, such as [`v1.46.0-redfish-preview.1`](https://github.com/device-management-toolkit/console/releases/tag/v1.46.0-redfish-preview.1), under Console [Releases](https://github.com/device-management-toolkit/console/releases).
 
 ## 🧩 Enhancements & Improvements
 
-### RPC-Go v3 (Beta): Credential Guidance
+### RPS
 
-RPC-Go v3 (Beta) now warns when you pass credentials as CLI flags, helping you avoid exposing secrets in shell history or process listings.
+- **AMT local time synchronization:** RPS now enables AMT local time synchronization as part of activation, not only when TLS is configured. When LMS is available it uses `EnableLocalTimeSync`; otherwise it falls back to the legacy time sync flow.
 
-### Console: JWT Key Generation and Handling
+### MPS
 
-On first run, Console generates and saves a unique authentication key for the installation.
+- **Tenant-scoped redirection tokens:** `GET /api/v1/authorize/redirection/{guid}` now only issues tokens for devices in the requesting tenant; devices outside the tenant return 404. Cloud deployments should also pick up deployment v2.39.1, which adds a dedicated Kong route for this endpoint.
 
-!!! warning "Configure your JWT key for production"
+### Console
 
-    When no key is configured, Console generates 32 random bytes (256 bits), base64-encoded as a 44-character secret, and saves it in `config.yml`. This provides a unique randomized key for the installation; for production, set and securely manage your own strong key using `auth.jwtKey` in `config.yml` or the `AUTH_JWT_KEY` environment variable.
+- **Device capability details:** Console now exposes activated/discovered device stats and filters, and includes `isElevated` and `heciAvailable` in device info returned to clients.
 
-### Console: Device Details Performance for Powered-Off Devices
+### RPC-Go v3 (Beta)
 
-Viewing details for a powered-off or sleeping device is now faster and more reliable, with fewer timeouts and a smoother loading experience.
+- **AMT local time synchronization:** Configure the setting through a remote RPS workflow as part of device setup.
+- **Device capability reporting:** Send elevation and HECI availability during synchronization, and report AMT cryptographic capabilities to RPS.
+- **macOS support for 'amtinfo --sync':** RPC-Go reads the platform UUID on macOS, detects the Wi-Fi interface correctly, and reports HECI as not detected instead of failing on privileges.
+- **Public Go packages:** 'pkg/activate','pkg/configure','pkg/deactivate' and 'pkg/amtinfo' are now available for applications that embed RPC-Go.
+
+### Sample Web UI
+
+- **Connection feedback:** KVM connection feedback has been improved.
+- **Sign-in behavior:** Skip the sign-in prompt when Console authentication is disabled.
+
+### WSMAN messages
+
+- **AMT 22 certificates:** `wsman-messages` widens the AMT certificate parameter types to support AMT 22 (6.3.0), and adds an `EnableLocalTimeSync` builder for `AMT_TimeSynchronizationService` (6.2.0).
 
 ## 🔧 Fixes & Maintenance
 
-- Console
-    - Accepts credentials when authentication is disabled and does not issue signed tokens in that mode.
-    - Password and HTTP Port validation has been hardened.
-    - Improves Windows browser launch handling.
-    - Limits the PostgreSQL `sslmode` default to migrations.
-    - Aligns timeout handling with slow-responding devices to reduce failed requests.
-- RPC-Go v3 (Beta)
-    - Now collects UPID and certificate hashes during post-activation synchronization.
-    - Supports Linux MEI device nodes `/dev/mei0` through `/dev/mei3`.
-- Sample Web UI
-    - Fixes SOL reconnection state, flipping the SOL button back to Connect after a manual disconnect.
-- MPS Router
-    - Raises its minimum Go version to 1.26.
-- Dependencies
-    - Minor dependency updates and maintenance across toolkit components.
+### RPC-Go v3 (Beta)
+
+- Environment variables now take precedence over `config.yaml`.
+- Sync results are clearer, and users without root access receive guidance.
+- Command output is more concise, credential warnings fit on one line, and `amtinfo` validates box-output bounds correctly.
+
+### Console
+
+- Hardens CORS: the KVM/SOL/IDER relay now validates the request origin, and the wildcard (`*`) default has been removed from the shipped configuration.
+!!! warning "Console: review `allowed_origins` before upgrading"
+    Console no longer ships with a wildcard CORS allowlist, rejects an empty `http.allowed_origins` at startup, and the relay ignores `*` (falling back to same-origin only). If you serve the UI from a different origin than Console, add that origin explicitly to `http.allowed_origins`. Same-origin deployments are unaffected.
+- Return 400 for malformed requests, and prevent a slow device from blocking requests for other devices.
+- Validate domain suffixes against the provisioning certificate.
+- Serve the UI's complete media directory and require a username for PEAP-MSCHAPv2 wireless profiles.
+
+### Sample Web UI
+
+- Show domain validation errors in a snackbar and count expired domain certificates correctly.
+- Correct stale rendering and layout issues on the device page.
+
+### Dependencies
+
+- **Deployment v2.39.1:** Replaces v2.39.0, whose GitHub source ZIP was built from the wrong branch. If you downloaded the v2.39.0 source ZIP, use v2.39.1 instead.
+- Routine dependency updates and maintenance across toolkit components.
+
 
 ## :material-update:{ .icon-log } Changelog
 
 ### Console
 
-#### [1.43.1](https://github.com/device-management-toolkit/console/compare/v1.43.0...v1.43.1) (2026-09-23)
+#### [1.46.2](https://github.com/device-management-toolkit/console/compare/v1.46.1...v1.46.2) (2026-10-26)
 
-#### [1.43.0](https://github.com/device-management-toolkit/console/compare/v1.42.0...v1.43.0) (2026-09-23)
-
-Features
-
-* **api:** add download-rpc package endpoints ([#1279](https://github.com/device-management-toolkit/console/issues/1279)) ([dd4709f](https://github.com/device-management-toolkit/console/commit/dd4709f16779ff375a17b7913a8e5681dd517cc1))
-
-#### [1.42.0](https://github.com/device-management-toolkit/console/compare/v1.41.2...v1.42.0) (2026-09-16)
-
-Features
-
-* **api:** add multi-tenancy support ([#1220](https://github.com/device-management-toolkit/console/issues/1220)) ([4e10714](https://github.com/device-management-toolkit/console/commit/4e10714d67a990392421b967d53dc167c28391aa))
-
-#### [1.41.2](https://github.com/device-management-toolkit/console/compare/v1.41.1...v1.41.2) (2026-09-15)
+#### [1.46.1](https://github.com/device-management-toolkit/console/compare/v1.46.0...v1.46.1) (2026-10-26)
 
 Bug Fixes
 
-* stop issuing signed tokens when authentication is disabled ([#1271](https://github.com/device-management-toolkit/console/issues/1271)) ([5483085](https://github.com/device-management-toolkit/console/commit/548308578cfb61b20f630ba2c774ff16abc586d3))
+* require 802.1x username for PEAP-MSCHAPv2 in wireless profile API ([#1319](https://github.com/device-management-toolkit/console/issues/1319))
 
-#### [1.41.1](https://github.com/device-management-toolkit/console/compare/v1.41.0...v1.41.1) (2026-09-14)
-
-Bug Fixes
-
-* accept credentials when authentication is disabled ([0da481a](https://github.com/device-management-toolkit/console/commit/0da481a83fefb7466f2447e813d7fe82ca346fb0))
-* correct the `handleAdminPassword` comment ([732fe7d](https://github.com/device-management-toolkit/console/commit/732fe7d81af7f1356cf6aec3cae6ddf64286b87c))
-
-#### [1.41.0](https://github.com/device-management-toolkit/console/compare/v1.40.1...v1.41.0) (2026-09-11)
+#### [1.46.0](https://github.com/device-management-toolkit/console/compare/v1.45.5...v1.46.0) (2026-10-16)
 
 Features
 
-* map additional device export fields ([#1233](https://github.com/device-management-toolkit/console/issues/1233)) ([c2c3ad8](https://github.com/device-management-toolkit/console/commit/c2c3ad8b236bb555b2cc1f2dbf87ea296321b084)), closes [rpc-go#1513](https://github.com/device-management-toolkit/rpc-go/issues/1513)
+- **add isElevated and heciAvailable to deviceInfo** ([#1306](https://github.com/device-management-toolkit/console/issues/1306)), closes [device-management-toolkit/rpc-go#1613](https://github.com/device-management-toolkit/rpc-go/issues/1613)
 
-#### [1.40.1](https://github.com/device-management-toolkit/console/compare/v1.40.0...v1.40.1) (2026-09-10)
+#### [1.45.5](https://github.com/device-management-toolkit/console/compare/v1.45.4...v1.45.5) (2026-10-13)
 
 Bug Fixes
 
-* align timeout budget with WSMAN client for slow devices ([#1082](https://github.com/device-management-toolkit/console/issues/1082)) ([374987e](https://github.com/device-management-toolkit/console/commit/374987e848ce22843e77b5e1f0295735b497f00e))
-* **auth:** enforce a required JWT key to prevent forged token attacks ([2d97b3c](https://github.com/device-management-toolkit/console/commit/2d97b3c36c886ec18e98c3b8ef698adc25e82e69))
-* **auth:** support disabled authentication without a JWT key ([df00f05](https://github.com/device-management-toolkit/console/commit/df00f05e345373eedbc12160010fababfb69930d))
-* **config:** generate `auth.jwtKey` on first run ([#1264](https://github.com/device-management-toolkit/console/issues/1264)) ([95ebad9](https://github.com/device-management-toolkit/console/commit/95ebad91466d8e2ee86675b5c7cf40aafc5ac58c))
-* **config:** validate the HTTP port and harden Windows browser launch ([#1198](https://github.com/device-management-toolkit/console/issues/1198)) ([6e0906e](https://github.com/device-management-toolkit/console/commit/6e0906e921dcbb6fe06d62000fa531dc0a0f29c5))
-* **db:** default PostgreSQL `sslmode` only for migrations ([b9c232a](https://github.com/device-management-toolkit/console/commit/b9c232ab2e41a446ca608aece48ecb2e51dac7ec))
+* ui: serve the UI build's whole media directory ([#1318](https://github.com/device-management-toolkit/console/issues/1318))
+
+#### [1.45.4](https://github.com/device-management-toolkit/console/compare/v1.45.3...v1.45.4) (2026-10-12)
+
+Bug Fixes
+
+* domains: validate domain suffix against provisioning cert CN ([#1300](https://github.com/device-management-toolkit/console/issues/1300)), closes [#1298](https://github.com/device-management-toolkit/console/issues/1298)
+
+#### [1.45.3](https://github.com/device-management-toolkit/console/compare/v1.45.2...v1.45.3) (2026-10-12)
+
+Bug Fixes
+
+* consign names based on artifact names
+
+#### [1.45.2](https://github.com/device-management-toolkit/console/compare/v1.45.1...v1.45.2) (2026-10-03)
+
+Bug Fixes
+
+* api: omit empty password properties from device responses
+
+#### [1.45.1](https://github.com/device-management-toolkit/console/compare/v1.45.0...v1.45.1) (2026-10-02)
+
+Bug Fixes
+
+* api: return bad request for malformed payloads ([#1248](https://github.com/device-management-toolkit/console/issues/1248))
+* stop one slow device from blocking the others ([#1247](https://github.com/device-management-toolkit/console/issues/1247)) ([#1246](https://github.com/device-management-toolkit/console/issues/1246))
+
+#### [1.45.0](https://github.com/device-management-toolkit/console/compare/v1.44.0...v1.45.0) (2026-09-25)
+
+Features
+
+- **expose activated/discovered stats and device filters** ([#1214](https://github.com/device-management-toolkit/console/issues/1214)), closes [#1210](https://github.com/device-management-toolkit/console/issues/1210)
+
+#### [1.44.0](https://github.com/device-management-toolkit/console/compare/v1.43.2...v1.44.0) (2026-09-25)
+
+Features
+
+- **denormalize currentMode/discovered into device columns** ([#1211](https://github.com/device-management-toolkit/console/issues/1211))
+
+#### [1.43.2](https://github.com/device-management-toolkit/console/compare/v1.43.1...v1.43.2) (2026-09-25)
+
+Bug Fixes
+
+* cors: reject cross-origin relay handshakes and drop wildcard def… ([#1236](https://github.com/device-management-toolkit/console/issues/1236))
 
 ### RPS
 
-#### [2.40.2](https://github.com/device-management-toolkit/rps/compare/v2.40.1...v2.40.2) (2026-09-21)
+#### [2.41.1](https://github.com/device-management-toolkit/rps/compare/v2.41.0...v2.41.1) (2026-10-26)
+
+#### [2.41.0](https://github.com/device-management-toolkit/rps/compare/v2.40.2...v2.41.0) (2026-10-14)
+
+Features
+
+- **Add AMT Local Time Synchronization Support** ([#2912](https://github.com/device-management-toolkit/rps/issues/2912)), closes [#2905](https://github.com/device-management-toolkit/rps/issues/2905)
 
 ### MPS
 
-#### [2.35.1](https://github.com/device-management-toolkit/mps/compare/v2.35.0...v2.35.1) (2026-09-21)
+#### [2.36.1](https://github.com/device-management-toolkit/mps/compare/v2.36.0...v2.36.1) (2026-10-24)
 
-### MPS Router
+#### [2.36.0](https://github.com/device-management-toolkit/mps/compare/v2.35.1...v2.36.0) (2026-10-23)
 
-#### [2.5.15](https://github.com/device-management-toolkit/mps-router/compare/v2.5.14...v2.5.15) (2026-09-21)
+Features
 
+- **redir: scope token issuance to request tenant** ([#2723](https://github.com/device-management-toolkit/mps/issues/2723)), closes [device-management-toolkit/deployment#711](https://github.com/device-management-toolkit/deployment/issues/711)
 
 ### RPC Go
 
-#### [2.52.7](https://github.com/device-management-toolkit/rpc-go/compare/v2.52.6...v2.52.7) (2026-09-24)
+#### [2.52.8](https://github.com/device-management-toolkit/rpc-go/compare/v2.52.7...v2.52.8) (2026-10-26)
 
 ### RPC Go v3 (Beta)
 
-#### [3.0.0-beta.60](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.59...v3.0.0-beta.60) (2026-09-24)
+#### [3.0.0-beta.73](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.72...v3.0.0-beta.73) (2026-10-26)
 
-#### [3.0.0-beta.59](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.58...v3.0.0-beta.59) (2026-09-21)
-
-#### [3.0.0-beta.58](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.57...v3.0.0-beta.58) (2026-09-16)
+#### [3.0.0-beta.72](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.71...v3.0.0-beta.72) (2026-10-26)
 
 Bug Fixes
 
-* collect UPID and certificate hashes during post-activation sync ([#1555](https://github.com/device-management-toolkit/rpc-go/issues/1555)) ([0ea20c5](https://github.com/device-management-toolkit/rpc-go/commit/0ea20c569e1e96300479d263ab05bc04c8b700af)), closes [#1549](https://github.com/device-management-toolkit/rpc-go/issues/1549)
+* ensure bounds correctly checked for box output ([#1631](https://github.com/device-management-toolkit/rpc-go/issues/1631))
 
-#### [3.0.0-beta.57](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.56...v3.0.0-beta.57) (2026-09-16)
-
-Features
-
-* **internal:** forward tenant header and fix deactivation sync ([#1533](https://github.com/device-management-toolkit/rpc-go/issues/1533)) ([8daa112](https://github.com/device-management-toolkit/rpc-go/commit/8daa112c0992ba6cff2377f5214c83a6d94788da))
-
-#### [3.0.0-beta.56](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.55...v3.0.0-beta.56) (2026-09-16)
-
-Features
-
-* warn when credentials are passed via CLI flags for remaining flags ([#1543](https://github.com/device-management-toolkit/rpc-go/issues/1543)) ([7303adf](https://github.com/device-management-toolkit/rpc-go/commit/7303adff4700435a97df4c9467deb2875c324b39))
-
-#### [3.0.0-beta.55](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.54...v3.0.0-beta.55) (2026-09-14)
+#### [3.0.0-beta.71](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.70...v3.0.0-beta.71) (2026-10-26)
 
 Bug Fixes
 
-* support Linux MEI connections on `/dev/mei0` through `/dev/mei3` ([3b77c9c](https://github.com/device-management-toolkit/rpc-go/commit/3b77c9c3cc8f4df95a77b395efeebe29ffe36a6a)) ([9f85db7](https://github.com/device-management-toolkit/rpc-go/commit/9f85db7d48a05b295fcdcf279568b2367240e7e4))
+* shorten CLI credential warning to a single line ([#1649](https://github.com/device-management-toolkit/rpc-go/issues/1649))
 
-#### [3.0.0-beta.54](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.53...v3.0.0-beta.54) (2026-09-11)
+#### [3.0.0-beta.70](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.69...v3.0.0-beta.70) (2026-10-26)
+
+Bug Fixes
+
+* show concise sync results instead of full device details ([#1635](https://github.com/device-management-toolkit/rpc-go/issues/1635)), closes [#1633](https://github.com/device-management-toolkit/rpc-go/issues/1633)
+
+#### [3.0.0-beta.69](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.68...v3.0.0-beta.69) (2026-10-23)
+
+Bug Fixes
+
+* show info and offer sudo when sync lacks root access ([#1601](https://github.com/device-management-toolkit/rpc-go/issues/1601))
+
+#### [3.0.0-beta.68](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.67...v3.0.0-beta.68) (2026-10-16)
+
+Bug Fixes
+
+* report sync success and failure clearly ([#1622](https://github.com/device-management-toolkit/rpc-go/issues/1622)), closes [#1621](https://github.com/device-management-toolkit/rpc-go/issues/1621)
+
+#### [3.0.0-beta.67](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.66...v3.0.0-beta.67) (2026-10-16)
 
 Features
 
-* send additional device export fields required for device export ([#1529](https://github.com/device-management-toolkit/rpc-go/issues/1529)) ([752595b](https://github.com/device-management-toolkit/rpc-go/commit/752595b1a2a5a0cd472baa32dcdfbd9ded154035)), closes [#1513](https://github.com/device-management-toolkit/rpc-go/issues/1513)
+* include isElevated and heciAvailable in device sync payload ([#1614](https://github.com/device-management-toolkit/rpc-go/issues/1614)), closes [#1613](https://github.com/device-management-toolkit/rpc-go/issues/1613)
 
-#### [3.0.0-beta.53](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.52...v3.0.0-beta.53) (2026-09-01)
+#### [3.0.0-beta.66](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.65...v3.0.0-beta.66) (2026-10-16)
+
+Features
+
+- **Implement diag bundle command** ([#1547](https://github.com/device-management-toolkit/rpc-go/issues/1547)), closes [#1544](https://github.com/device-management-toolkit/rpc-go/issues/1544)
+
+#### [3.0.0-beta.65](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.64...v3.0.0-beta.65) (2026-10-15)
+
+Features
+
+- **Add remote RPS support to configure sync-clock** ([#1562](https://github.com/device-management-toolkit/rpc-go/issues/1562)), closes [#1561](https://github.com/device-management-toolkit/rpc-go/issues/1561) [device-management-toolkit/rps#2905](https://github.com/device-management-toolkit/rps/issues/2905)
+
+#### [3.0.0-beta.64](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.63...v3.0.0-beta.64) (2026-10-15)
+
+Features
+
+- **rps: report AMT crypto capabilities to RPS** ([#1615](https://github.com/device-management-toolkit/rpc-go/issues/1615))
+
+#### [3.0.0-beta.63](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.62...v3.0.0-beta.63) (2026-10-12)
+
+Features
+
+- **add public pkg/deactivate API** ([#1583](https://github.com/device-management-toolkit/rpc-go/issues/1583))
+
+#### [3.0.0-beta.62](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.61...v3.0.0-beta.62) (2026-10-12)
+
+Features
+
+- **utils: support non-AMT device discovery on macOS** ([#1585](https://github.com/device-management-toolkit/rpc-go/issues/1585)), closes [#1355](https://github.com/device-management-toolkit/rpc-go/issues/1355)
+
+#### [3.0.0-beta.61](https://github.com/device-management-toolkit/rpc-go/compare/v3.0.0-beta.60...v3.0.0-beta.61) (2026-09-25)
+
+Bug Fixes
+
+* cli: let environment variables override config.yaml values ([#1574](https://github.com/device-management-toolkit/rpc-go/issues/1574))
 
 ### Sample Web UI
 
-#### [3.67.1](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.67.0...v3.67.1) (2026-09-24)
+#### [4.2.1](https://github.com/device-management-toolkit/sample-web-ui/compare/v4.2.0...v4.2.1) (2026-10-26)
 
-Bug Fixes
-
-* flip SOL button back to Connect after manual disconnect ([#3568](https://github.com/device-management-toolkit/sample-web-ui/issues/3568)) ([9d5a302](https://github.com/device-management-toolkit/sample-web-ui/commit/9d5a302b98055a36ded3cfac3476d6604d5ebdb2))
-
-#### [3.67.0](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.66.2...v3.67.0) (2026-09-23)
+#### [4.2.0](https://github.com/device-management-toolkit/sample-web-ui/compare/v4.1.0...v4.2.0) (2026-10-23)
 
 Features
 
-* **devices:** add enterprise Download RPC page ([#3572](https://github.com/device-management-toolkit/sample-web-ui/issues/3572)) ([8c4108c](https://github.com/device-management-toolkit/sample-web-ui/commit/8c4108c6de0a7174002c050aeb7609fde7953de0)), closes [Console#1144](https://github.com/device-management-toolkit/console/issues/1144)
+- **devices: improve KVM connection feedback** ([#3659](https://github.com/device-management-toolkit/sample-web-ui/issues/3659)), closes [device-management-toolkit/deployment#711](https://github.com/device-management-toolkit/deployment/issues/711)
 
-#### [3.66.2](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.66.1...v3.66.2) (2026-09-21)
+#### [4.1.0](https://github.com/device-management-toolkit/sample-web-ui/compare/v4.0.1...v4.1.0) (2026-10-16)
 
-#### [3.66.1](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.66.0...v3.66.1) (2026-09-03)
+Features
+
+- **login: skip login when Console runs with auth disabled** ([#3577](https://github.com/device-management-toolkit/sample-web-ui/issues/3577)), closes [#3643](https://github.com/device-management-toolkit/sample-web-ui/issues/3643)
+
+#### [4.0.1](https://github.com/device-management-toolkit/sample-web-ui/compare/v4.0.0...v4.0.1) (2026-10-13)
 
 Bug Fixes
 
-* **e2e:** match `CIRA: Configured` output in the cloud activation assertion ([#3542](https://github.com/device-management-toolkit/sample-web-ui/issues/3542)) ([5e01225](https://github.com/device-management-toolkit/sample-web-ui/commit/5e012258eb08f230b8532c27d8fea4a64b48ae66))
+* show domain validation errors in snackbar ([#3636](https://github.com/device-management-toolkit/sample-web-ui/issues/3636))
 
-### Go WSMAN Messages
+#### [4.0.0](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.69.3...v4.0.0) (2026-10-13)
 
-#### [2.50.4](https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.50.3...v2.50.4) (2026-09-21)
+Features
 
+- **add call-to-action empty states to the list pages** ([#3634](https://github.com/device-management-toolkit/sample-web-ui/issues/3634))
+- **migrate to Material 3 and move app chrome into the sidebar** ([#3633](https://github.com/device-management-toolkit/sample-web-ui/issues/3633))
 
-### WSMAN Messages
+#### [3.69.3](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.69.2...v3.69.3) (2026-10-12)
 
-#### [6.1.5](https://github.com/device-management-toolkit/wsman-messages/compare/v6.1.4...v6.1.5) (2026-09-21)
+Bug Fixes
 
+* add proxy configuration selector
+
+#### [3.69.2](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.69.1...v3.69.2) (2026-10-06)
+
+#### [3.69.1](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.69.0...v3.69.1) (2026-10-02)
+
+Bug Fixes
+
+* devices: clean up devices page layout and stale rendering
+
+#### [3.69.0](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.68.1...v3.69.0) (2026-09-30)
+
+Features
+
+- **mark Discovered tab as preview and show Managed first** ([#3592](https://github.com/device-management-toolkit/sample-web-ui/issues/3592))
+
+#### [3.68.1](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.68.0...v3.68.1) (2026-09-25)
+
+Bug Fixes
+
+* Added control mode column to the UI ([#3535](https://github.com/device-management-toolkit/sample-web-ui/issues/3535))
+
+#### [3.68.0](https://github.com/device-management-toolkit/sample-web-ui/compare/v3.67.1...v3.68.0) (2026-09-25)
+
+Features
+
+- **add tabs, product type column, and discovered field** ([#3417](https://github.com/device-management-toolkit/sample-web-ui/issues/3417))
+
+Bug Fixes
+
+- **show the correct number of expired domain certs** ([#3599](https://github.com/device-management-toolkit/sample-web-ui/issues/3599))
 
 ### UI Toolkit
 
-#### [3.3.21](https://github.com/device-management-toolkit/ui-toolkit/compare/v3.3.20...v3.3.21) (2026-09-21)
-
+#### [3.3.22](https://github.com/device-management-toolkit/ui-toolkit/compare/v3.3.21...v3.3.22) (2026-10-23)
 
 ### UI Toolkit Angular
 
-#### [11.1.9](https://github.com/device-management-toolkit/ui-toolkit-angular/compare/v11.1.8...v11.1.9) (2026-09-21)
+#### [12.0.1](https://github.com/device-management-toolkit/ui-toolkit-angular/compare/v12.0.0...v12.0.1) (2026-10-23)
 
+#### [12.0.0](https://github.com/device-management-toolkit/ui-toolkit-angular/compare/v11.1.9...v12.0.0) (2026-10-12)
+
+Features
+
+- **build(deps)!: upgrade angular to v22** ([#2661](https://github.com/device-management-toolkit/ui-toolkit-angular/issues/2661)), closes [#2636](https://github.com/device-management-toolkit/ui-toolkit-angular/issues/2636)
+
+Breaking Changes
+
+- **SOLComponent.deviceState and IDERComponent.deviceState are now read-only signals. Read them as deviceState() instead of deviceState.**
 
 ### UI Toolkit React
 
-#### [5.0.9](https://github.com/device-management-toolkit/ui-toolkit-react/compare/v5.0.8...v5.0.9) (2026-09-21)
+#### [5.0.10](https://github.com/device-management-toolkit/ui-toolkit-react/compare/v5.0.9...v5.0.10) (2026-10-23)
 
+### Go WSMAN Messages
+
+#### [2.50.5](https://github.com/device-management-toolkit/go-wsman-messages/compare/v2.50.4...v2.50.5) (2026-10-23)
+
+### WSMAN Messages
+
+#### [6.3.1](https://github.com/device-management-toolkit/wsman-messages/compare/v6.3.0...v6.3.1) (2026-10-23)
+
+#### [6.3.0](https://github.com/device-management-toolkit/wsman-messages/compare/v6.2.0...v6.3.0) (2026-10-15)
+
+Features
+
+- **amt: widen the AMT certificate parameter types for AMT 22** ([#1430](https://github.com/device-management-toolkit/wsman-messages/issues/1430))
+
+#### [6.2.0](https://github.com/device-management-toolkit/wsman-messages/compare/v6.1.5...v6.2.0) (2026-09-23)
+
+Features
+
+- **amt: add EnableLocalTimeSync builder for AMT_TimeSynchronizationService**, closes [device-management-toolkit/rps#2905](https://github.com/device-management-toolkit/rps/issues/2905)
 
 ### MPS Router
 
-#### [2.5.15](https://github.com/device-management-toolkit/mps-router/compare/v2.5.14...v2.5.15) (2026-09-21)
+#### [2.5.16](https://github.com/device-management-toolkit/mps-router/compare/v2.5.15...v2.5.16) (2026-10-23)
 
-Build
-
-* set Go 1.26 as the minimum version ([3cacc24](https://github.com/device-management-toolkit/mps-router/commit/3cacc24f3a43b146f0c353eb466d2b89677ddd50))
+* Go Docker image digest for a security fix
