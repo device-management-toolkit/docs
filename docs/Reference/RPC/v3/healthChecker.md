@@ -6,7 +6,7 @@ Use this quick workflow:
 
 1. Run `rpc status` as an administrator or root user.
 2. Add `--acm` or `--ccm` to validate a specific activation mode.
-3. Provide `--password` or set `AMT_PASSWORD` for WSMAN-dependent checks on an activated device.
+3. Set `AMT_PASSWORD` for WSMAN-dependent checks on an activated device. The `--password` flag is also available, but avoid passing a real password as a command argument.
 4. Add `--json` when you need a machine-readable result.
 
 ## Before you begin
@@ -17,31 +17,19 @@ This guide is most useful when you need to confirm prerequisites before activati
 
 ## Run the health checker
 
-=== "Linux"
-    ```bash
-    sudo ./rpc status
-    ```
+```console
+rpc status
+```
 
-=== "Windows"
-    ```cmd
-    rpc.exe status
-    ```
+If the binary is not on `PATH`, use `./rpc` on Linux or `rpc.exe` on Windows.
 
 The following command names are equivalent:
 
-=== "Linux"
-    ```bash
-    sudo ./rpc status
-    sudo ./rpc health
-    sudo ./rpc doctor
-    ```
-
-=== "Windows"
-    ```cmd
-    rpc.exe status
-    rpc.exe health
-    rpc.exe doctor
-    ```
+```console
+rpc status
+rpc health
+rpc doctor
+```
 
 Use `status` as the primary command name. The other commands are aliases that produce the same result. RPC automatically selects the relevant checks based on the device state:
 
@@ -59,64 +47,44 @@ If no activation-mode flag is supplied, RPC performs a general readiness check. 
 
 Use `--acm` for an admin-managed activation flow and `--ccm` for a client-managed activation flow. If you are unsure which mode applies, start with the default check and then narrow it to the relevant mode.
 
-For ACM-specific checks, DNS suffix and wired-network requirements are blockers. In the default check, those same conditions are reported as warnings because CCM may still proceed.
+For `--acm`, a DNS mismatch warns; missing both suffixes or a down wired AMT link fails the corresponding check. In default mode, these conditions warn because CCM may still proceed.
 
-=== "Linux"
-    ```bash
-    sudo ./rpc status --acm
-    sudo ./rpc status --ccm
-    ```
-
-=== "Windows"
-    ```cmd
-    rpc.exe status --acm
-    rpc.exe status --ccm
-    ```
+```console
+rpc status --acm
+rpc status --ccm
+```
 
 ## Test management endpoint reachability
 
 Use `--host` to verify that a management endpoint is reachable from the device. If you do not specify a port, RPC uses port `443`. To check a different port, append it to the host name, such as `console.example.com:8443`.
 
-=== "Linux"
-    ```bash
-    sudo ./rpc status --host console.example.com
-    ```
-
-=== "Windows"
-    ```cmd
-    rpc.exe status --host console.example.com
-    ```
+```console
+rpc status --host console.example.com
+```
 
 This check is optional. An unreachable host does not prevent provisioning, but the report warns that management operations may not work through that endpoint. Use it when a device must reach a specific Console or management service on a known host and port before continuing with provisioning or management operations.
 
 ## Post-activation checks and the AMT password
 
-The command does not prompt for an AMT password. For an activated device, provide `--password` when you want RPC to run the additional WSMAN checks that depend on it:
+The command does not prompt for an AMT password. For an activated device, set `AMT_PASSWORD` when you want RPC to run the additional WSMAN checks that depend on it. The `--password` flag is available, but avoid using it with a real password because command arguments can be exposed in shell history and process listings.
 
-=== "Linux"
-    ```bash
-    sudo ./rpc status --password '<AMT-password>'
-    ```
+```console
+rpc status --password '<AMT-password>'
+```
 
-=== "Windows"
-    ```cmd
-    rpc.exe status --password "<AMT-password>"
-    ```
-
-Without a password, RPC still runs checks that do not require WSMAN. Password-dependent checks are reported as **Not verified**, which indicates that the evaluation is incomplete.
+If `--password` and `AMT_PASSWORD` are absent, RPC attempts to retrieve the local system account credentials through HECI for WSMAN. If those credentials cannot be retrieved or authenticated, the local WSMAN session is unavailable and password-dependent checks are reported as **Not verified**; RPC still runs checks that do not require WSMAN.
 
 When a password is supplied, RPC evaluates the WSMAN-dependent checks, including:
 
 - local WSMAN session
 - TLS configuration and trust inventory
 - redirection and consent configuration
-- One Click Recovery (OCR) support and status
 - KVM support and status
 - CIRA configuration and connectivity, when applicable
 
-Use a password only for the command you are running. The password is not persisted by the tool; it is only used to establish the local WSMAN session and run the additional checks. For automation or scripting, prefer `AMT_PASSWORD` over embedding the secret directly in the command line.
+Use a password only for the command you are running. The password is not persisted by the tool; it is only used to establish the local WSMAN session and run the additional checks. For automation or scripting, provide it through `AMT_PASSWORD` using your environment's secret-management mechanism.
 
-To avoid writing the password to shell history or exposing it as a command argument, read it interactively into an exported variable and forward it with `sudo -E`. This requires your `sudoers` policy to preserve `AMT_PASSWORD` (for example, `Defaults env_keep += "AMT_PASSWORD"`); ask an administrator to add this if it is not already configured:
+On Linux, read the password without echoing it and forward it with `sudo -E`. This requires your `sudoers` policy to preserve `AMT_PASSWORD` (for example, `Defaults env_keep += "AMT_PASSWORD"`); ask an administrator to add this if it is not already configured:
 
 === "Linux"
     ```bash
@@ -127,10 +95,16 @@ To avoid writing the password to shell history or exposing it as a command argum
     ```
 
 === "Windows"
-    ```cmd
-    set "AMT_PASSWORD=<AMT-password>"
-    rpc.exe status
-    set "AMT_PASSWORD="
+    ```powershell
+    $securePassword = Read-Host 'AMT password' -AsSecureString
+    try {
+      $env:AMT_PASSWORD = [System.Net.NetworkCredential]::new('', $securePassword).Password
+      .\rpc.exe status
+    }
+    finally {
+      Remove-Item Env:AMT_PASSWORD -ErrorAction SilentlyContinue
+      $securePassword.Dispose()
+    }
     ```
 
 ## Health check results
@@ -160,119 +134,146 @@ AMT Health Check
   Selected checks: pre-activation
 
 Passed
-  ✓ Running as admin/root
-  ✓ Intel MEI driver installed and responding — 7.0.0-31-generic, current
+  ✓ Running as administrator/root
+  ✓ MEI/HECI driver is responding (version 7.0.0-34-generic)
+  ✓ AMT is in pre-provisioning mode
   ✓ Platform type: vPro
-  ✓ MEBx enabled in BIOS
-  ✓ AMT version 16.1.25 (supported)
-  ✓ AMT network link available for ACM checks
-  ✓ LMS installed, running — 2406.0.0.0, current
-  ✓ AMT activated state: Pre-provisioning
+  ✓ AMT version 16.1.25 is supported
+  ✓ AMT network link is available
+  ✓ Local Manageability Service is listening (version 2406.0.0.0)
+  ✓ OS adapter matching an AMT MAC is enabled; verify RPS/Console endpoint reachability
 
 Warnings
-  ! AMT=vprodemo.com OS=iind.intel.com (verify provisioning cert/profile domain alignment)
+  ! AMT DNS suffix (vprodemo.com) differs from host DNS suffix (iind.intel.com). Confirm this matches your provisioning setup
 
-! Device conditionally ready; CCM activation can proceed, but ACM requires DNS domain alignment with the provisioning certificate/profile.
-→ Proceed with CCM, or align the AMT DNS suffix to the provisioning cert/profile domain and re-run health check for ACM.
+Activation profile readiness
+  ACM: Conditionally ready
+  CCM: Conditionally ready
+
+! Device is conditionally ready; AMT and host DNS suffixes differ
+→ ACM or CCM can proceed conditionally; review warnings for your provisioning profile.
 
 SKU Information
   Processor: 12th Gen Intel(R) Core(TM) i5-1250P
-  Wired Adapter: Intel Corporation Ethernet Controller I225-LM
-  Wireless Adapter: Not detected
-  OS: Ubuntu 24.04.1 LTS 7.0.0-31-generic
+  Wired Adapter: Ethernet controller: Intel Corporation Ethernet Controller I225-LM (rev 03), AMT link up; OS state up
+  Wireless Adapter: No matching OS adapter, AMT link down; OS state not verified
+  OS: Ubuntu 24.04.1 LTS 7.0.0-34-generic
+
+AMT Details
+  Operational state: Not reported
+
+AMT Connectivity
+  AMT-reported network status: outside enterprise (CIRA)
+  Remote access connection: not connected
+  Remote access trigger: user initiated
+  TLS mode: Unavailable (WSMAN data unavailable)
 ```
 
 Depending on the selected mode, pre-activation checks can include administrator privileges, MEI availability, platform and AMT-version support, BIOS configuration, DNS suffix, wired-network availability, LMS, and optional management-endpoint reachability. Use `--acm` or `--ccm` to evaluate the requirements for one activation mode.
 
-### Example: Activated Device Without a Password
+### Example: Activated Device Without a `--password` Argument
 
-After activation, RPC verifies the AMT state and management configuration. Without an AMT password, checks that need a local WSMAN session are listed as **Not verified**:
+This example omits the `--password` argument and has no password in `AMT_PASSWORD`. RPC uses the local system account credentials retrieved through HECI to establish WSMAN. If that fallback is unavailable or fails authentication, WSMAN-dependent checks are reported as **Not verified**.
 
 ```text
 AMT Health Check
-  Detected state: Client Control Mode
+  Detected state: Admin Control Mode
   Selected checks: post-activation
 
-Password context: AMT password not provided; password-dependent checks are marked as Not verified
-
 Passed
-  ✓ Running as admin/root
-  ✓ Intel MEI driver installed and responding — 7.0.0-31-generic, current
+  ✓ Running as administrator/root
+  ✓ MEI/HECI driver is responding (version 7.0.0-34-generic)
+  ✓ AMT activated state: admin control mode
   ✓ Platform type: vPro
-  ✓ MEBx enabled in BIOS
-  ✓ AMT version 16.1.25 (supported)
-  ✓ AMT network link available for CCM checks
-  ✓ LMS installed, running — 2406.0.0.0, current
-  ✓ AMT activated state: Client Control Mode
-  ✓ AMT Connection Mode: Direct
+  ✓ AMT version 16.1.25 is supported
+  ✓ AMT network link is available for remote management
+  ✓ Local Manageability Service is listening (version 2406.0.0.0)
+  ✓ AMT provisioning is complete
+  ✓ Local WSMAN session available
+  ✓ AMT Connection Mode: CIRA
+  ✓ AMT control mode matches requested ACM
+  ✓ CIRA MPS and remote-access policy are configured
+  ✓ CIRA connection is connected
+  ✓ KVM user consent: none
+  ✓ TLS mode: Server
+  ✓ Monitor connected
+  ✓ KVM is enabled but offline (EnabledState 6); an active KVM session is not verified
 
 Warnings
-  ! AMT=vprodemo.com OS=iind.intel.com (verify provisioning cert/profile domain alignment)
+  ! AMT DNS suffix differs from the host DNS suffix; verify the intended management DNS configuration
 
-Not verified
-  • Requested mode alignment: auto mode (no --acm/--ccm constraint requested)
-  • Management endpoint reachability: direct mode: use --host <console-address> to probe console reachability
-  • Local WSMAN session: AMT password not provided; WSMAN-only checks skipped
-  • TLS configuration / trust inventory: unavailable (WSMAN client required)
-  • Redirection / consent baseline: unavailable (WSMAN client required)
-  • OCR enabled in BIOS: unavailable (WSMAN client required)
-  • KVM enabled: unavailable (WSMAN client required)
-
-! Some prerequisites missing or not fully configured.
-→ Review warnings and re-run health check after remediation.
+✓ Device is fully configured and ready for remote management; review warnings
+→ Review the warnings for your management configuration.
 
 SKU Information
   Processor: 12th Gen Intel(R) Core(TM) i5-1250P
-  Wired Adapter: Intel Corporation Ethernet Controller I225-LM
-  Wireless Adapter: Not detected
-  OS: Ubuntu 24.04.1 LTS 7.0.0-31-generic
+  Wired Adapter: Ethernet controller: Intel Corporation Ethernet Controller I225-LM (rev 03), AMT link up; OS state up
+  Wireless Adapter: No matching OS adapter, AMT link down; OS state not verified
+  OS: Ubuntu 24.04.1 LTS 7.0.0-34-generic
+
+AMT Details
+  Operational state: Not reported
+
+AMT Connectivity
+  AMT-reported network status: outside enterprise (CIRA)
+  Remote access connection: connected
+  Remote access trigger: periodic
+  TLS mode: Server
 ```
 
 ### Example: Activated Device With a Password
 
-With `--password` or `AMT_PASSWORD`, RPC can evaluate WSMAN-dependent checks and report them under **Passed**, **Warnings**, or **Failed**:
+With `AMT_PASSWORD`, RPC evaluates WSMAN-dependent checks. This ACM/CIRA example is fully configured for remote management, with warnings to review:
 
 ```text
 AMT Health Check
-  Detected state: Client Control Mode
-  Selected checks: post-activation (CCM profile)
-
-Password context: AMT password provided; full post-activation checks executed
+  Detected state: Admin Control Mode
+  Selected checks: post-activation
 
 Passed
-  ✓ Running as admin/root
-  ✓ Intel MEI driver installed and responding — 7.0.0-31-generic, current
+  ✓ Running as administrator/root
+  ✓ MEI/HECI driver is responding (version 7.0.0-34-generic)
+  ✓ AMT activated state: admin control mode
   ✓ Platform type: vPro
-  ✓ MEBx enabled in BIOS
-  ✓ AMT version 16.1.25 (supported)
-  ✓ AMT network link available for CCM checks
-  ✓ LMS installed, running — 2406.0.0.0, current
-  ✓ device is in Client Control Mode (CCM)
-  ✓ AMT activated state: Client Control Mode
+  ✓ AMT version 16.1.25 is supported
+  ✓ AMT network link is available for remote management
+  ✓ Local Manageability Service is listening (version 2406.0.0.0)
+  ✓ AMT provisioning is complete
   ✓ Local WSMAN session available
-  ✓ AMT Connection Mode: Direct
-  ✓ redirection listener=true enabledState=32771, user consent=all (CCM default)
-  ✓ OCR supported and enabled
-  ✓ KVM enabled, monitor connected
+  ✓ AMT Connection Mode: CIRA
+  ✓ AMT control mode matches requested ACM
+  ✓ CIRA MPS and remote-access policy are configured
+  ✓ CIRA connection is connected
+  ✓ Redirection listener is enabled; SOL and IDER are enabled
+  ✓ SOL is enabled
+  ✓ KVM user consent: none
+  ✓ TLS mode: Server
+  ✓ Monitor connected
+  ✓ KVM is enabled but offline (EnabledState 6); an active KVM session is not verified
 
 Warnings
-  ! AMT=vprodemo.com OS=iind.intel.com (verify provisioning cert/profile domain alignment)
-  ! mode Server, no trusted root certificates found in inventory
+  ! AMT DNS suffix differs from the host DNS suffix; verify the intended management DNS configuration
 
-Not verified
-  • Management endpoint reachability: direct mode: use --host <console-address> to probe console reachability
-
-✓ Device is fully configured and ready for remote management.
-→ No action required.
+✓ Device is fully configured and ready for remote management; review warnings
+→ Review the warnings for your management configuration.
 
 SKU Information
   Processor: 12th Gen Intel(R) Core(TM) i5-1250P
-  Wired Adapter: Intel Corporation Ethernet Controller I225-LM
-  Wireless Adapter: Not detected
-  OS: Ubuntu 24.04.1 LTS 7.0.0-31-generic
+  Wired Adapter: Ethernet controller: Intel Corporation Ethernet Controller I225-LM (rev 03), AMT link up; OS state up
+  Wireless Adapter: No matching OS adapter, AMT link down; OS state not verified
+  OS: Ubuntu 24.04.1 LTS 7.0.0-34-generic
+
+AMT Details
+  Operational state: Not reported
+
+AMT Connectivity
+  AMT-reported network status: outside enterprise (CIRA)
+  Remote access connection: connected
+  Remote access trigger: periodic
+  TLS mode: Server
 ```
 
-Activated devices can also include control-mode alignment, CIRA configuration and connectivity, remote manageability, One Click Recovery, and management-endpoint reachability checks when applicable.
+Activated devices can also include control-mode alignment, CIRA configuration and connectivity, remote manageability, and management-endpoint reachability checks when applicable.
 
 ## JSON output
 
@@ -292,7 +293,7 @@ The JSON document contains `metadata`, `evaluation`, and `checks` objects. Use t
 
 The `metadata` object includes the command name, timestamp, RPC version, elevation state, and whether a password was provided.
 
-The `evaluation` object includes the detected device state, selected check set, password context, overall result, a human-readable status summary, check counts by category, and the provisioning or manageability result.
+The `evaluation` object includes the detected device state, selected check set, overall result, a human-readable status summary, check counts by category, and the provisioning or manageability result.
 
 Each item in `checks` contains an `id`, a display `name`, a `status`, and a `message`. Status values are `pass`, `warn`, `fail`, `skip`, or `unavailable`. The text report uses the equivalent human-readable labels: **Passed**, **Warning**, **Failed**, and **Not verified**.
 
@@ -304,7 +305,7 @@ This corresponds to the [pre-activation status](#example-pre-activation-status) 
 {
   "metadata": {
     "command": "status",
-    "timestamp": "2026-09-25T22:08:30+05:30",
+    "timestamp": "2026-11-06T12:39:35+05:30",
     "rpcVersion": "Development Build",
     "elevated": true,
     "passwordProvided": false
@@ -312,127 +313,195 @@ This corresponds to the [pre-activation status](#example-pre-activation-status) 
   "evaluation": {
     "detectedState": "pre_provisioning",
     "selectedCheckSet": "pre_activation",
-    "passwordContext": "not required",
-    "overallResult": "ready",
-    "overallStatus": "Device conditionally ready; CCM activation can proceed, but ACM requires DNS domain alignment with the provisioning certificate/profile",
+    "deviceType": "AMT Pro Corporate",
+    "amtVersion": "16.1.25",
+    "amtDnsSuffix": "vprodemo.com",
+    "osDnsSuffix": "iind.intel.com",
+    "remoteAccess": {
+      "networkStatus": "outside enterprise (CIRA)",
+      "remoteStatus": "not connected",
+      "remoteTrigger": "user initiated",
+      "mpsHostname": ""
+    },
+    "processor": "12th Gen Intel(R) Core(TM) i5-1250P",
+    "os": "Ubuntu 24.04.1 LTS 7.0.0-34-generic",
+    "wiredAdapterName": "Ethernet controller: Intel Corporation Ethernet Controller I225-LM (rev 03)",
+    "wirelessAdapterName": "No matching OS adapter",
+    "wiredAdapterStatus": "AMT link up; OS state up",
+    "wirelessAdapterStatus": "AMT link down; OS state not verified",
+    "activationProfiles": [
+      {
+        "profile": "ACM",
+        "result": "conditional",
+        "status": "Device is conditionally ready; AMT and host DNS suffixes differ",
+        "readyToProvision": true,
+        "readyForRemoteActivation": true
+      },
+      {
+        "profile": "CCM",
+        "result": "conditional",
+        "status": "Device is conditionally ready; AMT and host DNS suffixes differ",
+        "readyToProvision": true,
+        "readyForRemoteActivation": true
+      }
+    ],
+    "overallResult": "conditional",
+    "overallStatus": "Device is conditionally ready; AMT and host DNS suffixes differ",
     "totalChecks": 9,
     "passed": 8,
     "warned": 1,
     "failed": 0,
-    "skipped": 0,
-    "unavailable": 0,
-    "readyToProvision": true
+    "notVerified": 0,
+    "readyToProvision": true,
+    "readyForRemoteActivation": true
   },
   "checks": [
-    { "id": "running_as_admin_root", "name": "Running as admin/root", "status": "pass", "message": "Running as admin/root" },
-    { "id": "mei_driver", "name": "MEI driver", "status": "pass", "message": "Intel MEI driver installed and responding — 7.0.0-31-generic, current" },
+    { "id": "running_as_admin_root", "name": "Running as admin/root", "status": "pass", "message": "Running as administrator/root" },
+    { "id": "mei_driver", "name": "MEI driver", "status": "pass", "message": "MEI/HECI driver is responding (version 7.0.0-34-generic)" },
+    { "id": "amt_activated_state", "name": "AMT activated state", "status": "pass", "message": "AMT is in pre-provisioning mode" },
     { "id": "platform_type", "name": "Platform type", "status": "pass", "message": "Platform type: vPro" },
-    { "id": "mebx_enabled_in_bios", "name": "MEBx enabled in BIOS", "status": "pass", "message": "MEBx enabled in BIOS" },
-    { "id": "amt_version", "name": "AMT version", "status": "pass", "message": "AMT version 16.1.25 (supported)" },
-    { "id": "dns_suffix_amt_vs_os", "name": "DNS suffix (AMT vs OS)", "status": "warn", "message": "AMT=vprodemo.com OS=iind.intel.com (verify provisioning cert/profile domain alignment)" },
-    { "id": "amt_wired_wireless_link", "name": "AMT wired/wireless link", "status": "pass", "message": "AMT wired link up" },
-    { "id": "lms_local_manageability_service", "name": "LMS (Local Manageability Service)", "status": "pass", "message": "LMS installed, running — 2406.0.0.0, current" },
-    { "id": "amt_activated_state", "name": "AMT activated state", "status": "pass", "message": "AMT activated state: Pre-provisioning" }
+    { "id": "amt_version", "name": "AMT version", "status": "pass", "message": "AMT version 16.1.25 is supported" },
+    { "id": "dns_suffix", "name": "DNS suffix", "status": "warn", "message": "AMT DNS suffix (vprodemo.com) differs from host DNS suffix (iind.intel.com). Confirm this matches your provisioning setup", "reason": "dns_suffix_mismatch" },
+    { "id": "amt_network_link", "name": "AMT network link", "status": "pass", "message": "AMT network link is available" },
+    { "id": "lms", "name": "LMS", "status": "pass", "message": "Local Manageability Service is listening (version 2406.0.0.0)" },
+    { "id": "host_network_for_remote_activation", "name": "Host networking for remote activation", "status": "pass", "message": "OS adapter matching an AMT MAC is enabled; verify RPS/Console endpoint reachability" }
   ]
 }
 ```
 
-### Example: Activated Device Without a Password (JSON)
+### Example: Activated Device Without a `--password` Argument (JSON)
 
-This corresponds to the [activated device without a password](#example-activated-device-without-a-password) text example:
+Output from the ACM/CIRA run without a `--password` argument or `AMT_PASSWORD`. `passwordProvided` is `false`, but the WSMAN session succeeded using local system account credentials retrieved through HECI. If that fallback is unavailable or fails authentication, WSMAN-dependent checks are reported as **Not verified**.
 
 ```json
 {
   "metadata": {
     "command": "status",
-    "timestamp": "2026-09-25T22:12:04+05:30",
+    "timestamp": "2026-11-06T12:27:02+05:30",
     "rpcVersion": "Development Build",
     "elevated": true,
     "passwordProvided": false
   },
   "evaluation": {
-    "detectedState": "client_control_mode",
+    "detectedState": "admin control mode",
     "selectedCheckSet": "post_activation",
-    "passwordContext": "AMT password not provided; password-dependent checks are marked as Not verified",
-    "overallResult": "partial",
-    "overallStatus": "Some prerequisites missing or not fully configured",
-    "totalChecks": 17,
-    "passed": 9,
+    "deviceType": "AMT Pro Corporate",
+    "amtVersion": "16.1.25",
+    "amtDnsSuffix": "vprodemo.com",
+    "osDnsSuffix": "iind.intel.com",
+    "remoteAccess": {
+      "networkStatus": "outside enterprise (CIRA)",
+      "remoteStatus": "connected",
+      "remoteTrigger": "periodic",
+      "mpsHostname": "10.49.97.55",
+      "mpsPort": 4433
+    },
+    "tlsMode": "Server",
+    "processor": "12th Gen Intel(R) Core(TM) i5-1250P",
+    "os": "Ubuntu 24.04.1 LTS 7.0.0-34-generic",
+    "wiredAdapterName": "Ethernet controller: Intel Corporation Ethernet Controller I225-LM (rev 03)",
+    "wirelessAdapterName": "No matching OS adapter",
+    "wiredAdapterStatus": "AMT link up; OS state up",
+    "wirelessAdapterStatus": "AMT link down; OS state not verified",
+    "overallResult": "not_ready",
+    "overallStatus": "Device is not ready for remote management",
+    "totalChecks": 19,
+    "passed": 16,
     "warned": 1,
-    "failed": 0,
-    "skipped": 0,
-    "unavailable": 7,
-    "manageableInProduction": false,
-    "partialEvaluation": true
+    "failed": 2,
+    "notVerified": 0,
+    "readyToProvision": false,
+    "readyForRemoteActivation": false
   },
   "checks": [
-    { "id": "running_as_admin_root", "name": "Running as admin/root", "status": "pass", "message": "Running as admin/root" },
-    { "id": "mei_driver", "name": "MEI driver", "status": "pass", "message": "Intel MEI driver installed and responding — 7.0.0-31-generic, current" },
+    { "id": "running_as_admin_root", "name": "Running as admin/root", "status": "pass", "message": "Running as administrator/root" },
+    { "id": "mei_driver", "name": "MEI driver", "status": "pass", "message": "MEI/HECI driver is responding (version 7.0.0-34-generic)" },
+    { "id": "amt_activated_state", "name": "AMT activated state", "status": "pass", "message": "AMT activated state: admin control mode" },
     { "id": "platform_type", "name": "Platform type", "status": "pass", "message": "Platform type: vPro" },
-    { "id": "mebx_enabled_in_bios", "name": "MEBx enabled in BIOS", "status": "pass", "message": "MEBx enabled in BIOS" },
-    { "id": "amt_version", "name": "AMT version", "status": "pass", "message": "AMT version 16.1.25 (supported)" },
-    { "id": "amt_wired_wireless_link", "name": "AMT wired/wireless link", "status": "pass", "message": "AMT network link available for CCM checks" },
-    { "id": "lms_local_manageability_service", "name": "LMS (Local Manageability Service)", "status": "pass", "message": "LMS installed, running — 2406.0.0.0, current" },
-    { "id": "amt_activated_state", "name": "AMT activated state", "status": "pass", "message": "AMT activated state: Client Control Mode" },
-    { "id": "amt_connection_mode", "name": "AMT connection mode", "status": "pass", "message": "AMT Connection Mode: Direct" },
-    { "id": "dns_suffix_amt_vs_os", "name": "DNS suffix (AMT vs OS)", "status": "warn", "message": "AMT=vprodemo.com OS=iind.intel.com (verify provisioning cert/profile domain alignment)" },
-    { "id": "requested_mode_alignment", "name": "Requested mode alignment", "status": "unavailable", "message": "auto mode (no --acm/--ccm constraint requested)" },
-    { "id": "management_endpoint_reachability", "name": "Management endpoint reachability", "status": "unavailable", "message": "direct mode: use --host <console-address> to probe console reachability" },
-    { "id": "local_wsman_session", "name": "Local WSMAN session", "status": "unavailable", "message": "AMT password not provided; WSMAN-only checks skipped" },
-    { "id": "tls_configuration_trust_inventory", "name": "TLS configuration / trust inventory", "status": "unavailable", "message": "WSMAN client required" },
-    { "id": "redirection_consent_baseline", "name": "Redirection / consent baseline", "status": "unavailable", "message": "WSMAN client required" },
-    { "id": "ocr_enabled_in_bios", "name": "OCR enabled in BIOS", "status": "unavailable", "message": "WSMAN client required" },
-    { "id": "kvm_enabled", "name": "KVM enabled", "status": "unavailable", "message": "WSMAN client required" }
+    { "id": "amt_version", "name": "AMT version", "status": "pass", "message": "AMT version 16.1.25 is supported" },
+    { "id": "dns_suffix", "name": "DNS suffix", "status": "warn", "message": "AMT DNS suffix differs from the host DNS suffix; verify the intended management DNS configuration", "reason": "dns_suffix_mismatch" },
+    { "id": "amt_network_link", "name": "AMT network link", "status": "pass", "message": "AMT network link is available for remote management" },
+    { "id": "lms", "name": "LMS", "status": "pass", "message": "Local Manageability Service is listening (version 2406.0.0.0)" },
+    { "id": "amt_provisioning_state", "name": "AMT provisioning state", "status": "pass", "message": "AMT provisioning is complete" },
+    { "id": "wsman_session", "name": "Local WSMAN session", "status": "pass", "message": "Local WSMAN session available" },
+    { "id": "amt_connection_mode", "name": "AMT connection mode", "status": "pass", "message": "AMT Connection Mode: CIRA" },
+    { "id": "cira_configuration", "name": "CIRA configuration", "status": "pass", "message": "CIRA MPS and remote-access policy are configured" },
+    { "id": "cira_connection", "name": "CIRA connection", "status": "pass", "message": "CIRA connection is connected" },
+    { "id": "redirection_service", "name": "Redirection service", "status": "fail", "message": "Redirection listener is disabled; listener is disabled" },
+    { "id": "sol_redirection", "name": "SOL redirection", "status": "fail", "message": "SOL is configured but the redirection listener is disabled" },
+    { "id": "kvm_user_consent", "name": "KVM user consent", "status": "pass", "message": "KVM user consent: none" },
+    { "id": "tls_mode", "name": "TLS mode", "status": "pass", "message": "TLS mode: Server" },
+    { "id": "monitor_connected", "name": "Monitor", "status": "pass", "message": "Monitor connected" },
+    { "id": "kvm_redirection", "name": "KVM redirection", "status": "pass", "message": "KVM is enabled but offline (EnabledState 6); an active KVM session is not verified" }
   ]
 }
 ```
 
 ### Example: Activated Device with a Password (JSON)
 
-This corresponds to the [activated device with a password](#example-activated-device-with-a-password) text example:
+Output from the ACM/CIRA run with a password provided:
 
 ```json
 {
   "metadata": {
     "command": "status",
-    "timestamp": "2026-09-25T22:15:47+05:30",
+    "timestamp": "2026-11-06T12:26:44+05:30",
     "rpcVersion": "Development Build",
     "elevated": true,
     "passwordProvided": true
   },
   "evaluation": {
-    "detectedState": "client_control_mode",
-    "selectedCheckSet": "post_activation_ccm",
-    "passwordContext": "AMT password provided; full post-activation checks executed",
+    "detectedState": "admin control mode",
+    "selectedCheckSet": "post_activation",
+    "deviceType": "AMT Pro Corporate",
+    "amtVersion": "16.1.25",
+    "amtDnsSuffix": "vprodemo.com",
+    "osDnsSuffix": "iind.intel.com",
+    "remoteAccess": {
+      "networkStatus": "outside enterprise (CIRA)",
+      "remoteStatus": "connected",
+      "remoteTrigger": "periodic",
+      "mpsHostname": "10.49.97.55",
+      "mpsPort": 4433
+    },
+    "tlsMode": "Server",
+    "processor": "12th Gen Intel(R) Core(TM) i5-1250P",
+    "os": "Ubuntu 24.04.1 LTS 7.0.0-34-generic",
+    "wiredAdapterName": "Ethernet controller: Intel Corporation Ethernet Controller I225-LM (rev 03)",
+    "wirelessAdapterName": "No matching OS adapter",
+    "wiredAdapterStatus": "AMT link up; OS state up",
+    "wirelessAdapterStatus": "AMT link down; OS state not verified",
     "overallResult": "ready",
-    "overallStatus": "Device is fully configured and ready for remote management",
-    "totalChecks": 17,
-    "passed": 14,
-    "warned": 2,
+    "overallStatus": "Device is fully configured and ready for remote management; review warnings",
+    "totalChecks": 19,
+    "passed": 18,
+    "warned": 1,
     "failed": 0,
-    "skipped": 0,
-    "unavailable": 1,
-    "manageableInProduction": true,
-    "partialEvaluation": false
+    "notVerified": 0,
+    "readyToProvision": false,
+    "readyForManagement": true,
+    "readyForRemoteActivation": false
   },
   "checks": [
-    { "id": "running_as_admin_root", "name": "Running as admin/root", "status": "pass", "message": "Running as admin/root" },
-    { "id": "mei_driver", "name": "MEI driver", "status": "pass", "message": "Intel MEI driver installed and responding — 7.0.0-31-generic, current" },
+    { "id": "running_as_admin_root", "name": "Running as admin/root", "status": "pass", "message": "Running as administrator/root" },
+    { "id": "mei_driver", "name": "MEI driver", "status": "pass", "message": "MEI/HECI driver is responding (version 7.0.0-34-generic)" },
+    { "id": "amt_activated_state", "name": "AMT activated state", "status": "pass", "message": "AMT activated state: admin control mode" },
     { "id": "platform_type", "name": "Platform type", "status": "pass", "message": "Platform type: vPro" },
-    { "id": "mebx_enabled_in_bios", "name": "MEBx enabled in BIOS", "status": "pass", "message": "MEBx enabled in BIOS" },
-    { "id": "amt_version", "name": "AMT version", "status": "pass", "message": "AMT version 16.1.25 (supported)" },
-    { "id": "amt_wired_wireless_link", "name": "AMT wired/wireless link", "status": "pass", "message": "AMT network link available for CCM checks" },
-    { "id": "lms_local_manageability_service", "name": "LMS (Local Manageability Service)", "status": "pass", "message": "LMS installed, running — 2406.0.0.0, current" },
-    { "id": "control_mode", "name": "Control mode", "status": "pass", "message": "device is in Client Control Mode (CCM)" },
-    { "id": "amt_activated_state", "name": "AMT activated state", "status": "pass", "message": "AMT activated state: Client Control Mode" },
-    { "id": "local_wsman_session", "name": "Local WSMAN session", "status": "pass", "message": "Local WSMAN session established" },
-    { "id": "amt_connection_mode", "name": "AMT connection mode", "status": "pass", "message": "AMT Connection Mode: Direct" },
-    { "id": "redirection_consent_baseline", "name": "Redirection / consent baseline", "status": "pass", "message": "listener=true enabledState=32771, user consent=all (CCM default)" },
-    { "id": "ocr_enabled_in_bios", "name": "OCR enabled in BIOS", "status": "pass", "message": "OCR supported and enabled" },
-    { "id": "kvm_enabled", "name": "KVM enabled", "status": "pass", "message": "KVM enabled, monitor connected" },
-    { "id": "dns_suffix_amt_vs_os", "name": "DNS suffix (AMT vs OS)", "status": "warn", "message": "AMT=vprodemo.com OS=iind.intel.com (verify provisioning cert/profile domain alignment)" },
-    { "id": "tls_configuration_trust_inventory", "name": "TLS configuration / trust inventory", "status": "warn", "message": "mode Server, no trusted root certificates found in inventory" },
-    { "id": "management_endpoint_reachability", "name": "Management endpoint reachability", "status": "unavailable", "message": "direct mode: use --host <console-address> to probe console reachability" }
+    { "id": "amt_version", "name": "AMT version", "status": "pass", "message": "AMT version 16.1.25 is supported" },
+    { "id": "dns_suffix", "name": "DNS suffix", "status": "warn", "message": "AMT DNS suffix differs from the host DNS suffix; verify the intended management DNS configuration", "reason": "dns_suffix_mismatch" },
+    { "id": "amt_network_link", "name": "AMT network link", "status": "pass", "message": "AMT network link is available for remote management" },
+    { "id": "lms", "name": "LMS", "status": "pass", "message": "Local Manageability Service is listening (version 2406.0.0.0)" },
+    { "id": "amt_provisioning_state", "name": "AMT provisioning state", "status": "pass", "message": "AMT provisioning is complete" },
+    { "id": "wsman_session", "name": "Local WSMAN session", "status": "pass", "message": "Local WSMAN session available" },
+    { "id": "amt_connection_mode", "name": "AMT connection mode", "status": "pass", "message": "AMT Connection Mode: CIRA" },
+    { "id": "cira_configuration", "name": "CIRA configuration", "status": "pass", "message": "CIRA MPS and remote-access policy are configured" },
+    { "id": "cira_connection", "name": "CIRA connection", "status": "pass", "message": "CIRA connection is connected" },
+    { "id": "redirection_service", "name": "Redirection service", "status": "pass", "message": "Redirection listener is enabled; SOL and IDER are enabled" },
+    { "id": "sol_redirection", "name": "SOL redirection", "status": "pass", "message": "SOL is enabled" },
+    { "id": "kvm_user_consent", "name": "KVM user consent", "status": "pass", "message": "KVM user consent: none" },
+    { "id": "tls_mode", "name": "TLS mode", "status": "pass", "message": "TLS mode: Server" },
+    { "id": "monitor_connected", "name": "Monitor", "status": "pass", "message": "Monitor connected" },
+    { "id": "kvm_redirection", "name": "KVM redirection", "status": "pass", "message": "KVM is enabled but offline (EnabledState 6); an active KVM session is not verified" }
   ]
 }
 ```
