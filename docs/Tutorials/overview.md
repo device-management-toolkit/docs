@@ -38,10 +38,11 @@ Learn how to generate a JWT token for Authorization and construct API calls to m
 
 [Get Started with REST APIs](./apiTutorial.md){: .md-button .md-button--primary }
 
-### Modify User Authentication
-Customize the authentication flow for the Sample Web UI and MPS APIs.
+### Authentication
+Replace the default admin login with your own identity provider.
 
-[Modify User Auth](./modifyUserAuth.md){: .md-button .md-button--primary }
+- [Console OAuth / OIDC](./Authentication/consoleOAuth.md): sign in to Console with Microsoft Entra ID, Amazon Cognito, Keycloak or another OIDC provider.
+- [MPS User Authentication](./Authentication/modifyUserAuth.md): customize the authentication flow for the Sample Web UI and MPS APIs (Cloud deployment).
 
 ### Localization
 Add language support to Console or the Sample Web UI.
