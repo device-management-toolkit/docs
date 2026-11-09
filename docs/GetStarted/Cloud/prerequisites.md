@@ -20,6 +20,9 @@ This section contains prerequisites for deploying Device Management Toolkit's MP
 
 Both systems must use a wired (i.e., cable) connection on the same network.
 
+!!! note "Note - Supported Intel® AMT Versions"
+    One MPS endpoint serves Intel® AMT 12 through Intel® AMT 22. Intel® AMT 11 is deprecated. Intel® AMT 22 devices need extra preparation on both the MPS and RPS sides. See [AMT 22 Support and Mixed Fleets](../../Deployment/amt22Support.md).
+
 ### Development System Software
 
 **Before MPS and RPS installation, install the following software on your development system:**

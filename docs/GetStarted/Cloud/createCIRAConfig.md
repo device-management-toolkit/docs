@@ -2,6 +2,9 @@
 
 Client Initiated Remote Access (CIRA) enables a CIRA-capable edge device to initiate and establish a persistent connection to the MPS. As long as the managed device is connected to the network and to a power source, it can maintain a persistent connection.
 
+!!! important "Important - Intel® AMT 22 Devices"
+    Intel® AMT 22 devices refuse to connect to an MPS that presents a certificate with a 2048-bit RSA key. A fresh MPS deployment uses a 4096-bit key by default. If you upgraded an existing deployment, check the key size and move it if needed. See [AMT 22 Support and Mixed Fleets](../../Deployment/amt22Support.md#mps-certificate-key-size).
+
 !!! note "Note - Wireless Activations"
     This express setup assumes the managed device (i.e. AMT device) is on a wired connection for quickest setup.  To learn more about a Wireless Setup, see the [Wireless Activation Tutorial](../../Tutorials/createWiFiConfig.md).
 

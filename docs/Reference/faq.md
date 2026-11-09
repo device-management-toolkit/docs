@@ -40,6 +40,13 @@ The `deployment` repository itself is released monthly and tagged using the `{Mo
 Device Management Toolkit aligns with the Intel Edge Computing Group support roadmap for Intel vPro® Platform and Intel® AMT devices. This is currently calculated as **Latest AMT Version - 7**.
 
 
+### Does the toolkit support Intel® AMT 22, and what happened to Intel® AMT 11?
+
+Intel® AMT 22 is supported. It needs a SHA-384 provisioning certificate for ACM and an MPS certificate with an RSA 3072-bit or larger key, and it does not work with only one of the two. See [AMT 22 Support and Mixed Fleets](../Deployment/amt22Support.md).
+
+MPS serves Intel® AMT 12 through Intel® AMT 22 on one CIRA port. Intel® AMT 11 is deprecated, because it needs a certificate that Intel® AMT 22 refuses. To keep Intel® AMT 11 devices, see [Mixed Fleets and AMT 11](../Deployment/amt22Support.md#mixed-fleets-and-amt-11).
+
+
 ### How do I migrate to a new Deployment release?
 
 Migration resources for both Kubernetes and local Docker deployments can be found in the [Upgrade Toolkit Version documentation](../Deployment/upgradeVersion.md).

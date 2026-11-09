@@ -12,6 +12,9 @@ The steps below outline how to generate a custom certificate based on the requir
 !!! note "Note - Unprovisioning will Delete Custom Hashes"
     When a device is unprovisioned, AMT will delete and remove all hashes inserted. If you want to then activate the device again, you will have to reinsert the certificate hash again.
 
+!!! important "Important - AMT 22 Requires SHA-384 and RSA 3072-bit Keys"
+    The commands below create a SHA-256 certificate with RSA 2048-bit keys. Intel® AMT 22 refuses such a certificate. To activate an AMT 22 device, use the values in [SHA-384 Values for AMT 22](#sha-384-values-for-amt-22). Older devices accept both. See [SHA-384 Provisioning Certificate](sha384ProvisioningCert.md).
+
 ## Generate Custom Provisioning Certificate
 
 These steps create a certificate for a domain `example.com` and walk through how to successfully activate a device using the `example.com` DNS suffix.
@@ -130,6 +133,20 @@ First, we need to prepare two files:
         SHA1 Fingerprint=51:45:E3:A4:AE:66:88:E0:AF:85:EC:EB:06:74:6B:8D:C3:07:C1:9D
         ```
         
+
+### SHA-384 Values for AMT 22
+
+To create a certificate that AMT 22 accepts, repeat the steps above with these changes. Every certificate in the chain, including the root, must be SHA-384 with an RSA key of 3072 bits or more.
+
+| File or step | Change |
+| :-- | :-- |
+| `csr.conf` | Set `default_bits = 3072` and `default_md = sha384`. |
+| Root certificate (step 2) | Use `-sha384` and `-newkey rsa:3072` instead of `-sha256` and `-newkey rsa:2048`. |
+| Server key (step 3) | Generate the key with `openssl genrsa -out server.key 3072`. |
+| Signing the request (step 5) | Use `-sha384` instead of `-sha256`. |
+| Root hash (step 7) | Use the SHA-384 fingerprint: `openssl x509 -noout -fingerprint -sha384 -inform pem -in rootCA.crt`. AMT 22 lists trusted root hashes as SHA-384. |
+
+Before you upload the `.pfx` file, [check the certificate](sha384ProvisioningCert.md#check-the-certificate-before-you-upload-it).
 
 ## Upload Provisioning Certificate
 
