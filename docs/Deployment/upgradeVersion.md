@@ -5,6 +5,20 @@
     Every deployment environment is unique. The prerequisites and setup steps provided here serve as general guidance for running the latest published images.
     Please ensure you follow your organization’s internal deployment, security, and validation procedures when upgrading or updating your environment.
 
+### Upgrade to the Release with Intel® AMT 22 Support
+
+This release adds support for Intel® AMT 22 devices and deprecates Intel® AMT 11. It does not change the databases, but it changes what MPS presents to devices and what RPS accepts, so an existing deployment needs a few steps:
+
+1. Upgrade RPC-Go on the managed devices before, or together with, RPS. For RPC-Go 2.x, use release `[2.x version to be confirmed]` or later. For RPC-Go 3.x, use a release later than `v3.0.0-beta.64`.
+
+2. If you activate devices in ACM, replace the certificate in your domain profiles with a SHA-384 provisioning certificate. See [SHA-384 Provisioning Certificate](../Reference/Certificates/sha384ProvisioningCert.md).
+
+3. If you will onboard AMT 22 devices, move the MPS leaf certificate to a 3072-bit or 4096-bit key. MPS does not change a stored leaf by itself. See [Existing Deployment](amt22Support.md#existing-deployment).
+
+4. If you have AMT 11 devices, read [Mixed Fleets and AMT 11](amt22Support.md#mixed-fleets-and-amt-11) before you upgrade MPS.
+
+Provisioned devices keep their trust in the MPS root and are not re-provisioned.
+
 ### Upgrade to 2.28 (Sep 25) from 2.18 (Dec 23) or later
 
 The 2.28 release of DMT Cloud Deployment requires updates to the `rpsdb` database. If upgrading from **2.18 (Dec 23)** or any later version, run the following SQL scripts to add or modify tables before continuing with the upgrade

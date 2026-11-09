@@ -102,6 +102,7 @@ nav:
   - Deployment:
       - Overview: Deployment/overview.md
       - Upgrade Toolkit Version: Deployment/upgradeVersion.md
+      - AMT 22 Support and Mixed Fleets: Deployment/amt22Support.md
       - Centralized Configuration:
           - Enable Consul: Deployment/centralizedConfiguration.md
       - Database:
@@ -206,6 +207,7 @@ nav:
       - DNS Suffix: Reference/MEBX/dnsSuffix.md
       - Unprovisioning: Reference/MEBX/unprovision.md
     - Certificates:
+      - SHA-384 Provisioning Certificate: Reference/Certificates/sha384ProvisioningCert.md
       - Custom Provisioning Certificate: Reference/Certificates/generateProvisioningCert.md
       - Enroll Custom Provisioning Certificate using USBFile: Reference/Certificates/enrollCustomCertAMT.md
       - TLS Certificate: Reference/Certificates/tls.md

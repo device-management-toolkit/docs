@@ -81,6 +81,18 @@ There is an issue for older AMT 11.8.x firmware where the device is successfully
 
 4. If the activation and configuration was successful, but the device still does not show as connected, see [Step 4 of Why does an activated device show disconnected in MPS?](#why-does-an-activated-device-show-disconnected-in-mps).
 
+### Intel® AMT 22 Device Activates but Does Not Connect
+
+An AMT 22 device can finish activation and show a successful profile, but never show as connected in MPS. The usual cause is that MPS presents a certificate with a 2048-bit RSA key, which AMT 22 refuses on the CIRA connection.
+
+1. Check the key size MPS serves. Replace `[mps-address]` with your MPS address.
+
+    ``` bash
+    openssl s_client -connect [mps-address]:4433 -servername [mps-address] </dev/null 2>/dev/null | openssl x509 -noout -text | grep "Public-Key"
+    ```
+
+2. If it shows `2048 bit`, move the leaf certificate to 3072 or 4096 bits. See [AMT 22 Support and Mixed Fleets](../Deployment/amt22Support.md#existing-deployment).
+
 ### RPC Returns `Failed to Add MPS Root Certificate`
 
 RPC may return `Failed to Add MPS Root Certificate` when running the `activate` command. The following resolution steps may help.
@@ -133,6 +145,8 @@ Additional logging details can be enabled by modifying the `log_level` field in 
 | Error Issue or Message | Possible Solutions |
 | ------------- | ------------------ |
 | Create a profile fails or information cannot be read from vault. | Make sure both Vault and Postgres are running. For details, see the `docker ps` command in [Build and Run Docker Images](../GetStarted/Cloud/setup.md#Builddockerimages).|
+| `Provisioning certificate rejected: <role> "<name>" is signed with sha256, SHA-384 required` or `... has a 2048-bit RSA key, 3072 bits required` | The device is an Intel® AMT 22 device and a certificate in the provisioning chain is not SHA-384 or has a small key. Nothing was changed on the device. See [SHA-384 Provisioning Certificate](./Certificates/sha384ProvisioningCert.md#what-happens-when-the-certificate-does-not-fit). |
+| `Intel DICE chain verification failed: not signed by a trusted root` | RPS does not trust the certificate chain an Intel® AMT 22 device presented. |
 | An error occurred during provisioning. | (1) Verify that the correct certificate is being used. <br> (2) Verify the Domain suffix. <br> (3) Verify RPS is able to reach the AMT device. Check firewalls and pings. |
 
 
