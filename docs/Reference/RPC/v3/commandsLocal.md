@@ -397,7 +397,7 @@ These flags apply to all `configure` subcommands in addition to any subcommand-s
 | [amtfeatures](#amtfeatures) | `setamtfeatures` | Configure AMT features (KVM, SOL, IDER, user consent). |
 | [amtpassword](#amtpassword) | `changeamtpassword` | Change AMT password. |
 | [mebx](#mebx) | `setmebx` | Configure MEBx password (ACM only). |
-| [syncclock](#syncclock) | `synctime` | Synchronize host OS clock to AMT. |
+| [sync-clock](#sync-clock) | `syncclock`, `synctime` | Synchronize host OS clock to AMT locally or through RPS. |
 | [wired](#wired) | `ethernet`, `addethernetsettings` | Configure wired ethernet settings. |
 | [wireless](#wireless) | `addwifisettings` | Configure WiFi settings. |
 | [tls](#tls) | `configuretls` | Configure TLS settings. |
@@ -405,8 +405,8 @@ These flags apply to all `configure` subcommands in addition to any subcommand-s
 | [wifisync](#wifisync) | `wifi` | Control WiFi and local profile synchronization. |
 | [proxy](#proxy) | `httpproxy` | Configure HTTP proxy access point for firmware-initiated connections. |
 | [hostname](#hostname) | `synchostname`, `sethostname` | Synchronize host OS hostname and DNS suffix to AMT general settings. |
-| [enable-op-state](#enable-op-state) | `enable-operational-state` | Enable AMT operational state (requires unprovisioned state). |
-| [disable-op-state](#disable-op-state) | `disable-operational-state` | Disable AMT operational state (requires unprovisioned state). |
+| [enable-amt](#enable-amt) | `enable-op-state`, `enable-operational-state` | Enable AMT operational state (requires unprovisioned state). |
+| [disable-amt](#disable-amt) | `disable-op-state`, `disable-operational-state` | Disable AMT operational state (requires unprovisioned state). |
 
 ---
 
@@ -470,15 +470,29 @@ rpc configure mebx --mebxpassword newMEBxPassword --password AMTPassword
 
 ---
 
-### syncclock
+### sync-clock
 
-Synchronize the host OS clock to AMT.
+Synchronize the host OS clock to AMT. Without `--url`, RPC synchronizes locally. With an RPS WebSocket URL, it requests remote time synchronization through RPS.
+
+!!! note "Remote Synchronization"
+  When `--url` is provided, the RPS server must be running and reachable. Omit `--url` to synchronize locally.
 
 ```bash
-rpc configure syncclock --password AMTPassword
+rpc configure sync-clock --password "$AMT_PASSWORD"
 ```
 
-No additional flags.
+For remote synchronization, pass the RPS URL. The URL can also be set with `RPC_URL`.
+
+```bash
+sudo ./rpc configure sync-clock \
+  --url wss://<rps-host>/activate \
+  --password "$AMT_PASSWORD" \
+  --log-level debug
+```
+
+| Flag | Short | Description | Env Var |
+|:-----|:------|:------------|:--------|
+| `--url` | `-u` | Server URL for remote time synchronization. Omit for local synchronization. | `RPC_URL` |
 
 ---
 
@@ -896,27 +910,27 @@ rpc configure proxy --delete --address proxy.corp.com --password AMTPassword
 
 ---
 
-### enable-op-state
+### enable-amt
 
 Enable AMT operational state. Requires the device to be in pre-provisioning state.
 
 ```bash
-rpc configure enable-op-state
+rpc configure enable-amt
 ```
 
-No additional flags. Aliases: `enable-operational-state`.
+No additional flags. Aliases: `enable-op-state`, `enable-operational-state`.
 
 ---
 
-### disable-op-state
+### disable-amt
 
 Disable AMT operational state. Requires the device to be in pre-provisioning state.
 
 !!! warning "This command disables AMT"
-    Running `disable-op-state` turns off the AMT operational state entirely. If you later want to re-enable AMT using `enable-op-state`, a **reboot** of the device may be required after running `disable-op-state` before the enable command will take effect.
+    Running `disable-amt` turns off the AMT operational state entirely. If you later want to re-enable AMT using `enable-amt`, a **reboot** of the device may be required after running `disable-amt` before the enable command will take effect.
 
 ```bash
-rpc configure disable-op-state
+rpc configure disable-amt
 ```
 
-No additional flags. Aliases: `disable-operational-state`.
+No additional flags. Aliases: `disable-op-state`, `disable-operational-state`.

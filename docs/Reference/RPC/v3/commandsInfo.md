@@ -36,8 +36,8 @@ Running `amtinfo` without options prints all available information.
 | Hostname (OS) | `--hostname` | | Device hostname as set in the OS. |
 | RAS Status | `--ras` | `-a` | Remote Access Service status: connection state, trigger type, and MPS hostname. |
 | LAN Settings | `--lan` | `-l` | Wired/wireless adapter info: DHCP, link status, IP addresses, MAC address. |
-| System Certificates | `--cert` | `-c` | System certificate hashes. If `--password` is also provided, prints both system and user certificate hashes. |
-| User Certificates | `--userCert` | | User certificate hashes. AMT password required. |
+| System Certificates | `--cert` | `-c` | System certificate hashes. |
+| User Certificates | `--userCert` | | User certificate hashes. No AMT password is required; RPC uses Local System Account credentials when no password is supplied. |
 | All | `--all` | `-A` | Show all AMT information. |
 
 ### Syncing Device Info to Server
@@ -65,7 +65,7 @@ rpc amtinfo --sync --url https://mps.example.com/api/v1/devices --auth-token eyJ
 | `--json` | `-j` | Output in JSON format. | |
 | `--verbose` | `-v` | Enable verbose logging. | |
 | `--log-level` | | Log level: `trace`, `debug`, `info`, `warn`, `error`, `fatal`, `panic`. Default: `info`. | |
-| `--password` | | AMT admin password. Required for `--userCert`. | `AMT_PASSWORD` |
+| `--password` | | AMT admin password, when required by an operation. | `AMT_PASSWORD` |
 | `--skip-amt-cert-check` | | Skip AMT/LMS TLS certificate verification. **Required for AMT 19+.** | |
 | `--lmsaddress` | | LMS address. Default: `localhost`. | |
 | `--lmsport` | | LMS port. Default: `16992` for AMT ≤ v18, `16993` for AMT ≥ v19. | |
@@ -85,8 +85,8 @@ rpc amtinfo --ver --mode
 # Show LAN settings in JSON
 rpc amtinfo --lan --json
 
-# Show user certificates (requires password)
-rpc amtinfo --userCert --password AMTPassword
+# Show user certificates
+rpc amtinfo --userCert
 
 # Sync device info to Console
 rpc amtinfo --sync --url https://mps.example.com/api/v1/devices --auth-token eyJhbGci...

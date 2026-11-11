@@ -93,13 +93,7 @@ rpc-go configure --configv2 ./profile.yaml
 ### After (v3.x)
 
 ```bash
-rpc-go configure --profile ./profile.yaml
-```
-
-Short form:
-
-```bash
-rpc-go configure -p ./profile.yaml
+rpc activate --profile ./myprofile.yaml --key "myprofile_key"
 ```
 
 ## What Stays the Same in v3.x
