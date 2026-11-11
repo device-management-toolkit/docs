@@ -48,7 +48,7 @@ This model is useful for environments where profiles are pre-generated, RPS is *
 !!! tip "Version Guidance"
     **Use v2.x for production.** It is the current stable release with full documentation and support.
 
-    **v3.x is in Beta** and available for early testing and feedback. It introduces a clearer configuration model, standardized CLI flags, and a faster local activation workflow. See [About v3](./v3/about-v3.md) for details.
+    **v3.x is in Beta** and available for early testing and feedback. It introduces a clearer configuration model, standardized CLI flags, and a faster local activation workflow. See [About v3](./v3/about-v3.md) for details. The `rpc status` health checker is available in v3.0.0-beta.80 and later; see [RPC Health Checker](./v3/healthChecker.md).
 
     v2.x remains fully supported while v3.x is in Beta. All existing activation flows, encrypted profiles, and RPS interactions work in both versions.
 
@@ -62,6 +62,5 @@ This model is useful for environments where profiles are pre-generated, RPS is *
 ## Related Topics
 
 - [Build RPC-Go Manually](./buildRPC_Manual.md)  
-- [RPC Health Checker](./v3/healthChecker.md)
 - For v2.x configuration details and CLI options: [v2.x CLI](./v2/commandsRPC.md)  
 - For v3.x configuration details and CLI options: [v3.x CLI – Work in Progress](./v3/about-v3.md)
