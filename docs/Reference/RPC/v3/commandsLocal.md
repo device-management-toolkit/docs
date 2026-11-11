@@ -87,7 +87,7 @@ rpc activate --local --skip-amt-cert-check
     auth-token: ""               # Bearer token (preferred)
     auth-username: ""            # Basic auth username (if no token)
     auth-password: ""            # Basic auth password (if no token)
-    auth-endpoint: "http://localhost:8181/api/v1/authorize"
+    auth-endpoint: ""            # Optional token exchange endpoint override
 
     # ── amtinfo ───────────────────────────────────────────────────────────────
     amtinfo:
@@ -446,8 +446,8 @@ Change or update the AMT password locally. If `--newamtpassword` is not provided
 rpc configure amt-password --password CurrentAMTPassword --newamtpassword NewAMTPassword
 ```
 
-| Flag | Description |
-|:-----|:------------|
+| Flag | Description | Env Var |
+|:-----|:------------|:--------|
 | `--newamtpassword` | New AMT password to set. | `NEW_AMT_PASSWORD` |
 
 ---
@@ -621,40 +621,22 @@ Configure AMT wired ethernet settings for DHCP or Static IP. Optionally configur
 
     #### with 802.1x
 
-    === "Using Enterprise Assistant"
+    !!! warning "Enterprise Assistant is not supported for wired 802.1x in v3"
+        RPC-Go v3 does not retrieve wired 802.1x certificates from Enterprise Assistant. Supply the client certificate, CA certificate, and private key manually, as shown below.
 
-        See [Enterprise Assistant RPC-Go 802.1x Configuration](../../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
-
-        === "YAML"
-            ```yaml title="config.yaml"
-            amt-password: AMTPassword
-            configure:
-              wired:
-                dhcp: true
-                ipsync: true
-                ieee8021xProfileName: exampleIeee8021xEAP-TLS
-                ieee8021xAuthenticationProtocol: 0
-                eaAddress: http://<YOUR-IPADDRESS-OR-FQDN>:8000
-                eaUsername: eaUser
-                eaPassword: eaPass
-            ```
-
-    === "Without Enterprise Assistant"
-
-        === "YAML"
-            ```yaml title="config.yaml"
-            amt-password: AMTPassword
-            configure:
-              wired:
-                dhcp: true
-                ipsync: true
-                ieee8021xProfileName: exampleIeee8021xEAP-TLS
-                ieee8021xUsername: exampleUserName
-                ieee8021xAuthenticationProtocol: 0
-                ieee8021xClientCert: "<client certificate PEM>"
-                ieee8021xCACert: "<CA certificate PEM>"
-                ieee8021xPrivateKey: "<private key PEM>"
-            ```
+    ```yaml title="config.yaml"
+    amt-password: AMTPassword
+    configure:
+      wired:
+        dhcp: true
+        ipsync: true
+        ieee8021xProfileName: exampleIeee8021xEAP-TLS
+        ieee8021xUsername: exampleUserName
+        ieee8021xAuthenticationProtocol: 0
+        ieee8021xClientCert: "<client certificate PEM>"
+        ieee8021xCACert: "<CA certificate PEM>"
+        ieee8021xPrivateKey: "<private key PEM>"
+    ```
 
 === "Inline Flags"
 
@@ -693,9 +675,9 @@ Configure AMT wired ethernet settings for DHCP or Static IP. Optionally configur
 | `--ieee8021xClientCert` | Client certificate (PEM format). Alias: `--clientcert`. |
 | `--ieee8021xCACert` | CA certificate (PEM format). Alias: `--cacert`. |
 | `--ieee8021xPrivateKey` | Private key (PEM format). Alias: `--privatekey`. |
-| `--eaAddress` | IP address or FQDN of Enterprise Assistant. |
-| `--eaUsername` | Enterprise Assistant username. |
-| `--eaPassword` | Enterprise Assistant password. |
+| `--eaAddress` | IP address or FQDN of Enterprise Assistant. Wired 802.1x provisioning is not implemented. |
+| `--eaUsername` | Enterprise Assistant username. Wired 802.1x provisioning is not implemented. |
+| `--eaPassword` | Enterprise Assistant password. Wired 802.1x provisioning is not implemented. |
 
 ---
 

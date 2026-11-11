@@ -56,7 +56,7 @@ rpc amtinfo --sync --url https://mps.example.com/api/v1/devices --auth-token eyJ
 | `--auth-username` | Username for basic auth. | `AUTH_USERNAME` |
 | `--auth-password` | Password for basic auth. | `AUTH_PASSWORD` |
 | `--auth-endpoint` | Token endpoint URL. Default: `/api/v1/authorize`. | |
-| `--skip-cert-check` | `-n` | Skip certificate verification for the server connection. **Insecure.** | |
+| `--skip-cert-check` (`-n`) | Skip certificate verification for the server connection. **Insecure.** | |
 
 ### `amtinfo` Common Flags
 

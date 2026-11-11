@@ -21,8 +21,10 @@ Run `rpc -h` to see all available commands:
 === "Windows"
 
     ```powershell
-    rpc.exe -h
+    .\rpc.exe -h
     ```
+
+    If `rpc.exe` is on `PATH`, you can run `rpc.exe -h` instead.
 
 | Command | Description | Modes | Reference |
 |:--------|:------------|:------|:----------|
