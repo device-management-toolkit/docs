@@ -9,6 +9,8 @@ Use local mode when a server (Console/RPS) is not required, when profiles are ex
 !!! warning "AMT 19+: `--skip-amt-cert-check` Required"
     Starting with AMT 19, Intel® AMT uses TLS for local communication. The TLS certificate is **not** in the OS trust store, so RPC-Go cannot validate it. You must pass `--skip-amt-cert-check` on AMT 19+ platforms for **all** local mode commands (`activate`, `deactivate`, `configure`). A future release will remove this requirement.
 
+Global options are listed in the [Commands Overview](commands.md#global-flags).
+
 ---
 
 ## activate
@@ -228,9 +230,13 @@ rpc activate --local --acm --provisioningCert "{BASE64_PROV_CERT}" --provisionin
 | `--acm` | | Activate in Admin Control Mode (flag-based only). | |
 | `--provisioningCert` | | Provisioning certificate (base64 encoded). ACM only. | `PROVISIONING_CERT` |
 | `--provisioningCertPwd` | | Provisioning certificate password. ACM only. | `PROVISIONING_CERT_PASSWORD` |
-| `--mebxpassword` | | MEBx password mandatory for AMT 19+ activation to ACM. | `MEBX_PASSWORD` |
+| `--mebxpassword` | | MEBx password for AMT 19+ TLS activation to ACM. | `MEBX_PASSWORD` |
 | `--key` | `-k` | 32-character key to decrypt an encrypted profile file. Required with `--profile`. | `CONFIG_ENCRYPTION_KEY` |
 | `--dns` | `-d` | DNS suffix override. | `DNS_SUFFIX` |
+| `--hostname` | | Hostname override. | `RPC_HOSTNAME` |
+| `--name` | | Friendly name to associate with this device. | |
+| `--uuid` | | UUID override; prevents an MPS connection. | |
+| `--skipIPRenew` | | Skip DHCP renewal after AMT is enabled. | |
 | `--stopConfig` | | Transition AMT from in-provisioning to pre-provisioning state. Does not require AMT password. | |
 | `--password` | | AMT admin password. If not provided, you are prompted when required. | `AMT_PASSWORD` |
 | `--skip-amt-cert-check` | | Skip AMT/LMS TLS certificate verification. **Required for AMT 19+.** | |
@@ -238,7 +244,7 @@ rpc activate --local --acm --provisioningCert "{BASE64_PROV_CERT}" --provisionin
 | `--verbose` | `-v` | Enable verbose logging. | |
 | `--log-level` | | Log level: `trace`, `debug`, `info`, `warn`, `error`, `fatal`, `panic`. Default: `info`. | |
 | `--lmsaddress` | | LMS address. Default: `localhost`. | |
-| `--lmsport` | | LMS port. Default: `16992` on AMT <= v18 and `16993` on AMT >= v19. | |
+| `--lmsport` | | LMS port. Default: `16992`. | |
 
 ### Examples
 
@@ -342,14 +348,13 @@ rpc deactivate --local
 |:-----|:------|:------------|:--------|
 | `--local` | `-l` | Execute command to AMT directly without cloud interaction. | |
 | `--partial` | | Partially unprovision the device. Only supported with `--local`. | |
-| `--force` | `-f` | Force deactivation even if device is not matched in MPS. | |
 | `--password` | | AMT admin password. If not provided, you are prompted when required. | `AMT_PASSWORD` |
 | `--skip-amt-cert-check` | | Skip AMT/LMS TLS certificate verification. **Required for AMT v19+.** | |
 | `--json` | `-j` | Output in JSON format. | |
 | `--verbose` | `-v` | Enable verbose logging. | |
 | `--log-level` | | Log level: `trace`, `debug`, `info`, `warn`, `error`, `fatal`, `panic`. Default: `info`. | |
 | `--lmsaddress` | | LMS address. Default: `localhost`. | |
-| `--lmsport` | | LMS port. Default: `16992` on AMT <= v18 and `16993` on AMT >= v19. | |
+| `--lmsport` | | LMS port. Default: `16992`. | |
 
 ### Examples
 
@@ -388,21 +393,21 @@ These flags apply to all `configure` subcommands in addition to any subcommand-s
 | `--verbose` | `-v` | Enable verbose logging. | |
 | `--log-level` | | Log level: `trace`, `debug`, `info`, `warn`, `error`, `fatal`, `panic`. Default: `info`. | |
 | `--lmsaddress` | | LMS address. Default: `localhost`. | |
-| `--lmsport` | | LMS port. Default: `16992` on AMT <= v18 and `16993` on AMT >= v19. | |
+| `--lmsport` | | LMS port. Default: `16992`. | |
 
 ### Subcommands
 
 | Subcommand | Aliases | Description |
 |:-----------|:--------|:------------|
-| [amtfeatures](#amtfeatures) | `setamtfeatures` | Configure AMT features (KVM, SOL, IDER, user consent). |
-| [amtpassword](#amtpassword) | `changeamtpassword` | Change AMT password. |
+| [amt-features](#amt-features) | `amtfeatures`, `setamtfeatures` | Configure AMT features (KVM, SOL, IDER, user consent). |
+| [amt-password](#amt-password) | `amtpassword`, `changeamtpassword` | Change AMT password. |
 | [mebx](#mebx) | `setmebx` | Configure MEBx password (ACM only). |
 | [sync-clock](#sync-clock) | `syncclock`, `synctime` | Synchronize host OS clock to AMT locally or through RPS. |
 | [wired](#wired) | `ethernet`, `addethernetsettings` | Configure wired ethernet settings. |
 | [wireless](#wireless) | `addwifisettings` | Configure WiFi settings. |
 | [tls](#tls) | `configuretls` | Configure TLS settings. |
 | [cira](#cira) | | Configure Cloud-Initiated Remote Access (CIRA). |
-| [wifisync](#wifisync) | `wifi` | Control WiFi and local profile synchronization. |
+| [wi-fi-sync](#wi-fi-sync) | `wifisync`, `wifi` | Control WiFi and local profile synchronization. |
 | [proxy](#proxy) | `httpproxy` | Configure HTTP proxy access point for firmware-initiated connections. |
 | [hostname](#hostname) | `synchostname`, `sethostname` | Synchronize host OS hostname and DNS suffix to AMT general settings. |
 | [enable-amt](#enable-amt) | `enable-op-state`, `enable-operational-state` | Enable AMT operational state (requires unprovisioned state). |
@@ -410,7 +415,7 @@ These flags apply to all `configure` subcommands in addition to any subcommand-s
 
 ---
 
-### amtfeatures
+### amt-features
 
 Configure AMT features: enable or disable redirection features (KVM, IDER, SOL) and set the user consent type.
 
@@ -418,7 +423,7 @@ Configure AMT features: enable or disable redirection features (KVM, IDER, SOL) 
     User consent can only be configured if the device is activated in ACM mode. In CCM, user consent is set to `all` and cannot be changed.
 
 ```bash
-rpc configure amtfeatures --kvm --sol --ider --userConsent none
+rpc configure amt-features --kvm --sol --ider --userConsent none
 ```
 
 | Flag | Description |
@@ -430,20 +435,20 @@ rpc configure amtfeatures --kvm --sol --ider --userConsent none
 
 ---
 
-### amtpassword
+### amt-password
 
 Change or update the AMT password locally. If `--newamtpassword` is not provided, you will be prompted.
 
-!!! warning "`configure amtpassword` vs server-based password change"
-    `configure amtpassword` is a **local-only** command. It does not update any centralized database. Make sure to take note of any changes made.
+!!! warning "`configure amt-password` vs server-based password change"
+    `configure amt-password` is a **local-only** command. It does not update any centralized database. Make sure to take note of any changes made.
 
 ```bash
-rpc configure amtpassword --password CurrentAMTPassword --newamtpassword NewAMTPassword
+rpc configure amt-password --password CurrentAMTPassword --newamtpassword NewAMTPassword
 ```
 
 | Flag | Description |
 |:-----|:------------|
-| `--newamtpassword` | New AMT password to set. |
+| `--newamtpassword` | New AMT password to set. | `NEW_AMT_PASSWORD` |
 
 ---
 
@@ -514,9 +519,7 @@ Configure TLS in AMT.
 
 === "Config File"
 
-    ```bash
-    rpc configure tls --config config.yaml
-    ```
+    RPC-Go loads `config.yaml` from the working directory. Put the TLS values under `configure.tls`.
 
     === "Using Enterprise Assistant"
 
@@ -525,29 +528,13 @@ Configure TLS in AMT.
         === "YAML"
 
             ```yaml title="config.yaml"
-            password: 'AMTPassword'
-            tlsConfig:
-              mode: 'Server'
-            enterpriseAssistant:
-              eaAddress: 'http://<YOUR-IPADDRESS-OR-FQDN>:8000'
-              eaUsername: 'eaUser'
-              eaPassword: 'eaPass'
-            ```
-
-        === "JSON"
-
-            ```json title="config.json"
-            {
-              "password": "AMTPassword",
-              "tlsConfig": {
-                "mode": "Server"
-              },
-              "enterpriseAssistant": {
-                "eaAddress": "http://<YOUR-IPADDRESS-OR-FQDN>:8000",
-                "eaUsername": "eaUser",
-                "eaPassword": "eaPass"
-              }
-            }
+            amt-password: AMTPassword
+            configure:
+              tls:
+                mode: Server
+                eaAddress: http://<YOUR-IPADDRESS-OR-FQDN>:8000
+                eaUsername: eaUser
+                eaPassword: eaPass
             ```
 
     === "Without Enterprise Assistant"
@@ -557,21 +544,17 @@ Configure TLS in AMT.
         === "YAML"
 
             ```yaml title="config.yaml"
-            password: 'AMTPassword'
-            tlsConfig:
-              mode: 'Server'
+            amt-password: AMTPassword
+            configure:
+              tls:
+                mode: Server
             ```
 
-        === "JSON"
+    Run this command from the directory containing `config.yaml`:
 
-            ```json title="config.json"
-            {
-              "password": "AMTPassword",
-              "tlsConfig": {
-                "mode": "Server"
-              }
-            }
-            ```
+    ```bash
+    rpc configure tls
+    ```
 
 === "Inline Flags"
 
@@ -606,57 +589,35 @@ Configure AMT wired ethernet settings for DHCP or Static IP. Optionally configur
 
 === "Config File"
 
+    RPC-Go loads `config.yaml` from the working directory. Put the wired settings under `configure.wired`.
+
     === "DHCP"
 
         === "YAML"
             ```yaml title="config.yaml"
-            password: 'AMTPassword'
-            wiredConfig:
-              dhcp: true
-              ipsync: true
-            ```
-        === "JSON"
-            ```json title="config.json"
-            {
-              "password": "AMTPassword",
-              "wiredConfig": {
-                "dhcp": true,
-                "ipsync": true
-              }
-            }
+            amt-password: AMTPassword
+            configure:
+              wired:
+                dhcp: true
+                ipsync: true
             ```
 
     === "Static IP"
 
         === "YAML"
             ```yaml title="config.yaml"
-            password: 'AMTPassword'
-            wiredConfig:
-              static: true
-              ipaddress: 192.168.1.50
-              subnetmask: 255.255.255.0
-              gateway: 192.168.1.1
-              primarydns: 8.8.8.8
-              secondarydns: 4.4.4.4
-            ```
-        === "JSON"
-            ```json title="config.json"
-            {
-              "password": "AMTPassword",
-              "wiredConfig": {
-                "static": true,
-                "ipaddress": "192.168.1.50",
-                "subnetmask": "255.255.255.0",
-                "gateway": "192.168.1.1",
-                "primarydns": "8.8.8.8",
-                "secondarydns": "4.4.4.4"
-              }
-            }
+            amt-password: AMTPassword
+            configure:
+              wired:
+                dhcp: false
+                ipaddress: 192.168.1.50
+                subnetmask: 255.255.255.0
+                gateway: 192.168.1.1
+                primarydns: 8.8.8.8
+                secondarydns: 4.4.4.4
             ```
 
-    ```bash
-    rpc configure wired --config config.yaml
-    ```
+    Run `rpc configure wired` from the directory containing `config.yaml`.
 
     #### with 802.1x
 
@@ -666,36 +627,33 @@ Configure AMT wired ethernet settings for DHCP or Static IP. Optionally configur
 
         === "YAML"
             ```yaml title="config.yaml"
-            password: 'AMTPassword'
-            wiredConfig:
-              dhcp: true
-              ipsync: true
-              ieee8021xProfileName: 'exampleIeee8021xEAP-TLS'
-            enterpriseAssistant:
-              eaAddress: 'http://<YOUR-IPADDRESS-OR-FQDN>:8000'
-              eaUsername: 'eaUser'
-              eaPassword: 'eaPass'
-            ieee8021xConfigs:
-              - profileName: 'exampleIeee8021xEAP-TLS'
-                authenticationProtocol: 0
+            amt-password: AMTPassword
+            configure:
+              wired:
+                dhcp: true
+                ipsync: true
+                ieee8021xProfileName: exampleIeee8021xEAP-TLS
+                ieee8021xAuthenticationProtocol: 0
+                eaAddress: http://<YOUR-IPADDRESS-OR-FQDN>:8000
+                eaUsername: eaUser
+                eaPassword: eaPass
             ```
 
     === "Without Enterprise Assistant"
 
         === "YAML"
             ```yaml title="config.yaml"
-            password: 'AMTPassword'
-            wiredConfig:
-              dhcp: true
-              ipsync: true
-              ieee8021xProfileName: 'exampleIeee8021xEAP-TLS'
-            ieee8021xConfigs:
-              - profileName: 'exampleIeee8021xEAP-TLS'
-                username: 'exampleUserName'
-                authenticationProtocol: 0
-                clientCert: ''
-                caCert: ''
-                privateKey: ''
+            amt-password: AMTPassword
+            configure:
+              wired:
+                dhcp: true
+                ipsync: true
+                ieee8021xProfileName: exampleIeee8021xEAP-TLS
+                ieee8021xUsername: exampleUserName
+                ieee8021xAuthenticationProtocol: 0
+                ieee8021xClientCert: "<client certificate PEM>"
+                ieee8021xCACert: "<CA certificate PEM>"
+                ieee8021xPrivateKey: "<private key PEM>"
             ```
 
 === "Inline Flags"
@@ -708,7 +666,7 @@ Configure AMT wired ethernet settings for DHCP or Static IP. Optionally configur
     rpc configure wired --dhcp --ipsync --password AMTPassword
 
     # Static IP
-    rpc configure wired --static \
+    rpc configure wired \
       --ipaddress 192.168.1.50 \
       --subnetmask 255.255.255.0 \
       --gateway 192.168.1.1 \
@@ -747,66 +705,43 @@ Configure WiFi settings on an activated AMT device. On failure, certificates add
 
 === "Config File"
 
+    RPC-Go loads `config.yaml` from the working directory. Put the wireless settings under `configure.wireless`.
+
     ```yaml title="config.yaml"
-    password: 'AMTPassword'
-    wifiConfigs:
-      - profileName: 'exampleWifiWPA2'
-        ssid: 'exampleSSID'
+    amt-password: AMTPassword
+    configure:
+      wireless:
+        profileName: exampleWifiWPA2
+        ssid: exampleSSID
         priority: 1
         authenticationMethod: 6
         encryptionMethod: 4
-        pskPassphrase: ''
+        pskPassphrase: "<WPA2 passphrase>"
     ```
 
     ```bash
-    rpc configure wireless --config config.yaml
+    rpc configure wireless
     ```
 
     #### with 802.1x
 
-    === "Using Enterprise Assistant"
+    ```yaml title="config.yaml"
+    amt-password: AMTPassword
+    configure:
+      wireless:
+        profileName: exampleWifi8021x
+        ssid: ssid
+        priority: 1
+        authenticationMethod: 7
+        encryptionMethod: 4
+        ieee8021xProfileName: exampleIeee8021xEAP-TLS
+        ieee8021xAuthenticationProtocol: 0
+        ieee8021xClientCert: "<client certificate PEM>"
+        ieee8021xCACert: "<CA certificate PEM>"
+        ieee8021xPrivateKey: "<private key PEM>"
+    ```
 
-        See [Enterprise Assistant RPC-Go 802.1x Configuration](../../EA/RPCConfiguration/localIEEE8021xConfig.md) for more information.
-
-        === "YAML"
-            ```yaml title="config.yaml"
-            password: 'AMTPassword'
-            enterpriseAssistant:
-              eaAddress: 'http://<YOUR-IPADDRESS-OR-FQDN>:8000'
-              eaUsername: 'eaUser'
-              eaPassword: 'eaPass'
-            wifiConfigs:
-              - profileName: 'exampleWifi8021x'
-                ssid: 'ssid'
-                priority: 1
-                authenticationMethod: 7
-                encryptionMethod: 4
-                ieee8021xProfileName: 'exampleIeee8021xEAP-TLS'
-            ieee8021xConfigs:
-              - profileName: 'exampleIeee8021xEAP-TLS'
-                authenticationProtocol: 0
-            ```
-
-    === "Without Enterprise Assistant"
-
-        === "YAML"
-            ```yaml title="config.yaml"
-            password: 'AMTPassword'
-            wifiConfigs:
-              - profileName: 'exampleWifi8021x'
-                ssid: 'ssid'
-                priority: 1
-                authenticationMethod: 7
-                encryptionMethod: 4
-                ieee8021xProfileName: 'exampleIeee8021xEAP-TLS'
-            ieee8021xConfigs:
-              - profileName: 'exampleIeee8021xEAP-TLS'
-                username: 'exampleUserName'
-                authenticationProtocol: 0
-                clientCert: ''
-                caCert: ''
-                privateKey: ''
-            ```
+    Run `rpc configure wireless` from the directory containing `config.yaml`.
 
 === "Inline Flags"
 
@@ -843,9 +778,6 @@ Configure WiFi settings on an activated AMT device. On failure, certificates add
 | `--ieee8021xClientCert` | Client certificate (PEM format). Alias: `--clientcert`. |
 | `--ieee8021xCACert` | CA certificate (PEM format). Alias: `--cacert`. |
 | `--ieee8021xPrivateKey` | Private key (PEM format). Alias: `--privatekey`. |
-| `--eaAddress` | IP address or FQDN of Enterprise Assistant. |
-| `--eaUsername` | Enterprise Assistant username. |
-| `--eaPassword` | Enterprise Assistant password. |
 
 ---
 
@@ -870,12 +802,12 @@ rpc configure cira \
 
 ---
 
-### wifisync
+### wi-fi-sync
 
 Control WiFi and local profile synchronization settings in AMT.
 
 ```bash
-rpc configure wifisync --password AMTPassword
+rpc configure wi-fi-sync --password AMTPassword
 ```
 
 | Flag | Description | Default |

@@ -6,7 +6,7 @@ The Remote Provisioning Client (RPC-Go) v3.x provides commands for activating, d
 - **Local mode** - RPC-Go applies configuration directly to Intel® AMT on the device, without requiring a server at runtime. The device OS is trusted to handle secrets and provisioning data.
 
 !!! note "Elevated Privileges Required"
-    RPC must run with elevated privileges. Commands require `sudo` on Linux or an Administrator Command Prompt on Windows.
+    AMT operations may require elevated privileges (`sudo` on Linux or an Administrator Command Prompt on Windows). `version` does not require elevation, and `amtinfo` can return limited information without it.
 
 ## Commands
 
@@ -30,8 +30,32 @@ Run `rpc -h` to see all available commands:
 | [deactivate](commandsServer.md#deactivate) | Deactivate AMT on the local device or via remote server. | Server, Local | [Server](commandsServer.md#deactivate) &#124; [Local](commandsLocal.md#deactivate) |
 | [configure](commandsLocal.md#configure) | Configure AMT settings including ethernet, wireless, TLS, CIRA, and other features. | Local | [Local](commandsLocal.md#configure) |
 | [diagnostics](commandsDiagnostics.md#diagnostics) | Collect local AMT and firmware diagnostic data. | Local | [Reference](commandsDiagnostics.md#diagnostics) |
+| `status` | Check AMT activation readiness. Aliases: `health`, `doctor`. | Local | `rpc status --help` |
 | [amtinfo](commandsInfo.md#amtinfo) | Display AMT status and configuration on the local device. | Local | [Reference](commandsInfo.md#amtinfo) |
 | [version](commandsVersion.md#version) | Display RPC and protocol version. | Local | [Reference](commandsVersion.md#version) |
+
+## Global Flags
+
+These flags are available across commands. Command-specific options are listed in each reference.
+
+| Flag | Short | Description | Env Var / Default |
+|:-----|:------|:------------|:------------------|
+| `--log-level` | | Set log level: `trace`, `debug`, `info`, `warn`, `error`, `fatal`, or `panic`. | `RPC_LOG_LEVEL`; default `info` |
+| `--json` | `-j` | Output in JSON format. | `RPC_JSON` |
+| `--table` | `-t` | Output in table format. | `RPC_TABLE` |
+| `--no-color` | | Disable colored output. | `NO_COLOR` |
+| `--verbose` | `-v` | Enable verbose logging. | `RPC_VERBOSE` |
+| `--skip-cert-check` | `-n` | Skip remote HTTPS/WSS certificate verification. Insecure. | `RPC_SKIP_CERT_CHECK` |
+| `--skip-amt-cert-check` | | Skip certificate verification when connecting to AMT/LMS over TLS (insecure). | `RPC_SKIP_AMT_CERT_CHECK` |
+| `--tenantid` | | Tenant ID for multi-tenant RPS environments. | `TENANT_ID` |
+| `--lmsaddress` | | LMS address. | `RPC_LMSADDRESS`; default `localhost` |
+| `--lmsport` | | LMS port. | `RPC_LMSPORT`; default `16992` |
+| `--password` | | AMT admin password. | `AMT_PASSWORD` |
+| `--auth-token` | | Bearer token for server authentication. | `AUTH_TOKEN` |
+| `--auth-username` | | Username for basic authentication. | `AUTH_USERNAME` |
+| `--auth-password` | | Password for basic authentication. | `AUTH_PASSWORD` |
+| `--auth-endpoint` | | Token exchange endpoint override. If unset, RPC tries `/api/v1/authorize` and `/mps/login/api/v1/authorize`. | `AUTH_ENDPOINT` |
+| `--devices-endpoint` | | Absolute devices API URL. Defaults to `{console-url}/api/v1/devices`. | `DEVICES_ENDPOINT` |
 
 ## Mode Overview
 

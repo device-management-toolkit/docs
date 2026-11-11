@@ -2,7 +2,7 @@
 
 In server mode, RPC-Go acts as a **proxy** between a server and Intel® AMT. The server (either Console or RPS) holds all orchestration logic and determines the WSMAN message sequence required to activate, deactivate, or maintain Intel® AMT. RPC-Go simply relays those commands to AMT and returns the responses.
 
-Use server mode when devices are managed centrally through Console, RPS, and MPS, or when CIRA connectivity is required.
+Use server mode when devices are managed centrally through Console, RPS, and MPS, or when CIRA connectivity is required. Global options are listed in the [Commands Overview](commands.md#global-flags).
 
 !!! warning "AMT 19+: `--skip-amt-cert-check` Required"
     Starting with AMT 19, Intel® AMT uses TLS for local communication (via LMS). The TLS certificate is **not** in the OS trust store. Even in server mode, RPC-Go communicates with AMT locally to relay commands. You must pass `--skip-amt-cert-check` on AMT 19+ platforms. A future release will remove this requirement.
@@ -40,10 +40,13 @@ rpc activate --url https://console.example.com/api/v1/admin/profiles/export/myPr
 | `--skip-cert-check` | `-n` | Skip certificate verification for remote HTTPS/WSS (Console/RPS) connections. **Insecure.** | |
 | `--skip-amt-cert-check` | | Skip AMT/LMS TLS certificate verification. **Required for AMT 19+.** | |
 | `--password` | | AMT admin password. If not provided, you are prompted when required. | `AMT_PASSWORD` |
+| `--key` | `-k` | Key for decrypting an encrypted local or HTTP-delivered profile. | `CONFIG_ENCRYPTION_KEY` |
 | `--hostname` | | Hostname override. | |
 | `--dns` | `-d` | DNS suffix override. | `DNS_SUFFIX` |
 | `--name` | | Friendly name to associate with this device. | |
+| `--uuid` | | UUID override; prevents an MPS connection. | |
 | `--proxy` | | Proxy server URL. RPC-Go routes its connection to Console or RPS through this proxy. | |
+| `--tls-tunnel` | | Provision TLS on AMT 11-18 devices and switch to the encrypted channel. | |
 | `--tenantid` | | Tenant ID for multi-tenant environments. | `TENANT_ID` |
 | `--json` | `-j` | Output in JSON format. | |
 | `--verbose` | `-v` | Enable verbose logging. | |
@@ -51,9 +54,10 @@ rpc activate --url https://console.example.com/api/v1/admin/profiles/export/myPr
 | `--auth-token` | | Bearer token for server authentication. | `AUTH_TOKEN` |
 | `--auth-username` | | Username for basic auth. | `AUTH_USERNAME` |
 | `--auth-password` | | Password for basic auth. | `AUTH_PASSWORD` |
-| `--auth-endpoint` | | Token endpoint URL. Default: `/api/v1/authorize`. | |
+| `--auth-endpoint` | | Token exchange endpoint override. If unset, RPC tries `/api/v1/authorize` and `/mps/login/api/v1/authorize`. | `AUTH_ENDPOINT` |
+| `--devices-endpoint` | | Absolute devices API URL. Defaults to `{console-url}/api/v1/devices`. | `DEVICES_ENDPOINT` |
 | `--lmsaddress` | | LMS address. Default: `localhost`. | |
-| `--lmsport` | | LMS port. Default: `16992` on AMT <= v18 and `16993` on AMT >= v19. | |
+| `--lmsport` | | LMS port. Default: `16992`. | |
 
 ### Examples
 
@@ -108,9 +112,12 @@ rpc deactivate --url wss://server/deactivate
 | `--auth-username` | | Username for basic auth. | `AUTH_USERNAME` |
 | `--auth-password` | | Password for basic auth. | `AUTH_PASSWORD` |
 | `--auth-endpoint` | | Token endpoint URL. Default: `/api/v1/authorize`. | |
+| `--devices-endpoint` | | Absolute devices API URL. Defaults to `{console-url}/api/v1/devices`. | `DEVICES_ENDPOINT` |
 | `--lmsaddress` | | LMS address. Default: `localhost`. | |
-| `--lmsport` | | LMS port. Default: `16992` on AMT <= v18 and `16993` on AMT >= v19. | |
+| `--lmsport` | | LMS port. Default: `16992`. | |
 | `--force` | `-f` | Force deactivate even if the device is not matched in MPS. | |
+| `--uuid` | | UUID override for Console device lookup and cleanup. | |
+| `--tls-tunnel` | | Tunnel TLS to AMT through RPS. | |
 
 ### Examples
 
