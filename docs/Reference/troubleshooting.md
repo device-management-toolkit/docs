@@ -102,6 +102,7 @@ This can occur due to the WSMan messages being received out of order during comm
 ### RPC
 
 More information about specific RPC error codes can be found in the [RPC Library Documentation](./RPC/v2/libraryRPC.md#rpc-error-code-charts).
+For activation readiness and post-activation checks, see the [RPC Health Checker](./RPC/v3/healthChecker.md).
 
 | Error Issue or Message | Possible Solutions |
 | ------------- | ------------------ |

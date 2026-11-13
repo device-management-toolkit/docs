@@ -199,6 +199,7 @@ nav:
           - AMT Information: Reference/RPC/v3/commandsInfo.md
           - Version: Reference/RPC/v3/commandsVersion.md
           - Diagnostics: Reference/RPC/v3/commandsDiagnostics.md
+        - RPC Health Checker: Reference/RPC/v3/healthChecker.md
       - Transition Activated Device: Reference/RPC/transitionDeviceRPC.md
     - UI Toolkit React:
       - Overview: Reference/UIToolkit/overview.md

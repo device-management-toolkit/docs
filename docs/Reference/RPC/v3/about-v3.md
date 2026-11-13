@@ -5,6 +5,8 @@ RPC-Go v3.x introduces a faster activation workflow and a clearer configuration 
 !!! warning "v3.x is in Beta"
     RPC-Go v3.x is still under active development and is not yet recommended for production deployments. CLI commands, configuration formats, and activation workflows may change between beta releases while we work toward a production-ready release. Use v3.x for evaluation and testing, and review the release notes before upgrading.
 
+For activation readiness and post-activation checks, see the [RPC Health Checker](./healthChecker.md).
+
 v3.x also addresses several long-standing inconsistencies in the configuration and CLI structure:
 
 - The terms `config`, `configv2`, and `profile` were often confused.
