@@ -3,6 +3,8 @@
 RPC-Go v3.x introduces a faster activation workflow and a clearer configuration model.  
 In addition to the existing RPS-driven proxy flow, v3.x adds support for retrieving an encrypted AMT profile directly from the Console or RPS and applying it locally on the device. This significantly improves activation speed, especially in environments where RPS is not required. See the **What Changed in v3.x** section below for more details.
 
+For activation readiness and post-activation checks, see the [RPC Health Checker](./healthChecker.md).
+
 v3.x also addresses several long-standing inconsistencies in the configuration and CLI structure:
 
 - The terms `config`, `configv2`, and `profile` were often confused.

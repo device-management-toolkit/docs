@@ -28,6 +28,12 @@
 
 *[LMS]: Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.
 
+*[MEI]: Manageability Engine Interface - The host interface used to communicate with Intel® Management Engine features.
+
+*[HECI]: Host Embedded Controller Interface - A host interface for communication with the Intel® Management Engine.
+
+*[WSMAN]: Web Services for Management (WS-Management) - A protocol for managing hardware and software through web services.
+
 *[microservice architecture]: microservice architecture - An architecture in which the component parts are broken into discrete services, called microservices, that perform specific, limited functions. 
 
 *[MPS]: Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices. 
