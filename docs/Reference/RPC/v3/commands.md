@@ -32,7 +32,7 @@ Run `rpc -h` to see all available commands:
 | [deactivate](commandsServer.md#deactivate) | Deactivate AMT on the local device or via remote server. | Server, Local | [Server](commandsServer.md#deactivate) &#124; [Local](commandsLocal.md#deactivate) |
 | [configure](commandsLocal.md#configure) | Configure AMT settings including ethernet, wireless, TLS, CIRA, and other features. | Local | [Local](commandsLocal.md#configure) |
 | [diagnostics](commandsDiagnostics.md#diagnostics) | Collect local AMT and firmware diagnostic data. | Local | [Reference](commandsDiagnostics.md#diagnostics) |
-| `status` | Check AMT activation readiness. Aliases: `health`, `doctor`. | Local | `rpc status --help` |
+| [status](healthChecker.md) | Check AMT activation readiness. Aliases: `health`, `doctor`. | Local | [RPC Health Checker](healthChecker.md) |
 | [amtinfo](commandsInfo.md#amtinfo) | Display AMT status and configuration on the local device. | Local | [Reference](commandsInfo.md#amtinfo) |
 | [version](commandsVersion.md#version) | Display RPC and protocol version. | Local | [Reference](commandsVersion.md#version) |
 
