@@ -7,6 +7,8 @@ The `version` command displays the installed RPC-Go version and the RPC protocol
 rpc version
 ```
 
+The output includes the RPC-Go version, the RPC protocol version, the commit, the build time, the Go version, and the platform.
+
 Use `--json` when the version information will be consumed by another tool:
 
 ```bash

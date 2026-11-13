@@ -1,6 +1,6 @@
-# RPC Health Checker
+# Health Checker
 
-Use the RPC Health Checker to evaluate Intel® AMT readiness before or after activation and diagnose conditions that may affect management.
+Use the Health Checker to evaluate Intel® AMT readiness before or after activation and diagnose conditions that may affect management.
 
 ## Prerequisites
 

@@ -32,7 +32,7 @@ Run `rpc -h` to see all available commands:
 | [deactivate](commandsServer.md#deactivate) | Deactivate AMT on the local device or via remote server. | Server, Local | [Server](commandsServer.md#deactivate) &#124; [Local](commandsLocal.md#deactivate) |
 | [configure](commandsLocal.md#configure) | Configure AMT settings including ethernet, wireless, TLS, CIRA, and other features. | Local | [Local](commandsLocal.md#configure) |
 | [diagnostics](commandsDiagnostics.md#diagnostics) | Collect local AMT and firmware diagnostic data. | Local | [Reference](commandsDiagnostics.md#diagnostics) |
-| [status](healthChecker.md) | Check AMT activation readiness. Aliases: `health`, `doctor`. | Local | [RPC Health Checker](healthChecker.md) |
+| [status](commandsHealthChecker.md) | Check AMT activation readiness. Aliases: `health`, `doctor`. | Local | [Reference](commandsHealthChecker.md) |
 | [amtinfo](commandsInfo.md#amtinfo) | Display AMT status and configuration on the local device. | Local | [Reference](commandsInfo.md#amtinfo) |
 | [version](commandsVersion.md#version) | Display RPC and protocol version. | Local | [Reference](commandsVersion.md#version) |
 
@@ -100,8 +100,8 @@ rpc activate --local --ccm
 
 See [Local Mode CLI Reference](commandsLocal.md) for all local mode commands, flags, and examples.
 
-### Information, Version, and Diagnostics
+### Information, Version, Diagnostics, and Status
 
-The `amtinfo`, `version`, and `diagnostics` commands are local utilities. They do not use RPS or Console.
+The `amtinfo`, `version`, `diagnostics`, and `status` commands are local utilities. They do not use RPS or Console to run, except `amtinfo --sync`, which pushes device information to a server, and `status --host`, which probes a Console address in direct mode.
 
-See the [AMT information reference](commandsInfo.md), [version reference](commandsVersion.md), and [diagnostics reference](commandsDiagnostics.md) for details.
+See the [AMT information reference](commandsInfo.md), [Version reference](commandsVersion.md), [Diagnostics reference](commandsDiagnostics.md), and [Health Checker reference](commandsHealthChecker.md) for details.

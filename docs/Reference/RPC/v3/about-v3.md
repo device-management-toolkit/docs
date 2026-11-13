@@ -5,7 +5,7 @@ RPC-Go v3.x introduces a faster activation workflow and a clearer configuration 
 !!! warning "v3.x is in Beta"
     RPC-Go v3.x is still under active development and is not yet recommended for production deployments. CLI commands, configuration formats, and activation workflows may change between beta releases while we work toward a production-ready release. Use v3.x for evaluation and testing, and review the release notes before upgrading.
 
-For activation readiness and post-activation checks, see the [RPC Health Checker](./healthChecker.md).
+For activation readiness and post-activation checks, see the [Health Checker](./commandsHealthChecker.md).
 
 v3.x also addresses several long-standing inconsistencies in the configuration and CLI structure:
 
@@ -59,9 +59,11 @@ Examples:
 
 ```bash
 --profile
---config
--p
--c
+--key
+--password
+-k
+-u
+-n
 ```
 
 This brings RPC-Go in line with modern CLI conventions and makes scripts cleaner.
@@ -89,7 +91,7 @@ instead.
 ### Before (v2.x)
 
 ```bash
-rpc-go configure --configv2 ./profile.yaml
+rpc activate -local -configv2 ./profile.yaml -configencryptionkey "myprofile_key"
 ```
 
 ### After (v3.x)
@@ -97,6 +99,44 @@ rpc-go configure --configv2 ./profile.yaml
 ```bash
 rpc activate --profile ./myprofile.yaml --key "myprofile_key"
 ```
+
+### Command and Flag Mapping
+
+| v2.x | v3.x |
+|:-----|:-----|
+| `activate -u wss://... -profile name` | `activate --url wss://... --profile name` |
+| `activate -local -ccm` / `-acm` | `activate --local --ccm` / `--acm` |
+| `activate -local -config file.yaml` | `config.yaml` in the working directory, then `activate --local`. |
+| `activate -local -configv2 file -configencryptionkey key` | `activate --profile file --key key` |
+| `activate -amtPassword` | `--password` (global flag) |
+| `activate -tenant`, `maintenance -tenant` | `--tenantid` (global flag) |
+| `-token` | `--auth-token` (global flag), or `--auth-username` / `--auth-password` |
+| `-l` (log level) | `--log-level` |
+| `-json` | `--json` / `-j` |
+| `-n` | `--skip-cert-check` / `-n` |
+| `-p` (proxy) | `--proxy` |
+| `-h` (hostname) | `--hostname` |
+| `-t` (wait for AMT), `--echo-password` | Not available in v3 |
+| `deactivate -u wss://...` | `deactivate --url wss://...` |
+| `deactivate -local` / `-partial` | `deactivate --local` / `--partial` |
+| `maintenance changepassword` | `configure amt-password` (local only; the server-side change is not available in v3) |
+| `maintenance syncclock -u wss://...` | `configure sync-clock --url wss://...` |
+| `maintenance syncdeviceinfo` | `amtinfo --sync` (RPC sends the update directly to the devices API, so `--url` and the auth flags replace the RPS connection and no AMT password is needed; it also syncs more fields and can register devices that are not found) |
+| `maintenance synchostname` | `configure hostname` |
+| `maintenance syncip` | `configure wired --ipsync` |
+| `configure amtfeatures` | `configure amt-features` |
+| `configure amtpassword` | `configure amt-password` |
+| `configure enablewifiport` | `configure wi-fi-sync` |
+| `configure mebx` | `configure mebx` |
+| `configure syncclock` | `configure sync-clock` |
+| `configure tls` | `configure tls` |
+| `configure wired` / `wireless` | `configure wired` / `wireless`. The `-configJson` option is not available; use `config.yaml` or flags. |
+| `amtinfo`, `version` | `amtinfo`, `version` (flags now use `--`) |
+
+v3.x also adds `configure cira`, `configure proxy`, `configure enable-amt`, `configure disable-amt`, `diagnostics`, and `status`.
+
+!!! note "Verify against `rpc <command> -h`"
+    The mapping above is a guide. Run `rpc <command> --help` for the exact flags supported by your installed version.
 
 ## What Stays the Same in v3.x
 

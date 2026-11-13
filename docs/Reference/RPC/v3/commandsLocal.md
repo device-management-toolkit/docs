@@ -88,6 +88,7 @@ rpc activate --local --skip-amt-cert-check
     auth-username: ""            # Basic auth username (if no token)
     auth-password: ""            # Basic auth password (if no token)
     auth-endpoint: ""            # Optional token exchange endpoint override
+    devices-endpoint: ""         # Optional devices API endpoint (absolute URL)
 
     # ── amtinfo ───────────────────────────────────────────────────────────────
     amtinfo:
@@ -97,6 +98,7 @@ rpc activate --local --skip-amt-cert-check
       bld: false
       sku: false
       uuid: false
+      tep: false                # Intel TEP status
       mode: false
       dns: false
       hostname: false
@@ -194,12 +196,18 @@ rpc activate --local --skip-amt-cert-check
         networkdnssuffix: ""
 
       sync-clock:
+        url: ""                # RPS URL for remote time sync; blank = local sync
 
       sync-hostname:
 
       wifisync:
         oswifisync: true
         uefiwifisync: true
+
+    # ── diagnostics ───────────────────────────────────────────────────────────
+    diagnostics:
+      bundle:
+        output: ""             # Output ZIP path (default: timestamped bundle)
     ```
 
 ### 3. Flag-Based (CCM / ACM)
@@ -224,20 +232,20 @@ rpc activate --local --acm --provisioningCert "{BASE64_PROV_CERT}" --provisionin
 
 | Flag | Short | Description | Env Var |
 |:-----|:------|:------------|:--------|
-| `--local` | `-l` | Force local activation mode (flag-based). | |
-| `--profile` | | Encrypted profile file path (`.yaml`) exported from Console. Requires `--key`. Triggers the profile orchestrator. | |
-| `--ccm` | | Activate in Client Control Mode (flag-based only). | |
-| `--acm` | | Activate in Admin Control Mode (flag-based only). | |
+| `--local` | `-l` | Force local activation mode (flag-based). | `RPC_LOCAL` |
+| `--profile` | | Encrypted profile file path (`.yaml`) exported from Console. Requires `--key`. Triggers the profile orchestrator. | `RPC_PROFILE` |
+| `--ccm` | | Activate in Client Control Mode (flag-based only). | `RPC_CCM` |
+| `--acm` | | Activate in Admin Control Mode (flag-based only). | `RPC_ACM` |
 | `--provisioningCert` | | Provisioning certificate (base64 encoded). ACM only. | `PROVISIONING_CERT` |
 | `--provisioningCertPwd` | | Provisioning certificate password. ACM only. | `PROVISIONING_CERT_PASSWORD` |
 | `--mebxpassword` | | MEBx password for AMT 19+ TLS activation to ACM. | `MEBX_PASSWORD` |
 | `--key` | `-k` | 32-character key to decrypt an encrypted profile file. Required with `--profile`. | `CONFIG_ENCRYPTION_KEY` |
 | `--dns` | `-d` | DNS suffix override. | `DNS_SUFFIX` |
 | `--hostname` | | Hostname override. | `RPC_HOSTNAME` |
-| `--name` | | Friendly name to associate with this device. | |
-| `--uuid` | | UUID override; prevents an MPS connection. | |
-| `--skipIPRenew` | | Skip DHCP renewal after AMT is enabled. | |
-| `--stopConfig` | | Transition AMT from in-provisioning to pre-provisioning state. Does not require AMT password. | |
+| `--name` | | Friendly name to associate with this device. | `RPC_NAME` |
+| `--uuid` | | UUID override; prevents an MPS connection. | `RPC_UUID` |
+| `--skipIPRenew` | | Skip DHCP renewal after AMT is enabled. | `RPC_SKIP_IP_RENEW` |
+| `--stopConfig` | | Transition AMT from in-provisioning to pre-provisioning state. Does not require AMT password. | `RPC_STOP_CONFIG` |
 | `--password` | | AMT admin password. If not provided, you are prompted when required. | `AMT_PASSWORD` |
 | `--skip-amt-cert-check` | | Skip AMT/LMS TLS certificate verification. **Required for AMT 19+.** | |
 | `--json` | `-j` | Output in JSON format. | |
@@ -346,8 +354,8 @@ rpc deactivate --local
 
 | Flag | Short | Description | Env Var |
 |:-----|:------|:------------|:--------|
-| `--local` | `-l` | Execute command to AMT directly without cloud interaction. | |
-| `--partial` | | Partially unprovision the device. Only supported with `--local`. | |
+| `--local` | `-l` | Execute command to AMT directly without cloud interaction. | `RPC_LOCAL` |
+| `--partial` | | Partially unprovision the device. Only supported with `--local`. | `RPC_PARTIAL` |
 | `--password` | | AMT admin password. If not provided, you are prompted when required. | `AMT_PASSWORD` |
 | `--skip-amt-cert-check` | | Skip AMT/LMS TLS certificate verification. **Required for AMT v19+.** | |
 | `--json` | `-j` | Output in JSON format. | |
@@ -413,6 +421,9 @@ These flags apply to all `configure` subcommands in addition to any subcommand-s
 | [enable-amt](#enable-amt) | `enable-op-state`, `enable-operational-state` | Enable AMT operational state (requires unprovisioned state). |
 | [disable-amt](#disable-amt) | `disable-op-state`, `disable-operational-state` | Disable AMT operational state (requires unprovisioned state). |
 
+!!! note "The `wifi` alias"
+    `wifi` is registered as an alias of both `wi-fi-sync` and `wireless`, and `rpc configure wifi` runs `wi-fi-sync`. Use `rpc configure wireless` to add WiFi profiles.
+
 ---
 
 ### amt-features
@@ -426,12 +437,12 @@ Configure AMT features: enable or disable redirection features (KVM, IDER, SOL) 
 rpc configure amt-features --kvm --sol --ider --userConsent none
 ```
 
-| Flag | Description |
-|:-----|:------------|
-| `--kvm` | Enable KVM (Keyboard, Video, Mouse). If omitted, KVM will be disabled when other flags are also omitted. |
-| `--sol` | Enable SOL (Serial-over-LAN). If omitted, SOL will be disabled when other flags are also omitted. |
-| `--ider` | Enable IDER (IDE Redirection). If omitted, IDER will be disabled when other flags are also omitted. |
-| `--userConsent` | User consent mode. Valid values: `kvm`, `all`, `none`. Default: `all`. **Only configurable if AMT is activated in ACM.** |
+| Flag | Description | Env Var |
+|:-----|:------------|:--------|
+| `--kvm` | Enable KVM (Keyboard, Video, Mouse). If omitted, KVM will be disabled when other flags are also omitted. | `RPC_KVM` |
+| `--sol` | Enable SOL (Serial-over-LAN). If omitted, SOL will be disabled when other flags are also omitted. | `RPC_SOL` |
+| `--ider` | Enable IDER (IDE Redirection). If omitted, IDER will be disabled when other flags are also omitted. | `RPC_IDER` |
+| `--userConsent` | User consent mode. Valid values: `kvm`, `all`, `none`. Default: `all`. **Only configurable if AMT is activated in ACM.** | `RPC_USER_CONSENT` |
 
 ---
 
@@ -480,7 +491,7 @@ rpc configure mebx --mebxpassword newMEBxPassword --password AMTPassword
 Synchronize the host OS clock to AMT. Without `--url`, RPC synchronizes locally. With an RPS WebSocket URL, it requests remote time synchronization through RPS.
 
 !!! note "Remote Synchronization"
-  When `--url` is provided, the RPS server must be running and reachable. Omit `--url` to synchronize locally.
+    When `--url` is provided, the RPS server must be running and reachable. Omit `--url` to synchronize locally.
 
 ```bash
 rpc configure sync-clock --password "$AMT_PASSWORD"
@@ -573,13 +584,13 @@ Configure TLS in AMT.
         rpc configure tls --mode Server --password AMTPassword
         ```
 
-| Flag | Description |
-|:-----|:------------|
-| `--mode` | TLS authentication usage model. Valid values: `Server`, `ServerAndNonTLS`, `Mutual`, `MutualAndNonTLS`, `None`. Default: `Server`. |
-| `--delay` | Delay time in seconds after applying remote TLS settings. Default: `3`. |
-| `--eaAddress` | IP address or FQDN of Enterprise Assistant. |
-| `--eaUsername` | Enterprise Assistant username. |
-| `--eaPassword` | Enterprise Assistant password. |
+| Flag | Description | Env Var |
+|:-----|:------------|:--------|
+| `--mode` | TLS authentication usage model. Valid values: `Server`, `ServerAndNonTLS`, `Mutual`, `MutualAndNonTLS`, `None`. Default: `Server`. | `RPC_MODE` |
+| `--delay` | Delay time in seconds after applying remote TLS settings. Default: `3`. | `RPC_DELAY` |
+| `--eaAddress` | IP address or FQDN of Enterprise Assistant. | `RPC_EA_ADDRESS` |
+| `--eaUsername` | Enterprise Assistant username. | `RPC_EA_USERNAME` |
+| `--eaPassword` | Enterprise Assistant password. | `EA_PASSWORD` |
 
 ---
 
@@ -659,25 +670,25 @@ Configure AMT wired ethernet settings for DHCP or Static IP. Optionally configur
 
 ### `wired` Flags
 
-| Flag | Description |
-|:-----|:------------|
-| `--dhcp` | Configure AMT wired settings to use DHCP. |
-| `--ipsync` | Sync the IP configuration of the host OS to AMT network settings. |
-| `--ipaddress` | Static IP address to assign to AMT. |
-| `--subnetmask` | Subnet mask to assign to AMT. |
-| `--gateway` | Default gateway to assign to AMT. |
-| `--primarydns` | Primary DNS to assign to AMT. |
-| `--secondarydns` | Secondary DNS to assign to AMT. |
-| `--ieee8021xProfileName` | IEEE 802.1x profile name (alphanumeric). |
-| `--ieee8021xAuthenticationProtocol` | 802.1x protocol. `0` = EAP-TLS, `2` = PEAPv0/EAP-MSCHAPv2. Alias: `--authenticationprotocol`. |
-| `--ieee8021xUsername` | 802.1x username (must match Common Name of client cert). Alias: `--username`. |
-| `--ieee8021xPassword` | 802.1x password (for PEAPv0/EAP-MSCHAPv2). |
-| `--ieee8021xClientCert` | Client certificate (PEM format). Alias: `--clientcert`. |
-| `--ieee8021xCACert` | CA certificate (PEM format). Alias: `--cacert`. |
-| `--ieee8021xPrivateKey` | Private key (PEM format). Alias: `--privatekey`. |
-| `--eaAddress` | IP address or FQDN of Enterprise Assistant. Wired 802.1x provisioning is not implemented. |
-| `--eaUsername` | Enterprise Assistant username. Wired 802.1x provisioning is not implemented. |
-| `--eaPassword` | Enterprise Assistant password. Wired 802.1x provisioning is not implemented. |
+| Flag | Description | Env Var |
+|:-----|:------------|:--------|
+| `--dhcp` | Configure AMT wired settings to use DHCP. | `RPC_DHCP` |
+| `--ipsync` | Sync the IP configuration of the host OS to AMT network settings. | `RPC_IPSYNC` |
+| `--ipaddress` | Static IP address to assign to AMT. | `RPC_IPADDRESS` |
+| `--subnetmask` | Subnet mask to assign to AMT. | `RPC_SUBNETMASK` |
+| `--gateway` | Default gateway to assign to AMT. | `RPC_GATEWAY` |
+| `--primarydns` | Primary DNS to assign to AMT. | `RPC_PRIMARYDNS` |
+| `--secondarydns` | Secondary DNS to assign to AMT. | `RPC_SECONDARYDNS` |
+| `--ieee8021xProfileName` | IEEE 802.1x profile name (alphanumeric). | `RPC_IEEE_8021_X_PROFILE_NAME` |
+| `--ieee8021xAuthenticationProtocol` | 802.1x protocol. `0` = EAP-TLS, `2` = PEAPv0/EAP-MSCHAPv2. | `RPC_IEEE_8021_X_AUTHENTICATION_PROTOCOL` |
+| `--ieee8021xUsername` | 802.1x username (must match Common Name of client cert). | `RPC_IEEE_8021_X_USERNAME` |
+| `--ieee8021xPassword` | 802.1x password (for PEAPv0/EAP-MSCHAPv2). | `IEEE8021X_PASSWORD` |
+| `--ieee8021xClientCert` | Client certificate (PEM format). | `IEEE8021X_CLIENT_CERT` |
+| `--ieee8021xCACert` | CA certificate (PEM format). | `IEEE8021X_CA_CERT` |
+| `--ieee8021xPrivateKey` | Private key (PEM format). | `IEEE8021X_PRIVATE_KEY` |
+| `--eaAddress` | IP address or FQDN of Enterprise Assistant. Wired 802.1x provisioning is not implemented. | `RPC_EA_ADDRESS` |
+| `--eaUsername` | Enterprise Assistant username. Wired 802.1x provisioning is not implemented. | `RPC_EA_USERNAME` |
+| `--eaPassword` | Enterprise Assistant password. Wired 802.1x provisioning is not implemented. | `EA_PASSWORD` |
 
 ---
 
@@ -744,22 +755,22 @@ Configure WiFi settings on an activated AMT device. On failure, certificates add
 
 ### `wireless` Flags
 
-| Flag | Description |
-|:-----|:------------|
-| `--profileName` | WiFi profile name (alphanumeric). |
-| `--ssid` | WiFi SSID. |
-| `--priority` | Ranked priority over other wireless profiles. Default: `1`. |
-| `--authenticationMethod` | WiFi auth method. `4` = WPA-PSK, `6` = WPA2-PSK, `7` = WPA2-IEEE8021x. Default: `6`. |
-| `--encryptionMethod` | WiFi encryption method. `3` = TKIP, `4` = CCMP. Default: `4`. |
-| `--pskPassphrase` | WPA/WPA2 passphrase. |
-| `--purge` | Purge all existing AMT wireless profiles and exit. |
-| `--ieee8021xProfileName` | IEEE 802.1x profile name (alphanumeric). |
-| `--ieee8021xAuthenticationProtocol` | 802.1x protocol. `0` = EAP-TLS, `2` = PEAPv0/EAP-MSCHAPv2. Alias: `--authenticationprotocol`. |
-| `--ieee8021xUsername` | 802.1x username. Alias: `--username`. |
-| `--ieee8021xPassword` | 802.1x password (for PEAPv0/EAP-MSCHAPv2). |
-| `--ieee8021xClientCert` | Client certificate (PEM format). Alias: `--clientcert`. |
-| `--ieee8021xCACert` | CA certificate (PEM format). Alias: `--cacert`. |
-| `--ieee8021xPrivateKey` | Private key (PEM format). Alias: `--privatekey`. |
+| Flag | Description | Env Var |
+|:-----|:------------|:--------|
+| `--profileName` | WiFi profile name (alphanumeric). | `RPC_PROFILE_NAME` |
+| `--ssid` | WiFi SSID. | `RPC_SSID` |
+| `--priority` | Ranked priority over other wireless profiles. Default: `1`. | `RPC_PRIORITY` |
+| `--authenticationMethod` | WiFi auth method. `4` = WPA-PSK, `6` = WPA2-PSK, `7` = WPA2-IEEE8021x. Default: `6`. | `RPC_AUTHENTICATION_METHOD` |
+| `--encryptionMethod` | WiFi encryption method. `3` = TKIP, `4` = CCMP. Default: `4`. | `RPC_ENCRYPTION_METHOD` |
+| `--pskPassphrase` | WPA/WPA2 passphrase. | `PSK_PASSPHRASE` |
+| `--purge` | Purge all existing AMT wireless profiles and exit. | `RPC_PURGE` |
+| `--ieee8021xProfileName` | IEEE 802.1x profile name (alphanumeric). | `RPC_IEEE_8021_X_PROFILE_NAME` |
+| `--ieee8021xAuthenticationProtocol` | 802.1x protocol. `0` = EAP-TLS, `2` = PEAPv0/EAP-MSCHAPv2. | `RPC_IEEE_8021_X_AUTHENTICATION_PROTOCOL` |
+| `--ieee8021xUsername` | 802.1x username. | `RPC_IEEE_8021_X_USERNAME` |
+| `--ieee8021xPassword` | 802.1x password (for PEAPv0/EAP-MSCHAPv2). | `IEEE8021X_PASSWORD` |
+| `--ieee8021xClientCert` | Client certificate (PEM format). | `IEEE8021X_CLIENT_CERT` |
+| `--ieee8021xCACert` | CA certificate (PEM format). | `IEEE8021X_CA_CERT` |
+| `--ieee8021xPrivateKey` | Private key (PEM format). | `IEEE8021X_PRIVATE_KEY` |
 
 ---
 
@@ -792,10 +803,10 @@ Control WiFi and local profile synchronization settings in AMT.
 rpc configure wi-fi-sync --password AMTPassword
 ```
 
-| Flag | Description | Default |
-|:-----|:------------|:--------|
-| `--oswifisync` | Enable/disable WiFi profile sync with the OS. | `true` |
-| `--uefiwifisync` | Enable/disable UEFI WiFi profile share (if supported). | `true` |
+| Flag | Description | Default | Env Var |
+|:-----|:------------|:--------|:--------|
+| `--oswifisync` | Enable/disable WiFi profile sync with the OS. | `true` | `RPC_OSWIFISYNC` |
+| `--uefiwifisync` | Enable/disable UEFI WiFi profile share (if supported). | `true` | `RPC_UEFIWIFISYNC` |
 
 ---
 
@@ -814,13 +825,13 @@ rpc configure proxy --list --password AMTPassword
 rpc configure proxy --delete --address proxy.corp.com --password AMTPassword
 ```
 
-| Flag | Description | Default |
-|:-----|:------------|:--------|
-| `--list` | List existing HTTP proxy settings. | — |
-| `--delete` | Delete a proxy access point by address. | — |
-| `--address` | Proxy host or IP (IPv4/IPv6/FQDN). | — |
-| `--port` | Proxy TCP port. | `80` |
-| `--networkdnssuffix` | Network DNS suffix (domain) used for the access point. | — |
+| Flag | Description | Default | Env Var |
+|:-----|:------------|:--------|:--------|
+| `--list` | List existing HTTP proxy settings. | - | `RPC_LIST` |
+| `--delete` | Delete a proxy access point by address. | - | `RPC_DELETE` |
+| `--address` | Proxy host or IP (IPv4/IPv6/FQDN). | - | `RPC_ADDRESS` |
+| `--port` | Proxy TCP port. | `80` | `RPC_PORT` |
+| `--networkdnssuffix` | Network DNS suffix (domain) used for the access point. | - | `RPC_NETWORKDNSSUFFIX` |
 
 ---
 
