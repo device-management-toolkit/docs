@@ -15,7 +15,7 @@
         <link rel="prev" href="../../v2/libraryRPC/">
       
       
-        <link rel="next" href="../../transitionDeviceRPC/">
+        <link rel="next" href="../healthChecker/">
       
       
         
@@ -2297,6 +2297,33 @@
 
                 
               
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../healthChecker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RPC Health Checker
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
             </ul>
           </nav>
         
@@ -3156,6 +3183,7 @@
 
 <p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go v3.x introduces a faster activation workflow and a clearer configuration model.<br />
 In addition to the existing <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>-driven proxy flow, v3.x adds support for retrieving an encrypted AMT profile directly from the Console or <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and applying it locally on the device. This significantly improves activation speed, especially in environments where <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> is not required. See the <strong>What Changed in v3.x</strong> section below for more details.</p>
+<p>For activation readiness and post-activation checks, see the <a href=".././healthChecker/"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Health Checker</a>.</p>
 <p>v3.x also addresses several long-standing inconsistencies in the configuration and CLI structure:</p>
 <ul>
 <li>The terms <code>config</code>, <code>configv2</code>, and <code>profile</code> were often confused.</li>
@@ -3173,7 +3201,7 @@ You may stay on v2.x without upgrading until you are ready.</p>
 <h2 id="what-changed-in-v3x">What Changed in v3.x<a class="headerlink" href="#what-changed-in-v3x" title="Permanent link">&para;</a></h2>
 <p>v3.x introduces a set of targeted improvements designed to simplify configuration and improve usability.</p>
 <h3 id="1-improved-activation-workflow-faster-local-activation">1. Improved Activation Workflow (Faster Local Activation)<a class="headerlink" href="#1-improved-activation-workflow-faster-local-activation" title="Permanent link">&para;</a></h3>
-<p>In earlier versions, <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go (and before that, the C-based <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>) primarily acted as a proxy between the Remote Provisioning Server (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) and <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>. <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> determined the sequence of WSMAN messages required for activation, and <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go relayed them to <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> over a secure WebSocket connection. This <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>-driven flow remains fully supported in v3.x.</p>
+<p>In earlier versions, <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go (and before that, the C-based <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>) primarily acted as a proxy between the Remote Provisioning Server (<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) and <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr>. <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> determined the sequence of <abbr title="Web Services for Management (WS-Management) - A protocol for managing hardware and software through web services.">WSMAN</abbr> messages required for activation, and <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go relayed them to <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> over a secure WebSocket connection. This <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>-driven flow remains fully supported in v3.x.</p>
 <p>What v3.x adds is the ability for <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go to directly call the encrypted profile export endpoint:</p>
 <div class="highlight"><pre><span></span><code>https://&lt;RPS or Console Host&gt;/api/v1/admin/profiles/export/&lt;profile-name&gt;?domainName=&lt;domain-profile-name&gt;
 </code></pre></div>
