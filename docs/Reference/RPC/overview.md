@@ -48,7 +48,7 @@ This model is useful for environments where profiles are pre-generated, RPS is *
 !!! tip "Version Guidance"
     **Use v2.x for production.** It is the current stable release with full documentation and support.
 
-    **v3.x is in Beta** and available for early testing and feedback. It introduces a clearer configuration model, standardized CLI flags, and a faster local activation workflow. See [About v3](./v3/about-v3.md) for details. The `rpc status` health checker is available in v3.0.0-beta.80 and later; see [RPC Health Checker](./v3/healthChecker.md).
+    **v3.x is in Beta** and available for early testing and feedback. It introduces a clearer configuration model, standardized CLI flags, and a faster local activation workflow. See [About v3](./v3/about-v3.md) for details. The `rpc status` health checker is available in v3.0.0-beta.80 and later; see [Health Checker](./v3/commandsHealthChecker.md).
 
     v2.x remains fully supported while v3.x is in Beta. All existing activation flows, encrypted profiles, and RPS interactions work in both versions.
 
@@ -66,8 +66,9 @@ This model is useful for environments where profiles are pre-generated, RPS is *
 - For v3.x CLI reference:
     - [About v3](./v3/about-v3.md) — What changed and migration guide
     - [Commands Overview](./v3/commands.md)
-    - [Server Mode CLI](./v3/commandsServer.md) — RPS-driven activation, deactivation, maintenance
+    - [Server Mode CLI](./v3/commandsServer.md) - RPS-driven activation and deactivation
     - [Local Mode CLI](./v3/commandsLocal.md) — Local activation, configure
     - [AMT Information](./v3/commandsInfo.md) — amtinfo and device synchronization
     - [Version](./v3/commandsVersion.md) — RPC-Go and protocol version
     - [Diagnostics](./v3/commandsDiagnostics.md) — local AMT and firmware diagnostics
+    - [Health Checker](./v3/commandsHealthChecker.md) - `rpc status` activation readiness checks

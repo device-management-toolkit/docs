@@ -35,18 +35,18 @@ rpc activate --url https://console.example.com/api/v1/admin/profiles/export/myPr
 
 | Flag | Short | Description | Env Var |
 |:-----|:------|:------------|:--------|
-| `--url` | `-u` | Server URL: WebSocket (`wss://`, `ws://`) for RPS, or HTTP (`https://`, `http://`) for profile fetch. **Required.** | |
-| `--profile` | | Profile name for WebSocket activation. **Required for WebSocket mode.** | |
-| `--skip-cert-check` | `-n` | Skip certificate verification for remote HTTPS/WSS (Console/RPS) connections. **Insecure.** | |
-| `--skip-amt-cert-check` | | Skip AMT/LMS TLS certificate verification. **Required for AMT 19+.** | |
+| `--url` | `-u` | Server URL: WebSocket (`wss://`, `ws://`) for RPS, or HTTP (`https://`, `http://`) for profile fetch. **Required.** | `RPC_URL` |
+| `--profile` | | Profile name for WebSocket activation. For HTTP profile activation, pass a profile file path instead. **Required for WebSocket mode.** | `RPC_PROFILE` |
+| `--skip-cert-check` | `-n` | Skip certificate verification for remote HTTPS/WSS (Console/RPS) connections. **Insecure.** | `RPC_SKIP_CERT_CHECK` |
+| `--skip-amt-cert-check` | | Skip AMT/LMS TLS certificate verification. **Required for AMT 19+.** | `RPC_SKIP_AMT_CERT_CHECK` |
 | `--password` | | AMT admin password. If not provided, you are prompted when required. | `AMT_PASSWORD` |
 | `--key` | `-k` | Key for decrypting an encrypted local or HTTP-delivered profile. | `CONFIG_ENCRYPTION_KEY` |
-| `--hostname` | | Hostname override. | |
+| `--hostname` | | Hostname override. | `RPC_HOSTNAME` |
 | `--dns` | `-d` | DNS suffix override. | `DNS_SUFFIX` |
-| `--name` | | Friendly name to associate with this device. | |
-| `--uuid` | | UUID override; prevents an MPS connection. | |
-| `--proxy` | | Proxy server URL. RPC-Go routes its connection to Console or RPS through this proxy. | |
-| `--tls-tunnel` | | Provision TLS on AMT 11-18 devices and switch to the encrypted channel. | |
+| `--name` | | Friendly name to associate with this device. | `RPC_NAME` |
+| `--uuid` | | UUID override; prevents an MPS connection. | `RPC_UUID` |
+| `--proxy` | | Proxy server URL. RPC-Go routes its connection to Console or RPS through this proxy. | `RPC_PROXY` |
+| `--tls-tunnel` | | Provision TLS on AMT 11-18 devices and switch to the encrypted channel. | `RPC_TLS_TUNNEL` |
 | `--tenantid` | | Tenant ID for multi-tenant environments. | `TENANT_ID` |
 | `--json` | `-j` | Output in JSON format. | |
 | `--verbose` | `-v` | Enable verbose logging. | |
@@ -100,7 +100,7 @@ rpc deactivate --url wss://server/deactivate
 
 | Flag | Short | Description | Env Var |
 |:-----|:------|:------------|:--------|
-| `--url` | `-u` | Server URL for remote deactivation. **Required.** | |
+| `--url` | `-u` | Server URL for remote deactivation. **Required.** | `RPC_URL` |
 | `--skip-cert-check` | `-n` | Skip certificate verification for remote HTTPS/WSS (Console/RPS) connections. **Insecure.** | |
 | `--skip-amt-cert-check` | | Skip AMT/LMS TLS certificate verification. **Required for AMT 19+.** | |
 | `--password` | | AMT admin password. If not provided, you are prompted when required. | `AMT_PASSWORD` |
@@ -111,13 +111,13 @@ rpc deactivate --url wss://server/deactivate
 | `--auth-token` | | Bearer token for server authentication. | `AUTH_TOKEN` |
 | `--auth-username` | | Username for basic auth. | `AUTH_USERNAME` |
 | `--auth-password` | | Password for basic auth. | `AUTH_PASSWORD` |
-| `--auth-endpoint` | | Token endpoint URL. Default: `/api/v1/authorize`. | |
+| `--auth-endpoint` | | Token exchange endpoint. Requires `--auth-token` or `--auth-username`/`--auth-password`. Resolved relative to the server host unless absolute. | `AUTH_ENDPOINT` |
 | `--devices-endpoint` | | Absolute devices API URL. Defaults to `{console-url}/api/v1/devices`. | `DEVICES_ENDPOINT` |
 | `--lmsaddress` | | LMS address. Default: `localhost`. | |
 | `--lmsport` | | LMS port. Default: `16992`. | |
-| `--force` | `-f` | Force deactivate even if the device is not matched in MPS. | |
-| `--uuid` | | UUID override for Console device lookup and cleanup. | |
-| `--tls-tunnel` | | Tunnel TLS to AMT through RPS. | |
+| `--force` | `-f` | Force deactivate even if the device is not matched in MPS. | `RPC_FORCE` |
+| `--uuid` | | UUID override for Console device lookup and cleanup. | `RPC_UUID` |
+| `--tls-tunnel` | | Tunnel TLS to AMT through RPS (RPC-Go forwards plain bytes on the TLS port). | `RPC_TLS_TUNNEL` |
 
 ### Examples
 
