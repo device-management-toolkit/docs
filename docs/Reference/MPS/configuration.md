@@ -33,7 +33,7 @@ The `.env` variables set have priority and overwrite the corresponding `.mpsrc` 
 | MPS_CORS_HEADER                 | cors_header                  | `*`                               | (NOT USED) Allowed headers                                      |
 | MPS_CORS_METHODS                | cors_methods                 | `*`                               | (NOT USED) Allowed methods                                      |
 | MPS_DB_PROVIDER                 | db_provider                  | `postgres`                        | Database provider used (`postgres`, `nosql`)                    |
-| MPS_CONNECTION_STRING           | connection_string            | `postgresql://<USERNAME>:<PASSWORD>@localhost:5432/mpsdb?sslmode=no-verify` | The database connection string          | 
+| MPS_CONNECTION_STRING           | connection_string            | `postgresql://<USERNAME>:<PASSWORD>@localhost:5432/mpsdb?sslmode=no-verify` | The database connection string          |
 | MPS_INSTANCE_NAME               | instance_name                | `localhost`                       | Value used to record and address specific mps instances. (i.e containerIp in k8s) |
 | MPS_TLS_CONFIG                  | mps_tls_config               |                                   | Used only if `generate_certificates = false` Cert settings for CIRA connection    |
 | MPS_WEB_TLS_CONFIG              | web_tls_config               |                                   | NOT USED                                                        |
@@ -43,4 +43,12 @@ The `.env` variables set have priority and overwrite the corresponding `.mpsrc` 
 | MPS_CONSUL_PORT                 | consul_port                  | `8500`                            | Consul Port to listen on                                        |
 | MPS_CONSUL_KEY_PREFIX           | consul_key_prefix            | `MPS`                             | Default prefix key for Consul data structure                    |
 
+### CIRA Certificate Settings
 
+These settings control the certificate MPS presents on the CIRA port. Set them in the `.env` file or in the `.mpsrc` file, inside `mps_tls_config`. The `.env` variable has priority, as for the settings above. See [AMT 22 Support and Mixed Fleets](../../Deployment/amt22Support.md#mps-certificate-key-size) for how to use them.
+
+| `.env` Variable Name | `.mpsrc` Variable Name (in `mps_tls_config`) | Default | Description |
+| :-------------------------------------------| :----------------------------| :-------| :---------- |
+| MPS_MPS_TLS_CONFIG__MPS_CERT_KEY_SIZE       | mps_cert_key_size            | `4096`  | RSA key size of the leaf certificate: `2048`, `3072` or `4096`. The root certificate is always 3072-bit. Intel® AMT 22 refuses 2048. Intel® AMT 12 refuses 3072. |
+| MPS_MPS_TLS_CONFIG__MPS_CERT_REISSUE_ENABLED | mps_cert_reissue_enabled    | `false` | When `true`, MPS replaces the stored leaf at startup if its size differs from `mps_cert_key_size`, under the existing root. When `false`, MPS never replaces a stored leaf. |
+| MPS_MPS_TLS_CONFIG__LEGACY_COMPATIBLE_CIPHERS | legacy_compatible_ciphers  | `true`  | When `true`, adds the `AES128-GCM-SHA256` cipher at the end of the cipher list so Intel® AMT 12 can connect. |
