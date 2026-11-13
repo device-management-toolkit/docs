@@ -35,6 +35,7 @@ Use `status` as the primary command name. The other commands are aliases that pr
 | `--acm` | Select ACM readiness checks; after activation, check that AMT is in ACM. |
 | `--ccm` | Select CCM readiness checks; after activation, check that AMT is in CCM. |
 | `--host <address>` | On activated devices in Direct (LAN) mode, make a 3-second TCP connection probe. Defaults to port `443` (`80` for `http://` URLs); an explicit port is honored. An unreachable endpoint warns. |
+| `--skip-amt-cert-check` | Skip verification of the AMT TLS certificate for the local WSMAN session. Required on AMT 19+ devices with TLS enforced on local ports; see [WSMAN Checks Are Not Verified](#wsman-checks-are-not-verified). |
 | `--json` | Emit machine-readable JSON instead of the text report. |
 | `AMT_PASSWORD` | Recommended explicit credentials for the local WSMAN session; see the shell examples below. |
 | `--password <value>` | Lab use only; command-line values may appear in shell history and process listings. |
@@ -482,6 +483,7 @@ The command exit code follows the overall result:
 | `3` | `not_amt` | AMT was not detected. |
 | `4` | `not_ready` | The device is not ready for the selected operation. |
 | `6` | `unknown` | Readiness could not be determined. |
+| `10` | Not applicable | Invalid options, for example `--acm` and `--ccm` used together. |
 
 ## Troubleshooting
 
@@ -491,7 +493,7 @@ The checker reports an unavailable LMS as a warning; LMS is optional for `rpc st
 
 ### WSMAN Checks Are Not Verified
 
-WSMAN-backed checks run whenever RPC opens a local WSMAN session, using either the supplied AMT password or local system account credentials retrieved through HECI. If the session fails, the report marks **Local WSMAN session** as **Not verified** and omits dependent checks that could not run. Verify the credentials, AMT TLS/trust settings, and local WSMAN connectivity; LMS is not required for this command.
+WSMAN-backed checks run whenever RPC opens a local WSMAN session, using either the supplied AMT password or local system account credentials retrieved through HECI. On AMT 19+ devices that enforce TLS on local ports, the AMT certificate is not in the OS trust store, so the session fails with `AMT TLS certificate could not be verified (use --skip-amt-cert-check to skip verification)`. Run `rpc status --skip-amt-cert-check` to allow the WSMAN checks to run. If the session fails, the report marks **Local WSMAN session** as **Not verified** and omits dependent checks that could not run. Verify the credentials, AMT TLS/trust settings, and local WSMAN connectivity; LMS is not required for this command.
 
 ### The Device Is Not Ready for Provisioning
 

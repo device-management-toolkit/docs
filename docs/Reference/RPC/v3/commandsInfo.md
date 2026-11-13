@@ -5,8 +5,8 @@ The `amtinfo` command queries device status and configuration locally. It does n
 !!! note "Elevated Privileges Required"
     RPC must run with elevated privileges. Commands require `sudo` on Linux or an Administrator Command Prompt on Windows.
 
-!!! warning "AMT 19+: `--skip-amt-cert-check` Required"
-    Starting with AMT 19, Intel® AMT uses TLS for local communication. The TLS certificate is **not** in the OS trust store. You must pass `--skip-amt-cert-check` on AMT 19+ platforms for `amtinfo` and `diagnostics`. A future release will remove this requirement.
+!!! warning "AMT 19+: `--skip-amt-cert-check` Required for Some Data"
+    Starting with AMT 19, Intel® AMT uses TLS for local communication. The TLS certificate is **not** in the OS trust store. Information read through the MEI driver is shown without extra flags, but data read over the TLS connection to AMT is reported as `Unavailable (AMT cert not trusted; use --skip-amt-cert-check)`. This includes user certificates (`--userCert`) and the MPS port shown by `--ras`. Pass `--skip-amt-cert-check` on AMT 19+ platforms to retrieve this data. A future release will remove this requirement.
 
 ---
 
@@ -18,7 +18,7 @@ Query AMT status and configuration locally. This command reads device informatio
 rpc amtinfo
 ```
 
-Running `amtinfo` without options prints all available information.
+Running `amtinfo` without options prints all available information. Depending on the device, the output also includes the product features, whether TLS is enforced on local ports, the wireless adapter, Intel UPID, and Intel TEP sections.
 
 ### Status Flags
 
@@ -53,6 +53,7 @@ Running `amtinfo` without options prints all available information.
 | RAS Remote Status | Unconnected or connected. State of the connection to a management server. |
 | RAS Trigger | User initiated or periodic. When activated, periodic signifies CIRA is established. By default, CIRA sends a heartbeat to the server every 30 seconds to verify and maintain the connection. |
 | RAS MPS Hostname | IP address or FQDN of the MPS server. |
+| RAS MPS Port | Port of the MPS server. On AMT 19+, requires `--skip-amt-cert-check`. |
 
 #### LAN Details
 
