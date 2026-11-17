@@ -24,6 +24,9 @@ By purchasing a certificate, you'll be able to remotely activate an Intel® AMT 
 !!! Important "Important - Intel AMT and using CAs"
     For ACM in Device Management Toolkit, **use only** certificate vendors that support Intel® AMT.
 
+!!! important "Important - Provisioning Certificate for Intel® AMT 22 Devices"
+    Intel® AMT 22 devices need a provisioning certificate whose whole chain is **SHA-384** and uses **RSA 3072-bit or larger** keys. A SHA-256 or RSA 2048-bit certificate is refused. Older devices accept SHA-384 certificates as well, so one SHA-384 certificate can serve a mixed fleet. See [SHA-384 Provisioning Certificate](../../Reference/Certificates/sha384ProvisioningCert.md).
+
 Alternatively, for development, custom provisioning certificates can be generated. See [Custom Provisioning Certificate](../../Reference/Certificates/generateProvisioningCert.md) for additional details.
 
 #### DNS Suffix
@@ -129,6 +132,9 @@ Intel® AMT checks the network DNS suffix against the provisioning certificate a
 4. Provide your **DNS suffix** as the **Domain Name**. This is the actual DNS suffix of the network domain that is set in DHCP Option 15 or manually on the AMT device through MEBX.
 
 5. Click **Choose File** and select your purchased Provisioning Certificate.  This certificate must contain the private key.
+
+    !!! tip "Tip - Check an AMT 22 certificate before you upload it"
+        For AMT 22 devices, confirm that every certificate in the chain is SHA-384 with a key of 3072 bits or more. See [Check the Certificate Before You Upload It](../../Reference/Certificates/sha384ProvisioningCert.md#check-the-certificate-before-you-upload-it).
 
 6. Provide the **Provisioning Certificate Password** used to encrypt the `.pfx` file.
 
