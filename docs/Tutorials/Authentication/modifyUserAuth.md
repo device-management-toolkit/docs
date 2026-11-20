@@ -7,12 +7,12 @@ The instructions below explain how to add an LDAP plugin to Kong.
 
 ## User Authentication Flow
 
-The following diagrams help illustrate the typical user authentication flow. Learn more about the `authorize` API call in the [REST API Call Tutorial](./apiTutorial.md) or directly in our [API Documentation](../APIs/indexMPS.md).
+The following diagrams help illustrate the typical user authentication flow. Learn more about the `authorize` API call in the [REST API Call Tutorial](../apiTutorial.md) or directly in our [API Documentation](../../APIs/indexMPS.md).
 
 ### REST API User Authentication Flow
 
 <figure class="figure-image">
-<img src="../assets/images/diagrams/UserAuth_API_Diagram.png" alt="Figure 1: User Authentication Flow for REST APIs">
+<img src="../../assets/images/diagrams/UserAuth_API_Diagram.png" alt="Figure 1: User Authentication Flow for REST APIs">
 </figure>
 
 #### To authenticate for REST APIs:
@@ -26,7 +26,7 @@ The following diagrams help illustrate the typical user authentication flow. Lea
 ### Redirection (KVM/SOL) User Authentication Flow
 
 <figure class="figure-image">
-<img src="../assets/images/diagrams/UserAuth_Redir_Diagram.png" alt="Figure 1: User Authentication Flow for Redirection">
+<img src="../../assets/images/diagrams/UserAuth_Redir_Diagram.png" alt="Figure 1: User Authentication Flow for Redirection">
 </figure>
 
 #### To authenticate for Websocket connections:
@@ -139,7 +139,7 @@ In the following examples, we use the base64 encoding of `johndoe:TestAppPw1` as
     See [Get Profiles API Docs](https://app.swaggerhub.com/apis-docs/rbheopenamt/rps/{{ repoVersion.rpsAPI }}#/Profiles/GetAllProfiles) for more information and expected responses.
 
 
-Other APIs to test can be found in the [MPS API Documentation](../APIs/indexMPS.md) and [RPS API Documentation](../APIs/indexRPS.md).
+Other APIs to test can be found in the [MPS API Documentation](../../APIs/indexMPS.md) and [RPS API Documentation](../../APIs/indexRPS.md).
 
 <br>
 <br>
