@@ -15,7 +15,7 @@
         <link rel="prev" href="../../v2/libraryRPC/">
       
       
-        <link rel="next" href="../healthChecker/">
+        <link rel="next" href="../commands/">
       
       
         
@@ -2261,6 +2261,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#command-and-flag-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Command and Flag Mapping
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2303,22 +2314,49 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../healthChecker/" class="md-nav__link">
+    
+    
+    
+    
+      
+      
         
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../commands/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
     
   
-  RPC Health Checker
+  Commands
 
     
   </span>
   
   
 
-      </a>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -3053,6 +3091,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#command-and-flag-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Command and Flag Mapping
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3181,18 +3230,21 @@
 
   <h1>About v3</h1>
 
-<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go v3.x introduces a faster activation workflow and a clearer configuration model.<br />
-In addition to the existing <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>-driven proxy flow, v3.x adds support for retrieving an encrypted AMT profile directly from the Console or <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and applying it locally on the device. This significantly improves activation speed, especially in environments where <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> is not required. See the <strong>What Changed in v3.x</strong> section below for more details.</p>
-<p>For activation readiness and post-activation checks, see the <a href=".././healthChecker/"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Health Checker</a>.</p>
+<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go v3.x introduces a faster activation workflow and a clearer configuration model. In addition to the existing <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>-driven proxy flow, v3.x adds support for retrieving an encrypted AMT profile directly from the Console or <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> and applying it locally on the device. This significantly improves activation speed, especially in environments where <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> is not required. See the <strong>What Changed in v3.x</strong> section below for more details.</p>
+<div class="admonition warning">
+<p class="admonition-title">v3.x is in Beta</p>
+<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go v3.x is still under active development and is not yet recommended for production deployments. CLI commands, configuration formats, and activation workflows may change between beta releases while we work toward a production-ready release. Use v3.x for evaluation and testing, and review the release notes before upgrading.</p>
+</div>
+<p>For activation readiness and post-activation checks, see the <a href=".././commandsHealthChecker/">Health Checker</a>.</p>
 <p>v3.x also addresses several long-standing inconsistencies in the configuration and CLI structure:</p>
 <ul>
 <li>The terms <code>config</code>, <code>configv2</code>, and <code>profile</code> were often confused.</li>
 <li>CLI flags were not fully consistent.</li>
 <li>Application configuration and provisioning configuration were mixed together.</li>
 </ul>
-<p>The goal of v3.x is clarity, consistency, and ease of use—improving how <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go is configured and executed without changing its underlying activation and configuration capabilities.</p>
+<p>The goal of v3.x is clarity, consistency, and ease of use, improving how <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go is configured and executed without changing its underlying activation and configuration capabilities.</p>
 <div class="admonition important">
-<p class="admonition-title">v2.x is fully supported — no immediate action required</p>
+<p class="admonition-title">v2.x is fully supported, no immediate action required</p>
 <p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go v2.x continues to work exactly as before.<br />
 All existing activation flows, encrypted profiles, and <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> interactions remain fully supported.<br />
 You may stay on v2.x without upgrading until you are ready.</p>
@@ -3207,7 +3259,7 @@ You may stay on v2.x without upgrading until you are ready.</p>
 </code></pre></div>
 <p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go can authenticate using either username/password or an auth-token, retrieve the encrypted profile, and orchestrate <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> activation <strong>locally on the device</strong>.<br />
 This results in <strong>faster and more efficient activation</strong> compared to the legacy proxy model.</p>
-<p>This new workflow currently requires some additional configuration (endpoints, tokens, auth settings), and we plan to simplify it in future releases. This is also why v3.x remains in Beta—we want to incorporate customer feedback and ensure the workflow becomes easier as it evolves.</p>
+<p>This new workflow currently requires some additional configuration (endpoints, tokens, auth settings), and we plan to simplify it in future releases. This is also why v3.x remains in Beta. We want to incorporate customer feedback and ensure the workflow becomes easier as it evolves.</p>
 <p>If you prefer the traditional <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>-driven model, you can continue using it in both v2.x and v3.x.</p>
 <h3 id="2-clear-separation-of-application-config-vs-provisioning-profile">2. Clear Separation of “Application Config” vs “Provisioning <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr>”<a class="headerlink" href="#2-clear-separation-of-application-config-vs-provisioning-profile" title="Permanent link">&para;</a></h3>
 <ul>
@@ -3221,9 +3273,11 @@ This results in <strong>faster and more efficient activation</strong> compared t
 Short flags use <code>-</code></p>
 <p>Examples:</p>
 <div class="highlight"><pre><span></span><code>--profile
---config
--p
--c
+--key
+--password
+-k
+-u
+-n
 </code></pre></div>
 <p>This brings <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go in line with modern CLI conventions and makes scripts cleaner.</p>
 <h3 id="4-removal-of-legacy-configv2">4. Removal of Legacy <code>configv2</code><a class="headerlink" href="#4-removal-of-legacy-configv2" title="Permanent link">&para;</a></h3>
@@ -3237,14 +3291,139 @@ Short flags use <code>-</code></p>
 <p>instead.</p>
 <h2 id="migration-guide-v2x-v3x">Migration Guide (v2.x → v3.x)<a class="headerlink" href="#migration-guide-v2x-v3x" title="Permanent link">&para;</a></h2>
 <h3 id="before-v2x">Before (v2.x)<a class="headerlink" href="#before-v2x" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>rpc-go<span class="w"> </span>configure<span class="w"> </span>--configv2<span class="w"> </span>./profile.yaml
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>activate<span class="w"> </span>-local<span class="w"> </span>-configv2<span class="w"> </span>./profile.yaml<span class="w"> </span>-configencryptionkey<span class="w"> </span><span class="s2">"myprofile_key"</span>
 </code></pre></div>
 <h3 id="after-v3x">After (v3.x)<a class="headerlink" href="#after-v3x" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>rpc-go<span class="w"> </span>configure<span class="w"> </span>--profile<span class="w"> </span>./profile.yaml
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>activate<span class="w"> </span>--profile<span class="w"> </span>./myprofile.yaml<span class="w"> </span>--key<span class="w"> </span><span class="s2">"myprofile_key"</span>
 </code></pre></div>
-<p>Short form:</p>
-<div class="highlight"><pre><span></span><code>rpc-go<span class="w"> </span>configure<span class="w"> </span>-p<span class="w"> </span>./profile.yaml
-</code></pre></div>
+<h3 id="command-and-flag-mapping">Command and Flag Mapping<a class="headerlink" href="#command-and-flag-mapping" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">v2.x</th>
+<th style="text-align: left;">v3.x</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>activate -u wss://... -profile name</code></td>
+<td style="text-align: left;"><code>activate --url wss://... --profile name</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>activate -local -ccm</code> / <code>-acm</code></td>
+<td style="text-align: left;"><code>activate --local --ccm</code> / <code>--acm</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>activate -local -config file.yaml</code></td>
+<td style="text-align: left;"><code>config.yaml</code> in the working directory, then <code>activate --local</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>activate -local -configv2 file -configencryptionkey key</code></td>
+<td style="text-align: left;"><code>activate --profile file --key key</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>activate -amtPassword</code></td>
+<td style="text-align: left;"><code>--password</code> (global flag)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>activate -tenant</code>, <code>maintenance -tenant</code></td>
+<td style="text-align: left;"><code>--tenantid</code> (global flag)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>-token</code></td>
+<td style="text-align: left;"><code>--auth-token</code> (global flag), or <code>--auth-username</code> / <code>--auth-password</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>-l</code> (log level)</td>
+<td style="text-align: left;"><code>--log-level</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>-json</code></td>
+<td style="text-align: left;"><code>--json</code> / <code>-j</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>-n</code></td>
+<td style="text-align: left;"><code>--skip-cert-check</code> / <code>-n</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>-p</code> (proxy)</td>
+<td style="text-align: left;"><code>--proxy</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>-h</code> (hostname)</td>
+<td style="text-align: left;"><code>--hostname</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>-t</code> (wait for AMT), <code>--echo-password</code></td>
+<td style="text-align: left;">Not available in v3</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>deactivate -u wss://...</code></td>
+<td style="text-align: left;"><code>deactivate --url wss://...</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>deactivate -local</code> / <code>-partial</code></td>
+<td style="text-align: left;"><code>deactivate --local</code> / <code>--partial</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>maintenance changepassword</code></td>
+<td style="text-align: left;"><code>configure amt-password</code> (local only; the server-side change is not available in v3)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>maintenance syncclock -u wss://...</code></td>
+<td style="text-align: left;"><code>configure sync-clock --url wss://...</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>maintenance syncdeviceinfo</code></td>
+<td style="text-align: left;"><code>amtinfo --sync</code> (<abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> sends the update directly to the devices API, so <code>--url</code> and the auth flags replace the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> connection and no AMT password is needed; it also syncs more fields and can register devices that are not found)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>maintenance synchostname</code></td>
+<td style="text-align: left;"><code>configure hostname</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>maintenance syncip</code></td>
+<td style="text-align: left;"><code>configure wired --ipsync</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>configure amtfeatures</code></td>
+<td style="text-align: left;"><code>configure amt-features</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>configure amtpassword</code></td>
+<td style="text-align: left;"><code>configure amt-password</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>configure enablewifiport</code></td>
+<td style="text-align: left;"><code>configure wi-fi-sync</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>configure mebx</code></td>
+<td style="text-align: left;"><code>configure mebx</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>configure syncclock</code></td>
+<td style="text-align: left;"><code>configure sync-clock</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>configure tls</code></td>
+<td style="text-align: left;"><code>configure tls</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>configure wired</code> / <code>wireless</code></td>
+<td style="text-align: left;"><code>configure wired</code> / <code>wireless</code>. The <code>-configJson</code> option is not available; use <code>config.yaml</code> or flags.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>amtinfo</code>, <code>version</code></td>
+<td style="text-align: left;"><code>amtinfo</code>, <code>version</code> (flags now use <code>--</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>v3.x also adds <code>configure cira</code>, <code>configure proxy</code>, <code>configure enable-amt</code>, <code>configure disable-amt</code>, <code>diagnostics</code>, and <code>status</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Verify against <code>rpc &lt;command&gt; -h</code></p>
+<p>The mapping above is a guide. Run <code>rpc &lt;command&gt; --help</code> for the exact flags supported by your installed version.</p>
+</div>
 <h2 id="what-stays-the-same-in-v3x">What Stays the Same in v3.x<a class="headerlink" href="#what-stays-the-same-in-v3x" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Encrypted profiles remain supported (same format as v2.x).</li>

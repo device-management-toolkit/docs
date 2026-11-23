@@ -217,7 +217,25 @@
         <loc>https://device-management-toolkit.github.io/docs/Reference/RPC/v3/about-v3/</loc>
       </url>
       <url>
-        <loc>https://device-management-toolkit.github.io/docs/Reference/RPC/v3/healthChecker/</loc>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/RPC/v3/commands/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/RPC/v3/commandsDiagnostics/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/RPC/v3/commandsHealthChecker/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/RPC/v3/commandsInfo/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/RPC/v3/commandsLocal/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/RPC/v3/commandsServer/</loc>
+      </url>
+      <url>
+        <loc>https://device-management-toolkit.github.io/docs/Reference/RPC/v3/commandsVersion/</loc>
       </url>
       <url>
         <loc>https://device-management-toolkit.github.io/docs/Reference/RPS/configuration/</loc>

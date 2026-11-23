@@ -8,11 +8,11 @@
       
       
       
-        <link rel="canonical" href="https://device-management-toolkit.github.io/docs/Reference/RPC/v3/healthChecker/">
+        <link rel="canonical" href="https://device-management-toolkit.github.io/docs/Reference/RPC/v3/commandsHealthChecker/">
       
       
       
-        <link rel="prev" href="../about-v3/">
+        <link rel="prev" href="../commandsDiagnostics/">
       
       
         <link rel="next" href="../../transitionDeviceRPC/">
@@ -26,7 +26,7 @@
     
     
       
-        <title>RPC Health Checker - Device Management Toolkit</title>
+        <title>Health Checker - Device Management Toolkit</title>
       
     
     
@@ -137,7 +137,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              RPC Health Checker
+              Health Checker
             
           </span>
         </div>
@@ -2140,6 +2140,223 @@
   
   
   
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_14_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_14_4_2" id="__nav_6_14_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Commands
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_14_4_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_6_14_4_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Commands
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commandsServer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Server Mode
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commandsLocal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Local Mode
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commandsInfo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  AMT Information
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commandsVersion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Version
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commandsDiagnostics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Diagnostics
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       
@@ -2155,7 +2372,7 @@
   <span class="md-ellipsis">
     
   
-  RPC Health Checker
+  Health Checker
 
     
   </span>
@@ -2172,7 +2389,7 @@
   <span class="md-ellipsis">
     
   
-  RPC Health Checker
+  Health Checker
 
     
   </span>
@@ -2388,6 +2605,15 @@
     </ul>
   
 </nav>
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -3306,6 +3532,28 @@
   
 
       
+        
+  
+  
+    
+    
+    
+    
+    
+      <li class="md-path__item">
+        <a href="../commands/" class="md-path__link">
+          
+  
+  <span class="md-ellipsis">
+    Commands
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
     </ol>
   </nav>
 
@@ -3319,8 +3567,8 @@
   
 
 
-<h1 id="rpc-health-checker"><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Health Checker<a class="headerlink" href="#rpc-health-checker" title="Permanent link">&para;</a></h1>
-<p>Use the <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> Health Checker to evaluate <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> readiness before or after activation and diagnose conditions that may affect management.</p>
+<h1 id="health-checker">Health Checker<a class="headerlink" href="#health-checker" title="Permanent link">&para;</a></h1>
+<p>Use the Health Checker to evaluate <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> readiness before or after activation and diagnose conditions that may affect management.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
 <li><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go v3.0.0-beta.80 or later. The <code>status</code> command is not available in v2.x.</li>
@@ -3360,6 +3608,10 @@
 <tr>
 <td><code>--host &lt;address&gt;</code></td>
 <td>On activated devices in Direct (LAN) mode, make a 3-second TCP connection probe. Defaults to port <code>443</code> (<code>80</code> for <code>http://</code> URLs); an explicit port is honored. An unreachable endpoint warns.</td>
+</tr>
+<tr>
+<td><code>--skip-amt-cert-check</code></td>
+<td>Skip verification of the AMT <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> certificate for the local <abbr title="Web Services for Management (WS-Management) - A protocol for managing hardware and software through web services.">WSMAN</abbr> session. Required on AMT 19+ devices with <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> enforced on local ports; see <a href="#wsman-checks-are-not-verified"><abbr title="Web Services for Management (WS-Management) - A protocol for managing hardware and software through web services.">WSMAN</abbr> Checks Are Not Verified</a>.</td>
 </tr>
 <tr>
 <td><code>--json</code></td>
@@ -3937,13 +4189,18 @@ AMT Connectivity
 <td><code>unknown</code></td>
 <td>Readiness could not be determined.</td>
 </tr>
+<tr>
+<td><code>10</code></td>
+<td>Not applicable</td>
+<td>Invalid options, for example <code>--acm</code> and <code>--ccm</code> used together.</td>
+</tr>
 </tbody>
 </table>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="lms-is-not-running-or-not-installed"><abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> Is Not Running or Not Installed<a class="headerlink" href="#lms-is-not-running-or-not-installed" title="Permanent link">&para;</a></h3>
 <p>The checker reports an unavailable <abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> as a warning; <abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> is optional for <code>rpc status</code>. <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> can query AMT over its built-in <abbr title="Host Embedded Controller Interface - A host interface for communication with the Intel® Management Engine.">HECI</abbr> transport when <abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> is unavailable. The checker does not start <abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr>.</p>
 <h3 id="wsman-checks-are-not-verified"><abbr title="Web Services for Management (WS-Management) - A protocol for managing hardware and software through web services.">WSMAN</abbr> Checks Are Not Verified<a class="headerlink" href="#wsman-checks-are-not-verified" title="Permanent link">&para;</a></h3>
-<p><abbr title="Web Services for Management (WS-Management) - A protocol for managing hardware and software through web services.">WSMAN</abbr>-backed checks run whenever <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> opens a local <abbr title="Web Services for Management (WS-Management) - A protocol for managing hardware and software through web services.">WSMAN</abbr> session, using either the supplied AMT password or local system account credentials retrieved through <abbr title="Host Embedded Controller Interface - A host interface for communication with the Intel® Management Engine.">HECI</abbr>. If the session fails, the report marks <strong>Local <abbr title="Web Services for Management (WS-Management) - A protocol for managing hardware and software through web services.">WSMAN</abbr> session</strong> as <strong>Not verified</strong> and omits dependent checks that could not run. Verify the credentials, AMT <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>/trust settings, and local <abbr title="Web Services for Management (WS-Management) - A protocol for managing hardware and software through web services.">WSMAN</abbr> connectivity; <abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> is not required for this command.</p>
+<p><abbr title="Web Services for Management (WS-Management) - A protocol for managing hardware and software through web services.">WSMAN</abbr>-backed checks run whenever <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> opens a local <abbr title="Web Services for Management (WS-Management) - A protocol for managing hardware and software through web services.">WSMAN</abbr> session, using either the supplied AMT password or local system account credentials retrieved through <abbr title="Host Embedded Controller Interface - A host interface for communication with the Intel® Management Engine.">HECI</abbr>. On AMT 19+ devices that enforce <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> on local ports, the AMT certificate is not in the OS trust store, so the session fails with <code>AMT TLS certificate could not be verified (use --skip-amt-cert-check to skip verification)</code>. Run <code>rpc status --skip-amt-cert-check</code> to allow the <abbr title="Web Services for Management (WS-Management) - A protocol for managing hardware and software through web services.">WSMAN</abbr> checks to run. If the session fails, the report marks <strong>Local <abbr title="Web Services for Management (WS-Management) - A protocol for managing hardware and software through web services.">WSMAN</abbr> session</strong> as <strong>Not verified</strong> and omits dependent checks that could not run. Verify the credentials, AMT <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>/trust settings, and local <abbr title="Web Services for Management (WS-Management) - A protocol for managing hardware and software through web services.">WSMAN</abbr> connectivity; <abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> is not required for this command.</p>
 <h3 id="the-device-is-not-ready-for-provisioning">The Device Is Not Ready for Provisioning<a class="headerlink" href="#the-device-is-not-ready-for-provisioning" title="Permanent link">&para;</a></h3>
 <p>Review the failed checks. For <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>, missing AMT and host DNS suffixes or a down wired AMT link can fail readiness. Without administrator privileges, readiness is unknown (exit 6), not <code>not_ready</code>. The checker does not inspect BIOS settings; an unavailable <abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> is only a warning.</p>
 <h3 id="dns-suffix-or-wired-link-warning">DNS Suffix or Wired-Link Warning<a class="headerlink" href="#dns-suffix-or-wired-link-warning" title="Permanent link">&para;</a></h3>

@@ -1,0 +1,5485 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://device-management-toolkit.github.io/docs/Reference/RPC/v3/commandsLocal/">
+      
+      
+      
+        <link rel="prev" href="../commandsServer/">
+      
+      
+        <link rel="next" href="../commandsInfo/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.1.1">
+    
+    
+      
+        <title>Local Mode - Device Management Toolkit</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../../assets/stylesheets/modern/main.ebb7f775.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/branding.css">
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/index.css">
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/videos.css">
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/swagger.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-00QEDJW2TS"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-00QEDJW2TS",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-00QEDJW2TS",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Device Management Toolkit" class="md-header__button md-logo" aria-label="Device Management Toolkit" data-md-component="logo">
+      
+  <img src="../../../../assets/images/logos/logo-white-75px.png" alt="Device Management Toolkit">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Device Management Toolkit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Local Mode
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun-moon" viewBox="0 0 24 24"><path d="M12 2v2M14.837 16.385a6 6 0 1 1-7.223-7.222c.624-.147.97.66.715 1.248a4 4 0 0 0 5.26 5.259c.589-.255 1.396.09 1.248.715M16 12a4 4 0 0 0-4-4M19 5l-1.256 1.256M20 12h2"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/device-management-toolkit/deployment" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    device-management-toolkit/deployment
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../GetStarted/overview/" class="md-tabs__link">
+          
+  
+  Get Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../Concepts/oobManagement/" class="md-tabs__link">
+          
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../Deployment/overview/" class="md-tabs__link">
+          
+  
+  Deployment
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../Tutorials/overview/" class="md-tabs__link">
+          
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../architectureOverview/" class="md-tabs__link">
+          
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../APIs/indexConsole/" class="md-tabs__link">
+          
+  
+  APIs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Device Management Toolkit" class="md-nav__button md-logo" aria-label="Device Management Toolkit" data-md-component="logo">
+      
+  <img src="../../../../assets/images/logos/logo-white-75px.png" alt="Device Management Toolkit">
+
+    </a>
+    Device Management Toolkit
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/device-management-toolkit/deployment" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    device-management-toolkit/deployment
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../../../.." class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../../../../GetStarted/overview/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Get Started
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../../../../Concepts/oobManagement/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Concepts
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../../../../Deployment/overview/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Deployment
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../../../../Tutorials/overview/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Tutorials
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Reference
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Reference
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architectureOverview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Architecture Overview
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../powerstates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  AMT Power States
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guids/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GUIDs in Intel® AMT
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../logging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Logging
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../middlewareExtensibility/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Middleware Extensibility
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../productionVault/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Production Mode Vault
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sslpostgresLocal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  SSL with Local Postgres
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../verifyReleases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Verify Releases (Cosign)
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_9" id="__nav_6_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Console
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_9_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_9">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Console
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Console/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Console/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Configuration
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Console/tlsConfiguration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  TLS Configuration
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../../../Console/Database/overview/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Database
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Console/upgrade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Upgrade
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Console/securityConsole/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Security Information
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../../../Console/Features/cira/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Features
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_10" id="__nav_6_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Enterprise Assistant
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_10_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_10">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Enterprise Assistant
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EA/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EA/tlsCertTemplate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  TLS Certificate Template
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../../../EA/RPCConfiguration/rpcgoConfiguration/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RPC-Go Configuration
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../../../EA/RPSConfiguration/rpsConfiguration/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  RPS Configuration
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_11" id="__nav_6_11_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Event Monitoring (MQTT)
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_11_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_11">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Event Monitoring (MQTT)
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MQTT/customMqttEvents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Customizing MQTT Events
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MQTT/viewMqttEvents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Viewing MQTT Events
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_12" id="__nav_6_12_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Management Presence Server
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_12_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_12">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Management Presence Server
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MPS/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Configuration
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MPS/securityMPS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Security Information
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_13" id="__nav_6_13_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Remote Provisioning Server
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_13_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_13">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Remote Provisioning Server
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../RPS/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Configuration
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../RPS/securityRPS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Security Information
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../RPS/createProfileTLSConfig/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Create Profile with TLS
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_14" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_14" id="__nav_6_14_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Remote Provisioning Client
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_14_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_6_14">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Remote Provisioning Client
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../buildRPC_Manual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Build RPC-Go Manually
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../../v2/commandsRPC/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  v2.x
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_14_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_14_4" id="__nav_6_14_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  v3 (Beta)
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_14_4_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_6_14_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  v3 (Beta)
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about-v3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  About v3
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_14_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_14_4_2" id="__nav_6_14_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Commands
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_14_4_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_6_14_4_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Commands
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commandsServer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Server Mode
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Local Mode
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Local Mode
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#activate" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        activate
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="activate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-encrypted-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1. Encrypted Profile
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2. config.yaml
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-flag-based-ccm-acm" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3. Flag-Based (CCM / ACM)
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Flag-Based (CCM &#x2f; ACM)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ccm" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CCM
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acm" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ACM
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activate-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>activate</code> Flags
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Examples
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deactivate" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        deactivate
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="deactivate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deactivate-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>deactivate</code> Flags
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Examples
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configure" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        configure
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="configure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Common Flags
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subcommands" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Subcommands
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amt-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        amt-features
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amt-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        amt-password
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mebx" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        mebx
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sync-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        sync-clock
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hostname" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        hostname
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        tls
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wired" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        wired
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="wired">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-8021x" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        with 802.1x
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wired-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>wired</code> Flags
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wireless" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        wireless
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="wireless">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-8021x_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        with 802.1x
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wireless-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>wireless</code> Flags
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cira" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        cira
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wi-fi-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        wi-fi-sync
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        proxy
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-amt" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        enable-amt
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disable-amt" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        disable-amt
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commandsInfo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  AMT Information
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commandsVersion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Version
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commandsDiagnostics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Diagnostics
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commandsHealthChecker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Health Checker
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transitionDeviceRPC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Transition Activated Device
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_15" id="__nav_6_15_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  UI Toolkit React
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_15_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_15">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  UI Toolkit React
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../UIToolkit/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../UIToolkit/gettingStarted/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Getting Started
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../../../UIToolkit/Controls/kvmControl/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  React Controls
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../UIToolkit/reactLocalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  React Localization
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../UIToolkit/migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Migration from v4 to v5
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_16" id="__nav_6_16_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Intel&reg; MEBX
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_16_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_16">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Intel&reg; MEBX
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MEBX/dnsSuffix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  DNS Suffix
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MEBX/unprovision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Unprovisioning
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_17" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_17" id="__nav_6_17_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Certificates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_17_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_17">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Certificates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Certificates/generateProvisioningCert/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Custom Provisioning Certificate
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Certificates/enrollCustomCertAMT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Enroll Custom Provisioning Certificate using USBFile
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Certificates/tls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  TLS Certificate
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+  
+    <a href="../../../../APIs/indexConsole/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  APIs
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#activate" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        activate
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="activate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-encrypted-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1. Encrypted Profile
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2. config.yaml
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-flag-based-ccm-acm" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3. Flag-Based (CCM / ACM)
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Flag-Based (CCM &#x2f; ACM)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ccm" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CCM
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acm" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ACM
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activate-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>activate</code> Flags
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Examples
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deactivate" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        deactivate
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="deactivate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deactivate-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>deactivate</code> Flags
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Examples
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configure" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        configure
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="configure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Common Flags
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subcommands" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Subcommands
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amt-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        amt-features
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amt-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        amt-password
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mebx" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        mebx
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sync-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        sync-clock
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hostname" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        hostname
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        tls
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wired" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        wired
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="wired">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-8021x" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        with 802.1x
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wired-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>wired</code> Flags
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wireless" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        wireless
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="wireless">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-8021x_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        with 802.1x
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wireless-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code>wireless</code> Flags
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cira" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        cira
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wi-fi-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        wi-fi-sync
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        proxy
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-amt" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        enable-amt
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disable-amt" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        disable-amt
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+      
+        
+  
+  
+    
+    
+    
+    
+    
+      <li class="md-path__item">
+        <a href="../../../architectureOverview/" class="md-path__link">
+          
+  
+  <span class="md-ellipsis">
+    Reference
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+    
+    
+    
+      <li class="md-path__item">
+        <a href="../../overview/" class="md-path__link">
+          
+  
+  <span class="md-ellipsis">
+    Remote Provisioning Client
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+    
+    
+    
+      <li class="md-path__item">
+        <a href="../about-v3/" class="md-path__link">
+          
+  
+  <span class="md-ellipsis">
+    v3 (Beta)
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+    
+    
+    
+      <li class="md-path__item">
+        <a href="../commands/" class="md-path__link">
+          
+  
+  <span class="md-ellipsis">
+    Commands
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+  
+  
+
+
+  <h1>Local Mode</h1>
+
+<p>Local mode commands apply configuration directly to <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> through the <abbr title="Manageability Engine Interface - The host interface used to communicate with Intel® Management Engine features.">MEI</abbr> driver or Intel® Local Management Service (<abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr>), without server interaction. <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go reads profiles and secrets from the local filesystem and drives the provisioning sequence entirely on the device.</p>
+<p>Use local mode when a server (Console/<abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>) is not required, when profiles are exported and applied on-device, or when configuring features like <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>, networking, <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>, and AMT features.</p>
+<div class="admonition warning">
+<p class="admonition-title">OS Trust Assumption</p>
+<p>Local mode assumes the operating system environment on the device is <strong>trusted</strong>. Profiles, secrets, certificates, and credentials are read from and processed on the local device. If the OS has been compromised, any secrets passed to <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go (including AMT passwords, provisioning certificates, and 802.1x credentials) could be exposed. Ensure the integrity of the OS before using local mode commands.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">AMT 19+: <code>--skip-amt-cert-check</code> Required</p>
+<p>Starting with AMT 19, <abbr title="Intel® Active Management Technology - A technology that provides out-of-band management and security features on an Intel vPro® Platform.">Intel® AMT</abbr> uses <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> for local communication. The <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> certificate is <strong>not</strong> in the OS trust store, so <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go cannot validate it. You must pass <code>--skip-amt-cert-check</code> on AMT 19+ platforms for <strong>all</strong> local mode commands (<code>activate</code>, <code>deactivate</code>, <code>configure</code>). A future release will remove this requirement.</p>
+</div>
+<p>Global options are listed in the <a href="../commands/#global-flags">Commands Overview</a>.</p>
+<hr />
+<h2 id="activate">activate<a class="headerlink" href="#activate" title="Permanent link">&para;</a></h2>
+<p>Activate an unprovisioned device locally. There are three approaches:</p>
+<ol>
+<li><strong><a href="#1-encrypted-profile">Encrypted profile</a></strong> - Export an encrypted profile from Console, copy it to the device, and activate. The profile orchestrator applies the full device configuration automatically.</li>
+<li><strong><a href="#2-configyaml">config.yaml</a></strong> - Create or adapt a <code>config.yaml</code> with the fields you need. Intended for debugging and development.</li>
+<li><strong><a href="#3-flag-based-ccm-acm">Flag-based</a></strong> - Pass <code>--local</code> with <code>--ccm</code> or <code>--acm</code> and individual flags on the command line.</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Local Activation Scope</p>
+<p>Local activation is only supported for activating unprovisioned (pre-provisioning state) devices.</p>
+</div>
+<h3 id="1-encrypted-profile">1. Encrypted <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr><a class="headerlink" href="#1-encrypted-profile" title="Permanent link">&para;</a></h3>
+<p>Export a profile from the Console UI or API, copy the encrypted profile file to the target AMT device, and run:</p>
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>activate<span class="w"> </span>--profile<span class="w"> </span>./myprofile.yaml<span class="w"> </span>--key<span class="w"> </span><span class="s2">"myprofile_key"</span><span class="w"> </span>--skip-amt-cert-check
+</code></pre></div>
+<p>The <code>--profile</code> flag points to the encrypted YAML file and <code>--key</code> provides the 32-character decryption key. The profile contains the full device configuration (activation mode, networking, <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>, <abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>, redirection features, etc.) and the <strong>profile orchestrator</strong> applies each step automatically.</p>
+<div class="admonition tip">
+<p class="admonition-title">What the <abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> Orchestrator Does</p>
+<p>When a profile file is provided, <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go runs the profile orchestrator which applies the full device configuration in sequence:</p>
+<ol>
+<li><strong>Activate</strong> - <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> or <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> based on the profile's <code>controlMode</code> field</li>
+<li><strong>MEBx password</strong> - Set MEBx password (<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> only, if specified)</li>
+<li><strong>AMT features</strong> - Configure <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>, <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>, <abbr title="IDE-Redirection - AMT Redirection feature enabling remote mounting of a CD-ROM drive for tasks like OS reimaging or disk reformatting.">IDER</abbr>, and User Consent</li>
+<li><strong>Wired network</strong> - DHCP or Static IP settings</li>
+<li><strong>WiFi sync</strong> - OS and UEFI WiFi sync settings</li>
+<li><strong>Wireless profiles</strong> - Purge existing and add each configured profile</li>
+<li><strong><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr></strong> - Configure <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> mode and certificates</li>
+<li><strong><abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr></strong> - Configure <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> connection for remote access</li>
+<li><strong>HTTP Proxy</strong> - Configure proxy access points</li>
+</ol>
+<p>Each step is only executed if the corresponding section is present in the profile. The orchestrator handles password rotation and retries automatically.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">How --profile and --key Work</p>
+<p>The configuration file is encrypted using AES-256-GCM. The encryption key is generated from 24 bytes of cryptographically secure random data and encoded as a 32-character string, which is used directly as the AES key. For each encryption, a random nonce is generated and prefixed to the ciphertext, and the final output is base64-encoded. During decryption, the data is base64-decoded, the nonce is extracted, and AES-GCM verifies and decrypts the YAML content automatically.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title"><abbr title="Profile - A set of configuration information, including a password and provisioning method, provided to Intel® AMT firmware during the activation process.">Profile</abbr> flags cannot be combined with <code>--ccm</code>/<code>--acm</code>/<code>--stopConfig</code></p>
+<p>When <code>--profile</code> points to a file, the activation mode is determined by the profile's <code>controlMode</code> field. Passing <code>--ccm</code>, <code>--acm</code>, or <code>--stopConfig</code> with a file-based <code>--profile</code> is not allowed.</p>
+</div>
+<h3 id="2-configyaml">2. config.yaml<a class="headerlink" href="#2-configyaml" title="Permanent link">&para;</a></h3>
+<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go automatically loads a file named <code>config.yaml</code> from the working directory at startup and applies the values as flag defaults. To use this approach, create a <code>config.yaml</code> with the sections you need and run:</p>
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>activate<span class="w"> </span>--local<span class="w"> </span>--skip-amt-cert-check
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Debugging Use Only</p>
+<p>The <code>config.yaml</code> approach stores configuration in <strong>plaintext</strong> and is intended for debugging and development. Do not use unencrypted profiles in production.</p>
+</div>
+<details class="example">
+<summary>Full config.yaml Reference</summary>
+<p>This is the complete set of fields <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go recognizes in <code>config.yaml</code>. Only populate the sections you need — unknown or unused fields are ignored.</p>
+<p>See the <a href="https://github.com/device-management-toolkit/rpc-go/blob/main/config.yaml">source file on GitHub</a> for the latest version.</p>
+<div class="highlight"><span class="filename">config.yaml</span><pre><span></span><code><span class="c1"># ── Global Flags ──────────────────────────────────────────────────────────</span>
+<span class="nt">log-level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">info</span><span class="w">              </span><span class="c1"># trace|debug|info|warn|error|fatal|panic</span>
+<span class="nt">json</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">                  </span><span class="c1"># true =&gt; JSON output</span>
+<span class="nt">verbose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">               </span><span class="c1"># true =&gt; force trace logging</span>
+<span class="nt">skip-cert-check</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">       </span><span class="c1"># true =&gt; skip TLS server cert verification (insecure)</span>
+<span class="nt">lmsaddress</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span><span class="w">        </span><span class="c1"># Local LMS host</span>
+<span class="nt">lmsport</span><span class="p">:</span><span class="w"> </span><span class="s">"16992"</span><span class="w">             </span><span class="c1"># Local LMS port (16992 HTTP / 16993 HTTPS)</span>
+<span class="nt">tenant-id</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w">                </span><span class="c1"># Multi-tenant identifier</span>
+<span class="nt">amt-password</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w">             </span><span class="c1"># Global AMT admin password</span>
+
+<span class="c1"># ── Server Auth ───────────────────────────────────────────────────────────</span>
+<span class="nt">auth-token</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w">               </span><span class="c1"># Bearer token (preferred)</span>
+<span class="nt">auth-username</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w">            </span><span class="c1"># Basic auth username (if no token)</span>
+<span class="nt">auth-password</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w">            </span><span class="c1"># Basic auth password (if no token)</span>
+<span class="nt">auth-endpoint</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w">            </span><span class="c1"># Optional token exchange endpoint override</span>
+<span class="nt">devices-endpoint</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w">         </span><span class="c1"># Optional devices API endpoint (absolute URL)</span>
+
+<span class="c1"># ── amtinfo ───────────────────────────────────────────────────────────────</span>
+<span class="nt">amtinfo</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">userCert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">all</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">ver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">bld</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">sku</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">uuid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">tep</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">                </span><span class="c1"># Intel TEP status</span>
+<span class="w">  </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">dns</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">lan</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">ras</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">operationalState</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">               </span><span class="c1"># Sync device info to server (requires url + auth)</span>
+<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w">                   </span><span class="c1"># Server endpoint for sync</span>
+
+<span class="c1"># ── activate ──────────────────────────────────────────────────────────────</span>
+<span class="nt">activate</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">local</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w">                   </span><span class="c1"># Remote RPS or HTTP profile URL</span>
+<span class="w">  </span><span class="nt">profile</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w">               </span><span class="c1"># Profile name (ws/wss) or file path</span>
+<span class="w">  </span><span class="nt">proxy</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w">                 </span><span class="c1"># Proxy URL (ws/wss flows)</span>
+<span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w">                   </span><span class="c1"># 32-character decryption key for encrypted profile</span>
+<span class="w">  </span><span class="nt">dns</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w">                  </span><span class="c1"># Friendly name</span>
+<span class="w">  </span><span class="nt">uuid</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">  </span><span class="nt">ccm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">acm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">stopConfig</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">provisioningCert</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w">      </span><span class="c1"># Base64 provisioning cert (ACM)</span>
+<span class="w">  </span><span class="nt">provisioningCertPwd</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">  </span><span class="nt">skipIPRenew</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">        </span><span class="c1"># Skip DHCP renew post activation</span>
+
+<span class="c1"># ── deactivate ────────────────────────────────────────────────────────────</span>
+<span class="nt">deactivate</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">  </span><span class="nt">profile</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">  </span><span class="nt">proxy</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+
+<span class="c1"># ── configure ─────────────────────────────────────────────────────────────</span>
+<span class="nt">configure</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">amtpassword</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">newamtpassword</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+
+<span class="w">  </span><span class="nt">mebx</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">mebxpassword</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+
+<span class="w">  </span><span class="nt">amtfeatures</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">kvm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">sol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">ider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">userConsent</span><span class="p">:</span><span class="w"> </span><span class="s">"all"</span><span class="w">      </span><span class="c1"># kvm|all|none</span>
+
+<span class="w">  </span><span class="nt">wired</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">dhcp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ipsync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ipaddress</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">    </span><span class="nt">subnetmask</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">    </span><span class="nt">gateway</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">    </span><span class="nt">primarydns</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">    </span><span class="nt">secondarydns</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">    </span><span class="nt">ieee8021xProfileName</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">    </span><span class="nt">ieee8021xUsername</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">    </span><span class="nt">ieee8021xPassword</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">    </span><span class="nt">ieee8021xAuthenticationProtocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w">  </span><span class="c1"># 0=EAP-TLS, 2=PEAPv0/EAP-MSCHAPv2</span>
+<span class="w">    </span><span class="nt">ieee8021xPrivateKey</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w">             </span><span class="c1"># PEM</span>
+<span class="w">    </span><span class="nt">ieee8021xClientCert</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w">             </span><span class="c1"># PEM</span>
+<span class="w">    </span><span class="nt">ieee8021xCACert</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w">                 </span><span class="c1"># PEM</span>
+<span class="w">    </span><span class="nt">eaAddress</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w">                       </span><span class="c1"># Enterprise Assistant</span>
+<span class="w">    </span><span class="nt">eaUsername</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">    </span><span class="nt">eaPassword</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+
+<span class="w">  </span><span class="nt">wireless</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">purge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">profileName</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">    </span><span class="nt">ssid</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">    </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">authenticationMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span><span class="w">  </span><span class="c1"># 4=WPA-PSK, 6=WPA2-PSK, 7=WPA2-IEEE8021x</span>
+<span class="w">    </span><span class="nt">encryptionMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w">      </span><span class="c1"># 3=TKIP, 4=CCMP</span>
+<span class="w">    </span><span class="nt">pskPassphrase</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">    </span><span class="nt">ieee8021xProfileName</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">    </span><span class="nt">ieee8021xUsername</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">    </span><span class="nt">ieee8021xPassword</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">    </span><span class="nt">ieee8021xAuthenticationProtocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">    </span><span class="nt">ieee8021xPrivateKey</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">    </span><span class="nt">ieee8021xClientCert</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">    </span><span class="nt">ieee8021xCACert</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+
+<span class="w">  </span><span class="nt">tls</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="s">"Server"</span><span class="w">          </span><span class="c1"># Server|ServerAndNonTLS|Mutual|MutualAndNonTLS|None</span>
+<span class="w">    </span><span class="nt">delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">    </span><span class="nt">eaAddress</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">    </span><span class="nt">eaUsername</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">    </span><span class="nt">eaPassword</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+
+<span class="w">  </span><span class="nt">proxy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">delete</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="w">    </span><span class="nt">networkdnssuffix</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+
+<span class="w">  </span><span class="nt">sync-clock</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w">                </span><span class="c1"># RPS URL for remote time sync; blank = local sync</span>
+
+<span class="w">  </span><span class="nt">sync-hostname</span><span class="p">:</span>
+
+<span class="w">  </span><span class="nt">wifisync</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">oswifisync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">uefiwifisync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="c1"># ── diagnostics ───────────────────────────────────────────────────────────</span>
+<span class="nt">diagnostics</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">bundle</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w">             </span><span class="c1"># Output ZIP path (default: timestamped bundle)</span>
+</code></pre></div>
+</details>
+<h3 id="3-flag-based-ccm-acm">3. Flag-Based (<abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr> / <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>)<a class="headerlink" href="#3-flag-based-ccm-acm" title="Permanent link">&para;</a></h3>
+<p>Pass <code>--local</code> with <code>--ccm</code> or <code>--acm</code> and provide the required flags directly on the command line.</p>
+<h4 id="ccm"><abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr><a class="headerlink" href="#ccm" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>activate<span class="w"> </span>--local<span class="w"> </span>--ccm
+</code></pre></div>
+<p>You will be prompted for the AMT password, or provide it via <code>--password</code>.</p>
+<h4 id="acm"><abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr><a class="headerlink" href="#acm" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>activate<span class="w"> </span>--local<span class="w"> </span>--acm<span class="w"> </span>--provisioningCert<span class="w"> </span><span class="s2">"{BASE64_PROV_CERT}"</span><span class="w"> </span>--provisioningCertPwd<span class="w"> </span>certPassword
+</code></pre></div>
+<h3 id="activate-flags"><code>activate</code> Flags<a class="headerlink" href="#activate-flags" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Flag</th>
+<th style="text-align: left;">Short</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Env Var</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>--local</code></td>
+<td style="text-align: left;"><code>-l</code></td>
+<td style="text-align: left;">Force local activation mode (flag-based).</td>
+<td style="text-align: left;"><code>RPC_LOCAL</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--profile</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Encrypted profile file path (<code>.yaml</code>) exported from Console. Requires <code>--key</code>. Triggers the profile orchestrator.</td>
+<td style="text-align: left;"><code>RPC_PROFILE</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--ccm</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Activate in Client Control Mode (flag-based only).</td>
+<td style="text-align: left;"><code>RPC_CCM</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--acm</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Activate in Admin Control Mode (flag-based only).</td>
+<td style="text-align: left;"><code>RPC_ACM</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--provisioningCert</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Provisioning certificate (base64 encoded). <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> only.</td>
+<td style="text-align: left;"><code>PROVISIONING_CERT</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--provisioningCertPwd</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Provisioning certificate password. <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> only.</td>
+<td style="text-align: left;"><code>PROVISIONING_CERT_PASSWORD</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--mebxpassword</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">MEBx password for AMT 19+ <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> activation to <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>.</td>
+<td style="text-align: left;"><code>MEBX_PASSWORD</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--key</code></td>
+<td style="text-align: left;"><code>-k</code></td>
+<td style="text-align: left;">32-character key to decrypt an encrypted profile file. Required with <code>--profile</code>.</td>
+<td style="text-align: left;"><code>CONFIG_ENCRYPTION_KEY</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--dns</code></td>
+<td style="text-align: left;"><code>-d</code></td>
+<td style="text-align: left;"><abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> override.</td>
+<td style="text-align: left;"><code>DNS_SUFFIX</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--hostname</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Hostname override.</td>
+<td style="text-align: left;"><code>RPC_HOSTNAME</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--name</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Friendly name to associate with this device.</td>
+<td style="text-align: left;"><code>RPC_NAME</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--uuid</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">UUID override; prevents an <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> connection.</td>
+<td style="text-align: left;"><code>RPC_UUID</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--skipIPRenew</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Skip DHCP renewal after AMT is enabled.</td>
+<td style="text-align: left;"><code>RPC_SKIP_IP_RENEW</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--stopConfig</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Transition AMT from in-provisioning to pre-provisioning state. Does not require AMT password.</td>
+<td style="text-align: left;"><code>RPC_STOP_CONFIG</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--password</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">AMT admin password. If not provided, you are prompted when required.</td>
+<td style="text-align: left;"><code>AMT_PASSWORD</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--skip-amt-cert-check</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Skip AMT/<abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> certificate verification. <strong>Required for AMT 19+.</strong></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--json</code></td>
+<td style="text-align: left;"><code>-j</code></td>
+<td style="text-align: left;">Output in JSON format.</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--verbose</code></td>
+<td style="text-align: left;"><code>-v</code></td>
+<td style="text-align: left;">Enable verbose logging.</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--log-level</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Log level: <code>trace</code>, <code>debug</code>, <code>info</code>, <code>warn</code>, <code>error</code>, <code>fatal</code>, <code>panic</code>. Default: <code>info</code>.</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--lmsaddress</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> address. Default: <code>localhost</code>.</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--lmsport</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> port. Default: <code>16992</code>.</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux/macOS</label><label for="__tabbed_1_2">Windows</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># ── Encrypted profile ────────────────────────────────────────────────────</span>
+<span class="c1"># Activate with encrypted profile</span>
+rpc<span class="w"> </span>activate<span class="w"> </span>--profile<span class="w"> </span>./myprofile.yaml<span class="w"> </span>--key<span class="w"> </span><span class="s2">"Jf3Q2nXJ+GZzN1dbVQms0wbB4+i/5PjL"</span><span class="w"> </span>--skip-amt-cert-check
+
+<span class="c1"># Encrypted profile with key from env var</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CONFIG_ENCRYPTION_KEY</span><span class="o">=</span>Jf3Q2nXJ+GZzN1dbVQms0wbB4+i/5PjL
+rpc<span class="w"> </span>activate<span class="w"> </span>--profile<span class="w"> </span>./myprofile.yaml<span class="w"> </span>--skip-amt-cert-check
+
+<span class="c1"># ── config.yaml ──────────────────────────────────────────────────────────</span>
+<span class="c1"># Place config.yaml in the working directory, then:</span>
+rpc<span class="w"> </span>activate<span class="w"> </span>--local<span class="w"> </span>--skip-amt-cert-check
+
+<span class="c1"># ── Flag-based CCM ───────────────────────────────────────────────────────</span>
+<span class="c1"># CCM activation with password prompt</span>
+rpc<span class="w"> </span>activate<span class="w"> </span>--local<span class="w"> </span>--ccm
+
+<span class="c1"># CCM on AMT 19+ platform</span>
+rpc<span class="w"> </span>activate<span class="w"> </span>--local<span class="w"> </span>--ccm<span class="w"> </span>--skip-amt-cert-check
+
+<span class="c1"># CCM activation with inline password</span>
+rpc<span class="w"> </span>activate<span class="w"> </span>--local<span class="w"> </span>--ccm<span class="w"> </span>--password<span class="w"> </span>NewAMTPassword
+
+<span class="c1"># ── Flag-based ACM ───────────────────────────────────────────────────────</span>
+<span class="c1"># ACM activation with provisioning cert</span>
+rpc<span class="w"> </span>activate<span class="w"> </span>--local<span class="w"> </span>--acm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--provisioningCert<span class="w"> </span><span class="s2">"{BASE64_PROV_CERT}"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--provisioningCertPwd<span class="w"> </span>certPassword
+
+<span class="c1"># ACM activation with MEBx password (AMT 19+)</span>
+rpc<span class="w"> </span>activate<span class="w"> </span>--local<span class="w"> </span>--acm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--provisioningCert<span class="w"> </span><span class="s2">"{BASE64_PROV_CERT}"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--provisioningCertPwd<span class="w"> </span>certPassword<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--mebxpassword<span class="w"> </span>MEBxPassword
+
+<span class="c1"># ── Other ────────────────────────────────────────────────────────────────</span>
+<span class="c1"># Stop in-provisioning state</span>
+rpc<span class="w"> </span>activate<span class="w"> </span>--local<span class="w"> </span>--stopConfig
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c"># ── Encrypted profile ────────────────────────────────────────────────────</span>
+<span class="c"># Activate with encrypted profile</span>
+<span class="n">rpc</span> <span class="n">activate</span> <span class="p">-</span><span class="n">-profile</span> <span class="p">.\</span><span class="n">myprofile</span><span class="p">.</span><span class="n">yaml</span> <span class="p">-</span><span class="n">-key</span> <span class="s2">"Jf3Q2nXJ+GZzN1dbVQms0wbB4+i/5PjL"</span> <span class="p">-</span><span class="n">-skip-amt-cert-check</span>
+
+<span class="c"># Encrypted profile with key from env var</span>
+<span class="nv">$env:CONFIG_ENCRYPTION_KEY</span> <span class="p">=</span> <span class="s2">"Jf3Q2nXJ+GZzN1dbVQms0wbB4+i/5PjL"</span>
+<span class="n">rpc</span> <span class="n">activate</span> <span class="p">-</span><span class="n">-profile</span> <span class="p">.\</span><span class="n">myprofile</span><span class="p">.</span><span class="n">yaml</span> <span class="p">-</span><span class="n">-skip-amt-cert-check</span>
+
+<span class="c"># ── config.yaml ──────────────────────────────────────────────────────────</span>
+<span class="c"># Place config.yaml in the working directory, then:</span>
+<span class="n">rpc</span> <span class="n">activate</span> <span class="p">-</span><span class="n">-local</span> <span class="p">-</span><span class="n">-skip-amt-cert-check</span>
+
+<span class="c"># ── Flag-based CCM ───────────────────────────────────────────────────────</span>
+<span class="c"># CCM activation with password prompt</span>
+<span class="n">rpc</span> <span class="n">activate</span> <span class="p">-</span><span class="n">-local</span> <span class="p">-</span><span class="n">-ccm</span>
+
+<span class="c"># CCM on AMT 19+ platform</span>
+<span class="n">rpc</span> <span class="n">activate</span> <span class="p">-</span><span class="n">-local</span> <span class="p">-</span><span class="n">-ccm</span> <span class="p">-</span><span class="n">-skip-amt-cert-check</span>
+
+<span class="c"># CCM activation with inline password</span>
+<span class="n">rpc</span> <span class="n">activate</span> <span class="p">-</span><span class="n">-local</span> <span class="p">-</span><span class="n">-ccm</span> <span class="p">-</span><span class="n">-password</span> <span class="n">NewAMTPassword</span>
+
+<span class="c"># ── Flag-based ACM ───────────────────────────────────────────────────────</span>
+<span class="c"># ACM activation with provisioning cert</span>
+<span class="n">rpc</span> <span class="n">activate</span> <span class="p">-</span><span class="n">-local</span> <span class="p">-</span><span class="n">-acm</span> <span class="p">`</span>
+  <span class="p">-</span><span class="n">-provisioningCert</span> <span class="s2">"{BASE64_PROV_CERT}"</span> <span class="p">`</span>
+  <span class="p">-</span><span class="n">-provisioningCertPwd</span> <span class="n">certPassword</span>
+
+<span class="c"># ACM activation with MEBx password (AMT 19+)</span>
+<span class="n">rpc</span> <span class="n">activate</span> <span class="p">-</span><span class="n">-local</span> <span class="p">-</span><span class="n">-acm</span> <span class="p">`</span>
+  <span class="p">-</span><span class="n">-provisioningCert</span> <span class="s2">"{BASE64_PROV_CERT}"</span> <span class="p">`</span>
+  <span class="p">-</span><span class="n">-provisioningCertPwd</span> <span class="n">certPassword</span> <span class="p">`</span>
+  <span class="p">-</span><span class="n">-mebxpassword</span> <span class="n">MEBxPassword</span>
+
+<span class="c"># ── Other ────────────────────────────────────────────────────────────────</span>
+<span class="c"># Stop in-provisioning state</span>
+<span class="n">rpc</span> <span class="n">activate</span> <span class="p">-</span><span class="n">-local</span> <span class="p">-</span><span class="n">-stopConfig</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="deactivate">deactivate<a class="headerlink" href="#deactivate" title="Permanent link">&para;</a></h2>
+<p>Deactivate the device locally.</p>
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>deactivate<span class="w"> </span>--local
+</code></pre></div>
+<h3 id="deactivate-flags"><code>deactivate</code> Flags<a class="headerlink" href="#deactivate-flags" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Flag</th>
+<th style="text-align: left;">Short</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Env Var</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>--local</code></td>
+<td style="text-align: left;"><code>-l</code></td>
+<td style="text-align: left;">Execute command to AMT directly without cloud interaction.</td>
+<td style="text-align: left;"><code>RPC_LOCAL</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--partial</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Partially unprovision the device. Only supported with <code>--local</code>.</td>
+<td style="text-align: left;"><code>RPC_PARTIAL</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--password</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">AMT admin password. If not provided, you are prompted when required.</td>
+<td style="text-align: left;"><code>AMT_PASSWORD</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--skip-amt-cert-check</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Skip AMT/<abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> certificate verification. <strong>Required for AMT v19+.</strong></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--json</code></td>
+<td style="text-align: left;"><code>-j</code></td>
+<td style="text-align: left;">Output in JSON format.</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--verbose</code></td>
+<td style="text-align: left;"><code>-v</code></td>
+<td style="text-align: left;">Enable verbose logging.</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--log-level</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Log level: <code>trace</code>, <code>debug</code>, <code>info</code>, <code>warn</code>, <code>error</code>, <code>fatal</code>, <code>panic</code>. Default: <code>info</code>.</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--lmsaddress</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> address. Default: <code>localhost</code>.</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--lmsport</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> port. Default: <code>16992</code>.</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Full deactivation with password prompt</span>
+rpc<span class="w"> </span>deactivate<span class="w"> </span>--local
+
+<span class="c1"># Deactivation on AMT 19+ platform</span>
+rpc<span class="w"> </span>deactivate<span class="w"> </span>--local<span class="w"> </span>--skip-amt-cert-check
+
+<span class="c1"># Deactivation with inline password</span>
+rpc<span class="w"> </span>deactivate<span class="w"> </span>--local<span class="w"> </span>--password<span class="w"> </span>AMTPassword
+
+<span class="c1"># Partial unprovision</span>
+rpc<span class="w"> </span>deactivate<span class="w"> </span>--local<span class="w"> </span>--partial<span class="w"> </span>--password<span class="w"> </span>AMTPassword
+
+<span class="c1"># JSON output</span>
+rpc<span class="w"> </span>deactivate<span class="w"> </span>--local<span class="w"> </span>--password<span class="w"> </span>AMTPassword<span class="w"> </span>--json
+</code></pre></div>
+<hr />
+<h2 id="configure">configure<a class="headerlink" href="#configure" title="Permanent link">&para;</a></h2>
+<p>Configure AMT settings on an activated device. All <code>configure</code> subcommands operate locally and no server connection is required. AMT password is required for all configure subcommands if AMT is already activated.</p>
+<h3 id="common-flags">Common Flags<a class="headerlink" href="#common-flags" title="Permanent link">&para;</a></h3>
+<p>These flags apply to all <code>configure</code> subcommands in addition to any subcommand-specific flags.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Flag</th>
+<th style="text-align: left;">Short</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Env Var</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>--password</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">AMT admin password. If not provided, you are prompted.</td>
+<td style="text-align: left;"><code>AMT_PASSWORD</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--skip-amt-cert-check</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Skip AMT/<abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> certificate verification. <strong>Required for AMT 19+.</strong></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--json</code></td>
+<td style="text-align: left;"><code>-j</code></td>
+<td style="text-align: left;">Output in JSON format.</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--verbose</code></td>
+<td style="text-align: left;"><code>-v</code></td>
+<td style="text-align: left;">Enable verbose logging.</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--log-level</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Log level: <code>trace</code>, <code>debug</code>, <code>info</code>, <code>warn</code>, <code>error</code>, <code>fatal</code>, <code>panic</code>. Default: <code>info</code>.</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--lmsaddress</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> address. Default: <code>localhost</code>.</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--lmsport</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><abbr title="Local Management Service - In-band, OS-level service that enables features that require interacting with the OS such as graceful power actions and OS-sync features.">LMS</abbr> port. Default: <code>16992</code>.</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="subcommands">Subcommands<a class="headerlink" href="#subcommands" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Subcommand</th>
+<th style="text-align: left;">Aliases</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><a href="#amt-features">amt-features</a></td>
+<td style="text-align: left;"><code>amtfeatures</code>, <code>setamtfeatures</code></td>
+<td style="text-align: left;">Configure AMT features (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>, <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>, <abbr title="IDE-Redirection - AMT Redirection feature enabling remote mounting of a CD-ROM drive for tasks like OS reimaging or disk reformatting.">IDER</abbr>, user consent).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#amt-password">amt-password</a></td>
+<td style="text-align: left;"><code>amtpassword</code>, <code>changeamtpassword</code></td>
+<td style="text-align: left;">Change AMT password.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#mebx">mebx</a></td>
+<td style="text-align: left;"><code>setmebx</code></td>
+<td style="text-align: left;">Configure MEBx password (<abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> only).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#sync-clock">sync-clock</a></td>
+<td style="text-align: left;"><code>syncclock</code>, <code>synctime</code></td>
+<td style="text-align: left;">Synchronize host OS clock to AMT locally or through <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#wired">wired</a></td>
+<td style="text-align: left;"><code>ethernet</code>, <code>addethernetsettings</code></td>
+<td style="text-align: left;">Configure wired ethernet settings.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#wireless">wireless</a></td>
+<td style="text-align: left;"><code>addwifisettings</code></td>
+<td style="text-align: left;">Configure WiFi settings.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#tls">tls</a></td>
+<td style="text-align: left;"><code>configuretls</code></td>
+<td style="text-align: left;">Configure <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> settings.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#cira">cira</a></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Configure Cloud-Initiated Remote Access (<abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#wi-fi-sync">wi-fi-sync</a></td>
+<td style="text-align: left;"><code>wifisync</code>, <code>wifi</code></td>
+<td style="text-align: left;">Control WiFi and local profile synchronization.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#proxy">proxy</a></td>
+<td style="text-align: left;"><code>httpproxy</code></td>
+<td style="text-align: left;">Configure HTTP proxy access point for firmware-initiated connections.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#hostname">hostname</a></td>
+<td style="text-align: left;"><code>synchostname</code>, <code>sethostname</code></td>
+<td style="text-align: left;">Synchronize host OS hostname and <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> to AMT general settings.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#enable-amt">enable-amt</a></td>
+<td style="text-align: left;"><code>enable-op-state</code>, <code>enable-operational-state</code></td>
+<td style="text-align: left;">Enable AMT operational state (requires unprovisioned state).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#disable-amt">disable-amt</a></td>
+<td style="text-align: left;"><code>disable-op-state</code>, <code>disable-operational-state</code></td>
+<td style="text-align: left;">Disable AMT operational state (requires unprovisioned state).</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">The <code>wifi</code> alias</p>
+<p><code>wifi</code> is registered as an alias of both <code>wi-fi-sync</code> and <code>wireless</code>, and <code>rpc configure wifi</code> runs <code>wi-fi-sync</code>. Use <code>rpc configure wireless</code> to add WiFi profiles.</p>
+</div>
+<hr />
+<h3 id="amt-features">amt-features<a class="headerlink" href="#amt-features" title="Permanent link">&para;</a></h3>
+<p>Configure AMT features: enable or disable redirection features (<abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr>, <abbr title="IDE-Redirection - AMT Redirection feature enabling remote mounting of a CD-ROM drive for tasks like OS reimaging or disk reformatting.">IDER</abbr>, <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr>) and set the user consent type.</p>
+<div class="admonition note">
+<p class="admonition-title">Control Mode and User Consent</p>
+<p>User consent can only be configured if the device is activated in <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> mode. In <abbr title="Client Control Mode - An alternative to ACM provisioning mode that does not require a purchased certificate. User Consent is required for redirection features. Use this mode to set up OAMTCT software features quickly.">CCM</abbr>, user consent is set to <code>all</code> and cannot be changed.</p>
+</div>
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>configure<span class="w"> </span>amt-features<span class="w"> </span>--kvm<span class="w"> </span>--sol<span class="w"> </span>--ider<span class="w"> </span>--userConsent<span class="w"> </span>none
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Flag</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Env Var</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>--kvm</code></td>
+<td style="text-align: left;">Enable <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> (Keyboard, Video, Mouse). If omitted, <abbr title="Keyboard Video Mouse - A feature that allows a user to control the keyboard, mouse, and video inputs/outputs of a remote device.">KVM</abbr> will be disabled when other flags are also omitted.</td>
+<td style="text-align: left;"><code>RPC_KVM</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--sol</code></td>
+<td style="text-align: left;">Enable <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr> (Serial-over-LAN). If omitted, <abbr title="Serial over LAN: A feature that enables the input and output of the serial port of a managed system to be redirected over IP.">SOL</abbr> will be disabled when other flags are also omitted.</td>
+<td style="text-align: left;"><code>RPC_SOL</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--ider</code></td>
+<td style="text-align: left;">Enable <abbr title="IDE-Redirection - AMT Redirection feature enabling remote mounting of a CD-ROM drive for tasks like OS reimaging or disk reformatting.">IDER</abbr> (IDE Redirection). If omitted, <abbr title="IDE-Redirection - AMT Redirection feature enabling remote mounting of a CD-ROM drive for tasks like OS reimaging or disk reformatting.">IDER</abbr> will be disabled when other flags are also omitted.</td>
+<td style="text-align: left;"><code>RPC_IDER</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--userConsent</code></td>
+<td style="text-align: left;">User consent mode. Valid values: <code>kvm</code>, <code>all</code>, <code>none</code>. Default: <code>all</code>. <strong>Only configurable if AMT is activated in <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr>.</strong></td>
+<td style="text-align: left;"><code>RPC_USER_CONSENT</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="amt-password">amt-password<a class="headerlink" href="#amt-password" title="Permanent link">&para;</a></h3>
+<p>Change or update the AMT password locally. If <code>--newamtpassword</code> is not provided, you will be prompted.</p>
+<div class="admonition warning">
+<p class="admonition-title"><code>configure amt-password</code> vs server-based password change</p>
+<p><code>configure amt-password</code> is a <strong>local-only</strong> command. It does not update any centralized database. Make sure to take note of any changes made.</p>
+</div>
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>configure<span class="w"> </span>amt-password<span class="w"> </span>--password<span class="w"> </span>CurrentAMTPassword<span class="w"> </span>--newamtpassword<span class="w"> </span>NewAMTPassword
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Flag</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Env Var</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>--newamtpassword</code></td>
+<td style="text-align: left;">New AMT password to set.</td>
+<td style="text-align: left;"><code>NEW_AMT_PASSWORD</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="mebx">mebx<a class="headerlink" href="#mebx" title="Permanent link">&para;</a></h3>
+<p>Configure the MEBx password. Only available for devices activated in <abbr title="Admin Control Mode - A mode of provisioning Intel® AMT that requires a purchased provisioning certificate from a Certificate Authority (CA), the creation of a domain, and the creation of a profile in the Remote Provisioning Server (RPS).">ACM</abbr> mode.</p>
+<div class="admonition warning">
+<p class="admonition-title">Local-Only: Store Passwords Securely</p>
+<p>This is a local command. It does not communicate with a centralized database. Make sure to take note of any changes made.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Strong Password Requirements</p>
+<p>The MEBx password must meet strong password requirements:</p>
+<ul>
+<li>8 to 32 characters</li>
+<li>At least one of each: uppercase letter, lowercase letter, numerical digit, and special character</li>
+</ul>
+</div>
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>configure<span class="w"> </span>mebx<span class="w"> </span>--mebxpassword<span class="w"> </span>newMEBxPassword<span class="w"> </span>--password<span class="w"> </span>AMTPassword
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Flag</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Env Var</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>--mebxpassword</code></td>
+<td style="text-align: left;">MEBx password to set.</td>
+<td style="text-align: left;"><code>MEBX_PASSWORD</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="sync-clock">sync-clock<a class="headerlink" href="#sync-clock" title="Permanent link">&para;</a></h3>
+<p>Synchronize the host OS clock to AMT. Without <code>--url</code>, <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr> synchronizes locally. With an <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> WebSocket URL, it requests remote time synchronization through <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr>.</p>
+<div class="admonition note">
+<p class="admonition-title">Remote Synchronization</p>
+<p>When <code>--url</code> is provided, the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> server must be running and reachable. Omit <code>--url</code> to synchronize locally.</p>
+</div>
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>configure<span class="w"> </span>sync-clock<span class="w"> </span>--password<span class="w"> </span><span class="s2">"</span><span class="nv">$AMT_PASSWORD</span><span class="s2">"</span>
+</code></pre></div>
+<p>For remote synchronization, pass the <abbr title="Remote Provisioning Server - A microservice that works with the Remote Provision Client (RPC) to activate Intel® AMT using pre-defined profiles.">RPS</abbr> URL. The URL can also be set with <code>RPC_URL</code>.</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>./rpc<span class="w"> </span>configure<span class="w"> </span>sync-clock<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--url<span class="w"> </span>wss://&lt;rps-host&gt;/activate<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--password<span class="w"> </span><span class="s2">"</span><span class="nv">$AMT_PASSWORD</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--log-level<span class="w"> </span>debug
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Flag</th>
+<th style="text-align: left;">Short</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Env Var</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>--url</code></td>
+<td style="text-align: left;"><code>-u</code></td>
+<td style="text-align: left;">Server URL for remote time synchronization. Omit for local synchronization.</td>
+<td style="text-align: left;"><code>RPC_URL</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="hostname">hostname<a class="headerlink" href="#hostname" title="Permanent link">&para;</a></h3>
+<p>Synchronize host OS hostname and <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> to AMT general settings.</p>
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>configure<span class="w"> </span>hostname<span class="w"> </span>--password<span class="w"> </span>AMTPassword
+</code></pre></div>
+<p>No additional flags.</p>
+<hr />
+<h3 id="tls">tls<a class="headerlink" href="#tls" title="Permanent link">&para;</a></h3>
+<p>Configure <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> in AMT.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Config File</label><label for="__tabbed_2_2">Inline Flags</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go loads <code>config.yaml</code> from the working directory. Put the <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> values under <code>configure.tls</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Using Enterprise Assistant</label><label for="__tabbed_3_2">Without Enterprise Assistant</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>See <a href="../../../EA/RPCConfiguration/localtlsconfig/"><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> Configuration using Enterprise Assistant and <abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go</a> for more details.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">YAML</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">config.yaml</span><pre><span></span><code><span class="nt">amt-password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMTPassword</span>
+<span class="nt">configure</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">tls</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Server</span>
+<span class="w">    </span><span class="nt">eaAddress</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://&lt;YOUR-IPADDRESS-OR-FQDN&gt;:8000</span>
+<span class="w">    </span><span class="nt">eaUsername</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eaUser</span>
+<span class="w">    </span><span class="nt">eaPassword</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eaPass</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p>A self-signed <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> certificate will be generated and used by AMT.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">YAML</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">config.yaml</span><pre><span></span><code><span class="nt">amt-password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMTPassword</span>
+<span class="nt">configure</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">tls</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Server</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Run this command from the directory containing <code>config.yaml</code>:</p>
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>configure<span class="w"> </span>tls
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Using Enterprise Assistant</label><label for="__tabbed_6_2">Without Enterprise Assistant</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>configure<span class="w"> </span>tls<span class="w"> </span>--mode<span class="w"> </span>Server<span class="w"> </span>--password<span class="w"> </span>AMTPassword<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--eaAddress<span class="w"> </span>http://&lt;YOUR-IPADDRESS-OR-FQDN&gt;:8000<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--eaUsername<span class="w"> </span>eaUser<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--eaPassword<span class="w"> </span>eaPass
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>configure<span class="w"> </span>tls<span class="w"> </span>--mode<span class="w"> </span>Server<span class="w"> </span>--password<span class="w"> </span>AMTPassword
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Flag</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Env Var</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>--mode</code></td>
+<td style="text-align: left;"><abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> authentication usage model. Valid values: <code>Server</code>, <code>ServerAndNonTLS</code>, <code>Mutual</code>, <code>MutualAndNonTLS</code>, <code>None</code>. Default: <code>Server</code>.</td>
+<td style="text-align: left;"><code>RPC_MODE</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--delay</code></td>
+<td style="text-align: left;">Delay time in seconds after applying remote <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> settings. Default: <code>3</code>.</td>
+<td style="text-align: left;"><code>RPC_DELAY</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--eaAddress</code></td>
+<td style="text-align: left;">IP address or FQDN of Enterprise Assistant.</td>
+<td style="text-align: left;"><code>RPC_EA_ADDRESS</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--eaUsername</code></td>
+<td style="text-align: left;">Enterprise Assistant username.</td>
+<td style="text-align: left;"><code>RPC_EA_USERNAME</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--eaPassword</code></td>
+<td style="text-align: left;">Enterprise Assistant password.</td>
+<td style="text-align: left;"><code>EA_PASSWORD</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="wired">wired<a class="headerlink" href="#wired" title="Permanent link">&para;</a></h3>
+<p>Configure AMT wired ethernet settings for DHCP or Static IP. Optionally configure 802.1x.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Config File</label><label for="__tabbed_7_2">Inline Flags</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go loads <code>config.yaml</code> from the working directory. Put the wired settings under <code>configure.wired</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">DHCP</label><label for="__tabbed_8_2">Static IP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">YAML</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">config.yaml</span><pre><span></span><code><span class="nt">amt-password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMTPassword</span>
+<span class="nt">configure</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">wired</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">dhcp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ipsync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">YAML</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">config.yaml</span><pre><span></span><code><span class="nt">amt-password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMTPassword</span>
+<span class="nt">configure</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">wired</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">dhcp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">ipaddress</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.1.50</span>
+<span class="w">    </span><span class="nt">subnetmask</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">255.255.255.0</span>
+<span class="w">    </span><span class="nt">gateway</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.1.1</span>
+<span class="w">    </span><span class="nt">primarydns</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8.8.8.8</span>
+<span class="w">    </span><span class="nt">secondarydns</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4.4.4.4</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Run <code>rpc configure wired</code> from the directory containing <code>config.yaml</code>.</p>
+<h4 id="with-8021x">with 802.1x<a class="headerlink" href="#with-8021x" title="Permanent link">&para;</a></h4>
+<div class="admonition warning">
+<p class="admonition-title">Enterprise Assistant is not supported for wired 802.1x in v3</p>
+<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go v3 does not retrieve wired 802.1x certificates from Enterprise Assistant. Supply the client certificate, CA certificate, and private key manually, as shown below.</p>
+</div>
+<div class="highlight"><span class="filename">config.yaml</span><pre><span></span><code><span class="nt">amt-password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMTPassword</span>
+<span class="nt">configure</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">wired</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">dhcp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ipsync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ieee8021xProfileName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exampleIeee8021xEAP-TLS</span>
+<span class="w">    </span><span class="nt">ieee8021xUsername</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exampleUserName</span>
+<span class="w">    </span><span class="nt">ieee8021xAuthenticationProtocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">    </span><span class="nt">ieee8021xClientCert</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;client</span><span class="nv"> </span><span class="s">certificate</span><span class="nv"> </span><span class="s">PEM&gt;"</span>
+<span class="w">    </span><span class="nt">ieee8021xCACert</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;CA</span><span class="nv"> </span><span class="s">certificate</span><span class="nv"> </span><span class="s">PEM&gt;"</span>
+<span class="w">    </span><span class="nt">ieee8021xPrivateKey</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;private</span><span class="nv"> </span><span class="s">key</span><span class="nv"> </span><span class="s">PEM&gt;"</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="admonition warning">
+<p class="admonition-title">Security: Inline Secrets</p>
+<p>Passing secrets via command line is highly insecure and <strong>NOT</strong> recommended for production. Use environment variables or a config file instead. See the <code>Env Var</code> column in flag tables above for supported environment variables.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c1"># DHCP</span>
+rpc<span class="w"> </span>configure<span class="w"> </span>wired<span class="w"> </span>--dhcp<span class="w"> </span>--ipsync<span class="w"> </span>--password<span class="w"> </span>AMTPassword
+
+<span class="c1"># Static IP</span>
+rpc<span class="w"> </span>configure<span class="w"> </span>wired<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--ipaddress<span class="w"> </span><span class="m">192</span>.168.1.50<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--subnetmask<span class="w"> </span><span class="m">255</span>.255.255.0<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--gateway<span class="w"> </span><span class="m">192</span>.168.1.1<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--primarydns<span class="w"> </span><span class="m">8</span>.8.8.8<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--secondarydns<span class="w"> </span><span class="m">4</span>.4.4.4<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--password<span class="w"> </span>AMTPassword
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="wired-flags"><code>wired</code> Flags<a class="headerlink" href="#wired-flags" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Flag</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Env Var</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>--dhcp</code></td>
+<td style="text-align: left;">Configure AMT wired settings to use DHCP.</td>
+<td style="text-align: left;"><code>RPC_DHCP</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--ipsync</code></td>
+<td style="text-align: left;">Sync the IP configuration of the host OS to AMT network settings.</td>
+<td style="text-align: left;"><code>RPC_IPSYNC</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--ipaddress</code></td>
+<td style="text-align: left;">Static IP address to assign to AMT.</td>
+<td style="text-align: left;"><code>RPC_IPADDRESS</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--subnetmask</code></td>
+<td style="text-align: left;">Subnet mask to assign to AMT.</td>
+<td style="text-align: left;"><code>RPC_SUBNETMASK</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--gateway</code></td>
+<td style="text-align: left;">Default gateway to assign to AMT.</td>
+<td style="text-align: left;"><code>RPC_GATEWAY</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--primarydns</code></td>
+<td style="text-align: left;">Primary DNS to assign to AMT.</td>
+<td style="text-align: left;"><code>RPC_PRIMARYDNS</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--secondarydns</code></td>
+<td style="text-align: left;">Secondary DNS to assign to AMT.</td>
+<td style="text-align: left;"><code>RPC_SECONDARYDNS</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--ieee8021xProfileName</code></td>
+<td style="text-align: left;">IEEE 802.1x profile name (alphanumeric).</td>
+<td style="text-align: left;"><code>RPC_IEEE_8021_X_PROFILE_NAME</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--ieee8021xAuthenticationProtocol</code></td>
+<td style="text-align: left;">802.1x protocol. <code>0</code> = EAP-<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>, <code>2</code> = PEAPv0/EAP-MSCHAPv2.</td>
+<td style="text-align: left;"><code>RPC_IEEE_8021_X_AUTHENTICATION_PROTOCOL</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--ieee8021xUsername</code></td>
+<td style="text-align: left;">802.1x username (must match Common Name of client cert).</td>
+<td style="text-align: left;"><code>RPC_IEEE_8021_X_USERNAME</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--ieee8021xPassword</code></td>
+<td style="text-align: left;">802.1x password (for PEAPv0/EAP-MSCHAPv2).</td>
+<td style="text-align: left;"><code>IEEE8021X_PASSWORD</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--ieee8021xClientCert</code></td>
+<td style="text-align: left;">Client certificate (PEM format).</td>
+<td style="text-align: left;"><code>IEEE8021X_CLIENT_CERT</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--ieee8021xCACert</code></td>
+<td style="text-align: left;">CA certificate (PEM format).</td>
+<td style="text-align: left;"><code>IEEE8021X_CA_CERT</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--ieee8021xPrivateKey</code></td>
+<td style="text-align: left;">Private key (PEM format).</td>
+<td style="text-align: left;"><code>IEEE8021X_PRIVATE_KEY</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--eaAddress</code></td>
+<td style="text-align: left;">IP address or FQDN of Enterprise Assistant. Wired 802.1x provisioning is not implemented.</td>
+<td style="text-align: left;"><code>RPC_EA_ADDRESS</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--eaUsername</code></td>
+<td style="text-align: left;">Enterprise Assistant username. Wired 802.1x provisioning is not implemented.</td>
+<td style="text-align: left;"><code>RPC_EA_USERNAME</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--eaPassword</code></td>
+<td style="text-align: left;">Enterprise Assistant password. Wired 802.1x provisioning is not implemented.</td>
+<td style="text-align: left;"><code>EA_PASSWORD</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="wireless">wireless<a class="headerlink" href="#wireless" title="Permanent link">&para;</a></h3>
+<p>Configure WiFi settings on an activated AMT device. On failure, certificates added before the error are rolled back.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Config File</label><label for="__tabbed_11_2">Inline Flags</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><abbr title="Remote Provision Client - A lightweight client application on the managed device that communicates with the Manageability Engine Interface (MEI) to activate Intel® AMT using a configuration from RPS.">RPC</abbr>-Go loads <code>config.yaml</code> from the working directory. Put the wireless settings under <code>configure.wireless</code>.</p>
+<div class="highlight"><span class="filename">config.yaml</span><pre><span></span><code><span class="nt">amt-password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMTPassword</span>
+<span class="nt">configure</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">wireless</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">profileName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exampleWifiWPA2</span>
+<span class="w">    </span><span class="nt">ssid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exampleSSID</span>
+<span class="w">    </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">authenticationMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
+<span class="w">    </span><span class="nt">encryptionMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">    </span><span class="nt">pskPassphrase</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;WPA2</span><span class="nv"> </span><span class="s">passphrase&gt;"</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>configure<span class="w"> </span>wireless
+</code></pre></div>
+<h4 id="with-8021x_1">with 802.1x<a class="headerlink" href="#with-8021x_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><span class="filename">config.yaml</span><pre><span></span><code><span class="nt">amt-password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMTPassword</span>
+<span class="nt">configure</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">wireless</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">profileName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exampleWifi8021x</span>
+<span class="w">    </span><span class="nt">ssid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ssid</span>
+<span class="w">    </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">authenticationMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7</span>
+<span class="w">    </span><span class="nt">encryptionMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">    </span><span class="nt">ieee8021xProfileName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exampleIeee8021xEAP-TLS</span>
+<span class="w">    </span><span class="nt">ieee8021xAuthenticationProtocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">    </span><span class="nt">ieee8021xClientCert</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;client</span><span class="nv"> </span><span class="s">certificate</span><span class="nv"> </span><span class="s">PEM&gt;"</span>
+<span class="w">    </span><span class="nt">ieee8021xCACert</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;CA</span><span class="nv"> </span><span class="s">certificate</span><span class="nv"> </span><span class="s">PEM&gt;"</span>
+<span class="w">    </span><span class="nt">ieee8021xPrivateKey</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;private</span><span class="nv"> </span><span class="s">key</span><span class="nv"> </span><span class="s">PEM&gt;"</span>
+</code></pre></div>
+<p>Run <code>rpc configure wireless</code> from the directory containing <code>config.yaml</code>.</p>
+</div>
+<div class="tabbed-block">
+<div class="admonition warning">
+<p class="admonition-title">Security: Inline Secrets</p>
+<p>Passing secrets via command line is highly insecure and <strong>NOT</strong> recommended for production. Use environment variables or a config file instead. See the <code>Env Var</code> column in flag tables above for supported environment variables.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c1"># WPA2 PSK</span>
+rpc<span class="w"> </span>configure<span class="w"> </span>wireless<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--profileName<span class="w"> </span>myWifi<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--ssid<span class="w"> </span><span class="s2">"networkSSID"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--authenticationMethod<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--encryptionMethod<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--pskPassphrase<span class="w"> </span>networkPass<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--priority<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--password<span class="w"> </span>AMTPassword
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="wireless-flags"><code>wireless</code> Flags<a class="headerlink" href="#wireless-flags" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Flag</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Env Var</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>--profileName</code></td>
+<td style="text-align: left;">WiFi profile name (alphanumeric).</td>
+<td style="text-align: left;"><code>RPC_PROFILE_NAME</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--ssid</code></td>
+<td style="text-align: left;">WiFi SSID.</td>
+<td style="text-align: left;"><code>RPC_SSID</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--priority</code></td>
+<td style="text-align: left;">Ranked priority over other wireless profiles. Default: <code>1</code>.</td>
+<td style="text-align: left;"><code>RPC_PRIORITY</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--authenticationMethod</code></td>
+<td style="text-align: left;">WiFi auth method. <code>4</code> = WPA-PSK, <code>6</code> = WPA2-PSK, <code>7</code> = WPA2-IEEE8021x. Default: <code>6</code>.</td>
+<td style="text-align: left;"><code>RPC_AUTHENTICATION_METHOD</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--encryptionMethod</code></td>
+<td style="text-align: left;">WiFi encryption method. <code>3</code> = TKIP, <code>4</code> = CCMP. Default: <code>4</code>.</td>
+<td style="text-align: left;"><code>RPC_ENCRYPTION_METHOD</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--pskPassphrase</code></td>
+<td style="text-align: left;">WPA/WPA2 passphrase.</td>
+<td style="text-align: left;"><code>PSK_PASSPHRASE</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--purge</code></td>
+<td style="text-align: left;">Purge all existing AMT wireless profiles and exit.</td>
+<td style="text-align: left;"><code>RPC_PURGE</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--ieee8021xProfileName</code></td>
+<td style="text-align: left;">IEEE 802.1x profile name (alphanumeric).</td>
+<td style="text-align: left;"><code>RPC_IEEE_8021_X_PROFILE_NAME</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--ieee8021xAuthenticationProtocol</code></td>
+<td style="text-align: left;">802.1x protocol. <code>0</code> = EAP-<abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr>, <code>2</code> = PEAPv0/EAP-MSCHAPv2.</td>
+<td style="text-align: left;"><code>RPC_IEEE_8021_X_AUTHENTICATION_PROTOCOL</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--ieee8021xUsername</code></td>
+<td style="text-align: left;">802.1x username.</td>
+<td style="text-align: left;"><code>RPC_IEEE_8021_X_USERNAME</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--ieee8021xPassword</code></td>
+<td style="text-align: left;">802.1x password (for PEAPv0/EAP-MSCHAPv2).</td>
+<td style="text-align: left;"><code>IEEE8021X_PASSWORD</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--ieee8021xClientCert</code></td>
+<td style="text-align: left;">Client certificate (PEM format).</td>
+<td style="text-align: left;"><code>IEEE8021X_CLIENT_CERT</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--ieee8021xCACert</code></td>
+<td style="text-align: left;">CA certificate (PEM format).</td>
+<td style="text-align: left;"><code>IEEE8021X_CA_CERT</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--ieee8021xPrivateKey</code></td>
+<td style="text-align: left;">Private key (PEM format).</td>
+<td style="text-align: left;"><code>IEEE8021X_PRIVATE_KEY</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="cira">cira<a class="headerlink" href="#cira" title="Permanent link">&para;</a></h3>
+<p>Configure Client-Initiated Remote Access (<abbr title="Client Initiated Remote Access - An out-of-band (OOB) management communication protocol that network clients can use to initiate a secure connection with a server.">CIRA</abbr>). This sets up a persistent <abbr title="Transport Layer Security - A protocol for encrypting network traffic.">TLS</abbr> tunnel from AMT to the Management Presence Server (<abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr>).</p>
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>configure<span class="w"> </span>cira<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--mpsaddress<span class="w"> </span>mps.example.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--mpscert<span class="w"> </span><span class="s2">"BASE64_MPS_ROOT_CERT"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--password<span class="w"> </span>AMTPassword
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Flag</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Env Var</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>--mpsaddress</code></td>
+<td style="text-align: left;"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> address. <strong>Required.</strong></td>
+<td style="text-align: left;"><code>MPS_ADDRESS</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--mpscert</code></td>
+<td style="text-align: left;"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> root public certificate. <strong>Required.</strong></td>
+<td style="text-align: left;"><code>MPS_CERT</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--mpspassword</code></td>
+<td style="text-align: left;"><abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> password.</td>
+<td style="text-align: left;"><code>MPS_PASSWORD</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--envdetection</code></td>
+<td style="text-align: left;">Environment detection domains (comma separated).</td>
+<td style="text-align: left;"><code>ENVIRONMENT_DETECTION</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--generateRandomPassword</code></td>
+<td style="text-align: left;">Generate a random password for the <abbr title="Management Presence Server - A microservice that executes OOB Management REST APIs and receives keep-alive CIRA requests from managed devices.">MPS</abbr> connection.</td>
+<td style="text-align: left;"><code>GENERATE_RANDOM_PASSWORD</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="wi-fi-sync">wi-fi-sync<a class="headerlink" href="#wi-fi-sync" title="Permanent link">&para;</a></h3>
+<p>Control WiFi and local profile synchronization settings in AMT.</p>
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>configure<span class="w"> </span>wi-fi-sync<span class="w"> </span>--password<span class="w"> </span>AMTPassword
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Flag</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Default</th>
+<th style="text-align: left;">Env Var</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>--oswifisync</code></td>
+<td style="text-align: left;">Enable/disable WiFi profile sync with the OS.</td>
+<td style="text-align: left;"><code>true</code></td>
+<td style="text-align: left;"><code>RPC_OSWIFISYNC</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--uefiwifisync</code></td>
+<td style="text-align: left;">Enable/disable UEFI WiFi profile share (if supported).</td>
+<td style="text-align: left;"><code>true</code></td>
+<td style="text-align: left;"><code>RPC_UEFIWIFISYNC</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="proxy">proxy<a class="headerlink" href="#proxy" title="Permanent link">&para;</a></h3>
+<p>Configure HTTP proxy access point for firmware-initiated connections.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Add a proxy</span>
+rpc<span class="w"> </span>configure<span class="w"> </span>proxy<span class="w"> </span>--address<span class="w"> </span>proxy.corp.com<span class="w"> </span>--port<span class="w"> </span><span class="m">8080</span><span class="w"> </span>--networkdnssuffix<span class="w"> </span>corp.com<span class="w"> </span>--password<span class="w"> </span>AMTPassword
+
+<span class="c1"># List existing proxy settings</span>
+rpc<span class="w"> </span>configure<span class="w"> </span>proxy<span class="w"> </span>--list<span class="w"> </span>--password<span class="w"> </span>AMTPassword
+
+<span class="c1"># Delete a proxy by address</span>
+rpc<span class="w"> </span>configure<span class="w"> </span>proxy<span class="w"> </span>--delete<span class="w"> </span>--address<span class="w"> </span>proxy.corp.com<span class="w"> </span>--password<span class="w"> </span>AMTPassword
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Flag</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Default</th>
+<th style="text-align: left;">Env Var</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>--list</code></td>
+<td style="text-align: left;">List existing HTTP proxy settings.</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><code>RPC_LIST</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--delete</code></td>
+<td style="text-align: left;">Delete a proxy access point by address.</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><code>RPC_DELETE</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--address</code></td>
+<td style="text-align: left;">Proxy host or IP (IPv4/IPv6/FQDN).</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><code>RPC_ADDRESS</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--port</code></td>
+<td style="text-align: left;">Proxy TCP port.</td>
+<td style="text-align: left;"><code>80</code></td>
+<td style="text-align: left;"><code>RPC_PORT</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--networkdnssuffix</code></td>
+<td style="text-align: left;">Network <abbr title="Domain Name System (DNS) suffix - A suffix appended to the hostname of a DNS name.">DNS suffix</abbr> (domain) used for the access point.</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;"><code>RPC_NETWORKDNSSUFFIX</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="enable-amt">enable-amt<a class="headerlink" href="#enable-amt" title="Permanent link">&para;</a></h3>
+<p>Enable AMT operational state. Requires the device to be in pre-provisioning state.</p>
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>configure<span class="w"> </span>enable-amt
+</code></pre></div>
+<p>No additional flags. Aliases: <code>enable-op-state</code>, <code>enable-operational-state</code>.</p>
+<hr />
+<h3 id="disable-amt">disable-amt<a class="headerlink" href="#disable-amt" title="Permanent link">&para;</a></h3>
+<p>Disable AMT operational state. Requires the device to be in pre-provisioning state.</p>
+<div class="admonition warning">
+<p class="admonition-title">This command disables AMT</p>
+<p>Running <code>disable-amt</code> turns off the AMT operational state entirely. If you later want to re-enable AMT using <code>enable-amt</code>, a <strong>reboot</strong> of the device may be required after running <code>disable-amt</code> before the enable command will take effect.</p>
+</div>
+<div class="highlight"><pre><span></span><code>rpc<span class="w"> </span>configure<span class="w"> </span>disable-amt
+</code></pre></div>
+<p>No additional flags. Aliases: <code>disable-op-state</code>, <code>disable-operational-state</code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 Intel Corporation
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://discord.gg/yrcMp2kDWh" target="_blank" rel="noopener" title="Join Us on Discord" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M492.5 69.8c-.2-.3-.4-.6-.8-.7-38.1-17.5-78.4-30-119.7-37.1-.4-.1-.8 0-1.1.1s-.6.4-.8.8c-5.5 9.9-10.5 20.2-14.9 30.6-44.6-6.8-89.9-6.8-134.4 0-4.5-10.5-9.5-20.7-15.1-30.6-.2-.3-.5-.6-.8-.8s-.7-.2-1.1-.2C162.5 39 122.2 51.5 84.1 69c-.3.1-.6.4-.8.7C7.1 183.5-13.8 294.6-3.6 404.2c0 .3.1.5.2.8s.3.4.5.6c44.4 32.9 94 58 146.8 74.2.4.1.8.1 1.1 0s.7-.4.9-.7c11.3-15.4 21.4-31.8 30-48.8.1-.2.2-.5.2-.8s0-.5-.1-.8-.2-.5-.4-.6-.4-.3-.7-.4c-15.8-6.1-31.2-13.4-45.9-21.9-.3-.2-.5-.4-.7-.6s-.3-.6-.3-.9 0-.6.2-.9.3-.5.6-.7c3.1-2.3 6.2-4.7 9.1-7.1.3-.2.6-.4.9-.4s.7 0 1 .1c96.2 43.9 200.4 43.9 295.5 0 .3-.1.7-.2 1-.2s.7.2.9.4c2.9 2.4 6 4.9 9.1 7.2.2.2.4.4.6.7s.2.6.2.9-.1.6-.3.9-.4.5-.6.6c-14.7 8.6-30 15.9-45.9 21.8-.2.1-.5.2-.7.4s-.3.4-.4.7-.1.5-.1.8.1.5.2.8c8.8 17 18.8 33.3 30 48.8.2.3.6.6.9.7s.8.1 1.1 0c52.9-16.2 102.6-41.3 147.1-74.2.2-.2.4-.4.5-.6s.2-.5.2-.8c12.3-126.8-20.5-236.9-86.9-334.5zm-302 267.7c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.4 59.2-52.8 59.2m195.4 0c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.2 59.2-52.8 59.2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://hub.docker.com/search?q=intel%2Foact" target="_blank" rel="noopener" title="Find our Dockerhub Images" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M349.9 236.3h-66.1v-59.4h66.1zm0-204.3h-66.1v60.7h66.1zm78.2 144.8H362v59.4h66.1zm-156.3-72.1h-66.1v60.1h66.1zm78.1 0h-66.1v60.1h66.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1zm78.1 0h-66.1v59.4h66.1zm-78.1-72.1h-66.1v60.1h66.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/device-management-toolkit" target="_blank" rel="noopener" title="Device Management Toolkit Github Repository" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M216.5 362.5c-66-8-112.5-55.5-112.5-117 0-25 9-52 24-70-6.5-16.5-5.5-51.5 2-66 20-2.5 47 8 63 22.5 19-6 39-9 63.5-9s44.5 3 62.5 8.5c15.5-14 43-24.5 63-22 7 13.5 8 48.5 1.5 65.5 16 19 24.5 44.5 24.5 70.5 0 61.5-46.5 108-113.5 116.5 17 11 28.5 35 28.5 62.5v52c0 15 12.5 23.5 27.5 17.5C441 459.5 512 369 512 257 512 115.5 397 0 255.5 0S0 115.5 0 257c0 111 70.5 203 165.5 237.5 13.5 5 26.5-4 26.5-17.5v-40c-7 3-16 5-24 5-33 0-52.5-18-66.5-51.5-5.5-13.5-11.5-21.5-23-23-6-.5-8-3-8-6 0-6 10-10.5 20-10.5 14.5 0 27 9 40 27.5 10 14.5 20.5 21 33 21s20.5-4.5 32-16c8.5-8.5 15-16 21-21"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      
+<div class="md-progress" data-md-component="progress" role="progressbar" aria-label="Loading"></div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+  
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+    
+      
+        
+  
+  
+    
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="analytics" checked>
+      <span class="task-list-indicator"></span>
+      Google Analytics
+    </label>
+  </li>
+
+      
+    
+    
+      
+        
+  
+  
+    
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="github" checked>
+      <span class="task-list-indicator"></span>
+      GitHub
+    </label>
+  </li>
+
+      
+    
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../../..","features":["navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.path","navigation.prune","search.suggest","search.highlight","search.share","navigation.top","toc.follow","content.tabs.link","content.code.copy","content.tooltips"],"redirect":null,"search":"../../../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"default":["rapid","dev"],"provider":"mike"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.3cb411a8.min.js"></script>
+      
+        <script src="../../../../assets/javascripts/swagger.js"></script>
+      
+    
+  </body>
+</html>
