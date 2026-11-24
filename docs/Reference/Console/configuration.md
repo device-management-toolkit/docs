@@ -12,8 +12,8 @@ Alternatively, you can also download the `config.yml` file from [GitHub](https:/
 
 Console can also be configured using environment variables. These `.env` variables take precedence over the corresponding settings in the `config.yml` file, effectively overwriting them.
 
-!!! warning "Change Default Credentials for Production"
-    The default admin credentials (`standalone` / `G@ppm0ym`) are intended for development and testing only. For production deployments, change these values or configure an OAuth provider (Auth0, Azure Entra AD, etc.).
+!!! warning "Replace Generated Credentials for Production"
+    The default admin username is `standalone`. There is no default admin password: if none is provided, Console generates a random one on first run and saves it to `auth.adminPassword` in `config.yml`. Generated credentials are intended for development and testing only. For production deployments, set your own values or configure an OAuth provider (Auth0, Azure Entra AD, etc.).
 
 ## Configuration Variables
 
@@ -26,8 +26,8 @@ Console can also be configured using environment variables. These `.env` variabl
 | APP_DISABLE_CIRA | app.disable_cira | `true` | Enables or disables [CIRA](Features/cira.md) device-initiated remote access (the `:4433` listener). `true` (default) disables CIRA, its REST endpoints, and CIRA-based profiles; set to `false` to enable. See [CIRA](Features/cira.md) for the full behavior. |
 | AUTH_DISABLED | auth.disabled | `false` | When set to true, this will disable authentication for the Console. During the Beta release, the Console UI will not be accessible if this is set to true. |
 | AUTH_ADMIN_USERNAME | auth.adminUsername | `standalone` | Admin username for accessing Console. |
-| AUTH_ADMIN_PASSWORD | auth.adminPassword | `G@ppm0ym` | Admin password for accessing Console. |
-| AUTH_JWT_KEY | auth.jwtKey | `your_secret_jwt_key` | Secret key for JWT token generation. |
+| AUTH_ADMIN_PASSWORD | auth.adminPassword | No Value | Admin password for accessing Console. If not provided, Console generates a random password on first run and saves it to `auth.adminPassword` in `config.yml`. |
+| AUTH_JWT_KEY | auth.jwtKey | No Value | Secret key for JWT token generation. If not provided, Console generates a random key on first run and saves it to `auth.jwtKey` in `config.yml`. |
 | AUTH_JWT_EXPIRATION | auth.jwtExpiration | `24h0m0s` | This setting determines the default expiration time for JWT tokens used for Console login sessions. It controls how long a user's login session will remain valid. |
 | AUTH_REDIRECTION_JWT_EXPIRATION | auth.redirectionJWTExpiration | `5m0s` | This setting determines the expiration time for redirection JWT tokens, which are used for features like KVM, SOL, and IDER. It controls how long these redirection sessions will remain valid. |
 | AUTH_CLIENT_ID | auth.clientId | No Value | A unique identifier assigned to the application by the OAuth2/OIDC provider. This is used by the authorization server to recognize the client making authentication requests. |
