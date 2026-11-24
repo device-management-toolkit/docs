@@ -49,6 +49,7 @@
 
     !!! note "Note - Encryption Key Information"
         Console automatically stores this 32-character key in Operating System's credential manager, such as Windows Credential Manager, under the name *device-management-toolkit*. This key is used to encrypt sensitive data before it is stored in the database.
+        If you also choose to store the admin credentials in the keyring (see [Admin Credential Storage](../../Reference/Console/configuration.md#admin-credential-storage)), Console keeps them under the same name as the entries `admin-username` and `admin-password-hash`. Do not delete the encryption key entry.
 
 3. The executable automatically generates a `config.yml` file in the `/config` directory, relative to where the executable is run. If no password is provided, Console generates a random value for `adminPassword` and stores it in `config.yml`. Before logging in, open `config.yml` and note the values for `adminUsername` and `adminPassword`. To set your own credentials, update these fields in the file.
 
@@ -111,6 +112,9 @@
 
 !!! important
     The generated credentials are for initial access and testing only. You should set your own strong credentials for `adminUsername` and `adminPassword` as soon as possible. For production deployments we recommend using an OAUTH provider (Auth0, Azure Entra AD, etc..) and configuring Console to use that instead.
+
+!!! tip "Store the admin credentials in the OS keyring"
+    Instead of keeping `adminUsername` and `adminPassword` in `config.yml`, Console can store them in the operating system's credential manager. Set `AUTH_SECRET_BACKEND=keyring` before the first start, and Console prompts for the credentials in the terminal. See [Admin Credential Storage](../../Reference/Console/configuration.md#admin-credential-storage).
 
 
 ## Run
