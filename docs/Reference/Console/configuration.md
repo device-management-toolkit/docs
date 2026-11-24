@@ -81,7 +81,7 @@ In this mode:
 
 1. Console detects that no admin credentials exist yet in the keyring and prompts:
     - `Enter Console admin username:` - 1-64 characters, ASCII letters, digits, dots, underscores or hyphens, starting with a letter or digit. Console asks again until the value is valid.
-    - `Enter Console admin password:` - at least 8 characters with at least 4 distinct characters, and no leading or trailing whitespace. You get 3 attempts before Console exits and must be restarted to try again.
+    - `Enter Console admin password:` - at least 8 characters, including a lowercase letter, an uppercase letter, a digit, and a symbol, and no leading or trailing whitespace. You get 3 attempts before Console exits and must be restarted to try again.
     - `Confirm Console admin password:` - must match. You also get 3 attempts.
 2. On success, the username and a PBKDF2 hash of the password are written to the OS keyring under the `device-management-toolkit` service name, and Console starts normally.
 
