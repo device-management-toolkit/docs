@@ -2931,8 +2931,8 @@
 <h2 id="using-env-variables">Using .env Variables<a class="headerlink" href="#using-env-variables" title="Permanent link">&para;</a></h2>
 <p>Console can also be configured using environment variables. These <code>.env</code> variables take precedence over the corresponding settings in the <code>config.yml</code> file, effectively overwriting them.</p>
 <div class="admonition warning">
-<p class="admonition-title">Change Default Credentials for Production</p>
-<p>The default admin credentials (<code>standalone</code> / <code>G@ppm0ym</code>) are intended for development and testing only. For production deployments, change these values or configure an OAuth provider (Auth0, Azure Entra AD, etc.).</p>
+<p class="admonition-title">Replace Generated Credentials for Production</p>
+<p>The default admin username is <code>standalone</code>. There is no default admin password: if none is provided, Console generates a random one on first run and saves it to <code>auth.adminPassword</code> in <code>config.yml</code>. Generated credentials are intended for development and testing only. For production deployments, set your own values or configure an OAuth provider (Auth0, Azure Entra AD, etc.).</p>
 </div>
 <h2 id="configuration-variables">Configuration Variables<a class="headerlink" href="#configuration-variables" title="Permanent link">&para;</a></h2>
 <table>
@@ -2990,14 +2990,14 @@
 <tr>
 <td>AUTH_ADMIN_PASSWORD</td>
 <td>auth.adminPassword</td>
-<td><code>G@ppm0ym</code></td>
-<td>Admin password for accessing Console.</td>
+<td>No Value</td>
+<td>Admin password for accessing Console. If not provided, Console generates a random password on first run and saves it to <code>auth.adminPassword</code> in <code>config.yml</code>.</td>
 </tr>
 <tr>
 <td>AUTH_JWT_KEY</td>
 <td>auth.jwtKey</td>
-<td><code>your_secret_jwt_key</code></td>
-<td>Secret key for JWT token generation.</td>
+<td>No Value</td>
+<td>Secret key for JWT token generation. If not provided, Console generates a random key on first run and saves it to <code>auth.jwtKey</code> in <code>config.yml</code>.</td>
 </tr>
 <tr>
 <td>AUTH_JWT_EXPIRATION</td>
