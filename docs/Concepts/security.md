@@ -10,7 +10,7 @@ Device Management Toolkit uses multiple passwords to secure different layers of 
 | Password | Purpose | Default | Where to Change |
 | :-----------|:-------------- | :-------------- | :-------------- |
 |**Intel MEBX Password** | Secures the Intel® MEBX / AMT BIOS menu on the device | `admin` | Set via a toolkit profile during activation, via RPC-Go, or manually in MEBX (Ctrl-P on older devices; integrated into BIOS on newer devices) |
-|**Web UI / Console Password** | Authenticates admin access to the management interface | `standalone` / `G@ppm0ym` (or auto-generated) | `.env` file or `config.yml`. For production, use an OAuth provider (Auth0, Azure Entra AD, etc.) |
+|**Web UI / Console Password** | Authenticates admin access to the management interface | Username `standalone`; password auto-generated on first run | `.env` file or `config.yml`. For production, use an OAuth provider (Auth0, Azure Entra AD, etc.) |
 |**AMT Password** | Authenticates MPS/RPS/Console commands to Intel® AMT | Set during profile creation | Create a new profile or update via API |
 |**Provisioning Certificate Password** | Protects the `.pfx` certificate used for ACM activation | Set during certificate export | Re-export certificate with new password |
 |**MPS CIRA Credential** | Authenticates AMT devices connecting to MPS | Set during configuration | Create a new profile or update via API |
