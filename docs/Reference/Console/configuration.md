@@ -27,7 +27,7 @@ Console can also be configured using environment variables. These `.env` variabl
 | AUTH_DISABLED | auth.disabled | `false` | When set to true, this will disable authentication for the Console. During the Beta release, the Console UI will not be accessible if this is set to true. |
 | AUTH_ADMIN_USERNAME | auth.adminUsername | `standalone` | Admin username for accessing Console. Ignored when `AUTH_SECRET_BACKEND` is `keyring`. |
 | AUTH_ADMIN_PASSWORD | auth.adminPassword | `G@ppm0ym` | Admin password for accessing Console. Ignored when `AUTH_SECRET_BACKEND` is `keyring`. |
-| AUTH_SECRET_BACKEND | auth.secretBackend | `config` | Where standalone admin credentials are stored: `config` (config.yml/env, the default) or `keyring` (the OS credential store). See [Admin Credential Storage](#admin-credential-storage) below. |
+| AUTH_SECRET_BACKEND | auth.secretBackend | `config` | Where standalone admin credentials are stored: `config` (`config.yml` or environment variables, the default) or `keyring` (the OS credential store). The environment variable takes precedence over `config.yml`. See [Admin Credential Storage](#admin-credential-storage) below. |
 | AUTH_JWT_KEY | auth.jwtKey | `your_secret_jwt_key` | Secret key for JWT token generation. |
 | AUTH_JWT_EXPIRATION | auth.jwtExpiration | `24h0m0s` | This setting determines the default expiration time for JWT tokens used for Console login sessions. It controls how long a user's login session will remain valid. |
 | AUTH_REDIRECTION_JWT_EXPIRATION | auth.redirectionJWTExpiration | `5m0s` | This setting determines the expiration time for redirection JWT tokens, which are used for features like KVM, SOL, and IDER. It controls how long these redirection sessions will remain valid. |
@@ -50,33 +50,65 @@ Console can also be configured using environment variables. These `.env` variabl
 
 ## Admin Credential Storage
 
-`AUTH_SECRET_BACKEND` (`auth.secretBackend`) controls where Console keeps the standalone admin username and password. This setting is ignored when an OAuth2/OIDC provider (`AUTH_CLIENT_ID`) is configured, since Console does not manage credentials in that mode.
+`AUTH_SECRET_BACKEND` (`auth.secretBackend`) controls where Console keeps the standalone admin username and password. The allowed values are `config` (the default) and `keyring`. The setting does not apply when authentication is disabled (`AUTH_DISABLED=true`) or when an OAuth2/OIDC provider (`AUTH_CLIENT_ID`) is configured, since Console does not manage credentials in those modes.
+
+As with other settings, the `AUTH_SECRET_BACKEND` environment variable takes precedence over `auth.secretBackend` in `config.yml`. If you copy `.env.example` to `.env`, make sure its `AUTH_SECRET_BACKEND` line matches the backend you want. A value of `config` there overrides `secretBackend: keyring` in `config.yml` without any warning.
 
 ### Config Backend (default)
 
-With `AUTH_SECRET_BACKEND=config` (or unset), the admin username and password come from `AUTH_ADMIN_USERNAME`/`AUTH_ADMIN_PASSWORD` (or the matching `config.yml` fields). If no password is set, Console generates a random one on first run and writes it back to `config.yml`.
+With `AUTH_SECRET_BACKEND=config` (or unset), the admin username and password come from `AUTH_ADMIN_USERNAME`/`AUTH_ADMIN_PASSWORD` (or the matching `config.yml` fields). If no password is set, Console generates a random one on first run and writes it back to `config.yml`. The password is stored in plain text in this mode.
 
 ### Keyring Backend
 
-With `AUTH_SECRET_BACKEND=keyring`, Console stores the admin username and a salted PBKDF2 hash of the password in the operating system's native credential store (Windows Credential Manager, macOS Keychain, or the Linux Secret Service/libsecret) instead of in `config.yml` or the environment. `AUTH_ADMIN_USERNAME`/`AUTH_ADMIN_PASSWORD` are ignored in this mode.
+With `AUTH_SECRET_BACKEND=keyring`, Console stores the admin username and a salted PBKDF2 hash of the password in the operating system's native credential store instead of in `config.yml` or the environment:
+
+- Windows: Credential Manager
+- macOS: Keychain
+- Linux: a Secret Service provider such as GNOME Keyring or KWallet
+
+The entries are `admin-username` and `admin-password-hash`, stored under the `device-management-toolkit` service name. This is the same service Console already uses for its encryption key (`default-security-key`).
+
+In this mode:
+
+- `AUTH_ADMIN_USERNAME`, `AUTH_ADMIN_PASSWORD` and the `auth.adminUsername`/`auth.adminPassword` fields in `config.yml` are ignored. Console never reads, migrates or removes them, so delete any old plaintext credentials from `config.yml` and your `.env` yourself after switching.
+- Only the admin username and the password hash are kept in the keyring. `AUTH_JWT_KEY` is not, and stays in `config.yml` or the environment.
+- Console never falls back to `config.yml` or environment credentials, even if the keyring cannot be read.
 
 !!! note "Interactive setup only"
-    Keyring mode requires an interactive terminal the first time Console starts with no existing keyring entries — Console prompts for an admin username and password and stores them in the keyring. It does not work in a non-interactive/headless first run; use `AUTH_SECRET_BACKEND=config` for unattended deployments.
+    Keyring mode requires an interactive terminal the first time Console starts with no existing keyring entries. Console prompts for an admin username and password and stores them in the keyring. It does not work in a non-interactive or headless first run; use `AUTH_SECRET_BACKEND=config` for unattended deployments.
 
 **First-run bootstrap:**
 
-1. Console detects no admin credentials exist yet in the keyring and prompts:
-      - `Enter Console admin username:` — 1-64 characters, ASCII letters/digits/dots/underscores/hyphens, must start with a letter or digit.
-      - `Enter Console admin password:` — at least 8 characters with at least 4 distinct characters, no leading/trailing whitespace. You get 3 attempts before Console exits and must be restarted to try again.
-      - `Confirm Console admin password:` — must match, also up to 3 attempts.
+1. Console detects that no admin credentials exist yet in the keyring and prompts:
+    - `Enter Console admin username:` - 1-64 characters, ASCII letters, digits, dots, underscores or hyphens, starting with a letter or digit. Console asks again until the value is valid.
+    - `Enter Console admin password:` - at least 8 characters with at least 4 distinct characters, and no leading or trailing whitespace. You get 3 attempts before Console exits and must be restarted to try again.
+    - `Confirm Console admin password:` - must match. You also get 3 attempts.
 2. On success, the username and a PBKDF2 hash of the password are written to the OS keyring under the `device-management-toolkit` service name, and Console starts normally.
 
 On subsequent starts, Console reads the existing keyring entries and skips the prompts.
 
-**Recovery:** if the keyring entries are missing, partial, or unreadable, Console logs an error and refuses to start rather than silently falling back to a default password:
+**Requirements and limits:**
+
+- Keyring entries belong to one OS user on one host. They are not shared between machines or replicas.
+- On Linux, a Secret Service provider must be running and unlocked in the session of the user that runs Console. Headless servers and containers often have none; use the `config` backend there.
+- If Console runs as a service under a different account, that account has its own keyring. Run the first-time setup as the same user the service runs as.
+- If the keyring is locked, missing or unreachable, Console stops with an error rather than falling back to another credential source. Unlock the keyring and restart Console.
+
+**Changing the admin password:** the password cannot be changed in place yet. Delete the two admin entries as described below and restart Console, which prompts for new credentials.
+
+**Recovery:** if the keyring entries are missing, partial or unreadable, Console logs an error and refuses to start rather than silently falling back to a default password:
 
 - If the keyring itself can't be reached (locked, not installed, not accessible to the running user), Console reports the keyring is unavailable.
-- If only one of the two credential entries is present (e.g. a previous bootstrap was interrupted), Console reports the credentials are partial.
-- If an entry is present but malformed (e.g. not a valid password hash), Console reports the credentials are invalid.
+- If only one of the two credential entries is present (for example a previous bootstrap was interrupted), Console reports the credentials are partial.
+- If an entry is present but malformed (for example not a valid password hash), Console reports the credentials are invalid.
 
-In any of these cases, delete Console's two keyring entries (`admin-username` and `admin-password-hash` under the `device-management-toolkit` service) using your OS's credential manager, then restart Console to go through first-run bootstrap again.
+For the partial and invalid cases, delete Console's two admin entries, then restart Console to go through first-run bootstrap again. If the keyring itself is unavailable, fix access to the keyring first.
+
+!!! warning "Delete only the two admin entries"
+    The `device-management-toolkit` service also holds Console's encryption key (`default-security-key`). Do not delete the whole service or that entry. Without the key Console cannot decrypt the device credentials it has stored, and generating a new key makes existing data unreadable.
+
+Use your operating system's credential manager to delete only the `admin-username` and `admin-password-hash` entries stored under the `device-management-toolkit` service:
+
+- **Windows:** Credential Manager
+- **macOS:** Keychain Access
+- **Linux:** Passwords and Keys (Seahorse, package `seahorse`) for GNOME Keyring, or KWallet Manager for KDE
