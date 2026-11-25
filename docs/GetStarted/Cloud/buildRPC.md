@@ -33,6 +33,9 @@ See steps below for both options.
 
 Download the latest RPC-Go version from the [RPC-Go GitHub Repo Releases Page](https://github.com/device-management-toolkit/rpc-go/releases) for the Operating System of the AMT device (Windows or Linux).
 
+!!! important "Important - Use a Current RPC-Go with Intel® AMT 22"
+    RPC-Go tells RPS what the device's firmware requires, so upgrade RPC-Go before, or together with, RPS when you onboard Intel® AMT 22 devices. For RPC-Go 2.x, use release `[2.x version to be confirmed]` or later. For RPC-Go 3.x, use a release later than `v3.0.0-beta.64`. See [RPC-Go and RPS Versions](../../Deployment/amt22Support.md#rpc-go-and-rps-versions).
+
 After downloading, continue on to [Run RPC to Activate, Configure, and Connect the AMT Device](#run-rpc-to-activate-configure-and-connect-the-amt-device).
 
 <br>
